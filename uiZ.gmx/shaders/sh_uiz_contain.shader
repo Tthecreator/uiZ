@@ -53,5 +53,8 @@ void main()
     gl_FragColor = (v_pos.x>=toy.x && v_pos.y>=toy.y && v_pos.x<=toy.z && v_pos.y<=toy.a) ? v_vColour * texture2D( gm_BaseTexture, v_vTexcoord )*vec4(tex.a) :  vec4(0.0);    
     gl_FragColor = vec4(gl_FragColor.rgb*vec3(gl_FragColor.a),gl_FragColor.a);
 
+    //passtrough
+    //gl_FragColor = v_vColour*texture2D( gm_BaseTexture, v_vTexcoord );
+    
 }
 

@@ -174,19 +174,20 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     sel = 0;
                     break;
             }
+            var topPieceXScale=((argument2-x0)/szx)/sw;
             if width * 2 > barh then {
                 if (y4 + (barh / sh) / 2 * sh <= y6) {
                     y6--;
                 }
-                draw_sprite_ext(argument4, 6 + sel, x0, y4, width / sw, (barh / sh) / 2, 0, argument5, 1) //left
-                draw_sprite_ext(argument4, 9 + sel, x0, y6, width / sw, (barh / sh) / 2, 0, argument5, 1) //right
+                draw_sprite_ext(argument4, 6 + sel, x0, y4, topPieceXScale, (barh / sh) / 2, 0, argument5, 1) //left
+                draw_sprite_ext(argument4, 9 + sel, x0, y6, topPieceXScale, (barh / sh) / 2, 0, argument5, 1) //right
 
             } else {
                 if (y4 + width / sh * sh <= y6) {
                     y6--;
                 }
-                draw_sprite_ext(argument4, 6 + sel, x0, y4, width / sw, width / sh, 0, argument5, 1) //left
-                draw_sprite_ext(argument4, 9 + sel, x0, y6, width / sw, width / sh, 0, argument5, 1) //right
+                draw_sprite_ext(argument4, 6 + sel, x0, y4, topPieceXScale, width / sh, 0, argument5, 1) //left
+                draw_sprite_ext(argument4, 9 + sel, x0, y6, topPieceXScale, width / sh, 0, argument5, 1) //right
             }
 
             if y5 < y6 then {

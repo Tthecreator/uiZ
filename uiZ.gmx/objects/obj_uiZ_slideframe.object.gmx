@@ -239,12 +239,9 @@ right:
 */
 if newvalue^posbool=false then{
 inanim = uiz_animation_revertfunction(1-setpoint,snapanimation);
-sdbm("anim1 in reverse",1-uiz_animation_getfunction(inanim,snapanimation),setpoint);
 }else{
 inanim = uiz_animation_revertfunction(setpoint,snapanimation);
-sdbm("anim2 in reverse",uiz_animation_getfunction(inanim,snapanimation),setpoint);
 }
-sdbm("animation started",inanim)
 moves_mouse=false;
 }
 }

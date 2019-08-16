@@ -6,12 +6,10 @@ uiz_forceFixView=false;
 uiz_updater_FixViews()
 }
 uiz_dodraw=true;
-//sdbm("going to fixViews","marked for draw",uiz_dodraw)
 
 
 uiz_compatibility_depthfix()
 uiz_fix_Base_Alpha();
 if uiz_diddepth=false then{
-//sdbm("now executing children stuff")
 uiz_fix_Depth()
 }

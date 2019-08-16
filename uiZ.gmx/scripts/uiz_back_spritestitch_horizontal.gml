@@ -38,7 +38,6 @@ draw_sprite_part_ext(bkspr,img,0,0,sprpx,sprite_get_height(bkspr),rx,ry,hsc,hsc,
 draw_sprite_part_ext(bkspr,img+2,sprite_get_width(bkspr)-sprpx,0,sprpx,sprite_get_height(bkspr),rlx-width/2,ry,hsc,hsc,bkcol,alpha)
 }else{
 //draw normally
-//sdbm("draw normally")
 var hsc=height/sprite_get_height(bkspr);
 var wsc=width/sprite_get_width(bkspr)
 draw_sprite_ext(bkspr,img,rx,ry,hsc,hsc,0,bkcol,alpha)

@@ -2,6 +2,12 @@ if uiz_textarea_moveCursorBoundsCheck() then{exit;}
 
 var line = textList[| selection1Line];
 var linesz = string_length(line);
+if string_char_at(line,linesz)==chr($0A) then{
+--linesz;//don't count the last newline character
+}
+if string_char_at(line,linesz)==chr($0D) then{
+--linesz;//don't count the second to last last newline character
+}
 
 if selection1Char>=linesz then{
     if selection1Line<ds_list_size(textList)-1 then{//prevent move outside bounds

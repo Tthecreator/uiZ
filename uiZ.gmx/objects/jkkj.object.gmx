@@ -53,13 +53,13 @@ fps_counts=0;
             <string>global.deb=false;
 show_debug_overlay(true)
 uiz_init()
-global.uiz_shader=false;
+//global.uiz_shader=false;
 //obj_uiZ_controller.uiz_useappsurf=false;
 //uiz_useAppSurf(false);
-win=uiz_window_create(100,px,500,px)
+win=uiz_window_create(250,px,500,px)
 win.posinframex=uiz_center;
 win.posinframey=uiz_center;
-win.color_normal=c_red;
+win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 /*
 uiz_xml_init()
@@ -120,7 +120,7 @@ uiz_setparent(o,win);
 //ds_list_add(o.tablist,"item1","ichigo","zero two","556")
 o.posinframex=uiz_fill;
 o.posinframey=uiz_fill;
-uiz_textarea_setvalue(o,"Hello-there.-general-kenobi.-It's-finally-time-for-me-to-put-some-sensible-text-in-here.-This-makes-debugging-so-much-easier"+chr($0A)+""+chr($0A)+"Also-I'd-like"+chr($0A)+"to-see"+chr($0A)+"some-newlines.-Is-that-possible?-I'd-say-it-should-be."+chr($0A)+""+chr($0A)+""+chr($0A)+""+chr($0A)+"Also-should-I-add-even-more-text-and-newlines-just-to-make-the-scrollbar-work-or-is-it-still-too-early-for-that?-OMg-I'm-writing-soooo-much-shit-while-listening-to-some-weird-livestreams-on-youtube.-I-just-don't-know-anything-else-to-write.-I-could-just-hit-my-keyoard-randomly-but-that-does-make-debugging-way-less-easy.-"+chr($0A)+"Just-add-a-few-"+chr($0A)+"newlines-and-let's-just-hope-that-this-sh*t-works.!-It-better-does-or-else-I'm-going-to-have-a-bad-time-fixing-many-bugs-over-a-long-period-of-time.")
+uiz_textarea_setvalue(o,"Hello there. general kenobi. It's finally time for me to put some sensible text in here. This makes debugging so much easier"+chr($0A)+""+chr($0A)+"Also I'd like"+chr($0A)+"to see"+chr($0A)+"some newlines. Is that possible? I'd say it should be."+chr($0A)+""+chr($0A)+""+chr($0A)+""+chr($0A)+"Also should I add even more text and newlines just to make the scrollbar work or is it still too early for that? OMg I'm writing soooo much shit while listening to some weird livestreams on youtube. I just don't know anything else to write. I could just hit my keyoard randomly but that does make debugging way less easy. "+chr($0A)+"Just add a few "+chr($0A)+"newlines and let's just hope that this sh*t works.! It better does or else I'm going to have a bad time fixing many bugs over a long period of time.")
 uiz_fixgeneralpos(o);
 
 
@@ -175,7 +175,7 @@ uiz_fixgeneralpos(win);
 uiz_fixchildren(win,true);
 }
 
-if surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height() then{
+if (surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height()) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
 surface_resize(application_surface,window_get_width(),window_get_height());
 }
 </string>
@@ -200,7 +200,8 @@ surface_resize(application_surface,window_get_width(),window_get_height());
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if mouse_check_button_pressed(mb_left){
+            <string>/*
+if mouse_check_button_pressed(mb_left){
 fps_avg=fps;
 fps_counts=1;
 }

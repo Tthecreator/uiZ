@@ -746,16 +746,17 @@ var l2=uiz_arealist;
 var sz=ds_list_size(l);
 uiz_arealist_oldsz=ds_list_size(l2);
 if (sz mod 5) = 0 then{
-for(var i=sz-5;i&gt;=0;i-=5){
-var aide=l[|i];
-if instance_exists(aide){
-if uiz_updater_FixViews_addsquare(l[|i+1],l[|i+2],l[|i+3],l[|i+4])=false then{
-aide.uiz_selfmarked=false;}else{
-ds_list_add(l2,aide)
-}
-
-}
-}
+    for(var i=sz-5;i&gt;=0;i-=5){
+        var aide=l[|i];
+        if instance_exists(aide){
+            if uiz_updater_FixViews_addsquare(l[|i+1],l[|i+2],l[|i+3],l[|i+4])=false then{
+                aide.uiz_selfmarked=false;
+            }else{
+                ds_list_add(l2,aide)
+            }
+        
+        }
+    }
 }
 ds_list_clear(l);
 
@@ -865,7 +866,7 @@ if (os_type=os_windows){
           <argument>
             <kind>1</kind>
             <string>///detect changes in windowsize
-if window_get_width()!=global.screenpxwidth or window_get_height()!=global.screenpxheight then{
+if (window_get_width()!=global.screenpxwidth or window_get_height()!=global.screenpxheight) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
 uiz_resetwindowsize();
 }
 </string>
@@ -1565,7 +1566,6 @@ if keyboard_check(vk_control) &amp;&amp; keyboard_check(vk_f5) then{
             <string>uiz_checkScreenResize();
 
 if resetSurfaces then{
-sdbm("Resetting all surfaces")
     resetSurfaces = false;
     uiz_updateall=true;
     //if surface_exists(uiz_surf){
@@ -1574,8 +1574,7 @@ sdbm("Resetting all surfaces")
     //}
     
     //if !uiz_useappsurf{
-        surface_resize(uiz_appsurf,window_w,window_h)
-        sdbm("textureID aft r:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
+        surface_resize(uiz_appsurf,window_w,window_h)        
     //}
 }else{
 //sdbm("only checking surface existance");
@@ -1709,7 +1708,12 @@ draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
 }else{
 draw_set_blend_mode(bm_normal);
 }
-
+//draw_set_blend_mode(bm_normal);
+/*
+draw_set_color(c_blue)
+draw_rectangle(0,0,700,700,0)
+draw_set_color(c_white)
+*/
 uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall)
 surface_reset_target();
 if global.uiz_shader=true then{
@@ -1717,7 +1721,7 @@ shader_reset();
 draw_set_blend_mode(bm_normal)
 }
 
-draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
+//draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
 
 uiz_updateall=false
 }
@@ -1756,7 +1760,7 @@ draw_set_color(c_white)
 draw_set_alpha(1)
 draw_surface(uiz_surf,0,0)
 
-draw_text(10,50,string(uiz_surf)+"; "+string(uiz_appsurf)+"; "+string(application_surface))
+//draw_text(10,50,string(uiz_surf)+"; "+string(uiz_appsurf)+"; "+string(application_surface))
 
 
 /*

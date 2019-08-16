@@ -6,3 +6,4 @@ hasSelection=false;
 isTyping=true;
 
 uiz_textarea_resetSelection_selectionOnly();//remove selection
+uiz_textarea_registerTypeCursor();

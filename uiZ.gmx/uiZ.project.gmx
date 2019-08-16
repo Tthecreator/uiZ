@@ -1439,6 +1439,10 @@
               <script>scripts\uiz_textarea_getListTo.gml</script>
               <script>scripts\uiz_textarea_moveCursorToLastVerticalX.gml</script>
               <script>scripts\uiz_textarea_rehandleSelectionCursor.gml</script>
+              <script>scripts\uiz_textarea_showSelCharPos.gml</script>
+              <script>scripts\uiz_textarea_insertNewline.gml</script>
+              <script>scripts\uiz_textarea_reworkAndFix.gml</script>
+              <script>scripts\uiz_textarea_testCursorNewLine.gml</script>
             </scripts>
             <script>scripts\uiz_textarea_resetSelection.gml</script>
             <script>scripts\uiz_textarea_setscrollbarsettings.gml</script>

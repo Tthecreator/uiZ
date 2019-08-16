@@ -34,7 +34,6 @@ szx=1
 szy=1
 break;
 }
-//sdbm(szy)
 //middle
 if (nwidth>0 or nheight>0) and sprite_get_number(bkspr)>=9 then{
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,8))
@@ -85,7 +84,6 @@ draw_sprite_stretched(bkspr,1,nrlx,nry2,sprite_get_width(bkspr),nheight)//right
 //top
 
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,0))
-//sdbm(nry,nsh,nry-nsh,szx)
 draw_vertex_texture((nrx2),(nry-nsh),0,0)
 draw_vertex_texture((nrx2),(nry),0,1)
 draw_vertex_texture((nrlx2),(nry-nsh),szx,0)

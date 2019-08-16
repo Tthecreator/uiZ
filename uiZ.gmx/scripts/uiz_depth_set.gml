@@ -8,7 +8,6 @@ var sz=ds_list_size(l)
 if sz>1 and !((listpos=0 or l[|listpos-1].depth<=depth) and 
    (listpos=sz-1 or l[|listpos+1].depth>=depth)){
     //place is not right anymore
-    sdbm("dep: place not right naymore")
     for(var i=0;i<=sz;i++){//find correct place
         if i=sz or l[| i].depth>depth then{//found place at i-1
         i--;
@@ -17,7 +16,6 @@ if sz>1 and !((listpos=0 or l[|listpos-1].depth<=depth) and
             //check if before or after old place
             if i<listpos then{
             //before old place
-            sdbm("dep: before old place")
                 for(var e=listpos;e>i;e--){
                     l[|e-1].listpos++;
                     if uiz_objectsoverlap(l[|e],id){
@@ -29,7 +27,6 @@ if sz>1 and !((listpos=0 or l[|listpos-1].depth<=depth) and
                 
             }else{
             if i!=listpos then{
-            sdbm("dep: after old place",i,listpos,sz)
             //i is bigger then listpos, the new position is further down the list than the old one
                 for(var e=listpos;e<i;e++){
                     l[|e+1].listpos--;

@@ -41,6 +41,6 @@ if global.uiz_fonts_loaded=false then{
 //uiz_fnt_px_10=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",10*multiplier,false,false,32,255);//general european
 
 #define UIZ_FONT_IMPORT
-sdbm("[uiZ|Warning] generating new font page, performance issues might arrise.")
+sdbm("[uiZ|Warning] generating new font page, performance issues might arise.")
 //uiz_fnt_dp_15=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",0.15*uiz_dp*argument0,false,false,32,128);//english only
 uiz_fnt_dp_15=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",0.15*uiz_dp*argument0,false,false,32,255);//general european

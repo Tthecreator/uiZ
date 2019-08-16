@@ -20,7 +20,6 @@ you will have to set margin_normal, or any other margin_ variable correctly.
 
 */
 //draws the edges, background and all other stuff for uiz objects, using either sprites or colors.
-
 bkcol=clamp(bkcol,0,16777215)
 bkmar=max(bkmar,0)
 if sprite_exists(bkspr) then{
@@ -54,7 +53,6 @@ szx=1
 szy=1
 break;
 }
-//sdbm(szy)
 //middle
 if (nwidth>0 or nheight>0) and sprite_get_number(bkspr)>=9 then{
 /*draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,8))
@@ -91,7 +89,7 @@ if border_texturemode=uiz_texturemode_fill then{
 draw_sprite_stretched(bkspr,0,nrx,nry-nsh,nwidth,sprite_get_height(bkspr))//top
 
 draw_sprite_stretched(bkspr,2,nrx,nrly,nwidth,sprite_get_height(bkspr))//bottom
-
+//sdbm("drawing left circlestitch",bkspr,3,nrx-nsw,nry,sprite_get_width(bkspr),nheight)
 draw_sprite_stretched(bkspr,3,nrx-nsw,nry,sprite_get_width(bkspr),nheight)//left
 
 draw_sprite_stretched(bkspr,1,nrlx,nry,sprite_get_width(bkspr),nheight)//right
@@ -99,7 +97,6 @@ draw_sprite_stretched(bkspr,1,nrlx,nry,sprite_get_width(bkspr),nheight)//right
 //top
 /*
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,0))
-//sdbm(nry,nsh,nry-nsh,szx)
 draw_vertex_texture((nrx),(nry-nsh),0,0)
 draw_vertex_texture((nrx),(nry),0,1)
 draw_vertex_texture((nrlx),(nry-nsh),szx,0)

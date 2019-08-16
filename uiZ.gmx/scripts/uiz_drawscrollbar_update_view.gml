@@ -28,7 +28,7 @@ if orient = uiz_vertical then {
         uiz_updater_FixViews_area_selfmarked(argument0, argument1, argument2, argument1 + w - 1)
     }
     if (state_change = true and((mstate >= 3 and mstate <= 4) or(mstate_last >= 3 and mstate_last <= 4))) {
-        //update top button
+        //update bottom button
         uiz_updater_FixViews_area_selfmarked(argument0, argument3 - w, argument2, argument3)
     }
     if updated=5 or (state_change = true and((mstate >= 5 and mstate <= 6) or(mstate_last >= 5 and mstate_last <= 6))) {
@@ -37,11 +37,11 @@ if orient = uiz_vertical then {
     }
 } else {
     if (state_change = true and((mstate >= 1 and mstate <= 2) or(mstate_last >= 1 and mstate_last <= 2))) {
-        //update top button
+        //update left button
         uiz_updater_FixViews_area_selfmarked(argument0, argument1, argument0 + h - 1, argument3)
     }
     if (state_change = true and((mstate >= 3 and mstate <= 4) or(mstate_last >= 3 and mstate_last <= 4))) {
-        //update top button
+        //update right button
         uiz_updater_FixViews_area_selfmarked(argument2 - h, argument1, argument2, argument3)
     }
     if updated=5 or (state_change = true and((mstate >= 5 and mstate <= 6) or(mstate_last >= 5 and mstate_last <= 6))) {

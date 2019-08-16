@@ -24,7 +24,6 @@ draw_rectangle(argument0,argument1,argument2+argument0,argument3+argument1,0)
 uiz_contain_regainshader()
 draw_set_color(c_white)
 }else{
-//sdbm("drawing hue sprite")
 //draw_sprite(spr_uiz_hue,0,argument0,argument1);
 draw_spritewh(spr_uiz_hue,0,argument0,argument1,argument2,argument3,0,make_colour_hsv(0,0,argument4*255),1)
 //draw_spritewh(spr_uiz_hue,0,argument0,argument1,argument2,argument3,0,c_white,1)

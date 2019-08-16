@@ -1,7 +1,7 @@
 ///if screen was resized
 //to be executed from obj_uiZ_controller
-if (window_w!=window_get_width() || window_h!=window_get_height()){
-sdbm("Window has different size!");
+if (window_w!=window_get_width() || window_h!=window_get_height()) && (window_get_width()!=0 && window_get_height()!=0){
+sdbm("[uiZ:Info]Screen has been resized");
 uiz_resetwindowsize();
 window_w = window_get_width();
 window_h = window_get_height();

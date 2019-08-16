@@ -96,7 +96,7 @@ if (global.mouseoverobject=id or global.mouseoverscrollframe=id) and uiz_getmous
 //left button
 if scrollsel=0 and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument1+cwidth then{
 if mouse_check_button(mb_left) then{
-scroll=clamp(scroll-argument7,0,argument5);
+scroll=clamp(scroll-argument7/5,0,argument5);
 mstate=2;
 }else{
 mstate=1;
@@ -106,7 +106,7 @@ mstate=1;
 //sdbm("scroll right almost",uiz_getmouse_x(),argument2-height,argument2,height)
 if scrollsel=0 and uiz_getmouse_y()>argument3-cwidth and uiz_getmouse_y()<argument3 then{
 if mouse_check_button(mb_left) then{
-scroll=clamp(scroll+argument7,0,argument5);
+scroll=clamp(scroll+argument7/5,0,argument5);
 mstate=4;
 }else{
 mstate=3;
