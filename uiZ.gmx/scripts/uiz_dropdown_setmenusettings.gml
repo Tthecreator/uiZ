@@ -1,0 +1,11 @@
+///uiz_dropdown_setmenusettings(instanceid,mousebackcolor[c_blue],mousebackalpha[0.5],mouseitemcolor[c_white],mouseitemoncolor[c_ltgray],mouseitemincolor[c_ltgray],mouseitemalpha[1],mousemargin[3],mousefont[-1],mousetextcolor[c_black])
+gml_pragma("forceinline");
+argument0.mousebackcolor=argument1;
+argument0.mousebackalpha=argument2;
+argument0.mouseitemcolor=argument3;
+argument0.mouseitemoncolor=argument4;
+argument0.mouseitemincolor=argument5;
+argument0.mouseitemalpha=argument6;
+argument0.mousemargin=argument7;
+argument0.mousefont=argument8;
+argument0.mousetextcolor=argument9;

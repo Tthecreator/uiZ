@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>gmdoc::title</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0 0;
+        padding: 0;
+      }
+      
+      html, body {
+        width: 100%;
+        height: 100%;
+        font-family: Calibri, sans-serif;
+        color: #202020;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:hover {
+        color: #0080ff;
+      }
+      
+      .center-vert {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      #header {
+        position: relative;
+        padding-left: 16px;
+        width: 100%;
+        height: 64px;
+        background-color: black;
+        color: white;
+        font-size: 1.75em;
+        font-weight: bold;
+      }
+      
+      #wrapper {
+        width: 100%;
+        height: Calc(100% - 64px - 32px); /* Subtract header and footer height here. */
+        overflow: hidden;
+      }
+      
+      #wrapper:after {
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      
+      #menu {
+        float: left;
+        width: 25%;
+        height: 100%;
+        overflow: auto;
+        padding: 16px;
+        background-color: #f1f1f1;
+        border-right: 1px solid silver;
+      }
+      
+      ul {
+        list-style: none;
+      }
+      
+      li { 
+        padding-left: 8px; 
+        text-indent: -8px;
+      }
+
+      li:before {
+        content: "•";
+        padding-right: 8px;
+        color: black;
+      }
+
+      #pages {
+        float: right;
+        width: 75%;
+        height: 100%;
+        overflow: auto;
+        padding: 16px;
+        background-color: white;
+      }
+      
+      #pages > .page:target ~ .page:last-child, #pages > .page {
+          display: none;
+        }
+        
+      #pages > :last-child, #pages > .page:target {
+        display: block;
+      }
+
+      .page h1:after {
+        content: " ";
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin: 8px 0;
+        background-color: silver;
+      }
+
+      .page h2 {
+        margin: 0.5em 0;
+      }
+
+      .page table {
+        width: 100%;
+        border-collapse: collapse; 
+      }
+
+      .page tr:nth-child(odd) {
+        background-color: #eeeeee;
+      }
+
+      .page td {
+        padding: 4px;
+      }
+
+      .page td:nth-child(odd) {
+        width: 30%;
+      }
+
+      pre {
+        margin: 16px 0;
+      }
+
+      pre, .code {
+        font-style: monospace;
+        background-color: #eeeeee;
+        padding:4px;
+      }
+
+      #footer {
+        position: relative;
+        padding-left: 16px;
+        float: none;
+        width: 100%;
+        height: 32px;
+        background-color: silver;
+        border-top: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+  
+  <!-- Header -->
+  <div id="header">
+    <div class="center-vert">
+      gmdoc::title
+    </div>
+  </div>
+
+  <div id="wrapper">
+
+    <!-- Menu -->
+    <div id="menu">
+      <ul>
+        <h3>gmdoc::title</h3>
+        <li><a href="#Home">Home</a></li>
+        <h3>Objects</h3>
+        <gmdoc::object><li><a href="#gmdoc::name">gmdoc::name</a></li>
+        </gmdoc::object><h3>Scripts</h3>
+        <gmdoc::script><li><a href="#gmdoc::name">gmdoc::name</a></li>
+        </gmdoc::script>
+      </ul>
+    </div>
+
+    <!-- Pages -->
+    <div id="pages">
+      <!-- Objects -->
+      <gmdoc::object>
+      <div id="gmdoc::name" class="page">
+        <h1>gmdoc::name<gmdoc::ifparent> : <a href="#gmdoc::parent">gmdoc::parent</a></gmdoc::ifparent></h1>
+        <gmdoc::ifdesc><h2>Description</h2>
+        gmdoc::desc
+        </gmdoc::ifdesc>
+        <gmdoc::ifvars><h2>Variables</h2>
+        <table>
+          <gmdoc::variable><tr><td>gmdoc::name</td><td>gmdoc::desc</td></tr>
+          </gmdoc::variable>gmdoc::vars
+        </table>
+        </gmdoc::ifvars>
+      </div>
+      </gmdoc::object>
+
+      <!-- Scripts -->
+      <gmdoc::script>
+      <div id="gmdoc::name" class="page">
+        <h1>gmdoc::name</h1>
+        <div class="code">gmdoc::decl</div>
+        <gmdoc::ifbrief><h2>Description</h2>
+        gmdoc::brief
+        </gmdoc::ifbrief>
+        <gmdoc::ifparams><h2>Parameters</h2>
+        <table>
+          <gmdoc::parameter><tr><td>gmdoc::name</td><td>gmdoc::desc</td></tr>
+          </gmdoc::parameter>gmdoc::params
+        </table>
+        </gmdoc::ifparams><gmdoc::ifretval><h2>Return</h2>
+        gmdoc::retval
+        </gmdoc::ifretval><gmdoc::ifnote><h2>Note</h2>
+        gmdoc::note
+        </gmdoc::ifnote><gmdoc::ifrefs><h2>See also</h2>
+        <gmdoc::reference><a href="#gmdoc::name">gmdoc::name</a> </gmdoc::reference>gmdoc::refs
+        </gmdoc::ifrefs>
+      </div>
+      </gmdoc::script>
+
+      <!-- Home -->
+      <div id="Home" class="page">
+        <h1>Home</h1>
+        <p><b>Welcome!</b><br>
+Thank you for purchasing this asset.<br>
+To help you out, I've made this help manual.<br>
+Please report any errors, lack of information or any incomprehensible information.<br>
+
+</p>
+
+<p>
+<b>About me</b>
+At the time of creating this asset I'm still in high school.<br>
+Even though I still have a lot of things (like other programming languages) I want to learn,<br>
+I'll try updating and improving the uiZ and uiZ designer assets. Weather it is bug fixing or added requested features<br>
+I'm also not a professional website designer so this manual is made in basic html.<br>
+</p>
+<p>
+Manual version: 1.0<br>
+Made for uiZ version: 1.0<br>
+Made for uiZ Designer version: 1.0<br>
+</p>
+<p><b>Not (yet) included in the manual:
+</b><br>
+-How to use the uiz designer;<br>
+-The dll functions that the uiz designer uses;<br>
+-The xml parser(custom designed) that uiz desginer uses.<br>
+-The sorting algorithm scripts, coming from another asset of mine.<br>
+<br>
+Some basic usage information about the designer might be added.<br>
+All necessary information about the xml might be added if requested.<br>
+</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <div class="center-vert">
+      Copyright &copy; gmdoc::date, gmdoc::author.
+    </div>
+  </div>
+
+  </body>
+</html>

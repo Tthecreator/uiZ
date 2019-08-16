@@ -1,0 +1,15 @@
+uiz_objinit()
+uiz_setparent(id,obj_uiz_designer.tf)
+alarm[0]=1
+itemlist=ds_list_create()
+overdestroy=0
+snaptoresize=0
+init=0
+name=""
+object=0
+updatelist=-1;
+updaterlorstrlist=-1;
+updatedefvallist=-1;
+updatelistdecode=-1;
+isloading=10;
+firstalarm=global.isbeingcreated
