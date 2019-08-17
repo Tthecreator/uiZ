@@ -7,7 +7,7 @@ If shaders arn't compatible then it uses a sprite, which might look a bit pixela
 
 if global.uiz_shader=1 then{
 
-shader_set(sh_uiz_contain_hue)
+shader_set(global.uiz_shader_contain_hue)
 
 shader_set_uniform_f(global.uniformid_huevalue,argument4);
 shader_set_uniform_f(global.uniformid_doy,argument0,argument1,argument2,argument3)

@@ -703,6 +703,9 @@
           <script>scripts\uiz_contain_custom_min_left.gml</script>
           <script>scripts\uiz_contain_custom_min_top.gml</script>
           <script>scripts\uiz_contain_shader_uniforms_set.gml</script>
+          <script>scripts\uiz_shader_setEnabled.gml</script>
+          <script>scripts\uiz_shader_update.gml</script>
+          <script>scripts\uiz_shader_useFallbackShader.gml</script>
         </scripts>
         <scripts name="debug">
           <script>scripts\uiz_debug_getposes.gml</script>
@@ -1847,11 +1850,15 @@
   <shaders name="shaders">
     <shaders name="uiz">
       <shader type="GLSLES">shaders\sh_uiz_contain.shader</shader>
+      <shader type="GLSLES">shaders\sh_uiz_contain_fallback.shader</shader>
       <shader type="GLSLES">shaders\sh_uiz_contain_blur.shader</shader>
+      <shader type="GLSLES">shaders\sh_uiz_contain_blur_fallback.shader</shader>
       <shader type="GLSLES">shaders\sh_uiz_contain_hue.shader</shader>
+      <shader type="GLSLES">shaders\sh_uiz_contain_hue_fallback.shader</shader>
       <shader type="GLSLES">shaders\sh_gettexture.shader</shader>
       <shader type="GLSLES">shaders\sh_uiz_blend.shader</shader>
     </shaders>
+    <shader type="GLSLES">shaders\shader5.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\uiz_fnt_2</font>

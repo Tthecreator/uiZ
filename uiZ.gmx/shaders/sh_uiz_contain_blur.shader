@@ -27,16 +27,15 @@ varying vec2 v_vTexcoord;
 varying vec2 v_pos;
 varying vec4 v_vColour;
 vec4 c;
-//vec4 d;
-//float is;
-//uniform vec4 toy;
+
 uniform sampler2D s_Background;
+uniform vec2 toy;
+
 float texa;
 vec4 tex;
 float gla;
-//uniform vec2 scs;
 const float blur=30.0;
-uniform vec2 toy;
+
 
 void main()
 {
@@ -55,10 +54,7 @@ void main()
     
     
     texa=tex.a;
-    //texa=1.0;
 
     gl_FragColor = vec4(gl_FragColor.rgb*vec3(gla)+tex.rgb*vec3(1.0-gla),1.0-((1.0-texa)*(1.0-gla)));
-    //gl_FragColor.r=texa;
-    //gl_FragColor.a=1.0;
 }
 

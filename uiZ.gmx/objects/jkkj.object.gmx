@@ -55,7 +55,7 @@ show_debug_overlay(true)
 uiz_init()
 //global.uiz_shader=false;
 //obj_uiZ_controller.uiz_useappsurf=false;
-//uiz_useAppSurf(false);
+uiz_useAppSurf(false);
 win=uiz_window_create(250,px,500,px)
 win.posinframex=uiz_center;
 win.posinframey=uiz_center;

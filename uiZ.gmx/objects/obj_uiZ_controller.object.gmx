@@ -71,30 +71,29 @@ global.lockwindowresel=0;
 global.lockwindowreseltime=3;
 global.uiz_stepNumber = 0;
 
+global.uiz_shader_contain = -1;
+global.uiz_shader_contain_hue = -1;
+global.uiz_shader_contain_blur = -1;
+
 uiz_dpi_init();
 UIZ_FONT();
 
 children=ds_list_create()
+//dbm("os_browser",os_browser,browser_opera,browser_chrome,browser_firefox,browser_ie,browser_unknown,browser_not_a_browser)
+if (os_browser==browser_opera || os_browser==browser_chrome) then{
+    global.uiz_useFallbackShader = true;
+}else{
+    global.uiz_useFallbackShader = false;
+}
+
 if shader_is_compiled(sh_uiz_contain) and shaders_are_supported() then{
 global.uiz_shader=1
-
-global.uniformid_toy=shader_get_uniform(sh_uiz_contain,"toy")
-global.uniformid_toy_hue=shader_get_uniform(sh_uiz_contain_hue,"toy")
-global.uniformid_sz=shader_get_uniform(sh_uiz_contain,"sz")
-global.uniformid_sz_hue=shader_get_uniform(sh_uiz_contain_hue,"sz")
-global.uniformid_alpha_hue=shader_get_uniform(sh_uiz_contain_hue,"alpha")
-global.uniformid_doy=shader_get_uniform(sh_uiz_contain_hue,"doy")
-//global.uniformid_texture_hue=shader_get_sampler_index(sh_uiz_contain_hue,"s_Background")
-global.uniformid_texture=shader_get_sampler_index(sh_uiz_contain,"s_Background")
-global.uniformid_texture_hue=shader_get_sampler_index(sh_uiz_contain_hue,"s_Background")
-global.uniformid_texture_blur=shader_get_sampler_index(sh_uiz_contain_blur,"s_Background")
-global.uniformid_huevalue=shader_get_uniform(sh_uiz_contain_hue,"val")
-//global.uniformid_texture_toy=shader_get_uniform(sh_uiz_contain,"toy")
-global.uniformid_texture_toy_blur=shader_get_uniform(sh_uiz_contain_blur,"toy")
-//global.uniformid_scs=shader_get_uniform(sh_uiz_contain,"scs")
 }else{
 global.uiz_shader=0
 }
+
+uiz_shader_update();
+
 //global.uiz_shader=1
 draw_set_font(uiz_fnt_dp_15)
 lastsecondat=-1
@@ -1653,75 +1652,83 @@ if !surface_exists(uiz_surf) {uiz_surf=surface_create(width,height);}
 
 sdbm("textureID:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
 
-global.surfacedebugcount=0
-global.surfacedebugcounty=0;
-//uiz_debug_drawsurface(uiz_appsurf,"app")
-//uiz_debug_drawsurface(uiz_surf,"uiz")
-surface_set_target(uiz_appsurf)
-//sdbm("executing draw_clear at place",0,random(99),obj_uiZ_window.uiz_doredraw,obj_uiZ_window.uiz_dodraw)
+if uiz_updateall=true or ds_list_size(l)&gt;0 then{
 
-if uiz_updateall=true then{
-    draw_clear_alpha(c_white,1);
-    draw_set_color(c_white)
-    draw_set_alpha(1)
-}else{
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_left);
-    draw_clear_alpha(c_black,0);
-    draw_set_color(c_white)
-    draw_set_alpha(1)
-    //draw list
-    var sz=ds_list_size(l);
-    var m=uiz_arealist_oldsz;
-    var drawstate=true;
-    for(var i=0;i&lt;m;i+=4){
-        var lw=l[|i+2]-l[|i];
-        var law=0;
-        var lh=l[|i+3]-l[|i+1];
-        var lah=0;
-        draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+    global.surfacedebugcount=0
+    global.surfacedebugcounty=0;
+    //uiz_debug_drawsurface(uiz_appsurf,"app")
+    //uiz_debug_drawsurface(uiz_surf,"uiz")
+    surface_set_target(uiz_appsurf)
+    sdbm("executing draw_clear at place",0,random(99),uiz_updateall,ds_list_size(l))
+    
+    if uiz_updateall=true then{
+        draw_clear_alpha(c_white,1);
+        draw_set_color(c_white)
+        draw_set_alpha(1)
+    }else{
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        draw_clear_alpha(c_black,0);
+        draw_set_color(c_white)
+        draw_set_alpha(1)
+        //draw list
+        var sz=ds_list_size(l);
+        var m=uiz_arealist_oldsz;
+        var drawstate=true;
+        for(var i=0;i&lt;m;i+=4){
+            var lw=l[|i+2]-l[|i];
+            var law=0;
+            var lh=l[|i+3]-l[|i+1];
+            var lah=0;
+            draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+        }
+        for(var i=m;i&lt;sz;i+=5){
+            var lw=l[|i+2]-l[|i];
+            var law=0;
+            var lh=l[|i+3]-l[|i+1];
+            var lah=0;
+            draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+        }
+    
     }
-    for(var i=m;i&lt;sz;i+=5){
-        var lw=l[|i+2]-l[|i];
-        var law=0;
-        var lh=l[|i+3]-l[|i+1];
-        var lah=0;
-        draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+    ds_list_clear(l)
+    
+    
+    surface_reset_target()//reset appsurf
+    surface_set_target(uiz_surf)
+    draw_set_blend_mode_ext(bm_zero,bm_inv_src_alpha)
+    draw_surface(uiz_appsurf,0,0);
+    //draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+    uiz_changeSurface=false;
+    sdbm("shader set to:",global.uiz_shader)
+    draw_set_blend_mode(bm_normal)
+    draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
+    
+    //set shader
+    if global.uiz_shader=true then{
+    shader_set(global.uiz_shader_contain);
+    uiz_contain_shader_uniforms_set();
+    draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+    }else{
+    draw_set_blend_mode(bm_normal);
+    }
+    
+    //draw_set_blend_mode(bm_normal);
+    /*
+    draw_set_color(c_blue)
+    draw_rectangle(0,0,700,700,0)
+    draw_set_color(c_white)
+    */
+    uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall)
+    surface_reset_target();
+    if global.uiz_shader=true then{
+    shader_reset();
+    draw_set_blend_mode(bm_normal)
     }
 
 }
-ds_list_clear(l)
 
-
-surface_reset_target()//reset appsurf
-surface_set_target(uiz_surf)
-draw_set_blend_mode_ext(bm_zero,bm_inv_src_alpha)
-draw_surface(uiz_appsurf,0,0);
-//draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
-uiz_changeSurface=false;
-sdbm("shader set to:",global.uiz_shader)
-//set shader
-if global.uiz_shader=true then{
-shader_set(sh_uiz_contain);
-uiz_contain_shader_uniforms_set();
-draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
-}else{
-draw_set_blend_mode(bm_normal);
-}
-//draw_set_blend_mode(bm_normal);
-/*
-draw_set_color(c_blue)
-draw_rectangle(0,0,700,700,0)
-draw_set_color(c_white)
-*/
-uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall)
-surface_reset_target();
-if global.uiz_shader=true then{
-shader_reset();
-draw_set_blend_mode(bm_normal)
-}
-
-//draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
+draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
 
 uiz_updateall=false
 }
