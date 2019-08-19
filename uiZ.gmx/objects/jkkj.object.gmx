@@ -60,6 +60,15 @@ win=uiz_window_create(250,px,500,px)
 win.posinframex=uiz_center;
 win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
+uiz_window_custom_button_create_right(win,spr_uiZ_win31_options,c_white,c_red,c_blue,uiz_window_custom_empty_script)
+uiz_window_custom_button_create_right(win,spr_uiZ_win31_options,c_white,c_green,c_blue,uiz_window_custom_empty_script)
+
+uiz_window_custom_button_create_left(win,spr_uiZ_win31_options,c_white,c_yellow,c_blue,uiz_window_custom_empty_script)
+uiz_window_custom_button_create_left(win,spr_uiZ_win31_options,c_white,c_purple,c_blue,uiz_window_custom_empty_script)
+uiz_window_custom_button_create_left(win,spr_uiZ_win31_options,c_white,c_yellow,c_blue,uiz_window_custom_empty_script)
+uiz_window_custom_button_create_left(win,spr_uiZ_win31_options,c_white,c_purple,c_blue,uiz_window_custom_empty_script)
+
+
 uiz_fixgeneralpos(win);
 /*
 uiz_xml_init()

@@ -1632,6 +1632,13 @@
           <script>scripts\uiz_window_unmaximize.gml</script>
           <script>scripts\uiz_window_unminimize.gml</script>
           <script>scripts\uiz_window_an_old.gml</script>
+          <scripts name="custom_buttons">
+            <script>scripts\uiz_window_custom_button_create_left.gml</script>
+            <script>scripts\uiz_window_custom_button_create_right.gml</script>
+            <script>scripts\uiz_window_custom_button_remove_left.gml</script>
+            <script>scripts\uiz_window_custom_button_edit_left.gml</script>
+            <script>scripts\uiz_window_custom_empty_script.gml</script>
+          </scripts>
         </scripts>
         <scripts name="snapper">
           <script>scripts\uiz_snapper_enable.gml</script>
@@ -1858,7 +1865,6 @@
       <shader type="GLSLES">shaders\sh_gettexture.shader</shader>
       <shader type="GLSLES">shaders\sh_uiz_blend.shader</shader>
     </shaders>
-    <shader type="GLSLES">shaders\shader5.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\uiz_fnt_2</font>

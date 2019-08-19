@@ -35,7 +35,7 @@ object_clipboard=0;
 window_notepad=0;
 object_calculator=0;
 window_clock=0;
-show_debug_overlay(true)
+//show_debug_overlay(true)
 </string>
           </argument>
         </arguments>

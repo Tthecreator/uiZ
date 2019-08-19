@@ -79,7 +79,6 @@ uiz_dpi_init();
 UIZ_FONT();
 
 children=ds_list_create()
-//dbm("os_browser",os_browser,browser_opera,browser_chrome,browser_firefox,browser_ie,browser_unknown,browser_not_a_browser)
 if (os_browser==browser_opera || os_browser==browser_chrome) then{
     global.uiz_useFallbackShader = true;
 }else{
