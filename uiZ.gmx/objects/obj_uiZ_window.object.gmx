@@ -321,6 +321,63 @@ uiz_window_select(id)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///handle buttons on left side
+var butId = uiz_getmouse_x()-ix;
+var buts = ds_list_size(custom_buttons_left_sprite);
+var butSize = bars * buts;
+var checkbuttons = false;
+
+if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars-bkmar+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; ix and uiz_getmouse_x() &lt; ix+butSize and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
+    checkbuttons = true;
+    overbut_left = floor((uiz_getmouse_x()-ix)/bars);
+}else{
+    overbut_left = -1;
+}
+
+var upd=false;
+if (loverbut_left != overbut_left and((loverbut_left &gt;= 0 and loverbut_left &lt; buts) or(overbut_left &gt;= 0 and overbut_left &lt; buts))) {
+    for(var i=0;i&lt;buts;++i){
+        custom_buttons_left_state[| i]=0;
+    }
+    custom_buttons_left_state[| overbut_left]=1;
+    upd=true;
+    loverbut_left = overbut_left;
+}
+
+if custom_buttons_left_state[| overbut_left] &gt; 0 then{
+    var ns=mouse_check_button(mb_left) + 1;
+    if ns!=custom_buttons_left_state[| overbut_left] then{
+    custom_buttons_left_state[| overbut_left] = ns;
+    upd=true;
+    }
+    if mouse_check_button_released(mb_left) then {
+        script_execute(custom_buttons_left_script[| overbut_left],id,overbut_left);
+    }
+}
+
+if upd=true then{
+    uiz_updater_FixViews_area(ix,ry,ix+butSize,iy);//REENABLE//
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///check mouse and rescale window
 var fix=false;
 kmouseover = uiz_mouse_isonwindow_leftcheck(id);
@@ -609,7 +666,7 @@ var buttonssize = (button_cross + button_maximize + button_minimize + customButt
 var frombuttons = ilx - bars * buttonssize
 var inrange = uiz_range(uiz_getmouse_y(), ry, iy);
 var inrange_last = uiz_range(uiz_getmouse_y_last(), ry, iy);
-var checkbuttons = false;
+
 
 if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars-bkmar+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; frombuttons and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
     checkbuttons = true;
@@ -758,62 +815,6 @@ if fix &gt;= 1 then {
     uiz_fixchildren(id, true)
 }
 lkmouseover = kmouseover;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///handle buttons on left side
-var butId = uiz_getmouse_x()-ix;
-var buts = ds_list_size(custom_buttons_left_sprite);
-var butSize = bars * buts;
-
-
-if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars-bkmar+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; ix and uiz_getmouse_x() &lt; ix+butSize and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
-    overbut_left = floor((uiz_getmouse_x()-ix)/bars);
-}else{
-    overbut_left = -1;
-}
-
-var upd=false;
-if (loverbut_left != overbut_left and((loverbut_left &gt;= 0 and loverbut_left &lt; buts) or(overbut_left &gt;= 0 and overbut_left &lt; buts))) {
-    for(var i=0;i&lt;buts;++i){
-        custom_buttons_left_state[| i]=0;
-    }
-    custom_buttons_left_state[| overbut_left]=1;
-    upd=true;
-    loverbut_left = overbut_left;
-}
-
-if custom_buttons_left_state[| overbut_left] &gt; 0 then{
-    var ns=mouse_check_button(mb_left) + 1;
-    if ns!=custom_buttons_left_state[| overbut_left] then{
-    custom_buttons_left_state[| overbut_left] = ns;
-    upd=true;
-    }
-    if mouse_check_button_released(mb_left) then {
-        script_execute(custom_buttons_left_script[| overbut_left],id,overbut_left);
-    }
-}
-
-if upd=true then{
-    uiz_updater_FixViews_area(ix,ry,ix+butSize,iy);//REENABLE//
-}
 </string>
           </argument>
         </arguments>
