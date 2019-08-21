@@ -915,6 +915,8 @@ bkcol=top_bkcol;
 bkmar=top_bkmar;
 texas=top_texas;
 
+sdbm("top at",bkmar,rx,ry,rlx,rly);
+
 var old_ix=ix;
 var old_iy=iy;
 var old_ilx=ilx;

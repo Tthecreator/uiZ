@@ -1,4 +1,5 @@
 ///uiz_win32_addmenulist(window)
+/*
 var menubut;
 menubut=uiz_c(obj_uiZ_menubutton)
 uiz_setparent(menubut,argument0)
@@ -23,3 +24,6 @@ menubut.enabledlist=menulist_main_enabled;
 ds_list_add(WindowMouseMenuList,menubut)
 ds_list_add(WindowMouseMenuWindowList,argument0)
 return menubut;
+*/
+
+uiz_window_custom_button_create_left(argument0,spr_uiZ_win31_options,c_white,c_white,c_white,uiz_win31_window_spawnMouseMenu)

@@ -1,4 +1,4 @@
-///uiz_wndow_custom_button_create_left(window,sprite,color_normal,color_over,color_in,script)
+///uiz_window_custom_button_create_left(window,sprite,color_normal,color_over,color_in,script)
 //returns the position of the button starting at 0(from left to right)
 //creates a new custom button at the left side of the window (a little to the right if other buttons already exist there)
 //window: What window to add the button to

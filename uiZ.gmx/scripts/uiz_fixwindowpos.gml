@@ -3,6 +3,7 @@
 var t=argument0;
 with(t){
 uiz_fix_Background();
+uiz_fix_Background_top();
 bars=uiz_getposy(barsize,barsizevaltype);
 //uiz_fix_Base_Pos():
 uiz_fixpositioninframe()

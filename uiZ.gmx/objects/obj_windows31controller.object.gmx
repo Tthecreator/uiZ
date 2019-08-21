@@ -371,36 +371,9 @@ if instance_exists(w) then{
 if w.sizestatus=2 then{
 domax=true;
 }
-
+sdbm("checking state of ",i,o,o.selected)
 if o.updated=true then{
-//run switch for every element in the mouse menu
-switch(o.selected){
-case 0:
-//Restore
-
-break;
-case 1:
-//Move
-break;
-case 2:
-//Size
-break;
-case 3:
-//Minimize
-with(w){uiz_window_switchminimize()}
-break;
-case 4:
-//Maximize
-with(w){uiz_window_switchmaximize()}
-break;
-case 5:
-//Close
-uiz_destroyobject_animation_default(w)
-break;
-case 6:
-//Switch to
-break;
-}
+    //old deprecated stuff
 }
 }
 }else{
@@ -443,13 +416,13 @@ if instance_exists(window_Main) then{
 //sdbm(button_explorer.updated,instance_exists(object_explorer))
 if button_explorer.updated=true and !instance_exists(object_explorer) then{
 object_explorer=instance_create(0,0,obj_windows31_filemanager)//this is not a uiz object, just a controller object
-window_explorer=uiz_win31_creatwindow(obj_uiZ_controller.id,"File Manager",true)//we create the window in this object to keep the window controls working
+window_explorer=uiz_win31_createwindow(obj_uiZ_controller.id,"File Manager",true)//we create the window in this object to keep the window controls working
 object_explorer.window=window_explorer;//give our new object a reference to our window
 with(object_explorer){uiz_win31_openfilemanager()}//handle setup script
 }
 if button_clipboard.updated=true and !instance_exists(object_clipboard) then{
 object_clipboard=instance_create(0,0,obj_windows31_clipboard)//this is not a uiz object, just a controller object
-window_clipboard=uiz_win31_creatwindow(obj_uiZ_controller.id,"Clipboard",false)//we create the window in this object to keep the window controls working
+window_clipboard=uiz_win31_createwindow(obj_uiZ_controller.id,"Clipboard",false)//we create the window in this object to keep the window controls working
 object_clipboard.window=window_clipboard;//give our new object a reference to our window
 with(object_clipboard){uiz_win31_openclipboard()}//handle setup script
 }
@@ -509,7 +482,7 @@ with(object_minesweeper){uiz_win31_openminesweeper()}//handle setup script
             <string>///check if folderbuttons have been pressed
 //if folderbutton_Main.updated=true and !instance_exists(window_Main) then{
 if !instance_exists(window_Main) then{
-window_Main=uiz_win31_creatwindow(frame_ProgramManager,"Main",true)
+window_Main=uiz_win31_createwindow(frame_ProgramManager,"Main",true)
 frame_Main=window_Main;
 //add icons to menu
 button_explorer=uiz_win31_addicon(frame_Main,"File Manager",spr_uiZ_win31_explorer,0)
@@ -519,7 +492,7 @@ button_clipboard=uiz_win31_addicon(frame_Main,"Clipboard",spr_uiZ_win31_clipboar
 
 //if folderbutton_Games.updated=true and !instance_exists(window_Games) then{
 if !instance_exists(window_Games) then{
-window_Games=uiz_win31_creatwindow(frame_ProgramManager,"Games",true)
+window_Games=uiz_win31_createwindow(frame_ProgramManager,"Games",true)
 frame_Games=window_Games;
 //add icons to menu
 button_minesweeper=uiz_win31_addicon(frame_Games,"Minesweeper",spr_uiZ_win31_minesweeper,0)
@@ -527,7 +500,7 @@ button_minesweeper=uiz_win31_addicon(frame_Games,"Minesweeper",spr_uiZ_win31_min
 
 //if folderbutton_Accessories.updated=true and !instance_exists(window_Accessories) then{
 if !instance_exists(window_Accessories) then{
-window_Accessories=uiz_win31_creatwindow(frame_ProgramManager,"Accessories",true)
+window_Accessories=uiz_win31_createwindow(frame_ProgramManager,"Accessories",true)
 frame_Accessories=window_Accessories;
 //add icons to menu
 button_notepad=uiz_win31_addicon(frame_Accessories,"Notepad",spr_uiZ_win31_notepad,0)
