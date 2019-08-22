@@ -89,9 +89,11 @@ ds_list_add(menulist_ProgramManager_enabled,false,false,false,false,false,false,
             <kind>1</kind>
             <string>///create ProgramManager window
 window_ProgramManager=uiz_window_create(0.5,fc,0.5,fc)
-frame_ProgramManager=window_ProgramManager;
-frame_ProgramManager.autoupdatescrolly=true;
-frame_ProgramManager.autoupdatescrollx=true;
+frame_ProgramManager=uiz_c(obj_uiZ_frame);
+uiz_setparent(frame_ProgramManager,window_ProgramManager);
+//uiz_size(frame_ProgramManager,1,uiz_fill,1,uiz_fill);
+uiz_position(frame_ProgramManager,0,uiz_fill,0,uiz_fill);
+uiz_frame_setscrollautoupdate(frame_ProgramManager,true,true)
 //setup background
 window_ProgramManager.texturescript=uiz_back_circlestitch_specialmargins;
 window_ProgramManager.sprite_texturemode=uiz_texturemode_fill
@@ -126,6 +128,7 @@ uiz_fixgeneralpos(window_ProgramManager)
 //change frame options to be scrollable
 frame_ProgramManager.scrolly=true
 frame_ProgramManager.scrollx=true
+uiz_fixgeneralpos(frame_ProgramManager);
 //add option button
 //menubut_ProgramManager=uiz_win32_addmenulist(window_ProgramManager)
 /*
@@ -371,7 +374,7 @@ if instance_exists(w) then{
 if w.sizestatus=2 then{
 domax=true;
 }
-sdbm("checking state of ",i,o,o.selected)
+//sdbm("checking state of ",i,o,o.selected)
 if o.updated=true then{
     //old deprecated stuff
 }
@@ -383,12 +386,11 @@ ds_list_delete(WindowMouseMenuWindowList,i)
 }
 }
 if domax=false then{
-frame_ProgramManager.scrollx=true; frame_ProgramManager.scrolly=true;
+frame_ProgramManager.scrollx=true;
+frame_ProgramManager.scrolly=true;
 }else{
-//frame_ProgramManager.scrollx=false; frame_ProgramManager.scrolly=false;
-//frame_ProgramManager.addx=0; frame_ProgramManager.addy=0;
-uiz_frame_disablescroll_x(frame_ProgramManager,true)
-uiz_frame_disablescroll_y(frame_ProgramManager,true)
+//uiz_frame_disablescroll_x(frame_ProgramManager,true)
+//uiz_frame_disablescroll_y(frame_ProgramManager,true)
 }
 </string>
           </argument>

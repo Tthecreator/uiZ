@@ -106,6 +106,53 @@ uiz_endobject()
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/***************************************************
+      scrollbars mouseover
+     ***************************************************/
+     if snapm=false and snapk=false then{
+        if scrollx = true and scrollbarx = true and mscrollbarx &lt; 0 then {
+            var scrollox = uiz_drawscrollbar_getvalue(uscrollx);
+            uiz_drawscrollbar_horizontal_step(rx,ily,rlx-scrollbarcorner_x,rly, uscrollx, -mscrollbarx, false, scrollxspeed, scrollbarAnimation, scrollbarAnimationTime)
+            var scrollnx = uiz_drawscrollbar_getvalue(uscrollx);
+            if scrollnx != scrollox then {
+                c = true;
+                addx = -scrollnx;
+            }
+        }
+        if scrolly = true and scrollbary = true and mscrollbary &lt; 0 then {
+            var scrollox = uiz_drawscrollbar_getvalue(uscrolly);
+            uiz_drawscrollbar_vertical_step(ilx,ry,rlx,rly-scrollbarcorner_y, uscrolly, -mscrollbary, false, scrollxspeed, scrollbarAnimation, scrollbarAnimationTime)
+    
+            var scrollnx = uiz_drawscrollbar_getvalue(uscrolly);
+            
+            if scrollnx != scrollox then {
+                c = true;
+                addy = -scrollnx;
+            }
+        }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="15">
       <action>
         <libid>1</libid>
@@ -124,6 +171,7 @@ uiz_endobject()
           <argument>
             <kind>1</kind>
             <string>uiz_frame_fixscrolling(true,true);
+
 </string>
           </argument>
         </arguments>
@@ -159,7 +207,7 @@ if autoupdatescrollx then{
 if autoupdatescrolly then {
     updatescrolly=true;
 }
-c = uiz_frame_fixscrolling(false,false);
+c = uiz_frame_fixscrolling(true,false);
 </string>
           </argument>
         </arguments>
@@ -190,32 +238,8 @@ var c=false;
 
 if scrolly = true or scrollx = true or snapm = true then {
 
-
-    /***************************************************
-      scrollbars mouseover
-     ***************************************************/
-     if snapm=false and snapk=false then{
-        if scrollx = true and scrollbarx = true and mscrollbarx &lt; 0 then {
-            var scrollox = uiz_drawscrollbar_getvalue(uscrollx);
-            uiz_drawscrollbar_horizontal_step(rx,ily,rlx-scrollbarcorner_x,rly, uscrollx, -mscrollbarx, false, scrollxspeed, scrollbarAnimation, scrollbarAnimationTime)
-            var scrollnx = uiz_drawscrollbar_getvalue(uscrollx);
-            if scrollnx != scrollox then {
-                c = true;
-                addx = -scrollnx;
-            }
-        }
-        if scrolly = true and scrollbary = true and mscrollbary &lt; 0 then {
-            var scrollox = uiz_drawscrollbar_getvalue(uscrolly);
-            uiz_drawscrollbar_vertical_step(ilx,ry,rlx,rly-scrollbarcorner_y, uscrolly, -mscrollbary, false, scrollxspeed, scrollbarAnimation, scrollbarAnimationTime)
+    event_user(6);
     
-            var scrollnx = uiz_drawscrollbar_getvalue(uscrolly);
-            
-            if scrollnx != scrollox then {
-                c = true;
-                addy = -scrollnx;
-            }
-        }
-    }
 
     /***************************************************
       middle mouse scroll and drag
@@ -311,15 +335,14 @@ if scrolly = true or scrollx = true or snapm = true then {
         addx = clamp(addx, mscrollbarx, 0)
         uiz_drawscrollbar_setvalue(uscrollx,-addx);
         uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
-        //uiz_updater_FixViews_addsquare(rx,ily,rlx,rly)
     }
     if cy = true then {
         addy = clamp(addy, mscrollbary, 0)
         uiz_drawscrollbar_setvalue(uscrolly,-addy);
-        //sdbm("update that scrollbar")
         uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
     }
         uiz_fixchildren(id, true)
+        uiz_updater_FixViews();
     }
 
 }

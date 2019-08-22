@@ -1518,6 +1518,7 @@
           <script>scripts\uiz_drawscrollbar_update_mark_full.gml</script>
           <scripts name="internal">
             <script>scripts\uiz_drawscrollbar_update.gml</script>
+            <script>scripts\uiz_drawscrollbar_update_full.gml</script>
             <script>scripts\uiz_drawscrollbar_update_view.gml</script>
             <script>scripts\uiz_drawscrollbar_getScroll.gml</script>
             <script>scripts\uiz_drawscrollbar_getMstate.gml</script>

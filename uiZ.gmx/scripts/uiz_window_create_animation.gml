@@ -7,7 +7,6 @@ What valuetype does is equivalent to how the variable "posval w/h type" works, b
 For information on how the animation part works, see "uiz_setopeninganimation" and "Animations in general".
 */
 var w=uiz_window_create(argument0,argument1,argument2,argument3);
-uiz_setopeninganimation(w,argument4,argument5,argument6,argument7);
-w.fixedthisstep=0;
+uiz_setopeninganimation(w,argument4,argument5,argument6,argument7,false);
 uiz_fixwindowpos(w);
 return w;

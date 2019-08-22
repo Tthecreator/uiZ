@@ -170,7 +170,7 @@ if(scroll_old!=scroll || mstate!=mstate_last || scrollsel_old!=scrollsel){
     }else{
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated] = 3;
     }
-    uiz_drawscrollbar_update_view(argument0,argument1,argument2,argument3,uiz_vertical,mstate,mstate_last,argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated]);
+    uiz_drawscrollbar_update_view(argument0,argument1,argument2,argument3,uiz_horizontal,mstate,mstate_last,argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated]);
 }
 
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_scroll] = scroll;//save scroll

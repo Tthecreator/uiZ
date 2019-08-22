@@ -13,12 +13,3 @@ if function_count>=0 and posinframey!=uiz_static and posinframex!=uiz_static the
 uiz_animation_capture_newstate(id);
 uiz_getscalervalues()
 }
-
-/*
-if fixedthisstep=0 then{
-updatenextstep=0
-//scale
-
-}
-fixedthisstep=1
-*/

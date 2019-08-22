@@ -104,8 +104,6 @@ newh=0;
 
 function_count=-1;
 keepupdating=0
-updatenextstep=0
-fixedthisstep=0
 shadow=false;
 shadowL=0.1;
 shadowR=0.25;

@@ -39,9 +39,9 @@ with(v){
     uiz_updater_FixViews();
 }
 if argument_count>6 then{
-uiz_setopeninganimation(v,argument[3],argument[4],argument[5],argument[6])
+uiz_setopeninganimation(v,argument[3],argument[4],argument[5],argument[6],false)
 }else{
 //uiz_setopeninganimation(v,uiz_sin_inout,uiz_sin_inout,uiz_exponential_out,0.4)
-uiz_setopeninganimation(v,uiz_straight,uiz_straight,uiz_straight,0.2)
+uiz_setopeninganimation(v,uiz_straight,uiz_straight,uiz_straight,0.2,false)
 }
 return v;

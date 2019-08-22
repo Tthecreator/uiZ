@@ -5,7 +5,13 @@
 var c = false; //update variable
 var uy = false;
 var ux = false;
+var oldmscrollbary = mscrollbary;
+var oldmscrollbarx = mscrollbarx;
 if updatescrolly=false and updatescrollx=false then{return false;}
+
+var sgm_y = max(0, min(uiz_getposx_self(scrollbarsize, scrollbarsizetype), width - 2));
+var sgm_x = max(0, min(uiz_getposy_self(scrollbarsize, scrollbarsizetype), height - 2));
+
 if updatescrolly = true then{//check for changes
     var omscrollbary = mscrollbary;
     mscrollbary = -uiz_getmaxyscrollinframe(id)
@@ -13,6 +19,7 @@ if updatescrolly = true then{//check for changes
         if addy < mscrollbary then {//clamp scrollbar
             c = true;
             addy = clamp(addy, mscrollbary, 0)
+            uiz_drawscrollbar_setvalue(uscrolly,-addy)
         }
         if sign(mscrollbary) != sign(omscrollbary) then {//check to disable/enable scrollbar
             uy = true
@@ -27,6 +34,7 @@ if updatescrollx = true then {//check for changes
         if addx < mscrollbarx then {//clamp scrollbar
             c = true;
             addx = clamp(addx, mscrollbarx, 0)
+            uiz_drawscrollbar_setvalue(uscrollx,-addx)
         }
         if sign(mscrollbarx) != sign(omscrollbarx) then {//check to disable/enable scrollbar
             ux = true
@@ -40,11 +48,9 @@ if ux or uy then {//actually update margins
     scrollbarcorner_y=0;
     uiz_fix_Base_endmargin();
     if mscrollbary < 0 then {
-        var sgm_y = max(0, min(uiz_getposx_self(scrollbarsize, scrollbarsizetype), width - 2));
         end_rightframemargin += sgm_y;
     }
     if mscrollbarx < 0 then {
-        var sgm_x = max(0, min(uiz_getposy_self(scrollbarsize, scrollbarsizetype), height - 2));
         end_bottomframemargin += sgm_x;
         if mscrollbary < 0 then{//if both scrollbars are enabled
         scrollbarcorner_x = sgm_x;
@@ -59,14 +65,25 @@ if ux or uy then {//actually update margins
 updatescrollx=!updatescrollx;
 updatescrolly=!updatescrolly;
 if c then{
-if argument0 then{//update object
-    uiz_fixchildren(id, true);
-    if argument1 then{
-        uiz_frame_fixscrolling(argument0,false);
+    if argument0 then{//update object
+        uiz_fixchildren(id, true);
+        if argument1 then{
+            uiz_frame_fixscrolling(argument0,false);
+        }
     }
+    uiz_updater_FixViews();
 }
 
+if oldmscrollbary != mscrollbary then{
+    uiz_drawscrollbar_update_full(uscrolly,rlx-sgm_y,ry,rlx,rly-scrollbarcorner_y)//vertical bar
 }
+if oldmscrollbarx != mscrollbarx then{
+    uiz_drawscrollbar_update_full(uscrollx,rx,rly-sgm_x,rlx-scrollbarcorner_x,rly)//horizontal bar
+}
+if mscrollbary<0 and mscrollbarx<0 and (oldmscrollbarx>=0 or oldmscrollbary>=0) then{
+    uiz_updater_FixViews_area_selfmarked(rlx-sgm_y, rly-sgm_x, rlx, rly);
+}
+
 
 updatescrollx=false;
 updatescrolly=false;

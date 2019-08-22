@@ -1649,7 +1649,7 @@ if !surface_exists(uiz_appsurf) then{uiz_appsurf=surface_create(width,height);}
 
 if !surface_exists(uiz_surf) {uiz_surf=surface_create(width,height);}
 
-sdbm("textureID:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
+//sdbm("textureID:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
 
 if uiz_updateall=true or ds_list_size(l)&gt;0 then{
 
@@ -1658,7 +1658,7 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
     //uiz_debug_drawsurface(uiz_appsurf,"app")
     //uiz_debug_drawsurface(uiz_surf,"uiz")
     surface_set_target(uiz_appsurf)
-    sdbm("executing draw_clear at place",0,random(99),uiz_updateall,ds_list_size(l))
+    //sdbm("executing draw_clear at place",0,random(99),uiz_updateall,ds_list_size(l))
     
     if uiz_updateall=true then{
         draw_clear_alpha(c_white,1);
@@ -1699,7 +1699,7 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
     draw_surface(uiz_appsurf,0,0);
     //draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
     uiz_changeSurface=false;
-    sdbm("shader set to:",global.uiz_shader)
+    //sdbm("shader set to:",global.uiz_shader)
     draw_set_blend_mode(bm_normal)
     draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
     

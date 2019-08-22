@@ -22,6 +22,7 @@ if mstate = mstate_last then {
 }
 var w = argument2 - argument0;
 var h = argument3 - argument1;
+
 if orient = uiz_vertical then {
     if (state_change = true and((mstate >= 1 and mstate <= 2) or(mstate_last >= 1 and mstate_last <= 2))) {
         //update top button

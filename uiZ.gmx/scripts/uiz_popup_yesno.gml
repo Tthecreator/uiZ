@@ -69,7 +69,7 @@ p.image_alpha=0.3;
 //p.adddepth=1000000
 uiz_fixgeneralpos(p)
 //uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_sin_inout,0.01)
-uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_straight,0.05)
+uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_straight,0.05,false)
 }
 var dx=uiz_todpix(string_width(argument[0]))
 var dy=uiz_todpiy(string_height(argument[0]))
