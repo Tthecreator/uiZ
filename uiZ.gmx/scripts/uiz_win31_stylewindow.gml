@@ -4,6 +4,7 @@
 var win;
 var win=argument0;
 //setup background
+win.margin_normal=4;
 win.texturescript=uiz_back_circlestitch_specialmargins;
 win.sprite_texturemode=uiz_texturemode_fill
 win.sprite_normal=spr_uiZ_borderwin31;

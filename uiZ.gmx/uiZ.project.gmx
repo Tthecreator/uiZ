@@ -2071,8 +2071,8 @@
     <object>objects\obj_spriteStretchTest</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
     <room>rooms\rm_uiz_windows31</room>
+    <room>rooms\rm_test</room>
     <room>rooms\rm_uiz_serverbrowser</room>
     <room>rooms\uiz_designer</room>
     <room>rooms\uiz_macromanager</room>

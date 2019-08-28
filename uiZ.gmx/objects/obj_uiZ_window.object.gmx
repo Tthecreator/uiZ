@@ -327,7 +327,7 @@ var buts = ds_list_size(custom_buttons_left_sprite);
 var butSize = bars * buts;
 var checkbuttons = false;
 
-if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars-bkmar+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; ix and uiz_getmouse_x() &lt; ix+butSize and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
+if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; ix and uiz_getmouse_x() &lt; ix+butSize and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
     checkbuttons = true;
     overbut_left = floor((uiz_getmouse_x()-ix)/bars);
 }else{
@@ -668,7 +668,7 @@ var inrange = uiz_range(uiz_getmouse_y(), ry, iy);
 var inrange_last = uiz_range(uiz_getmouse_y_last(), ry, iy);
 
 
-if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars-bkmar+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; frombuttons and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
+if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; frombuttons and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
     checkbuttons = true;
     //mouse over button area
     overbut = floor((uiz_getmouse_x() - frombuttons) / bars);
@@ -901,6 +901,7 @@ uiz_updater_FixViews_area(ilx-bars*buttonssize,ry,ilx,iy-1);//REENABLE//
 
 uiz_back()
 
+
 //sdbm("sprite used:",sprite_get_name(bkspr))
 if iwidth&gt;bars*(1+button_cross+button_maximize) and iheight&gt;=0 then{
 if topbackuse&gt;-1 then{u=topbackuse}
@@ -927,9 +928,9 @@ var old_rly=rly;
 
 //bars=uiz_getposy(barsize,barsizevaltype);
 
-ily=iy-old_bkmar;
+ily=iy;
 rx=ix;
-iy-=bars+old_bkmar;
+iy-=bars;//+old_bkmar;
 ry=iy;
 rlx=ilx;
 rly=ry+bars;
