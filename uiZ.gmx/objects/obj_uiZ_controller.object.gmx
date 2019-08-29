@@ -224,7 +224,7 @@ global.uiz_mouseswiped=0;
 global.mousedirectoverobject=false;
 global.enablemousedirectoverobjectcheck=false;
 dirlastmouseoverobject=id;
-mouseswipeclick_distance=3;
+mouseswipeclick_distance=1;
 mouseswipeclick_distancetype=dp;
 mouseswipeclick_time=1;//in seconds
 oldmouseswipedx=0
@@ -1101,10 +1101,11 @@ global.uiz_mouseswiped=uiz_pyth(global.uiz_mouseswipedx,global.uiz_mouseswipedy)
             <kind>1</kind>
             <string>///control uiz_mouseswipeclick
 //if either holding mouse for a longer time or moving mouse fast.
-
+//sdbm("check swipe",oldselectedmouseover,global.lastmousemoved,uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype))
 if mouse_check_button(mb_left) &amp;&amp; uiz_isMouseSwipeClickWhiteListed(oldselectedmouseover) then{//mswc_count+=uiz_sc(mouseswipeclick_time);
-//sdbm(global.lastmousemoved,uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype))
-if global.lastmousemoved&gt;=uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype)/fps_real then{
+
+
+if global.lastmousemoved&gt;=uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype)/fps then{
 global.uiz_mouseswipeclick=true;
 //reset mouse to old object
 
@@ -1303,18 +1304,6 @@ keyboard_oldlastchar=keyboard_lastchar;
             <string>///check for window
 if global.mouseoverwindow=id and mouse_check_button(mb_any) then{
     uiz_window_select(noone)
-}
-/*
-if lastwindowover!=global.selectedwindow then{
-    with(lastwindowover){
-        uiz_window_fixbackground();
-    }
-    with(lastwindowover){
-        uiz_window_fixbackground();
-    }
-    lastwindowover=global.selectedwindow;
-
-    
 }
 </string>
           </argument>

@@ -426,7 +426,6 @@ colorboxes=instance_create(0,0,obj_uiZ_colorboxes)
 uiz_setparent(colorboxes,selector)
 colorboxes.posinframex=uiz_fill
 colorboxes.posinframey=uiz_fill
-colorboxes.posvalhpxdif=1
 uiz_fixgeneralpos(colorboxes)
 
 //color
@@ -461,7 +460,6 @@ boxval.color2=c_white
 boxval.coloroutline1=c_black
 boxval.coloroutline2=c_white
 boxval.outline=1
-boxval.posvalhpxdif=-1
 uiz_slider_setvalue(boxval,v/255)
 uiz_fixgeneralpos(boxval)
 
@@ -481,7 +479,6 @@ boxred.color2=c_red
 boxred.outline=1
 boxred.coloroutline1=c_black
 boxred.coloroutline2=c_red
-boxred.posvalhpxdif=-1
 uiz_fixgeneralpos(boxred)
 //green slider
 boxgreen=instance_create(0,0,obj_uiZ_slider)
@@ -515,7 +512,6 @@ boxblue.color2=c_blue
 boxblue.coloroutline1=c_black
 boxblue.coloroutline2=c_blue
 boxblue.outline=1
-boxblue.posvalhpxdif=-1
 uiz_fixgeneralpos(boxblue)
 //*/
 //the valueboxes

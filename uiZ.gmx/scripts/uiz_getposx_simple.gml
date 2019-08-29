@@ -12,26 +12,26 @@ case dp:
 return argument0*uiz_dp
 break;
 case fc: case fcx:
-return round(argument0*(parent.iwidth))
+return round(argument0*(parent.iwidth)-leftmargin-rightmargin)
 break;
 case fcy:
-return round(argument0*(parent.iheight))
+return round(argument0*(parent.iheight)-leftmargin-rightmargin)
 break;
 case fcm:
-return round(mean(argument0*(parent.iwidth),argument0*(parent.iheight)))
+return round(mean(argument0*(parent.iwidth),argument0*(parent.iheight))-leftmargin-rightmargin)
 break;
 case fcmin:
 if parent.width>parent.height then{
-return round(argument0*(parent.iheight));
+return round(argument0*(parent.iheight)-leftmargin-rightmargin);
 }else{
-return round(argument0*(parent.iwidth));
+return round(argument0*(parent.iwidth)-leftmargin-rightmargin);
 }
 break;
 case fcmax:
 if parent.width<parent.height then{
-return round(argument0*(parent.iheight));
+return round(argument0*(parent.iheight)-leftmargin-rightmargin);
 }else{
-return round(argument0*(parent.iwidth));
+return round(argument0*(parent.iwidth)-leftmargin-rightmargin);
 }
 break;
 default:

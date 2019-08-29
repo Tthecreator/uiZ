@@ -6,8 +6,9 @@ width=bars*(5+ds_list_size(custom_buttons_left_sprite)+ds_list_size(custom_butto
 height=end_topframemargin+end_bottomframemargin;
 setpointx=uiz_auto;
 setpointy=uiz_auto;
+sizestatus=0
 uiz_fixwindowpos(id)
 uiz_animation_capture_newstate(id)
 uiz_animation_setFunction(id,maximizeanimation,maximizeanimation,maximizeanimation,maximizeanimation,uiz_one,maximizeanimationspeed)
 uiz_animation_start(id)
-sizestatus=0
+

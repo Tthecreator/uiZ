@@ -32,14 +32,14 @@ clmp=1;
 break;
 
 case fcmin:
-if parent.width>parent.height then{
+if parent.iwidth>parent.iheight then{
 ret=round(argument0*(parent.iheight))
 }else{
 ret=round(argument0*(parent.iwidth));
 }
 break;
 case fcmax:
-if parent.width<parent.height then{
+if parent.iwidth<parent.iheight then{
 ret=round(argument0*(parent.iheight))
 }else{
 ret=round(argument0*(parent.iwidth));

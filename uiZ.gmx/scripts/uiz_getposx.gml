@@ -20,103 +20,89 @@ case dpmin:
 ret=parent.width-argument0*uiz_dp
 break;
 case fc: case fcx:
-ret=round(argument0*(parent.iwidth));
+ret=round(argument0*(parent.iwidth)-leftmargin-rightmargin);
 break;
 case fcy:
-ret=round(argument0*(parent.iheight))
+ret=round(argument0*(parent.iheight)-leftmargin-rightmargin)
 clmp=1;
 break;
 case fcm:
-ret=round(mean(argument0*(parent.iwidth),argument0*(parent.iheight)))
+ret=round(mean(argument0*(parent.iwidth),argument0*(parent.iheight))-leftmargin-rightmargin)
 clmp=1
 break;
 case fcmin:
-if parent.width>parent.height then{
-ret=round(argument0*(parent.iheight))
+if parent.iwidth>parent.iheight then{
+ret=round(argument0*(parent.iheight)-leftmargin-rightmargin)
 }else{
-ret=round(argument0*(parent.iwidth));
+ret=round(argument0*(parent.iwidth)-leftmargin-rightmargin);
 }
 break;
 case fcmax:
-if parent.width<parent.height then{
-ret=round(argument0*(parent.iheight))
+if parent.iwidth<parent.iheight then{
+ret=round(argument0*(parent.iheight)-leftmargin-rightmargin)
 }else{
-ret=round(argument0*(parent.iwidth));
+ret=round(argument0*(parent.iwidth)-leftmargin-rightmargin);
 }
 break;
 //sa_px
 case sa_px: case sax_px:
-ret=parent.width-argument0*2
+ret=parent.width-argument0*2-leftmargin-rightmargin
 break;
 case say_px:
-ret=parent.height-argument0*2
+ret=parent.height-argument0*2-leftmargin-rightmargin
 clmp=1;
 break;
 //sa_fc
 case sa_fc: case sax_fc:
-ret=parent.width-argument0*(parent.iwidth)*2
+ret=parent.width-argument0*(parent.iwidth)*2-leftmargin-rightmargin
 break;
 case saxh_fc:
-ret=parent.height-argument0*(parent.iwidth)*2
+ret=parent.height-argument0*(parent.iwidth)*2-leftmargin-rightmargin
 clmp=1;
 break;
 case sayw_fc:
-ret=parent.width-argument0*(parent.iheight)*2
+ret=parent.width-argument0*(parent.iheight)*2-leftmargin-rightmargin
 break;
 
 case say_fc:
-ret=parent.height-argument0*(parent.iheight)*2
+ret=parent.height-argument0*(parent.iheight)*2-leftmargin-rightmargin
 clmp=1;
 break;
 //sa_dp
 case sa_dp: case sax_dp:
-ret=parent.width-argument0*uiz_dp*2
+ret=parent.width-argument0*uiz_dp*2-leftmargin-rightmargin
 break;
 case say_dp:
-ret=parent.height-argument0*uiz_dp*2
+ret=parent.height-argument0*uiz_dp*2-leftmargin-rightmargin
 clmp=1;
 break;
 case sayw_dp:
-ret=parent.width-argument0*uiz_dp*2
+ret=parent.width-argument0*uiz_dp*2-leftmargin-rightmargin
 break;
 case saxh_dp:
-ret=parent.height-argument0*uiz_dp*2
+ret=parent.height-argument0*uiz_dp*2-leftmargin-rightmargin
 clmp=1;
 break;
 //saa
 case saa: case saax: case saaw:
-ret=parent.width-uiz_getposx_simple(posvalx,posinframex)
+ret=parent.width-uiz_getposx_simple(posvalx,posinframex)-leftmargin-rightmargin
 break;
 case saay:
-ret=parent.height-uiz_getposy_simple(posvaly,posinframey)
+ret=parent.height-uiz_getposy_simple(posvaly,posinframey)-leftmargin-rightmargin
 clmp=1;
 break;
 case saah: case saaxh:
-ret=uiz_getposx_simple(posvalx,posinframex)
+ret=uiz_getposx_simple(posvalx,posinframex)-leftmargin-rightmargin
 clmp=1;
 break;
 case saayw:
-ret=uiz_getposy_simple(posvaly,posinframey)
+ret=uiz_getposy_simple(posvaly,posinframey)-leftmargin-rightmargin
 clmp=1;
 break;
 case saam:
-ret=parent.width-mean(uiz_getposx_simple(posvalx,posinframex),uiz_getposy_simple(posvaly,posinframey))*2
+ret=parent.width-mean(uiz_getposx_simple(posvalx,posinframex),uiz_getposy_simple(posvaly,posinframey))*2-leftmargin-rightmargin
 clmp=1;
 break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 case sa_px_nm: case sax_px_nm:

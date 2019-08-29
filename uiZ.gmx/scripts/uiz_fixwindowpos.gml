@@ -2,12 +2,8 @@
 
 var t=argument0;
 with(t){
-uiz_fix_Background();
-uiz_fix_Background_top();
+uiz_window_fixbackground();
 bars=uiz_getposy(barsize,barsizevaltype);
-if sizestatus=2 then{//disable background margins if the window is maximized
-    bkmar=0;
-}
 uiz_fixpositioninframe()
 
 //calculate end margins

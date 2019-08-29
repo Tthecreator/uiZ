@@ -1891,26 +1891,26 @@
         <object>objects\obj_sort_example</object>
       </objects>
       <objects name="keepoff">
-        <object>objects\obj_uiz_dummy</object>
-        <object>objects\obj_uiZ_object_1</object>
-        <object>objects\obj_uiZ_frameset</object>
         <object>objects\obj_uiZ_animationtest</object>
-        <object>objects\obj_uiZ_menuholder</object>
-        <object>objects\obj_uiZ_popupok</object>
-        <object>objects\obj_uiZ_resizer</object>
-        <object>objects\obj_uiZ_menuitem</object>
-        <object>objects\obj_uiZ_framerowanchor</object>
-        <object>objects\obj_uiZ_surfaceholder</object>
-        <object>objects\obj_uiZ_stringbox_bak</object>
+        <object>objects\obj_uiZ_colorboxes</object>
         <object>objects\obj_uiZ_controller</object>
         <object>objects\obj_uiZ_debugmanager</object>
-        <object>objects\obj_uiZ_windowholder</object>
-        <object>objects\obj_uiZ_window</object>
+        <object>objects\obj_uiz_dummy</object>
         <object>objects\obj_uiZ_framecolanchor</object>
+        <object>objects\obj_uiZ_framerowanchor</object>
+        <object>objects\obj_uiZ_frameset</object>
         <object>objects\obj_uiZ_grid</object>
-        <object>objects\obj_uiZ_colorboxes</object>
-        <object>objects\obj_uiZ_textplane</object>
+        <object>objects\obj_uiZ_menuholder</object>
+        <object>objects\obj_uiZ_menuitem</object>
         <object>objects\obj_uiZ_mouseband</object>
+        <object>objects\obj_uiZ_object_1</object>
+        <object>objects\obj_uiZ_popupok</object>
+        <object>objects\obj_uiZ_resizer</object>
+        <object>objects\obj_uiZ_stringbox_bak</object>
+        <object>objects\obj_uiZ_surfaceholder</object>
+        <object>objects\obj_uiZ_textplane</object>
+        <object>objects\obj_uiZ_window</object>
+        <object>objects\obj_uiZ_windowholder</object>
       </objects>
       <objects name="macromanager">
         <object>objects\uiz_macromanager_controller</object>

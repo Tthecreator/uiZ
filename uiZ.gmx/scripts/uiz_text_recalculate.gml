@@ -25,6 +25,7 @@ with(argument0){
         //faster but only supports a single line
         drawtext=uiz_gettext_contained(text,iwidth);
     }
+    uiz_updater_FixViews();
 }
 
 

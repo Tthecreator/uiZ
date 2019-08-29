@@ -657,7 +657,7 @@ if resizable = 1 and isresizing = true then {
             <string>///Handle buttons and window movement
 var fixforp = id;
 
-if global.lockwindowresel = 0 and global.selectedwindow != id and global.mouseoverwindow = id and mouse_check_button(mb_left) and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = true) and isresizing = false then {
+if global.lockwindowresel = 0 and global.selectedwindow != id and global.mouseoverwindow = id and mouse_check_button(mb_left)/* and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = true) and isresizing = false */then {
     uiz_window_select(id);
 }
 var dorececkloverbut = false;

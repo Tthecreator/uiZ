@@ -173,9 +173,7 @@ containtowhosparent=id
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-if hasmouse=true then{
+            <string>if hasmouse=true then{
 update=true;
 if mouse_check_button(mb_left) then{
 //move button
