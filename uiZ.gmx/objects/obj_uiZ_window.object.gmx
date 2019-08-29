@@ -387,30 +387,30 @@ if global.mousefrozen = false and snaptomouse = 0 and resizable = 1 and kmouseov
     isresizing = true;
     isresizing_y = uiz_null;
     isresizing_x = uiz_null;
-    
+    var cornerMargin = 5;
 
-    if (uiz_getmouse_x() &gt; rlx - 20 and uiz_getmouse_y() &gt; rly - 20) then {
+    if (uiz_getmouse_x() &gt; rlx - cornerMargin and uiz_getmouse_y() &gt; rly - cornerMargin) then {
         //right bottom
         isresizing_y = uiz_bottom;
         isresizing_x = uiz_right;
         uiz_set_cursor(cr_size_nwse);
     } else {
         //check left bottom
-        if (uiz_getmouse_x() &lt; rx + 20 and uiz_getmouse_y() &gt; rly - 20) then {
+        if (uiz_getmouse_x() &lt; rx + cornerMargin and uiz_getmouse_y() &gt; rly - cornerMargin) then {
             //left bottom
             isresizing_y = uiz_bottom;
             isresizing_x = uiz_left;
             uiz_set_cursor(cr_size_nesw);
         } else {
             //check left top
-            if (uiz_getmouse_x() &lt; rx + 20 and uiz_getmouse_y() &lt; ry + 20) then {
+            if (uiz_getmouse_x() &lt; rx + cornerMargin and uiz_getmouse_y() &lt; ry + cornerMargin) then {
                 //left top
                 isresizing_y = uiz_top;
                 isresizing_x = uiz_left;
                 uiz_set_cursor(cr_size_nwse);
             } else {
                 //check right top
-                if (uiz_getmouse_x() &gt; rlx - 20 and uiz_getmouse_y() &lt; ry + 20) then {
+                if (uiz_getmouse_x() &gt; rlx - cornerMargin and uiz_getmouse_y() &lt; ry + cornerMargin) then {
                     //right top
                     isresizing_y = uiz_top;
                     isresizing_x = uiz_right;

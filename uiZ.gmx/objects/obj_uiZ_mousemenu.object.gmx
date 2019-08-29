@@ -182,9 +182,10 @@ if problems=1 and mouse_wheel_down() then{scroll=clamp(scroll+scrollspeed,0,sz-1
 if scroll&gt;0 and mouse_wheel_up() then{scroll=clamp(scroll-scrollspeed,0,sz-1)}
 }
 
-if mouse_check_button_released(mb_left) and kmouseover!=uiz_mousereleased then{
+if mouse_check_button(mb_left) and kmouseover=0 then{
     updated=1;
     selection=-1;
+    uiz_destroyobject_animation_default(id);
 }
 
 
