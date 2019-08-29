@@ -42,10 +42,6 @@ case fcy:
 g.isz[i]=g.isize[i]*(g.iheight-g.margint-g.marginb)+g.margincellw*2
 toleft-=g.isz[i]
 break;
-case saa: case saay:
-g.isz[i]=g.isize[i]*(g.iheight-g.margint-g.marginb)+g.margincellh*2
-toleft-=g.isz[i]
-break;
 }
 }
 //sdbm("at2",g,i,g.width,g.iwidth,toleft)

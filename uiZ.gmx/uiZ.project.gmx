@@ -854,12 +854,10 @@
         <scripts name="general">
           <script>scripts\uiz_init.gml</script>
           <script>scripts\uiz_getposx.gml</script>
-          <script>scripts\uiz_getposx_bak.gml</script>
           <script>scripts\uiz_getposx_simple.gml</script>
           <script>scripts\uiz_reverseposx.gml</script>
           <script>scripts\uiz_reverseposy.gml</script>
           <script>scripts\uiz_getposy.gml</script>
-          <script>scripts\uiz_getposy_bak.gml</script>
           <script>scripts\uiz_getposy_simple.gml</script>
           <script>scripts\uiz_generalcreate.gml</script>
           <script>scripts\uiz_keytonumber.gml</script>
@@ -2090,7 +2088,7 @@
     </rooms>
     <room>rooms\room11</room>
   </rooms>
-  <constants number="131">
+  <constants number="89">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -2101,48 +2099,6 @@
     <constant name="fcy">2.2</constant>
     <constant name="px">0</constant>
     <constant name="pxmin">0.1</constant>
-    <constant name="sa_dp_nm">5.305</constant>
-    <constant name="sa_dp">5.3</constant>
-    <constant name="sa_fc_nm">5.605</constant>
-    <constant name="sa_fc">5.6</constant>
-    <constant name="sa_px_nm">5.005</constant>
-    <constant name="sa_px">5</constant>
-    <constant name="saa_nm">6.005</constant>
-    <constant name="saa">6</constant>
-    <constant name="saah_nm">6.505</constant>
-    <constant name="saah">6.5</constant>
-    <constant name="saam_nm">6.305</constant>
-    <constant name="saam">6.3</constant>
-    <constant name="saaw_nm">6.405</constant>
-    <constant name="saaw">6.4</constant>
-    <constant name="saax_nm">6.105</constant>
-    <constant name="saax">6.1</constant>
-    <constant name="saaxh_nm">6.115</constant>
-    <constant name="saaxh">6.11</constant>
-    <constant name="saay_nm">6.205</constant>
-    <constant name="saay">6.2</constant>
-    <constant name="saayw_nm">6.215</constant>
-    <constant name="saayw">6.21</constant>
-    <constant name="sax_dp_nm">5.405</constant>
-    <constant name="sax_dp">5.4</constant>
-    <constant name="sax_fc_nm">5.705</constant>
-    <constant name="sax_fc">5.7</constant>
-    <constant name="sax_px_nm">5.105</constant>
-    <constant name="sax_px">5.1</constant>
-    <constant name="saxh_dp_nm">5.415</constant>
-    <constant name="saxh_dp">5.41</constant>
-    <constant name="saxh_fc_nm">5.715</constant>
-    <constant name="saxh_fc">5.71</constant>
-    <constant name="say_dp_nm">5.505</constant>
-    <constant name="say_dp">5.5</constant>
-    <constant name="say_fc_nm">5.805</constant>
-    <constant name="say_fc">5.8</constant>
-    <constant name="say_px_nm">5.205</constant>
-    <constant name="say_px">5.2</constant>
-    <constant name="sayw_dp_nm">5.515</constant>
-    <constant name="sayw_dp">5.51</constant>
-    <constant name="sayw_fc_nm">5.815</constant>
-    <constant name="sayw_fc">5.81</constant>
     <constant name="SECUREMODE">0</constant>
     <constant name="TEST">234</constant>
     <constant name="uiz_acceldecel">23</constant>

@@ -148,7 +148,7 @@ uiz_setparent(but,leftframe);
 but.posinframex=uiz_center;
 but.posinframey=uiz_center;
 but.posvalwtype=fc;
-but.posvalhtype=saax_nm;
+but.posvalhtype=fc;
 but.posvalw=0.3;
 but.posvalh=0.3;
 but.color=c_red;

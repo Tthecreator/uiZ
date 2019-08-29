@@ -40,10 +40,6 @@ case fcx:
 g.isz[i]=g.isize[i]*(g.iwidth-g.marginr-g.marginl)+g.margincellh*2
 toleft-=g.isz[i]
 break;
-case saa: case saax:
-g.isz[i]=g.isize[i]*(g.iwidth-g.marginr-g.marginl)+g.margincellw*2
-toleft-=g.isz[i]
-break;
 }
 }
 

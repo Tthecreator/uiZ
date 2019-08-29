@@ -8,8 +8,7 @@ uiz_gridsize_row(g,g.gridh-1,0.26,dp)
 //o.posinframex=uiz_fill
 //o.width=uiz_getposx(1,dp)
 //o.height=uiz_getposx(0.25,dp)
-o.posinframex=uiz_snapleft
-o.posvalwtype=saay
+o.posinframex=uiz_fill
 o.posinframey=uiz_fill
 uiz_fixgeneralpos(o)
 ds_list_add(itemlist,o)

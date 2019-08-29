@@ -20,10 +20,8 @@ if posvalwtype!=uiz_nonpos then{width=uiz_getposx(posvalw,posvalwtype);}
 x=p.iwidth/2;
 break;
 case uiz_fill:
-//x=parent.leftframemargin;
 x=0;
-//width=p.width-parent.rightframemargin-parent.leftframemargin;
-width=p.iwidth;
+width=p.iwidth-leftmargin-rightmargin;
 break;
 case fc: case fcx:
 

@@ -217,16 +217,13 @@ uiz_updater_FixViews()
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-//draw_sprite_ext(sprite,kmouseover+spraddto,rx,ry,width/sprite_get_width(sprite),height/sprite_get_height(sprite),0,color,image_alpha)
-//if sprite_get_width(sprite)&lt;width then{
-//draw_sprite_part(sprite,kmouseover*3+spraddto,)
-//}
+
 if height&gt;=width/2 then{
 //if the button is really narrow, and the sprite doesn't accually fit
 var hsc=floor(height)/sprite_get_height(sprite);
-var sprpx=floor(width)/hsc/2
+var sprpx=round(width/hsc/2);
 draw_sprite_part_ext(sprite,kmouseover*3+spraddto,0,0,sprpx,height,rx,ry,hsc,hsc,color,alpha)
-draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,height,floor(rlx-width/2),ry,hsc,hsc,color,alpha)
+draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,height,rx+sprpx+1,ry,hsc,hsc,color,alpha)
 }else{
 //draw normally
 var nsw=sprite_get_width(sprite)
@@ -234,29 +231,10 @@ var nsh=sprite_get_height(sprite)
 var hsc=floor(height)/nsh;
 var wsc=floor(width)/nsw
 draw_sprite_ext(sprite,kmouseover*3+spraddto,floor(rx),floor(ry),hsc,hsc,0,color,alpha)
-//draw_sprite_ext(sprite,kmouseover*3+spraddto+1,rx+height,ry,wsc-hsc*2,hsc,0,color,alpha)
 var nwidth=width-height*2
-//var nheight=height
-/*
-switch(texturemode){
-case uiz_texturemode_fill:
-draw_sprite_ext(sprite,kmouseover*3+spraddto+1,floor(rx+height),ry,nwidth/nsw,height/nsh,0,color,alpha)
-break;
-case uiz_texturemode_tile:
-uiz_draw_sprite_tiles(sprite,kmouseover*3+spraddto+1,floor(rx+height),ry,floor(rlx-height),rly,nwidth/nsw,1,color,alpha)
-break;
-case uiz_texturemode_tilefit:
-
-uiz_draw_sprite_tiles(sprite,kmouseover*3+spraddto+1,floor(rx+height),ry,floor(rlx-height),rly,round(nwidth/nsw),1,color,alpha)
-break;
-}
-*/
-
 
 uiz_draw_sprite_texturemode_horizontal(sprite,kmouseover*3+spraddto+1,floor(rx+height),floor(ry),floor(rlx-height),floor(ry+height),color,alpha,texturemode)
 
-
-//draw_square(rx+height,ry,rlx-height,rly,c_red,1)
 draw_sprite_ext(sprite,kmouseover*3+spraddto+2,floor(rlx-height),floor(ry),hsc,hsc,0,color,alpha)
 }
 if text!="" then{
@@ -266,7 +244,6 @@ draw_set_valign(fa_middle)
 draw_set_halign(fa_center)
 if font&gt;-1 then{draw_set_font(font)}
 draw_text(rx+width/2,ry+height/2,uiz_gettext_contained(text,width))
-//draw_text(rx+width/2,ry+height/2,"penis")
 draw_set_valign(fa_top)
 draw_set_halign(fa_left)
 }
