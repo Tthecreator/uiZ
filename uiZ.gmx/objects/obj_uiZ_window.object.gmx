@@ -928,9 +928,9 @@ var old_rly=rly;
 
 //bars=uiz_getposy(barsize,barsizevaltype);
 
-ily=iy;
+ily=iy-bkmar;
 rx=ix;
-iy-=bars;//+old_bkmar;
+iy-=bars+bkmar;
 ry=iy;
 rlx=ilx;
 rly=ry+bars;
