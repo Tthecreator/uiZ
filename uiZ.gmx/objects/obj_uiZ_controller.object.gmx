@@ -32,7 +32,6 @@
 //define uiZ allows the ui designer to recorginse this as a uiz object
 //the #sprite images line makes the sprite of the object spr_uiZ_images instead of spr_uiZ_images_user. for userdefined objects, don't use this line.
 //#spritenum 1 tells the designer what image_index of the sprite to use.
-sdbm("start uiZ")
 x=0
 y=0
 rx=0
