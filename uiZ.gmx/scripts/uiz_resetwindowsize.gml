@@ -26,14 +26,21 @@ obj_uiZ_controller.cntny=0
 obj_uiZ_controller.cntnlx=w
 obj_uiZ_controller.cntnly=h
 with(obj_uiZ_controller){
-if surface_exists(uiz_surf){surface_resize(uiz_surf,width,height)}else{
+sdbm("[uiZ:INFO]Resetting uiz_surf")
+if surface_exists(uiz_surf){
+sdbm("[uiZ:INFO]Resizing uiz_surf")
+surface_resize(uiz_surf,width,height)}else{
+sdbm("[uiZ:INFO]Creating uiz_surf")
 uiz_surf=surface_create(width,height);
 }
+sdbm("[uiZ:INFO]Done resetting uiz_surf")
 if uiz_useappsurf=false then{
-if surface_exists(uiz_useappsurf){surface_resize(uiz_useappsurf,width,height)}else{
-uiz_useappsurf=surface_create(width,height);
+sdbm("[uiZ:INFO]Resetting uiz_appsurf")
+if surface_exists(uiz_appsurf){surface_resize(uiz_appsurf,width,height)}else{
+uiz_appsurf=surface_create(width,height);
 }
 }
+sdbm("[uiZ:INFO]Done resetting uiz_appsurf")
 }
 //sdbm("fixing al children because of window resize")
 uiz_fixchildren(obj_uiZ_controller.id,1)
