@@ -95,6 +95,7 @@ uiz_setparent(frame_ProgramManager,window_ProgramManager);
 uiz_position(frame_ProgramManager,0,uiz_fill,0,uiz_fill);
 uiz_frame_setscrollautoupdate(frame_ProgramManager,true,true)
 //setup background
+window_ProgramManager.topbarInside=true;
 window_ProgramManager.texturescript=uiz_back_circlestitch_specialmargins;
 window_ProgramManager.sprite_texturemode=uiz_texturemode_fill
 window_ProgramManager.sprite_normal=spr_uiZ_borderwin31;

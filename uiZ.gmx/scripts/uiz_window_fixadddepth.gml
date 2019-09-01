@@ -5,7 +5,7 @@ if parent!=obj_uiZ_controller.id then{
 //check for other windows above parent
 var searchp=parent;
 while(searchp.object_index!=obj_uiZ_controller){
-if searchp.object_index=obj_uiZ_windowholder then{
+if searchp.object_index=obj_uiZ_window then{
 //recheck
 fixforp=searchp;
 with(searchp){

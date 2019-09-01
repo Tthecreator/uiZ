@@ -162,6 +162,7 @@ graboffy=0;
 
 isresizing=false;
 doublemargins=false//b//double topbar margins//
+topbarInside=false//b//topbar in inner margins//
 topbackuse=-1;
 
 hasbackground=true;
@@ -191,6 +192,7 @@ margin_out=-1//v//margin out//
 usebackgroundmargins=true;
 
 
+
 top_texturescript=uiz_back_circlestitch//i//top texturescript//
 top_texturescript_over=-1//i//top texturescript over//
 top_texturescript_in=-1//i//top texturescript in//
@@ -198,7 +200,7 @@ top_texturescript_out=-1//i//top texturescript out//
 
 top_sprite_normal=spr_uiZ_border1//p//top sprite normal//
 top_color_normal=c_white//c//top color normal//
-top_margin_normal=0//v//top margin normal//
+top_margin_normal=10//v//top margin normal//
 top_sprite_texturemode=uiz_texturemode_fill//t//top texturemode normal
 top_border_texturemode=-1//t//top texturemode border//
 
@@ -927,13 +929,19 @@ var old_rlx=rlx;
 var old_rly=rly;
 
 //bars=uiz_getposy(barsize,barsizevaltype);
+if topbarInside then{
+    ily=iy-bkmar;
+    rx=ix;
+    iy-=bars+bkmar;
+    ry=iy;
+    rlx=ilx;
+    rly=ry+bars;
+}else{
+    rly=iy;
+    ily=iy-bkmar;
+    iy=ry+bkmar;
+}
 
-ily=iy-bkmar;
-rx=ix;
-iy-=bars+bkmar;
-ry=iy;
-rlx=ilx;
-rly=ry+bars;
 
 if doublemargins=true then{
 ix+=leftframemargin
