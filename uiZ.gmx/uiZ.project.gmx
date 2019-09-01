@@ -1645,6 +1645,87 @@
           <script>scripts\uiz_snapper_enable.gml</script>
           <script>scripts\uiz_snapper_disable.gml</script>
         </scripts>
+        <scripts name="xml parser">
+          <script>scripts\uiz_xml_init.gml</script>
+          <script>scripts\uiz_xml_unloadfile.gml</script>
+          <script>scripts\uiz_xml_unloadtree.gml</script>
+          <script>scripts\uiz_list_getadd.gml</script>
+          <script>scripts\uiz_list_addinsert.gml</script>
+          <scripts name="creating">
+            <script>scripts\uiz_xml_createfile_string.gml</script>
+            <script>scripts\uiz_xml_createfile.gml</script>
+          </scripts>
+          <scripts name="loading">
+            <script>scripts\uiz_xml_loadfile.gml</script>
+            <script>scripts\uiz_xml_loadstring.gml</script>
+            <script>scripts\uiz_xml_loadfile_addto.gml</script>
+            <script>scripts\uiz_xml_addfile_string.gml</script>
+          </scripts>
+          <script>scripts\uiz_xml_writetag_at_end.gml</script>
+          <scripts name="manipulation">
+            <scripts name="handle">
+              <script>scripts\uiz_xml_gethandle.gml</script>
+              <script>scripts\uiz_xml_gethandleshortend.gml</script>
+              <script>scripts\uiz_xml_gethandleend.gml</script>
+              <script>scripts\uiz_xml_gettree.gml</script>
+            </scripts>
+            <scripts name="reading">
+              <script>scripts\uiz_xml_iswhattagin_at.gml</script>
+              <script>scripts\uiz_xml_gettagsin_at.gml</script>
+              <script>scripts\uiz_xml_readtag.gml</script>
+              <script>scripts\uiz_xml_gettag_name_at.gml</script>
+              <script>scripts\uiz_xml_gettag.gml</script>
+              <script>scripts\uiz_xml_gettaginfo_at.gml</script>
+              <script>scripts\uiz_xml_makelistfromattributes_at.gml</script>
+              <script>scripts\uiz_xml_makelistfromattributes_nonsub_at.gml</script>
+              <script>scripts\uiz_xml_isempty.gml</script>
+              <script>scripts\uiz_xml_somethinghasdata.gml</script>
+            </scripts>
+            <scripts name="writing">
+              <script>scripts\uiz_xml_writetag_at.gml</script>
+              <script>scripts\uiz_xml_writetag.gml</script>
+              <script>scripts\uiz_xml_settaginfo_at.gml</script>
+              <script>scripts\uiz_xml_removelasttagstruct_at.gml</script>
+              <script>scripts\uiz_xml_empty.gml</script>
+              <script>scripts\uiz_xml_addtreeintree.gml</script>
+              <script>scripts\uiz_xml_switch.gml</script>
+              <script>scripts\uiz_xml_removedown_at.gml</script>
+            </scripts>
+          </scripts>
+          <scripts name="saving">
+            <script>scripts\uiz_xml_savefile.gml</script>
+            <script>scripts\uiz_xml_stringl.gml</script>
+            <script>scripts\uiz_xml_stringd.gml</script>
+            <script>scripts\uiz_xml_stringv.gml</script>
+          </scripts>
+          <scripts name="internal">
+            <script>scripts\uiz_xml_gethandle_part.gml</script>
+            <script>scripts\uiz_xml_toposintree.gml</script>
+            <script>scripts\uiz_xml_gettagin_number_at.gml</script>
+            <script>scripts\uiz_xml_tagdataexists_unfinised.gml</script>
+            <script>scripts\uiz_xml_addtreeintree_part.gml</script>
+            <script>scripts\uiz_xml_treetotag.gml</script>
+            <script>scripts\uiz_xml_getlevels.gml</script>
+            <script>scripts\uiz_xml_treetolist.gml</script>
+            <script>scripts\uiz_xml_istag_at.gml</script>
+            <script>scripts\uiz_xml_structtotag_at.gml</script>
+            <script>scripts\uiz_xml_tagtostruct_at.gml</script>
+            <script>scripts\uiz_xml_createfolderstruct.gml</script>
+            <script>scripts\uiz_xml_getabove_at.gml</script>
+            <script>scripts\uiz_xml_getextendedtags.gml</script>
+            <script>scripts\uiz_xml_getextendedtags_number.gml</script>
+            <scripts name="debug">
+              <script>scripts\uiz_xml_gethandle_dataexists.gml</script>
+              <script>scripts\uiz_xml_getdebugstringtotal.gml</script>
+              <script>scripts\uiz_xml_getdebugstringtotal_list.gml</script>
+              <script>scripts\uiz_xml_gethandle_dataexistsold.gml</script>
+              <script>scripts\uiz_xml_getdebugstringtotal_one.gml</script>
+              <script>scripts\uiz_xml_getdebugstring.gml</script>
+              <script>scripts\uiz_xml_getdebugstring_one.gml</script>
+              <script>scripts\uiz_xml_drawstuff.gml</script>
+            </scripts>
+          </scripts>
+        </scripts>
         <scripts name="typecursor">
           <script>scripts\uiz_typecursor_register.gml</script>
           <script>scripts\uiz_typecursor_deregister.gml</script>
@@ -1748,79 +1829,6 @@
           <script>scripts\uiz_des_addtolist_string.gml</script>
           <script>scripts\uiz_des_addtolist_pos.gml</script>
           <script>scripts\uiz_des_addtolist_pos_bak.gml</script>
-        </scripts>
-        <scripts name="xml parser">
-          <script>scripts\uiz_xml_loadfile.gml</script>
-          <script>scripts\uiz_xml_loadstring.gml</script>
-          <script>scripts\uiz_xml_loadfile_addto.gml</script>
-          <script>scripts\uiz_xml_createfile.gml</script>
-          <script>scripts\uiz_xml_createfile_string.gml</script>
-          <script>scripts\uiz_xml_addfile_string.gml</script>
-          <script>scripts\uiz_xml_loadfile_bak4.gml</script>
-          <script>scripts\uiz_xml_loadfile_bak3.gml</script>
-          <script>scripts\uiz_xml_loadfile_bak2.gml</script>
-          <script>scripts\uiz_xml_loadfile_bak.gml</script>
-          <script>scripts\uiz_xml_init.gml</script>
-          <script>scripts\uiz_list_getadd.gml</script>
-          <script>scripts\uiz_xml_savefile.gml</script>
-          <script>scripts\uiz_xml_savefile_bak2.gml</script>
-          <script>scripts\uiz_xml_savefile_bak.gml</script>
-          <script>scripts\uiz_xml_gettree.gml</script>
-          <script>scripts\uiz_xml_gettree_bak.gml</script>
-          <script>scripts\uiz_xml_gethandle.gml</script>
-          <script>scripts\uiz_xml_gethandle_part.gml</script>
-          <script>scripts\uiz_xml_gethandle_bak.gml</script>
-          <script>scripts\uiz_xml_gethandle_dataexists.gml</script>
-          <script>scripts\uiz_xml_gethandle_dataexistsold.gml</script>
-          <script>scripts\uiz_xml_readtag.gml</script>
-          <script>scripts\uiz_xml_writetag.gml</script>
-          <script>scripts\uiz_xml_writetag_at.gml</script>
-          <script>scripts\uiz_xml_writetag_at_end.gml</script>
-          <script>scripts\uiz_xml_readtag_bak.gml</script>
-          <script>scripts\uiz_xml_gethandleend.gml</script>
-          <script>scripts\uiz_xml_gethandleshortend.gml</script>
-          <script>scripts\uiz_xml_gettag.gml</script>
-          <script>scripts\uiz_xml_gettag_name_at.gml</script>
-          <script>scripts\uiz_xml_drawstuff.gml</script>
-          <script>scripts\uiz_xml_getdebugstringtotal.gml</script>
-          <script>scripts\uiz_xml_getdebugstringtotal_list.gml</script>
-          <script>scripts\uiz_xml_getdebugstring.gml</script>
-          <script>scripts\uiz_xml_getdebugstring_one.gml</script>
-          <script>scripts\uiz_xml_getdebugstringtotal_one.gml</script>
-          <script>scripts\uiz_xml_gettagin_number_at.gml</script>
-          <script>scripts\uiz_xml_tagdataexists_unfinised.gml</script>
-          <script>scripts\uiz_list_addinsert.gml</script>
-          <script>scripts\uiz_xml_unloadfile.gml</script>
-          <script>scripts\uiz_xml_addtreeintree.gml</script>
-          <script>scripts\uiz_xml_addtreeintree_bak.gml</script>
-          <script>scripts\uiz_xml_addtreeintree_part.gml</script>
-          <script>scripts\uiz_xml_switch.gml</script>
-          <script>scripts\uiz_xml_treetolist.gml</script>
-          <script>scripts\uiz_xml_treetotag.gml</script>
-          <script>scripts\uiz_xml_getlevels.gml</script>
-          <script>scripts\uiz_xml_createfolderstruct.gml</script>
-          <script>scripts\uiz_xml_unloadtree.gml</script>
-          <script>scripts\uiz_xml_empty.gml</script>
-          <script>scripts\uiz_xml_toposintree.gml</script>
-          <script>scripts\uiz_xml_isempty.gml</script>
-          <script>scripts\uiz_xml_istag_at.gml</script>
-          <script>scripts\uiz_xml_gettaginfo_at.gml</script>
-          <script>scripts\uiz_xml_settaginfo_at.gml</script>
-          <script>scripts\uiz_xml_tagtostruct_at.gml</script>
-          <script>scripts\uiz_xml_structtotag_at.gml</script>
-          <script>scripts\uiz_xml_gettagsin_at.gml</script>
-          <script>scripts\uiz_xml_makelistfromattributes_at.gml</script>
-          <script>scripts\uiz_xml_makelistfromattributes_nonsub_at.gml</script>
-          <script>scripts\uiz_xml_iswhattagin_at.gml</script>
-          <script>scripts\uiz_xml_removelasttagstruct_at.gml</script>
-          <script>scripts\uiz_xml_stringl.gml</script>
-          <script>scripts\uiz_xml_stringd.gml</script>
-          <script>scripts\uiz_xml_stringv.gml</script>
-          <script>scripts\uiz_xml_getabove_at.gml</script>
-          <script>scripts\uiz_xml_getextendedtags.gml</script>
-          <script>scripts\uiz_xml_getextendedtags_number.gml</script>
-          <script>scripts\uiz_xml_somethinghasdata.gml</script>
-          <script>scripts\uiz_xml_removedown_at.gml</script>
         </scripts>
       </scripts>
       <scripts name="sort">
@@ -1955,6 +1963,7 @@
         <object>objects\obj_uiZ_text</object>
         <object>objects\obj_uiZ_textarea</object>
         <object>objects\obj_uiZ_treelist</object>
+        <object>objects\obj_uiZ_treelist_bak</object>
         <object>objects\obj_uiZ_valuebox</object>
       </objects>
       <objects name="serverbrowser">
@@ -2069,8 +2078,8 @@
     <object>objects\obj_spriteStretchTest</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_uiz_serverbrowser</room>
     <room>rooms\uiz_designer</room>
     <room>rooms\uiz_macromanager</room>

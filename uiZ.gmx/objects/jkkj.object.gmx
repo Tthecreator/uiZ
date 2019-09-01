@@ -67,26 +67,26 @@ uiz_xml_init()
 //create xml
 folders=uiz_xml_loadstring("
 &lt;C:&gt;
-&lt;some folder&gt;
-&lt;some file&gt;
-&lt;workfolder/&gt;
-&lt;/some folder&gt;
-&lt;video's&gt;
-&lt;fun/&gt;
-&lt;random/&gt;
-&lt;/video's&gt;
-&lt;system files&gt;
-&lt;important/&gt;
-&lt;viruses/&gt;
-&lt;/system files&gt;
-&lt;what you looking at&gt;
-&lt;nothing/&gt;
-&lt;you/&gt;
-&lt;/what you looking at&gt;
-&lt;real shieat&gt;
-&lt;tentacle/&gt;
-&lt;problems/&gt;
-&lt;/real shieat&gt;
+    &lt;some folder&gt;
+        &lt;some file&gt;
+            &lt;workfolder/&gt;
+    &lt;/some folder&gt;
+    &lt;video's&gt;
+        &lt;fun/&gt;
+        &lt;random/&gt;
+    &lt;/video's&gt;
+    &lt;system files&gt;
+        &lt;important/&gt;
+        &lt;viruses/&gt;
+    &lt;/system files&gt;
+    &lt;what you looking at&gt;
+        &lt;nothing/&gt;
+        &lt;you/&gt;
+    &lt;/what you looking at&gt;
+    &lt;real shieat&gt;
+        &lt;tentacle/&gt;
+        &lt;problems/&gt;
+    &lt;/real shieat&gt;
 &lt;/C:&gt;
 ")
 
@@ -172,6 +172,11 @@ uiz_fixchildren(win,true);
 
 if keyboard_check_released(vk_f6) then{
 win.width=800;
+uiz_fixgeneralpos(win);
+uiz_fixchildren(win,true);
+}
+
+if keyboard_check(vk_space) then{
 uiz_fixgeneralpos(win);
 uiz_fixchildren(win,true);
 }

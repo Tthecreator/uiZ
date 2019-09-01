@@ -14,8 +14,6 @@ if h=-1 then{
 //create folder
 var ps=uiz_xml_toposintree(argument1,i)
 var l=argument1
-//sdbm("CREATEFOLDER",ps,uiz_xml_getdebugstring(argument1),l[| ps-1]>>3,l[|ps-1] mod 8,l[| ps]>>3,l[|ps] mod 8,l[| ps+1]>>3,l[|ps+1] mod 8)
-sdbm("CREATEFOLDER",ps,uiz_xml_getdebugstring(argument1),uiz_positify(l[| ps])>>3,l[|ps] mod 8)
 uiz_xml_addtreeintree_part(argument0,argument1,argument1,0,uiz_xml_toposintree(argument1,i),tsz,i-1)
 //uiz_xml_addtreeintree_part(argument0,argument1,argument1,0,uiz_xml_toposintree(argument1,i),tsz,i-1)
 //sdbm(uiz_xml_getdebugstringtotal(argument0))
