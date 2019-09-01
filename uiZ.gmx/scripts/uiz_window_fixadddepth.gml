@@ -8,7 +8,10 @@ while(searchp.object_index!=obj_uiZ_controller){
 if searchp.object_index=obj_uiZ_windowholder then{
 //recheck
 fixforp=searchp;
-with(searchp){uiz_window_fixadddepth_maindepth();uiz_updater_FixViews();}
+with(searchp){
+uiz_window_fixadddepth_maindepth();
+uiz_updater_FixViews();
+}
 }
 searchp=searchp.parent
 }

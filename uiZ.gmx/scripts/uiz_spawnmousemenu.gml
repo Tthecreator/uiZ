@@ -17,7 +17,7 @@ uiz_destroyobject(obj_uiZ_mousemenu.id)
 }
 var v=uiz_c(obj_uiZ_mousemenu);
 
-uiz_depth_set(v,-99999999);
+uiz_depth_set(v,-999999999999);
 
 //v.depth=-999999999
 v.uselist=argument[0];

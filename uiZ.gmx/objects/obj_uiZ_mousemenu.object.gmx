@@ -427,8 +427,13 @@ if uiz_cntn() then {
             var h = ubkmar+ry;
              var th, txt;
             for (var i = scroll; i &lt; sz; i++) {
-                var ucolor = c_green;
-                h += margin + uiz_mousemenu_drawitem(i, h, 0)
+                var ucolor;
+                if (i == selection) then{
+                    ucolor = selectioncol;
+                }else{
+                    ucolor = 0;
+                }
+                h += margin + uiz_mousemenu_drawitem(i, h, ucolor)
             }
         }
     }
