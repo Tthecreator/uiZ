@@ -65,16 +65,16 @@ uiz_fixgeneralpos(win);
 
 uiz_xml_init()
 //create xml
-folders=uiz_xml_loadstring("
-&lt;C:&gt;
+folders=uiz_xml_loadstring('
+&lt;C: sprite="'+string(spr_ball)+'"&gt;
     &lt;some folder&gt;
-        &lt;some file&gt;
-            &lt;workfolder/&gt;
+        &lt;some file/&gt;
+        &lt;workfolder/&gt;
     &lt;/some folder&gt;
-    &lt;video's&gt;
+    &lt;video&gt;
         &lt;fun/&gt;
         &lt;random/&gt;
-    &lt;/video's&gt;
+    &lt;/video&gt;
     &lt;system files&gt;
         &lt;important/&gt;
         &lt;viruses/&gt;
@@ -88,7 +88,7 @@ folders=uiz_xml_loadstring("
         &lt;problems/&gt;
     &lt;/real shieat&gt;
 &lt;/C:&gt;
-")
+')
 
 
 o=uiz_c(obj_uiZ_treelist);
@@ -98,6 +98,7 @@ uiz_setparent(o,win);
 o.posinframex=uiz_fill;
 o.posinframey=uiz_fill;
 o.usexml=folders;
+uiz_treelist_parsexml(o);
 uiz_fixgeneralpos(o);
 
 

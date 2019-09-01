@@ -41,6 +41,7 @@ boxoncolor=c_gray;
 boxincolor=c_ltgray;
 boxemptyalpha=0.5;
 boxsprite=spr_uiZ_plusminbox;
+font=-1//f//font//
 textcolor=c_black;
 textoncolor=c_blue;
 textselcolor=c_white;
@@ -68,6 +69,31 @@ updated=0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>fontHeight = 0;
+indentEnabledAndBoxList = ds_list_create();//what level of indentation the list has (&gt;&gt;3), if the item is enabled (&gt;&gt;2 mod 2), and what state the +/- box has (mod 4).
+spriteList = ds_list_create();//what icon the list should draw (&lt;&lt;7) and what subimage to use (mod 3) (-1 for no sprite)
+textList = ds_list_create();//the text displayed in the entry
+handleList = ds_list_create();//handle to the corrosponding xml handle
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -86,7 +112,7 @@ updated=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_endobject()
+            <string>uiz_treelist_cleanup();
 </string>
           </argument>
         </arguments>
@@ -169,20 +195,17 @@ startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolll
             <kind>1</kind>
             <string>if uiz_cntn() then {
     if uiz_xml_isempty(usexml) = 0 then {
+        if font&gt;-1 then{draw_set_font(font)}
+        
         draw_set_halign(fa_left)
         draw_set_valign(fa_top)
-        var m = obj_uiz_xmlparser.id;
-        //check and get xml lists
-        if instance_exists(m) and usexml &gt; -1 and
-        ds_exists(m.filelistl, ds_type_list) and ds_exists(m.filelistd, ds_type_list) and ds_exists(m.filelistv, ds_type_list) and
-        ds_list_size(m.filelistl) &gt;= usexml and ds_list_size(m.filelistd) &gt;= usexml and ds_list_size(m.filelistv) &gt;= usexml and
-        ds_exists(m.filelistl[| usexml], ds_type_list) and ds_exists(m.filelistd[| usexml], ds_type_list) and ds_exists(m.filelistv[| usexml], ds_type_list) then {
-            //get xml list
-            var l = m.filelistl[| usexml];//main list
-            var d = m.filelistd[| usexml];//structure data list
-            var v = m.filelistv[| usexml];//variable data list
-            
-        }   
+        draw_set_color(textcolor);
+        
+        var lsz = ds_list_size(textList);
+        for(var i=0;i&lt;lsz;++i){    
+        uiz_treelist_drawEntry(i);
+        }
+ 
     }
     uiz_containend()
 }
@@ -208,7 +231,7 @@ startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolll
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_endobject()
+            <string>uiz_treelist_cleanup();
 </string>
           </argument>
         </arguments>
@@ -231,7 +254,7 @@ startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolll
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_endobject()
+            <string>uiz_treelist_cleanup();
 </string>
           </argument>
         </arguments>

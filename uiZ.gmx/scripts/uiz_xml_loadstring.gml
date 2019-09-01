@@ -62,7 +62,7 @@ for (var i = 1; i <= string_length(line); i++) {
                     var found = 0
                     for (var e = ds_list_size(l) - 1; e >= 0; e--) {
                         var p = (l[| e] mod 8)
-                        if p != 4 and p != 5 then {
+                        if p != uiz_xml_attributeName and p != uiz_xml_attributeData then {
                             //transfer headtag to objecttag
                             if p < 2 and round(l[| e] >> 3) = pos then {
                                 l[| e] += 2
@@ -74,12 +74,12 @@ for (var i = 1; i <= string_length(line); i++) {
                     if found = 0 then {
                         //normal endtag
                         //E
-                        ds_list_add(l, (pos << 3) + 7)
+                        ds_list_add(l, (pos << 3) + uiz_xml_closingTag)
                     } else {
                         //find and add text between object tags
                         //I
                         ds_list_add(v, removedline)
-                        ds_list_add(l, ((ds_list_size(v) - 1) << 3) + 5)
+                        ds_list_add(l, ((ds_list_size(v) - 1) << 3) + uiz_xml_attributeData)
                     }
                 }
             } else {//is not an endtag
@@ -89,16 +89,16 @@ for (var i = 1; i <= string_length(line); i++) {
                     var addtoend = -1;
                     if string_char_at(tagtext, string_length(tagtext)) = "/"
                     then {
-                        addtoend = (pos << 3) + 7;//remember closing tag
+                        addtoend = (pos << 3) + uiz_xml_closingTag;//remember closing tag
                     }
 
                     if tagattributes = ""
                     then {
                         //H
-                        ds_list_add(l, pos << 3)//add head tag
+                        ds_list_add(l, (pos << 3) + uiz_xml_headTag )//add head tag
                     } else {
                         //K
-                        ds_list_add(l, (pos << 3) + 1)//add head tag with attributes
+                        ds_list_add(l, (pos << 3) + uiz_xml_headAttributeTag)//add head tag with attributes
                         //dismantel tagattributes
                         var estart = 1
                         var emid = 0
@@ -115,10 +115,10 @@ for (var i = 1; i <= string_length(line); i++) {
                                         var attributedata = string_copy(tagattributes, emid + 2, e - emid - 2)
                                         //N
                                         pos = uiz_list_getadd(d, attributename)
-                                        ds_list_add(l, (pos << 3) + 4)//add attribute name
+                                        ds_list_add(l, (pos << 3) + uiz_xml_attributeName)//add attribute name
                                         //I
                                         ds_list_add(v, attributedata)//save attribute data
-                                        ds_list_add(l, ((ds_list_size(v) - 1) << 3) + 5)//add attribute data to main list
+                                        ds_list_add(l, ((ds_list_size(v) - 1) << 3) + uiz_xml_attributeData)//add attribute data to main list
                                         estart = e + 1
                                         for (var o = e + 1; o <= string_length(tagattributes); o++) {
                                             if string_char_at(tagattributes, o) != " "

@@ -81,6 +81,9 @@ break;
 case obj_uiZ_switch:
 uiz_fixswitchpos(argument0);
 break;
+case obj_uiZ_treelist:
+uiz_fixtreelistpos(argument0);
+break;
 default:
 uiz_fixobjectpos(argument0);
 break;

@@ -12,7 +12,7 @@
 //data = uiz_xml_readtag(handle)
 
 //get a handle
-var m=obj_uiz_xmlparser;
+var m=obj_uiz_xmlparser.id;
 var l=m.filelistl[| argument0];
 var d=m.filelistd[| argument0];
 var v=m.filelistv[| argument0];

@@ -820,6 +820,7 @@
             <script>scripts\uiz_fixwindowpos_legacy.gml</script>
             <script>scripts\uiz_fixswitchpos.gml</script>
             <script>scripts\uiz_fixtextareapos.gml</script>
+            <script>scripts\uiz_fixtreelistpos.gml</script>
           </scripts>
         </scripts>
         <scripts name="frame">
@@ -1454,6 +1455,11 @@
             <script>scripts\uiz_textarea_getvalue.gml</script>
           </scripts>
           <scripts name="treelist">
+            <scripts name="internal">
+              <script>scripts\uiz_treelist_drawEntry.gml</script>
+              <script>scripts\uiz_treelist_parsexml.gml</script>
+              <script>scripts\uiz_treelist_cleanup.gml</script>
+            </scripts>
             <script>scripts\uiz_treelist_setxml.gml</script>
             <script>scripts\uiz_treelist_setmargin.gml</script>
             <script>scripts\uiz_treelist_setboxsettings.gml</script>
@@ -1646,57 +1652,9 @@
           <script>scripts\uiz_snapper_disable.gml</script>
         </scripts>
         <scripts name="xml parser">
-          <script>scripts\uiz_xml_init.gml</script>
-          <script>scripts\uiz_xml_unloadfile.gml</script>
-          <script>scripts\uiz_xml_unloadtree.gml</script>
-          <script>scripts\uiz_list_getadd.gml</script>
-          <script>scripts\uiz_list_addinsert.gml</script>
           <scripts name="creating">
             <script>scripts\uiz_xml_createfile_string.gml</script>
             <script>scripts\uiz_xml_createfile.gml</script>
-          </scripts>
-          <scripts name="loading">
-            <script>scripts\uiz_xml_loadfile.gml</script>
-            <script>scripts\uiz_xml_loadstring.gml</script>
-            <script>scripts\uiz_xml_loadfile_addto.gml</script>
-            <script>scripts\uiz_xml_addfile_string.gml</script>
-          </scripts>
-          <script>scripts\uiz_xml_writetag_at_end.gml</script>
-          <scripts name="manipulation">
-            <scripts name="handle">
-              <script>scripts\uiz_xml_gethandle.gml</script>
-              <script>scripts\uiz_xml_gethandleshortend.gml</script>
-              <script>scripts\uiz_xml_gethandleend.gml</script>
-              <script>scripts\uiz_xml_gettree.gml</script>
-            </scripts>
-            <scripts name="reading">
-              <script>scripts\uiz_xml_iswhattagin_at.gml</script>
-              <script>scripts\uiz_xml_gettagsin_at.gml</script>
-              <script>scripts\uiz_xml_readtag.gml</script>
-              <script>scripts\uiz_xml_gettag_name_at.gml</script>
-              <script>scripts\uiz_xml_gettag.gml</script>
-              <script>scripts\uiz_xml_gettaginfo_at.gml</script>
-              <script>scripts\uiz_xml_makelistfromattributes_at.gml</script>
-              <script>scripts\uiz_xml_makelistfromattributes_nonsub_at.gml</script>
-              <script>scripts\uiz_xml_isempty.gml</script>
-              <script>scripts\uiz_xml_somethinghasdata.gml</script>
-            </scripts>
-            <scripts name="writing">
-              <script>scripts\uiz_xml_writetag_at.gml</script>
-              <script>scripts\uiz_xml_writetag.gml</script>
-              <script>scripts\uiz_xml_settaginfo_at.gml</script>
-              <script>scripts\uiz_xml_removelasttagstruct_at.gml</script>
-              <script>scripts\uiz_xml_empty.gml</script>
-              <script>scripts\uiz_xml_addtreeintree.gml</script>
-              <script>scripts\uiz_xml_switch.gml</script>
-              <script>scripts\uiz_xml_removedown_at.gml</script>
-            </scripts>
-          </scripts>
-          <scripts name="saving">
-            <script>scripts\uiz_xml_savefile.gml</script>
-            <script>scripts\uiz_xml_stringl.gml</script>
-            <script>scripts\uiz_xml_stringd.gml</script>
-            <script>scripts\uiz_xml_stringv.gml</script>
           </scripts>
           <scripts name="internal">
             <script>scripts\uiz_xml_gethandle_part.gml</script>
@@ -1724,7 +1682,64 @@
               <script>scripts\uiz_xml_getdebugstring_one.gml</script>
               <script>scripts\uiz_xml_drawstuff.gml</script>
             </scripts>
+            <script>scripts\uiz_xml_gettag.gml</script>
           </scripts>
+          <scripts name="loading">
+            <script>scripts\uiz_xml_loadfile.gml</script>
+            <script>scripts\uiz_xml_loadstring.gml</script>
+            <script>scripts\uiz_xml_loadfile_addto.gml</script>
+            <script>scripts\uiz_xml_addfile_string.gml</script>
+          </scripts>
+          <scripts name="handle">
+            <scripts name="iterating">
+              <script>scripts\uiz_xml_nexttag.gml</script>
+              <script>scripts\uiz_xml_nexttag_inside.gml</script>
+              <script>scripts\uiz_xml_nextattribute.gml</script>
+              <script>scripts\uiz_xml_nextdata.gml</script>
+            </scripts>
+            <script>scripts\uiz_xml_gethandle.gml</script>
+            <script>scripts\uiz_xml_gethandleshortend.gml</script>
+            <script>scripts\uiz_xml_gethandleend.gml</script>
+            <script>scripts\uiz_xml_gettree.gml</script>
+            <script>scripts\uiz_xml_gethandle_begin.gml</script>
+          </scripts>
+          <scripts name="manipulation">
+            <scripts name="reading">
+              <script>scripts\uiz_xml_iswhattagin_at.gml</script>
+              <script>scripts\uiz_xml_gettagsin_at.gml</script>
+              <script>scripts\uiz_xml_readtag.gml</script>
+              <script>scripts\uiz_xml_gettag_name_at.gml</script>
+              <script>scripts\uiz_xml_gettaginfo_at.gml</script>
+              <script>scripts\uiz_xml_makelistfromattributes_at.gml</script>
+              <script>scripts\uiz_xml_makelistfromattributes_nonsub_at.gml</script>
+              <script>scripts\uiz_xml_isempty.gml</script>
+              <script>scripts\uiz_xml_somethinghasdata.gml</script>
+              <script>scripts\uiz_xml_attribute_getName.gml</script>
+              <script>scripts\uiz_xml_attribute_getValue.gml</script>
+            </scripts>
+            <scripts name="writing">
+              <script>scripts\uiz_xml_writetag_at.gml</script>
+              <script>scripts\uiz_xml_writetag.gml</script>
+              <script>scripts\uiz_xml_settaginfo_at.gml</script>
+              <script>scripts\uiz_xml_removelasttagstruct_at.gml</script>
+              <script>scripts\uiz_xml_empty.gml</script>
+              <script>scripts\uiz_xml_addtreeintree.gml</script>
+              <script>scripts\uiz_xml_switch.gml</script>
+              <script>scripts\uiz_xml_removedown_at.gml</script>
+              <script>scripts\uiz_xml_writetag_at_end.gml</script>
+            </scripts>
+          </scripts>
+          <scripts name="saving">
+            <script>scripts\uiz_xml_savefile.gml</script>
+            <script>scripts\uiz_xml_stringl.gml</script>
+            <script>scripts\uiz_xml_stringd.gml</script>
+            <script>scripts\uiz_xml_stringv.gml</script>
+          </scripts>
+          <script>scripts\uiz_list_addinsert.gml</script>
+          <script>scripts\uiz_list_getadd.gml</script>
+          <script>scripts\uiz_xml_init.gml</script>
+          <script>scripts\uiz_xml_unloadfile.gml</script>
+          <script>scripts\uiz_xml_unloadtree.gml</script>
         </scripts>
         <scripts name="typecursor">
           <script>scripts\uiz_typecursor_register.gml</script>
@@ -2097,7 +2112,7 @@
     </rooms>
     <room>rooms\room11</room>
   </rooms>
-  <constants number="89">
+  <constants number="94">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -2187,6 +2202,11 @@
     <constant name="uiz_window_contain_corner">1</constant>
     <constant name="uiz_window_contain_topbar">2</constant>
     <constant name="uiz_window_contain_window">3</constant>
+    <constant name="uiz_xml_headTag">0</constant>
+    <constant name="uiz_xml_headAttributeTag">1</constant>
+    <constant name="uiz_xml_closingTag">7</constant>
+    <constant name="uiz_xml_attributeName">4</constant>
+    <constant name="uiz_xml_attributeData">5</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
