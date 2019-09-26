@@ -2112,7 +2112,7 @@
     </rooms>
     <room>rooms\room11</room>
   </rooms>
-  <constants number="94">
+  <constants number="96">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -2207,6 +2207,8 @@
     <constant name="uiz_xml_closingTag">7</constant>
     <constant name="uiz_xml_attributeName">4</constant>
     <constant name="uiz_xml_attributeData">5</constant>
+    <constant name="uiz_treelist_boxState_noBox">0</constant>
+    <constant name="uiz_treelist_boxState_collapsed">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

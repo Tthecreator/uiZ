@@ -202,8 +202,12 @@ startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolll
         draw_set_color(textcolor);
         
         var lsz = ds_list_size(textList);
-        for(var i=0;i&lt;lsz;++i){    
-        uiz_treelist_drawEntry(i);
+        var ih=0;
+        for(var i=0;i&lt;lsz;i+=0){    
+            var oldi = i;
+            i = uiz_treelist_drawEntry(i,ih);//max function for added safety
+            if i&lt;=0 or i&lt;oldi then{break;}
+            ++ih;
         }
  
     }

@@ -1,7 +1,9 @@
+#define uiz_treelist_parsexml
 ///uiz_treelist_parsexml(treelist)
 //reload the xml data into the list
 //the xml data to be used can be given using uiz_treelist_setxml
 with(argument0){
+
     ds_list_clear(indentEnabledAndBoxList);
     ds_list_clear(spriteList);
     ds_list_clear(textList);
@@ -16,6 +18,8 @@ with(argument0){
     var beginLevel = level;
     var handle = uiz_xml_gethandle_begin(usexml);
     var isCollectingLineData=false;
+    
+    var fillNextPosQueue = ds_stack_create()
     
     //find next tag inside
     
@@ -35,15 +39,9 @@ with(argument0){
                     if boxState==-1 then{
                         boxState = uiz_treelist_boxState_collapsed;
                     }
-                    //new headtag, write previous values
-                    var sprl = (spr<<7)+(img);
-                    ds_list_add(spriteList,sprl);
-                    ds_list_add(textList,name);
-                    ds_list_add(handleList,handle);
-                    ds_list_add(indentEnabledAndBoxList,(level<<3)+(enabled<<2)+(boxState));
+                    uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue)
                 }
                 isCollectingLineData = true;
-                
                 //reset values
                 spr = -1;
                 name = uiz_xml_gettag_name_at(usexml,handle);
@@ -77,16 +75,9 @@ with(argument0){
                 }
             break;
             case uiz_xml_closingTag:
-                if boxState = -1 then{
-                    boxState = uiz_treelist_boxState_noBox;
-                }
                 if isCollectingLineData==true then{
                     //new headtag, write previous values
-                    var sprl = (spr<<7)+(img);
-                    ds_list_add(spriteList,sprl);
-                    ds_list_add(textList,name);
-                    ds_list_add(handleList,handle);
-                    ds_list_add(indentEnabledAndBoxList,(level<<3)+(enabled<<2)+(boxState));
+                    uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue);
                 }
                 
                 isCollectingLineData=false;
@@ -97,12 +88,33 @@ with(argument0){
     }
     if isCollectingLineData==true then{
         //add any stuck/left lines
-        if boxState = -1 then{
-            boxState = uiz_treelist_boxState_noBox;
-        }
-        ds_list_add(spriteList,(spr<<7)+(img));
-        ds_list_add(textList,name);
-        ds_list_add(handleList,handle);
-        ds_list_add(indentEnabledAndBoxList,(level<<3)+(enabled<<2)+(boxState));
+        uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue);
     }
+    ds_stack_destroy(fillNextPosQueue);
 }
+
+#define uiz_treelist_parsexml_saveLineData
+///uiz_treelist_parsexml_saveLineData(sprite,image,name,handle,level,enabled,boxState,saveindentqueue)
+if argument6==-1 then{
+    argument6 = uiz_treelist_boxState_noBox;
+}
+//new headtag, write previous values
+var sprl = (argument0<<7)+(argument1);
+var curId = ds_list_size(indentEnabledAndBoxList);
+ds_list_add(spriteList,sprl);
+ds_list_add(textList,argument2);
+ds_list_add(handleList,argument3);
+ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
+//ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
+
+
+    
+while(ds_stack_size(argument7)-1>=argument4){//stack level higher that desired level, we might have found a match
+        var checkId = ds_stack_pop(argument7);
+        if checkId!=-1 then{//match found
+            indentEnabledAndBoxList[|checkId]+=((curId)<<8)//make other entry point to this one as it's next item in the list.
+        }
+}
+//if curLevel<=argument4 then{//if current stack level is less than desired level
+    ds_stack_push(argument7,curId);
+//}
