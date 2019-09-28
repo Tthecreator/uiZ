@@ -106,6 +106,7 @@ kmouseover_last = 0;
 
 
 updateScroll = false;
+updateMouseAreas = false;
 
 selectxml=-1;
 scroll=uiz_drawscrollbar_init();
@@ -205,19 +206,33 @@ if doscroll==false or uiz_getmouse_x()&lt;scrollBarX then{//if mouse not on scro
     
     repeat(mouseRelativeItemPos){
         if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
-                break;//no further mouse checking is needed
+            currentSelectionList = -1;
+            currentSelectionPos = -1;
+            break;//no further mouse checking is needed
         }
         currentSelectionList = nextItemList[|currentSelectionList];
+    }
+    if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
+            currentSelectionList = -1;
+            currentSelectionPos = -1;
     }
 }else{
     currentSelectionPos = -1;
     currentSelectionList = -1;
 }
 
+/*
+//check if we need to expand anything
+if kmouseover=uiz_mousereleased and currentSelectionPos!=-1 then{
+    
+}
+*/
+
 //check for differences between old and new mouse pos and update view
 if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!=kmouseover) then{
     var srlx = rlx;
     if doscroll then{srlx=scrollBarX;}
+    updateMouseAreas = true;
     //update specific list items
     if currentSelectionPos!=-1 then{
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+mouseRelativeItemPos*fontHeight,srlx,ry+startOffset+(mouseRelativeItemPos+1)*fontHeight);
@@ -226,6 +241,7 @@ if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight);    
     }
 }
+
 
 kmouseover_last = kmouseover;
 </string>
@@ -325,30 +341,47 @@ if kmouseover=0 then{
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then {
-    if uiz_xml_isempty(usexml) = 0 then {
-        if font&gt;-1 then{draw_set_font(font)}
-        
-        draw_set_halign(fa_left)
-        draw_set_valign(fa_top)
-        draw_set_color(textcolor);
-        
-        var lsz = ds_list_size(textList);
-        var ih=startOffset;
-        var srlx = rlx;
-        if doscroll then{srlx=scrollBarX;}
-        for(var i=startList;i&lt;lsz;i+=0){    
-            var oldi = i;
-            i = uiz_treelist_drawEntry(i,ih,srlx);//max function for added safety
-            if i&lt;=0 or i&lt;oldi then{break;}
-            ih+=fontHeight;
-        }
- 
-    }
-    //draw scrollbar
-    if doscroll=true then{
-        uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
-    }
+    //draw settings
+    var srlx = rlx;
+    if doscroll then{srlx=scrollBarX;}
+    if font&gt;-1 then{draw_set_font(font)}        
+    draw_set_halign(fa_left)
+    draw_set_valign(fa_top)
+    draw_set_color(textcolor);
     
+    if uiz_selfmarked then{
+    
+        //selfmarked draw
+        if updateMouseAreas then{
+            if currentSelectionPos!=-1 then{
+                uiz_treelist_drawEntry(currentSelectionList,startOffset+(currentSelectionPos-startPos)*fontHeight,srlx);
+            }
+            if lastSelectionPos!=currentSelectionPos and lastSelectionPos!=-1 then{
+                uiz_treelist_drawEntry(lastSelectionList,startOffset+(lastSelectionPos-startPos)*fontHeight,srlx);
+            }
+        }
+        
+    }else{//default draw
+        if uiz_xml_isempty(usexml) = 0 then {
+            
+            
+            
+            var lsz = ds_list_size(textList);
+            var ih=startOffset;
+            
+            for(var i=startList;i&lt;lsz;i+=0){    
+                var oldi = i;
+                i = uiz_treelist_drawEntry(i,ih,srlx);
+                if i&lt;=0 or i&lt;oldi then{break;}
+                ih+=fontHeight;
+            }
+     
+        }
+        //draw scrollbar
+        if doscroll=true then{
+            uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
+        }
+    }
     uiz_containend()
 }
 </string>

@@ -25,6 +25,10 @@ if currentSelectionList=i then{
         draw_set_color(textoncolor);
         draw_set_alpha(1);
     }
+}else{
+    draw_square(rx,ry + hi,srlx,ry+ hi+h,backcolor,backalpha);
+    draw_set_color(textcolor);
+    draw_set_alpha(1);
 }
 
 //sdbm("drawing ",i,nextPosition,indent,enabled,boxState);
@@ -42,6 +46,6 @@ if enabled {
     draw_text(rx+boxadd,ry + hi,name);
 }
 
-if currentSelectionList=i then{draw_set_color(textcolor);draw_set_alpha(1);} //reset text color for next item
+//if currentSelectionList=i then{draw_set_color(textcolor);draw_set_alpha(1);} //reset text color for next item
 //return i+1;
 return nextPosition;
