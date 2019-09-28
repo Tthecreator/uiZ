@@ -5,8 +5,12 @@
 with(argument0){
 
     ds_list_clear(indentEnabledAndBoxList);
+    ds_list_clear(handleList);
+    ds_list_clear(nextItemList);
     ds_list_clear(spriteList);
     ds_list_clear(textList);
+    
+    expandedLines = 1;
     
     var spr = -1;
     var name = "";
@@ -90,6 +94,9 @@ with(argument0){
         //add any stuck/left lines
         uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue);
     }
+    if ds_list_size(textList)==0 then{
+        expandedLines = 0;
+    }
     ds_stack_destroy(fillNextPosQueue);
 }
 
@@ -105,6 +112,7 @@ ds_list_add(spriteList,sprl);
 ds_list_add(textList,argument2);
 ds_list_add(handleList,argument3);
 ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
+ds_list_add(nextItemList,-1);
 //ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
 
 
@@ -112,7 +120,10 @@ ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
 while(ds_stack_size(argument7)-1>=argument4){//stack level higher that desired level, we might have found a match
         var checkId = ds_stack_pop(argument7);
         if checkId!=-1 then{//match found
-            indentEnabledAndBoxList[|checkId]+=((curId)<<8)//make other entry point to this one as it's next item in the list.
+            nextItemList[|checkId] = curId//make other entry point to this one as it's next item in the list.
+            if (checkId==curId-1){
+                ++expandedLines;
+            }
         }
 }
 //if curLevel<=argument4 then{//if current stack level is less than desired level

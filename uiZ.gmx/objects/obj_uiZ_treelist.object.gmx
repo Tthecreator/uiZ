@@ -30,38 +30,35 @@
 //#spritenum 8
 //#objectversion 1.0
 uiz_objinit()
-maxscrolllines=0
-usexml=0
-xmargin=3;
-ymargin=1;
-margin=1;
-foldermargin=15;
-boxcolor=c_black;
-boxoncolor=c_gray;
-boxincolor=c_ltgray;
-boxemptyalpha=0.5;
-boxsprite=spr_uiZ_plusminbox;
+xmargin=3//v//x margin//
+ymargin=1//v//y margin//
+margin=1//v//margin//
+foldermargin=15//v//foldermargin//
+boxcolor=c_black//c//box color//
+boxoncolor=c_gray//c//box on color//
+boxincolor=c_ltgray//box in color//
+boxemptyalpha=0.5//box empty alpha//
+boxsprite=spr_uiZ_plusminbox//p//box sprite//
 font=-1//f//font//
-textcolor=c_black;
-textoncolor=c_blue;
-textselcolor=c_white;
-backcolor=c_white;
-backoncolor=c_black;
-backselcolor=c_black;
-backalpha=0;
-backonalpha=0.5;
-backselalpha=1;
-selectxml=-1;
-scrollbarwidth=16;
-scrollbarwidthtype=px;
-scrollbarsprite=spr_uiZ_scrollbar
-scrollbarcolor=c_white
-scrollbarbacktexmode=uiz_texturemode_fill
-scroll=-1;
-scrollat=0;
-startscrollat=0;
-showtags=true;
+textcolor=c_black//c//text color//
+textoncolor=c_blue//c//text on color//
+textselcolor=c_white//c//text selection color//
+backcolor=c_white//c//item back color//
+backoncolor=c_black//c//item back on color//
+backselcolor=c_black//c//item back over color//
+backalpha=0//c//item back alpha//
+backonalpha=0.5//c//item back on alpha//
+backselalpha=1//c//item back selection alpha//
 
+
+scrollbarwidth=16//v//scrollbar width//
+scrollbarwidthtype=px//z//scrollbar width type//
+scrollbarsprite=spr_uiZ_scrollbar//p//scrollbar sprite//
+scrollbarcolor=c_white//c//scrollbar color//
+scrollbarbacktexmode=uiz_texturemode_fill_edgeless//t//scrollbar texturemode//
+scrollspeed=0.5//v//scrollspeed in dp//
+scrollbarAnimation=uiz_sin_inout//a//scrollbar animation//
+scrollbarAnimationTime=0.2//v//scrollbar animation time//
 
 update=0;
 updated=0;
@@ -87,9 +84,36 @@ updated=0;
             <kind>1</kind>
             <string>fontHeight = 0;
 indentEnabledAndBoxList = ds_list_create();//what level of indentation the list has (&gt;&gt;3), if the item is enabled (&gt;&gt;2 mod 2), and what state the +/- box has (mod 4).
+nextItemList = ds_list_create();//what the next listable id of the next item is.
 spriteList = ds_list_create();//what icon the list should draw (&lt;&lt;7) and what subimage to use (mod 3) (-1 for no sprite)
 textList = ds_list_create();//the text displayed in the entry
 handleList = ds_list_create();//handle to the corrosponding xml handle
+expandedLines = 0;
+
+doscroll = false;
+scrolllines = 0;
+scrollBarW = uiz_getposx_simple(scrollbarwidth,scrollbarwidthtype);
+scrollBarX = 0;
+startList = 0;//at what item id the list should start. 
+startPos = 0;//at what item position the list should start
+startOffset = 0;//pixel offset to start the list
+
+lastSelectionPos = -1;
+lastSelectionList = -1;
+currentSelectionList = -1;
+currentSelectionPos = -1;
+kmouseover_last = 0;
+
+
+updateScroll = false;
+
+selectxml=-1;
+scroll=uiz_drawscrollbar_init();
+scrollat=0;
+//startscrollat=0;
+showtags=true;
+//maxscrolllines=0
+usexml=0
 </string>
           </argument>
         </arguments>
@@ -118,6 +142,97 @@ handleList = ds_list_create();//handle to the corrosponding xml handle
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scrollbar
+if doscroll=true then{
+    var oldscroll = uiz_drawscrollbar_getscrollvalue(scroll);
+    uiz_drawscrollbar_vertical_step(scrollBarX,iy,ilx,ily,scroll,scrolllines,true,uiz_getposx(scrollspeed,dp),scrollbarAnimation, scrollbarAnimationTime);
+    var newscroll = uiz_drawscrollbar_getscrollvalue(scroll);   
+    if oldscroll!=newscroll then{    
+        var oldStartPos = startPos;
+        startPos = newscroll div fontHeight;
+        startOffset = -(newscroll mod fontHeight);
+        uiz_treelist_moveStartList(startPos-oldStartPos);
+        uiz_updater_FixViews();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///mouse selection
+lastSelectionPos = currentSelectionPos;
+lastSelectionList = currentSelectionList;
+
+//get new scrollpos
+if doscroll==false or uiz_getmouse_x()&lt;scrollBarX then{//if mouse not on scrollbar
+    //get what item number the mouse should be on.
+    var mouseRelativeItemPos = (uiz_getmouse_y()-ry-startOffset) div fontHeight;
+    currentSelectionPos = mouseRelativeItemPos + startPos;
+    currentSelectionList = startList;
+    
+    repeat(mouseRelativeItemPos){
+        if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
+                break;//no further mouse checking is needed
+        }
+        currentSelectionList = nextItemList[|currentSelectionList];
+    }
+}else{
+    currentSelectionPos = -1;
+    currentSelectionList = -1;
+}
+
+//check for differences between old and new mouse pos and update view
+if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!=kmouseover) then{
+    var srlx = rlx;
+    if doscroll then{srlx=scrollBarX;}
+    //update specific list items
+    if currentSelectionPos!=-1 then{
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+mouseRelativeItemPos*fontHeight,srlx,ry+startOffset+(mouseRelativeItemPos+1)*fontHeight);
+    }
+    if lastSelectionPos!=currentSelectionPos and lastSelectionPos!=-1 then{
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight);    
+    }
+}
+
+kmouseover_last = kmouseover;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -135,7 +250,9 @@ handleList = ds_list_create();//handle to the corrosponding xml handle
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var m=obj_uiz_xmlparser;
+            <string>///scrollbar deselection
+/*
+var m=obj_uiz_xmlparser;
 var l=m.filelistl[| usexml];
 if ds_list_size(l)=0 then{selectxml=-1}
 
@@ -147,6 +264,20 @@ if scrollat=0 then{
 startscrollat=0;
 }else{
 startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolllines);
+}
+*/
+if kmouseover=0 then{
+    var srlx = rlx;
+    if doscroll then{srlx=scrollBarX;}
+    if currentSelectionPos!=-1 then{
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight);    
+    }
+    lastSelectionPos = -1;
+    lastSelectionList = -1;
+    currentSelectionList = -1;
+    currentSelectionPos = -1;
+    kmouseover_last=0;
+    uiz_drawscrollbar_deselect(scrollBarX,iy,ilx,ily,uiz_vertical,scroll);
 }
 </string>
           </argument>
@@ -202,15 +333,22 @@ startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolll
         draw_set_color(textcolor);
         
         var lsz = ds_list_size(textList);
-        var ih=0;
-        for(var i=0;i&lt;lsz;i+=0){    
+        var ih=startOffset;
+        var srlx = rlx;
+        if doscroll then{srlx=scrollBarX;}
+        for(var i=startList;i&lt;lsz;i+=0){    
             var oldi = i;
-            i = uiz_treelist_drawEntry(i,ih);//max function for added safety
+            i = uiz_treelist_drawEntry(i,ih,srlx);//max function for added safety
             if i&lt;=0 or i&lt;oldi then{break;}
-            ++ih;
+            ih+=fontHeight;
         }
  
     }
+    //draw scrollbar
+    if doscroll=true then{
+        uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
+    }
+    
     uiz_containend()
 }
 </string>

@@ -1459,6 +1459,9 @@
               <script>scripts\uiz_treelist_drawEntry.gml</script>
               <script>scripts\uiz_treelist_parsexml.gml</script>
               <script>scripts\uiz_treelist_cleanup.gml</script>
+              <script>scripts\uiz_treelist_fixScroll.gml</script>
+              <script>scripts\uiz_treelist_updateScrollbar.gml</script>
+              <script>scripts\uiz_treelist_moveStartList.gml</script>
             </scripts>
             <script>scripts\uiz_treelist_setxml.gml</script>
             <script>scripts\uiz_treelist_setmargin.gml</script>
@@ -1468,6 +1471,8 @@
             <script>scripts\uiz_treelist_setscrollbarsettings.gml</script>
             <script>scripts\uiz_treelist_settags.gml</script>
             <script>scripts\uiz_treelist_getxmlpos.gml</script>
+            <script>scripts\uiz_treelist_expand.gml</script>
+            <script>scripts\uiz_treelist_setScrollbarWidth.gml</script>
           </scripts>
           <script>scripts\uiz_easybutton_create.gml</script>
           <scripts name="valuebox">

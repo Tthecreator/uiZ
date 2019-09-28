@@ -99,6 +99,7 @@ o.posinframex=uiz_fill;
 o.posinframey=uiz_fill;
 o.usexml=folders;
 uiz_treelist_parsexml(o);
+uiz_treelist_expand(o);
 uiz_fixgeneralpos(o);
 
 

@@ -1,21 +1,33 @@
 ///uiz_treelist_drawEntry(item)
 var i = argument0;
 var h = fontHeight;
-var ih = argument1;
-var hi = ih*h;
+var hi = argument1;
+var srlx = argument2;
 
 var sprl = spriteList[|i];
 var sprite = sprl>>7;
 var img = sprl mod 7;
 var name = textList[|i];
 var miscl = indentEnabledAndBoxList[|i];
-var nextPosition = miscl >> 8;
-var indent = (miscl >> 3) mod 32;
+//var nextPosition = miscl >> 8;
+var nextPosition = nextItemList[|i];
+var indent = miscl >> 3;//(miscl >> 3) mod 32;
 var enabled = (miscl >> 2) mod 2;
 var boxState = miscl mod 4;
 
+if currentSelectionList=i then{
+    if kmouseover=uiz_mouseclick then{
+        draw_square(rx,ry + hi,srlx,ry+ hi+h,backselcolor,backselalpha);
+        draw_set_color(textselcolor);
+        draw_set_alpha(1);
+    }else{
+        draw_square(rx,ry + hi,srlx,ry+ hi+h,backoncolor,backonalpha);
+        draw_set_color(textoncolor);
+        draw_set_alpha(1);
+    }
+}
 
-sdbm("drawing with indent",hi,indent)
+//sdbm("drawing ",i,nextPosition,indent,enabled,boxState);
 var boxadd=indent*h;
 if boxState!=uiz_treelist_boxState_noBox then{
     //we need to draw a box
@@ -30,5 +42,6 @@ if enabled {
     draw_text(rx+boxadd,ry + hi,name);
 }
 
+if currentSelectionList=i then{draw_set_color(textcolor);draw_set_alpha(1);} //reset text color for next item
 //return i+1;
 return nextPosition;
