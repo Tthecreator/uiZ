@@ -1462,17 +1462,29 @@
               <script>scripts\uiz_treelist_fixScroll.gml</script>
               <script>scripts\uiz_treelist_updateScrollbar.gml</script>
               <script>scripts\uiz_treelist_moveStartList.gml</script>
+              <script>scripts\uiz_treelist_switch_node.gml</script>
+              <script>scripts\uiz_treelist_generateHierarchyItemList.gml</script>
+              <script>scripts\uiz_treelist_fixNextItemList.gml</script>
             </scripts>
-            <script>scripts\uiz_treelist_setxml.gml</script>
             <script>scripts\uiz_treelist_setmargin.gml</script>
             <script>scripts\uiz_treelist_setboxsettings.gml</script>
             <script>scripts\uiz_treelist_settextsettings.gml</script>
             <script>scripts\uiz_treelist_setbackgroundsettings.gml</script>
             <script>scripts\uiz_treelist_setscrollbarsettings.gml</script>
             <script>scripts\uiz_treelist_settags.gml</script>
-            <script>scripts\uiz_treelist_getxmlpos.gml</script>
             <script>scripts\uiz_treelist_expand.gml</script>
             <script>scripts\uiz_treelist_setScrollbarWidth.gml</script>
+            <scripts name="xml">
+              <script>scripts\uiz_treelist_getxmlpos.gml</script>
+              <script>scripts\uiz_treelist_setxml.gml</script>
+            </scripts>
+            <scripts name="manipulation">
+              <script>scripts\uiz_treelist_addEntryAt.gml</script>
+            </scripts>
+            <scripts name="handle">
+              <script>scripts\uiz_treelist_handle_getByName.gml</script>
+              <script>scripts\uiz_treelist_handle_getByNamePath.gml</script>
+            </scripts>
           </scripts>
           <script>scripts\uiz_easybutton_create.gml</script>
           <scripts name="valuebox">
@@ -2117,7 +2129,7 @@
     </rooms>
     <room>rooms\room11</room>
   </rooms>
-  <constants number="96">
+  <constants number="97">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -2214,6 +2226,7 @@
     <constant name="uiz_xml_attributeData">5</constant>
     <constant name="uiz_treelist_boxState_noBox">0</constant>
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
+    <constant name="uiz_treelist_boxState_extended">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

@@ -72,10 +72,10 @@ folders=uiz_xml_loadstring('
         &lt;workfolder/&gt;
     &lt;/some folder&gt;
     &lt;video&gt;
-        &lt;fun/&gt;
+        &lt;fun sprite="'+string(spr_uiZ_gear)+'"/&gt;
         &lt;random/&gt;
     &lt;/video&gt;
-    &lt;system files&gt;
+    &lt;system_files name="system files" sprite="'+string(spr_uiZ_windowbutton_cross)+'"&gt;
         &lt;important/&gt;
         &lt;viruses/&gt;
     &lt;/system files&gt;
@@ -83,7 +83,7 @@ folders=uiz_xml_loadstring('
         &lt;nothing/&gt;
         &lt;you/&gt;
     &lt;/what you looking at&gt;
-    &lt;real shieat&gt;
+    &lt;real_shieat name="real shieat"&gt;
         &lt;tentacle/&gt;
         &lt;problems/&gt;
     &lt;/real shieat&gt;
@@ -100,6 +100,8 @@ o.posinframey=uiz_fill;
 o.usexml=folders;
 uiz_treelist_parsexml(o);
 uiz_treelist_expand(o);
+var handle = uiz_treelist_handle_getByName(o,"video");
+uiz_treelist_addEntryAt(o,handle,"TEST")
 uiz_fixgeneralpos(o);
 
 

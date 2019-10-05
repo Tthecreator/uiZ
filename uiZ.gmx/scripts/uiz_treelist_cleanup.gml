@@ -4,3 +4,4 @@ uiz_destroydslist(nextItemList);
 uiz_destroydslist(spriteList);
 uiz_destroydslist(textList);
 uiz_destroydslist(handleList);
+uiz_destroydslist(hierarchyItemList);

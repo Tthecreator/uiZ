@@ -30,10 +30,7 @@
 //#spritenum 8
 //#objectversion 1.0
 uiz_objinit()
-xmargin=3//v//x margin//
-ymargin=1//v//y margin//
 margin=1//v//margin//
-foldermargin=15//v//foldermargin//
 boxcolor=c_black//c//box color//
 boxoncolor=c_gray//c//box on color//
 boxincolor=c_ltgray//box in color//
@@ -42,14 +39,19 @@ boxsprite=spr_uiZ_plusminbox//p//box sprite//
 font=-1//f//font//
 textcolor=c_black//c//text color//
 textoncolor=c_blue//c//text on color//
-textselcolor=c_white//c//text selection color//
+textselcolor=c_blue//c//text selection color//
 backcolor=c_white//c//item back color//
-backoncolor=c_black//c//item back on color//
-backselcolor=c_black//c//item back over color//
+backoncolor=c_ltgray//c//item back on color//
+backselcolor=c_ltgray//c//item back over color//
 backalpha=0//c//item back alpha//
 backonalpha=0.5//c//item back on alpha//
 backselalpha=1//c//item back selection alpha//
 
+hierarchyLines=true//b//enable hierarchy line//
+hierarchyLineMaxWidth=5//v//hierarchy line start width in px//
+hierarchyLineMinWidth=1//v//hierarchy line minimum width in px//
+hierarchyLineDecreaseWidth=1//v//hierarchy line width decrease per hierarchy level in px//
+hierarchyLineColor=c_black//v//hierarchy line color//
 
 scrollbarwidth=16//v//scrollbar width//
 scrollbarwidthtype=px//z//scrollbar width type//
@@ -88,7 +90,10 @@ nextItemList = ds_list_create();//what the next listable id of the next item is.
 spriteList = ds_list_create();//what icon the list should draw (&lt;&lt;7) and what subimage to use (mod 3) (-1 for no sprite)
 textList = ds_list_create();//the text displayed in the entry
 handleList = ds_list_create();//handle to the corrosponding xml handle
+hierarchyItemList = ds_list_create();//contains per item ID which hierarchy levels should be shown. (each bit is a level with the leastsignifican bit being indent level 1)
 expandedLines = 0;
+
+maxHierarchyLevel = 0;
 
 doscroll = false;
 scrolllines = 0;
@@ -221,12 +226,14 @@ if doscroll==false or uiz_getmouse_x()&lt;scrollBarX then{//if mouse not on scro
     currentSelectionList = -1;
 }
 
-/*
+
 //check if we need to expand anything
 if kmouseover=uiz_mousereleased and currentSelectionPos!=-1 then{
-    
+    //expand node
+    uiz_treelist_switch_node(currentSelectionList);
+    uiz_updater_FixViews();
 }
-*/
+
 
 //check for differences between old and new mouse pos and update view
 if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!=kmouseover) then{
@@ -235,10 +242,10 @@ if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!
     updateMouseAreas = true;
     //update specific list items
     if currentSelectionPos!=-1 then{
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+mouseRelativeItemPos*fontHeight,srlx,ry+startOffset+(mouseRelativeItemPos+1)*fontHeight);
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+mouseRelativeItemPos*fontHeight,srlx,ry+startOffset+(mouseRelativeItemPos+1)*fontHeight-1);
     }
     if lastSelectionPos!=currentSelectionPos and lastSelectionPos!=-1 then{
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight);    
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight-1);    
     }
 }
 
@@ -286,10 +293,10 @@ if kmouseover=0 then{
     var srlx = rlx;
     if doscroll then{srlx=scrollBarX;}
     if currentSelectionPos!=-1 then{
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight);    
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight-1);    
     }
-    lastSelectionPos = -1;
-    lastSelectionList = -1;
+    lastSelectionPos = currentSelectionPos;
+    lastSelectionList = currentSelectionList;
     currentSelectionList = -1;
     currentSelectionPos = -1;
     kmouseover_last=0;

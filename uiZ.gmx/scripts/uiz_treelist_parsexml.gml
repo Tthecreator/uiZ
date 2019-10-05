@@ -9,6 +9,8 @@ with(argument0){
     ds_list_clear(nextItemList);
     ds_list_clear(spriteList);
     ds_list_clear(textList);
+    ds_list_clear(hierarchyItemList);
+    maxHierarchyLevel = 0;
     
     expandedLines = 1;
     
@@ -98,6 +100,7 @@ with(argument0){
         expandedLines = 0;
     }
     ds_stack_destroy(fillNextPosQueue);
+    uiz_treelist_generateHierarchyItemList();
 }
 
 #define uiz_treelist_parsexml_saveLineData
@@ -113,8 +116,8 @@ ds_list_add(textList,argument2);
 ds_list_add(handleList,argument3);
 ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
 ds_list_add(nextItemList,-1);
+maxHierarchyLevel = max(maxHierarchyLevel, argument4);
 //ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
-
 
     
 while(ds_stack_size(argument7)-1>=argument4){//stack level higher that desired level, we might have found a match
