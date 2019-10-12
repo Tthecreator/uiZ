@@ -23,6 +23,7 @@ with(argument0){
     var level = -1;
     var beginLevel = level;
     var handle = uiz_xml_gethandle_begin(usexml);
+    var lastTagHandle = handle;
     var isCollectingLineData=false;
     
     var fillNextPosQueue = ds_stack_create()
@@ -39,13 +40,13 @@ with(argument0){
         var tagType = (l[|handle] mod 8)
         switch(tagType){
             case uiz_xml_headTag: case uiz_xml_headAttributeTag:
-            
+                
                 //save line data
                 if isCollectingLineData==true then{
                     if boxState==-1 then{
                         boxState = uiz_treelist_boxState_collapsed;
                     }
-                    uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue)
+                    uiz_treelist_parsexml_saveLineData(spr,img,name,lastTagHandle,level,enabled,boxState,fillNextPosQueue)
                 }
                 isCollectingLineData = true;
                 //reset values
@@ -54,7 +55,7 @@ with(argument0){
                 img = 0;
                 enabled = true;
                 boxState = -1;
-                
+                lastTagHandle = handle;
                 ++level;//go a level deeper
             break;
             case uiz_xml_attributeName:
@@ -83,7 +84,7 @@ with(argument0){
             case uiz_xml_closingTag:
                 if isCollectingLineData==true then{
                     //new headtag, write previous values
-                    uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue);
+                    uiz_treelist_parsexml_saveLineData(spr,img,name,lastTagHandle,level,enabled,boxState,fillNextPosQueue);
                 }
                 
                 isCollectingLineData=false;
@@ -94,7 +95,7 @@ with(argument0){
     }
     if isCollectingLineData==true then{
         //add any stuck/left lines
-        uiz_treelist_parsexml_saveLineData(spr,img,name,handle,level,enabled,boxState,fillNextPosQueue);
+        uiz_treelist_parsexml_saveLineData(spr,img,name,lastTagHandle,level,enabled,boxState,fillNextPosQueue);
     }
     if ds_list_size(textList)==0 then{
         expandedLines = 0;

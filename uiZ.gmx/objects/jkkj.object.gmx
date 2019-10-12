@@ -57,7 +57,8 @@ uiz_init()
 //obj_uiZ_controller.uiz_useappsurf=false;
 //uiz_useAppSurf(false);
 win=uiz_window_create(250,px,500,px)
-win.posinframex=uiz_center;
+win.posinframex=uiz_snapleft;
+win.setpointx=uiz_left;
 win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 
@@ -78,7 +79,7 @@ folders=uiz_xml_loadstring('
     &lt;system_files name="system files" sprite="'+string(spr_uiZ_windowbutton_cross)+'"&gt;
         &lt;important/&gt;
         &lt;viruses/&gt;
-    &lt;/system files&gt;
+    &lt;/system_files&gt;
     &lt;what you looking at&gt;
         &lt;nothing/&gt;
         &lt;you/&gt;
@@ -86,7 +87,7 @@ folders=uiz_xml_loadstring('
     &lt;real_shieat name="real shieat"&gt;
         &lt;tentacle/&gt;
         &lt;problems/&gt;
-    &lt;/real shieat&gt;
+    &lt;/real_shieat&gt;
 &lt;/C:&gt;
 ')
 
@@ -100,10 +101,49 @@ o.posinframey=uiz_fill;
 o.usexml=folders;
 uiz_treelist_parsexml(o);
 uiz_treelist_expand(o);
-var handle = uiz_treelist_handle_getByName(o,"video");
-uiz_treelist_addEntryAt(o,handle,"TEST")
+var handle = uiz_treelist_handle_getByName(o,"problems");
+uiz_treelist_addEntryAt(o,handle,"TEST", -1, 0, 2)
+for(var i=0;i&lt;6;++i){
+    var handle = uiz_treelist_handle_getByName(o,"tentacle");
+    uiz_treelist_addEntryIn(o,handle,"WOWIE"+string(i), -1, 0)
+}
+var handle = uiz_treelist_handle_getByName(o,"problems");
+uiz_treelist_addEntryAt(o,handle,"TEST2", -1, 0, 2)
+var handle = uiz_treelist_handle_getByName(o,"TEST");
+uiz_treelist_addEntryAt(o,handle,"TEST3", -1, 0, 2)
+
+var handle = uiz_treelist_handle_getByName(o,"WOWIE3");
+uiz_treelist_removeEntry(o,handle,false);
+
+var handle = uiz_treelist_handle_getByName(o,"tentacle");
+uiz_treelist_removeEntry(o,handle,true);
+
+//uiz_treelist_addEntryAt(o,handle,"TEST")
 uiz_fixgeneralpos(o);
 
+
+win2=uiz_window_create(250,px,500,px)
+win2.posinframex=uiz_snapright;
+win2.setpointx=uiz_right;
+win2.posinframey=uiz_center;
+win2.color_normal=c_red;
+uiz_fixgeneralpos(win2);
+
+sdbm(uiz_xml_toString(folders))
+sdbm(uiz_xml_getdebugstringtotal(folders))
+
+o2=uiz_c(obj_uiZ_treelist);
+uiz_setparent(o2,win2);
+//o.tablist=ds_list_create();
+//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
+o2.posinframex=uiz_fill;
+o2.posinframey=uiz_fill;
+o2.usexml=folders;
+uiz_treelist_parsexml(o2);
+uiz_treelist_expand(o2);
+//var handle = uiz_treelist_handle_getByName(o,"problems");
+//uiz_treelist_addEntryAt(o,handle,"TEST", -1, 0, 1)
+uiz_fixgeneralpos(o2);
 
 /*
 b=uiz_c(obj_uiZ_button);
@@ -188,6 +228,29 @@ uiz_fixchildren(win,true);
 if (surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height()) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
 surface_resize(application_surface,window_get_width(),window_get_height());
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_treelist_parsexml(o2);
+uiz_treelist_expand(o2);
+uiz_fixgeneralpos(o2);
 </string>
           </argument>
         </arguments>

@@ -47,6 +47,8 @@ backalpha=0//c//item back alpha//
 backonalpha=0.5//c//item back on alpha//
 backselalpha=1//c//item back selection alpha//
 
+updateXML=true//b//automatically update xml//
+
 hierarchyLines=true//b//enable hierarchy line//
 hierarchyLineMaxWidth=5//v//hierarchy line start width in px//
 hierarchyLineMinWidth=1//v//hierarchy line minimum width in px//
@@ -143,6 +145,29 @@ usexml=0
           <argument>
             <kind>1</kind>
             <string>uiz_treelist_cleanup();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//uiz_treelist_generateHierarchyItemList();
 </string>
           </argument>
         </arguments>
@@ -371,8 +396,6 @@ if kmouseover=0 then{
     }else{//default draw
         if uiz_xml_isempty(usexml) = 0 then {
             
-            
-            
             var lsz = ds_list_size(textList);
             var ih=startOffset;
             
@@ -382,7 +405,6 @@ if kmouseover=0 then{
                 if i&lt;=0 or i&lt;oldi then{break;}
                 ih+=fontHeight;
             }
-     
         }
         //draw scrollbar
         if doscroll=true then{
@@ -437,6 +459,44 @@ if kmouseover=0 then{
           <argument>
             <kind>1</kind>
             <string>uiz_treelist_cleanup();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var lsz = ds_list_size(textList);
+var ih=startOffset;
+
+for(var i=startList;i&lt;lsz;i+=0){    
+    var oldi = i;
+    draw_set_color(c_blue)
+    draw_text(rlx-70,ry+ih,handleList[|i]);
+    draw_set_color(c_green)
+    if handleList[|i]!=-1 and is_real(handleList[|i]) and handleList[|i]&lt;uiz_xml_getTreeSize(usexml) then{
+        draw_text(rlx-50,ry+ih,uiz_xml_getdebugstringtotal_one(usexml,handleList[|i]));
+    }
+    var nextPosition = nextItemList[|i];
+    i = nextPosition;
+    if i&lt;=0 or i&lt;oldi then{break;}
+    ih+=fontHeight;
+}
 </string>
           </argument>
         </arguments>

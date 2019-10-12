@@ -1465,6 +1465,8 @@
               <script>scripts\uiz_treelist_switch_node.gml</script>
               <script>scripts\uiz_treelist_generateHierarchyItemList.gml</script>
               <script>scripts\uiz_treelist_fixNextItemList.gml</script>
+              <script>scripts\uiz_treelist_findNextNodeAtLevel.gml</script>
+              <script>scripts\uiz_treelist_fixNewHierarchyItemList.gml</script>
             </scripts>
             <script>scripts\uiz_treelist_setmargin.gml</script>
             <script>scripts\uiz_treelist_setboxsettings.gml</script>
@@ -1480,10 +1482,14 @@
             </scripts>
             <scripts name="manipulation">
               <script>scripts\uiz_treelist_addEntryAt.gml</script>
+              <script>scripts\uiz_treelist_addEntryIn.gml</script>
+              <script>scripts\uiz_treelist_removeEntry.gml</script>
+              <script>scripts\uiz_treelist_isItemVisible.gml</script>
             </scripts>
             <scripts name="handle">
               <script>scripts\uiz_treelist_handle_getByName.gml</script>
               <script>scripts\uiz_treelist_handle_getByNamePath.gml</script>
+              <script>scripts\uiz_treelist_handle_getEnd.gml</script>
             </scripts>
           </scripts>
           <script>scripts\uiz_easybutton_create.gml</script>
@@ -1700,6 +1706,7 @@
               <script>scripts\uiz_xml_drawstuff.gml</script>
             </scripts>
             <script>scripts\uiz_xml_gettag.gml</script>
+            <script>scripts\uiz_xml_getTreeSize.gml</script>
           </scripts>
           <scripts name="loading">
             <script>scripts\uiz_xml_loadfile.gml</script>
@@ -1735,19 +1742,30 @@
               <script>scripts\uiz_xml_attribute_getValue.gml</script>
             </scripts>
             <scripts name="writing">
-              <script>scripts\uiz_xml_writetag_at.gml</script>
+              <scripts name="adding tags">
+                <script>scripts\uiz_xml_writetag_at.gml</script>
+                <script>scripts\uiz_xml_writeHeadTag_at.gml</script>
+                <script>scripts\uiz_xml_writeHeadTag_in.gml</script>
+                <script>scripts\uiz_xml_writeHeadTag_before.gml</script>
+                <script>scripts\uiz_xml_writetag_at_end.gml</script>
+              </scripts>
+              <scripts name="removing tags">
+                <script>scripts\uiz_xml_remove_at_all.gml</script>
+                <script>scripts\uiz_xml_remove_at.gml</script>
+                <script>scripts\uiz_xml_removedown_at.gml</script>
+              </scripts>
               <script>scripts\uiz_xml_writetag.gml</script>
               <script>scripts\uiz_xml_settaginfo_at.gml</script>
               <script>scripts\uiz_xml_removelasttagstruct_at.gml</script>
               <script>scripts\uiz_xml_empty.gml</script>
               <script>scripts\uiz_xml_addtreeintree.gml</script>
               <script>scripts\uiz_xml_switch.gml</script>
-              <script>scripts\uiz_xml_removedown_at.gml</script>
-              <script>scripts\uiz_xml_writetag_at_end.gml</script>
             </scripts>
+            <script>scripts\uiz_xml_decreaseTagDepth.gml</script>
           </scripts>
           <scripts name="saving">
             <script>scripts\uiz_xml_savefile.gml</script>
+            <script>scripts\uiz_xml_toString.gml</script>
             <script>scripts\uiz_xml_stringl.gml</script>
             <script>scripts\uiz_xml_stringd.gml</script>
             <script>scripts\uiz_xml_stringv.gml</script>
@@ -2129,7 +2147,7 @@
     </rooms>
     <room>rooms\room11</room>
   </rooms>
-  <constants number="97">
+  <constants number="99">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -2221,9 +2239,11 @@
     <constant name="uiz_window_contain_window">3</constant>
     <constant name="uiz_xml_headTag">0</constant>
     <constant name="uiz_xml_headAttributeTag">1</constant>
-    <constant name="uiz_xml_closingTag">7</constant>
+    <constant name="uiz_xml_dataTag">2</constant>
+    <constant name="uiz_xml_dataTagWithAttributes">3</constant>
     <constant name="uiz_xml_attributeName">4</constant>
     <constant name="uiz_xml_attributeData">5</constant>
+    <constant name="uiz_xml_closingTag">7</constant>
     <constant name="uiz_treelist_boxState_noBox">0</constant>
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
     <constant name="uiz_treelist_boxState_extended">2</constant>
