@@ -17,7 +17,6 @@ if (argument0>0) then{
             //sdbm("[uiZ|ERROR] Failed to find candidate treelist item to move treelist scroll start position to")
             //show_error("[uiZ|ERROR] Failed to find candidate treelist item to move treelist scroll start position to",false)
             //}
-            sdbm("setting startList to",i)
             startList = i;
             candidate = -1;
             minSearchLevel = currentLevel;

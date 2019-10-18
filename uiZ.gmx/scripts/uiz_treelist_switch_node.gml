@@ -1,3 +1,4 @@
+#define uiz_treelist_switch_node
 ///uiz_treelist_switch_node(listID)
 //takes an position in the item list and expands/collapses that item
 var miscl = indentEnabledAndBoxList[|argument0];
@@ -25,5 +26,17 @@ if (boxState!=uiz_treelist_boxState_noBox) then{//if this item is even expandabl
      //extend box
         nextItemList[|argument0] = argument0+1;
         indentEnabledAndBoxList[|argument0] = miscl - boxState + uiz_treelist_boxState_extended;
+    }
+    uiz_treelist_switch_node_updateXML(argument0);
+}
+
+#define uiz_treelist_switch_node_updateXML
+if updateXML and updateXMLBoxState then{
+    if (uiz_xml_settaginfo_at(usexml,handleList[|argument0],"boxState",string(indentEnabledAndBoxList[|argument0] mod 4))){
+        //we need to change up our xmlHandles, because new data was written
+        var lsz = ds_list_size(handleList);
+        for(var i=argument0+1;i<lsz;++i){
+            handleList[|i]+=2;//two pieces of data: dataName and dataInfo
+        }
     }
 }

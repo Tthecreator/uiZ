@@ -1,5 +1,6 @@
 #define uiz_treelist_removeEntry
 ///uiz_treelist_removeEntry(treelist,handle,recursive)
+//if live_call(argument0,argument1,argument2) return live_result;
 //remove an entry from a treelist
 //if this entry has children, the children will be placed in the entry above the deleted entry.
 //However, if that entry doesn't exist (e.g. you are at the first node) or the indentLevel of the entry above is not the same as this one, the children might get broken.
@@ -50,6 +51,7 @@ with(argument0){
 
 #define uiz_treelist_removeEntry_refitXmlHandles
 ///uiz_treelist_removeEntry_refitXmlHandles(listHandle,removedP,oldClosingTagPosition)
+//if live_call(argument0,argument1,argument2) return live_result;
 var lsz = ds_list_size(handleList);
 for(var i = argument0;i<lsz;++i){
     var r = handleList[|i];
@@ -64,6 +66,7 @@ for(var i = i+0;i<lsz;++i){
 }
 
 #define uiz_treelist_removeEntry_recursively
+/// uiz_treelist_removeEntry_recursively(handle)
 ///uiz_treelist_removeEntry_recursively(listHandle)
 var handle = argument0;
 if updateXML then{
@@ -89,7 +92,7 @@ for(var i=handle+1;i<lsz;++i){
 }
 
 //check how many visible lines to remove
-expandedLines -= uiz_treelist_removeEntry_recursively_getVisibleLines(handle,removeUntil);
+expandedLines -= uiz_treelist_removeEntry_recursively_getVisibleLines(handle,removeUntil-1);
 removeLines = removeUntil-handle;
 
 //remove from treelist
@@ -105,7 +108,9 @@ for(var i=handle;i<lsz;++i){
 nextItemList[|lsz-1]=-1;
 
 #define uiz_treelist_removeEntry_recursively_getVisibleLines
+/// uiz_treelist_removeEntry_recursively_getVisibleLines(startH)
 ///uiz_treelist_removeEntry_recursively_getVisibleLines(listHandle,removeUntil)
+//if (live_call(argument0,argument1)) return live_result;
 var visibleLines = 0;
 var startH = argument0;
 var maxH = min(argument1,ds_list_size(nextItemList));
@@ -122,8 +127,10 @@ while(true){
     h = nextItemList[|h];
 }
 
+return visibleLines;
 
 #define uiz_treelist_removeEntry_removeFromLists
+/// uiz_treelist_removeEntry_removeFromLists(handle)
 ///uiz_treelist_removeEntry_removeFromLists(handle)
 var handle = argument0;
 ds_list_delete(indentEnabledAndBoxList,handle);

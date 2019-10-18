@@ -43,11 +43,14 @@ textselcolor=c_blue//c//text selection color//
 backcolor=c_white//c//item back color//
 backoncolor=c_ltgray//c//item back on color//
 backselcolor=c_ltgray//c//item back over color//
-backalpha=0//c//item back alpha//
-backonalpha=0.5//c//item back on alpha//
-backselalpha=1//c//item back selection alpha//
+backdragcolor=$ffd1ab//c//item back color while dragging//
+backalpha=0//v//item back alpha//
+backonalpha=0.5//v//item back on alpha//
+backselalpha=1//v//item back selection alpha//
+backdragalpha=0.5//item back alpha while dragging//
 
 updateXML=true//b//automatically update xml//
+updateXMLBoxState=true//b//automatically update box expanded/collapsed state in xml//
 
 hierarchyLines=true//b//enable hierarchy line//
 hierarchyLineMaxWidth=5//v//hierarchy line start width in px//
@@ -63,6 +66,12 @@ scrollbarbacktexmode=uiz_texturemode_fill_edgeless//t//scrollbar texturemode//
 scrollspeed=0.5//v//scrollspeed in dp//
 scrollbarAnimation=uiz_sin_inout//a//scrollbar animation//
 scrollbarAnimationTime=0.2//v//scrollbar animation time//
+
+onDragScript = uiz_treelist_dragScript_move;//this script is called whenever an item is dragged from one position to the other. The arguments are:
+//0: id of treelist
+//1: the handle/id of the item being dragged
+//2: destinationItem, the handle/id of the item the mouse is currently over
+//3: a float between 0 and 1 of how far the mouse is currently over the destinationItem.
 
 update=0;
 updated=0;
@@ -111,9 +120,19 @@ currentSelectionList = -1;
 currentSelectionPos = -1;
 kmouseover_last = 0;
 
+draggingItem = -1;
+draggingItemRelativePos = -1;
+drawDraggingItem = -1;
+draggingItemCandidate = -1;
+draggingItemCandidateRelativePos = -1;
+draggingSnapX = 0;
+draggingSnapY = 0;
+draggingStartY = 0;
 
 updateScroll = false;
 updateMouseAreas = false;
+updateDragArea = false;
+
 
 selectxml=-1;
 scroll=uiz_drawscrollbar_init();
@@ -145,29 +164,6 @@ usexml=0
           <argument>
             <kind>1</kind>
             <string>uiz_treelist_cleanup();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//uiz_treelist_generateHierarchyItemList();
 </string>
           </argument>
         </arguments>
@@ -224,6 +220,7 @@ if doscroll=true then{
           <argument>
             <kind>1</kind>
             <string>///mouse selection
+//if live_call() return live_result;
 lastSelectionPos = currentSelectionPos;
 lastSelectionList = currentSelectionList;
 
@@ -233,14 +230,15 @@ if doscroll==false or uiz_getmouse_x()&lt;scrollBarX then{//if mouse not on scro
     var mouseRelativeItemPos = (uiz_getmouse_y()-ry-startOffset) div fontHeight;
     currentSelectionPos = mouseRelativeItemPos + startPos;
     currentSelectionList = startList;
-    
-    repeat(mouseRelativeItemPos){
-        if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
-            currentSelectionList = -1;
-            currentSelectionPos = -1;
-            break;//no further mouse checking is needed
+    if mouseRelativeItemPos&gt;0 then{
+        repeat(mouseRelativeItemPos){
+            if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
+                currentSelectionList = -1;
+                currentSelectionPos = -1;
+                break;//no further mouse checking is needed
+            }
+            currentSelectionList = nextItemList[|currentSelectionList];
         }
-        currentSelectionList = nextItemList[|currentSelectionList];
     }
     if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
             currentSelectionList = -1;
@@ -250,15 +248,41 @@ if doscroll==false or uiz_getmouse_x()&lt;scrollBarX then{//if mouse not on scro
     currentSelectionPos = -1;
     currentSelectionList = -1;
 }
-
-
+obj_uiZ_controller.mouseswipeclick_distance = 1;
+//sdbm("mx",global.uiz_mouseswipeclick,draggingItem,draggingItemCandidate)
+//uiz_mouse_unfreeze()
+//handle mouse
+if currentSelectionPos!=-1 then{
 //check if we need to expand anything
-if kmouseover=uiz_mousereleased and currentSelectionPos!=-1 then{
-    //expand node
-    uiz_treelist_switch_node(currentSelectionList);
-    uiz_updater_FixViews();
+    switch(kmouseover){
+        case uiz_mousereleased:
+            //expand node
+            if draggingItem=-1 then{
+                uiz_treelist_switch_node(currentSelectionList);
+                uiz_updater_FixViews();
+            }
+        case uiz_mousepressed:
+            if draggingItemCandidate=-1 and mouse_check_button_pressed(mb_left) then{
+                //sdbm("New candiate",draggingItemCandidate)
+                draggingItemCandidate = currentSelectionList;
+                draggingItemCandidateRelativePos = mouseRelativeItemPos;
+                draggingSnapY = uiz_getmouse_y()-(ry+fontHeight*currentSelectionPos-startOffset);
+                draggingSnapX = uiz_getmouse_x()-rx;
+                draggingStartY = uiz_getmouse_y();
+            }
+        break;
+        default:
+        break;
+    }
 }
 
+if draggingItem=-1 and draggingItemCandidate!=-1 and (global.uiz_mouseswipeclick or abs(draggingStartY - uiz_getmouse_y())&gt;5) and mouse_check_button(mb_left) then{
+    //sdbm("Initializing swipe2")
+    draggingItem = draggingItemCandidate;
+    draggingItemRelativePos = draggingItemCandidateRelativePos;
+    draggingItemCandidate = -1;
+    uiz_mouse_freeze();
+}
 
 //check for differences between old and new mouse pos and update view
 if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!=kmouseover) then{
@@ -273,6 +297,17 @@ if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight-1);    
     }
 }
+
+if draggingItem!=-1 and !mouse_check_button(mb_left) then{
+        var srlx = rlx;
+        if doscroll then{srlx=scrollBarX;}
+        drawDraggingItem=draggingItem;
+        draggingItem=-1;
+        uiz_mouse_unfreeze();
+        script_execute(onDragScript,id,drawDraggingItem,currentSelectionPos, (uiz_getmouse_y()-(ry+fontHeight*currentSelectionPos-startOffset))/fontHeight,true);
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight-1);
+        updateDragArea = true;
+    }
 
 
 kmouseover_last = kmouseover;
@@ -298,27 +333,14 @@ kmouseover_last = kmouseover;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///scrollbar deselection
-/*
-var m=obj_uiz_xmlparser;
-var l=m.filelistl[| usexml];
-if ds_list_size(l)=0 then{selectxml=-1}
-
-//handle scrollbar
-scrolllines=uiz_xml_getextendedtags(usexml);
-fitscrolllines=round(height/(string_height("{|")+ymargin*2+margin));
-maxscrolllines=scrolllines-fitscrolllines+1;
-if scrollat=0 then{
-startscrollat=0;
-}else{
-startscrollat=clamp(uiz_xml_getextendedtags_number(usexml,scrollat),0,maxscrolllines);
-}
-*/
+            <string>///scrollbar and item deselection
+//if live_call() return live_result;
 if kmouseover=0 then{
     var srlx = rlx;
     if doscroll then{srlx=scrollBarX;}
     if currentSelectionPos!=-1 then{
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight-1);    
+        updateMouseAreas = true;
     }
     lastSelectionPos = currentSelectionPos;
     lastSelectionList = currentSelectionList;
@@ -327,6 +349,29 @@ if kmouseover=0 then{
     kmouseover_last=0;
     uiz_drawscrollbar_deselect(scrollBarX,iy,ilx,ily,uiz_vertical,scroll);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///dragitem deselection
+//if live_call() return live_result
+
 </string>
           </argument>
         </arguments>
@@ -372,7 +417,8 @@ if kmouseover=0 then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if uiz_cntn() then {
+            <string>//if live_call() return live_result;
+if uiz_cntn() then {
     //draw settings
     var srlx = rlx;
     if doscroll then{srlx=scrollBarX;}
@@ -386,11 +432,20 @@ if kmouseover=0 then{
         //selfmarked draw
         if updateMouseAreas then{
             if currentSelectionPos!=-1 then{
-                uiz_treelist_drawEntry(currentSelectionList,startOffset+(currentSelectionPos-startPos)*fontHeight,srlx);
+                //sdbm("update curpos",currentSelectionList);
+                uiz_treelist_drawEntry(currentSelectionList,startOffset+(currentSelectionPos-startPos)*fontHeight,rx,srlx);
             }
             if lastSelectionPos!=currentSelectionPos and lastSelectionPos!=-1 then{
-                uiz_treelist_drawEntry(lastSelectionList,startOffset+(lastSelectionPos-startPos)*fontHeight,srlx);
+                //sdbm("update lastpos");
+                uiz_treelist_drawEntry(lastSelectionList,startOffset+(lastSelectionPos-startPos)*fontHeight,rx,srlx);
             }
+            updateMouseAreas = false;
+        }
+        
+        if updateDragArea then{
+            //sdbm("update dragarea",drawDraggingItem);
+            uiz_treelist_drawEntry(drawDraggingItem,startOffset+(draggingItemRelativePos-startPos)*fontHeight,rx,srlx);
+            updateDragArea = false;
         }
         
     }else{//default draw
@@ -401,15 +456,17 @@ if kmouseover=0 then{
             
             for(var i=startList;i&lt;lsz;i+=0){    
                 var oldi = i;
-                i = uiz_treelist_drawEntry(i,ih,srlx);
-                if i&lt;=0 or i&lt;oldi then{break;}
+                i = uiz_treelist_drawEntry(i,ih,rx,srlx);
+                if i&lt;=0 or i&lt;oldi or is_undefined(i) then{break;}
                 ih+=fontHeight;
             }
+            
         }
-        //draw scrollbar
-        if doscroll=true then{
-            uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
-        }
+        
+    }
+    //draw scrollbar
+    if doscroll=true then{
+        uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
     }
     uiz_containend()
 }
@@ -481,10 +538,13 @@ if kmouseover=0 then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var lsz = ds_list_size(textList);
+            <string>/*
+//if live_call() return live_result
+var lsz = ds_list_size(textList);
 var ih=startOffset;
-
+//sdbm("s",startList,lsz)
 for(var i=startList;i&lt;lsz;i+=0){    
+    //sdbm("s",startList,lsz,i,handleList[|i]);
     var oldi = i;
     draw_set_color(c_blue)
     draw_text(rlx-70,ry+ih,handleList[|i]);
@@ -494,8 +554,44 @@ for(var i=startList;i&lt;lsz;i+=0){
     }
     var nextPosition = nextItemList[|i];
     i = nextPosition;
-    if i&lt;=0 or i&lt;oldi then{break;}
+    //sdbm("nextPos",i,lsz);
+    if i&lt;=0 or i&lt;oldi or is_undefined(i) then{break;}
     ih+=fontHeight;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///drag item
+//if live_call() return live_result
+//sdbm("draggingItem",draggingItem,global.mousefrozen)
+updateDragArea = false;
+if draggingItem!=-1 then{
+    var srlx;
+    if doscroll then{srlx=scrollBarX-rx;}else{srlx=width}
+    var oldHierarchy = hierarchyLines;
+    hierarchyLines = false;
+    backselalpha*=backdragalpha
+    //uiz_treelist_drawEntry(draggingItem,uiz_getmouse_y()-ry-draggingSnapY,uiz_getmouse_x()-draggingSnapX,uiz_getmouse_x()+srlx-draggingSnapX)
+    uiz_treelist_drawEntry(draggingItem,uiz_getmouse_y()-ry-draggingSnapY,uiz_getmouse_x(),uiz_getmouse_x()+srlx)
+    backselalpha/=backdragalpha
+    hierarchyLines = oldHierarchy;
 }
 </string>
           </argument>

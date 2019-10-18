@@ -9,7 +9,16 @@ if scrolllines > 0 then{
     startList = 0;
     scroll=uiz_drawscrollbar_init();
 }
-if doscroll!=oldDoscroll && view_fix=false then{
+var update = false;
+if doscroll and uiz_drawscrollbar_getvalue(scroll) > scrolllines then{
+    uiz_drawscrollbar_setvalue(scroll,scrolllines);
+    var oldStartPos = startPos;
+    startPos = scrolllines div fontHeight;
+    startOffset = -(scrolllines mod fontHeight);
+    uiz_treelist_moveStartList(startPos-oldStartPos);
+    var update = true;
+}
+if (update or doscroll!=oldDoscroll) and view_fix=false then{
     if doscroll then{
         updateScroll = true;
         uiz_updater_FixViews_area_selfmarked(scrollBarX,ry,rlx,rly);

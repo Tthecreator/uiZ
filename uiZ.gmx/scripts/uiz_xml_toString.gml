@@ -42,7 +42,7 @@ for (var i = 0; i < lsz; i++) {
                 g2 = round(uiz_positify(l[| i]) >> 3)
                 //if p=N and p2=I
                 if p = 4 and p2 = 5 then {
-                    var kstr = v[| g2];
+                    var kstr = string(v[| g2]);
                     //sdbm(kstr,g2)
                     if string_char_at(kstr, 1) != '"'
                     then {
@@ -81,7 +81,7 @@ for (var i = 0; i < lsz; i++) {
                 //sdbm("running1")
                 if p2 = 5 then {
                     //sdbm("running2","<"+d[|g]+">"+v[|g2]+"</"+d[|g]+">")
-                    str += (intostring + "<" + d[| g] + ">" + v[| g2] + "</" + d[| g] + ">")+chr($0A);
+                    str += (intostring + "<" + d[| g] + ">" + string(v[| g2]) + "</" + d[| g] + ">")+chr($0A);
                 } else {
                     i--;
                 }
@@ -105,7 +105,7 @@ for (var i = 0; i < lsz; i++) {
                             //if p3=I
                             if p3 = 5 then {
                                 //sdbm(kstr,g2)
-                                var kstr = v[| g3];
+                                var kstr = string(v[| g3]);
                                 if string_char_at(kstr, 1) != '"'
                                 then {
                                     kstr = '"' + kstr
@@ -125,7 +125,7 @@ for (var i = 0; i < lsz; i++) {
                 }
                 //if p3=I
                 if p2 = 5 then {
-                    str += ( intostring + wstr + ">" + v[| g2] + "</" + d[| g] + ">")+chr($0A);
+                    str += ( intostring + wstr + ">" + string(v[| g2]) + "</" + d[| g] + ">")+chr($0A);
                 }
             }
             break;
@@ -142,7 +142,7 @@ for (var i = 0; i < lsz; i++) {
                 g2 = round(uiz_positify(l[| i]) >> 3)
                 //if p=N and p2=I
                 if p = 4 and p2 = 5 then {
-                    var kstr = v[| g2]
+                    var kstr = string(v[| g2])
                     if string_char_at(kstr, 1) != '"'
                     then {
                         kstr = '"' + kstr

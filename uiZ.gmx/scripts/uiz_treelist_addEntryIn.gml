@@ -2,6 +2,13 @@
 ///uiz_treelist_addEntryIn(id, handle, name, [sprite], [spriteImage], [enabled], [boxState])
 //adds an entry right before a handle, with the same indentation as the item on the handle
 //enabled: This item is grayed out
+/*
+var argument_arr = array_create(argument_count);
+for (var i = 0; i < argument_count; i++) {
+	argument_arr[i] = argument[i];
+}
+if (live_call_ext(argument_arr)) return live_result;
+*/
 with(argument[0]){
     var handle = argument[1];
     if handle=-1 then{handle=0;}
@@ -34,6 +41,7 @@ with(argument[0]){
 }
 
 #define uiz_treelist_addEntryIn_refitXmlHandles
+//if (live_call(argument0)) return live_result;
 var m=obj_uiz_xmlparser;
 var l=m.filelistl[| usexml];
 var d=m.filelistd[| usexml];

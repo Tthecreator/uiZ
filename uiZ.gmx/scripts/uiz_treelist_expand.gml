@@ -7,6 +7,7 @@ with(argument0){
         var boxState = (miscl mod 4);
         if boxState == uiz_treelist_boxState_collapsed then{
             indentEnabledAndBoxList[|i] = miscl - boxState + uiz_treelist_boxState_extended;
+            uiz_treelist_switch_node_updateXML(i);
         }
         nextItemList[|i] = i+1;
     }

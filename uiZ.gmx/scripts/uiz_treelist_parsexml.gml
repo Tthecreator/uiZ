@@ -2,8 +2,10 @@
 ///uiz_treelist_parsexml(treelist)
 //reload the xml data into the list
 //the xml data to be used can be given using uiz_treelist_setxml
-with(argument0){
 
+//if (live_call(argument0)) return live_result;
+
+with(argument0){
     ds_list_clear(indentEnabledAndBoxList);
     ds_list_clear(handleList);
     ds_list_clear(nextItemList);
@@ -99,6 +101,9 @@ with(argument0){
     }
     if ds_list_size(textList)==0 then{
         expandedLines = 0;
+    }else{
+        //set last item to point to nothing
+        nextItemList[|ds_list_size(textList)-1]=-1;
     }
     ds_stack_destroy(fillNextPosQueue);
     uiz_treelist_generateHierarchyItemList();
@@ -106,6 +111,7 @@ with(argument0){
 
 #define uiz_treelist_parsexml_saveLineData
 ///uiz_treelist_parsexml_saveLineData(sprite,image,name,handle,level,enabled,boxState,saveindentqueue)
+//if (live_call(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7)) return live_result;
 if argument6==-1 then{
     argument6 = uiz_treelist_boxState_noBox;
 }
@@ -116,15 +122,21 @@ ds_list_add(spriteList,sprl);
 ds_list_add(textList,argument2);
 ds_list_add(handleList,argument3);
 ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
-ds_list_add(nextItemList,-1);
+if argument6==uiz_treelist_boxState_extended then{
+    ds_list_add(nextItemList,curId+1);
+}else{
+    ds_list_add(nextItemList,-1);
+}
 maxHierarchyLevel = max(maxHierarchyLevel, argument4);
 //ds_list_add(indentEnabledAndBoxList,(argument4<<3)+(argument5<<2)+(argument6));
 
     
-while(ds_stack_size(argument7)-1>=argument4){//stack level higher that desired level, we might have found a match
+while(ds_stack_size(argument7)-1>=argument4){//stack level higher than desired level, we might have found a match
         var checkId = ds_stack_pop(argument7);
         if checkId!=-1 then{//match found
-            nextItemList[|checkId] = curId//make other entry point to this one as it's next item in the list.
+            if nextItemList[|checkId]=-1 then{
+                nextItemList[|checkId] = curId//make other entry point to this one as it's next item in the list.
+            }
             if (checkId==curId-1){
                 ++expandedLines;
             }

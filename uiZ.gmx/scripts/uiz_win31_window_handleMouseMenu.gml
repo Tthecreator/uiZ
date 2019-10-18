@@ -1,5 +1,5 @@
 //run switch for every element in the mouse menu
-sdbm("handling mouse menu for",argument0,argument1)
+//sdbm("handling mouse menu for",argument0,argument1)
 switch(argument0.selected){
 case 0:
 //Restore

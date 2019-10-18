@@ -2,13 +2,25 @@
 ///uiz_treelist_addEntryAt(id, handle, name, [sprite], [spriteImage], [indentLevel],[enabled], [boxState])
 //adds an entry right before a handle, with the same indentation as the item on the handle
 //enabled: This item is grayed out
+/*
+var argument_arr = array_create(argument_count);
+for (var i = 0; i < argument_count; i++) {
+	argument_arr[i] = argument[i];
+}
+if (live_call_ext(argument_arr)) return live_result;
+*/
 with(argument[0]){
     var handle = argument[1];
     if handle=-1 then{handle=0;}
     var spr = -1;
     var enabled = true;
     var boxState = uiz_treelist_boxState_noBox;
-    var level = indentEnabledAndBoxList[|handle]>>3;
+    var level;
+    if handle<ds_list_size(indentEnabledAndBoxList) then{
+        level = indentEnabledAndBoxList[|handle]>>3;//uiz_treelist_item_get_indentLevel(argument0,argument1);
+    }else{
+        level = indentEnabledAndBoxList[|ds_list_size(indentEnabledAndBoxList)-1]>>3;
+    }
     var originalLevel = level;
     var lsz = ds_list_size(indentEnabledAndBoxList);
     switch(argument_count){
@@ -36,11 +48,20 @@ with(argument[0]){
     }
     ds_list_insert(textList,handle,argument[2]);
     ds_list_insert(spriteList,handle,spr);
-    var xmlHandle = handleList[|handle];
+    var xmlHandle, curHierarchy;
+    var lsz = ds_list_size(handleList);
+    if handle<lsz then{
+        xmlHandle = handleList[|handle];
+        curHierarchy = hierarchyItemList[|handle];//uiz_treelist_item_get_indentLevel(argument0,argument1);
+    }else{
+        nextItemList[|lsz-1] = handle;
+        xmlHandle = handleList[|lsz-1];
+        xmlHandle = uiz_xml_gethandleend(usexml,xmlHandle)+1;
+        curHierarchy = hierarchyItemList[|lsz-1];
+    }
     ds_list_insert(handleList,handle,xmlHandle);
     ds_list_insert(nextItemList,handle,-1);
-    var curHierarchy = hierarchyItemList[|handle];
-    if (argument_count<6 or (indentEnabledAndBoxList[|handle]>>3)==level) and (curHierarchy>>(level-1))==0 then{
+    if (argument_count<6 or originalLevel==level) and (curHierarchy>>(level-1))==0 then{
         curHierarchy += 1<<(level-1);
     }
     ds_list_insert(hierarchyItemList,handle,curHierarchy);//will be overwritten anyways after fixing the item list
@@ -60,7 +81,10 @@ with(argument[0]){
         break;
     }
     
-    
+    //fix visiblity
+    if uiz_treelist_isItemVisible(id,handle) then{
+        ++expandedLines;
+    }
     
     if (argument_count>=6 && level>originalLevel){//don't add At, add inside
         //fix hierarchy list
@@ -71,7 +95,6 @@ with(argument[0]){
                 hierarchyItemList[|handle-1] |= 1<<(level-1);
             }
         }
-        
         if updateXML then{
             //find correct xml handle to the beginning of the parent
             var xmlInHandle = 0;
@@ -83,7 +106,8 @@ with(argument[0]){
                 }
             }
         
-            uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2]);
+            uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+            //uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2]);
             uiz_treelist_addEntryIn_refitXmlHandles(handle);
         }
     }else{
@@ -91,15 +115,14 @@ with(argument[0]){
         uiz_treelist_fixNewHierarchyItemList(handle, level);
         //apply changes to xml
         if updateXML then{
-            uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name",argument[2]);
+            uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+            //uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name");
             if (argument_count>=6){
                 uiz_xml_decreaseTagDepth(usexml,xmlHandle,originalLevel-level);
             }
         }
         uiz_treelist_addEntryAt_refitXmlHandles(xmlHandle,handle,level);
     }
-
-    
     
 }
 
@@ -112,7 +135,6 @@ var v=m.filelistv[| usexml];
 var lsz = ds_list_size(l);
 var p;
 var xmlHandle = argument0;
-
 //count amount of added end tags before handle
 var addedEndTagSizes = 0;//the amount of end tags that have been added before the xmlHandle
 for(var i=xmlHandle;i<lsz;++i){
@@ -145,10 +167,9 @@ switch(p mod 8){
         }
     break;
     default:
-        sdbm("[uiZ|ERROR]Unable to figure out how treelist "+string(id)+" relates to it's underlying xml");
+        sdbm("[uiZ|ERROR]Unable to figure out how treelist "+string(id)+" relates to it's underlying xml",ptype);
         show_error("[uiZ|ERROR]Unable to figure out how treelist "+string(id)+" relates to it's underlying xml",false);
 }
-
 //add calculated offsets to xml handles
 var hsz = ds_list_size(handleList);
 handleList[|argument1]+=addedEndTagSizes;//tag that has changed only needs this offset
@@ -160,7 +181,6 @@ for(var i=argument1+1;i<hsz;++i){
     }
     handleList[|i]+=addedEndTagSizes+beginTagSize;    
 }
-
 //add offsets after endtag
 for(var i=i+0;i<hsz;++i){
     handleList[|i]+=addedEndTagSizes+beginTagSize+1;    

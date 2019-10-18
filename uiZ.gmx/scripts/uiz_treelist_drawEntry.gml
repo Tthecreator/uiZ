@@ -1,12 +1,14 @@
-///uiz_treelist_drawEntry(item)
+///uiz_treelist_drawEntry(item,ypos,rx,rlx)
+//if live_call(argument0,argument1,argument2,argument3) return live_result
 var i = argument0;
 var h = fontHeight;
 var hi = argument1;
-var srlx = argument2;
+var rx = argument2;
+var srlx = argument3;
 
 var sprl = spriteList[|i];
 var sprite = sprl>>7;
-var img = sprl mod 7;
+var img = sprl mod 128;
 var name = textList[|i];
 var miscl = indentEnabledAndBoxList[|i];
 //var nextPosition = miscl >> 8;
@@ -17,21 +19,24 @@ var boxState = miscl mod 4;
 
 var tcol = textcolor;
 
-if currentSelectionList=i then{
-    if kmouseover=uiz_mouseclick then{
-        draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backselcolor,backselalpha);
-        tcol = textselcolor;
-        draw_set_alpha(1);
-    }else{
-        draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backoncolor,backonalpha);
-        tcol = textoncolor;
-        draw_set_alpha(1);
-    }
+if draggingItem=i then{
+    draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backdragcolor,backdragalpha);
+    tcol = textselcolor;
 }else{
-    draw_square(rx,ry + hi,srlx,ry+ hi+h,backcolor,backalpha);
-    tcol = textcolor;
-    draw_set_alpha(1);
+    if currentSelectionList=i then{
+        if kmouseover=uiz_mouseclick then{
+            draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backselcolor,backselalpha);
+            tcol = textselcolor;
+        }else{
+            draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backoncolor,backonalpha);
+            tcol = textoncolor;
+        }
+    }else{
+        draw_square(rx,ry + hi,srlx,ry+ hi+h,backcolor,backalpha);
+        tcol = textcolor;
+    }
 }
+draw_set_alpha(1);
 
 
 var boxadd=indent*h;
@@ -60,11 +65,14 @@ if hierarchyLines and indent>0 then{
     var linex = rx+(indent-0.5)*h;
     
     draw_line_width(linex,lineh,rx+boxadd,lineh,linew);
-    if (nextPosition<ds_list_size(nextItemList) and (indentEnabledAndBoxList[|nextPosition]>>3)>=indent and ((hierarchyItems >> (lvl-1)) mod 2)){//if next item is below this one and on the same level
+    if (nextPosition>=0 and nextPosition<ds_list_size(nextItemList) and 
+    (indentEnabledAndBoxList[|nextPosition]>>3)>=indent and
+    ((hierarchyItems >> (lvl-1)) mod 2)){//if next item is below this one and on the same level
         draw_line_width(linex,lineMinH,linex,lineMaxH,linew);
     }else{//no valid item below this one
         draw_line_width(linex,lineMinH,linex,lineh+floor(linew/2),linew);
     }
+    
     boxadd += 1;
 }
 
