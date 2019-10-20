@@ -3,12 +3,13 @@
 //adds an entry right before a handle, with the same indentation as the item on the handle
 //enabled: This item is grayed out
 //extraAttributeNameList: Add extra attribute data to the xml file (has no visible effect on treelist)
-
+/*
 var argument_arr = array_create(argument_count);
 for (var i = 0; i < argument_count; i++) {
 argument_arr[i] = argument[i];
 }
-if (live_call_ext(argument_arr)) return live_result;
+//if (live_call_ext(argument_arr)) return live_result;
+*/
 
 with(argument[0]){
     var handle = argument[1];

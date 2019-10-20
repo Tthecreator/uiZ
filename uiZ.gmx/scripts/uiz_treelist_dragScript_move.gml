@@ -1,4 +1,4 @@
-if live_call(argument0,argument1,argument2,argument3,argument4) return live_result;
+//if live_call(argument0,argument1,argument2,argument3,argument4) return live_result;
 var draggingItem = argument1;//the #id of the item being dragged
 var itemDestination = argument2;//the #id of the item being dragged to
 var itemDestinationYPosition = argument3;//if the draggingItem was dragged to the bottom half of the itemDestination (=1) or if the draggingItem was dragged to the top half of the itemDestination (=0), and everthing between those two values.

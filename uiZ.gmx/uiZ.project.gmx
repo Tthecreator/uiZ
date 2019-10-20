@@ -2475,7 +2475,7 @@
     <constant name="uiz_treelist_boxState_noBox">0</constant>
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
     <constant name="uiz_treelist_boxState_extended">2</constant>
-    <constant name="live_enabled">1</constant>
+    <constant name="live_enabled">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

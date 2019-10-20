@@ -12,7 +12,7 @@
 //<test name="that"></test>
 
 //returns whether scenario A or B happened. (Whether data was inserted or edited)
-if live_call(argument0,argument1,argument2,argument3) return live_call;
+//if live_call(argument0,argument1,argument2,argument3) return live_result;
 var f = argument0;
 var m = obj_uiz_xmlparser;
 var l = m.filelistl[| f];

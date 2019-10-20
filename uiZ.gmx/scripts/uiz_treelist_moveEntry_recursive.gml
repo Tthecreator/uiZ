@@ -3,13 +3,13 @@
 
 //Optional: indentLevel. If this argument is omitted the indent of the item already at the destinationHandle is used.
 //Optional: isOffset. If this argument is true the default indentLevel is used, but indentLevel is added (or subtracted) from the default indentLevel.
-
+/*
 var argument_arr = array_create(argument_count);
 for (var i = 0; i < argument_count; i++) {
 argument_arr[i] = argument[i];
 }
-if (live_call_ext(argument_arr)) return live_result;
-
+//if (live_call_ext(argument_arr)) return live_result;
+*/
 if argument[1]==argument[2] and argument_count=3 then exit;//if current position and destination are the same we don't need to do anything. However, if we have a different indentLevel, we might need to change up stuff
 
 with(argument[0]){

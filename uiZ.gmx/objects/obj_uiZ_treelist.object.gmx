@@ -220,7 +220,7 @@ if doscroll=true then{
           <argument>
             <kind>1</kind>
             <string>///mouse selection
-if live_call() return live_result;
+//if live_call() return live_result;
 lastSelectionPos = currentSelectionPos;
 lastSelectionList = currentSelectionList;
 
@@ -549,8 +549,8 @@ if uiz_cntn() then {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if live_call() return live_result
+            <string>/*
+//if live_call() return live_result
 var lsz = ds_list_size(textList);
 var ih=startOffset;
 //sdbm("s",startList,lsz)

@@ -1,5 +1,5 @@
 ///uiz_xml_gethandleend(file,handle)
-if (live_call(argument0,argument1)) return live_result;
+//if (live_call(argument0,argument1)) return live_result;
 var h=argument1
 var m=obj_uiz_xmlparser;
 var l=m.filelistl[| argument0];
