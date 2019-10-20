@@ -29,7 +29,7 @@
 fps_avg=-1;
 room_speed=30
 fps_counts=0;
-
+sdbm("booting UP",id);
 </string>
           </argument>
         </arguments>
@@ -79,20 +79,20 @@ folders=uiz_xml_loadstring('
         &lt;random/&gt;
     &lt;/video&gt;
     &lt;system_files name="system files" sprite="'+string(spr_uiZ_windowbutton_cross)+'"&gt;
-        &lt;important/&gt;
+        &lt;important something="abc"/&gt;
         &lt;viruses/&gt;
     &lt;/system_files&gt;
     &lt;what you looking at&gt;
         &lt;nothing/&gt;
         &lt;you/&gt;
     &lt;/what you looking at&gt;
-    &lt;real_shieat name="real shieat"&gt;
-        &lt;tentacle/&gt;
+    &lt;real_shieat name="real shieat" hello="world"&gt;
+        &lt;tentacle important="very"/&gt;
         &lt;problems/&gt;
     &lt;/real_shieat&gt;
 &lt;/C:&gt;
 ')
-
+sdbm("outputFile");
 outputFile = uiz_xml_createfile();
 
 o=uiz_c(obj_uiZ_treelist);
@@ -134,8 +134,8 @@ win2.posinframey=uiz_center;
 win2.color_normal=c_red;
 uiz_fixgeneralpos(win2);
 
-sdbm(uiz_xml_toString(folders))
-sdbm(uiz_xml_getdebugstringtotal(folders))
+//sdbm(uiz_xml_toString(folders))
+//sdbm(uiz_xml_getdebugstringtotal(folders))
 
 o2=uiz_c(obj_uiZ_treelist);
 uiz_setparent(o2,win2);
@@ -143,7 +143,8 @@ uiz_setparent(o2,win2);
 //ds_list_add(o.tablist,"item1","ichigo","zero two","556")
 o2.posinframex=uiz_fill;
 o2.posinframey=uiz_fill;
-o2.usexml=outputFile;
+//o2.usexml=outputFile;
+o2.usexml=o.usexml;
 uiz_treelist_parsexml(o2);
 uiz_treelist_expand(o2);
 //var handle = uiz_treelist_handle_getByName(o,"problems");
@@ -207,10 +208,11 @@ uiz_fixgeneralpos(tabslider)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_treelist_exportxml(o,outputFile);
+            <string>
+//uiz_treelist_exportxml(o,outputFile);
 
 uiz_treelist_parsexml(o2);
-//uiz_treelist_expand(o2);
+uiz_treelist_expand(o2);
 uiz_fixgeneralpos(o2);
 uiz_updater_FixViews_with(o2);
 </string>

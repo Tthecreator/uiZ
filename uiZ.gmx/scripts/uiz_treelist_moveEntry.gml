@@ -3,13 +3,13 @@
 
 //Optional: indentLevel. If this argument is omitted the indent of the item already at the destinationHandle is used.
 //Optional: isOffset. If this argument is true the default indentLevel is used, but indentLevel is added (or subtracted) from the default indentLevel.
-/*
+
 var argument_arr = array_create(argument_count);
 for (var i = 0; i < argument_count; i++) {
-	argument_arr[i] = argument[i];
+argument_arr[i] = argument[i];
 }
 if (live_call_ext(argument_arr)) return live_result;
-*/
+
 if argument[1]==argument[2] and argument_count=3 then exit;//if current position and destination are the same we don't need to do anything. However, if we have a different indentLevel, we might need to change up stuff
 
 with(argument[0]){
@@ -34,7 +34,46 @@ with(argument[0]){
     var enabled = uiz_treelist_item_get_enabled(argument[0],argument[1]);
     var boxState = uiz_treelist_item_get_boxState(argument[0],argument[1]);
     
+    var updXML = updateXML;
+    
+    if updXML then{
+        var readXMLHandle = handleList[|argument[1]];
+        var attributeList = ds_list_create();
+        var attributeDataList = ds_list_create();
+        while(true){
+            readXMLHandle = uiz_xml_nextattribute(usexml,readXMLHandle);
+            if readXMLHandle=-1 then{
+                break;
+            }
+            var attributeName = uiz_xml_attribute_getName(usexml,readXMLHandle);
+            var attributeData = uiz_xml_attribute_getValue(usexml,readXMLHandle);
+            ds_list_add(attributeList,attributeName);
+            ds_list_add(attributeDataList,attributeData);
+        }
+    }    
     uiz_treelist_removeEntry(argument[0],argument[1],false);
+//    sdbm("removedEntry",usexml)
+//    sdbm(uiz_dslist_print(handleList));
+//    sdbm(uiz_xml_getdebugstringtotal(usexml));
+    
+    //repeat(5){sdbm("")}
     if argument[2]>argument[1] then{--argument[2];}
-    uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState);
+    if updXML then{
+        uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState,attributeList,attributeDataList);
+        //sdbm("addedEntry",usexml)
+        //sdbm(uiz_dslist_print(handleList));
+        //sdbm(uiz_xml_getdebugstringtotal(usexml));
+        ds_list_destroy(attributeList);
+        ds_list_destroy(attributeDataList);
+    }else{
+        uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState);
+    }
+    
+    if updXML then{
+             
+    }
+    //sdbm("Did moveEntry");
+    //sdbm(uiz_xml_toString(folders))
+    //sdbm(uiz_xml_getdebugstringtotal(usexml))
+    
 }

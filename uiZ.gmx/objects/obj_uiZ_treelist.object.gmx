@@ -220,7 +220,7 @@ if doscroll=true then{
           <argument>
             <kind>1</kind>
             <string>///mouse selection
-//if live_call() return live_result;
+if live_call() return live_result;
 lastSelectionPos = currentSelectionPos;
 lastSelectionList = currentSelectionList;
 
@@ -276,6 +276,9 @@ if currentSelectionPos!=-1 then{
     }
 }
 
+
+
+
 if draggingItem=-1 and draggingItemCandidate!=-1 and (global.uiz_mouseswipeclick or abs(draggingStartY - uiz_getmouse_y())&gt;5) and mouse_check_button(mb_left) then{
     //sdbm("Initializing swipe2")
     draggingItem = draggingItemCandidate;
@@ -298,7 +301,7 @@ if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!
     }
 }
 
-if draggingItem!=-1 and !mouse_check_button(mb_left) then{
+if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
         var srlx = rlx;
         if doscroll then{srlx=scrollBarX;}
         drawDraggingItem=draggingItem;
@@ -308,6 +311,14 @@ if draggingItem!=-1 and !mouse_check_button(mb_left) then{
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight-1);
         updateDragArea = true;
     }
+    
+if mouse_check_button_released(mb_left) then{
+    if draggingItem!=-1 then{
+        uiz_mouse_unfreeze();
+    }
+    draggingItem=-1;
+    draggingItemCandidate=-1;
+}
 
 
 kmouseover_last = kmouseover;
@@ -538,8 +549,8 @@ if uiz_cntn() then {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-//if live_call() return live_result
+            <string>
+if live_call() return live_result
 var lsz = ds_list_size(textList);
 var ih=startOffset;
 //sdbm("s",startList,lsz)

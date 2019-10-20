@@ -4,7 +4,7 @@
 var trimmed = false;
 if str_dis_begin > 0 then {
     var addchar = string_char_at(str_real, str_dis_begin);
-    sdbm("shift left with", addchar, str_dis_begin);
+//    sdbm("shift left with", addchar, str_dis_begin);
     var addchar_width = string_width(addchar);
     str_dis_begin--;
     str_dis_size++;

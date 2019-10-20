@@ -6,6 +6,7 @@ var sz=ds_list_size(l)
 var str=""
 for(var i=0;i<sz;i++){
 var p = uiz_positify(l[| i]);
+str+=string(i)+": ";
 switch(p mod 8){
 case 0: str+="H"+string(d[|p>>3])+chr($0A) break;
 case 1: str+="K"+string(d[|p>>3])+chr($0A) break;

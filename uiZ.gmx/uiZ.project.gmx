@@ -609,8 +609,8 @@
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
     <extension index="1">extensions\netlog</extension>
-    <extension index="2">extensions\GMLive</extension>
-    <extension index="3">extensions\GMLiveHelper</extension>
+    <extension index="2">extensions\GMLiveHelper</extension>
+    <extension index="3">extensions\GMLive</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -943,6 +943,7 @@
           <script>scripts\uiz_draw_squarebutton_differentmouse_draw.gml</script>
           <script>scripts\uiz_draw_squarebutton_differentmouse_step.gml</script>
           <script>scripts\uiz_draw_squarebutton_independent.gml</script>
+          <script>scripts\uiz_draw_line_width.gml</script>
           <script>scripts\draw_square.gml</script>
           <script>scripts\draw_square_colour.gml</script>
           <script>scripts\draw_huesquare.gml</script>
@@ -2138,6 +2139,8 @@
       </scripts>
       <script>scripts\UIZ_versioninformation.gml</script>
     </scripts>
+    <script>scripts\live_call_bak.gml</script>
+    <script>scripts\live_call_ext_bak.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="uiz">
@@ -2351,6 +2354,7 @@
     <object>objects\charSpeedTest</object>
     <object>objects\obj_spriteStretchTest</object>
     <object>objects\obj_gmlive</object>
+    <object>objects\jkkj_creator</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>

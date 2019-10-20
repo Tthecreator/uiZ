@@ -1,14 +1,15 @@
 #define uiz_treelist_addEntryAt
-///uiz_treelist_addEntryAt(id, handle, name, [sprite], [spriteImage], [indentLevel],[enabled], [boxState])
+///uiz_treelist_addEntryAt(id, handle, name, [sprite], [spriteImage], [indentLevel],[enabled], [boxState],[extraAttributeNameList,extraAttributeDataList])
 //adds an entry right before a handle, with the same indentation as the item on the handle
 //enabled: This item is grayed out
-/*
+//extraAttributeNameList: Add extra attribute data to the xml file (has no visible effect on treelist)
+
 var argument_arr = array_create(argument_count);
 for (var i = 0; i < argument_count; i++) {
-	argument_arr[i] = argument[i];
+argument_arr[i] = argument[i];
 }
 if (live_call_ext(argument_arr)) return live_result;
-*/
+
 with(argument[0]){
     var handle = argument[1];
     if handle=-1 then{handle=0;}
@@ -25,6 +26,8 @@ with(argument[0]){
     var lsz = ds_list_size(indentEnabledAndBoxList);
     switch(argument_count){
         default:
+        case 10:
+        case 9:
         case 8://boxState
             var boxState = argument[7];
         case 7://enabled
@@ -46,6 +49,7 @@ with(argument[0]){
         case 0:
             show_error("Invalid amount of arguments for uiz_treelist_addEntryAt",true);
     }
+//    sdbm("addenTry level is",level,argument[5]);
     ds_list_insert(textList,handle,argument[2]);
     ds_list_insert(spriteList,handle,spr);
     var xmlHandle, curHierarchy;
@@ -65,6 +69,7 @@ with(argument[0]){
         curHierarchy += 1<<(level-1);
     }
     ds_list_insert(hierarchyItemList,handle,curHierarchy);//will be overwritten anyways after fixing the item list
+//    sdbm("writing level",level,enabled);
     ds_list_insert(indentEnabledAndBoxList,handle,(level<<3)+(enabled<<2)+boxState);
     
     //fix itemlist
@@ -105,23 +110,41 @@ with(argument[0]){
                     break;
                 }
             }
-        
-            uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+            //sdbm("adding to begin of parent",xmlInHandle,handle);
+            
+            handleList[|handle]=uiz_xml_gethandleend(usexml, xmlInHandle)+1;
+            
+            if argument_count>=10 then{
+                uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2]);
+                uiz_treelist_addEntryAt_addExtraAttributes(handleList[|handle]-1,argument[8],argument[9]);
+            }else{
+                uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+            }
             //uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2]);
+            //sdbm("refitHandles in");
             uiz_treelist_addEntryIn_refitXmlHandles(handle);
+            //sdbm("afteradd",uiz_dslist_print(handleList));
         }
     }else{
         //fix hierarchy list
         uiz_treelist_fixNewHierarchyItemList(handle, level);
         //apply changes to xml
         if updateXML then{
-            uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+            
+            if argument_count>=10 then{
+                uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2]);
+                uiz_treelist_addEntryAt_addExtraAttributes(xmlHandle,argument[8],argument[9]);
+            }else{
+                uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+            }
             //uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name");
             if (argument_count>=6){
                 uiz_xml_decreaseTagDepth(usexml,xmlHandle,originalLevel-level);
             }
+            //sdbm("refitHandles AT",xmlHandle);
+            uiz_treelist_addEntryAt_refitXmlHandles(xmlHandle,handle,level);
         }
-        uiz_treelist_addEntryAt_refitXmlHandles(xmlHandle,handle,level);
+        
     }
     
 }
@@ -185,3 +208,9 @@ for(var i=argument1+1;i<hsz;++i){
 for(var i=i+0;i<hsz;++i){
     handleList[|i]+=addedEndTagSizes+beginTagSize+1;    
 }
+#define uiz_treelist_addEntryAt_addExtraAttributes
+///uiz_treelist_addEntryAt_addExtraAttributes(xmlHandle,nameList,dataList)
+//write extra attributes to xml
+for(var i=0;i<ds_list_size(argument1);++i){
+    uiz_xml_settaginfo_at(usexml,argument0,argument1[|i],argument2[|i])
+} 

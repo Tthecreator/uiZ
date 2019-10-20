@@ -53,8 +53,7 @@ if hierarchyLines and indent>0 then{
         var doIndent = (hierarchyItems >> (lvl-1)) mod 2;//get bit
         if doIndent then{
             var linex = rx+(lvl-0.5)*h;
-            draw_line_width(linex, lineMinH, linex, lineMaxH, linew);
-            
+            uiz_draw_line_width(linex, lineMinH, linex, lineMaxH, linew,hierarchyLineColor,1);
         }
         linew = max(hierarchyLineMinWidth, linew - hierarchyLineDecreaseWidth);
     }
@@ -64,13 +63,13 @@ if hierarchyLines and indent>0 then{
     var lineh = ry+hi+h/2;
     var linex = rx+(indent-0.5)*h;
     
-    draw_line_width(linex,lineh,rx+boxadd,lineh,linew);
+    uiz_draw_line_width(linex,lineh,rx+boxadd,lineh,linew,hierarchyLineColor,1);
     if (nextPosition>=0 and nextPosition<ds_list_size(nextItemList) and 
     (indentEnabledAndBoxList[|nextPosition]>>3)>=indent and
     ((hierarchyItems >> (lvl-1)) mod 2)){//if next item is below this one and on the same level
-        draw_line_width(linex,lineMinH,linex,lineMaxH,linew);
+        uiz_draw_line_width(linex,lineMinH,linex,lineMaxH,linew,hierarchyLineColor,1);
     }else{//no valid item below this one
-        draw_line_width(linex,lineMinH,linex,lineh+floor(linew/2),linew);
+        uiz_draw_line_width(linex,lineMinH,linex,lineh+floor(linew/2),linew,hierarchyLineColor,1);
     }
     
     boxadd += 1;
@@ -83,7 +82,7 @@ if boxState!=uiz_treelist_boxState_noBox then{
 }else{
     if sprite=-1 then{
         if hierarchyLines and indent>0 then{
-            draw_line_width(rx+boxadd-1,lineh,rx+boxadd+h*0.5,lineh,linew);
+            uiz_draw_line_width(rx+boxadd-1,lineh,rx+boxadd+h*0.5,lineh,linew,hierarchyLineColor,1);
         }
         boxadd += h+margin;
         
