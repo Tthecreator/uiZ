@@ -64,7 +64,7 @@ handleList[|argument0] = xmlHandle;
 //sdbm("handleSize",usexml,xmlHandle)
 //sdbm(uiz_dslist_print(handleList));
 //sbm(uiz_xml_getdebugstringtotal(usexml))
-repeat(5){sdbm("")}
+//repeat(5){sdbm("")}
 var handleSize = uiz_xml_gethandleend(usexml,xmlHandle)-xmlHandle+1;
 if handleSize<=0 then{
     sdbm("[uiZ|ERROR] Tried to fix invalid XML Handles",uiz_xml_gethandleend(usexml,xmlHandle),xmlHandle);
