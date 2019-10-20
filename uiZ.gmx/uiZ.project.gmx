@@ -1098,6 +1098,7 @@
           <script>scripts\dbm.gml</script>
           <script>scripts\uiz_checkScreenResize.gml</script>
           <script>scripts\uiz_useAppSurf.gml</script>
+          <script>scripts\uiz_string_digits.gml</script>
         </scripts>
         <scripts name="grid">
           <script>scripts\uiz_resizegridframes.gml</script>
@@ -1547,6 +1548,8 @@
               <script>scripts\uiz_stringbox_calculateConnectionPoints.gml</script>
               <script>scripts\uiz_stringbox_beginSelection.gml</script>
               <script>scripts\uiz_stringbox_getselbounds.gml</script>
+              <script>scripts\uiz_stringbox_str_real_init.gml</script>
+              <script>scripts\uiz_stringbox_getClipboardText.gml</script>
             </scripts>
             <script>scripts\uiz_stringbox_deleteselection.gml</script>
           </scripts>

@@ -11,10 +11,10 @@ if(keyboard_check(vk_control)){
             uiz_stringbox_deleteselection();
             return true;   
         }else{
-        if(keyboard_check_pressed(ord('V'))){//copy
+        if(keyboard_check_pressed(ord('V'))){//paste
             if clipboard_has_text() then{
                 uiz_stringbox_deleteselection();
-                uiz_stringbox_insertchars(clipboard_get_text());
+                uiz_stringbox_insertchars(uiz_stringbox_getClipboardText());
                 uiz_updater_FixViews_inside();
             }
             return true;   
@@ -23,9 +23,9 @@ if(keyboard_check(vk_control)){
         
         }
     }else{
-    if(keyboard_check_pressed(ord('V'))){//copy
+    if(keyboard_check_pressed(ord('V'))){//paste
             if clipboard_has_text() then{
-                uiz_stringbox_insertchars(clipboard_get_text());
+                uiz_stringbox_insertchars(uiz_stringbox_getClipboardText());
                 uiz_updater_FixViews_inside();
             }
             return true;   
@@ -87,7 +87,6 @@ if(keyboard_check(vk_control)){
     uiz_stringbox_moveKeyRight();
     }
     //check for any other key pressed
-//  sdbm("chec key",obj_uiZ_controller.keyboard_charPressed,obj_uiZ_controller.keyboard_currentchar)
     if obj_uiZ_controller.keyboard_charPressed=true then{
     var press=false;
     var char;
@@ -100,18 +99,24 @@ if(keyboard_check(vk_control)){
         if NormalkeyTimer>=1 then{//pressing this key for long enough
         NormalkeySinglePressTimer+=uiz_sc(keyHoldingTypingSpeed);
         if NormalkeySinglePressTimer>=1 then{
-        NormalkeySinglePressTimer=0;
+            NormalkeySinglePressTimer=0;
             press=true;
             char = obj_uiZ_controller.keyboard_lastcurrentchar
             }
         }
-       }  
-       if press then{
-              if hasselection then{
-       uiz_stringbox_deleteselection();
        }
-       uiz_stringbox_insertchars(char);
-       uiz_updater_FixViews_inside(); 
+       if press then{
+           if acceptOnlyNumbers==false //we don't need to check if this is creates a valid number
+           or (char==string_digits(char) and (typepos_real > 0 or string_char_at(str_real,1)!="-"))//we are typing a number (and we aren't typing it in front of a "-"
+           or (char=="-" and typepos_real = 0 and string_char_at(str_real,1)!="-")//we are typing a "-" at the beginning of the string
+           or (char=="." and string_count(".",str_real)==0)//we are typing a "." and there are no other "." in the string
+           then{
+              if hasselection then{
+                    uiz_stringbox_deleteselection();
+              }
+           uiz_stringbox_insertchars(char);
+           uiz_updater_FixViews_inside(); 
+           }
        }
     }else{
     keyboard_oldlastchar="";

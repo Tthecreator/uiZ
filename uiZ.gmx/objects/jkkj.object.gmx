@@ -50,7 +50,8 @@ sdbm("booting UP",id);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.deb=false;
+            <string>/*
+global.deb=false;
 show_debug_overlay(true)
 
 uiz_init()
@@ -190,6 +191,44 @@ uiz_fixgeneralpos(tabslider)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.deb=false;
+show_debug_overlay(true)
+
+uiz_init()
+draw_set_font(uiz_fnt_dp_15);
+win=uiz_window_create(250,px,100,px)
+win.posinframex=uiz_snapleft;
+win.setpointx=uiz_left;
+win.posinframey=uiz_center;
+win.color_normal=$EEEEEE;
+uiz_fixgeneralpos(win);
+
+o=uiz_c(obj_uiZ_stringbox);
+uiz_setparent(o,win);
+o.posinframex=uiz_fill;
+o.posinframey=uiz_fill;
+
+uiz_fixgeneralpos(o);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -210,7 +249,7 @@ uiz_fixgeneralpos(tabslider)
             <kind>1</kind>
             <string>
 //uiz_treelist_exportxml(o,outputFile);
-
+/*
 uiz_treelist_parsexml(o2);
 uiz_treelist_expand(o2);
 uiz_fixgeneralpos(o2);

@@ -54,6 +54,7 @@ texturescript_over=-1//i//texturescript over//
 texturescript_in=-1//i//texturescript in//
 texturescript_out=-1//i//texturescript out//
 cursorwidth=2//v//width of the typing cursor//
+acceptOnlyNumbers=true//b//accept only digits and a single .//
 
 sprite_normal=spr_uiZ_border1//p//sprite normal//
 color_normal=c_white//c//color normal//
@@ -93,45 +94,8 @@ margin_out=-1//v//margin out//
           <argument>
             <kind>1</kind>
             <string>///stringboxspecific technical stuff
-updated=false;
-update=false;
-typing=false;
-typepos_real=0;
-typepos_dis=0;//the position between which characters the type cursor is. 0 is left to the first character and 1 is right of the first character.
-typepos_dis_px=0;//pixel position of typeing cursor
-count=0;//count the type cursor animation.
-str_real="THIS IS A TEST THAT THIS IS MAY BE A TEST FOR IT IS A TEST IT IS.";//the full string
-str_real_size=string_length(str_real);//the number of characters in the real string
-str_dis=str_real;//the string actually displayed
-str_dis_width_last=0;//the width of the last character in dis
-str_dis_width=0;//the total width of dis
-str_dis_size=0;//number of characters in dis
-str_dis_begin=0;//the place in str_real where str_dis begins.
-str_dis_end=0;//the place in str_real where str_dis ends.
-hasselection=false;//whether a selection has been made using the mouse.
-hasmouse=false//whether the object has grabbed the mouse
-selpos_dis=0;//the place where the second selectionpoint is
-selpos_dis_px=0;
-selpos_dis_min=-1;//the left place of the selection.
-selpos_dis_max=-1;//the right place of the selection.
-selpos_dis_min_px=-1;//the left place of the selection.
-selpos_dis_max_px=-1;//the right place of the selection.
-selpos_dis_min_px_bound=-1;//value bound between ix and ilx
-selpos_dis_max_px_bound=-1;//value bound between ix and ilx
-sel_str_beg="";//string left of selection as drawn.
-sel_str_mid="";//selection string as drawn
-sel_str_end="";//string right of seleciton as drawn.
-sel_canMove_counter=0;//holds the time between last time being able to shift the box right/left when the mouse goes outside of it vs now. it counts from 0 to 1.
-keyboard_oldlastchar="";//holds what char there was last on the keyboard
-
-selpmin=0;//the left real position of the selection
-selpmax=0;//the right real position of the selection
-sel_str_beg_m="";//string left of selection as drawn. only the updated characters
-sel_str_end_m="";//string right of seleciton as drawn.only the updated characters
-sel_oldix=ix;
-NormalkeyTimer=0;
-NormalkeySinglePressTimer=0;
-//sdbm("sdb: ",string_width(" "),string_width(" a"),string_width("a "),string_width("a"),string_width(" a "))
+str_real="-5.6.356THIS IS A TEST THAT THIS IS MAY BE A TEST FOR IT IS A TEST IT IS.";//the full string
+uiz_stringbox_str_real_init();
 </string>
           </argument>
         </arguments>
@@ -187,12 +151,6 @@ if kmouseover=0 and mouse_check_button(mb_left) and typing = true then {
     exit;
 }
 
-
-
-
-
-//uiz_updater_FixViews();
-
 </string>
           </argument>
         </arguments>
@@ -226,7 +184,7 @@ if (hasselection=false and typing=true) then{//draw selector
         var anim = 1 - uiz_animation_getfunction((count - 0.5) * 2, typeanimationout)
     }
  uiz_typecursor_setalpha(anim*alpha); 
- uiz_typecursor_register(ix+posx,iy+(posline)*lsz,ix+posx,iy+(posline+1)*lsz,typecolor,cursorwidth)  
+ uiz_typecursor_register(typepos_dis_px,iy,typepos_dis_px,ily,cursorcolor,cursorwidth)  
 }
 </string>
           </argument>
@@ -379,12 +337,9 @@ if hasmouse = true {
     }
     //add the addchar variable to the right side of the selection
     if addchar!="" then{
-    //d+="adding char!"+addchar+"#";
     var addchar_length = string_length(addchar)
     if typepos_dis&lt;selpos_dis or typepos_dis&lt;selpos_dis_old then{//selection goes to the right of the typepos
-    //d+="    right#";
     if m=-1 then{//selection gets smaller
-        //d+="        sel gets smaller"+addchar+"#";
     sel_str_end_m=""
         //add addchar revers
         for(var i=addchar_length;i&gt;=1;i--){
@@ -393,17 +348,12 @@ if hasmouse = true {
         sel_str_end=sel_str_end_m+sel_str_end;
         sel_str_mid=string_copy(sel_str_mid,1,string_length(sel_str_mid)-addchar_length);
         }else{//selection gets bigger
-                //d+="        sel gets bigger "+ sel_str_mid +" end: "+sel_str_end+"#";
-                
         sel_str_end=string_copy(sel_str_end,addchar_length+1,string_length(sel_str_end)-1)
-        //sdbm("selectiona dding to mid1 ",addchar)
         sel_str_mid+=addchar
         }
     }else{
     if typepos_dis&gt;selpos_dis or typepos_dis&gt;selpos_dis_old then{//selection goes to the left of typepos
-    //d+="    left#";
     if m=1 then{//selection gets smaller
-    //d+="        sel gets smaller beg:"+sel_str_beg+" mid:"+sel_str_mid+" end: "+sel_str_end+"#";
     //add addchar revers
         sel_str_beg_m=addchar;
         sel_str_beg+=addchar;
@@ -411,18 +361,14 @@ if hasmouse = true {
         var midchars = midlen-addchar_length;//the new size of the mid string (could be negative)
         sel_str_mid=string_copy(sel_str_mid,1+addchar_length,midchars);
         if midchars&lt;0 then{//midchars is a negative number, couldn't fit in str_mid:
-             //d+="           rem from end. from: "+string(1-midchars)+" cs: "+string(string_length(sel_str_end)-midchars)+"bef:"+ sel_str_end +" aft: ";   
              var endsz=string_length(sel_str_end);
              midchars=clamp(-midchars,0,endsz);
             sel_str_end=string_copy(sel_str_mid,1+midchars,endsz-midchars)
             sel_end_sz=string_length(sel_str_end);
-            //d+=sel_str_end+"#";
         }
         }else{//selection gets bigger
-        //d+="        sel gets bigger "+ sel_str_mid +" beg: "+sel_str_beg+"#";
         //add addchar reverse
         for(var i=1;i&lt;=addchar_length;i++){
-        //sdbm("selectiona dding to mid2 ",addchar,string_char_at(addchar,i))
             sel_str_mid=string_char_at(addchar,i)+sel_str_mid
         }
         sel_str_beg_m="";
@@ -497,7 +443,6 @@ if global.systemsupportskeyboard = true then {
             hasmouse=false;
             }
             if selpmin=selpmax then{//check if selection is non existant
-                //sdbm("disabling selection because of htere");
                 uiz_stringbox_selection_disable();
             }
         break;
@@ -560,9 +505,7 @@ uiz_set_cursor(cr_default);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//update=0;
-//updated=0
-if uiz_cntn()then {
+            <string>if uiz_cntn() then{
 
     if font &gt; -1 then {
         draw_set_font(font)
@@ -586,8 +529,6 @@ if uiz_cntn()then {
     //draw text
     if hasselection=true then{
     if uiz_selfmarked=true then{
-    //sdbm("drawing selfmarked",sel_str_beg_m,sel_str_mid,sel_str_end_m)
-    //d+="drawing selfmarked"+"#";
         draw_text(selpos_dis_max_px_bound,y_mid,sel_str_end_m);
         draw_set_halign(fa_right)
         draw_text(selpos_dis_min_px_bound,y_mid,sel_str_beg_m);
@@ -601,8 +542,6 @@ if uiz_cntn()then {
         sel_str_beg_m="";
         
     }else{
-        //sdbm("drawing not selfmarked")
-           // d+="drawing NOT selfmarked"+"#";
         draw_text(selpos_dis_max_px_bound,y_mid,sel_str_end);
         draw_set_halign(fa_right)
         draw_text(selpos_dis_min_px_bound,y_mid,sel_str_beg);
@@ -612,20 +551,9 @@ if uiz_cntn()then {
         }
         draw_set_color(selecttextcolor);
         draw_text(selpos_dis_min_px_bound,y_mid,sel_str_mid);
-
-    /*
-        var addw_beg=string_width(begsel);
-        var addw_mid=addw_beg+string_width(midsel);
-        draw_text(ix,y_mid,begsel);//draw text left of selection
-        draw_text(ix,y_mid+addw_mid,endsel);//draw text right of selection
-        draw_square(ix+addw_beg,iy,ix+addw_mid,ily,selectbackcolor,alpha);//draw selector square background
-        draw_set_color(selecttextcolor);
-        draw_text(ix+addw_beg,y_mid,midsel);//draw selection text
-        */
         }
     }else{
     //draw vanilla text
-       // d+="drawing vanilla"+"#";
         draw_text(ix,y_mid,str_dis);
     }
 
