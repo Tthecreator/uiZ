@@ -29,7 +29,7 @@ if str_dis_begin > 0 then {
 
     var sel_beg_sz = string_length(sel_str_beg);
     var sel_end_sz = string_length(sel_str_end);
-    while (str_dis_width > iwidth) {
+    while (str_dis_width > floor(i_ilx-ix)) {
         trimmed = true;
         var remchar = string_char_at(str_dis, str_dis_size)
         var remchar_size = string_width(remchar);

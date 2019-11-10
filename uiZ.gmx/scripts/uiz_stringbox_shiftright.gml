@@ -21,7 +21,7 @@ sel_str_end+=addchar;
 //sdbm("add to right",addchar,addchar_width,str_dis_size);
 var sel_beg_sz = string_length(sel_str_beg);
 var sel_end_sz = string_length(sel_str_end);
-while(str_dis_width>iwidth){
+while(str_dis_width>floor(i_ilx-ix)){
     trimmed=true;
     var remchar=string_char_at(str_dis,1)
     var remchar_size=string_width(remchar);

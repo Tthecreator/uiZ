@@ -1514,6 +1514,16 @@
               <script>scripts\uiz_stringbox_subtypepos.gml</script>
             </scripts>
             <scripts name="internal">
+              <scripts name="events">
+                <script>scripts\uiz_stringbox_event_draw.gml</script>
+                <script>scripts\uiz_stringbox_event_mouseCheck.gml</script>
+                <script>scripts\uiz_stringbox_event_disableMouseGrab.gml</script>
+                <script>scripts\uiz_stringbox_event_makeSelections.gml</script>
+                <script>scripts\uiz_stringbox_event_disableEvent.gml</script>
+                <script>scripts\uiz_stringbox_event_handleTypeCursorAnimation.gml</script>
+                <script>scripts\uiz_stringbox_event_debugLeftRight.gml</script>
+                <script>scripts\uiz_stringbox_event_checkKeys.gml</script>
+              </scripts>
               <script>scripts\uiz_stringbox_get_str_dis_width.gml</script>
               <script>scripts\uiz_stringbox_typepos_real_from_dis.gml</script>
               <script>scripts\uiz_stringbox_typepos_dis_from_real.gml</script>
@@ -1550,6 +1560,7 @@
               <script>scripts\uiz_stringbox_getselbounds.gml</script>
               <script>scripts\uiz_stringbox_str_real_init.gml</script>
               <script>scripts\uiz_stringbox_getClipboardText.gml</script>
+              <script>scripts\uiz_stringbox_redoSelectionStrings.gml</script>
             </scripts>
             <script>scripts\uiz_stringbox_deleteselection.gml</script>
           </scripts>
@@ -2195,7 +2206,6 @@
         <object>objects\obj_uiZ_stringbox_bak</object>
         <object>objects\obj_uiZ_surfaceholder</object>
         <object>objects\obj_uiZ_textplane</object>
-        <object>objects\obj_uiZ_window</object>
         <object>objects\obj_uiZ_windowholder</object>
       </objects>
       <objects name="macromanager">
@@ -2245,6 +2255,7 @@
         <object>objects\obj_uiZ_treelist</object>
         <object>objects\obj_uiZ_treelist_bak</object>
         <object>objects\obj_uiZ_valuebox</object>
+        <object>objects\obj_uiZ_window</object>
       </objects>
       <objects name="serverbrowser">
         <object>objects\obj_uiZ_serverbrowser</object>

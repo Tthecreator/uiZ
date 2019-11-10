@@ -486,6 +486,7 @@ typecursor_width=0;
             <string>///typing char control setup
 keyboard_currentchar = '';//what char is currently being pressed
 keyboard_oldlastchar = '';
+keyboard_currentkey = -1;
 keyboard_lastKeyForChar = -999;
 keyboard_lastKeyTime = 0;
 keyboard_lastcurrentchar = '';//what char was last pressed
@@ -1248,6 +1249,7 @@ global.uiz_fix_updates=0;
             <kind>1</kind>
             <string>///check the typeing char
 var doNoKeyCheck=true;
+keyboard_currentkey = keyboard_lastkey;
 if keyboard_check(vk_lalt) then{
         keyboard_lastKeyForChar=vk_lalt;
         }

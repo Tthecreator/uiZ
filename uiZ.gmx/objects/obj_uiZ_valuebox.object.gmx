@@ -383,23 +383,28 @@ uiz_updater_FixViews();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover=uiz_mouse_isonobject_leftcheck(id)
-if kmouseover&gt;0 then{uiz_set_cursor(cr_beam)}
-
-
-if uiz_mouse_isonobject_releasedleft(id) then{
-if global.systemsupportskeyboard=true then{
-typing=1
-typepos=string_length(str)
-}else{
-value=clamp(get_integer(messagetext,value),minvalue,maxvalue)
-if allowdec=false then{value=round(value)}
-}
-}else{
-if mouse_check_button(mb_left) and typing=1 then{typing=0; update=1}
+            <string>kmouseover = uiz_mouse_isonobject_leftcheck(id)
+if kmouseover &gt; 0 then {
+    uiz_set_cursor(cr_beam)
 }
 
 
+if uiz_mouse_isonobject_releasedleft(id) then {
+    if global.systemsupportskeyboard == true then {
+        typing = true
+        typepos = string_length(str)
+    } else {
+        value = clamp(get_integer(messagetext, value), minvalue, maxvalue)
+        if allowdec = false then {
+            value = round(value)
+        }
+    }
+} else {
+    if mouse_check_button(mb_left) and typing == true then {
+        typing = false;
+        update = 1
+    }
+}
 </string>
           </argument>
         </arguments>

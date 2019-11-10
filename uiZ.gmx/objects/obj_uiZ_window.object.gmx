@@ -389,7 +389,7 @@ if global.mousefrozen = false and snaptomouse = 0 and resizable = 1 and kmouseov
     isresizing = true;
     isresizing_y = uiz_null;
     isresizing_x = uiz_null;
-    var cornerMargin = 5;
+    var cornerMargin = 10;
 
     if (uiz_getmouse_x() &gt; rlx - cornerMargin and uiz_getmouse_y() &gt; rly - cornerMargin) then {
         //right bottom

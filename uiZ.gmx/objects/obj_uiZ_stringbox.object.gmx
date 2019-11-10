@@ -33,7 +33,7 @@ uiz_objinit()
 value=""//s//initial value//
 textcolor=c_black//c//text color//
 selectbackcolor=c_blue//c//selection background color//
-selecttextcolor=c_white//c//selection text color//
+selecttextcolor=c_red//c//selection text color//
 cursorcolor=c_black//c//typing cursor color//
 margin=4//v//margin//
 font=-1//f//font//
@@ -54,7 +54,7 @@ texturescript_over=-1//i//texturescript over//
 texturescript_in=-1//i//texturescript in//
 texturescript_out=-1//i//texturescript out//
 cursorwidth=2//v//width of the typing cursor//
-acceptOnlyNumbers=true//b//accept only digits and a single .//
+acceptOnlyNumbers=false//b//accept only digits and a single .//
 
 sprite_normal=spr_uiZ_border1//p//sprite normal//
 color_normal=c_white//c//color normal//
@@ -96,6 +96,7 @@ margin_out=-1//v//margin out//
             <string>///stringboxspecific technical stuff
 str_real="-5.6.356THIS IS A TEST THAT THIS IS MAY BE A TEST FOR IT IS A TEST IT IS.";//the full string
 uiz_stringbox_str_real_init();
+i_ilx = ilx-40;//internal ilx
 </string>
           </argument>
         </arguments>
@@ -141,16 +142,7 @@ uiz_stringbox_str_real_init();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///check to disable this event
-if kmouseover=0 and mouse_check_button(mb_left) and typing = true then {
-    typing = false;
-    uiz_typecursor_deregister();
-    update = true;
-    updated = true;
-    uiz_updater_unstep();
-    exit;
-}
-
+            <string>if uiz_stringbox_event_disableEvent() exit;
 </string>
           </argument>
         </arguments>
@@ -171,21 +163,7 @@ if kmouseover=0 and mouse_check_button(mb_left) and typing = true then {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///handle type cursor animation
-if (hasselection=false and typing=true) then{//draw selector
-    //calculate alpha animation
-    count += uiz_sc(countspeed);
-    if count &gt;= 1 then {
-        count = 0
-    }
-    if count &lt; 0.5 then {
-        var anim = uiz_animation_getfunction(count * 2, typeanimationin)
-    } else {
-        var anim = 1 - uiz_animation_getfunction((count - 0.5) * 2, typeanimationout)
-    }
- uiz_typecursor_setalpha(anim*alpha); 
- uiz_typecursor_register(typepos_dis_px,iy,typepos_dis_px,ily,cursorcolor,cursorwidth)  
-}
+            <string>uiz_stringbox_event_handleTypeCursorAnimation();
 </string>
           </argument>
         </arguments>
@@ -206,18 +184,7 @@ if (hasselection=false and typing=true) then{//draw selector
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///check debug left-right movement
-
-if keyboard_check_released(vk_pagedown) then{
-    uiz_stringbox_shiftleft();
-    uiz_updater_FixViews();
-
-}
-if keyboard_check_released(vk_pageup) then{
-    uiz_stringbox_shiftright();
-    uiz_updater_FixViews();
-
-}
+            <string>uiz_stringbox_event_debugLeftRight();
 </string>
           </argument>
         </arguments>
@@ -238,10 +205,7 @@ if keyboard_check_released(vk_pageup) then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///check all needed shortcuts
-if typing=true then{
-uiz_stringbox_checkKeys();
-}
+            <string>uiz_stringbox_event_checkKeys();
 </string>
           </argument>
         </arguments>
@@ -264,12 +228,7 @@ uiz_stringbox_checkKeys();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///disable mouse grab
-if hasmouse=true and !mouse_check_button(mb_left) then{
-    global.mousefrozen=false;
-    hasmouse=false;
-    exit;
-}
+            <string>uiz_stringbox_event_disableMouseGrab();
 </string>
           </argument>
         </arguments>
@@ -290,97 +249,7 @@ if hasmouse=true and !mouse_check_button(mb_left) then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make selections
-if hasmouse = true {
-    if hasselection = false then {//check if no selection has been made
-    //set selection to typepos
-        selpos_dis = typepos_dis;
-        selpos_dis_px = typepos_dis_px;
-    }
-
-    
-
-    var mx = uiz_getmouse_x();
-    var addchar="";//hold the amount of characters not selected anymore
-    var mouseinside=false;
-    sel_canMove_counter+=uiz_sc(mouseSelectionMovementSpeed);
-    if mx&lt;ix then{
-    if sel_canMove_counter&gt;=1 then{uiz_stringbox_shiftleft();sel_canMove_counter=0;}
-    }else{
-    if mx&gt;ilx then{
-    if sel_canMove_counter&gt;=1 then{uiz_stringbox_shiftright();sel_canMove_counter=0;}    
-    }else{
-    mouseinside=true;
-    }
-    }
-    
-    var selpos_dis_old=selpos_dis;//remember old value for later checks
-    
-    var m = 1; //m is the multiplier to allow the selection to go to the left or right
-    if uiz_getmouse_x() &lt; selpos_dis_px then {
-        m = -1; //selecting goes to left
-    }
-    mx*=m;//prepare for further processing
-    //loop until all characters to be selected are selected:
-    while (selpos_dis*m&lt;str_dis_size*(m+1)/2){//keep within string size bounds
-        var checkchar = string_char_at(str_dis, selpos_dis+(m+1)/2)
-        var chs = string_width(checkchar) ;
-        if ((selpos_dis_px ) * m + chs / 2) &lt; mx then {
-        //add character to selection
-            selpos_dis += m;
-            selpos_dis_px += chs*m;
-            addchar+=checkchar;
-            if selpos_dis=typepos_dis then{break;}//if selection has size 0
-        } else {
-            break; //end the loop
-        }
-    }
-    //add the addchar variable to the right side of the selection
-    if addchar!="" then{
-    var addchar_length = string_length(addchar)
-    if typepos_dis&lt;selpos_dis or typepos_dis&lt;selpos_dis_old then{//selection goes to the right of the typepos
-    if m=-1 then{//selection gets smaller
-    sel_str_end_m=""
-        //add addchar revers
-        for(var i=addchar_length;i&gt;=1;i--){
-            sel_str_end_m+=string_char_at(addchar,i);
-        }
-        sel_str_end=sel_str_end_m+sel_str_end;
-        sel_str_mid=string_copy(sel_str_mid,1,string_length(sel_str_mid)-addchar_length);
-        }else{//selection gets bigger
-        sel_str_end=string_copy(sel_str_end,addchar_length+1,string_length(sel_str_end)-1)
-        sel_str_mid+=addchar
-        }
-    }else{
-    if typepos_dis&gt;selpos_dis or typepos_dis&gt;selpos_dis_old then{//selection goes to the left of typepos
-    if m=1 then{//selection gets smaller
-    //add addchar revers
-        sel_str_beg_m=addchar;
-        sel_str_beg+=addchar;
-        var midlen=string_length(sel_str_mid)
-        var midchars = midlen-addchar_length;//the new size of the mid string (could be negative)
-        sel_str_mid=string_copy(sel_str_mid,1+addchar_length,midchars);
-        if midchars&lt;0 then{//midchars is a negative number, couldn't fit in str_mid:
-             var endsz=string_length(sel_str_end);
-             midchars=clamp(-midchars,0,endsz);
-            sel_str_end=string_copy(sel_str_mid,1+midchars,endsz-midchars)
-            sel_end_sz=string_length(sel_str_end);
-        }
-        }else{//selection gets bigger
-        //add addchar reverse
-        for(var i=1;i&lt;=addchar_length;i++){
-            sel_str_mid=string_char_at(addchar,i)+sel_str_mid
-        }
-        sel_str_beg_m="";
-        sel_str_beg=string_copy(sel_str_beg,1,string_length(sel_str_beg)-addchar_length);
-        }
-        }
-    }
-    }
-//calculate the end points in the right order.
-uiz_stringbox_calculateConnectionPoints()
-
-}
+            <string>uiz_stringbox_event_makeSelections();
 </string>
           </argument>
         </arguments>
@@ -403,63 +272,7 @@ uiz_stringbox_calculateConnectionPoints()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///mouse check
-if kmouseover&gt;0 then{uiz_set_cursor(cr_beam)
-
-if global.systemsupportskeyboard = true then {
-    switch (kmouseover) {
-
-        case 3:
-            if typing=false then{
-            typing = true
-            keyboard_oldlastchar="";
-            uiz_updater_FixViews();
-            }
-            global.mousefrozen = true
-            hasmouse=true;
-            if !keyboard_check(vk_shift) then{//check for shift so we can make selections from our typing position by clicking and pressing shift.
-            uiz_stringbox_selection_disable();
-            sel_canMove_counter=1;
-            uiz_updater_step();
-            var typepos_dis_array = uiz_stringbox_getmousepos_dis();
-            typepos_dis=typepos_dis_array[0];
-            typepos_dis_px=typepos_dis_array[1];
-            uiz_stringbox_typecursor_register();
-            uiz_stringbox_resetSelStrings();
-            uiz_stringbox_typepos_real_from_dis();
-            }
-            break;
-            case 1:
-            if typing=false then{
-                uiz_updater_FixViews();}
-            break;
-        case 0:
-            if typing=false then{
-                uiz_updater_FixViews();}
-        //there is no break statement on purpose
-        case 4:
-        if hasmouse=true then{
-            global.mousefrozen=false;
-            hasmouse=false;
-            }
-            if selpmin=selpmax then{//check if selection is non existant
-                uiz_stringbox_selection_disable();
-            }
-        break;
-    }
-} else {
-    if kmouseover = 3 then {
-        str_real = get_string(messagetext, value)
-        if maxlength &gt; 0 then {
-            str_real = string_copy(value, 1, maxlength)
-        }
-    }
-}
-
-}else{
-uiz_set_cursor(cr_default);
-}
-
+            <string>uiz_stringbox_event_mouseCheck();
 </string>
           </argument>
         </arguments>
@@ -506,60 +319,9 @@ uiz_set_cursor(cr_default);
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-
-    if font &gt; -1 then {
-        draw_set_font(font)
-    }
-    //draw back
-    if typing = 1 then {
-        n = 3
-    } else {
-        if kmouseover = 0 then {
-            var n = 0
-        } else {
-            n = 1
-        }
-    }
-    uiz_back(n)
-
-    draw_set_valign(fa_middle)
-    draw_set_halign(fa_left)
-    draw_set_color(textcolor)
-    var y_mid = iy+iheight/2;
-    //draw text
-    if hasselection=true then{
-    if uiz_selfmarked=true then{
-        draw_text(selpos_dis_max_px_bound,y_mid,sel_str_end_m);
-        draw_set_halign(fa_right)
-        draw_text(selpos_dis_min_px_bound,y_mid,sel_str_beg_m);
-        draw_set_halign(fa_left)
-        if selpos_dis_min!=selpos_dis_max then{
-        draw_square(selpos_dis_min_px_bound+1,iy,selpos_dis_max_px_bound-1,ily,selectbackcolor,alpha);//draw selector square background
-        }
-        draw_set_color(selecttextcolor);
-        draw_text(selpos_dis_min_px_bound,y_mid,sel_str_mid);
-        sel_str_end_m="";
-        sel_str_beg_m="";
-        
-    }else{
-        draw_text(selpos_dis_max_px_bound,y_mid,sel_str_end);
-        draw_set_halign(fa_right)
-        draw_text(selpos_dis_min_px_bound,y_mid,sel_str_beg);
-        draw_set_halign(fa_left)
-        if selpos_dis_min!=selpos_dis_max then{
-        draw_square(selpos_dis_min_px_bound+1,iy,selpos_dis_max_px_bound-1,ily,selectbackcolor,alpha);//draw selector square background
-        }
-        draw_set_color(selecttextcolor);
-        draw_text(selpos_dis_min_px_bound,y_mid,sel_str_mid);
-        }
-    }else{
-    //draw vanilla text
-        draw_text(ix,y_mid,str_dis);
-    }
-
+    uiz_stringbox_event_draw();
     uiz_containend()
 }
-
 </string>
           </argument>
         </arguments>
