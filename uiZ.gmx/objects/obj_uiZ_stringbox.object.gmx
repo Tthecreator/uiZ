@@ -54,7 +54,30 @@ texturescript_over=-1//i//texturescript over//
 texturescript_in=-1//i//texturescript in//
 texturescript_out=-1//i//texturescript out//
 cursorwidth=2//v//width of the typing cursor//
-acceptOnlyNumbers=false//b//accept only digits and a single .//
+
+acceptOnlyNumbers=true//b//accept only digits and a single .//
+acceptOnlyIntegers=false//b//don't accept floating point numbers//
+acceptOnlyPositive=true//b//don't accept floating point numbers//
+numberCounter_enable=true//b//enable numberical up and down buttons//
+numberCounter_customWidth=true//b//enable custom width vs square buttons//
+numberCounter_interval=1//v//numberical up/down button step size//
+numberCounter_rapidTimer=0.75//v//numberical button hold time//
+numberCounter_rapidSpeed=0.05//v//numberical button rapid increase interval//
+numberCounter_width=0.1//b//numberical up and down button width//
+numberCounter_widthType=dp//b//numberical up and down button width type//
+
+numberCounter_minButtonSprite=spr_uiZ_min//s//subtract button sprite//
+numberCounter_minButtonColor=c_white//c//subtract button normal color//
+numberCounter_minButtonOnColor=c_white//c//subtract button mouse over color//
+numberCounter_minButtonOverColor=c_white//c//subtract button mouse in color//
+numberCounter_minButtonAlpha=c_white//c//subtract button alpha//
+
+numberCounter_maxButtonSprite=spr_uiZ_plus//s//add button sprite//
+numberCounter_maxButtonColor=c_white//c//add button normal color//
+numberCounter_maxButtonOnColor=c_white//c//add button mouse over color//
+numberCounter_maxButtonOverColor=c_white//c//add button mouse in color//
+numberCounter_maxButtonAlpha=c_white//c//add button alpha//
+
 
 sprite_normal=spr_uiZ_border1//p//sprite normal//
 color_normal=c_white//c//color normal//
@@ -96,7 +119,20 @@ margin_out=-1//v//margin out//
             <string>///stringboxspecific technical stuff
 str_real="-5.6.356THIS IS A TEST THAT THIS IS MAY BE A TEST FOR IT IS A TEST IT IS.";//the full string
 uiz_stringbox_str_real_init();
-i_ilx = ilx-40;//internal ilx
+ilx_minwidth = uiz_getposx_self(numberCounter_width,numberCounter_widthType);
+if numberCounter_enable then{
+i_ilx = ilx-ilx_minwidth;//internal ilx
+}else{
+i_ilx = ilx;
+}
+selfmarked_text = false;
+button_state_min = 0;//min button state
+button_state_max = 0;//max button state
+button_state_count = 0;
+button_state_max_count = 0;
+button_state_max_count_rapid = 0;
+sel_beg_fix = "";//a hacky bugfix variable
+
 </string>
           </argument>
         </arguments>
@@ -205,13 +241,38 @@ i_ilx = ilx-40;//internal ilx
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_stringbox_event_checkKeys();
+            <string>///check keys
+uiz_stringbox_event_checkKeys();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///handle mouse state
+if kmouseover&gt;0 and uiz_getmouse_x()&lt;i_ilx then{uiz_set_cursor(cr_beam)}else{
+uiz_set_cursor(cr_default);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -249,7 +310,82 @@ i_ilx = ilx-40;//internal ilx
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_stringbox_event_makeSelections();
+            <string>//if uiz_getmouse_x()&lt;i_ilx then{
+uiz_stringbox_event_makeSelections();
+//}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///check buttons
+if numberCounter_enable then{
+button_state_max = uiz_draw_spritebutton_step(i_ilx,max(iy+iheight/2-ilx_minwidth,iy),ilx,iy+iheight/2,button_state_max);
+button_state_min = uiz_draw_spritebutton_step(i_ilx,iy+iheight/2,ilx,min(iy+iheight/2+ilx_minwidth,ily),button_state_min);
+
+var addVal = 0;
+
+if uiz_positify(button_state_max)==uiz_mousereleased then{
+    addVal += 1;
+    button_state_count = 0;
+    button_state_max_count_rapid = 1;
+}else{
+    if uiz_positify(button_state_max)==uiz_mouseclick then{
+        button_state_count+=uiz_sc(numberCounter_rapidTimer)
+    }
+}
+
+if uiz_positify(button_state_min)==uiz_mousereleased then{
+    addVal -= 1;
+    button_state_count = 0;
+    button_state_max_count_rapid = 1;
+}else{
+    if uiz_positify(button_state_min)==uiz_mouseclick then{
+        button_state_count+=uiz_sc(numberCounter_rapidTimer)
+    }
+}
+
+if button_state_count&gt;=1 then{//if we should be rapid typing
+    button_state_max_count_rapid+=uiz_sc(numberCounter_rapidSpeed);
+    if (button_state_max_count_rapid&gt;=1){
+        button_state_max_count_rapid = 0;
+        
+        //increase correct state
+        if uiz_positify(button_state_max)==uiz_mouseclick then{
+            addVal += 1;
+        }else{
+            addVal -= 1;
+        }
+        
+    }
+}
+
+if(addVal&lt;0 and acceptOnlyPositive &amp;&amp; real(str_real)&lt;1){ addVal=0; uiz_stringbox_setvalue(id,"0"); }//fix bug when acceptOnlyPositive is enabled pressing - on a 0 results in a 1 while it shouldn't do anything.
+
+if addVal!=0 then{
+    //sdbm("testVal1",str_real);
+    //sdbm("testVal2",str_real,uiz_string_real_getIntLength(str_real),uiz_string_real_getFracLength(str_real))
+    //uiz_stringbox_setvalue(id, string_format(real(str_real)+addVal*numberCounter_interval,uiz_string_real_getIntLength(str_real),uiz_string_real_getFracLength(str_real)));
+    uiz_stringbox_setvalue(id, uiz_string_fromReal(real(str_real)+addVal*numberCounter_interval));
+}
+
+
+}
 </string>
           </argument>
         </arguments>
@@ -320,6 +456,15 @@ i_ilx = ilx-40;//internal ilx
             <kind>1</kind>
             <string>if uiz_cntn() then{
     uiz_stringbox_event_draw();
+    if numberCounter_enable then{
+        //draw buttons
+        if !uiz_selfmarked or button_state_min&lt;0 then{
+            uiz_draw_spritebutton_state(i_ilx,iy+iheight/2,ilx,min(iy+iheight/2+ilx_minwidth,ily),numberCounter_minButtonColor,numberCounter_minButtonOnColor,numberCounter_minButtonOverColor,numberCounter_minButtonSprite,1,button_state_min);
+        }
+        if !uiz_selfmarked or button_state_max&lt;0 then{
+            uiz_draw_spritebutton_state(i_ilx,max(iy+iheight/2-ilx_minwidth,iy),ilx,iy+iheight/2,numberCounter_maxButtonColor,numberCounter_maxButtonOnColor,numberCounter_maxButtonOverColor,numberCounter_maxButtonSprite,1,button_state_max);
+        }
+    }
     uiz_containend()
 }
 </string>
@@ -390,7 +535,7 @@ i_ilx = ilx-40;//internal ilx
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>
 draw_square(100,90,200,200,$dddddd,1)
 
 draw_set_valign(fa_top);
@@ -427,9 +572,11 @@ draw_text(100,265,selpmin);
 draw_text(100,280,selpmax);
 draw_text(100,295,typepos_dis);
 draw_text(100,310,str_dis_size);
-draw_set_color(c_red);
-draw_text(100,325,d);
-d="";
+draw_text(100,325,"str_dis_begin: "+string(str_dis_begin));
+draw_text(100,340,"str_dis_end: "+string(str_dis_end));
+//draw_set_color(c_red);
+//draw_text(100,325,d);
+//d="";
 /*
 draw_set_color(c_red);
 draw_line(tp1,ry,tp1,rly)

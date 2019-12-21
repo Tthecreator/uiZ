@@ -26,6 +26,7 @@
             uiz_stringbox_fixselection();
         }else{//update old position as well
             uiz_updater_FixViews_area_selfmarked(min(minold,selpos_dis_min_px_bound),iy,max(maxold,selpos_dis_max_px_bound)-1,ily);
+            selfmarked_text = true;
             //minoldtest=minold;
             //maxoldtest=maxold;
         }

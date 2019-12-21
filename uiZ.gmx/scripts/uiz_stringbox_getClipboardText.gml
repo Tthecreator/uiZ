@@ -14,13 +14,13 @@ if (acceptOnlyNumbers) then{
     var textHasDot = (string_count(".",str_real)!=0);
     
     //check to remove "-" from clip
-    if clipHasMinus==true and (typepos_real>0 or textHasMinus) then{//if we aren't typing at the beginning or the text already has a minus
+    if clipHasMinus==true and (typepos_real>0 or textHasMinus or acceptOnlyPositive) then{//if we aren't typing at the beginning or the text already has a minus
         clipText = string_copy(clipText, 2, string_length(clipText)-1);//remove first char
         clipHasMinus = false;
     }
     
     //check to remove "." from clip
-    if textHasDot then{
+    if textHasDot or acceptOnlyIntegers then{
         clipText = string_digits(clipText);//remove all other characters except digits
         if clipHasMinus then{
             clipText = "-"+clipText;//readd clip minus

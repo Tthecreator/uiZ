@@ -608,9 +608,6 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
-    <extension index="1">extensions\netlog</extension>
-    <extension index="2">extensions\GMLiveHelper</extension>
-    <extension index="3">extensions\GMLive</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -687,6 +684,8 @@
       <sprite>sprites\spr_uiz_menuanimationbutton</sprite>
       <sprite>sprites\spr_uiZ_menudots</sprite>
       <sprite>sprites\spr_uiZ_plusminbox</sprite>
+      <sprite>sprites\spr_uiZ_plus</sprite>
+      <sprite>sprites\spr_uiZ_min</sprite>
       <sprite>sprites\spr_uiZ_save</sprite>
       <sprite>sprites\spr_uiZ_savedoor</sprite>
       <sprite>sprites\spr_uiZ_scrollbar</sprite>
@@ -940,6 +939,7 @@
           <script>scripts\uiz_draw_squarebutton.gml</script>
           <script>scripts\uiz_draw_spritebutton.gml</script>
           <script>scripts\uiz_draw_spritebutton_state.gml</script>
+          <script>scripts\uiz_draw_spritebutton_step.gml</script>
           <script>scripts\uiz_draw_squarebutton_differentmouse_draw.gml</script>
           <script>scripts\uiz_draw_squarebutton_differentmouse_step.gml</script>
           <script>scripts\uiz_draw_squarebutton_independent.gml</script>
@@ -1170,6 +1170,7 @@
           <script>scripts\uiz_mouse_isFrozen.gml</script>
           <script>scripts\uiz_mouse_isFrozen_on.gml</script>
           <script>scripts\uiz_isMouseSwipeClickWhiteListed.gml</script>
+          <script>scripts\uiz_mouse_getStateWithin.gml</script>
         </scripts>
         <scripts name="numbers">
           <script>scripts\uiz_pxtodpx.gml</script>
@@ -1548,6 +1549,7 @@
               <script>scripts\uiz_stringbox_insertchars.gml</script>
               <script>scripts\uiz_stringbox_getCharsInHalfWidth.gml</script>
               <script>scripts\uiz_stringbox_selectionToEnd.gml</script>
+              <script>scripts\uiz_stringbox_selectAll.gml</script>
               <script>scripts\uiz_stringbox_selectionToBegin.gml</script>
               <script>scripts\uiz_stringbox_typepos_moveLeft.gml</script>
               <script>scripts\uiz_stringbox_selpos_moveLeft.gml</script>
@@ -1838,6 +1840,10 @@
           <script>scripts\uiz_addchar.gml</script>
           <script>scripts\uiz_stringUntilNewline.gml</script>
           <script>scripts\uiz_isSpaceChar.gml</script>
+          <script>scripts\uiz_string_fromReal.gml</script>
+          <script>scripts\uiz_string_format.gml</script>
+          <script>scripts\uiz_string_real_getIntLength.gml</script>
+          <script>scripts\uiz_string_real_getFracLength.gml</script>
         </scripts>
         <scripts name="updater">
           <script>scripts\uiz_updater_setsurface.gml</script>
@@ -2254,7 +2260,7 @@
         <object>objects\obj_uiZ_textarea</object>
         <object>objects\obj_uiZ_treelist</object>
         <object>objects\obj_uiZ_treelist_bak</object>
-        <object>objects\obj_uiZ_valuebox</object>
+        <object>objects\obj_uiZ_valuebox_legacy</object>
         <object>objects\obj_uiZ_window</object>
       </objects>
       <objects name="serverbrowser">
@@ -2367,7 +2373,6 @@
     <object>objects\object155</object>
     <object>objects\charSpeedTest</object>
     <object>objects\obj_spriteStretchTest</object>
-    <object>objects\obj_gmlive</object>
     <object>objects\jkkj_creator</object>
   </objects>
   <rooms name="rooms">

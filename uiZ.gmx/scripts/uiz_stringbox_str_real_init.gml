@@ -7,10 +7,17 @@ typepos_dis_px=0;//pixel position of typeing cursor
 count=0;//count the type cursor animation.
 if (acceptOnlyNumbers) then{
     str_real = uiz_string_digits(str_real);
+    if (acceptOnlyIntegers) then{
+        str_real = string_replace_all(str_real,".","");
+    }
+    if (acceptOnlyPositive) then{
+        str_real = string_replace_all(str_real,"-","");
+    }
 }
 str_real_size=string_length(str_real);//the number of characters in the real string
 str_dis=str_real;//the string actually displayed
 str_dis_width_last=0;//the width of the last character in dis
+//if font!=-1 then{draw_set_font(font);}
 str_dis_width=0;//the total width of dis
 str_dis_size=0;//number of characters in dis
 str_dis_begin=0;//the place in str_real where str_dis begins.

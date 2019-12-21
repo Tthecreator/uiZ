@@ -5,7 +5,8 @@ var trimmed=false;
 if str_dis_end<str_real_size then{
 str_dis_end++;
 var addchar=string_char_at(str_real,str_dis_end);
-//d+="shift right with: "+addchar+"#";
+//var d="shift right with: "+addchar+"#";
+//d += " do this at: "+string(str_dis_end)+"#";
 var addchar_width=string_width(addchar);
 str_dis_size++;
 str_dis_width+=addchar_width;
@@ -14,7 +15,7 @@ if selpmax>=str_dis_end then{
 sel_str_mid+=addchar;
 }else{
 sel_str_end+=addchar;
-   // d+="    end add 1: "+addchar+"#";
+   //d+="    end add 1: "+addchar+"#";
 }
 
 //d+="addd: "+addchar+"-#";
@@ -49,7 +50,7 @@ while(str_dis_width>floor(i_ilx-ix)){
         selpos_dis_px -=remchar_size;
         selpos_dis_min--;
         selpos_dis_min_px-=remchar_size;
-   // d+="hassel#";
+   //d+="hassel#";
         if sel_beg_sz=0 then{
         //if typepos_dis<=0 then{
         //remove char from mid string
@@ -66,6 +67,7 @@ while(str_dis_width>floor(i_ilx-ix)){
         }
     //}
 }
+//sdbm(d);
 uiz_stringbox_getselbounds();
 if typepos_dis<0 and !hasselection then{
 typepos_dis=0;

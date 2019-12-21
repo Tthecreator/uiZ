@@ -4,7 +4,11 @@ var oldiwidth=iwidth;
 uiz_fix_Base();
 //qstr="";
 //uiz_stringbox_get_str_dis_width();
-i_ilx = ilx-40;
+if numberCounter_enable then{
+    i_ilx = ilx-ilx_minwidth;//internal ilx
+}else{
+    i_ilx = ilx;
+}
 if oldiwidth!=iwidth then{
     if str_dis_width<floor(i_ilx-ix) && str_dis_end == str_real_size then{
         //snap end to right

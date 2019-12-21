@@ -1,6 +1,10 @@
- ///check all needed shortcuts
+///check all needed shortcuts
 //returns if an action took place
 if(keyboard_check(vk_control)){
+    if(keyboard_check_pressed(ord('A'))){//select all
+        uiz_stringbox_selectAll();
+        return true;
+    }
     if hasselection=true then{
         if(keyboard_check_pressed(ord('C'))){//copy
             clipboard_set_text(uiz_stringbox_getselectionstring())
@@ -142,8 +146,8 @@ if(keyboard_check(vk_control)){
            }
            if acceptOnlyNumbers==false //we don't need to check if this is creates a valid number
            or (char==string_digits(char) and (typepos_real > 0 or string_char_at(str_real,1)!="-"))//we are typing a number (and we aren't typing it in front of a "-"
-           or (char=="-" and typepos_real = 0 and string_char_at(str_real,1)!="-")//we are typing a "-" at the beginning of the string
-           or (char=="." and string_count(".",str_real)==0)//we are typing a "." and there are no other "." in the string
+           or (acceptOnlyPositive==false and char=="-" and typepos_real = 0 and string_char_at(str_real,1)!="-")//we are typing a "-" at the beginning of the string
+           or (acceptOnlyIntegers==false and char=="." and string_count(".",str_real)==0)//we are typing a "." and there are no other "." in the string
            then{
               if hasselection then{
                     uiz_stringbox_deleteselection();
