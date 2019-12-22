@@ -535,7 +535,7 @@ if addVal!=0 then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/*
 draw_square(100,90,200,200,$dddddd,1)
 
 draw_set_valign(fa_top);

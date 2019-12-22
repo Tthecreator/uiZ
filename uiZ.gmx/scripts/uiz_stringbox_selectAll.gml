@@ -1,19 +1,6 @@
-//takes the current typepos and makes a selection till the end of the stringbox
-//if typepos_real<str_real_size then{
-if selpmin!=0 or selpmax!=str_real_size then{
+//takes the current typepos and makes a selection from the beginning to the end of the stringbox
+if selpmin!=0 or selpmax!=str_real_size or !hasselection then{
     hasselection=true;
-    //uiz_stringbox_disToEnd();
-    //sel_str_beg=string_copy(str_real,1,typepos_real);
-    //sel_str_mid=string_copy(str_real,typepos_real+1,str_dis_size);
-    /*
-    if(typepos_real>str_dis_begin){
-    sel_str_beg=uiz_string_copy(str_real,str_dis_begin,typepos_real)
-    sel_str_mid=uiz_string_copy(str_real,typepos_real+1,str_real_size);
-    }else{
-    sel_str_beg="";
-    sel_str_mid=uiz_string_copy(str_real,str_dis_begin+1,str_real_size);
-    }
-    */
     
     selpmin=0;
     selpmax=str_real_size;
