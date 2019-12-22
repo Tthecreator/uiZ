@@ -1,5 +1,12 @@
 ///check all needed shortcuts
 //returns if an action took place
+
+if(keyboard_check_released(vk_enter)){
+    //remove any selections or typing cursor
+    uiz_stringbox_disableSelection(id);
+    return true;
+}
+
 if(keyboard_check(vk_control)){
     if(keyboard_check_pressed(ord('A'))){//select all
         uiz_stringbox_selectAll();

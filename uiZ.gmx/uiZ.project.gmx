@@ -1565,6 +1565,7 @@
               <script>scripts\uiz_stringbox_redoSelectionStrings.gml</script>
             </scripts>
             <script>scripts\uiz_stringbox_deleteselection.gml</script>
+            <script>scripts\uiz_stringbox_disableSelection.gml</script>
           </scripts>
           <scripts name="surfacecanvas">
             <script>scripts\uiz_surfacecanvas_setcolor.gml</script>
