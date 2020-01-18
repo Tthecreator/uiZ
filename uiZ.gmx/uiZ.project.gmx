@@ -2214,6 +2214,7 @@
         <object>objects\obj_uiZ_surfaceholder</object>
         <object>objects\obj_uiZ_textplane</object>
         <object>objects\obj_uiZ_windowholder</object>
+        <object>objects\obj_uiZ_treelist_bak</object>
       </objects>
       <objects name="macromanager">
         <object>objects\uiz_macromanager_controller</object>
@@ -2260,7 +2261,6 @@
         <object>objects\obj_uiZ_text</object>
         <object>objects\obj_uiZ_textarea</object>
         <object>objects\obj_uiZ_treelist</object>
-        <object>objects\obj_uiZ_treelist_bak</object>
         <object>objects\obj_uiZ_valuebox_legacy</object>
         <object>objects\obj_uiZ_window</object>
       </objects>

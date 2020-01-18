@@ -1,6 +1,6 @@
 #define UIZ_FONT
 //you can change me.
-//dp_15 means a font with a height of 0.15 dp;
+//dp_15 means a font with a height of 0.15 dp = 0.15 inch = 3,81 mm;
 //px_10 means a font that is 10 pixels high;
 if global.uiz_fonts_loaded=false then{
     global.uiz_fonts_loaded=true
@@ -11,36 +11,53 @@ if global.uiz_fonts_loaded=false then{
     sizes[3]=10;fonts[3]=uiz_fnt_10;
     sizes[2]=8;fonts[2]=uiz_fnt_8;
     sizes[1]=5;fonts[1]=uiz_fnt_5;
-    sizes[0]=2;fonts[0]=uiz_fnt_2;
-    globalvar uiz_fnt_dp_15;
-    
+    sizes[0]=2;fonts[0]=uiz_fnt_2;   
     //load dpi
     globalvar uiz_dp;
-    
     uiz_dp=uiz_dpi_getdpi();
     
-    var sz=0.10*uiz_dp*multiplier
-    var diff=999999999999;
-    var hasdiff=-1;
-    for(var i=0;i<array_length_1d(sizes);i++){
-    var curdiff=abs(sz-sizes[i]);
-    if curdiff<diff then{diff=curdiff;hasdiff=i;}
-    }
-    var fnt=fonts[hasdiff]
-    if hasdiff>-1 and diff<15 and is_real(fnt) and font_exists(fnt) then{
-    sdbm("[uiZ|info]Now using font: ",fnt," of size: ",sizes[hasdiff]," with ideal size being: ",sz," your dpi is: ",uiz_dp, "and the unaware dpi is: ",display_get_dpi_y());
-    uiz_fnt_dp_15=fnt;
-    }else{
-    UIZ_FONT_IMPORT(multiplier)
-    sdbm("[uiZ|info]Now using font: ",fnt," of size: ",sizes[hasdiff]," with ideal size being: ",sz," your dpi is: ",uiz_dp, "and the unaware dpi is: ",display_get_dpi_y());
-    }
-    globalvar uiz_fnt_px_10; //use of px fonts is discouraged, since it won't scale properly between 1080p and 4k screens. Using pixel values to build your ui is discouraged in general.
-    uiz_fnt_px_10=uiz_fnt_5;
+    //load dp based fonts
+    globalvar uiz_fnt_dp_15, uiz_fnt_dp_30, uiz_fnt_dp_50;
+    uiz_fnt_dp_15 = uiz_font_load_dp(0.15,multiplier);
+//    uiz_fnt_dp_30 = uiz_font_load_dp(0.30,multiplier);
+//    uiz_fnt_dp_50 = uiz_font_load_dp(0.50,multiplier);
+    
+    //set pixel based fonts
+    globalvar uiz_fnt_px_2, uiz_fnt_px_5, uiz_fnt_px_8, uiz_fnt_px_10, uiz_fnt_px_20, uiz_fnt_px_50, uiz_fnt_px_70; //use of px fonts is discouraged, since it won't scale properly between 1080p and 4k screens. Using pixel values to build your ui is discouraged in general.
+    uiz_fnt_px_2=uiz_fnt_2;
+    uiz_fnt_px_5=uiz_fnt_5;
+    uiz_fnt_px_8=uiz_fnt_8;
+    uiz_fnt_px_10=uiz_fnt_10;
+    uiz_fnt_px_20=uiz_fnt_20;
+    uiz_fnt_px_50=uiz_fnt_50;
+    uiz_fnt_px_70=uiz_fnt_70;
 }
-//uiz_fnt_px_10=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",10*multiplier,false,false,32,128);//english only
-//uiz_fnt_px_10=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",10*multiplier,false,false,32,255);//general european
 
 #define UIZ_FONT_IMPORT
+///UIZ_FONT_IMPORT(dp, multiplier)
 sdbm("[uiZ|Warning] generating new font page, performance issues might arise.")
-//uiz_fnt_dp_15=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",0.15*uiz_dp*argument0,false,false,32,128);//english only
-uiz_fnt_dp_15=font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",0.15*uiz_dp*argument0,false,false,32,255);//general european
+//return font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",argument0*uiz_dp*argument1,false,false,32,128);//English only
+return font_add("uiz\m-fonts_m-2p\mplus-2p-regular.ttf",argument0*uiz_dp*argument1,false,false,32,255);//general european
+
+#define uiz_font_load_dp
+///uiz_font_load_dp(dp_size,multiplier)
+//var sz=0.15*uiz_dp*multiplier
+var sz=argument0*uiz_dp*argument1
+var diff=999999999999;
+var hasdiff=-1;
+//get pixel font that matches this dpi the most
+for(var i=0;i<array_length_1d(sizes);i++){
+    var curdiff=abs(sz-sizes[i]);
+    if curdiff<diff then{diff=curdiff;hasdiff=i;}
+}
+var fnt=fonts[hasdiff];
+
+//check if font matches enough
+if hasdiff>-1 and diff<15 and is_real(fnt) and font_exists(fnt) then{
+    sdbm("[uiZ|Info]Now using font: ",fnt," of size: ",sizes[hasdiff]," with ideal size being: ",sz," your dpi is: ",uiz_dp, "and the system unaware dpi is: ",display_get_dpi_y());
+    //uiz_fnt_dp_15=fnt;
+    return fnt;
+}else{
+    return UIZ_FONT_IMPORT(argument0,argument1)
+    sdbm("[uiZ|Info]Now using font: ",fnt," of size: ",sizes[hasdiff]," with ideal size being: ",sz," your dpi is: ",uiz_dp, "and the system unaware dpi is: ",display_get_dpi_y());
+}

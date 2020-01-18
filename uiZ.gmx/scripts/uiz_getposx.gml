@@ -20,35 +20,35 @@ case dpmin:
 ret=parent.width-argument0*uiz_dp
 break;
 case fc: case fcx:
-ret=round(argument0*(parent.iwidth)-leftmargin-rightmargin);
+ret=round(argument0*(parent.iwidth)/*-leftmargin-rightmargin*/);
 break;
 case fcy:
-ret=round(argument0*(parent.iheight)-leftmargin-rightmargin)
+ret=round(argument0*(parent.iheight)/*-leftmargin-rightmargin*/)
 clmp=1;
 break;
 case fcm:
-ret=round(mean(argument0*(parent.iwidth),argument0*(parent.iheight))-leftmargin-rightmargin)
+ret=round(mean(argument0*(parent.iwidth),argument0*(parent.iheight))/*-leftmargin-rightmargin*/)
 clmp=1
 break;
 case fcmin:
 if parent.iwidth>parent.iheight then{
-ret=round(argument0*(parent.iheight)-leftmargin-rightmargin)
+ret=round(argument0*(parent.iheight)/*-leftmargin-rightmargin*/)
 }else{
-ret=round(argument0*(parent.iwidth)-leftmargin-rightmargin);
+ret=round(argument0*(parent.iwidth)/*-leftmargin-rightmargin*/);
 }
 break;
 case fcmax:
 if parent.iwidth<parent.iheight then{
-ret=round(argument0*(parent.iheight)-leftmargin-rightmargin)
+ret=round(argument0*(parent.iheight)/*-leftmargin-rightmargin*/)
 }else{
-ret=round(argument0*(parent.iwidth)-leftmargin-rightmargin);
+ret=round(argument0*(parent.iwidth)/*-leftmargin-rightmargin*/);
 }
 break;
 default:
 ret=argument0;
 break;
 }
-ret-=leftmargin+rightmargin
+//ret-=leftmargin+rightmargin
 switch(containposvx){
 case uiz_nocontain:
 return ret;

@@ -29,6 +29,7 @@
 //#sprite images
 //#spritenum 4
 //#objectversion 1.0
+//#wiki https://git.tthecreator.win/TtheCreator/uiz/wikis/button
 uiz_objinit()
 
 font=-1//f//font//

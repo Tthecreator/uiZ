@@ -29,25 +29,27 @@
 //#sprite images
 //#spritenum 23
 //#objectversion 1.0
+//#wiki https://git.tthecreator.win/TtheCreator/uiz/wikis/checkbox
 uiz_objinit()
 checkcolor=c_black//c//check color//
 checkoncolor=c_dkgray//c//check mouse over color//
 checkincolor=c_gray//c//check mouse click color//
-alpha=1
-outline=0
-outlinecolor=c_black
-outlineoncolor=c_black
-outlineincolor=c_black
-outlinealpha=1
 margin=2//v//check margin in pixels//
-updated=0
-update=0
 value=false//b//initial value//
 sprite=-1//p//checkmark sprite//
 spriteimg=0//v//sprite image//
 spritecolor=c_white//c//sprite color//
 spriteoncolor=c_white//c//sprite mouse over color//
 spriteincolor=c_white//c//sprite mouse in color//
+/*
+outline=0
+outlinecolor=c_black
+outlineoncolor=c_black
+outlineincolor=c_black
+outlinealpha=1
+*/
+updated=0
+update=0
 
 hasbackground=true;
 texturescript=uiz_back_circlestitch//i//texturescript//
@@ -240,18 +242,19 @@ uiz_updater_FixViews();
 //draw_square(rx,ry,rlx,rly,c,alpha)
 
 uiz_back()
-
+/*
 if outline=1 then{
-switch(kmouseover){
-case 0: draw_set_color(outlinecolor) break;
-case 1: draw_set_color(outlineoncolor) break;
-default: draw_set_color(outlineincolor) break;
+    switch(kmouseover){
+        case 0: draw_set_color(outlinecolor) break;
+        case 1: draw_set_color(outlineoncolor) break;
+        default: draw_set_color(outlineincolor) break;
+    }
+    draw_set_alpha(outlinealpha)
+    draw_rectangle(rx-1,ry-1,rlx-1,rly-1,1)
+    
+    draw_set_alpha(1)
 }
-draw_set_alpha(outlinealpha)
-draw_rectangle(rx-1,ry-1,rlx-1,rly-1,1)
-
-draw_set_alpha(1)
-}
+*/
 if value=1 then{
 var x1=rx+margin
 var x2=rlx-margin

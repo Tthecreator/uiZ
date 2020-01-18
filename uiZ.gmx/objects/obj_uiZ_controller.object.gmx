@@ -609,6 +609,7 @@ lastmousey=uiz_getmouse_y()
 if global.mousefrozensafety=1 and global.mousefrozensafetynumber!=global.uiz_instep then{
 global.mousefrozen=0;
 global.mousefrozensafety=0;
+sdbm("[uiZ")
 }
 }else{
 global.mousefrozensafety=0;
@@ -1720,7 +1721,7 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
     uiz_changeSurface=false;
     //sdbm("shader set to:",global.uiz_shader)
     draw_set_blend_mode(bm_normal)
-    draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
+    //draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
     
     //set shader
     if global.uiz_shader=true then{

@@ -208,21 +208,37 @@ uiz_fixgeneralpos(tabslider)
           <argument>
             <kind>1</kind>
             <string>global.deb=false;
-show_debug_overlay(true)
+//show_debug_overlay(true)
 
 uiz_init()
 draw_set_font(uiz_fnt_dp_15);
+/*
 win=uiz_window_create(250,px,100,px)
 win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
 win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
+*/
 
-o=uiz_c(obj_uiZ_stringbox);
-uiz_setparent(o,win);
-o.posinframex=uiz_fill;
-o.posinframey=uiz_fill;
+o=uiz_c(obj_uiZ_button);
+//uiz_setparent(o,win);
+//o.posinframex=uiz_fill;
+//o.posinframey=uiz_fill;
+
+o.posinframex=uiz_center;
+o.posinframey=uiz_center;
+o.posvalwtype=fc;
+o.posvalw=0.5;
+o.posvalhtype=fc;
+o.posvalh=0.5;
+
+o.texturescript=uiz_back_square
+o.sprite_normal=spr_uiZ_border1
+o.color_normal=c_white
+o.margin_normal=5
+o.sprite_texturemode=uiz_texturemode_fill
+o.border_texturemode=-1
 
 uiz_fixgeneralpos(o);
 </string>

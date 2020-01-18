@@ -29,18 +29,19 @@
 //#sprite images
 //#spritenum 5
 //#objectversion 1.0
+//#wiki https://git.tthecreator.win/TtheCreator/uiz/wikis/3waybutton
 uiz_objinit()
 color=c_white//c//color//
 sprite=spr_uiZ_3partbutton//p//sprite//
 spraddto=0//v//add to sprite//
-kmouseover=0;
 text=""//s//text//
 textcolor=c_black//c//text color//
 font=-1//f//font//
-alpha=1
+texturemode=uiz_texturemode_fill;//t//texturemode//
 update=0
 updated=0
-texturemode=uiz_texturemode_fill;
+
+kmouseover=0;
 </string>
           </argument>
         </arguments>
