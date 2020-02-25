@@ -3,9 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="232" name="datafiles">
-    <datafiles number="232" name="uiz">
-      <datafiles number="232" name="m-fonts_m-2p">
+  <datafiles number="252" name="datafiles">
+    <datafiles number="252" name="uiz">
+      <datafiles number="252" name="m-fonts_m-2p">
         <datafile>
           <name>LICENSE_E</name>
           <exists>-1</exists>
@@ -487,7 +487,7 @@
     <datafile>
       <name>gmlive-server.n</name>
       <exists>-1</exists>
-      <size>140364</size>
+      <size>169574</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -504,7 +504,7 @@
     <datafile>
       <name>gmlive.html</name>
       <exists>-1</exists>
-      <size>46102</size>
+      <size>56046</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -538,7 +538,7 @@
     <datafile>
       <name>gmlive-server.exe</name>
       <exists>-1</exists>
-      <size>152148</size>
+      <size>185966</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -569,11 +569,45 @@
       </ConfigOptions>
       <filename>netlog.exe</filename>
     </datafile>
-    <datafiles number="232" name="netlog">
+    <datafiles number="252" name="GMLive">
+      <datafile>
+        <name>gmlive.html</name>
+        <exists>-1</exists>
+        <size>56046</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>gmlive.html</filename>
+      </datafile>
+      <datafile>
+        <name>gmlive-server.exe</name>
+        <exists>-1</exists>
+        <size>195784</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>gmlive-server.exe</filename>
+      </datafile>
       <datafile>
         <name>netlog.exe</name>
-        <exists>0</exists>
-        <size>0</size>
+        <exists>-1</exists>
+        <size>54272</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -588,9 +622,9 @@
         <filename>netlog.exe</filename>
       </datafile>
       <datafile>
-        <name>netlog.n</name>
-        <exists>0</exists>
-        <size>0</size>
+        <name>gmlive-server.n</name>
+        <exists>-1</exists>
+        <size>179392</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -602,12 +636,115 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>netlog.n</filename>
+        <filename>gmlive-server.n</filename>
+      </datafile>
+      <datafile>
+        <name>GMLiveHelper.gmez</name>
+        <exists>-1</exists>
+        <size>33494</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>GMLiveHelper.gmez</filename>
+      </datafile>
+      <datafile>
+        <name>netlog.gmez</name>
+        <exists>-1</exists>
+        <size>1614</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>netlog.gmez</filename>
+      </datafile>
+      <datafile>
+        <name>gcmt-dll.dll</name>
+        <exists>-1</exists>
+        <size>116224</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>gcmt-dll.dll</filename>
+      </datafile>
+      <datafile>
+        <name>neko.dll</name>
+        <exists>-1</exists>
+        <size>84480</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>neko.dll</filename>
+      </datafile>
+      <datafile>
+        <name>regexp.ndll</name>
+        <exists>-1</exists>
+        <size>207360</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>regexp.ndll</filename>
+      </datafile>
+      <datafile>
+        <name>std.ndll</name>
+        <exists>-1</exists>
+        <size>148480</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>std.ndll</filename>
       </datafile>
     </datafiles>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
+    <extension index="1">extensions\GMLiveHelper</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -946,6 +1083,8 @@
           <script>scripts\uiz_draw_line_width.gml</script>
           <script>scripts\draw_square.gml</script>
           <script>scripts\draw_square_colour.gml</script>
+          <script>scripts\draw_square_rounded_colour.gml</script>
+          <script>scripts\draw_square_rounded_colour_outlined.gml</script>
           <script>scripts\draw_huesquare.gml</script>
           <script>scripts\draw_spritewh.gml</script>
           <script>scripts\draw_sprite_points.gml</script>
@@ -1031,6 +1170,7 @@
             <script>scripts\uiz_fixswitchpos.gml</script>
             <script>scripts\uiz_fixtextareapos.gml</script>
             <script>scripts\uiz_fixtreelistpos.gml</script>
+            <script>scripts\uiz_fixcolorboxes.gml</script>
           </scripts>
         </scripts>
         <scripts name="frame">
@@ -1458,6 +1598,7 @@
               <script>scripts\uiz_select.gml</script>
               <script>scripts\uiz_slider_unselect.gml</script>
             </scripts>
+            <script>scripts\uiz_slider_setRoundedCorners.gml</script>
           </scripts>
           <scripts name="slider_2col">
             <script>scripts\uiz_slider_2col_setcolor.gml</script>
@@ -2160,8 +2301,9 @@
       </scripts>
       <script>scripts\UIZ_versioninformation.gml</script>
     </scripts>
-    <script>scripts\live_call_bak.gml</script>
-    <script>scripts\live_call_ext_bak.gml</script>
+    <script>scripts\live_call.gml</script>
+    <script>scripts\live_call_ext.gml</script>
+    <script>scripts\script1153.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="uiz">

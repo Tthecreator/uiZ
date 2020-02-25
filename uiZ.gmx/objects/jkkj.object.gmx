@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///fps counter
 fps_avg=-1;
-room_speed=30
+room_speed=60
 fps_counts=0;
 sdbm("booting UP",id);
 </string>
@@ -212,6 +212,8 @@ uiz_fixgeneralpos(tabslider)
 
 uiz_init()
 draw_set_font(uiz_fnt_dp_15);
+//application_surface_draw_enable(false); 
+//uiz_useAppSurf(false);
 /*
 win=uiz_window_create(250,px,100,px)
 win.posinframex=uiz_snapleft;
@@ -221,7 +223,11 @@ win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 */
 
-o=uiz_c(obj_uiZ_button);
+//o=uiz_c(obj_uiZ_colorbox);
+o=uiz_c(obj_uiZ_slider);
+
+//uiz_slider_setRoundedCorners(o,true)
+o.roundedcorners = true;
 //uiz_setparent(o,win);
 //o.posinframex=uiz_fill;
 //o.posinframey=uiz_fill;
@@ -313,9 +319,11 @@ uiz_fixgeneralpos(win);
 uiz_fixchildren(win,true);
 }
 
+/*
 if (surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height()) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
 surface_resize(application_surface,window_get_width(),window_get_height());
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -351,6 +359,31 @@ fps_avg/=fps_counts;
 }
 draw_set_color(c_white)
 draw_text(100,100,fps_avg);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_red);
+draw_set_alpha(1);
+draw_rectangle(300,300,400,400,false)
 </string>
           </argument>
         </arguments>

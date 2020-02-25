@@ -55,9 +55,9 @@ texturescript_in=-1//i//texturescript in//
 texturescript_out=-1//i//texturescript out//
 cursorwidth=2//v//width of the typing cursor//
 
-acceptOnlyNumbers=true//b//accept only digits and a single .//
+acceptOnlyNumbers=false//b//accept only digits and a single .//
 acceptOnlyIntegers=false//b//don't accept floating point numbers//
-acceptOnlyPositive=true//b//don't accept floating point numbers//
+acceptOnlyPositive=true//b//don't accept negative point numbers//
 numberCounter_enable=true//b//enable numberical up and down buttons//
 numberCounter_customWidth=true//b//enable custom width vs square buttons//
 numberCounter_interval=1//v//numberical up/down button step size//
@@ -117,7 +117,7 @@ margin_out=-1//v//margin out//
           <argument>
             <kind>1</kind>
             <string>///stringboxspecific technical stuff
-str_real="-5.6.356THIS IS A TEST THAT THIS IS MAY BE A TEST FOR IT IS A TEST IT IS.";//the full string
+str_real="";//the full string
 uiz_stringbox_str_real_init();
 ilx_minwidth = uiz_getposx_self(numberCounter_width,numberCounter_widthType);
 if numberCounter_enable then{
@@ -132,6 +132,8 @@ button_state_count = 0;
 button_state_max_count = 0;
 button_state_max_count_rapid = 0;
 sel_beg_fix = "";//a hacky bugfix variable
+updated = false;
+update = false;
 
 </string>
           </argument>
@@ -156,6 +158,30 @@ sel_beg_fix = "";//a hacky bugfix variable
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>updated = false;
+update = false;
 </string>
           </argument>
         </arguments>

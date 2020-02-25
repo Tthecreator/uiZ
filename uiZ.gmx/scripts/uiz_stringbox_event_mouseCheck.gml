@@ -59,6 +59,9 @@ if global.systemsupportskeyboard = true then {
         if maxlength > 0 then {
             str_real = string_copy(value, 1, maxlength)
         }
+        updated = true;
+        update = true;
+        uiz_updater_step_endcheck();
     }
 }
 

@@ -7,6 +7,10 @@ with(argument0){
     }else{
         str_real = string(argument1);
     }
+    //sdbm("updating stringbox")
+    updated = true;
+    update = true;
+    uiz_updater_step_endcheck();
     uiz_stringbox_str_real_init();
     uiz_stringbox_resetdis();
     uiz_updater_FixViews();

@@ -1,0 +1,11 @@
+///uiz_slider_setRoundedCorners(id,enabled,distance_x,distance_x_type,distance_y,distance_y_type)
+with(argument0){
+    roundedcorners=argument1;
+    rounddistance_x=argument2;
+    rounddistancetype_x=argument3;
+    rounddistance_y=argument4;
+    rounddistancetype_y=argument5;
+    rounddx=min(width/2,uiz_getposx_self(rounddistance_x,rounddistancetype_x));
+    rounddy=min(height/2,uiz_getposy_self(rounddistance_y,rounddistancetype_y));
+    uiz_updater_FixViews();
+}

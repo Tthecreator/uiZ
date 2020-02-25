@@ -609,7 +609,6 @@ lastmousey=uiz_getmouse_y()
 if global.mousefrozensafety=1 and global.mousefrozensafetynumber!=global.uiz_instep then{
 global.mousefrozen=0;
 global.mousefrozensafety=0;
-sdbm("[uiZ")
 }
 }else{
 global.mousefrozensafety=0;
@@ -718,8 +717,12 @@ uiz_compatibility_rebuilddepths()
 var sz=ds_list_size(uiz_endsteplist)
 for(var i=0;i&lt;sz;i++){
 var o=uiz_endsteplist[|i];
-if instance_exists(o) then{
+if instance_exists(o) and o.uiz_enabled=true then{
 with(o){event_user(5);}
+if(sz!=ds_list_size(uiz_endsteplist)){//if our current item got removed from the list, the size should have changed
+    i--;//re-iterate over last step;
+    sz = ds_list_size(uiz_endsteplist);
+}
 }
 }
 ds_list_empty(uiz_endsteplist);
@@ -784,6 +787,31 @@ ds_list_clear(l);
 
 
 uiz_updater_FixViews_processing(obj_uiZ_controller);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///alt for updating everything
+if keyboard_check(vk_alt){
+    uiz_updater_FixViews_area(0,0,width,height);
+}
 </string>
           </argument>
         </arguments>
@@ -889,7 +917,7 @@ if (os_type=os_windows){
             <kind>1</kind>
             <string>///detect changes in windowsize
 if (window_get_width()!=global.screenpxwidth or window_get_height()!=global.screenpxheight) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
-uiz_resetwindowsize();
+//uiz_resetwindowsize();
 }
 </string>
           </argument>
@@ -1401,6 +1429,10 @@ for(var i=0;i&lt;sz;i++){
 var o=uiz_steplist[|i];
 if instance_exists(o) and o.uiz_enabled=true then{
 with(o){event_user(4);}
+if(sz!=ds_list_size(uiz_steplist)){//if our current item got removed from the list, the size should have changed
+    i--;//re-iterate over last step;
+    sz = ds_list_size(uiz_steplist);
+}
 }else{
 ds_list_delete(uiz_steplist,i);
 i--;
@@ -1587,13 +1619,13 @@ if resetSurfaces then{
         uiz_surf = surface_create(window_w,window_h);
     }
     
-    ///if !uiz_useappsurf{
+    if !uiz_useappsurf{
     if surface_exists(uiz_appsurf){
         surface_resize(uiz_appsurf,window_w,window_h)        
     }else{
         uiz_appsurf = surface_create(window_w,window_h);
     }
-    //}
+    }
 }else{
 //sdbm("only checking surface existance");
     if !surface_exists(uiz_surf){
@@ -1601,6 +1633,24 @@ if resetSurfaces then{
     uiz_updateall=true;
     //uiz_updater_FixViews_addsquare(0,0,window_w,window_h);
     }
+}
+
+if uiz_useappsurf=true then{
+uiz_appsurf=application_surface
+if surface_get_width(application_surface)!=width || surface_get_height(application_surface)!=height then{
+sdbm("[uiZ|INFO] resizing app surf")
+surface_resize(application_surface,width,height);
+/*
+view_xport[0] = 0;
+view_yport[0] = 0;
+view_wport[0] = width;
+view_hport[0] = height;
+view_xview[0] = 0;
+view_yview[0] = 0;
+view_wview[0] = width;
+view_hview[0] = height;
+*/
+}
 }
 </string>
           </argument>
@@ -1624,7 +1674,8 @@ if resetSurfaces then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///loop debug
+            <string>if (live_call()) return live_result;
+///loop debug
 /*
 //draw_text(10,100,uiz_debug_getposes(id,1))
 var o=global.mouseover;
@@ -1632,6 +1683,7 @@ draw_square(o.rx,o.ry,o.rlx,o.rly,c_red,0.5)
 draw_text(o.rx,o.ry,object_get_name(o.object_index))
 draw_text(o.rx,o.ry+20,o)
 //if keyboard_check_released(vk_space){sdbm(uiz_debug_getposes(id,1))}
+*/
 </string>
           </argument>
         </arguments>
@@ -1653,17 +1705,15 @@ draw_text(o.rx,o.ry+20,o)
           <argument>
             <kind>1</kind>
             <string>///utilize updater
+if (live_call()) return live_result;
 global.uiz_fix_updates_draw=0;
 var l=uiz_arealist
 if (ds_exists(l,ds_type_list) and ds_list_size(l)&gt;=4) or uiz_updateall=true then{
 
 if uiz_useappsurf=true then{
-uiz_appsurf=application_surface
-if surface_get_width(application_surface)!=width || surface_get_height(application_surface)!=height then{
-surface_resize(application_surface,width,height);
-}
+    uiz_appsurf=application_surface
 }else{
-if !surface_exists(uiz_appsurf) then{uiz_appsurf=surface_create(width,height);}
+    if !surface_exists(uiz_appsurf) then{uiz_appsurf=surface_create(width,height);}
 }
 
 
@@ -1699,32 +1749,38 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
             var law=0;
             var lh=l[|i+3]-l[|i+1];
             var lah=0;
-            draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+            sdbm("drawing rectangle",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
+            draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
         }
         for(var i=m;i&lt;sz;i+=5){
             var lw=l[|i+2]-l[|i];
             var law=0;
             var lh=l[|i+3]-l[|i+1];
             var lah=0;
-            draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+            sdbm("drawing rectangle 2",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
+            draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
         }
     
     }
     ds_list_clear(l)
     
     
-    surface_reset_target()//reset appsurf
+    surface_reset_target();//reset appsurf
+    //sdbm("test");
+    //sdbm("uiz surf info: ",surface_get_width(uiz_surf),surface_get_height(application_surface),surface_get_width(application_surface),surface_get_height(uiz_surf),window_get_width(),window_get_height())
     surface_set_target(uiz_surf)
     draw_set_blend_mode_ext(bm_zero,bm_inv_src_alpha)
     draw_surface(uiz_appsurf,0,0);
+    //draw_clear_alpha(c_white,0);
     //draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
     uiz_changeSurface=false;
     //sdbm("shader set to:",global.uiz_shader)
-    draw_set_blend_mode(bm_normal)
+    //draw_set_blend_mode(bm_normal)
     //draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
     
     //set shader
     if global.uiz_shader=true then{
+    //sdbm("test");
     shader_set(global.uiz_shader_contain);
     uiz_contain_shader_uniforms_set();
     draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
@@ -1733,21 +1789,21 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
     }
     
     //draw_set_blend_mode(bm_normal);
-    /*
+    
     draw_set_color(c_blue)
-    draw_rectangle(0,0,700,700,0)
+    
     draw_set_color(c_white)
-    */
-    uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall)
+    
+    uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall);
     surface_reset_target();
     if global.uiz_shader=true then{
     shader_reset();
-    draw_set_blend_mode(bm_normal)
+    draw_set_blend_mode(bm_normal);
     }
 
 }
 
-draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
+
 
 uiz_updateall=false
 }
@@ -1771,7 +1827,8 @@ uiz_updateall=false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !surface_exists(uiz_surf){
+            <string>
+if !surface_exists(uiz_surf){
 uiz_surf=surface_create(width,height);
 show_error("No uiz surface to draw",false);
 }
@@ -1781,10 +1838,14 @@ uiz_surf_secondary=surface_create(width,height);
 }
 */
 
-draw_set_blend_mode(bm_normal);
+//draw_set_blend_mode(bm_normal);
 draw_set_color(c_white)
 draw_set_alpha(1)
 draw_surface(uiz_surf,0,0)
+//draw_surface_ext(uiz_surf,0,0,1,1,0,c_white,1);
+
+//draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
+//draw_surface_ext(uiz_appsurf,0,0,1,1,0,c_white,0.7)
 
 //draw_text(10,50,string(uiz_surf)+"; "+string(uiz_appsurf)+"; "+string(application_surface))
 
@@ -1851,6 +1912,28 @@ draw_set_alpha(typecursor_alpha);
 draw_line_width(typecursor_x1,typecursor_y1,typecursor_x2,typecursor_y2,typecursor_width);
 draw_set_alpha(1)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reset uiz_arealist_oldsz
+uiz_arealist_oldsz = 99999999999;
 </string>
           </argument>
         </arguments>

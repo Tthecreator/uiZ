@@ -4,13 +4,25 @@ Requires manual checking for a compatible os.
 A script automatically called by the uiZ_controller object when it detects a change in window size.
 Fixes the application surface, and resizes the obj_uiZ_controller and other obj_uiZ_ object properly. 
 */
-var w=max(window_get_width(),1)
-var h=max(window_get_height(),1)
+
+var ww = window_get_width();
+var wh = window_get_height();
+var changed = false;
+if (ww % 2 == 1){--ww; changed=true}
+if (wh % 2 == 1){--wh; changed=true}
+var w=ww;
+var h=wh;
+
+if changed{ window_set_size(w,h); }
+
+//var w=max(window_get_width(),1)
+//var h=max(window_get_height(),1)
+
 //surface_resize(application_surface,w,h)
 //room_width=w
 //room_height=h
-global.screenpxwidth=window_get_width();
-global.screenpxheight=window_get_height();
+global.screenpxwidth=w;
+global.screenpxheight=h;
 if instance_exists(obj_uiZ_controller){
 obj_uiZ_controller.width=w
 obj_uiZ_controller.height=h

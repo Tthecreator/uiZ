@@ -104,7 +104,7 @@ tm=date_current_datetime();
 }else{tm=time}
 var sec=date_get_second(tm);
 if lastsecond!=sec then{atcs=0; lastsecond=sec}
-atcs+=uiz_sc(1);
+atcs+=uiz_sc(1);//make the animation last one whole second
 ats=uiz_animation_getfunction(atcs,secondanimation)*6
 
 atm=uiz_animation_getfunction(sec/60,minuteanimation)*6

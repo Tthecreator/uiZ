@@ -30,7 +30,9 @@
 //#spritenum 8
 //#exclude
 uiz_objinit()
-selpos=0
+selpos=-1
+oldselpos=-1
+last_kmouseover = 0;
 selected=0
 updated=0
 update=0
@@ -87,7 +89,7 @@ bs=0
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -105,14 +107,14 @@ bs=0
           <argument>
             <kind>1</kind>
             <string>globalvar colorlist;
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+
+oldselpos=selpos;
 updated=0;
 selpos=-1;
 if ds_exists(colorlist,ds_type_list) then{
 sz=ds_list_size(colorlist)
-bh=width*(2/10);
-bb=width*(1/10);
-bs=height/(bh+bb);
+
 
 if kmouseover&gt;0 then{
 //check y
@@ -132,6 +134,45 @@ if kmouseover=3 then{updated=u;}
 
 }
 }
+
+//sdbm("oldsel: ",oldselpos, "selpos: ",selpos);
+
+if (oldselpos!=selpos or last_kmouseover != kmouseover) and selpos&gt;=0 and selpos&lt;sz then{
+    bh1=ry+(bh+bb)*((selpos) div 3)+bb
+    bh2=bh1+bh
+    if bh1&lt;=rly then{        
+        switch(selpos mod 3){
+        case 0:
+        uiz_updater_FixViews_area_selfmarked(rx+width*(1/10)-1,bh1-1,rx+width*(3/10)+1,bh2+1)
+        break;
+        case 1:
+        uiz_updater_FixViews_area_selfmarked(rx+width*(4/10)-1,bh1-1,rx+width*(6/10)+1,bh2+1)
+        break;
+        case 2:
+        uiz_updater_FixViews_area_selfmarked(rx+width*(7/10)-1,bh1-1,rx+width*(9/10)+1,bh2+1)
+        break;
+        }
+    }
+}
+
+if oldselpos!=selpos and oldselpos&gt;=0 and oldselpos&lt;sz then{
+    bh1=ry+(bh+bb)*((oldselpos) div 3)+bb
+    bh2=bh1+bh
+    if bh1&lt;=rly then{        
+        switch(oldselpos mod 3){
+        case 0:
+        uiz_updater_FixViews_area_selfmarked(rx+width*(1/10)-1,bh1-1,rx+width*(3/10)+1,bh2+1)
+        break;
+        case 1:
+        uiz_updater_FixViews_area_selfmarked(rx+width*(4/10)-1,bh1-1,rx+width*(6/10)+1,bh2+1)
+        break;
+        case 2:
+        uiz_updater_FixViews_area_selfmarked(rx+width*(7/10)-1,bh1-1,rx+width*(9/10)+1,bh2+1)
+        break;
+        }
+    }
+}
+last_kmouseover = kmouseover;
 </string>
           </argument>
         </arguments>
@@ -193,17 +234,17 @@ if bh1&gt;rly then{break;}
 e++;
 if e&lt;sz then{
 draw_square(rx+width*(1/10),bh1,rx+width*(3/10),bh2,colorlist[| sz-1-e],1)
-draw_rectangle(rx+width*(1/10)-1,bh1-1,rx+width*(3/10)-1,bh2-1,1)
+draw_rectangle(rx+width*(1/10)-1,bh1-1,rx+width*(3/10),bh2,1)
 }else{break;}
 e++;
 if e&lt;sz then{
 draw_square(rx+width*(4/10),bh1,rx+width*(6/10),bh2,colorlist[| sz-1-e],1)
-draw_rectangle(rx+width*(4/10)-1,bh1-1,rx+width*(6/10)-1,bh2-1,1)
+draw_rectangle(rx+width*(4/10)-1,bh1-1,rx+width*(6/10),bh2,1)
 }else{break;}
 e++;
 if e&lt;sz then{
 draw_square(rx+width*(7/10),bh1,rx+width*(9/10),bh2,colorlist[| sz-1-e],1)
-draw_rectangle(rx+width*(7/10)-1,bh1-1,rx+width*(9/10)-1,bh2-1,1)
+draw_rectangle(rx+width*(7/10)-1,bh1-1,rx+width*(9/10),bh2,1)
 }else{break;}
 }
 //draw selpos
@@ -212,19 +253,21 @@ bh1=ry+(bh+bb)*((selpos) div 3)+bb
 bh2=bh1+bh
 if bh1&lt;=rly then{
 var inh=color_get_hue(colorlist[| selected])
-//var ins=color_get_saturation(colorlist[| sz-1-selpos])
-//var inv=color_get_value(colorlist[| sz-1-selpos])
-//draw_set_color(make_colour_hsv(128+inh,255-ins,255))
-draw_set_color(make_colour_hsv(128+inh,255,255))
+var ins=255;
+if kmouseover&gt;uiz_mouseover then{
+ins = 100;
+}
+draw_set_color(make_colour_hsv(128+inh,ins,ins))
+
 switch(selpos mod 3){
 case 0:
-draw_rectangle(rx+width*(1/10)-1,bh1-1,rx+width*(3/10)-1,bh2-1,1)
+draw_rectangle(rx+width*(1/10)-1,bh1-1,rx+width*(3/10),bh2,1)
 break;
 case 1:
-draw_rectangle(rx+width*(4/10)-1,bh1-1,rx+width*(6/10)-1,bh2-1,1)
+draw_rectangle(rx+width*(4/10)-1,bh1-1,rx+width*(6/10),bh2,1)
 break;
 case 2:
-draw_rectangle(rx+width*(7/10)-1,bh1-1,rx+width*(9/10)-1,bh2-1,1)
+draw_rectangle(rx+width*(7/10)-1,bh1-1,rx+width*(9/10),bh2,1)
 break;
 }
 }

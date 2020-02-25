@@ -6,6 +6,9 @@ with(stringbox instance id){sdbm(uiz_stringbox_getselectionstring())}
 //remove part from real string
 str_real=string_copy(str_real,1,selpmin)+string_copy(str_real,selpmax+1,str_real_size-selpmax);
 str_real_size=string_length(str_real);
+updated = true;
+update = true;
+uiz_updater_step_endcheck();
 typepos_dis_px=selpos_dis_min_px;
 var updateBeginPoint=selpos_dis_min_px;
 

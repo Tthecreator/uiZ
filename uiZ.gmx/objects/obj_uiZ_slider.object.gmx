@@ -33,15 +33,18 @@ uiz_objinit()
 color1=c_green//c//left color//
 color2=c_red//c//right color//
 outline=1//b//outline//
-outlinewidth=3//v//outline width//
+outlinewidth=1//v//outline width//
 coloroutline1=c_aqua//c//left outline color//
 coloroutline2=c_orange//c//right outline color//
+roundedcorners=false;//b//enable rounded corners//
+rounddistance_x=0.2//v//round corner width//
+rounddistancetype_x=dp//z//round corner width type//
+rounddistance_y=0.2//v//round corner height//
+rounddistancetype_y=dp//z//round corner height type//
 slidersize=0.1//v//slider knob width//
 slidersizetype=fc//z//slider knob Wtype//
-slidersz=uiz_getposx_self(slidersize,slidersizetype)
 sliderheight=1//v//slider knob height//
 sliderheighttype=fc//v//slider knob heighttype//
-sliderh=uiz_getposy_self(sliderheight,sliderheighttype)
 slidercolor=c_green//c//knob color//
 slidercoloron=c_olive//c//knob mouse over color//
 slidercolorin=c_lime//c//knob mouse pressing color//
@@ -58,6 +61,8 @@ animationtype=uiz_quadratic_out//a//knob animation//
 snappoint=0;
 update=0;
 updated=0;
+rounddx=0;
+rounddy=0;
 
 MouseOffset=0;
 </string>
@@ -213,6 +218,7 @@ if kmouseover&gt;0 then{
 uiz_set_cursor(cr_handpoint)
 if point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),pf+sx,sy+height/2-sliderh/2,pl+sx,sy+height/2+sliderh/2+1) then{
 ucolor=slidercoloron
+uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1);
 }
 
 if kmouseover&gt;1 then{
@@ -227,6 +233,7 @@ uiz_slider_select(id)}
 }
 }else{
 ucolor=slidercolor;
+uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1);
 }
 
 
@@ -277,14 +284,22 @@ ucolor=slidercolor;
             <kind>1</kind>
             <string>if uiz_cntn() then{
 if uiz_selfmarked=false then{
-uiz_drawsquare_colour(rx,ry,rlx,rly,color1,color2,color2,color1,alpha)
-if outline=1 then{
-uiz_drawrectangleedgecolor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
-}
+    if (roundedcorners){
+        draw_square_rounded_colour(rx,ry,rlx+1,rly+1,color1,color2,color2,color1,alpha,rounddx,rounddy,true);
+    }else{
+        uiz_drawsquare_colour(rx,ry,rlx+1,rly+1,color1,color2,color2,color1,alpha) 
+    }
+    if outline=1 then{
+        if (roundedcorners){
+            draw_square_rounded_colour_outlined(rx,ry,rlx+1,rly+1,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,rounddx,rounddy,outlinewidth)
+        }else{
+            uiz_drawrectangleedgecolor(rx,ry,rlx+1,rly+1,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,outlinewidth)
+        }
+    }
 }
 var pf=(width-slidersz)*invalue
 var pl=pf+slidersz
-draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
+draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
 uiz_containend()
 }
 </string>
@@ -338,7 +353,7 @@ uiz_containend()
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="75">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -355,9 +370,32 @@ uiz_containend()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black)
-draw_text(50,50,update)
-draw_text(50,60,updated)
+            <string>
+if (live_call()) return live_result;
+
+if keyboard_check(vk_control){
+
+
+//if uiz_cntn() then{
+//if uiz_selfmarked=false then{
+//uiz_drawsquare_colour(rx,ry,rlx+1,rly+1,color1,color2,color2,color1,alpha)
+//draw_square_rounded_colour(rx+5,ry+5,rlx+1-5,rly+1-5,color1,color2,color2,color1,alpha,50,50,false,true)
+draw_set_color(c_white)
+draw_set_alpha(1)
+//draw_square_rounded_colour(rx,ry,rlx+1,rly+1,color1,color2,color2,color1,1,50,50,false,false)
+//draw_square_rounded_colour(rx+1,ry+1,rlx+1,rly+1,color1,color2,color2,color1,alpha,50,50,false,true)
+
+//if outline=1 then{
+uiz_drawrectangleedgecolor(rx,ry,rlx+1,rly+1,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
+//}
+//}
+var pf=(width-slidersz)*invalue
+var pl=pf+slidersz
+draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
+//uiz_containend()
+//}
+
+}
 </string>
           </argument>
         </arguments>

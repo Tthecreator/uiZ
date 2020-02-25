@@ -59,33 +59,33 @@ var c9=make_color_rgb(c5r+(c8r-c5r)*(t/h),c5g+(c8g-c5g)*(t/h),c5b+(c8b-c5b)*(t/h
 var c10=make_color_rgb(c6r+(c7r-c6r)*(t/h),c6g+(c7g-c6g)*(t/h),c6b+(c7b-c6b)*(t/h))
 var c11=make_color_rgb(c6r+(c7r-c6r)*(1-t/h),c6g+(c7g-c6g)*(1-t/h),c6b+(c7b-c6b)*(1-t/h))
 var c12=make_color_rgb(c5r+(c8r-c5r)*(1-t/h),c5g+(c8g-c5g)*(1-t/h),c5b+(c8b-c5b)*(1-t/h))
-draw_primitive_begin(pr_trianglestrip)
-draw_vertex_colour(x1,y2,c4,a)//1
-draw_vertex_colour(x1,y1,c1,a)//2
-draw_vertex_colour(x1+t,y1,c5,a)//3
+draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(spr_square,0));
+draw_vertex_texture_colour(x1,y2,0.5,0.5,c4,a)//1
+draw_vertex_texture_colour(x1,y1,0.5,0.5,c1,a)//2
+draw_vertex_texture_colour(x1+t,y1,0.5,0.5,c5,a)//3
 
-draw_vertex_colour(x1,y2,c4,a)//4
-draw_vertex_colour(x1+t,y2,c8,a)//5
+draw_vertex_texture_colour(x1,y2,0.5,0.5,c4,a)//4
+draw_vertex_texture_colour(x1+t,y2,0.5,0.5,c8,a)//5
 
-draw_vertex_colour(x1+t,y2-t,c12,a)//6
-draw_vertex_colour(x2-t,y2-t,c11,a)//7
+draw_vertex_texture_colour(x1+t,y2-t,0.5,0.5,c12,a)//6
+draw_vertex_texture_colour(x2-t,y2-t,0.5,0.5,c11,a)//7
 
-draw_vertex_colour(x1+t,y2,c8,a)//8
-draw_vertex_colour(x2-t,y2,c7,a)//9
+draw_vertex_texture_colour(x1+t,y2,0.5,0.5,c8,a)//8
+draw_vertex_texture_colour(x2-t,y2,0.5,0.5,c7,a)//9
 
-draw_vertex_colour(x2,y2,c3,a)//10
-draw_vertex_colour(x2,y1,c2,a)//11
+draw_vertex_texture_colour(x2,y2,0.5,0.5,c3,a)//10
+draw_vertex_texture_colour(x2,y1,0.5,0.5,c2,a)//11
 
-draw_vertex_colour(x2-t,y2,c7,a)//12
-draw_vertex_colour(x2-t,y1,c6,a)//13
-draw_vertex_colour(x2-t,y1,c6,a)//13
+draw_vertex_texture_colour(x2-t,y2,0.5,0.5,c7,a)//12
+draw_vertex_texture_colour(x2-t,y1,0.5,0.5,c6,a)//13
+draw_vertex_texture_colour(x2-t,y1,0.5,0.5,c6,a)//13
 
 
-draw_vertex_colour(x1+t,y1,c5,a)//14
-draw_vertex_colour(x2-t,y1+t,c10,a)//15
+draw_vertex_texture_colour(x1+t,y1,0.5,0.5,c5,a)//14
+draw_vertex_texture_colour(x2-t,y1+t,0.5,0.5,c10,a)//15
 
-draw_vertex_colour(x1+t,y1+t,c9,a)//16
-draw_vertex_colour(x1+t,y1,c5,a)//17
+draw_vertex_texture_colour(x1+t,y1+t,0.5,0.5,c9,a)//16
+draw_vertex_texture_colour(x1+t,y1,0.5,0.5,c5,a)//17
 //draw_vertex_colour(x1+t,y1,c5,a)//17
 
 draw_primitive_end()

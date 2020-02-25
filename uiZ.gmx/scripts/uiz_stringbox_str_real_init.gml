@@ -1,5 +1,3 @@
-updated=false;
-update=false;
 typing=false;
 typepos_real=0;
 typepos_dis=0;//the position between which characters the type cursor is. 0 is left to the first character and 1 is right of the first character.
@@ -8,7 +6,11 @@ count=0;//count the type cursor animation.
 if (acceptOnlyNumbers) then{
     str_real = uiz_string_digits(str_real);
     if (acceptOnlyIntegers) then{
-        str_real = string_replace_all(str_real,".","");
+        var dot_pos = string_pos(".",str_real);
+        if dot_pos!=0 then{
+            str_real = string_copy(str_real,1,dot_pos-1);
+        }
+        //str_real = string_replace_all(str_real,".","");
     }
     if (acceptOnlyPositive) then{
         str_real = string_replace_all(str_real,"-","");

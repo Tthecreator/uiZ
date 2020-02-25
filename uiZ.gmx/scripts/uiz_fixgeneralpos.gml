@@ -84,6 +84,8 @@ break;
 case obj_uiZ_treelist:
 uiz_fixtreelistpos(argument0);
 break;
+case obj_uiZ_colorboxes:
+uiz_fixcolorboxes(argument0);
 default:
 uiz_fixobjectpos(argument0);
 break;
