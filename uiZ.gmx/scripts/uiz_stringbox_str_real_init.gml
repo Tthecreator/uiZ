@@ -1,4 +1,7 @@
-typing=false;
+if typing then{
+    typing=false;
+    uiz_typecursor_deregister();
+}
 typepos_real=0;
 typepos_dis=0;//the position between which characters the type cursor is. 0 is left to the first character and 1 is right of the first character.
 typepos_dis_px=0;//pixel position of typeing cursor

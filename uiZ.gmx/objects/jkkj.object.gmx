@@ -209,7 +209,6 @@ uiz_fixgeneralpos(tabslider)
             <kind>1</kind>
             <string>global.deb=false;
 //show_debug_overlay(true)
-
 uiz_init()
 draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
@@ -223,8 +222,8 @@ win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 */
 
-//o=uiz_c(obj_uiZ_colorbox);
-o=uiz_c(obj_uiZ_slider);
+o=uiz_c(obj_uiZ_colorbox);
+//o=uiz_c(obj_uiZ_slider);
 
 //uiz_slider_setRoundedCorners(o,true)
 o.roundedcorners = true;

@@ -324,6 +324,7 @@ uiz_window_select(id)
           <argument>
             <kind>1</kind>
             <string>///handle buttons on left side
+if live_call() return live_result;
 var butId = uiz_getmouse_x()-ix;
 var buts = ds_list_size(custom_buttons_left_sprite);
 var butSize = bars * buts;
@@ -346,7 +347,7 @@ if (loverbut_left != overbut_left and((loverbut_left &gt;= 0 and loverbut_left &
     loverbut_left = overbut_left;
 }
 
-if custom_buttons_left_state[| overbut_left] &gt; 0 then{
+if !is_undefined(custom_buttons_left_state[| overbut_left]) and custom_buttons_left_state[| overbut_left] &gt; 0 then{
     var ns=mouse_check_button(mb_left) + 1;
     if ns!=custom_buttons_left_state[| overbut_left] then{
     custom_buttons_left_state[| overbut_left] = ns;
@@ -419,7 +420,7 @@ if global.mousefrozen = false and snaptomouse = 0 and resizable = 1 and kmouseov
                     uiz_set_cursor(cr_size_nesw);
                 } else {
                     //check top
-                    if (uiz_getmouse_y() &lt; iy - bars) then {
+                    if (uiz_getmouse_y() &lt; ry + bkmar + doublemargins*topframemargin) then {
                         //top
                         isresizing_y = uiz_top;
                         uiz_set_cursor(cr_size_ns);
@@ -670,7 +671,7 @@ var inrange = uiz_range(uiz_getmouse_y(), ry, iy);
 var inrange_last = uiz_range(uiz_getmouse_y_last(), ry, iy);
 
 
-if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; frombuttons and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
+if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=ry+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; frombuttons and uiz_getmouse_x() &lt; ilx and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
     checkbuttons = true;
     //mouse over button area
     overbut = floor((uiz_getmouse_x() - frombuttons) / bars);

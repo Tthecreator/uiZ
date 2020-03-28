@@ -1,13 +1,12 @@
 ///mouse check
 if kmouseover==0 then{//uiz_set_cursor(cr_beam)}else{
-uiz_set_cursor(cr_default);
+    uiz_set_cursor(cr_default);
 }
 
 
 
 if global.systemsupportskeyboard = true then {
     switch (kmouseover) {
-
         case 3:
             
             
@@ -61,6 +60,7 @@ if global.systemsupportskeyboard = true then {
         }
         updated = true;
         update = true;
+        //uiz_update_event(true,false,true);
         uiz_updater_step_endcheck();
     }
 }

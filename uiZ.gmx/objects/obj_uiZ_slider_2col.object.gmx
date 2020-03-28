@@ -173,8 +173,8 @@ uiz_updater_FixViews()}
           <argument>
             <kind>1</kind>
             <string>var ucolor_old=ucolor;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 if kmouseover=1 and point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),pf+sx,sy+height/2-sliderh/2,pl+sx,sy+height/2+sliderh/2+1) then{
 ucolor=slidercoloron
 }else{
@@ -207,8 +207,8 @@ uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height
           <argument>
             <kind>1</kind>
             <string>updated=0;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 var ucolor_old=ucolor;
 if kmouseover&gt;0 then{
 uiz_set_cursor(cr_handpoint)
@@ -286,8 +286,8 @@ if outline=1 then{
 uiz_drawrectangleedgecolor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
 }
 }
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 
 draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
 uiz_containend()

@@ -32,14 +32,17 @@
 uiz_objinit()
 color1=c_green//c//left color//
 color2=c_red//c//right color//
+coloranicountspeed=.4//v//color animation speed//
+coloranimation=1//b//enable color animation//
+coloranimationtype=uiz_quadratic_out//a//color animation//
 outline=1//b//outline//
-outlinewidth=1//v//outline width//
+outlinewidth=2//v//outline width//
 coloroutline1=c_aqua//c//left outline color//
 coloroutline2=c_orange//c//right outline color//
 roundedcorners=false;//b//enable rounded corners//
-rounddistance_x=0.2//v//round corner width//
+rounddistance_x=0.07//v//round corner width//
 rounddistancetype_x=dp//z//round corner width type//
-rounddistance_y=0.2//v//round corner height//
+rounddistance_y=0.07//v//round corner height//
 rounddistancetype_y=dp//z//round corner height type//
 slidersize=0.1//v//slider knob width//
 slidersizetype=fc//z//slider knob Wtype//
@@ -55,7 +58,7 @@ fromvalue=0
 selected=0
 anicount=0;
 ucolor=slidercolor;
-anicountspeed=.4//v//animation count speed//
+anicountspeed=.4//v//knob animation speed//
 animation=1//b//enable animation//
 animationtype=uiz_quadratic_out//a//knob animation//
 snappoint=0;
@@ -63,6 +66,11 @@ update=0;
 updated=0;
 rounddx=0;
 rounddy=0;
+color1to=color1;
+color2to=color2; 
+color1from=color1;
+color2from=color2; 
+animateColors=1;
 
 MouseOffset=0;
 </string>
@@ -110,9 +118,12 @@ MouseOffset=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>updated = 0;
+            <string>if (live_call()) return live_result;
+updated = 0;
 if selected = true then{
     updated = 1;
+    fromvalue = invalue;
+    //anicount = 0;
     value = clamp((uiz_getmouse_x() - sx - snappoint) / (width - slidersz), 0, 1);
     if obj_uiZ_controller.lastmousex &lt; sx then {
         value = 0
@@ -130,7 +141,7 @@ if selected = true then{
 
 if !(fromvalue = value) and animation = 1 then {
     invalue = fromvalue + (uiz_animation_getfunction(anicount, animationtype) * (value - fromvalue))
-    anicount += 1 / (anicountspeed * room_speed)
+    anicount += uiz_sc(anicountspeed)
     update = 1;
     if anicount &gt;= 1 then {
         invalue = value;
@@ -149,9 +160,22 @@ if !(fromvalue = value) and animation = 1 then {
     fromvalue = value
     invalue = value
     anicount = 0
-    if selected=false then{
-    uiz_updater_unstep();}
+//    if selected=false then{
+//    uiz_updater_unstep();}
 }
+
+if animateColors&lt;1 then{
+    animateColors += uiz_sc(coloranicountspeed);
+    var f = uiz_animation_getfunction(animateColors, coloranimationtype);
+    color1 = merge_colour(color1from,color1to,f);
+    color2 = merge_colour(color2from,color2to,f);
+    uiz_updater_FixViews();
+}
+
+if (animateColors&gt;=1 and selected==false and anicount==0){
+    uiz_updater_unstep();
+}
+
 if update or updated then{
 uiz_updater_FixViews()}
 </string>
@@ -177,8 +201,8 @@ uiz_updater_FixViews()}
           <argument>
             <kind>1</kind>
             <string>var ucolor_old=ucolor;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 if kmouseover=1 and point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),pf+sx,sy+height/2-sliderh/2,pl+sx,sy+height/2+sliderh/2+1) then{
 ucolor=slidercoloron
 }else{
@@ -211,8 +235,8 @@ uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height
           <argument>
             <kind>1</kind>
             <string>updated=0;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 var ucolor_old=ucolor;
 if kmouseover&gt;0 then{
 uiz_set_cursor(cr_handpoint)
@@ -297,8 +321,8 @@ if uiz_selfmarked=false then{
         }
     }
 }
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
 uiz_containend()
 }
@@ -348,54 +372,6 @@ uiz_containend()
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="75">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-if (live_call()) return live_result;
-
-if keyboard_check(vk_control){
-
-
-//if uiz_cntn() then{
-//if uiz_selfmarked=false then{
-//uiz_drawsquare_colour(rx,ry,rlx+1,rly+1,color1,color2,color2,color1,alpha)
-//draw_square_rounded_colour(rx+5,ry+5,rlx+1-5,rly+1-5,color1,color2,color2,color1,alpha,50,50,false,true)
-draw_set_color(c_white)
-draw_set_alpha(1)
-//draw_square_rounded_colour(rx,ry,rlx+1,rly+1,color1,color2,color2,color1,1,50,50,false,false)
-//draw_square_rounded_colour(rx+1,ry+1,rlx+1,rly+1,color1,color2,color2,color1,alpha,50,50,false,true)
-
-//if outline=1 then{
-uiz_drawrectangleedgecolor(rx,ry,rlx+1,rly+1,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
-//}
-//}
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
-draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
-//uiz_containend()
-//}
-
-}
 </string>
           </argument>
         </arguments>

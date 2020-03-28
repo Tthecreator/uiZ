@@ -109,21 +109,11 @@ tocolor=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover=uiz_mouse_isonobject_leftcheck(id)
-if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
-if kmouseover=2 then{
-uiz_select(id)
-}else{uiz_unselect(id)}
+            <string>if (live_call()) return live_result;
 update=0;
-updated=0;
-if selected=1 then{
-if !mouse_check_button(mb_left) then{uiz_unselect(id)}else{
-h=clamp((uiz_getmouse_x()-rx)/width*255,0,255)
-//show_message("me.h:"+string(h))
-s=clamp(255-(uiz_getmouse_y()-ry)/height*255,0,255)
-}}
-if animation=1 then{
-if abs(fromh-h)&gt;0 or abs(froms-s)&gt;0 then{
+if animation then{
+//sdbm("anicount",anicount,fromh,h);
+if fromh!=h or froms!=s then{
 inh=fromh+(uiz_animation_getfunction(anicount,hanimationtype)*(h-fromh))
 ins=froms+(uiz_animation_getfunction(anicount,sanimationtype)*(s-froms))
 ///rgb
@@ -132,12 +122,14 @@ inr=fromr+(fnc*(tor-fromr))
 ing=fromg+(fnc*(tog-fromg))
 inb=fromb+(fnc*(tob-fromb))
 
-anicount+=1/(anicountspeed*room_speed)
+anicount+=uiz_sc(anicountspeed);
 update=1;
-if anicount&gt;=1 then{inh=h; fromh=h; ins=s; froms=s; anicount=0;updated=1;}
+if anicount&gt;=1 then{inh=h; fromh=h; ins=s; froms=s; anicount=0;updated=1;
+    uiz_updater_unstep();
+}
 uiz_updater_FixViews();
 }else{
-if abs(fromh-h)&gt;0 or abs(froms-s)&gt;0 then{update=1; uiz_updater_FixViews();}
+//if abs(fromh-h)&gt;0 or abs(froms-s)&gt;0 then{update=1; uiz_updater_FixViews();}
 inr=tor
 ing=tog
 inb=tob
@@ -154,15 +146,81 @@ fromb=colour_get_blue(color)
 
 }
 
+}else{
+    uiz_updater_unstep();
 }
 
-color=make_colour_hsv(h,s,v)
+//color=make_colour_hsv(h,s,v)
 tocolor=make_color_rgb(tor,tog,tob)
 tor=colour_get_red(color)
 tog=colour_get_green(color)
 tob=colour_get_blue(color)
 incolor=make_colour_rgb(inr,ing,inb)
 icolor=make_colour_hsv(128+inh,255-ins,255)
+//sdbm("update value: ",update);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (live_call()) return live_result;
+//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+if kmouseover=2 then{
+uiz_select(id)
+}else{uiz_unselect(id)}
+//update=0;
+updated=0;
+if selected=1 then{
+if !mouse_check_button(mb_left) then{uiz_unselect(id)}else{
+var mx = clamp(uiz_getmouse_x(),rx,rlx);
+var my = clamp(uiz_getmouse_y(),ry,rly);
+h=clamp((mx-rx)/width*255,0,255)
+s=clamp(255-(my-ry)/height*255,0,255)
+color=make_colour_hsv(h,s,v)
+updated = true;
+uiz_updater_step();
+}}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}else{uiz_set_cursor(cr_default)}
 </string>
           </argument>
         </arguments>

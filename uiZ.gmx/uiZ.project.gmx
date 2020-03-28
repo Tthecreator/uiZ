@@ -399,176 +399,6 @@
         <filename>createfile.dll</filename>
       </datafile>
     </datafiles>
-    <datafile>
-      <name>netlog.gmez</name>
-      <exists>-1</exists>
-      <size>1614</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>netlog.gmez</filename>
-    </datafile>
-    <datafile>
-      <name>GMLiveHelper.gmez</name>
-      <exists>-1</exists>
-      <size>33494</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>GMLiveHelper.gmez</filename>
-    </datafile>
-    <datafile>
-      <name>std.ndll</name>
-      <exists>-1</exists>
-      <size>116224</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>std.ndll</filename>
-    </datafile>
-    <datafile>
-      <name>regexp.ndll</name>
-      <exists>-1</exists>
-      <size>111616</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>regexp.ndll</filename>
-    </datafile>
-    <datafile>
-      <name>neko.dll</name>
-      <exists>-1</exists>
-      <size>101888</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>neko.dll</filename>
-    </datafile>
-    <datafile>
-      <name>gmlive-server.n</name>
-      <exists>-1</exists>
-      <size>169574</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>gmlive-server.n</filename>
-    </datafile>
-    <datafile>
-      <name>gmlive.html</name>
-      <exists>-1</exists>
-      <size>56046</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>gmlive.html</filename>
-    </datafile>
-    <datafile>
-      <name>gc.dll</name>
-      <exists>-1</exists>
-      <size>81920</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>gc.dll</filename>
-    </datafile>
-    <datafile>
-      <name>gmlive-server.exe</name>
-      <exists>-1</exists>
-      <size>185966</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>gmlive-server.exe</filename>
-    </datafile>
-    <datafile>
-      <name>netlog.exe</name>
-      <exists>-1</exists>
-      <size>54272</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>netlog.exe</filename>
-    </datafile>
     <datafiles number="252" name="GMLive">
       <datafile>
         <name>gmlive.html</name>
@@ -745,6 +575,8 @@
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
     <extension index="1">extensions\GMLiveHelper</extension>
+    <extension index="2">extensions\netlog</extension>
+    <extension index="3">extensions\GMLive</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -999,6 +831,7 @@
           <script>scripts\uiz_alpha.gml</script>
           <script>scripts\uiz_keepupdating.gml</script>
           <script>scripts\uiz_setenabled.gml</script>
+          <script>scripts\uiz_update_set.gml</script>
         </scripts>
         <scripts name="compatibility">
           <script>scripts\uiz_compatibility_depthfix.gml</script>
@@ -1375,7 +1208,13 @@
             <script>scripts\uiz_colorbox_getblue.gml</script>
             <scripts name="keepoff">
               <script>scripts\uiz_colorbox_updatergb.gml</script>
+              <script>scripts\uiz_colorbox_update_rgb.gml</script>
+              <script>scripts\uiz_colorbox_update_hsv.gml</script>
               <script>scripts\uiz_colorbox_checkcolordump.gml</script>
+              <script>scripts\uiz_colorbox_updateSliderColors.gml</script>
+              <script>scripts\uiz_colorbox_updateValues.gml</script>
+              <script>scripts\uiz_colorbox_onUpdateStringboxRGB.gml</script>
+              <script>scripts\uiz_colorbox_onUpdateStringboxHSV.gml</script>
             </scripts>
           </scripts>
           <scripts name="cover">
@@ -1589,9 +1428,12 @@
             <script>scripts\uiz_slider_setbuttoncolor.gml</script>
             <script>scripts\uiz_slider_setbuttonalpha.gml</script>
             <script>scripts\uiz_slider_setanimation.gml</script>
+            <script>scripts\uiz_slider_setanimation_enabled.gml</script>
+            <script>scripts\uiz_slider_setColorAnimation.gml</script>
             <script>scripts\uiz_slider_getvalue.gml</script>
             <script>scripts\uiz_slider_setvalue_static.gml</script>
             <script>scripts\uiz_slider_setvalue.gml</script>
+            <script>scripts\uiz_slider_setvalue_noupdate.gml</script>
             <scripts name="keepoff">
               <script>scripts\uiz_slider_select.gml</script>
               <script>scripts\uiz_unselect.gml</script>
@@ -1636,6 +1478,7 @@
           </scripts>
           <scripts name="stringbox">
             <script>scripts\uiz_stringbox_setvalue.gml</script>
+            <script>scripts\uiz_stringbox_setvalue_noupdate.gml</script>
             <script>scripts\uiz_stringbox_getvalue.gml</script>
             <script>scripts\uiz_stringbox_setcolor.gml</script>
             <script>scripts\uiz_stringbox_setfont.gml</script>
@@ -1707,6 +1550,7 @@
             </scripts>
             <script>scripts\uiz_stringbox_deleteselection.gml</script>
             <script>scripts\uiz_stringbox_disableSelection.gml</script>
+            <script>scripts\uiz_stringbox_setNumericalValueBounds.gml</script>
           </scripts>
           <scripts name="surfacecanvas">
             <script>scripts\uiz_surfacecanvas_setcolor.gml</script>
@@ -2008,7 +1852,9 @@
           <script>scripts\uiz_updater_mouse_processing.gml</script>
           <script>scripts\uiz_updater_step.gml</script>
           <script>scripts\uiz_updater_step_endcheck.gml</script>
+          <script>scripts\uiz_updater_step_begincheck.gml</script>
           <script>scripts\uiz_updater_unstep.gml</script>
+          <script>scripts\uiz_update_event.gml</script>
         </scripts>
         <scripts name="windows(os)">
           <script>scripts\uiz_window_center.gml</script>
@@ -2301,8 +2147,8 @@
       </scripts>
       <script>scripts\UIZ_versioninformation.gml</script>
     </scripts>
-    <script>scripts\live_call.gml</script>
-    <script>scripts\live_call_ext.gml</script>
+    <script>scripts\live_call_bak.gml</script>
+    <script>scripts\live_call_ext_bak.gml</script>
     <script>scripts\script1153.gml</script>
   </scripts>
   <shaders name="shaders">
@@ -2517,6 +2363,7 @@
     <object>objects\charSpeedTest</object>
     <object>objects\obj_spriteStretchTest</object>
     <object>objects\jkkj_creator</object>
+    <object>objects\obj_gmlive</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
@@ -2637,7 +2484,7 @@
     <constant name="uiz_treelist_boxState_noBox">0</constant>
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
     <constant name="uiz_treelist_boxState_extended">2</constant>
-    <constant name="live_enabled">0</constant>
+    <constant name="live_enabled">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

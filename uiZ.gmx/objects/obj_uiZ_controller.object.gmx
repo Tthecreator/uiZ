@@ -328,6 +328,7 @@ uiz_updateall=true;
 uiz_selfmarked=false;
 uiz_steplist=ds_list_create();
 uiz_endsteplist=ds_list_create();
+uiz_beginsteplist=ds_list_create();
 uiz_arealist_oldsz=0;
 //global.uiz_inredrawmode=false;
 global.surfacedebugcount=0;
@@ -725,7 +726,7 @@ if(sz!=ds_list_size(uiz_endsteplist)){//if our current item got removed from the
 }
 }
 }
-ds_list_empty(uiz_endsteplist);
+ds_list_clear(uiz_endsteplist);
 </string>
           </argument>
         </arguments>
@@ -1008,6 +1009,39 @@ isresizing=0;
 /*
 
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///begin step check
+var sz=ds_list_size(uiz_beginsteplist)
+for(var i=0;i&lt;sz;i++){
+var o=uiz_beginsteplist[|i];
+if instance_exists(o) and o.uiz_enabled=true then{
+with(o){uiz_steps_begin = false;event_user(6);}
+if(sz!=ds_list_size(uiz_beginsteplist)){//if our current item got removed from the list, the size should have changed
+    i--;//re-iterate over last step;
+    sz = ds_list_size(uiz_beginsteplist);
+}
+}
+}
+ds_list_clear(uiz_beginsteplist);
 </string>
           </argument>
         </arguments>
@@ -1749,7 +1783,7 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
             var law=0;
             var lh=l[|i+3]-l[|i+1];
             var lah=0;
-            sdbm("drawing rectangle",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
+            //sdbm("drawing rectangle",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
             draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
         }
         for(var i=m;i&lt;sz;i+=5){
@@ -1757,7 +1791,7 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
             var law=0;
             var lh=l[|i+3]-l[|i+1];
             var lah=0;
-            sdbm("drawing rectangle 2",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
+            //sdbm("drawing rectangle 2",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
             draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
         }
     
@@ -1784,6 +1818,7 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
     shader_set(global.uiz_shader_contain);
     uiz_contain_shader_uniforms_set();
     draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+    //draw_set_blend_mode(bm_normal);
     }else{
     draw_set_blend_mode(bm_normal);
     }
@@ -1839,6 +1874,7 @@ uiz_surf_secondary=surface_create(width,height);
 */
 
 //draw_set_blend_mode(bm_normal);
+draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
 draw_set_color(c_white)
 draw_set_alpha(1)
 draw_surface(uiz_surf,0,0)

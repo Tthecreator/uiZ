@@ -1,4 +1,4 @@
 ///check all needed shortcuts
 if typing=true then{
-uiz_stringbox_checkKeys();
+    uiz_stringbox_checkKeys();
 }

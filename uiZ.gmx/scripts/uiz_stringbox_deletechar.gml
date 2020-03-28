@@ -10,8 +10,9 @@ with(stringbox instance id){sdbm(uiz_stringbox_getselectionstring())}
 //sdbm("  dc",string_copy(str_real,1,argument0-1),string_copy(str_real,argument0+1,str_real_size-argument0))
 str_real=string_copy(str_real,1,argument0-1)+string_copy(str_real,argument0+1,str_real_size-argument0);
 str_real_size=string_length(str_real);
-updated = true;
+//updated = true;
 update = true;
+
 uiz_updater_step_endcheck();
 
 

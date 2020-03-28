@@ -58,6 +58,10 @@ cursorwidth=2//v//width of the typing cursor//
 acceptOnlyNumbers=false//b//accept only digits and a single .//
 acceptOnlyIntegers=false//b//don't accept floating point numbers//
 acceptOnlyPositive=true//b//don't accept negative point numbers//
+minvalue=0//v//minimum numerical value
+minvalue_enabled=false//b//enable minimum numerical value
+maxvalue=0//v//maximum numerical value
+maxvalue_enabled=false//b//enable maximum numerical value
 numberCounter_enable=true//b//enable numberical up and down buttons//
 numberCounter_customWidth=true//b//enable custom width vs square buttons//
 numberCounter_interval=1//v//numberical up/down button step size//
@@ -117,6 +121,7 @@ margin_out=-1//v//margin out//
           <argument>
             <kind>1</kind>
             <string>///stringboxspecific technical stuff
+typing=false;
 str_real="";//the full string
 uiz_stringbox_str_real_init();
 ilx_minwidth = uiz_getposx_self(numberCounter_width,numberCounter_widthType);
@@ -180,8 +185,10 @@ update = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>updated = false;
+            <string>uiz_update_event(updated,update,updated);
+updated = false;
 update = false;
+
 </string>
           </argument>
         </arguments>
@@ -246,7 +253,7 @@ update = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_stringbox_event_debugLeftRight();
+            <string>//uiz_stringbox_event_debugLeftRight();
 </string>
           </argument>
         </arguments>
@@ -407,7 +414,9 @@ if addVal!=0 then{
     //sdbm("testVal1",str_real);
     //sdbm("testVal2",str_real,uiz_string_real_getIntLength(str_real),uiz_string_real_getFracLength(str_real))
     //uiz_stringbox_setvalue(id, string_format(real(str_real)+addVal*numberCounter_interval,uiz_string_real_getIntLength(str_real),uiz_string_real_getFracLength(str_real)));
-    uiz_stringbox_setvalue(id, uiz_string_fromReal(real(str_real)+addVal*numberCounter_interval));
+    uiz_stringbox_setvalue(id, real(str_real)+addVal*numberCounter_interval);
+    uiz_stringbox_disableSelection(id);
+    
 }
 
 
@@ -539,90 +548,6 @@ if addVal!=0 then{
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="75">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-draw_square(100,90,200,200,$dddddd,1)
-
-draw_set_valign(fa_top);
-draw_set_color(c_black)
-draw_square(100,100,100+string_width(sel_str_beg),115,$aaaaaa,1)
-draw_set_color(c_black)
-draw_text(100,100,sel_str_beg)
-draw_square(100,115,100+string_width(sel_str_mid),130,$aaaaaa,1)
-draw_set_color(c_black)
-draw_text(100,115,sel_str_mid)
-draw_square(100,130,100+string_width(sel_str_end),145,$aaaaaa,1)
-draw_set_color(c_black)
-draw_text(100,130,sel_str_end)
-draw_square(100,145,100+string_width(sel_str_beg_m),160,$aaaaaa,1)
-draw_set_color(c_blue);
-draw_text(100,145,sel_str_beg_m);
-draw_square(100,160,100+string_width(sel_str_end_m),175,$aaaaaa,1)
-draw_set_color(c_green);
-draw_text(100,160,sel_str_end_m);
-draw_set_color(c_fuchsia);
-draw_text(100,175,str_real);
-draw_set_color(c_black);
-draw_text(100,190,hasselection);
-draw_set_color(c_maroon);
-draw_text(100,205,selpos_dis);
-//draw_set_color(c_black);
-draw_text(100,220,selpos_dis_px);
-draw_set_color(c_black);
-draw_text(100,235,keyboard_lastchar);
-draw_set_color(c_black);
-draw_text(100,250,ord(keyboard_lastchar));
-draw_set_color(c_orange);
-draw_text(100,265,selpmin);
-draw_text(100,280,selpmax);
-draw_text(100,295,typepos_dis);
-draw_text(100,310,str_dis_size);
-draw_text(100,325,"str_dis_begin: "+string(str_dis_begin));
-draw_text(100,340,"str_dis_end: "+string(str_dis_end));
-//draw_set_color(c_red);
-//draw_text(100,325,d);
-//d="";
-/*
-draw_set_color(c_red);
-draw_line(tp1,ry,tp1,rly)
-draw_set_color(c_green);
-draw_line(tp2,ry,tp2,rly)
-*/
-/*
-draw_set_color(c_orange);
-draw_line(selpos_dis_min_px_bound,ry,selpos_dis_min_px,rly)
-draw_set_color($3d6040);
-draw_line(selpos_dis_max_px_bound,ry,selpos_dis_max_px,rly)
-draw_set_color(c_fuchsia);
-draw_line(minoldtest,ry,minoldtest,rly)
-draw_set_color(c_lime);
-draw_line(maxoldtest,ry,maxoldtest,rly)
-
-/*
-draw_set_color(c_red);
-draw_text(ix,ry,str_dis);
-*/
 </string>
           </argument>
         </arguments>

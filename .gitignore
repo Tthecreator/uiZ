@@ -8,6 +8,7 @@ uiZ.gmx/datafiles/netlog.exe
 uiZ.gmx/datafiles/netlog.gmez
 uiZ.gmx/datafiles/regexp.ndll
 uiZ.gmx/datafiles/std.ndll
+uiZ.gmx/extensions/*
 uiZ.gmx/extensions/GMLive.extension.gmx
 uiZ.gmx/extensions/GMLiveHelper.extension.gmx
 uiZ.gmx/extensions/netlog.extension.gmx

@@ -33,7 +33,8 @@ var ystretch = min(height/2,argument10);
 //var ystretch_inner = ystretch * (height-argument11)/height
 var xstretch_inner = max(0,xstretch - argument11)
 var ystretch_inner = max(0,ystretch - argument11)
-var precision = ceil(max(xstretch,ystretch)/7);
+var precision = max(3,ceil(max(xstretch,ystretch)/7));
+//precision=2;
 var x1_inner = argument0+argument11;
 var y1_inner = argument1+argument11;
 var x2_inner = argument2-argument11;
@@ -44,10 +45,10 @@ draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(spr_square,0))
 for(var i=-precision;i<=0;++i){//curve top right
     var x_fac = dcos(i/precision*90)
     var y_fac = dsin(i/precision*90);
-    var x_pos = round(argument2-xstretch+x_fac*xstretch);
-    var y_pos = round(argument1+ystretch+y_fac*ystretch);
-    var x_pos_inner = round(x2_inner-xstretch_inner+x_fac*xstretch_inner);
-    var y_pos_inner = round(y1_inner+ystretch_inner+y_fac*ystretch_inner);
+    var x_pos = (argument2-xstretch+x_fac*xstretch);
+    var y_pos = (argument1+ystretch+y_fac*ystretch);
+    var x_pos_inner = (x2_inner-xstretch_inner+x_fac*xstretch_inner);
+    var y_pos_inner = (y1_inner+ystretch_inner+y_fac*ystretch_inner);
     draw_vertex_texture_colour(x_pos_inner,y_pos_inner,0.8,0,argument5,argument8)
     draw_vertex_texture_colour(x_pos,y_pos,0.8,0,argument5,argument8)
 }
@@ -55,10 +56,10 @@ for(var i=-precision;i<=0;++i){//curve top right
 for(var i=0;i<=precision;++i){//curve bottom right
     var x_fac = dcos(i/precision*90)
     var y_fac = dsin(i/precision*90);
-    var x_pos = round(argument2-xstretch+x_fac*xstretch);
-    var y_pos = round(argument3-ystretch+y_fac*ystretch);
-    var x_pos_inner = round(x2_inner-xstretch_inner+x_fac*xstretch_inner);
-    var y_pos_inner = round(y2_inner-ystretch_inner+y_fac*ystretch_inner);
+    var x_pos = (argument2-xstretch+x_fac*xstretch);
+    var y_pos = (argument3-ystretch+y_fac*ystretch);
+    var x_pos_inner = (x2_inner-xstretch_inner+x_fac*xstretch_inner);
+    var y_pos_inner = (y2_inner-ystretch_inner+y_fac*ystretch_inner);
     draw_vertex_texture_colour(x_pos_inner,y_pos_inner,0.8,0.8,argument6,argument8)
     draw_vertex_texture_colour(x_pos,y_pos,0.8,0.8,argument6,argument8)
 }
@@ -66,21 +67,21 @@ for(var i=0;i<=precision;++i){//curve bottom right
 for(var i=precision;i<=precision*2;++i){//curve bottom left
     var x_fac = dcos(i/precision*90)
     var y_fac = dsin(i/precision*90);
-    var x_pos = round(argument0+xstretch+x_fac*xstretch);
-    var y_pos = round(argument3-ystretch+y_fac*ystretch);
-    var x_pos_inner = round(x1_inner+xstretch_inner+x_fac*xstretch_inner);
-    var y_pos_inner = round(y2_inner-ystretch_inner+y_fac*ystretch_inner);
+    var x_pos = (argument0+xstretch+x_fac*xstretch);
+    var y_pos = (argument3-ystretch+y_fac*ystretch);
+    var x_pos_inner = (x1_inner+xstretch_inner+x_fac*xstretch_inner);
+    var y_pos_inner = (y2_inner-ystretch_inner+y_fac*ystretch_inner);
     draw_vertex_texture_colour(x_pos_inner,y_pos_inner,0.8,0.8,argument7,argument8)
     draw_vertex_texture_colour(x_pos,y_pos,0.2,0.8,argument7,argument8)
 }
 
 for(var i=precision*2;i<=precision*3;++i){//curve top left
-    var x_fac = dcos(i/precision*90)
+    var x_fac = dcos(i/precision*90);
     var y_fac = dsin(i/precision*90);
-    var x_pos = round(argument0+xstretch+x_fac*xstretch);
-    var y_pos = round(argument1+ystretch+y_fac*ystretch);
-    var x_pos_inner = round(x1_inner+xstretch_inner+x_fac*xstretch_inner);
-    var y_pos_inner = round(y1_inner+ystretch_inner+y_fac*ystretch_inner);
+    var x_pos = (argument0+xstretch+x_fac*xstretch);
+    var y_pos = (argument1+ystretch+y_fac*ystretch);
+    var x_pos_inner = (x1_inner+xstretch_inner+x_fac*xstretch_inner);
+    var y_pos_inner = (y1_inner+ystretch_inner+y_fac*ystretch_inner);
     draw_vertex_texture_colour(x_pos_inner,y_pos_inner,0.8,0.8,argument4,argument8)
     draw_vertex_texture_colour(x_pos,y_pos,0.2,0.2,argument4,argument8)
 }

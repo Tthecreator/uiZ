@@ -172,6 +172,10 @@ uiz_selfmarked=false;
 enablemousecheck=true;
 
 uiz_steps=false;
+uiz_steps_begin=false;
+
+uiz_update_script = noone
+uiz_update_script_argument = 0;
 
 bkspr_old=bkspr;
 bkcol_old=bkcol;
