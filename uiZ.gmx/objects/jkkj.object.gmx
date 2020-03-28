@@ -213,37 +213,44 @@ uiz_init()
 draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
-/*
+
 win=uiz_window_create(250,px,100,px)
 win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
 win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
-*/
 
-o=uiz_c(obj_uiZ_colorbox);
-//o=uiz_c(obj_uiZ_slider);
 
-//uiz_slider_setRoundedCorners(o,true)
-o.roundedcorners = true;
-//uiz_setparent(o,win);
-//o.posinframex=uiz_fill;
-//o.posinframey=uiz_fill;
+o=uiz_c(obj_uiZ_drawdslist);
+uiz_setparent(o,win);
+o.posinframex=uiz_fill;
+o.posinframey=uiz_fill;
 
+uselist=ds_list_create()
+ds_list_add(uselist,"hello","this","is","an","item")
+o.uselist=uselist
+
+usesprlist=ds_list_create()
+ds_list_add(usesprlist,spr_uiZ_button,spr_uiZ_buttons_load,spr_uiZ_folder,-1,spr_uiZ_buttons_switch)
+o.usesprlist=usesprlist
+
+/*
 o.posinframex=uiz_center;
 o.posinframey=uiz_center;
 o.posvalwtype=fc;
 o.posvalw=0.5;
 o.posvalhtype=fc;
 o.posvalh=0.5;
-
+*/
+/*
 o.texturescript=uiz_back_square
 o.sprite_normal=spr_uiZ_border1
 o.color_normal=c_white
 o.margin_normal=5
 o.sprite_texturemode=uiz_texturemode_fill
 o.border_texturemode=-1
+*/
 
 uiz_fixgeneralpos(o);
 </string>
@@ -252,33 +259,6 @@ uiz_fixgeneralpos(o);
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-//uiz_treelist_exportxml(o,outputFile);
-/*
-uiz_treelist_parsexml(o2);
-uiz_treelist_expand(o2);
-uiz_fixgeneralpos(o2);
-uiz_updater_FixViews_with(o2);
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -358,104 +338,6 @@ fps_avg/=fps_counts;
 }
 draw_set_color(c_white)
 draw_text(100,100,fps_avg);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_color(c_red);
-draw_set_alpha(1);
-draw_rectangle(300,300,400,400,false)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="121">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>sdbm("RESETTING-TEXT");
-uiz_textarea_setvalue(o,"Hello-there.-general-kenobi.-It's-finally-time-for-me-to-put-some-sensible-text-in-here.-This-makes-debugging-so-much-easier"+chr($0A)+""+chr($0A)+"Also-I'd-like"+chr($0A)+"to-see"+chr($0A)+"some-newlines.-Is-that-possible?-I'd-say-it-should-be."+chr($0A)+""+chr($0A)+""+chr($0A)+""+chr($0A)+"Also-should-I-add-even-more-text-and-newlines-just-to-make-the-scrollbar-work-or-is-it-still-too-early-for-that?-OMg-I'm-writing-soooo-much-shit-while-listening-to-some-weird-livestreams-on-youtube.-I-just-don't-know-anything-else-to-write.-I-could-just-hit-my-keyoard-randomly-but-that-does-make-debugging-way-less-easy.-"+chr($0A)+"Just-add-a-few-"+chr($0A)+"newlines-and-let's-just-hope-that-this-sh*t-works.!-It-better-does-or-else-I'm-going-to-have-a-bad-time-fixing-many-bugs-over-a-long-period-of-time.")
-uiz_fixgeneralpos(o);
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="116">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>game_restart()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="114">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>sdbm(uiz_xml_toString(folders))
-sdbm(uiz_xml_getdebugstringtotal(folders))
 </string>
           </argument>
         </arguments>
