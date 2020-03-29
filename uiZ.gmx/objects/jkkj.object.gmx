@@ -222,10 +222,12 @@ win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
 
-o=uiz_c(obj_uiZ_loadingcircle);
+o=uiz_c(obj_uiZ_sprite);
 uiz_setparent(o,win);
 o.posinframex=uiz_fill;
 o.posinframey=uiz_fill;
+o.sprite_index=spr_uiZ_scrollbar;
+uiz_drawsprite_setspeed(o,1);
 
 
 /*

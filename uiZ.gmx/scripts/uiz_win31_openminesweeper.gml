@@ -1,10 +1,10 @@
 //add background
 var f=window;
-back=uiz_c(obj_uiZ_drawsprite);
+back=uiz_c(obj_uiZ_sprite);
 uiz_setparent(back,f)
 back.posinframex=uiz_fill;
 back.posinframey=uiz_fill;
-back.sprite=spr_uiZ_win31_mineback;
+back.sprite_index=spr_uiZ_win31_mineback;
 uiz_fixgeneralpos(back)
 
 //add button

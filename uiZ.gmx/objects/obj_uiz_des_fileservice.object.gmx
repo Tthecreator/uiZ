@@ -78,8 +78,8 @@ startgradient.color2=c_ltgray
 startgradient.outline=0
 startgradient.depth=5
 uiz_fixgeneralpos(startgradient)
-logosprite=instance_create(0,0,obj_uiZ_drawsprite)
-logosprite.sprite=spr_uiz_designerlogo;
+logosprite=instance_create(0,0,obj_uiZ_sprite)
+logosprite.sprite_index=spr_uiz_designerlogo;
 lsv=sprite_get_width(spr_uiz_designerlogo)/sprite_get_height(spr_uiz_designerlogo)
 uiz_setparent(logosprite,loadingf)
 logosprite.width=loadingf.width/2
