@@ -43,13 +43,13 @@ textcolor=c_black//c//text color//
 margin=2//v//marin//
 scrollbarwidth=.16//v//scrollbar width//
 scrollbarwidthtype=dp//z//scrollbar width type//
-scrollbarsprite=spr_uiZ_scrollbar//p//scrollbar sprite//
+scrollbarsprite=spr_uiZ_scrollbar_16//p//scrollbar sprite//
 scrollbarcolor=c_white//c//scrollbar color//
 scrollbarbacktexmode=uiz_texturemode_fill//t//scrollbar background texture mode//
 scroll=uiz_drawscrollbar_init();
 scrollspeed=100//v//scrollspeed//
-scrollbarAnimation=uiz_exponential_inout//a//scrollbar animation//
-scrollbarAnimationTime=0.5//v//scrollbar animation time//
+scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
+scrollbarAnimationTime=0.3//v//scrollbar animation time//
 fromscroll=0
 toscroll=0
 count=0
@@ -125,15 +125,12 @@ scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ds_exists(uselist,ds_type_list) then{
-//if h=-1 then{
-
-//}
+            <string>if live_call() return live_result;
+if ds_exists(uselist,ds_type_list) then{
 //handle scrollbar
 if doscroll=true then{
-var oscroll=scroll;
-uiz_drawscrollbar_vertical_step(rlx-scrollwidth,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
-if oscroll!=scroll then{
+var update = uiz_drawscrollbar_vertical_step(rlx-scrollwidth,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
+if update then{
 oldaddy=addy;
 addy=-uiz_drawscrollbar_getvalue(scroll)
 if addy!=oldaddy then{
@@ -175,8 +172,10 @@ uiz_drawdslist_checkmousepos();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> if ds_exists(uselist,ds_type_list) then{
+            <string>if live_call() return live_result;
+  if ds_exists(uselist,ds_type_list) then{
 //kmouseover=uiz_mouse_isonobject_leftcheck(id)
+/*
 if global.mouseoverframe=parent then{
 if mouse_wheel_up() then{fromscroll=scroll;count=0;toscroll-=scrollspeed/height}
 if mouse_wheel_down() then{fromscroll=scroll;count=0;toscroll+=scrollspeed/height}
@@ -191,6 +190,7 @@ addy=min(0,-scroll*(height-parent.height))
 
 uiz_drawdslist_checkview();
 }
+*/
 
 if kmouseover=0 then{
 //uiz_drawdslist_updateviews(true,sx,sy+addy+h,slx-scrollbarwidth,sy+h+addy+strh)
@@ -246,7 +246,8 @@ updatescroll=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if uiz_cntn() then {
+            <string>if live_call() return live_result;
+if uiz_cntn() then {
     if ds_exists(uselist, ds_type_list) then {
         draw_set_valign(fa_top)
         draw_set_halign(fa_left)
@@ -361,7 +362,6 @@ updatescroll=true;
         }
 
     }
-    //sdbm("checking for scroll",updatescroll,uiz_selfmarked)
     if doscroll = true and(updatescroll = true or uiz_selfmarked = false) then {
         uiz_drawscrollbar_vertical_draw(rlx - scrollwidth, ry, rlx, rly, scrollbarsprite, scrollbarcolor, scrollbarbacktexmode, scroll, scrollheight)
         updatescroll = false;

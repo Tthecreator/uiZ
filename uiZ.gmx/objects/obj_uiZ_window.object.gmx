@@ -565,7 +565,6 @@ if resizable and isresizing then{
         break;
         }
         var ratio_abs=abs(ratio)
-    sdbm("mov",pxmovedy,graboffy,ily,yat,al,ap,ratio)
     //actually resize windows
     switch (isresizing_y) {
         case uiz_top:
@@ -575,9 +574,7 @@ if resizable and isresizing then{
             break;
         case uiz_bottom:
             //bottom
-            sdbm("changing iheight",iheight);
             iheight = max(iheight - pxmovedy, minh);
-            sdbm("changed iheight",iheight);
             break;
     }
     switch (isresizing_x) {
@@ -616,10 +613,8 @@ if resizable and isresizing then{
     if isresizing_x=uiz_left then{
         x += oldwidth - iwidth;
     }
-    sdbm("setting height",height,posvalhtype,posinframey);
     width=iwidth+end_leftframemargin+end_rightframemargin;
     height=iheight+end_topframemargin+end_bottomframemargin;
-    sdbm("set height",height);
     if inanimation=true then{
     uiz_animation_capture_newstate(id);
     }
@@ -665,8 +660,8 @@ if resizable and isresizing then{
             <kind>1</kind>
             <string>///Handle buttons and window movement
 var fixforp = id;
-/*
-if global.lockwindowresel = 0 and global.selectedwindow != id and global.mouseoverwindow = id and mouse_check_button(mb_left)/* and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = true) and isresizing = false *//*then {
+
+if global.lockwindowresel = 0 and global.selectedwindow != id and global.mouseoverwindow = id and mouse_check_button(mb_left)/* and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = true) and isresizing = false */then {
     uiz_window_select(id);
 }
 var dorececkloverbut = false;
@@ -819,7 +814,7 @@ if snaptomouse = 1 then {
     uiz_window_checkcontainment();
     fix = true;
 }
-*/
+
 if fix &gt;= 1 then {
     uiz_fixwindowpos(fixforp);
     uiz_fixchildren(id, true)

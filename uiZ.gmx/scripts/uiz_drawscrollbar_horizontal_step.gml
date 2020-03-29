@@ -1,5 +1,5 @@
 ///uiz_drawscrollbar_horizontal_step(rx,ry,rlx,rly,scroll,scrolllines,middlemousescroll,scrollspeed,animation,animationtime)
-//return new value of scroll;
+//return if the scrollbar needs to redraw;
 //object from which this is called from does need to be a uiz object, due to mouse checks.
 /*
 Will draw a scrollbar.
@@ -164,7 +164,10 @@ if(twn_fac!=1){
     argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = twn_fac;
 }
 
+var updated = false;
+
 if(scroll_old!=scroll || mstate!=mstate_last || scrollsel_old!=scrollsel){
+    updated = true;
     if scroll!=scroll_old then{
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated] = 5;
     }else{
@@ -181,3 +184,5 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate_last] = mstate_last;//save sc
 if scrollsel=1 then{
 uiz_set_cursor(cr_handpoint)
 }
+
+return updated;

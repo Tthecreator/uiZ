@@ -63,8 +63,9 @@ if updated_o > 0 or uiz_selfmarked = false then {
         updated = uiz_selfmarked;
     }
 
-    var width = argument2 - argument0
-    var height = argument3 - argument1
+    var width = round(argument2 - argument0);
+    var height = round(argument3 - argument1);
+    var y1 = y0 + height;
     var x0 = argument0;
     var x1 = argument0 + height;
     var x2 = argument2 - height;
@@ -159,7 +160,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     szy = 1
             }
 
-            uiz_draw_sprite_tiles(argument4, 16, x1, argument1, x2, argument3, szx, szy, argument5, 1,0,0);
+            uiz_draw_sprite_tiles(argument4, 16, x1, argument1, x2, y1, szx, szy, argument5, 1,0,0);
             //end of draw background
 
             //draw scrollbar
@@ -197,7 +198,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                 if (x4 + (height / sw) * sw <= x5) {
                     x5--;
                 }
-                uiz_draw_sprite_tiles(argument4, 17 + sel, x5, argument1, x6, argument3, szx, szy, argument5, 1,0,addEdge)
+                uiz_draw_sprite_tiles(argument4, 17 + sel, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge)
             }
             var conh = height - comph;
             draw_sprite_ext(argument4, 15, x4 + barw / 2 - comph / 2, argument1 + conh / 2, comph / sw, comph / sh, 0, argument5, 1) //middle

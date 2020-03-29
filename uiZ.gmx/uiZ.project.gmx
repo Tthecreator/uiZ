@@ -658,6 +658,7 @@
       <sprite>sprites\spr_uiZ_save</sprite>
       <sprite>sprites\spr_uiZ_savedoor</sprite>
       <sprite>sprites\spr_uiZ_scrollbar</sprite>
+      <sprite>sprites\spr_uiZ_scrollbar_16</sprite>
       <sprite>sprites\spr_uiZ_view</sprite>
       <sprite>sprites\spr_uiZ_windowborder</sprite>
       <sprite>sprites\spr_uiZ_windowbutton_cross</sprite>

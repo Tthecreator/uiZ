@@ -16,10 +16,10 @@ case pxmin:
 return parent.height-argument0;
 break;
 case dp:
-return argument0*uiz_dp;
+return round(argument0*uiz_dp);
 break;
 case dpmin:
-return parent.height-argument0*uiz_dp;
+return round(parent.height-argument0*uiz_dp);
 break;
 case fc: case fcy:
 return round(argument0*(parent.iheight)-topmargin-bottommargin);
