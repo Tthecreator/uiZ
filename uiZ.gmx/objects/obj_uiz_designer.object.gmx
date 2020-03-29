@@ -67,7 +67,7 @@ logosprite.posvaly=0.25
 logosprite.depth=-5
 uiz_fixgeneralpos(logosprite)
 
-loadcirc=instance_create(0,0,obj_uiZ_drawloadingcirc)
+loadcirc=instance_create(0,0,obj_uiZ_loadingcircle)
 uiz_setparent(loadcirc,loadingf)
 loadcirc.width=50
 loadcirc.height=50

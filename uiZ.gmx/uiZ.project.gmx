@@ -1236,11 +1236,11 @@
             <script>scripts\uiz_drawdslist_checkmousepos.gml</script>
             <script>scripts\uiz_drawdslist_checkheight.gml</script>
           </scripts>
-          <scripts name="drawloadingcirc">
-            <script>scripts\uiz_drawloadingcirc_setcolor.gml</script>
-            <script>scripts\uiz_drawloadingcirc_setprecision.gml</script>
-            <script>scripts\uiz_drawloadingcirc_setthickness.gml</script>
-            <script>scripts\uiz_drawloadingcirc_setanimation.gml</script>
+          <scripts name="loadingcircle">
+            <script>scripts\uiz_loadingcircle_setcolor.gml</script>
+            <script>scripts\uiz_loadingcircle_setprecision.gml</script>
+            <script>scripts\uiz_loadingcircle_setthickness.gml</script>
+            <script>scripts\uiz_loadingcircle_setanimation.gml</script>
           </scripts>
           <scripts name="drawsprite">
             <script>scripts\uiz_drawsprite_setcolor.gml</script>
@@ -2216,7 +2216,7 @@
         <object>objects\obj_uiZ_colorbox</object>
         <object>objects\obj_uiZ_cover</object>
         <object>objects\obj_uiZ_drawdslist</object>
-        <object>objects\obj_uiZ_drawloadingcirc</object>
+        <object>objects\obj_uiZ_loadingcircle</object>
         <object>objects\obj_uiZ_drawsprite</object>
         <object>objects\obj_uiZ_dropdown</object>
         <object>objects\obj_uiZ_easybutton</object>

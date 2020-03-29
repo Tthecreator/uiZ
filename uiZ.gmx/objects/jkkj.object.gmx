@@ -222,18 +222,11 @@ win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
 
-o=uiz_c(obj_uiZ_drawdslist);
+o=uiz_c(obj_uiZ_loadingcircle);
 uiz_setparent(o,win);
 o.posinframex=uiz_fill;
 o.posinframey=uiz_fill;
 
-uselist=ds_list_create()
-ds_list_add(uselist,"hello","this","is","an","item")
-o.uselist=uselist
-
-usesprlist=ds_list_create()
-ds_list_add(usesprlist,spr_uiZ_button,spr_uiZ_buttons_load,spr_uiZ_folder,-1,spr_uiZ_buttons_switch)
-o.usesprlist=usesprlist
 
 /*
 o.posinframex=uiz_center;
