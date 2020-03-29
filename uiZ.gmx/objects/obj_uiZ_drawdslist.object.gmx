@@ -49,12 +49,10 @@ scrollbarbacktexmode=uiz_texturemode_fill//t//scrollbar background texture mode/
 scroll=uiz_drawscrollbar_init();
 scrollspeed=100//v//scrollspeed//
 scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
-scrollbarAnimationTime=0.3//v//scrollbar animation time//
+scrollbarAnimationTime=0.2//v//scrollbar animation time//
 fromscroll=0
 toscroll=0
 count=0
-graph=uiz_sin_inout//a//scroll animation//
-countspeed=0.1//v//animation time//
 scrollsel=0
 selected=-1
 sel=-1
@@ -197,7 +195,7 @@ if kmouseover=0 then{
 uiz_updater_FixViews();
 sel=-1;
 selection=-1;
-keepselected=-1;
+//keepselected=-1;
 updatescroll=true;
 }
 }
