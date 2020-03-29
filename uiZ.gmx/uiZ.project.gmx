@@ -2216,7 +2216,6 @@
         <object>objects\obj_uiZ_colorbox</object>
         <object>objects\obj_uiZ_cover</object>
         <object>objects\obj_uiZ_drawdslist</object>
-        <object>objects\obj_uiZ_sprite</object>
         <object>objects\obj_uiZ_dropdown</object>
         <object>objects\obj_uiZ_easybutton</object>
         <object>objects\obj_uiZ_frame</object>
@@ -2238,6 +2237,7 @@
         <object>objects\obj_uiZ_slider</object>
         <object>objects\obj_uiZ_slider_2col</object>
         <object>objects\obj_uiZ_sliderstruct</object>
+        <object>objects\obj_uiZ_sprite</object>
         <object>objects\obj_uiZ_spriteanimationbutton</object>
         <object>objects\obj_uiZ_spritecounter</object>
         <object>objects\obj_uiZ_square</object>

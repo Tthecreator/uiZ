@@ -333,7 +333,7 @@ if selection&gt;0 then{uiz_set_cursor(cr_handpoint)}
             <string>//sdbm(id,object_get_name(object_index),object_index,obj_uiZ_controller.object_index,obj_uiZ_mousemenu.object_index)
 //sdbm(global.mouseover,obj_uiZ_controller.id,obj_uiZ_mousemenu.id)
 var km=min(kmouseover,2);
-if selection&gt;0 and selectioncol!=km then{
+if selection&gt;=0 and selectioncol!=km then{
     selectioncol=km;
     uiz_mousemenu_update_new();
 }

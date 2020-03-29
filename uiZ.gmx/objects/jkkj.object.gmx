@@ -222,12 +222,14 @@ win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
 
-o=uiz_c(obj_uiZ_sprite);
+o=uiz_c(obj_uiZ_dropdown);
 uiz_setparent(o,win);
 o.posinframex=uiz_fill;
 o.posinframey=uiz_fill;
-o.sprite_index=spr_uiZ_scrollbar;
-uiz_drawsprite_setspeed(o,1);
+uselist=ds_list_create()
+ds_list_add(uselist,"hello","this","is","an","item")
+o.uselist=uselist
+
 
 
 /*
