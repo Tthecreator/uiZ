@@ -65,8 +65,8 @@ scrollbary=!global.systemsupportstouch//b//auto vertical scrollbar//
 scrollbarx=!global.systemsupportstouch//b//auto horizontal scrollbar//
 autoupdatescrolly=false//b//auto update vertical scrollbar//
 autoupdatescrollx=false//b//auto update horizontal scrollbar//
-scrollbarAnimation=uiz_exponential_inout//a//scrollbar animation//
-scrollbarAnimationTime=0.5//v//scrollbar animation time//
+scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
+scrollbarAnimationTime=0.3//v//scrollbar animation time//
 updatescrolly=false;
 updatescrollx=false;
 uscrolly=uiz_drawscrollbar_init();
@@ -75,7 +75,7 @@ mscrollbary=0;
 mscrollbarx=0;
 scrollbarcorner_x=0;
 scrollbarcorner_y=0;
-
+scrollupdateobjs=ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -100,7 +100,125 @@ scrollbarcorner_y=0;
             <kind>1</kind>
             <string>//if ds_exists(children,ds_type_list) then{ds_list_destroy(children)}
 //if surface_exists(containframe) then{surface_free(containframe)}
+ds_list_destroy(scrollupdateobjs);
 uiz_endobject()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///mouse hover
+var cy = false;
+var cx = false;
+var c=false;
+
+
+if scrolly = true or scrollx = true or snapm = true then {
+
+    c=uiz_frame_stepScrollbars();
+
+    /***************************************************
+      middle mouse scroll and drag
+     ***************************************************/
+     if uiz_drawscrollbar_getselected(uscrollx)=false and uiz_drawscrollbar_getselected(uscrolly)=false then{
+    if global.mouseoverscrollable = id and snapm = false then {
+        if (scrolly = true or scrollx = true) and mouse_check_button_pressed(mb_middle) then {
+            snapm = true;
+            snapx = uiz_getmouse_x()
+            snapy = uiz_getmouse_y()
+            uiz_snapper_enable(snapx,snapy);
+            global.mousefrozen = true
+        }
+        if global.mousefrozen = false and snapm = false and uscrolly &lt; 0 and uscrollx &lt; 0 and(scrolly = true or scrollx = true) and mouse_check_button(mb_left) and global.lastsecondmousemoved &gt; global.mousemovetoscroll then {
+            snapk = true;
+            snapx = uiz_getmouse_x()
+            snapy = uiz_getmouse_y()
+            global.mousefrozen = true
+        }
+    }
+
+
+    if snapk = true then {
+        if (scrolly = false and scrollx = false) or!mouse_check_button(mb_left) or uscrolly &gt;= 0 then {
+            snapk = false;
+            global.mousefrozen = 0;
+        }
+        if scrolly = true then {
+            addy -= global.lastmousemovedy;
+            //sdbm("addy3",addy)
+            cy = true;
+        }
+        if scrollx = true then {
+            addx -= global.lastmousemovedx;
+            cx = true;
+        }
+    }
+
+
+    if snapm = true then {
+        if ((scrolly = false and scrollx = false) or !mouse_check_button(mb_middle)) then {
+            snapm = false;
+            uiz_set_cursor(cr_default)
+            uiz_snapper_disable();
+            global.mousefrozen = 0;
+        }else{
+
+        uiz_set_cursor(cr_size_all)
+        
+        if scrolly = true then {
+            var sped = snapy - uiz_getmouse_y();
+            addy += sped;
+            cy = true;
+        }
+
+        if scrollx = true then {
+            var sped = snapx - uiz_getmouse_x();
+            addx += sped;
+            cx = true;
+        }
+}
+    }
+    }
+
+    
+    if cx = true or cy = true or c=true then {
+    
+    if cx = true then {
+        addx = clamp(addx, mscrollbarx, 0)
+        uiz_drawscrollbar_setvalue(uscrollx,-addx);
+        uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
+    }
+    
+    if cy = true then {
+        addy = clamp(addy, mscrollbary, 0)
+        uiz_drawscrollbar_setvalue(uscrolly,-addy);
+        uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
+    }
+    
+        uiz_frame_tellListeners();
+        uiz_fixchildren(id, true)
+        uiz_updater_FixViews();
+        
+    }
+
+}
 </string>
           </argument>
         </arguments>
@@ -123,10 +241,7 @@ uiz_endobject()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_frame_stepScrollbars();
-uiz_fixchildren(id, true)
-uiz_updater_FixViews();
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -176,153 +291,16 @@ uiz_updater_FixViews();
 /***************************************************
   Auto updater
  ***************************************************/
-
-if autoupdatescrollx then{
-    updatescrollx=true;
-}
-
-
-if autoupdatescrolly then {
-    updatescrolly=true;
-}
-c = uiz_frame_fixscrolling(true,false);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///mouse hover
-var cy = false;
-var cx = false;
-var c=false;
-
-
-if scrolly = true or scrollx = true or snapm = true then {
-
-    c=uiz_frame_stepScrollbars();
+if autoupdatescrollx or autoupdatescrolly then{
+    if autoupdatescrollx then{
+        updatescrollx=true;
+    }
     
-
-    /***************************************************
-      middle mouse scroll and drag
-     ***************************************************/
-     if uiz_drawscrollbar_getselected(uscrollx)=false and uiz_drawscrollbar_getselected(uscrolly)=false then{
-    if global.mouseoverscrollframe = id and snapm = false then {
-        if scrolly = true then {
-            if mouse_wheel_up() then {
-                addy += scrollyspeed;
-                cy = true;
-            }
-            if mouse_wheel_down() then {
-                addy -= scrollyspeed cy = true;
-            }
-        } else {
-
-            if scrollx = true then {
-                if mouse_wheel_up() then {
-                    addx += scrollyspeed;
-                    cx = true;
-                }
-                if mouse_wheel_down() then {
-                    addx -= scrollyspeed cx = true;
-                }
-            }
-        }
-        if (scrolly = true or scrollx = true) and mouse_check_button_pressed(mb_middle) then {
-            snapm = true;
-            snapx = uiz_getmouse_x()
-            snapy = uiz_getmouse_y()
-            uiz_snapper_enable(snapx,snapy);
-            global.mousefrozen = true
-        }
-        if global.mousefrozen = false and snapm = false and uscrolly &lt; 0 and uscrollx &lt; 0 and(scrolly = true or scrollx = true) and mouse_check_button(mb_left) and global.lastsecondmousemoved &gt; global.mousemovetoscroll then {
-            snapk = true;
-            snapx = uiz_getmouse_x()
-            snapy = uiz_getmouse_y()
-            global.mousefrozen = true
-        }
-    }
-
-
-    if snapk = true then {
-        if (scrolly = false and scrollx = false) or!mouse_check_button(mb_left) or uscrolly &gt;= 0 then {
-            snapk = false;
-            global.mousefrozen = 0;
-        }
-        if scrolly = true then {
-            addy -= global.lastmousemovedy;
-            //sdbm("addy3",addy)
-            cy = true;
-        }
-        if scrollx = true then {
-            addx -= global.lastmousemovedx;
-            cx = true;
-        }
-    }
-
-
-    if snapm = true then {
-        if ((scrolly = false and scrollx = false) or!mouse_check_button(mb_middle)) then {
-            snapm = false;
-            uiz_set_cursor(cr_default)
-            uiz_snapper_disable();
-            global.mousefrozen = 0;
-        }else{
-
-        uiz_set_cursor(cr_size_all)
-        
-        if scrolly = true then {
-            var sped = snapy - uiz_getmouse_y();
-            addy += sped;
-            //sdbm("addy4",addy)
-            //sdbm(mscrollbarx)
-            cy = true;
-        }
-
-        if scrollx = true then {
-            var sped = snapx - uiz_getmouse_x();
-            addx += sped;
-            //sdbm(mscrollbarx)
-            cx = true;
-        }
-}
-    }
-    }
-
     
-    if cx = true or cy = true or c=true then {
-    
-    if cx = true then {
-        
-        addx = clamp(addx, mscrollbarx, 0)
-        uiz_drawscrollbar_setvalue(uscrollx,-addx);
-        uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
+    if autoupdatescrolly then {
+        updatescrolly=true;
     }
-    if cy = true then {
-        addy = clamp(addy, mscrollbary, 0)
-        uiz_drawscrollbar_setvalue(uscrolly,-addy);
-        uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
-    }
-        uiz_fixchildren(id, true)
-        uiz_updater_FixViews();
-    }
-
+    c = uiz_frame_fixscrolling(true,false);
 }
 </string>
           </argument>

@@ -173,6 +173,7 @@ enablemousecheck=true;
 
 uiz_steps=false;
 uiz_steps_begin=false;
+uiz_steps_scrollable=false;
 
 uiz_update_script = noone
 uiz_update_script_argument = 0;

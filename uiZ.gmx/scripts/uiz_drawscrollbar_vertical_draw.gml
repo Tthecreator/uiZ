@@ -106,7 +106,6 @@ if updated_o > 0 or uiz_selfmarked = false then {
         var sca = sc / argument8;
     }
     
-    sdbm("sca",sca,sch,nheight,height,barh)
     var compw = min(barh / 2, width)
     var y4 = floor(y1 + sca * sch);
     var y5 = floor(y4 + compw);
@@ -186,6 +185,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     break;
             }
             var topPieceXScale=((x1-x0)/szx)/sw;
+            if argument8>0 then{
             if width * 2 > barh then {
                 if (y4 + (barh / sh) / 2 * sh <= y6) {
                     y6--;
@@ -209,12 +209,14 @@ if updated_o > 0 or uiz_selfmarked = false then {
                 uiz_draw_sprite_tiles(argument4, 12 + sel, x0, y5-3, x1, y6+3, szx, szy, argument5, 1,0,addEdge);
 
             }
+            }
 
             var conw = width - compw;
             draw_sprite_ext(argument4, 15, x0 + conw / 2, y4 + barh / 2 - compw / 2, compw / sw, compw / sh, 0, argument5, 1) //middle
         }
     } else {
         //if barh<0 and only the buttons fit
+        
         if updated = false or(state_change = true and((mstate >= 1 and mstate <= 2) or(mstate_last >= 1 and mstate_last <= 2))) {
             switch (mstate) {
                 case 1:

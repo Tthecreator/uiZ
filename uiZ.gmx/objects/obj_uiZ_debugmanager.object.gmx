@@ -156,7 +156,7 @@ deepness=0;
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 draw_set_color(c_black);
-draw_text(window.ix,window.iy,"mo: "+string(global.mouseover)+", mof: "+string(global.mouseoverframe)+", mosf: "+string(global.mouseoverscrollframe))
+draw_text(window.ix,window.iy,"mo: "+string(global.mouseover)+", mof: "+string(global.mouseoverframe)+", mosf: "+string(global.mouseoverscrollable))
 event_user(0);
 </string>
           </argument>

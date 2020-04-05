@@ -8,12 +8,12 @@ with(t) {
 
 
 
-    if (scrollx or scrolly) then {
-
+    if (scrollx or scrolly) then {      
         mscrollbarx = -uiz_getmaxxscrollinframe(id)
         if addx < mscrollbarx then {
-            cx = true;
-            addx = clamp(addx, mscrollbarx, 0)
+            addx = clamp(addx, mscrollbarx, 0);
+            uiz_drawscrollbar_setvalue(uscrollx,-addx);
+            uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
         }
 
         if mscrollbarx < 0 and scrollbarx = true then {
@@ -23,8 +23,9 @@ with(t) {
         }
         mscrollbary = -uiz_getmaxyscrollinframe(id)
         if addy < mscrollbary then {
-            cy = true;
             addy = clamp(addy, mscrollbary, 0)
+            uiz_drawscrollbar_setvalue(uscrolly,-addy);
+            uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
         }
         if mscrollbary < 0 and scrollbary = true then {
             var sgm_x = max(0, min(uiz_getposx_self(scrollbarsize, scrollbarsizetype), width - 2));
@@ -37,7 +38,7 @@ with(t) {
             scrollbarcorner_y = sgm_y;
         }
 
-
+        uiz_frame_tellListeners();
     }
     uiz_fix_Base_iValues()
 }

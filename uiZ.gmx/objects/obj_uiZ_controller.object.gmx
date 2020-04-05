@@ -170,8 +170,8 @@ global.mouseoverframe=id
 global.mouseoverframedepth=0
 global.mouseoverwindow=id
 global.mouseoverwindowdepth=0
-global.mouseoverscrollframe=id
-global.mouseoverscrollframedepth=0
+global.mouseoverscrollable=id
+global.mouseoverscrollabledepth=0
 global.mouseover=id
 global.mouseoverdepth=0
 global.mouseoverdone=0
@@ -538,6 +538,28 @@ resetSurfaces = false;
             <kind>1</kind>
             <string>///scrollbar animation init
 animateScrollbarList = ds_list_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scrollbar animation handling setup
+scrollbarStepList = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -1034,11 +1056,11 @@ var sz=ds_list_size(uiz_beginsteplist)
 for(var i=0;i&lt;sz;i++){
 var o=uiz_beginsteplist[|i];
 if instance_exists(o) and o.uiz_enabled=true then{
-with(o){uiz_steps_begin = false;event_user(6);}
-if(sz!=ds_list_size(uiz_beginsteplist)){//if our current item got removed from the list, the size should have changed
-    i--;//re-iterate over last step;
-    sz = ds_list_size(uiz_beginsteplist);
-}
+    with(o){uiz_steps_begin = false;event_user(6);}
+    if(sz!=ds_list_size(uiz_beginsteplist)){//if our current item got removed from the list, the size should have changed
+        i--;//re-iterate over last step;
+        sz = ds_list_size(uiz_beginsteplist);
+    }
 }
 }
 ds_list_clear(uiz_beginsteplist);
@@ -1178,10 +1200,10 @@ global.uiz_mouseswipeclick=true;
 global.uiz_mouseswipeclick=false;
 }
 if global.uiz_mouseswipeclick=true then{
-//sdbm("setting it",oldselectedmouseoverobject)
 global.mouseoverobject=oldselectedmouseoverobject;
 global.mouseover=oldselectedmouseover;
 global.mouseoverframe=oldselectedmouseoverframe;
+global.mouseoverscollable=oldselectedmouseoverscrollable;
 }
 </string>
           </argument>
@@ -1208,6 +1230,7 @@ global.mouseoverframe=oldselectedmouseoverframe;
 //global.uiz_debug_count=0;
 //uiz_updater_debug_processing(id)
 //
+var oldmouseoverscrollable = global.mouseoverscrollable;
 if global.mousefrozen=false and global.wasmousefrozen=false and global.uiz_mouseswipeclick=false then{
 //reset
 global.mouseoverobject=id
@@ -1216,8 +1239,8 @@ global.mouseoverwindow=id
 global.mouseoverwindowmydepth=0
 global.mouseoverframe=id
 global.mouseoverframemydepth=0
-global.mouseoverscrollframe=id
-global.mouseoverscrollframemydepth=0
+global.mouseoverscrollable=id
+global.mouseoverscrollablemydepth=0
 global.mouseover=id
 global.mouseovermydepth=0
 global.mouseoverdone=1
@@ -1254,11 +1277,14 @@ event_user(3);
 }
 };
 }
+
 if instance_exists(global.mouseoverframe) and global.mouseoverframe!=global.mouseover and global.mouseoverframe!=id then{
-with(global.mouseoverframe){
-event_user(3);
-};
+    with(global.mouseoverframe){
+        event_user(3);
+    };
 }
+
+
 /*
 if ds_exists(children,ds_type_list) then{
 var sz=ds_list_size(children);
@@ -1267,6 +1293,55 @@ uiz_updater_mouse_processing(children[|i])
 }
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///update scrollbars
+
+if instance_exists(global.mouseoverscrollable) and global.mouseoverscrollable!=id then{
+    with(global.mouseoverscrollable){
+        event_user(7);
+    };
+}
+
+if oldmouseoverscrollable!=global.mouseoverscrollable and instance_exists(oldmouseoverscrollable) and oldmouseoverscrollable!=id then{
+    with(oldmouseoverscrollable){
+        event_user(7);
+    };
+}
+
+var sz=ds_list_size(scrollbarStepList);
+for(var i=0;i&lt;sz;++i){
+    var o = scrollbarStepList[|i];
+    if instance_exists(o) and o.uiz_steps_scrollable{
+        if o!=global.mouseoverscrollable and o!=oldmouseoverscrollable then{
+            with(o){
+                event_user(7);
+            };
+        }
+    }else{//remove current instance since it doesn't exist anyways
+        ds_list_delete(scrollbarStepList,i);
+        --i;
+        --sz;
+    }
+}
 </string>
           </argument>
         </arguments>

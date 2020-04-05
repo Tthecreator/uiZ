@@ -14,7 +14,7 @@ var c = false;
         }
         if scrolly = true and scrollbary = true and mscrollbary < 0 then {
             var scrollox = uiz_drawscrollbar_getvalue(uscrolly);
-            uiz_drawscrollbar_vertical_step(ilx,ry,rlx,rly-scrollbarcorner_y, uscrolly, -mscrollbary, false, scrollxspeed, scrollbarAnimation, scrollbarAnimationTime)
+            uiz_drawscrollbar_vertical_step(ilx,ry,rlx,rly-scrollbarcorner_y, uscrolly, -mscrollbary, true, scrollyspeed, scrollbarAnimation, scrollbarAnimationTime)
     
             var scrollnx = uiz_drawscrollbar_getvalue(uscrolly);
             

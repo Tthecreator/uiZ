@@ -133,7 +133,7 @@ if scrolly=true or scrollx=true or snapm=true then{
 var maxis=-uiz_getmaxyscrollinframe(id);
 var mayis=-uiz_getmaxxscrollinframe(id);
 }
-if global.mouseoverscrollframe=id and snapm=false then{
+if global.mouseoverscrollable=id and snapm=false then{
 if scrolly=true then{
 if mouse_wheel_up() then{addy+=scrollyspeed; cy=true;}
 if mouse_wheel_down() then{addy-=scrollyspeed cy=true;}

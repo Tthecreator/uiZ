@@ -33,7 +33,6 @@ uiz_objinit()
 color=c_white//c//color//
 sprite=spr_uiZ_buttons//p//sprite//
 spraddto=0//v//add to sprite//
-kmouseover=0;
 text=""//s//text//
 textcolor=c_black//c//textcolor//
 font=-1//f//font

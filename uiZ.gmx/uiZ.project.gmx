@@ -1109,6 +1109,7 @@
         </scripts>
         <scripts name="mouse">
           <script>scripts\uiz_mouse_docheck.gml</script>
+          <script>scripts\uiz_mouse_docheck_scrollable.gml</script>
           <script>scripts\uiz_mouse_ison.gml</script>
           <script>scripts\uiz_mouse_ison_pressingleft.gml</script>
           <script>scripts\uiz_mouse_ison_pressingright.gml</script>
@@ -1291,14 +1292,20 @@
             <scripts name="internal">
               <script>scripts\uiz_frame_fixscrolling.gml</script>
               <script>scripts\uiz_frame_stepScrollbars.gml</script>
+              <script>scripts\uiz_frame_tellListeners.gml</script>
             </scripts>
             <script>scripts\uiz_frame_getscrolling.gml</script>
             <script>scripts\uiz_frame_getscrolling_for.gml</script>
+            <script>scripts\uiz_frame_setscroll.gml</script>
+            <script>scripts\uiz_frame_getscrollableSpace.gml</script>
           </scripts>
           <scripts name="framescrollbar">
             <script>scripts\uiz_framescrollbar_settings.gml</script>
             <script>scripts\uiz_framescrollbar_setframe.gml</script>
-            <script>scripts\uiz_framescrollbar_eval.gml</script>
+            <scripts name="internal">
+              <script>scripts\uiz_framescrollbar_step.gml</script>
+              <script>scripts\uiz_framescrollbar_eval.gml</script>
+            </scripts>
           </scripts>
           <scripts name="functionbar">
             <script>scripts\uiz_functionbar_additem.gml</script>
@@ -1766,6 +1773,7 @@
           <script>scripts\uiz_drawscrollbar_vertical_step.gml</script>
           <script>scripts\uiz_drawscrollbar_getscrollvalue.gml</script>
           <script>scripts\uiz_drawscrollbar_setvalue.gml</script>
+          <script>scripts\uiz_drawscrollbar_setvalue_animation.gml</script>
           <script>scripts\uiz_drawscrollbar_getvalue.gml</script>
           <script>scripts\uiz_drawscrollbar_getselected.gml</script>
           <script>scripts\uiz_drawscrollbar_legacy.gml</script>
@@ -1781,6 +1789,7 @@
             <script>scripts\uiz_drawscrollbar_getMstate_last.gml</script>
           </scripts>
           <script>scripts\uiz_drawscrollbar_deselect.gml</script>
+          <script>scripts\uiz_drawscrollbar_isAnimating.gml</script>
         </scripts>
         <scripts name="sliderframe">
           <script>scripts\uiz_slideframe_setmark.gml</script>

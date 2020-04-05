@@ -18,5 +18,6 @@ uiz_destroydslist(uiz_steplist);
 uiz_destroydslist(uiz_endsteplist);
 uiz_destroydslist(uiz_beginsteplist);
 uiz_destroydslist(uiz_arealist_extra);
+uiz_destroydslist(scrollbarStepList);
 //uiz_destroydslist(uiz_objlist);
 ///uiz by Thomas Saedt, Tthecreator on the game maker forums.

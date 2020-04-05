@@ -49,6 +49,12 @@ mstate codes:
 */
 //var scroll=(uiz_positify(argument4-frac(argument4)));
 //var scroll=floor(uiz_positify(argument4-uiz_sign(argument4)*frac(argument4)));
+var argument_arr = array_create(argument_count);
+for (var i = 0; i < argument_count; i++) {
+    argument_arr[i] = argument[i];
+}
+if (live_call_ext(argument_arr)) return live_result;
+
 var scroll=uiz_drawscrollbar_getScroll(argument4);
 var scroll_old=scroll;
 var scrollsel=argument4[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel];
@@ -65,7 +71,9 @@ var mstate_last_old = mstate_last;
 var scrollsel_old = scrollsel;
 
 //handle scrolling
-if global.mouseoverobject=id and argument6=true then{
+
+if global.mouseoverscrollable=id and argument6=true then{
+
 if mouse_wheel_down() then{
 //scroll=clamp(scroll+argument7,0,argument5)
     if twn_fac=1 then{//not busy doing an animation
@@ -92,7 +100,7 @@ if mouse_wheel_up() then{
 }
 }
 //handle mouse movement on the bar
-if (global.mouseoverobject=id or global.mouseoverscrollframe=id) and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3 and (scrollsel=1 or (uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2)) then{
+if (global.mouseoverobject=id or global.mouseoverscrollable=id) and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3 and (scrollsel=1 or (uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2)) then{
 //left button
 if scrollsel=0 and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument1+cwidth then{
 if mouse_check_button(mb_left) then{
@@ -157,9 +165,16 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(round(((uiz_g
 
 //check tweening (the animation of the scrolling)
 if(twn_fac!=1){
+    if twn_fac==0 and !uiz_steps_scrollable then{
+        uiz_steps_scrollable = true;
+        ds_list_add(obj_uiZ_controller.scrollbarStepList,id);
+    }
     twn_fac = clamp(twn_fac+uiz_sc(argument9),0,1);
     scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getfunction(twn_fac,argument8));
     argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = twn_fac;
+    if twn_fac>=1 and uiz_steps_scrollable then{
+        uiz_steps_scrollable = false;
+    }
 }
 
 var updated = false;
@@ -173,7 +188,6 @@ if(scroll_old!=scroll || mstate!=mstate_last || scrollsel_old!=scrollsel){
     }
     uiz_drawscrollbar_update_view(argument0,argument1,argument2,argument3,uiz_vertical,mstate,mstate_last,argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated]);
 }
-
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_scroll] = scroll;//save scroll
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel] = scrollsel;//save scrollsel
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate] = mstate;//save scrollsel

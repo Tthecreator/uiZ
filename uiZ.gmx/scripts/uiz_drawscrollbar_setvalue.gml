@@ -1,6 +1,7 @@
 ///uiz_drawscrollbar_setvalue(scroll,newvalue)
 /*
 Changes how far a scrollbar has scrolled inside a scrollbar's "scroll" value.
+The change is instance, without animation.
 Set newvalue to the amount you want the scrollbar to be scrolled. Should be 0 or higher and lower than the "scrolllines" argument in uiz_drawscrollbar_. 
 
 don't forget to call uiz_drawscrollbar_update to make sure the scrollbar displays the right values.

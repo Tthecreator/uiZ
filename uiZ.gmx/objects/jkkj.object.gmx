@@ -221,16 +221,34 @@ win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
-
-o=uiz_c(obj_uiZ_dropdown);
-uiz_setparent(o,win);
-o.posinframex=uiz_fill;
-o.posinframey=uiz_fill;
-uselist=ds_list_create()
-ds_list_add(uselist,"hello","this","is","an","item")
-o.uselist=uselist
+f=uiz_c(obj_uiZ_frame);
+uiz_setparent(f,win);
+f.posinframex=uiz_fill;
+f.posinframey=uiz_fill;
+uiz_frame_setscrollable(f,true,true);
 
 
+o=uiz_c(obj_uiZ_easybutton);
+uiz_setparent(o,f);
+o.posinframex=uiz_snapleft;
+o.posinframey=uiz_snapright;
+o.posvalwtype=px;
+o.posvalhtype=px;
+o.posvalw=500;
+o.posvalh=500;
+
+win2=uiz_window_create(64,px,300,px)
+win2.posinframex=uiz_snapright;
+win2.setpointx=uiz_right;
+win2.posinframey=uiz_center;
+win2.color_normal=$EEEEEE;
+uiz_fixgeneralpos(win2);
+
+sb=uiz_c(obj_uiZ_framescrollbar);
+uiz_setparent(sb,win2);
+sb.posinframex=uiz_fill;
+sb.posinframey=uiz_fill;
+uiz_framescrollbar_setframe(sb,f);
 
 /*
 o.posinframex=uiz_center;
@@ -250,6 +268,9 @@ o.border_texturemode=-1
 */
 
 uiz_fixgeneralpos(o);
+uiz_fixgeneralpos(f);
+uiz_fixgeneralpos(o);
+uiz_fixgeneralpos(sb);
 </string>
           </argument>
         </arguments>

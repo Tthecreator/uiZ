@@ -9,4 +9,5 @@ ds_list_delete(l,ds_list_size(l)-1);
 if surface_exists(containframe) then{surface_free(containframe)}
 //uiz_fix_Base_View();
 //sdbm("updating this instance",object_index,id,object_get_name(object_index))
+uiz_steps_scrollable = false;
 uiz_updater_FixViews()

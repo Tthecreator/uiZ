@@ -65,8 +65,8 @@ scrollbary=!global.systemsupportstouch//b//auto vertical scrollbar//
 scrollbarx=!global.systemsupportstouch//b//auto horizontal scrollbar//
 autoupdatescrolly=false//b//auto update vertical scrollbar//
 autoupdatescrollx=false//b//auto update horizontal scrollbar//
-scrollbarAnimation=uiz_exponential_inout//a//scrollbar animation//
-scrollbarAnimationTime=0.5//v//scrollbar animation time//
+scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
+scrollbarAnimationTime=0.3//v//scrollbar animation time//
 updatescrolly=false;
 updatescrollx=false;
 uscrolly=uiz_drawscrollbar_init();
@@ -433,7 +433,7 @@ if scrolly = true or scrollx = true or snapm = true then {
       middle mouse scroll and drag
      ***************************************************/
      if uiz_drawscrollbar_getselected(uscrollx)=false and uiz_drawscrollbar_getselected(uscrolly)=false then{
-    if global.mouseoverscrollframe = id and snapm = false then {
+    if global.mouseoverscrollable = id and snapm = false then {
         if scrolly = true then {
             if mouse_wheel_up() then {
                 addy += scrollyspeed;

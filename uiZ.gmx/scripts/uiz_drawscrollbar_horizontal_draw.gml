@@ -65,6 +65,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
 
     var width = round(argument2 - argument0);
     var height = round(argument3 - argument1);
+    var y0 = floor(argument1);
     var y1 = y0 + height;
     var x0 = argument0;
     var x1 = argument0 + height;
@@ -175,34 +176,36 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     sel = 0;
                     break;
             }
-
-            if height * 2 > barw then {
-                //sdbm("placd 2: stopping at,",x4+(height/sh)*sh,"starting at,",x6);
-                if ((x4 + (barw / sh) / 2 * sh) <= x6) {
-                    x6--;
+            if argument8>0 then{
+                if height * 2 > barw then {
+                    //sdbm("placd 2: stopping at,",x4+(height/sh)*sh,"starting at,",x6);
+                    if ((x4 + (barw / sh) / 2 * sh) <= x6) {
+                        x6--;
+                    }
+                    //sdbm(x1,x4,x6,sca*scw,sca,scw,sc,argument8)
+                    draw_sprite_ext(argument4, 6 + sel, x4, argument1 + height, height / sw, (barw / sh) / 2, 90, argument5, 1) //left
+                    draw_sprite_ext(argument4, 9 + sel, x6, argument1 + height, height / sw, (barw / sh) / 2, 90, argument5, 1) //right
+    
+                } else {
+                    //sdbm("stopping at,",x4+(height/sh)*sh,"starting at,",x6);
+                    if ((x4 + (height / sh) * sh) <= x6) {
+                        x6--;
+                    }
+                    draw_sprite_ext(argument4, 6 + sel, x4, argument1 + height, height / sw, height / sh, 90, argument5, 1) //left
+                    draw_sprite_ext(argument4, 9 + sel, x6, argument1 + height, height / sw, height / sh, 90, argument5, 1) //right
                 }
-                //sdbm(x1,x4,x6,sca*scw,sca,scw,sc,argument8)
-                draw_sprite_ext(argument4, 6 + sel, x4, argument1 + height, height / sw, (barw / sh) / 2, 90, argument5, 1) //left
-                draw_sprite_ext(argument4, 9 + sel, x6, argument1 + height, height / sw, (barw / sh) / 2, 90, argument5, 1) //right
-
-            } else {
-                //sdbm("stopping at,",x4+(height/sh)*sh,"starting at,",x6);
-                if ((x4 + (height / sh) * sh) <= x6) {
-                    x6--;
+    
+                if x5 < x6 then {
+                    if (x4 + (height / sw) * sw <= x5) {
+                        x5--;
+                    }
+                    uiz_draw_sprite_tiles(argument4, 17 + sel, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge)
                 }
-                draw_sprite_ext(argument4, 6 + sel, x4, argument1 + height, height / sw, height / sh, 90, argument5, 1) //left
-                draw_sprite_ext(argument4, 9 + sel, x6, argument1 + height, height / sw, height / sh, 90, argument5, 1) //right
+                
+                var conh = height - comph;
+                draw_sprite_ext(argument4, 15, x4 + barw / 2 - comph / 2, argument1 + conh / 2, comph / sw, comph / sh, 0, argument5, 1) //middle
+                }
             }
-
-            if x5 < x6 then {
-                if (x4 + (height / sw) * sw <= x5) {
-                    x5--;
-                }
-                uiz_draw_sprite_tiles(argument4, 17 + sel, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge)
-            }
-            var conh = height - comph;
-            draw_sprite_ext(argument4, 15, x4 + barw / 2 - comph / 2, argument1 + conh / 2, comph / sw, comph / sh, 0, argument5, 1) //middle
-        }
     } else {
         //if barh<0 and only the buttons fit
         if updated = false or(state_change = true and((mstate >= 1 and mstate <= 2) or(mstate_last >= 1 and mstate_last <= 2))) {

@@ -65,7 +65,7 @@ var scrollsel_old = scrollsel;
 var twn_fac = argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor];
 
 //handle scrolling
-if global.mouseoverobject=id and argument6=true then{
+if global.mouseoverscrollable=id and argument6=true then{
 if mouse_wheel_down() then{
 //scroll=clamp(scroll+argument7,0,argument5)
 if twn_fac=1 then{//not busy doing an animation
@@ -92,7 +92,7 @@ if mouse_wheel_up() then{
 }
 }
 //handle mouse movement on the bar
-if (global.mouseoverobject=id or global.mouseoverscrollframe=id) and uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2 and (scrollsel=1 or (uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3)) then{
+if (global.mouseoverobject=id or global.mouseoverscrollable=id) and uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2 and (scrollsel=1 or (uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3)) then{
 //point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),argument0,argument1,argument2,argument3) then{
 //left button
 //sdbm("scroll left almost",uiz_getmouse_x(),argument0,argument0+height,height)
