@@ -1236,6 +1236,9 @@
             <script>scripts\uiz_drawdslist_updateviews.gml</script>
             <script>scripts\uiz_drawdslist_checkmousepos.gml</script>
             <script>scripts\uiz_drawdslist_checkheight.gml</script>
+            <scripts name="internal">
+              <script>scripts\uiz_drawdslist_deselect.gml</script>
+            </scripts>
           </scripts>
           <scripts name="loadingcircle">
             <script>scripts\uiz_loadingcircle_setcolor.gml</script>
@@ -1302,6 +1305,7 @@
           <scripts name="framescrollbar">
             <script>scripts\uiz_framescrollbar_settings.gml</script>
             <script>scripts\uiz_framescrollbar_setframe.gml</script>
+            <script>scripts\uiz_framescrollbar_setAnimation.gml</script>
             <scripts name="internal">
               <script>scripts\uiz_framescrollbar_step.gml</script>
               <script>scripts\uiz_framescrollbar_eval.gml</script>

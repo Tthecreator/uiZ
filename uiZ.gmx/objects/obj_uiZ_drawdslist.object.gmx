@@ -78,6 +78,7 @@ oldvalid=false;
 updatescroll=false;
 doscroll=false;
 scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
+scrolladdy = 0;
 </string>
           </argument>
         </arguments>
@@ -106,7 +107,7 @@ scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="13">
+    <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -127,7 +128,7 @@ scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
 if ds_exists(uselist,ds_type_list) then{
 //handle scrollbar
 if doscroll=true then{
-var update = uiz_drawscrollbar_vertical_step(rlx-scrollwidth,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
+var update = uiz_drawscrollbar_vertical_step(rlx-scrollwidth+1,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
 if update then{
 oldaddy=addy;
 addy=-uiz_drawscrollbar_getvalue(scroll)
@@ -138,15 +139,39 @@ sel=-1;
 selected=-1;
 oldvalid=false;
 uiz_updater_FixView_NoMove();
+uiz_drawdslist_checkview();
 }else{
-uiz_updater_FixViews_area_selfmarked(rlx-scrollwidth,ry,rlx,rly);
+//uiz_updater_FixViews_area_selfmarked(rlx-scrollwidth,ry,rlx,rly);
 }
 updatescroll=true
 }
 }
-//else{
-uiz_drawdslist_checkmousepos();
-//}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if live_call() return live_result;
+if ds_exists(uselist,ds_type_list) then{
+    uiz_drawdslist_checkmousepos();
 }
 </string>
           </argument>
@@ -191,12 +216,15 @@ uiz_drawdslist_checkview();
 */
 
 if kmouseover=0 then{
+uiz_drawdslist_deselect();
 //uiz_drawdslist_updateviews(true,sx,sy+addy+h,slx-scrollbarwidth,sy+h+addy+strh)
+/*
 uiz_updater_FixViews();
 sel=-1;
 selection=-1;
 //keepselected=-1;
 updatescroll=true;
+*/
 }
 }
 </string>
@@ -221,7 +249,11 @@ updatescroll=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>if doscroll then{
+uiz_mouse_docheck_scrollable()
+}else{
+uiz_mouse_docheck()
+}
 </string>
           </argument>
         </arguments>
@@ -263,7 +295,6 @@ if uiz_cntn() then {
         if uiz_selfmarked = false then {
             pcu = false;
         }
-        //sdbm("pcu",pcu,updater_new,updater_old,uiz_selfmarked,ar_sel_ny,ar_sel_ny-addy-ry,ar_sel_oy,ar_sel_oy-addy-ry)
         var uo = updater_old;
         var un = updater_new;
         for (var i = startlistat; i &lt;= endlistat; i++) {
@@ -295,11 +326,10 @@ if uiz_cntn() then {
             if sel = i then {
                 ucolor = oncolor
             }
-            if keepselected = i or(selected = i and kmouseover = 2) then {
+            if keepselected = i or (selected = i) then {
                 ucolor = clickcolor
             }
             draw_square(rx, ry + addy + h, rlx - (scrollwidth + 1) * doscroll, ry + h + addy + strh, ucolor, 1)
-            //sdbm("now drawing this crap",ucolor,uiz_gettext_contained(uselist[| i],width),uselist[| i],usesprlist,updater_new,updater_old)
             draw_set_color(c_black)
             if usesprlist != -1 then {
                 //draw_text(rx+strh+margin*2,ry+h+addy,uiz_gettext_contained(uselist[| i],width-strh-margin*2-(scrollwidth+1)*doscroll))
@@ -361,7 +391,7 @@ if uiz_cntn() then {
 
     }
     if doscroll = true and(updatescroll = true or uiz_selfmarked = false) then {
-        uiz_drawscrollbar_vertical_draw(rlx - scrollwidth, ry, rlx, rly, scrollbarsprite, scrollbarcolor, scrollbarbacktexmode, scroll, scrollheight)
+        uiz_drawscrollbar_vertical_draw(rlx - scrollwidth + 1, ry, rlx, rly, scrollbarsprite, scrollbarcolor, scrollbarbacktexmode, scroll, scrollheight)
         updatescroll = false;
     }
 
