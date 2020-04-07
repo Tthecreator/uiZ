@@ -1232,12 +1232,12 @@
             <script>scripts\uiz_drawdslist_keepselection.gml</script>
             <script>scripts\uiz_drawdslist_getselection.gml</script>
             <script>scripts\uiz_drawdslist_getselected.gml</script>
-            <script>scripts\uiz_drawdslist_checkview.gml</script>
-            <script>scripts\uiz_drawdslist_updateviews.gml</script>
-            <script>scripts\uiz_drawdslist_checkmousepos.gml</script>
-            <script>scripts\uiz_drawdslist_checkheight.gml</script>
             <scripts name="internal">
               <script>scripts\uiz_drawdslist_deselect.gml</script>
+              <script>scripts\uiz_drawdslist_checkview.gml</script>
+              <script>scripts\uiz_drawdslist_updateviews.gml</script>
+              <script>scripts\uiz_drawdslist_checkmousepos.gml</script>
+              <script>scripts\uiz_drawdslist_checkheight.gml</script>
             </scripts>
           </scripts>
           <scripts name="loadingcircle">

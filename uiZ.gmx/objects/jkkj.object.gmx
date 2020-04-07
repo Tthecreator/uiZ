@@ -221,14 +221,14 @@ win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
-o=uiz_c(obj_uiZ_drawdslist);
+o=uiz_c(obj_uiZ_functionbar);
 uiz_setparent(o,win);
-o.posinframex=uiz_fill;
-o.posinframey=uiz_fill;
-uselist=ds_list_create()
-ds_list_add(uselist,"hello","this","is","an","item","Allow","Allow","Allow","Allow","Me","To","Continue");
-o.uselist=uselist
-uiz_fixgeneralpos(o);
+o.posinframex=uiz_fill
+o.posinframey=uiz_fill
+uiz_functionbar_additem(o,"test gear",spr_uiZ_gear,0,0,make_colour_rgb(245,203,188))//light salmon
+uiz_functionbar_additem(o,"test save icon",spr_uiZ_save,0,0,make_colour_rgb(183,187,247))//pale cornflower blue
+uiz_functionbar_additem(o,"test folder",spr_uiZ_folder,0,0,make_colour_rgb(255,253,145))//canary yellow
+uiz_fixgeneralpos(o)
 
 </string>
           </argument>
