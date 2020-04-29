@@ -4,13 +4,13 @@ var nwat=argument1;
 var h=argument2;
 var i=argument3;
 //draw top bar segment from (wat,ry) to (nwat,h)
-uiz_back_at_topbar(wat, ry, nwat, h-1)
+uiz_back_at_topbar(wat, ry, nwat+1, h)
 
 //draw divider
     if drawdivider = true and i>0 then {
         draw_set_color(dividercolor)
-        draw_line(nwat, ry, nwat, h-1)
-        draw_line(wat, ry, wat, h-1)
+        draw_line(nwat, ry-1, nwat, h-1)
+        draw_line(wat, ry-1, wat, h-1)
     }
 
 //draw text inside back at (wat+textmargin,ry+(h-ry)/2)

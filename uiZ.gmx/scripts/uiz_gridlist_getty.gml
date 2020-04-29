@@ -13,5 +13,5 @@ cur_hat=-1;
 cur_nhat=-1;
 }else{
 cur_hat=selectedy*h-scroll;
-cur_nhat=cur_hat+h;
+cur_nhat=cur_hat+h-1;
 }

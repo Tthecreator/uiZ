@@ -208,6 +208,7 @@ uiz_fixgeneralpos(tabslider)
           <argument>
             <kind>1</kind>
             <string>global.deb=false;
+
 //show_debug_overlay(true)
 uiz_init()
 draw_set_font(uiz_fnt_dp_15);
@@ -221,15 +222,40 @@ win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
-o=uiz_c(obj_uiZ_functionbar);
+list=uiz_c(obj_uiZ_gridlist)
+uiz_setparent(list,win);
+uiz_position(list,0,uiz_fill,0,uiz_fill);
+list.mainlist=ds_list_create();
+ds_list_add(list.mainlist,"HELLOW!!","something else","other information")
+list.maingrid=ds_grid_create(ds_list_size(list.mainlist),20);
+list.maingrid[# 0,0]="test1";
+list.maingrid[# 1,0]="apple";
+list.maingrid[# 2,0]="car";
+
+list.maingrid[# 0,1]="test2";
+list.maingrid[# 1,1]="banana";
+list.maingrid[# 2,1]="bicycle";
+
+list.maingrid[# 0,2]="test3";
+list.maingrid[# 1,2]="orange";
+list.maingrid[# 2,2]="plane";
+
+for(var i=3;i&lt;20;i++){
+    list.maingrid[# 0,i]="test"+string(i+1);
+    list.maingrid[# 1,i]="fruit"+string(i+1);
+    list.maingrid[# 2,i]="transportation"+string(i+1);
+}
+
+uiz_fixgeneralpos(list)
+
+/*
+o=uiz_c(obj_uiZ_gradientsquare);
 uiz_setparent(o,win);
 o.posinframex=uiz_fill
 o.posinframey=uiz_fill
-uiz_functionbar_additem(o,"test gear",spr_uiZ_gear,0,0,make_colour_rgb(245,203,188))//light salmon
-uiz_functionbar_additem(o,"test save icon",spr_uiZ_save,0,0,make_colour_rgb(183,187,247))//pale cornflower blue
-uiz_functionbar_additem(o,"test folder",spr_uiZ_folder,0,0,make_colour_rgb(255,253,145))//canary yellow
-uiz_fixgeneralpos(o)
+uiz_fixgeneralpos(o);
 
+*/
 </string>
           </argument>
         </arguments>

@@ -1323,9 +1323,11 @@
             <script>scripts\uiz_functionbar_setratio.gml</script>
             <script>scripts\uiz_functionbar_settings.gml</script>
             <script>scripts\uiz_functionbar_setanimation.gml</script>
-            <script>scripts\uiz_functionbar_updateitem.gml</script>
-            <script>scripts\uiz_functionbar_drawitem.gml</script>
-            <script>scripts\uiz_functionbar_createcolor.gml</script>
+            <scripts name="internal">
+              <script>scripts\uiz_functionbar_drawitem.gml</script>
+              <script>scripts\uiz_functionbar_updateitem.gml</script>
+              <script>scripts\uiz_functionbar_createcolor.gml</script>
+            </scripts>
           </scripts>
           <scripts name="gradientroundrect">
             <script>scripts\uiz_gradientsquare_setcolor.gml</script>
@@ -1364,6 +1366,7 @@
               <script>scripts\uiz_gridlist_drawsquareback_col.gml</script>
               <script>scripts\uiz_gridlist_drawsquareback_row.gml</script>
               <script>scripts\uiz_gridlist_drawsquareback_general.gml</script>
+              <script>scripts\uiz_gridlist_randomcolor.gml</script>
             </scripts>
           </scripts>
           <scripts name="huesquare">
@@ -2398,7 +2401,7 @@
       </rooms>
     </rooms>
   </rooms>
-  <constants number="100">
+  <constants number="104">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -2499,6 +2502,10 @@
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
     <constant name="uiz_treelist_boxState_extended">2</constant>
     <constant name="live_enabled">1</constant>
+    <constant name="uiz_gridlist_selection_none">0</constant>
+    <constant name="uiz_gridlist_selection_cell">1</constant>
+    <constant name="uiz_gridlist_selection_row">2</constant>
+    <constant name="uiz_gridlist_selection_column">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

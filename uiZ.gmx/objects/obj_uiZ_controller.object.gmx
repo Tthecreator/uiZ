@@ -832,9 +832,11 @@ uiz_updater_FixViews_processing(obj_uiZ_controller);
           <argument>
             <kind>1</kind>
             <string>///alt for updating everything
+/*
 if keyboard_check(vk_alt){
     uiz_updater_FixViews_area(0,0,width,height);
 }
+*/
 </string>
           </argument>
         </arguments>
