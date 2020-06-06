@@ -8,4 +8,4 @@ uiz_fixwindowpos(id)
 uiz_animation_capture_newstate(id)
 uiz_animation_setFunction(id,maximizeanimation,maximizeanimation,maximizeanimation,maximizeanimation,uiz_one,maximizeanimationspeed)
 uiz_animation_start(id)
-
+uiz_updater_FixViews();

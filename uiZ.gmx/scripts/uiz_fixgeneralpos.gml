@@ -86,6 +86,10 @@ uiz_fixtreelistpos(argument0);
 break;
 case obj_uiZ_colorboxes:
 uiz_fixcolorboxes(argument0);
+break;
+case obj_uiZ_loadingbar:
+uiz_fixloadingbarpos(argument0);
+break;
 default:
 uiz_fixobjectpos(argument0);
 break;

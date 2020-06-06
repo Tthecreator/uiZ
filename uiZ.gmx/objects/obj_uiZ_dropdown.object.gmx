@@ -177,7 +177,7 @@ menu.textcolor=mousetextcolor
 menu.font=mousefont
 menu.destroyyfunction=uiz_zero;
 //set returnscript
-uiz_mousemenu_setListenerScript(id,uiz_dropdown_returnscript);
+uiz_mousemenu_setListenerScript(menu,id,uiz_dropdown_returnscript);
 uiz_fixmousemenupos(menu)
 }
 

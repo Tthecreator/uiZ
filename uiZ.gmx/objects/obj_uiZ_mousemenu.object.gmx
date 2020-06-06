@@ -32,12 +32,6 @@
 uiz_objinit()
 //depth=-9999999999
 uiz_fixgeneralpos(id)
-//backcolor=c_blue//c//background color
-//backalpha=0.5//v//background alpha
-itemcolor=c_white//c//item color//
-itemoncolor=c_ltgray//c//item mouse over color//
-itemincolor=c_gray//c//item mouse click color//
-itemalpha=1//v//item alpha//
 margin=3//v//item margin//
 textmargin=1//v//text margin in pixels//
 uselist=-1
@@ -194,35 +188,6 @@ if mouse_check_button(mb_left) and kmouseover=0 then{
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-if updated=1 then{
-if instance_exists(listener) and listener_script!=-1 and script_exists(listener_script) then{
-//execute update script
-script_execute(listener_script,id,listener);
-}
-uiz_destroyobject(id)}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
@@ -348,11 +313,12 @@ if kmouseover=uiz_mousereleased then{
     updated = 1
     if listener_script!=-1 and script_exists(listener_script) then{
     script_execute(listener_script,id,listener);
-    uiz_destroyobject_animation_default(id);
     }
+    uiz_destroyobject_animation_default(id);
     }else{
         wait=false;
     }
+    uiz_mousemenu_update_new();
 }
 </string>
           </argument>

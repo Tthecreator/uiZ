@@ -127,15 +127,14 @@ margin_out=-1//v//margin out//
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if live_call() return live_result;
 if uiz_cntn() then{
-//shader_set(sh_uiz_contain)
 
 uiz_contain_custom_min_left(p)
-uiz_back(0)
+uiz_back(0);
 //draw_square(rx,ry,rlx,rly,c_red,1);
 uiz_contain_custom_min_right(p)
-uiz_back(2)
+uiz_back(2);
 uiz_containend()
 }
 

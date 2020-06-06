@@ -1,5 +1,5 @@
 ///uiz_contain_custom(x1,y1,x2,y2)
-//if uiz_contain_usesshaderorsurface()=1 then{
+if uiz_contain_usesshaderorsurface()=1 then{
 //use shaders
 //sdbm("custom shader")
 shader_reset()
@@ -10,7 +10,7 @@ cntnlx=argument2
 cntnly=argument3
 shader_set_uniform_f(global.uniformid_toy,cntnx,cntny,cntnlx,cntnly)
 
-/*
+
 }else{
 //sdbm("custom surface")
 //use surfaces
@@ -26,5 +26,5 @@ cntnlx=argument2
 cntnly=argument3
 
 }
-*/
+
 thisforcecontain=true;

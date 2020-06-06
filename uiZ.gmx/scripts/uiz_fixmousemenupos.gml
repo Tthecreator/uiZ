@@ -18,7 +18,7 @@ if posinframey=uiz_static then{
         height+=margin+string_height(string(uselist[| i]));
     }
     
-    height+=10+end_bottomframemargin+end_topframemargin;
+    height+=end_bottomframemargin+end_topframemargin;
 }
 }
 

@@ -902,7 +902,8 @@ uiz_updater_FixViews_area(ilx-bars*buttonssize,ry,ilx,iy-1);//REENABLE//
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if uiz_cntn(){
+            <string>if live_call() return live_result;
+if uiz_cntn(){
 
 uiz_back()
 
@@ -918,7 +919,13 @@ var old_texas=texas;
 
 bkspr=top_bkspr;
 bkcol=top_bkcol;
+if sizestatus=2 then{
+bkmar=0;
+var bkmar_bot=top_bkmar;
+}else{
 bkmar=top_bkmar;
+var bkmar_bot=0;    
+}
 texas=top_texas;
 
 var old_ix=ix;
@@ -938,9 +945,9 @@ if topbarInside then{
     iy-=bars+bkmar;
     ry=iy;
     rlx=ilx;
-    rly=ry+bars;
+    rly=ry+bars-bkmar_bot;
 }else{
-    rly=iy;
+    rly=iy-bkmar_bot;
     ily=iy-bkmar;
     iy=ry+bkmar;
 }
@@ -980,9 +987,9 @@ draw_set_valign(valign)
 draw_set_halign(halign)
 draw_text(ix+(ilx-ix)*(halign/2),iy+(ily-iy)*(valign/2),uiz_gettext_contained(windowtext,width-bars*(1+button_cross+button_maximize+button_minimize)))
 
-if button_cross then{uiz_draw_spritebutton_state(ilx-bars,iy,ilx,ily,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,1,button_cross_state)}
-if button_maximize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,1,button_maximize_state)}
-if button_minimize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross+button_maximize),iy,ilx-bars*(button_cross+button_maximize),ily,button_minimize_color_normal,button_minimize_color_over,button_minimize_color_in,button_minimize_sprite,1,button_minimize_state)}
+if button_cross then{uiz_draw_spritebutton_state(ilx-bars,iy,ilx,ily-bkmar_bot,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,1,button_cross_state)}
+if button_maximize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily-bkmar_bot,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,1,button_maximize_state)}
+if button_minimize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross+button_maximize),iy,ilx-bars*(button_cross+button_maximize),ily-bkmar_bot,button_minimize_color_normal,button_minimize_color_over,button_minimize_color_in,button_minimize_sprite,1,button_minimize_state)}
 
 //draw custom buttons on the left
 var leftButtons = ds_list_size(custom_buttons_left_sprite);

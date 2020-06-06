@@ -1372,9 +1372,9 @@
           <scripts name="huesquare">
             <script>scripts\uiz_huesquare_setcolor_hsv.gml</script>
             <script>scripts\uiz_huesquare_getcolor.gml</script>
+            <script>scripts\uiz_huesquare_getcolor_animation.gml</script>
             <script>scripts\uiz_huesquare_setpointersettings.gml</script>
             <script>scripts\uiz_huesquare_setanimation.gml</script>
-            <script>scripts\uiz_hue_setvalues.gml</script>
           </scripts>
           <scripts name="loadingbar">
             <script>scripts\uiz_loadingbar_setvalue.gml</script>
@@ -1395,11 +1395,16 @@
             <script>scripts\uiz_mouseband_getmoved_y.gml</script>
           </scripts>
           <scripts name="mousemenu">
-            <script>scripts\uiz_mousemenu_drawitem.gml</script>
-            <script>scripts\uiz_mousemenu_update_full.gml</script>
-            <script>scripts\uiz_mousemenu_update_new.gml</script>
             <script>scripts\uiz_mousemenu_setListenerScript.gml</script>
-            <script>scripts\uiz_mousemenu_setListenerScriptOnMenu.gml</script>
+            <scripts name="internal">
+              <script>scripts\uiz_mousemenu_drawitem.gml</script>
+              <script>scripts\uiz_mousemenu_update_full.gml</script>
+              <script>scripts\uiz_mousemenu_update_new.gml</script>
+            </scripts>
+            <script>scripts\uiz_mousemenu_setItemAlpha.gml</script>
+            <script>scripts\uiz_mousemenu_setMargins.gml</script>
+            <script>scripts\uiz_mousemenu_setLists.gml</script>
+            <script>scripts\uiz_mousemenu_setTextSettings.gml</script>
           </scripts>
           <scripts name="radiobox">
             <script>scripts\uiz_radiobox_setcheckcolor.gml</script>
