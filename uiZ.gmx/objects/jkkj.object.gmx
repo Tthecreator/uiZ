@@ -41,7 +41,7 @@ win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
 
-o=uiz_c(obj_uiZ_scrollbar);
+o=uiz_c(obj_uiZ_slickslider);
 //var list = ds_list_create()
 //ds_list_add(list,"hi","how","are","you?");
 //uiz_mousebutton_setlist(o,list,-1,-1);
