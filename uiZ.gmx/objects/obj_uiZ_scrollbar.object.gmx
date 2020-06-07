@@ -68,7 +68,7 @@ middlemousescroll=true//b//middle mouse scrolling//
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="13">
+    <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -85,13 +85,13 @@ middlemousescroll=true//b//middle mouse scrolling//
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if uscroll&lt;0 then{uscroll=-1-scroll}else{uscroll=scroll}
+            <string>//if uscroll&lt;0 then{uscroll=-1-scroll}else{uscroll=scroll}
 if height&gt;=width then{
 uiz_drawscrollbar_vertical_step(rx,ry,rlx,rly,uscroll,scrolllines,middlemousescroll,scrollspeed,scrollbarAnimation, scrollbarAnimationTime);
 }else{
 uiz_drawscrollbar_horizontal_step(rx,ry,rlx,rly,uscroll,scrolllines,middlemousescroll,scrollspeed,scrollbarAnimation, scrollbarAnimationTime);
 }
-scroll=uiz_positify(uscroll)
+scroll=uiz_drawscrollbar_getscrollvalue(uscroll);
 </string>
           </argument>
         </arguments>
@@ -114,7 +114,7 @@ scroll=uiz_positify(uscroll)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>uiz_mouse_docheck_scrollable()
 </string>
           </argument>
         </arguments>
