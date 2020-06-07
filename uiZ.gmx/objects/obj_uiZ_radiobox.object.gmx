@@ -40,7 +40,7 @@ outlineoncolor=c_black//c//outline mouse over color//
 outlineincolor=c_black//c//outline mouse click color//
 outlinealpha=1//c//outline alpha//
 margin=1//v//check margin in pixels//
-circlesize=0.6//v//circle diameter//
+circlesize=0.9//v//circle diameter//
 circlesizetype=fc//z//circle diameter type//
 updated=0
 update=0
@@ -182,7 +182,7 @@ containtowhosparent=id
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover=uiz_mouse_isonobject_leftcheck(id)
+            <string>//kmouseover=uiz_mouse_isonobject_leftcheck(id)
 if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
 update=0
 updated=0
@@ -262,8 +262,6 @@ draw_circle(rx+width/2,ry+height/2,min(uiz_getposx_self(circlesize,circlesizetyp
 draw_set_alpha(1)
 }
 }
-draw_set_color(c_black)
-draw_text(rx+10,ry+height/2,height);
 draw_set_color(c_white)
 uiz_containend()
 }
