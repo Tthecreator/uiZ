@@ -25,72 +25,6 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.deb=false;
-
-//show_debug_overlay(true)
-uiz_init()
-draw_set_font(uiz_fnt_dp_15);
-//application_surface_draw_enable(false); 
-//uiz_useAppSurf(false);
-
-
-win=uiz_window_create(250,px,100,px)
-win.posinframex=uiz_snapleft;
-win.setpointx=uiz_left;
-win.posinframey=uiz_center;
-win.color_normal=$EEEEEE;
-uiz_fixgeneralpos(win);
-
-o=uiz_c(obj_uiZ_spriteanimationbutton);
-uiz_setparent(o,win);
-o.posinframex=uiz_center
-o.posinframey=uiz_center
-o.posvalwtype=px;
-o.posvalw=40;
-o.posvalhtype=px;
-o.posvalh=40;
-o.animationintime=1.5;
-o.animationouttime=1.5;
-uiz_fixgeneralpos(o);
-//*/
-/*
-sf=uiz_c(obj_uiZ_slideframe);
-//uiz_setparent(o,win);
-sf.posinframex=uiz_snapleft
-sf.posinframey=uiz_fill
-sf.posvalwtype=fc
-sf.posvalw=0.4
-sf.mark = true;
-sf.markcolor = c_white;
-sf.alpha=1;
-uiz_fixgeneralpos(sf);
-
-o2=uiz_c(obj_uiZ_rotator);
-uiz_setparent(o2,sf);
-o2.posinframex=uiz_fill;
-o2.posinframey=uiz_fill;
-uiz_fixgeneralpos(o2);
-*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///fps counter
 fps_avg=-1;
 room_speed=60
@@ -253,6 +187,67 @@ tablist=ds_list_create()
 ds_list_add(tablist,"exampletab1","exampletab2","exampletab3")
 tabslider.tablist=tablist;
 uiz_fixgeneralpos(tabslider)
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.deb=false;
+
+//show_debug_overlay(true)
+uiz_init()
+draw_set_font(uiz_fnt_dp_15);
+//application_surface_draw_enable(false); 
+//uiz_useAppSurf(false);
+
+
+win=uiz_window_create(250,px,100,px)
+win.posinframex=uiz_snapleft;
+win.setpointx=uiz_left;
+win.posinframey=uiz_center;
+win.color_normal=$EEEEEE;
+uiz_fixgeneralpos(win);
+
+o=uiz_c(obj_uiZ_spritecounter);
+uiz_setparent(o,win);
+o.posinframex=uiz_fill
+o.posinframey=uiz_fill
+o.value=789;
+uiz_fixgeneralpos(o);
+//*/
+/*
+sf=uiz_c(obj_uiZ_slideframe);
+//uiz_setparent(o,win);
+sf.posinframex=uiz_snapleft
+sf.posinframey=uiz_fill
+sf.posvalwtype=fc
+sf.posvalw=0.4
+sf.mark = true;
+sf.markcolor = c_white;
+sf.alpha=1;
+uiz_fixgeneralpos(sf);
+
+o2=uiz_c(obj_uiZ_rotator);
+uiz_setparent(o2,sf);
+o2.posinframex=uiz_fill;
+o2.posinframey=uiz_fill;
+uiz_fixgeneralpos(o2);
+*/
 </string>
           </argument>
         </arguments>
