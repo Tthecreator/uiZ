@@ -33,14 +33,7 @@ draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
 
-sliderstruct=uiz_c(obj_uiZ_sliderstruct);
-sliderstruct.posinframex=uiz_fill;
-sliderstruct.posinframey=uiz_fill;
-uiz_sliderstruct_setNumberOfFrames(sliderstruct,3);
-uiz_sliderstruct_setUpdateScript(sliderstruct, scr_slide_reactor_createObjects, 0, true);
-uiz_fixgeneralpos(sliderstruct);
 
-/*
 win=uiz_window_create(250,px,100,px)
 win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
@@ -48,15 +41,18 @@ win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
-o=uiz_c(obj_uiZ_slider);
-//var list = ds_list_create()
-//ds_list_add(list,"hi","how","are","you?");
-//uiz_mousebutton_setlist(o,list,-1,-1);
+o=uiz_c(obj_uiZ_spriteanimationbutton);
 uiz_setparent(o,win);
-o.posinframex=uiz_fill
-o.posinframey=uiz_fill
+o.posinframex=uiz_center
+o.posinframey=uiz_center
+o.posvalwtype=px;
+o.posvalw=40;
+o.posvalhtype=px;
+o.posvalh=40;
+o.animationintime=1.5;
+o.animationouttime=1.5;
 uiz_fixgeneralpos(o);
-*/
+//*/
 /*
 sf=uiz_c(obj_uiZ_slideframe);
 //uiz_setparent(o,win);
@@ -305,70 +301,6 @@ uiz_fixchildren(win,true);
 /*
 if (surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height()) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
 surface_resize(application_surface,window_get_width(),window_get_height());
-}
-*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-if keyboard_check_released(vk_numpad4) then{
-uiz_sliderstruct_setframe(sliderstruct,0);
-}
-if keyboard_check_released(vk_numpad5) then{
-uiz_sliderstruct_setframe(sliderstruct,1);
-}
-if keyboard_check_released(vk_numpad6) then{
-uiz_sliderstruct_setframe(sliderstruct,2);
-}
-/*
-switch(uiz_sliderstruct_docheck(sliderstruct)){
-case -1:
-
-break;
-case 0:
-    //left frame
-    var fr=uiz_sliderstruct_getnewframe(sliderstruct)
-    frameobject=uiz_c(obj_uiZ_rotator)
-    uiz_setparent(frameobject,fr)
-    frameobject.posinframex=uiz_fill;
-    frameobject.posinframey=uiz_fill;
-    uiz_fixgeneralpos(frameobject)
-break;
-case 1:
-    //middle frame
-    var fr=uiz_sliderstruct_getnewframe(sliderstruct)
-    frameobject=uiz_c(obj_uiZ_loadingcircle)
-    uiz_setparent(frameobject,fr)
-    frameobject.posinframex=uiz_fill;
-    frameobject.posinframey=uiz_fill;
-    uiz_fixgeneralpos(frameobject)
-break;
-case 2:
-    //right frame
-    var fr=uiz_sliderstruct_getnewframe(sliderstruct)
-    frameobject=uiz_c(obj_uiZ_sprbutton)
-    uiz_setparent(frameobject,fr)
-    frameobject.posinframex=uiz_fill;
-    frameobject.posinframey=uiz_fill;
-    uiz_fixgeneralpos(frameobject)
-    break;
 }
 */
 </string>

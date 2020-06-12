@@ -1499,6 +1499,7 @@
             <script>scripts\uiz_spriteanimationbutton_isinanimation.gml</script>
             <script>scripts\uiz_spriteanimationbutton_getintervalue.gml</script>
             <script>scripts\uiz_spriteanimationbutton_getintervalue_animation.gml</script>
+            <script>scripts\uiz_spriteanimationbutton_setvalue_advanced.gml</script>
             <script>scripts\uiz_spriteanimationbutton_setvalue.gml</script>
             <script>scripts\uiz_spriteanimationbutton_setcolor.gml</script>
             <script>scripts\uiz_spriteanimationbutton_setsprite.gml</script>
@@ -2383,7 +2384,6 @@
         <object>objects\obj_uiZ_drawtextlines</object>
         <object>objects\obj_uiZ_drawtext</object>
         <object>objects\obj_uiZ_sprbutton</object>
-        <object>objects\obj_uiZ_slideframe_bak</object>
       </objects>
     </objects>
     <object>objects\jkkj</object>
