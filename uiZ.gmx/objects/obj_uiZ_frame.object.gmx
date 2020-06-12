@@ -33,8 +33,6 @@ uiz_objinit()
 draw=0
 mark=false//b//mark
 debugmark=false//b//debugmark
-//mark=true
-//deugmark=true
 markcolor=irandom(255*255*255)
 iscover=0
 fromx=0
@@ -124,124 +122,8 @@ uiz_endobject()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///mouse hover
-var cy = false;
-var cx = false;
-var c=false;
-
-
-if scrolly = true or scrollx = true or snapm = true then {
-
-    c=uiz_frame_stepScrollbars();
-
-    /***************************************************
-      middle mouse scroll and drag
-     ***************************************************/
-     if uiz_drawscrollbar_getselected(uscrollx)=false and uiz_drawscrollbar_getselected(uscrolly)=false then{
-    if global.mouseoverscrollable = id and snapm = false then {
-        if (scrolly = true or scrollx = true) and mouse_check_button_pressed(mb_middle) then {
-            snapm = true;
-            snapx = uiz_getmouse_x()
-            snapy = uiz_getmouse_y()
-            uiz_snapper_enable(snapx,snapy);
-            global.mousefrozen = true
-        }
-        if global.mousefrozen = false and snapm = false and uscrolly &lt; 0 and uscrollx &lt; 0 and(scrolly = true or scrollx = true) and mouse_check_button(mb_left) and global.lastsecondmousemoved &gt; global.mousemovetoscroll then {
-            snapk = true;
-            snapx = uiz_getmouse_x()
-            snapy = uiz_getmouse_y()
-            global.mousefrozen = true
-        }
-    }
-
-
-    if snapk = true then {
-        if (scrolly = false and scrollx = false) or!mouse_check_button(mb_left) or uscrolly &gt;= 0 then {
-            snapk = false;
-            global.mousefrozen = 0;
-        }
-        if scrolly = true then {
-            addy -= global.lastmousemovedy;
-            //sdbm("addy3",addy)
-            cy = true;
-        }
-        if scrollx = true then {
-            addx -= global.lastmousemovedx;
-            cx = true;
-        }
-    }
-
-
-    if snapm = true then {
-        if ((scrolly = false and scrollx = false) or !mouse_check_button(mb_middle)) then {
-            snapm = false;
-            uiz_set_cursor(cr_default)
-            uiz_snapper_disable();
-            global.mousefrozen = 0;
-        }else{
-
-        uiz_set_cursor(cr_size_all)
-        
-        if scrolly = true then {
-            var sped = snapy - uiz_getmouse_y();
-            addy += sped;
-            cy = true;
-        }
-
-        if scrollx = true then {
-            var sped = snapx - uiz_getmouse_x();
-            addx += sped;
-            cx = true;
-        }
-}
-    }
-    }
-
-    
-    if cx = true or cy = true or c=true then {
-    
-    if cx = true then {
-        addx = clamp(addx, mscrollbarx, 0)
-        uiz_drawscrollbar_setvalue(uscrollx,-addx);
-        uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
-    }
-    
-    if cy = true then {
-        addy = clamp(addy, mscrollbary, 0)
-        uiz_drawscrollbar_setvalue(uscrolly,-addy);
-        uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
-    }
-    
-        uiz_frame_tellListeners();
-        uiz_fixchildren(id, true)
-        uiz_updater_FixViews();
-        
-    }
-
-}
+            <string>uiz_frame_event_scroll();
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="16">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>
@@ -347,31 +229,7 @@ if autoupdatescrollx or autoupdatescrolly then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if debugmark=1 then{
-draw_set_alpha(0.5)
-//draw_set_alpha(1)
-if global.mouseover=id then{draw_set_color(c_white)}else{
-draw_set_color(markcolor)}
-draw_rectangle(rx,ry,rlx-1,rly-1,0)
-//sdbm("eec")
-draw_set_color(c_black)
-draw_text(rx+10,ry+10,id)
-draw_set_alpha(1)
-}
-if uiz_cntn() then{
-if mark=true then{
-draw_square(rx,ry,rlx,rly,markcolor,alpha)
-}
-
-if scrollx=true and scrollbarx=true and mscrollbarx&lt;0 then{
-uiz_drawscrollbar_horizontal_draw(rx,ily,rlx-scrollbarcorner_x,rly,scrollbarsprite,scrollbarcolor,scrollbarbacktexturemode,uscrollx,-mscrollbarx)
-}
-if scrolly=true and scrollbary=true and mscrollbary&lt;0 then{
-uiz_drawscrollbar_vertical_draw(ilx,ry,rlx,rly-scrollbarcorner_y,scrollbarsprite,scrollbarcolor,scrollbarbacktexturemode,uscrolly,-mscrollbary)
-}
-uiz_containend()
-}
+            <string>uiz_frame_event_draw();
 </string>
           </argument>
         </arguments>

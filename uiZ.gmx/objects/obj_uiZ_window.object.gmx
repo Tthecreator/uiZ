@@ -383,7 +383,7 @@ if upd=true then{
             <kind>1</kind>
             <string>///check mouse and rescale window
 var fix=false;
-kmouseover = uiz_mouse_isonwindow_leftcheck(id);
+//kmouseover = uiz_mouse_isonwindow_leftcheck(id);
 //sdbm("iding",id,object_index,object_get_name(object_index));
 //sdbm(global.mousefrozen,"sn",snaptomouse,"rs",resizable,"km",kmouseover)
 if global.mousefrozen = false and snaptomouse = 0 and resizable and kmouseover &gt; 0{// and(uiz_range_duo(uiz_getmouse_x(), rx, ix, ilx, rlx) or uiz_range_duo(uiz_getmouse_y(), ry, iy, ily, rly)) then {

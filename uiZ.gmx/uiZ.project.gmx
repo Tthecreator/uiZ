@@ -1296,6 +1296,10 @@
               <script>scripts\uiz_frame_fixscrolling.gml</script>
               <script>scripts\uiz_frame_stepScrollbars.gml</script>
               <script>scripts\uiz_frame_tellListeners.gml</script>
+              <scripts name="events">
+                <script>scripts\uiz_frame_event_draw.gml</script>
+                <script>scripts\uiz_frame_event_scroll.gml</script>
+              </scripts>
             </scripts>
             <script>scripts\uiz_frame_getscrolling.gml</script>
             <script>scripts\uiz_frame_getscrolling_for.gml</script>
@@ -1462,8 +1466,29 @@
             </scripts>
             <script>scripts\uiz_slider_setRoundedCorners.gml</script>
           </scripts>
+          <scripts name="sliderframe">
+            <script>scripts\uiz_slideframe_setmark.gml</script>
+            <script>scripts\uiz_slideframe_setdebugmark.gml</script>
+            <script>scripts\uiz_slideframe_setmenubutton.gml</script>
+            <script>scripts\uiz_slideframe_getextended.gml</script>
+            <script>scripts\uiz_slideframe_setblackframe.gml</script>
+            <script>scripts\uiz_slideframe_setmousesettings.gml</script>
+            <script>scripts\uiz_slideframe_setvalue.gml</script>
+          </scripts>
           <scripts name="slider_2col">
             <script>scripts\uiz_slider_2col_setcolor.gml</script>
+          </scripts>
+          <scripts name="sliderstruct">
+            <script>scripts\uiz_sliderstruct_setframe.gml</script>
+            <script>scripts\uiz_sliderstruct_docheck.gml</script>
+            <script>scripts\uiz_sliderstruct_getnewframe.gml</script>
+            <script>scripts\uiz_sliderstruct_setanimation.gml</script>
+            <script>scripts\uiz_sliderstruct_setorientation.gml</script>
+            <script>scripts\uiz_sliderstruct_setmouse.gml</script>
+            <script>scripts\uiz_sliderstruct_settabslider.gml</script>
+            <script>scripts\uiz_sliderstruct_getframe.gml</script>
+            <script>scripts\uiz_sliderstruct_setNumberOfFrames.gml</script>
+            <script>scripts\uiz_sliderstruct_setUpdateScript.gml</script>
           </scripts>
           <scripts name="sprbutton">
             <script>scripts\uiz_sprbutton_setcolor.gml</script>
@@ -1802,25 +1827,6 @@
           </scripts>
           <script>scripts\uiz_drawscrollbar_deselect.gml</script>
           <script>scripts\uiz_drawscrollbar_isAnimating.gml</script>
-        </scripts>
-        <scripts name="sliderframe">
-          <script>scripts\uiz_slideframe_setmark.gml</script>
-          <script>scripts\uiz_slideframe_setdebugmark.gml</script>
-          <script>scripts\uiz_slideframe_setmenubutton.gml</script>
-          <script>scripts\uiz_slideframe_getextended.gml</script>
-          <script>scripts\uiz_slideframe_setblackframe.gml</script>
-          <script>scripts\uiz_slideframe_setmousesettings.gml</script>
-          <script>scripts\uiz_slideframe_setvalue.gml</script>
-        </scripts>
-        <scripts name="sliderstruct">
-          <script>scripts\uiz_sliderstruct_setframe.gml</script>
-          <script>scripts\uiz_sliderstruct_docheck.gml</script>
-          <script>scripts\uiz_sliderstruct_getnewframe.gml</script>
-          <script>scripts\uiz_sliderstruct_setanimation.gml</script>
-          <script>scripts\uiz_sliderstruct_setorientation.gml</script>
-          <script>scripts\uiz_sliderstruct_setmouse.gml</script>
-          <script>scripts\uiz_sliderstruct_settabslider.gml</script>
-          <script>scripts\uiz_sliderstruct_getframe.gml</script>
         </scripts>
         <scripts name="strings">
           <script>scripts\uiz_removechars.gml</script>
@@ -2172,6 +2178,7 @@
     <script>scripts\live_call_bak.gml</script>
     <script>scripts\live_call_ext_bak.gml</script>
     <script>scripts\script1153.gml</script>
+    <script>scripts\scr_slide_reactor_createObjects.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="uiz">
@@ -2506,7 +2513,7 @@
     <constant name="uiz_treelist_boxState_noBox">0</constant>
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
     <constant name="uiz_treelist_boxState_extended">2</constant>
-    <constant name="live_enabled">1</constant>
+    <constant name="live_enabled">0</constant>
     <constant name="uiz_gridlist_selection_none">0</constant>
     <constant name="uiz_gridlist_selection_cell">1</constant>
     <constant name="uiz_gridlist_selection_row">2</constant>
