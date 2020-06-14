@@ -607,7 +607,7 @@ if resizable and isresizing then{
     }
     
     if isresizing_y=uiz_top then{
-    //sdbm("changing y")
+    sdbm("changing y")
         y += oldheight - iheight;
     }
     if isresizing_x=uiz_left then{
@@ -809,6 +809,7 @@ if upd=true then{
     uiz_updater_FixViews_area(frombuttons,ry,ilx,iy);//REENABLE//
 }
 if snaptomouse = 1 then {
+    sdbm("snaptomouse")
     x = windowsminx + (uiz_getmouse_x() - mouseminx)
     y = windowsminy + (uiz_getmouse_y() - mouseminy)
     uiz_window_checkcontainment();

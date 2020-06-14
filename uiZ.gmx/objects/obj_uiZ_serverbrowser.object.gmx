@@ -28,10 +28,10 @@
             <string>uiz_init()
 window=uiz_window_create(600,px,400,px)
 window.windowtext="Servers"
+uiz_fixgeneralpos(window);
 
 frameset=uiz_frameset_create();
 uiz_setparent(frameset,window)
-window.topmargin=8;
 frameset.posinframex=uiz_fill;
 frameset.posinframey=uiz_fill;
 frameanchor=uiz_framedivisionhorizontal(frameset,25,px,1,xtra,30,px,90,px,30,px)
@@ -204,7 +204,7 @@ text_MaxP.valign=fa_middle;
 text_MaxP.text="Max player count";
 uiz_fixgeneralpos(text_MaxP)
 
-dropdown_MaxP=uiz_c(obj_uiZ_valuebox)
+dropdown_MaxP=uiz_c(obj_uiZ_stringbox)
 uiz_setparent(dropdown_MaxP,leftanchor.frameat[2])
 dropdown_MaxP.posinframex=uiz_snapright;
 dropdown_MaxP.posvalwtype=fc;
