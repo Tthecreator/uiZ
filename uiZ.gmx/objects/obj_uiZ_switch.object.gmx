@@ -37,7 +37,6 @@ oldvalue=value;
 inbetvalue=value;
 switchtime=0.5//v//time in seconds one rotation takes//
 animation=uiz_straight//a//animation//
-
 knobsize=0.7//v//knob size between 0 and 1//
 
 hasbackground=true;
@@ -194,11 +193,12 @@ if oldvalue=true then{
 inbetvalue-=uiz_sc(switchtime);
 if inbetvalue&lt;=0 then{oldvalue=value;
 unstep=true;
-
+inbetvalue = 0;
 }
 }else{
 inbetvalue+=uiz_sc(switchtime);
 if inbetvalue&gt;=1 then{oldvalue=value;
+inbetvalue=1;
 unstep=true;
 }
 }
@@ -238,7 +238,7 @@ uiz_updater_FixViews_area(min(oldMinX,knobX),min(oldMinY,knobY),max(oldMaxX,knob
           <argument>
             <kind>1</kind>
             <string>updated=false;
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+//kmouseover=uiz_mouse_isonobject_leftcheck(id)
 if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
 if kmouseover=3 then{
 //flip value
@@ -248,6 +248,7 @@ updated=true;
 update=true;
 uiz_updater_step();
 }
+uiz_fix_Background();
 uiz_updater_FixViews();
 //uiz_updater_FixViews_area(knobX-knobSizePx/2,knobY-knobSizePx/2,knobX+knobSizePx/2,knobY+knobSizePx/2);
 </string>
@@ -297,7 +298,8 @@ uiz_updater_FixViews();
             <kind>1</kind>
             <string>if uiz_cntn() then{
 
-uiz_back(max(kmouseover,update*3))
+uiz_back(max(min(2,kmouseover),update*2))
+//uiz_back();
 
 uiz_back_at_item(knobX,knobY,knobX+knobSizePx,knobY+knobSizePx);
 

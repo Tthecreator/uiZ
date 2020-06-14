@@ -1622,8 +1622,6 @@
             <script>scripts\uiz_switch_getvalue.gml</script>
             <script>scripts\uiz_switch_setknobsize.gml</script>
             <script>scripts\uiz_switch_setanimation.gml</script>
-            <script>scripts\uiz_switch_setsprite.gml</script>
-            <script>scripts\uiz_switch_setcolor.gml</script>
             <scripts name="internal">
               <script>scripts\uiz_switch_calculatePosition.gml</script>
             </scripts>
