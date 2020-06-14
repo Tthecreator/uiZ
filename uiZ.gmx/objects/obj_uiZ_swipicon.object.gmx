@@ -36,7 +36,7 @@ spraddto=0//v//add to sprite//
 kmouseover=0;
 text=""//s//text//
 textcolor=c_black//c//textcolor//
-textselectcolor=c_white//c//text selection color//
+textselectcolor=c_black//c//text selection color//
 font=-1//f//font//
 hasmouse=false;
 keepratio=true//b//keep icon ratio//
@@ -51,7 +51,7 @@ texturescript_out=-1//i//texturescript out//
 
 sprite_normal=spr_uiZ_border1//p//sprite normal//
 color_normal=c_white//c//color normal//
-margin_normal=1//v//margin normal//
+margin_normal=5//v//margin normal//
 sprite_texturemode=uiz_texturemode_fill//t//texturemode normal
 border_texturemode=-1//t//texturemode border//
 
@@ -64,70 +64,11 @@ color_in=-1//c//color in//
 margin_in=-1//v//margin in//
 
 sprite_out=spr_uiZ_border1_in//p//sprite out//
-color_out=c_blue//c//color out//
+color_out=$efd8ba//c//color out//
 margin_out=-1//v//margin out//
 
 update=false;
 updated=false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-///#define uiZ
-//#sprite images
-//#spritenum 5
-width=10
-height=10
-lx=x+width
-ly=y+height
-color=c_white
-children=-1
-listpos=-1
-uiz_initparent()
-rx=parent.rx+x
-ry=parent.ry+y
-rlx=parent.rx+lx
-rly=parent.ry+ly
-sprite=spr_uiZ_buttons;
-spraddto=0;
-texturemode=uiz_texturemode_fill;
-topbordermargin=0;
-rightbordermargin=0;
-bottombordermargin=0;
-leftbordermargin=0;
-posinframex=uiz_auto
-posinframey=uiz_auto
-posvalx=0
-posvaly=0
-addx=0
-addy=0
-containin=0
-setpointx=uiz_auto
-setpointy=uiz_auto
-topframemargin=0;
-rightframemargin=0;
-bottomframemargin=0;
-leftframemargin=0;
-uiz_shader=1
-containtowhosparent=id
-
 </string>
           </argument>
         </arguments>
@@ -220,9 +161,13 @@ if kmouseover&gt;1 and global.uiz_mouseswipeclick=true then{hasmouse=true global
           <argument>
             <kind>1</kind>
             <string>updated=false
-if kmouseover=3 then{selected=true if global.doubleclick=1 then{updated=true}}else{
-if mouse_check_button_pressed(mb_left) then{selected=false}
+if kmouseover=uiz_mousepressed then{selected=true if global.doubleclick=1 then{updated=true}}else{
+if !mouse_check_button(mb_left) or mouse_check_button_released(mb_left) then{selected=false}
+//if kmouseover=uiz_mousereleased then{
+//   selected=false;
+//}
 }
+uiz_fix_Background();
 uiz_updater_FixViews();
 </string>
           </argument>
@@ -275,31 +220,34 @@ if font&gt;-1 then{draw_set_font(font)}
 var ah=0;
 var aw=0;
 if text!="" then{
-draw_set_valign(fa_bottom)
+draw_set_valign(fa_middle)
 draw_set_halign(fa_middle)
 var t=uiz_gettext_contained(text,width)
 //sdbm("text is",t)
-var ah=string_height(t);
-var aw=string_width(t);
-
+var ah=string_height(t)+bkmar;
+var aw=string_width(t)+bkmar*2;
+//uiz_back_at(rx+max(width/2-aw/2,bkmar),rly-ah,min(rlx-bkmar,rx+width/2+aw/2),rly-bkmar)
+//uiz_back_at(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly);
 if selected=true then{
 //draw_square(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly,textbackselectcolor,textbackselectalpha)
-uiz_back_at(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly,3)
+//uiz_back_at(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly-bkmar,3)
+uiz_back_at(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly,3);
 draw_set_color(textselectcolor)
 }else{
-uiz_back_at(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly)
+//uiz_back_at(rx+max(width/2-aw/2,bkmar),rly-ah,min(rlx-bkmar,rx+width/2+aw/2),rly-bkmar)
 //draw_square(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly,textbackcolor,textbackalpha)
+uiz_back_at(rx+width/2-aw/2,rly-ah,rx+width/2+aw/2,rly);
 draw_set_color(textcolor)
 }
 
-draw_text(rx+width/2,rly,t)
+draw_text(rx+width/2,rly-ah/2,t)
 
 
 }
 var dw,dh,dx,dy;
 var sw=sprite_get_width(sprite);
 var sh=sprite_get_height(sprite);
-var uh=height-ah
+var uh=height-ah-bkmar*2
 if keepratio=true then{
 ratio=sw/sh;
 var f=min(width/sw,uh/sh);

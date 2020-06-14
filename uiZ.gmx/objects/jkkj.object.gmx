@@ -223,11 +223,17 @@ win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
-o=uiz_c(obj_uiZ_spritecounter);
+o=uiz_c(obj_uiZ_swipicon);
 uiz_setparent(o,win);
-o.posinframex=uiz_fill
-o.posinframey=uiz_fill
-o.value=789;
+o.posinframex=uiz_center
+o.posinframey=uiz_center
+o.posvalw=1;
+o.posvalwtype=dp;
+o.posvalh=1;
+o.posvalhtype=dp;
+o.numberCounter_enable=true;
+o.text="cabinet"
+o.sprite=spr_uiZ_win31_explorer;
 uiz_fixgeneralpos(o);
 //*/
 /*

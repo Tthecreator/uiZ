@@ -99,6 +99,7 @@ lastsecondat=-1
 oldselectedmouseoverobject=0
 oldselectedmouseover=id
 oldselectedmouseoverframe=0
+oldselectedmouseoverscrollable=0;
 topframemargin=0;
 bottomframemargin=0;
 leftframemargin=0;

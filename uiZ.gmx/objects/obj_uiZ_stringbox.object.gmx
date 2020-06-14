@@ -32,38 +32,29 @@
 uiz_objinit()
 value=""//s//initial value//
 textcolor=c_black//c//text color//
-selectbackcolor=c_blue//c//selection background color//
-selecttextcolor=c_red//c//selection text color//
+selectbackcolor=$efd8ba//c//selection background color//
+selecttextcolor=c_black//c//selection text color//
 cursorcolor=c_black//c//typing cursor color//
-margin=4//v//margin//
+
 font=-1//f//font//
 typeanimationin=uiz_exponential_in//a//type animation in//
 typeanimationout=uiz_exponential_in//a//type animation out//
 countspeed=1//v//type animation time//
 maxlength=0//v//max length//
-//accountspeed=0.08
 mouseSelectionMovementSpeed=0.05//v//mouse selection movement (sec per char)//
 keyHoldingTypingSpeed=0.05//v//typing speed when holding any key (sec per char)//
 keyHoldingTypingTimer=0.75//v//time in sec. between holding down a key and rapid typing mode//
-accountspeed=.5//v//rapid mode count time//
-accbetween=0.000001//v//rapid mode speed//
 messagetext="Enter a value"//s//message text on mobile//
 hasbackground=true//b//enable background//
-texturescript=uiz_back_circlestitch//i//texturescript//
-texturescript_over=-1//i//texturescript over//
-texturescript_in=-1//i//texturescript in//
-texturescript_out=-1//i//texturescript out//
 cursorwidth=2//v//width of the typing cursor//
-
 acceptOnlyNumbers=false//b//accept only digits and a single .//
 acceptOnlyIntegers=false//b//don't accept floating point numbers//
 acceptOnlyPositive=true//b//don't accept negative point numbers//
-minvalue=0//v//minimum numerical value
-minvalue_enabled=false//b//enable minimum numerical value
-maxvalue=0//v//maximum numerical value
-maxvalue_enabled=false//b//enable maximum numerical value
-numberCounter_enable=true//b//enable numberical up and down buttons//
-numberCounter_customWidth=true//b//enable custom width vs square buttons//
+minvalue=0//v//minimum numerical value//
+minvalue_enabled=false//b//enable minimum numerical value//
+maxvalue=0//v//maximum numerical value//
+maxvalue_enabled=false//b//enable maximum numerical value//
+numberCounter_enable=false//b//enable numberical up and down buttons//
 numberCounter_interval=1//v//numberical up/down button step size//
 numberCounter_rapidTimer=0.75//v//numberical button hold time//
 numberCounter_rapidSpeed=0.05//v//numberical button rapid increase interval//
@@ -82,6 +73,10 @@ numberCounter_maxButtonOnColor=c_white//c//add button mouse over color//
 numberCounter_maxButtonOverColor=c_white//c//add button mouse in color//
 numberCounter_maxButtonAlpha=c_white//c//add button alpha//
 
+texturescript=uiz_back_circlestitch//i//texturescript//
+texturescript_over=-1//i//texturescript over//
+texturescript_in=-1//i//texturescript in//
+texturescript_out=-1//i//texturescript out//
 
 sprite_normal=spr_uiZ_border1//p//sprite normal//
 color_normal=c_white//c//color normal//
@@ -100,6 +95,31 @@ margin_in=-1//v//margin in//
 sprite_out=spr_uiZ_border1_in//p//sprite out//
 color_out=-1//c//color out//
 margin_out=-1//v//margin out//
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///deprecated settings
+margin=4//v//margin//
+//accountspeed=0.08
+accountspeed=.5//v//rapid mode count time//
+accbetween=0.000001//v//rapid mode speed//
 </string>
           </argument>
         </arguments>

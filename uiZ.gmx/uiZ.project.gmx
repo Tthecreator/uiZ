@@ -666,6 +666,11 @@
       <sprite>sprites\spr_uiZ_windowbutton_minimize</sprite>
       <sprite>sprites\spr_uiZ_windowbuttons</sprite>
       <sprite>sprites\spr_windowbackground</sprite>
+      <sprites name="serverbrowser">
+        <sprite>sprites\spr_uiZ_lock</sprite>
+        <sprite>sprites\spr_uiZ_shield</sprite>
+        <sprite>sprites\spr_uiZ_movie</sprite>
+      </sprites>
       <sprites name="windows31">
         <sprite>sprites\spr_uiZ_borderwin31</sprite>
         <sprite>sprites\spr_uiZ_win31_buttons</sprite>
@@ -696,11 +701,6 @@
         <sprite>sprites\spr_uiZ_win31_calculatorbutton</sprite>
         <sprite>sprites\spr_uiZ_win31_analogclock_dots</sprite>
         <sprite>sprites\spr_uiZ_win31_analogclock_pointer</sprite>
-        <sprites name="serverbrowser">
-          <sprite>sprites\spr_uiZ_lock</sprite>
-          <sprite>sprites\spr_uiZ_shield</sprite>
-          <sprite>sprites\spr_uiZ_movie</sprite>
-        </sprites>
       </sprites>
     </sprites>
   </sprites>
@@ -1528,11 +1528,17 @@
             <script>scripts\uiz_stringbox_getvalue.gml</script>
             <script>scripts\uiz_stringbox_setcolor.gml</script>
             <script>scripts\uiz_stringbox_setfont.gml</script>
-            <script>scripts\uiz_stringbox_setrapidmode.gml</script>
+            <script>scripts\uiz_stringbox_setKeyHoldingTyping.gml</script>
+            <script>scripts\uiz_stringbox_setNumericalValueBounds.gml</script>
+            <script>scripts\uiz_stringbox_numberCounter_setRapidTimer.gml</script>
+            <script>scripts\uiz_stringbox_numberCounter_setWidth.gml</script>
+            <script>scripts\uiz_stringbox_numberCounter_numberCounter_enable.gml</script>
+            <script>scripts\uiz_stringbox_numberCounter_setButtonStyle.gml</script>
+            <script>scripts\uiz_stringbox_setAcceptNumbersOnly.gml</script>
+            <script>scripts\uiz_stringbox_setMouseSelectionSpeed.gml</script>
             <script>scripts\uiz_stringbox_setcursoranimation.gml</script>
             <script>scripts\uiz_stringbox_setmaxlength.gml</script>
             <script>scripts\uiz_stringbox_setmessage.gml</script>
-            <script>scripts\uiz_stringbox_getselectionstring.gml</script>
             <scripts name="keepoff_legacy">
               <script>scripts\uiz_stringbox_shiftleft_old.gml</script>
               <script>scripts\uiz_stringbox_addchar.gml</script>
@@ -1596,7 +1602,7 @@
             </scripts>
             <script>scripts\uiz_stringbox_deleteselection.gml</script>
             <script>scripts\uiz_stringbox_disableSelection.gml</script>
-            <script>scripts\uiz_stringbox_setNumericalValueBounds.gml</script>
+            <script>scripts\uiz_stringbox_getselectionstring.gml</script>
           </scripts>
           <scripts name="surfacecanvas">
             <script>scripts\uiz_surfacecanvas_setcolor.gml</script>
@@ -2232,7 +2238,15 @@
         <object>objects\obj_uiZ_surfaceholder</object>
         <object>objects\obj_uiZ_textplane</object>
         <object>objects\obj_uiZ_windowholder</object>
-        <object>objects\obj_uiZ_treelist_bak</object>
+        <objects name="deprecated">
+          <object>objects\obj_uiZ_surfacecanvas</object>
+          <object>objects\obj_uiZ_text_background</object>
+          <object>objects\obj_uiZ_drawtextlines</object>
+          <object>objects\obj_uiZ_drawtext</object>
+          <object>objects\obj_uiZ_sprbutton</object>
+          <object>objects\obj_uiZ_valuebox_legacy</object>
+          <object>objects\obj_uiZ_treelist_bak</object>
+        </objects>
       </objects>
       <objects name="macromanager">
         <object>objects\uiz_macromanager_controller</object>
@@ -2279,7 +2293,6 @@
         <object>objects\obj_uiZ_text</object>
         <object>objects\obj_uiZ_textarea</object>
         <object>objects\obj_uiZ_treelist</object>
-        <object>objects\obj_uiZ_valuebox_legacy</object>
         <object>objects\obj_uiZ_window</object>
       </objects>
       <objects name="serverbrowser">
@@ -2377,13 +2390,6 @@
         <object>objects\obj_windows31_calculator</object>
         <object>objects\obj_windows31_minesweeper</object>
         <object>objects\obj_uiZ_minesweeper</object>
-      </objects>
-      <objects name="deprecated">
-        <object>objects\obj_uiZ_surfacecanvas</object>
-        <object>objects\obj_uiZ_text_background</object>
-        <object>objects\obj_uiZ_drawtextlines</object>
-        <object>objects\obj_uiZ_drawtext</object>
-        <object>objects\obj_uiZ_sprbutton</object>
       </objects>
     </objects>
     <object>objects\jkkj</object>
