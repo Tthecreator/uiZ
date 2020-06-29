@@ -23,6 +23,7 @@ if argument1=0 then{
 }
 for(var i=argument1;i<lsz;i++){
     //handle all 'to little space' cases:
+    sdbm("curline = ",addToNextLine,textList[| i],i)
     var curLine = addToNextLine+textList[| i];
     if addToNextLineCheck_sel1=true && selection1Line=i then{
         //sdbm("addToNextLineFor1Char",selection1Char,addToNextLine)

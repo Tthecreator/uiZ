@@ -809,7 +809,6 @@ if upd=true then{
     uiz_updater_FixViews_area(frombuttons,ry,ilx,iy);//REENABLE//
 }
 if snaptomouse = 1 then {
-    sdbm("snaptomouse")
     x = windowsminx + (uiz_getmouse_x() - mouseminx)
     y = windowsminy + (uiz_getmouse_y() - mouseminy)
     uiz_window_checkcontainment();

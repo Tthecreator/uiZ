@@ -1,4 +1,4 @@
-if selection1Line>0 then{
+if selection1Line>=0 then{
     var curPart = textList[| selection1Line]
     var firstPart = string_copy(curPart,1,selection1Char) + chr($0A);
     var secondPart = string_copy(curPart,selection1Char+1,string_length(curPart));
@@ -28,8 +28,12 @@ if selection1Line>0 then{
         
         uiz_updater_FixViews_area(ix,uiz_textarea_getlineY(selection1Line),w,ily);
     }else{
-        //sdbm("textList adding part to next line")
+//        sdbm("textList adding part to next line",selection1Line,ds_list_size(textList),secondPart,textList[| selection1Line+1]);
+        if selection1Line<ds_list_size(textList)-1 then{
         textList[| selection1Line+1] = secondPart + textList[| selection1Line+1];
+        }else{
+        textList[| selection1Line+1] = secondPart;
+        }
         rework = true;
 
     }

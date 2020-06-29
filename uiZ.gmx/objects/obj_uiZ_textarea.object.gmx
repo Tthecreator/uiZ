@@ -483,6 +483,8 @@ var scrbx = ilx-scblwidth;
 var scrbx = ilx;
 }
 var isScrollbarSelected = uiz_drawscrollbar_getselected(scroll);
+kmouseover=uiz_mouse_isonobject_leftcheck(id);
+//sdbm("cheking...",kmouseover,doscroll,uiz_getmouse_x(),scrbx, isScrollbarSelected, last_isScrollbarSelected)
 if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()&lt;scrbx &amp;&amp; !isScrollbarSelected &amp;&amp; !last_isScrollbarSelected)) then{
 
     uiz_mouse_freeze();
@@ -547,19 +549,19 @@ if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()
         selection1X=selectionCX;
         selection1Char=selectionCChar;
     }
-        selection2Line=selectionCLine;
-        selection2X=selectionCX;
-        selection2Char=selectionCChar;
-        
-        uiz_textarea_testCursorNewLine();
-        uiz_textarea_handleSelectingOrTyping();
-        
-        if !mouse_check_button(mb_left) then{
-            uiz_mouse_unfreeze();
-            //hasMousePressed=false;
-        }
-        
-        uiz_textarea_calculateNewView(hadSelection);
+    selection2Line=selectionCLine;
+    selection2X=selectionCX;
+    selection2Char=selectionCChar;
+    
+    uiz_textarea_testCursorNewLine();
+    uiz_textarea_handleSelectingOrTyping();
+    
+    if !mouse_check_button(mb_left) then{
+        uiz_mouse_unfreeze();
+        //hasMousePressed=false;
+    }
+    
+    uiz_textarea_calculateNewView(hadSelection);
         
     
 }else{

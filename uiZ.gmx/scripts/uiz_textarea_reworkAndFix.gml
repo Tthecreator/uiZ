@@ -1,6 +1,7 @@
 var oldScrolllines = scrolllines;
 var selLine = selection1Line + argument0 ;
-var linesChanged = uiz_textarea_rework(true,selection1Line-1);
+//var linesChanged = uiz_textarea_rework(true,selection1Line-1);
+var linesChanged = uiz_textarea_rework(true,selection1Line);
 switch(linesChanged){
     case 0://no line/only one line has changed
         uiz_textarea_rework_selection();
