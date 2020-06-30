@@ -94,7 +94,7 @@ global.uiz_shader=0
 uiz_shader_update();
 
 //global.uiz_shader=1
-draw_set_font(uiz_fnt_dp_15)
+draw_set_font(uiz_fnt_dp_20)
 lastsecondat=-1
 oldselectedmouseoverobject=0
 oldselectedmouseover=id

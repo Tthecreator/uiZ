@@ -574,9 +574,6 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
-    <extension index="1">extensions\GMLiveHelper</extension>
-    <extension index="2">extensions\netlog</extension>
-    <extension index="3">extensions\GMLive</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -2180,8 +2177,8 @@
       </scripts>
       <script>scripts\UIZ_versioninformation.gml</script>
     </scripts>
-    <script>scripts\live_call_bak.gml</script>
-    <script>scripts\live_call_ext_bak.gml</script>
+    <script>scripts\live_call.gml</script>
+    <script>scripts\live_call_ext.gml</script>
     <script>scripts\script1153.gml</script>
     <script>scripts\scr_slide_reactor_createObjects.gml</script>
   </scripts>
@@ -2203,7 +2200,7 @@
     <font>fonts\uiz_fnt_8</font>
     <font>fonts\uiz_fnt_10</font>
     <font>fonts\uiz_fnt_20</font>
-    <font>fonts\uiz_fnt_30</font>
+    <font>fonts\uiz_fnt_25</font>
     <font>fonts\uiz_fnt_50</font>
     <font>fonts\uiz_fnt_70</font>
   </fonts>
@@ -2396,7 +2393,6 @@
     <object>objects\charSpeedTest</object>
     <object>objects\obj_spriteStretchTest</object>
     <object>objects\jkkj_creator</object>
-    <object>objects\obj_gmlive</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>

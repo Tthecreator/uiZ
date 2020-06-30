@@ -211,12 +211,12 @@ uiz_fixgeneralpos(tabslider)
 
 //show_debug_overlay(true)
 uiz_init()
-draw_set_font(uiz_fnt_dp_15);
+//draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
 
 
-win=uiz_window_create(250,px,100,px)
+win=uiz_window_create(700,px,300,px)
 win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
 win.posinframey=uiz_center;
