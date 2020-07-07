@@ -31,6 +31,7 @@ for(var i=1;i<=linesz;++i){
 }
 if !found then{//if line is shorter than the old x position
     sX = ix + string_width(line);
+    sC = linesz;
 }
 
 if argument0==1 then{

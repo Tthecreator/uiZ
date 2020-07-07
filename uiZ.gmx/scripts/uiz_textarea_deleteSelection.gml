@@ -14,8 +14,16 @@ textList[|selectionMaxLine] = string_copy(textList[|selectionMaxLine],selectionM
 for(var i=selectionMinLine+1;i<selectionMaxLine;++i){
     ds_list_delete(textList,selectionMinLine+1);
 }
-
-
+/*
+scrolllines=ds_list_size(textList)*fontHeight-iheight;
+if doscroll and uiz_drawscrollbar_getvalue(scroll)>scrolllines then{
+    uiz_drawscrollbar_setvalue(scroll,scrolllines);
+    uiz_textarea_updateScrollPx();
+}else if !doscroll and listFromPx!=0 then{
+    uiz_drawscrollbar_setvalue(scroll,0);
+    uiz_textarea_updateScrollPx();
+}
+*/
 
 }
 

@@ -23,7 +23,7 @@ if argument1=0 then{
 }
 for(var i=argument1;i<lsz;i++){
     //handle all 'to little space' cases:
-    sdbm("curline = ",addToNextLine,textList[| i],i)
+    //sdbm("curline = ",addToNextLine,textList[| i],i)
     var curLine = addToNextLine+textList[| i];
     if addToNextLineCheck_sel1=true && selection1Line=i then{
         //sdbm("addToNextLineFor1Char",selection1Char,addToNextLine)
@@ -35,7 +35,7 @@ for(var i=argument1;i<lsz;i++){
     }
     addToNextLineCheck_sel1=true;
     addToNextLineCheck_sel2=true;
-    if curLine="" then{
+    if curLine="" and (i<lsz-1 or i==0 or string_byte_at(textList[| i-1],string_byte_length(textList[| i-1]))!=$0A) then{//the line is empty, remove it (but except the last entry if the second last entry has a newline character)
         //sdbm("This line is empty, remvoign line",i,"with text:",textList[| i])
         //uiz_textarea_showSelCharPos()
         //this line is empty, it also doesn't have any invisible or newline characters.
@@ -238,6 +238,14 @@ if shouldScroll!=doscroll && argument0 then{
     scroll=uiz_drawscrollbar_init();
     uiz_textarea_rework(false,0);
     moreLinesChanged=2
+}
+
+if doscroll and uiz_drawscrollbar_getvalue(scroll)>scrolllines then{
+    uiz_drawscrollbar_setvalue(scroll,scrolllines);
+    uiz_textarea_updateScrollPx();
+}else if !doscroll and listFromPx!=0 then{
+    uiz_drawscrollbar_setvalue(scroll,0);
+    uiz_textarea_updateScrollPx();
 }
 
 if argument1=0 then{

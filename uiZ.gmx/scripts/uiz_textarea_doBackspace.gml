@@ -1,3 +1,4 @@
+#define uiz_textarea_doBackspace
 var lineSize = string_length(textList[| selection1Line]);
 var lsz = ds_list_size(textList);
 var selLineAdd=0;
@@ -8,11 +9,23 @@ if selection1Char==lineSize && argument0 then{//if we're at the end of the line 
     }
 }else{
     if selection1Char==0 && !argument0 then{//if we're at the beginning of the line and we want to do a backspace
-        if selection1Line>1 then{
+        if selection1Line>=1 then{
             if string_char_at(textList[| selection1Line],1)==chr($0A) then{
                 textList[| selection1Line]=""
             }else{
-                textList[| selection1Line-1] = string_copy(textList[| selection1Line-1],1,string_length(textList[| selection1Line-1])-1);
+                if string_byte_at(textList[| selection1Line-1],string_byte_length(textList[| selection1Line-1])) == $0A then{
+                    uiz_textare_doBackspace_removeLastLineLastChar();//remove \n newline char
+                    if string_byte_at(textList[| selection1Line-1],string_byte_length(textList[| selection1Line-1])) == $0D then{
+                        uiz_textare_doBackspace_removeLastLineLastChar();//remove possible \r newline
+                    }
+                    //combine two lines
+                    textList[| selection1Line-1] += textList[| selection1Line]
+                    textList[| selection1Line]=""
+                    selection1Line--;
+                    selection1Char = string_length(textList[| selection1Line]);
+                }else{
+                    uiz_textare_doBackspace_removeLastLineLastChar();
+                }
                 //selLineAdd=-1;
             }
             
@@ -32,3 +45,6 @@ if selection1Char==lineSize && argument0 then{//if we're at the end of the line 
 }
 
 uiz_textarea_reworkAndFix(selLineAdd)
+
+#define uiz_textare_doBackspace_removeLastLineLastChar
+textList[| selection1Line-1] = string_copy(textList[| selection1Line-1],1,string_length(textList[| selection1Line-1])-1);

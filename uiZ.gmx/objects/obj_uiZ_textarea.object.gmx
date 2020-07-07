@@ -182,6 +182,33 @@ uiz_endobject()
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if doscroll=true then{
+    uiz_drawscrollbar_vertical_step(ilx-scblwidth,iy,ilx,ily,scroll,scrolllines,true,uiz_getposx(scrollspeed,dp),scrollbarAnimation, scrollbarAnimationTime);
+    uiz_textarea_updateScrollPx();
+    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="14">
       <action>
         <libid>1</libid>
@@ -272,7 +299,7 @@ if (keyboard_check_pressed(keyboard_key) or account = 1) and!(keyboard_key = 0) 
                 case vk_home:
                 case vk_end:
                     if !keyboard_check(vk_shift) then{
-                    uiz_textarea_FixView_selection();
+                    uiz_textarea_FixView_selection(false);
                     uiz_textarea_selectionToSecondCursor();
                     }
                     canProceedNormalKeyHandling = true;
@@ -290,28 +317,28 @@ if (keyboard_check_pressed(keyboard_key) or account = 1) and!(keyboard_key = 0) 
                     break;
                 case vk_left:
                     if !keyboard_check(vk_shift) then {
-                        uiz_textarea_FixView_selection();
+                        uiz_textarea_FixView_selection(false);
                         uiz_textarea_selectionToLeftCursor();
                         canProceedNormalKeyHandling = false;
                     }
                     break;
                 case vk_right:
                     if !keyboard_check(vk_shift) then {
-                        uiz_textarea_FixView_selection();
+                        uiz_textarea_FixView_selection(false);
                         uiz_textarea_selectionToRightCursor();
                         canProceedNormalKeyHandling = false;
                     }
                     break;
                 case vk_up:
                     if !keyboard_check(vk_shift) then {
-                        uiz_textarea_FixView_selection();
+                        uiz_textarea_FixView_selection(false);
                         uiz_textarea_selectionToFirstCursor();
                         canProceedNormalKeyHandling = false;
                     }
                     break;
                 case vk_down:
                     if !keyboard_check(vk_shift) then {
-                        uiz_textarea_FixView_selection();
+                        uiz_textarea_FixView_selection(false);
                         uiz_textarea_selectionToSecondCursor();
                         canProceedNormalKeyHandling = false;
                     }
@@ -319,7 +346,7 @@ if (keyboard_check_pressed(keyboard_key) or account = 1) and!(keyboard_key = 0) 
                 default:
                     //remove selection and continue
                     if uiz_textarea_checkKeyboardTypingValidity() then {
-                        uiz_textarea_FixView_selection();
+                        uiz_textarea_FixView_selection(true);
                         //remove selection
                         uiz_textarea_deleteSelection();
                         canProceedNormalKeyHandling = true;
@@ -445,36 +472,6 @@ lastkeyboard_key = keyboard_key
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if doscroll=true then{
-    uiz_drawscrollbar_vertical_step(ilx-scblwidth,iy,ilx,ily,scroll,scrolllines,true,uiz_getposx(scrollspeed,dp),scrollbarAnimation, scrollbarAnimationTime);
-    var oldListFrom = listFromPx;
-    listFromPx=uiz_drawscrollbar_getscrollvalue(scroll);
-    if oldListFrom!=listFromPx then{
-        uiz_updater_FixViews_inside();
-        uiz_textarea_registerTypeCursor();
-    }
-    
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///handle selections
 //get current mouse position
 if doscroll=true then{
@@ -502,7 +499,7 @@ if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()
     if selectionCLine &gt;=lsz then{
         selectionCLine=lsz-1;
         selectionCChar = string_length(textList[| selectionCLine]);
-        selectionCX = ilx;//string_width(textList[| selectionCLine])
+        selectionCX = min(ilx,ix+string_width(textList[| selectionCLine]));
     }else{
         if selectionCLine&lt;0 then{
             selectionCLine=0;
@@ -620,7 +617,11 @@ last_isScrollbarSelected=isScrollbarSelected;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>if doscroll then{
+uiz_mouse_docheck_scrollable()
+}else{
+uiz_mouse_docheck()
+}
 </string>
           </argument>
         </arguments>
@@ -685,7 +686,7 @@ var scrbx = ilx;
 }
 
 //draw selection background on full lines
-var begSelMainBodyY=iy+fontHeight*(selectionMinLine+1)-listFromPx
+var begSelMainBodyY=iy+max(0,fontHeight*(selectionMinLine+1)-listFromPx)
 if(selectionMaxLine-selectionMinLine&gt;1 &amp;&amp; begSelMainBodyY&lt;ily &amp;&amp; hasSelection){
     //draw_square(selectionMinX,iy,selectionMaxX,lineY+fontHeight,selectbackcolor,1);
     draw_square(ix,begSelMainBodyY,scrbx,min(ily,iy+fontHeight*(selectionMaxLine)-listFromPx),selectbackcolor,1);

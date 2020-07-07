@@ -1706,6 +1706,7 @@
               <script>scripts\uiz_textarea_insertNewline.gml</script>
               <script>scripts\uiz_textarea_reworkAndFix.gml</script>
               <script>scripts\uiz_textarea_testCursorNewLine.gml</script>
+              <script>scripts\uiz_textarea_updateScrollPx.gml</script>
             </scripts>
             <script>scripts\uiz_textarea_resetSelection.gml</script>
             <script>scripts\uiz_textarea_setscrollbarsettings.gml</script>
