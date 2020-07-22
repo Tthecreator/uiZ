@@ -1,4 +1,4 @@
-var selLine = argument0;//selection1Line;
+ var selLine = argument0;//selection1Line;
 var linesChanged = uiz_textarea_rework(true,selLine);
     //sdbm("return value of linesCHANGED",linesChanged);
 

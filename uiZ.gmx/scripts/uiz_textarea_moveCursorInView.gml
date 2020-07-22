@@ -10,6 +10,7 @@ if doscroll then{
         listFromPx = sLine*fontHeight;
         uiz_drawscrollbar_setvalue(scroll, listFromPx);
         uiz_updater_FixViews_inside();
+        uiz_textarea_registerTypeCursor();
         return true;
     }else if sLine>=floor(listTo){
         listFromPx = (sLine+1)*fontHeight-iheight;
@@ -18,6 +19,7 @@ if doscroll then{
         }
         uiz_drawscrollbar_setvalue(scroll, listFromPx);
         uiz_updater_FixViews_inside();
+        uiz_textarea_registerTypeCursor();
         return true;
     }
     

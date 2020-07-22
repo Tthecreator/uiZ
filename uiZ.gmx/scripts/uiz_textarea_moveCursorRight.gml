@@ -2,24 +2,31 @@ if uiz_textarea_moveCursorBoundsCheck() then{exit;}
 
 var line = textList[| selection1Line];
 var linesz = string_length(line);
+/*
 if string_char_at(line,linesz)==chr($0A) then{
 --linesz;//don't count the last newline character
 }
 if string_char_at(line,linesz)==chr($0D) then{
 --linesz;//don't count the second to last last newline character
 }
+*/
+if string_char_at(line,linesz-1)==chr($0D) then{
+--linesz;//don't count the second to last last newline character
+}
 
-if selection1Char>=linesz then{
+if selection1Char>=linesz-1 and !(selection1Char<linesz and selection1Line==ds_list_size(textList)-1) then{
     if selection1Line<ds_list_size(textList)-1 then{//prevent move outside bounds
     //move one line down
     ++selection1Line;
-    if linesz==0 then{//probably some edge case
+    //if linesz==0 then{//probably some edge case
        selection1Char = 0;
-        selection1X = ix; 
-    }else{//regular flow
-        selection1Char = 1;
-        selection1X = ix + string_width(string_char_at(textList[| selection1Line],1));
-    }
+        selection1X = ix;
+    //}else{//regular flow
+    //    selection1Char = 1;
+    //    selection1X = ix + string_width(string_char_at(textList[| selection1Line],1));
+    //}
+    }else{
+        
     }
 }else{//move on the same line
     ++selection1Char;

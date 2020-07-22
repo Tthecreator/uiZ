@@ -2,8 +2,8 @@
 if uiz_contain_usesshaderorsurface()=1 then{
 //use shaders
 //sdbm("custom shader")
-shader_reset()
-shader_set(global.uiz_shader_contain)
+//shader_reset()
+//shader_set(global.uiz_shader_contain)
 cntnx=argument0
 cntny=argument1
 cntnlx=argument2

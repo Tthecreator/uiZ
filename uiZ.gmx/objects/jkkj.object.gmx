@@ -227,7 +227,7 @@ o=uiz_c(obj_uiZ_textarea);
 uiz_setparent(o,win);
 o.posinframex=uiz_fill
 o.posinframey=uiz_fill
-uiz_textarea_setvalue(o,"test123");
+uiz_textarea_setvalue(o,"");
 /*
 o.posinframex=uiz_center
 o.posinframey=uiz_center

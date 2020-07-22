@@ -41,12 +41,12 @@ scrollbarsprite=spr_uiZ_scrollbar//p//sprite//
 scrollbarcolor=c_white//c//color//
 scrollbartexturemode=uiz_texturemode_fill_edgeless//t//texturemode//
 scrollspeed=0.5//v//scrollspeed in dp//
-scrollbarAnimation=uiz_sin_inout//a//scrollbar animation//
+scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
 scrollbarAnimationTime=0.2//v//scrollbar animation time//
 
 
 accountspeed=.5//v//rapid mode count time//
-accbetween=0.000001//v//rapid mode speed//
+accbetween=.02//v//rapid mode speed//
 
 typeanimationin=uiz_exponential_in//a//type animation in//
 typeanimationout=uiz_exponential_in//a//type animation out//
@@ -54,7 +54,7 @@ typeAnimationTime=1//v//type animation time//
 typecolor=c_black//c//type indicater color//
 cursorwidth=3//c//type indicater thickness//
 
-clippedLineEnableFactor=0.5;//v//clipped line factor//
+//clippedLineEnableFactor=0.5;//v//clipped line factor//
 
 hasbackground=true;
 texturescript=uiz_back_circlestitch//i//texturescript//
@@ -202,7 +202,6 @@ uiz_endobject()
             <string>if doscroll=true then{
     uiz_drawscrollbar_vertical_step(ilx-scblwidth,iy,ilx,ily,scroll,scrolllines,true,uiz_getposx(scrollspeed,dp),scrollbarAnimation, scrollbarAnimationTime);
     uiz_textarea_updateScrollPx();
-    
 }
 </string>
           </argument>
@@ -252,7 +251,8 @@ if font &gt; -1 then {
     draw_set_font(font);
 } //font style needed by some function
 if keyboard_check(keyboard_key) and!(keyboard_key = 0) then {
-    account = min(account + (1 / (accountspeed * room_speed)), 1)
+    //account = min(account + (1 / (accountspeed * room_speed)), 1)
+    account = min(account + uiz_sc(accountspeed), 1)
 } else {
     account = 0
 }
@@ -260,6 +260,9 @@ if lastkeyboard_key != keyboard_key then {
     account = 0
 }
 if (keyboard_check_pressed(keyboard_key) or account = 1) and!(keyboard_key = 0) then {
+if ds_list_size(textList)==0 then{
+    textList[| 0]="";
+}
     //handle typing
     var canProceedNormalKeyHandling = true;
     if keyboard_check(vk_control) then {
@@ -285,6 +288,10 @@ if (keyboard_check_pressed(keyboard_key) or account = 1) and!(keyboard_key = 0) 
                 uiz_textarea_addstring(clipboard_get_text());
                 canProceedNormalKeyHandling = false;
             break;
+            case ord('A'): //copy
+                uiz_textarea_selectAll();
+                canProceedNormalKeyHandling = false;
+            break;
         }
 
     }
@@ -292,7 +299,7 @@ if (keyboard_check_pressed(keyboard_key) or account = 1) and!(keyboard_key = 0) 
     if canProceedNormalKeyHandling then { //control isn't pressed
 
         //do typing
-        account = max(account - ((accbetween * room_speed)), 0)
+        account = account - (accbetween/accountspeed)
         var canProceedNormalKeyHandling = true;
         if hasSelection then {
             switch (keyboard_key) {
@@ -492,14 +499,21 @@ if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()
     
     
     var lsz = ds_list_size(textList);
-    if lsz=0 then{
-                exit;
-    }
+    //if lsz=0 then{
+    //            exit;
+    //}
     selectionCLine=floor((uiz_getmouse_y()-iy+listFromPx)/fontHeight);
     if selectionCLine &gt;=lsz then{
-        selectionCLine=lsz-1;
-        selectionCChar = string_length(textList[| selectionCLine]);
-        selectionCX = min(ilx,ix+string_width(textList[| selectionCLine]));
+        if lsz==0 then{
+            textList[| 0] = "";
+            selectionCLine=0;
+            selectionCChar = 0;
+            selectionCX = ix;
+        }else{
+            selectionCLine=lsz-1;
+            selectionCChar = string_length(textList[| selectionCLine]);
+            selectionCX = min(ilx,ix+string_width(textList[| selectionCLine]));
+        }
     }else{
         if selectionCLine&lt;0 then{
             selectionCLine=0;
@@ -685,6 +699,15 @@ var scrbx = ilx-scblwidth-1;
 var scrbx = ilx;
 }
 
+//draw scrollbar
+if doscroll=true then{
+uiz_drawscrollbar_vertical_draw(ceil(scrbx+1),iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbartexturemode,scroll,scrolllines)
+}
+
+if uiz_selfmarked==false then{
+    uiz_contain_custom(ix,iy,scrbx,ily);
+}
+
 //draw selection background on full lines
 var begSelMainBodyY=iy+max(0,fontHeight*(selectionMinLine+1)-listFromPx)
 if(selectionMaxLine-selectionMinLine&gt;1 &amp;&amp; begSelMainBodyY&lt;ily &amp;&amp; hasSelection){
@@ -696,73 +719,77 @@ if(selectionMaxLine-selectionMinLine&gt;1 &amp;&amp; begSelMainBodyY&lt;ily &amp
 //sdbm("listcolorsel: ",listFromCeil,selectionMinLine,listToFloor,selectionMaxLine)
 //set color for lines
 //if selectionMinLine&gt;=0 &amp;&amp; selectionMinLine&lt;listFromFloor  then{
-if selectionMinLine&gt;=0 &amp;&amp; selectionMinLine&lt;=listFrom-clippedLineEnableFactor &amp;&amp; selectionMaxLine&gt;=listFrom-clippedLineEnableFactor then{// &amp;&amp; selectionMaxLine&gt;listFromFloor then{
+//if selectionMinLine&gt;=0 &amp;&amp; selectionMinLine&lt;=listFrom-clippedLineEnableFactor &amp;&amp; selectionMaxLine&gt;=listFrom-clippedLineEnableFactor then{// &amp;&amp; selectionMaxLine&gt;listFromFloor then{
+if hasSelection &amp;&amp; selectionMinLine&gt;=0 &amp;&amp; selectionMinLine&lt;listFromFloor &amp;&amp; selectionMaxLine&gt;=listFromFloor then{
     draw_set_color(selecttextcolor);
 }else{
     draw_set_color(textcolor);
 }
 //acutally draw the lines
 
+/*
 //draw first (clipped) line
 if listFromFloor!=listFrom &amp;&amp; (listFrom-listFromFloor&lt;clippedLineEnableFactor) then{
  if hasSelection then{
     var lineY = iy+fontHeight*listFromFloor-listFromPx;
     if listFromFloor=selectionMinLine &amp;&amp; listFromFloor=selectionMaxLine then{
-        draw_text(ix,iy,string_copy(textList[| listFromFloor],1,selectionMinChar));
-        draw_text(selectionMaxX,iy,string_copy(textList[| listFromFloor],selectionMaxChar+1,string_length(textList[|listFromFloor]))); 
+        uiz_textarea_drawText(ix,iy,string_copy(textList[| listFromFloor],1,selectionMinChar));
+        uiz_textarea_drawText(selectionMaxX,iy,string_copy(textList[| listFromFloor],selectionMaxChar+1,string_length(textList[|listFromFloor]))); 
         draw_square(selectionMinX,iy,selectionMaxX,lineY+fontHeight,selectbackcolor,1);
         draw_set_color(selecttextcolor);
-        draw_text(selectionMinX,iy,string_copy(textList[| listFromFloor],selectionMinChar+1,selectionMaxChar-selectionMinChar)); 
+        uiz_textarea_drawText(selectionMinX,iy,string_copy(textList[| listFromFloor],selectionMinChar+1,selectionMaxChar-selectionMinChar)); 
         draw_set_color(textcolor);
     }else if listFromFloor=selectionMinLine then{
-        draw_text(ix,iy,string_copy(textList[| listFromFloor],1,selectionMinChar));
+        uiz_textarea_drawText(ix,iy,string_copy(textList[| listFromFloor],1,selectionMinChar));
         draw_square(selectionMinX,iy,scrbx,lineY+fontHeight,selectbackcolor,1);
         draw_set_color(selecttextcolor);
-        draw_text(selectionMinX,iy,string_copy(textList[| listFromFloor],selectionMinChar+1,string_length(textList[| listFromFloor])-selectionMinChar)); 
+        uiz_textarea_drawText(selectionMinX,iy,string_copy(textList[| listFromFloor],selectionMinChar+1,string_length(textList[| listFromFloor])-selectionMinChar)); 
     }else if listFromFloor=selectionMaxLine then{
         draw_square(ix,iy,selectionMaxX,lerp(iy,lineY,1-(listFrom-listFromFloor)*2)+fontHeight,selectbackcolor,1);
         draw_set_color(selecttextcolor);
-        draw_text(ix,iy,string_copy(textList[| listFromFloor],1,selectionMaxChar)); 
+        uiz_textarea_drawText(ix,iy,string_copy(textList[| listFromFloor],1,selectionMaxChar)); 
         draw_set_color(textcolor);
         //draw surrounding selection
-        draw_text(selectionMaxX,iy,string_copy(textList[| listFromFloor],selectionMaxChar+1,string_length(textList[|listFromFloor]))); 
+        uiz_textarea_drawText(selectionMaxX,iy,string_copy(textList[| listFromFloor],selectionMaxChar+1,string_length(textList[|listFromFloor]))); 
     }
     }else{
-        draw_text(ix,iy,textList[| listFromFloor]);
+        uiz_textarea_drawText(ix,iy,textList[| listFromFloor]);
     }
      
 }
+*/
 
 
-if selectionMinLine&gt;=0 &amp;&amp; selectionMaxLine&gt;=0 &amp;&amp; listFromCeil&lt;=selectionMaxLine &amp;&amp; listToFloor&gt;=selectionMinLine then{
+//if selectionMinLine&gt;=0 &amp;&amp; selectionMaxLine&gt;=0 &amp;&amp; listFromCeil&lt;=selectionMaxLine &amp;&amp; listToFloor&gt;=selectionMinLine then{
 //text begins with selected text
 //draw_set_color(selecttextcolor);
-}
+//}
 
 
 //draw main lines
-for(var i=listFromCeil;i&lt;listToFloor;i++){
+//for(var i=listFromCeil;i&lt;listToFloor;i++){
+for(var i=listFromFloor;i&lt;listToCeil;i++){
     var lineY = iy+fontHeight*i-listFromPx;
     if i&gt;=selectionMinLine &amp;&amp; i&lt;=selectionMaxLine &amp;&amp; hasSelection then{
         if i=selectionMinLine &amp;&amp; i=selectionMaxLine then{
             //draw surrounding selection
-            draw_text(ix,lineY,string_copy(textList[| i],1,selectionMinChar));
-            draw_text(selectionMaxX,lineY,string_copy(textList[| i],selectionMaxChar+1,string_length(textList[|i]))); 
+            uiz_textarea_drawText(ix,lineY,string_copy(textList[| i],1,selectionMinChar));
+            uiz_textarea_drawText(selectionMaxX,lineY,string_copy(textList[| i],selectionMaxChar+1,string_length(textList[|i]))); 
             //draw selecion itself
             draw_square(selectionMinX,lineY,selectionMaxX,lineY+fontHeight,selectbackcolor,1);
             draw_set_color(selecttextcolor);
-            draw_text(selectionMinX,lineY,string_copy(textList[| i],selectionMinChar+1,selectionMaxChar-selectionMinChar)); 
+            uiz_textarea_drawText(selectionMinX,lineY,string_copy(textList[| i],selectionMinChar+1,selectionMaxChar-selectionMinChar)); 
             draw_set_color(textcolor);
             continue;
         }
         
         if i=selectionMinLine then{
             //draw surrounding selection
-            draw_text(ix,lineY,string_copy(textList[| i],1,selectionMinChar));
+            uiz_textarea_drawText(ix,lineY,string_copy(textList[| i],1,selectionMinChar));
             //draw selection itself
             draw_square(selectionMinX,lineY,scrbx,lineY+fontHeight,selectbackcolor,1);
             draw_set_color(selecttextcolor);
-            draw_text(selectionMinX,lineY,string_copy(textList[| i],selectionMinChar+1,string_length(textList[| i])-selectionMinChar)); 
+            uiz_textarea_drawText(selectionMinX,lineY,string_copy(textList[| i],selectionMinChar+1,string_length(textList[| i])-selectionMinChar)); 
             continue;
         }
         
@@ -770,23 +797,24 @@ for(var i=listFromCeil;i&lt;listToFloor;i++){
             //draw selection itself
             draw_square(ix,lineY,selectionMaxX,lineY+fontHeight,selectbackcolor,1);
             draw_set_color(selecttextcolor);
-            draw_text(ix,lineY,string_copy(textList[| i],1,selectionMaxChar)); 
+            uiz_textarea_drawText(ix,lineY,string_copy(textList[| i],1,selectionMaxChar)); 
             draw_set_color(textcolor);
             //draw surrounding selection
-            draw_text(selectionMaxX,lineY,string_copy(textList[| i],selectionMaxChar+1,string_length(textList[|i])-selectionMaxChar-1)); 
+            uiz_textarea_drawText(selectionMaxX,lineY,string_copy(textList[| i],selectionMaxChar+1,string_length(textList[|i])-selectionMaxChar)); 
             continue;
         }
            //we came here so we have fully selected line, just draw the text outside this if. 
         }
         
     
-    draw_text(ix,lineY,textList[| i]); 
+    uiz_textarea_drawText(ix,lineY,textList[| i]); 
 
        
     
 }
 
 //draw last (clipped) line
+/*
 if listTo!=listToFloor &amp;&amp; (listTo-listToFloor&gt;clippedLineEnableFactor) then{
     draw_set_valign(fa_bottom);
     if (listToFloor==selectionMaxLine || listToFloor==selectionMinLine) &amp;&amp; hasSelection then{
@@ -796,31 +824,27 @@ if listTo!=listToFloor &amp;&amp; (listTo-listToFloor&gt;clippedLineEnableFactor
                 draw_square(ix,min(ily,max(ily-fontHeight,iy+fontHeight*(selectionMaxLine)-listFromPx)),selectionMaxX,ily,selectbackcolor,1);
                 draw_set_color(selecttextcolor);
             }
-            draw_text(ix,ily,string_copy(textList[| listToFloor],1,selectionMaxChar)); 
+            uiz_textarea_drawText(ix,ily,string_copy(textList[| listToFloor],1,selectionMaxChar)); 
             draw_set_color(textcolor);
             //draw surrounding selection
-            draw_text(selectionMaxX,ily,string_copy(textList[| listToFloor],selectionMaxChar+1,string_length(textList[|listToFloor])));
+            uiz_textarea_drawText(selectionMaxX,ily,string_copy(textList[| listToFloor],selectionMaxChar+1,string_length(textList[|listToFloor])));
         }else{//listToFloor=selectionMinLine
             //draw normal selection
-            draw_text(ix,ily,string_copy(textList[| listToFloor],1,selectionMinChar));  
+            uiz_textarea_drawText(ix,ily,string_copy(textList[| listToFloor],1,selectionMinChar));  
             if (hasSelection) then{
                 //draw selection
                 draw_square(selectionMinX,min(ily,lerp(ily-fontHeight,iy+fontHeight*(selectionMinLine)-listFromPx,1-(listFrom-listFromFloor)*2)),scrbx,ily,selectbackcolor,1);
                 draw_set_color(selecttextcolor);
             }
-            draw_text(selectionMinX,ily,string_copy(textList[| listToFloor],selectionMinChar+1,string_length(textList[|listToFloor])));
+            uiz_textarea_drawText(selectionMinX,ily,string_copy(textList[| listToFloor],selectionMinChar+1,string_length(textList[|listToFloor])));
         }
         
     }else{
-        draw_text(ix,ily,textList[| listToFloor]);
+        uiz_textarea_drawText(ix,ily,textList[| listToFloor]);
     }
     
 }
-
-//draw scrollbar
-if doscroll=true then{
-uiz_drawscrollbar_vertical_draw(ceil(scrbx+1),iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbartexturemode,scroll,scrolllines)
-}
+*/
 
 uiz_containend()
 }

@@ -1653,15 +1653,14 @@
             <script>scripts\uiz_text_setmultiline.gml</script>
           </scripts>
           <scripts name="textarea">
-            <script>scripts\uiz_textarea_setvalue.gml</script>
-            <script>scripts\uiz_textarea_end.gml</script>
-            <script>scripts\uiz_textarea_setfont.gml</script>
+            <script>scripts\uiz_textarea_getselection.gml</script>
             <scripts name="keepoff">
               <script>scripts\uiz_textarea_rework.gml</script>
               <script>scripts\uiz_textarea_addLinesFromString.gml</script>
               <script>scripts\uiz_textarea_selectionAreTheSame.gml</script>
               <script>scripts\uiz_textarea_genMinMax.gml</script>
               <script>scripts\uiz_textarea_saveMinMaxSnapshot.gml</script>
+              <script>scripts\uiz_textarea_end.gml</script>
               <script>scripts\uiz_textarea_hasMinMaxChangedSinceSnapshot.gml</script>
               <script>scripts\uiz_textarea_registerTypeCursor.gml</script>
               <script>scripts\uiz_textarea_addchar.gml</script>
@@ -1707,12 +1706,16 @@
               <script>scripts\uiz_textarea_reworkAndFix.gml</script>
               <script>scripts\uiz_textarea_testCursorNewLine.gml</script>
               <script>scripts\uiz_textarea_updateScrollPx.gml</script>
+              <script>scripts\uiz_textarea_selectAll.gml</script>
+              <script>scripts\uiz_textarea_drawText.gml</script>
             </scripts>
+            <script>scripts\uiz_textarea_setvalue.gml</script>
+            <script>scripts\uiz_textarea_setfont.gml</script>
             <script>scripts\uiz_textarea_resetSelection.gml</script>
             <script>scripts\uiz_textarea_setscrollbarsettings.gml</script>
-            <script>scripts\uiz_textarea_getselection.gml</script>
             <script>scripts\uiz_textarea_setcursoranimation.gml</script>
             <script>scripts\uiz_textarea_getvalue.gml</script>
+            <script>scripts\uiz_textarea_setcolor.gml</script>
           </scripts>
           <scripts name="treelist">
             <scripts name="internal">
