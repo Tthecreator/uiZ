@@ -50,8 +50,10 @@ with(argument[0]){
             ds_list_add(attributeList,attributeName);
             ds_list_add(attributeDataList,attributeData);
         }
-    }    
+    }
+    //sdbm("before remove");    
     uiz_treelist_removeEntry(argument[0],argument[1],false);
+    //sdbm("after remove");    
 //    sdbm("removedEntry",usexml)
 //    sdbm(uiz_dslist_print(handleList));
 //    sdbm(uiz_xml_getdebugstringtotal(usexml));
@@ -59,7 +61,9 @@ with(argument[0]){
     //repeat(5){sdbm("")}
     if argument[2]>argument[1] then{--argument[2];}
     if updXML then{
+        //sdbm("before add");
         uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState,attributeList,attributeDataList);
+        //sdbm("after add");
         //sdbm("addedEntry",usexml)
         //sdbm(uiz_dslist_print(handleList));
         //sdbm(uiz_xml_getdebugstringtotal(usexml));

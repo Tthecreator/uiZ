@@ -40,18 +40,21 @@ for (var i = h; i < eh; i++) {
     }
 }
 //add to end, we didn't find the data
+lt = (uiz_positify(l[| h]) mod 8);
 if(h-eh<=1) then{//if this tag is a headtag and not an headAttributeTag
     lv = round(uiz_positify(l[| h]) >> 3);
-    lt = (uiz_positify(l[| h]) mod 8);
     if lt==uiz_xml_headTag then{
         l[| h] = (lv<<3) + uiz_xml_headAttributeTag;
+    }else if lt==uiz_xml_dataTag then{
+        l[| h] = (lv<<3) + uiz_xml_dataTagWithAttributes;
     }else{
-        if lt!=uiz_xml_headAttributeTag then{
-            sdbm("[uiZ|Warning]Could not change xml headTag into headAttributeTag",h,lt);
-            show_error("[uiZ|Warning]Could not change headTag into headAttributeTag",false);
+        if lt!=uiz_xml_headAttributeTag and lt!=uiz_xml_dataTagWithAttributes then{
+            sdbm("[uiZ|Warning]Could not change xml Tag into AttributeTag",h,lt);
+            show_error("[uiZ|Warning]Could not change Tag into AttributeTag",false);
         }
     }
 }
+if lt==uiz_xml_dataTag or lt==uiz_xml_dataTagWithAttributes then{--eh;}
 ds_list_insert(l, eh, (uiz_list_getadd(d, argument2) << 3) + 4)
 ds_list_insert(l, eh + 1, (uiz_list_getadd(v, argument3) << 3) + 5)
 return true;

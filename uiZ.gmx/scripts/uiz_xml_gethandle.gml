@@ -7,9 +7,9 @@
 //  </test>
 //
 //code:
-//tree = uiz_xml_gettree(file,test/something)
+//tree = uiz_xml_gettree(file,"test/something")
 //handle = uiz_xml_gethandle(file,tree)
-//data = uiz_xml_readtag(handle)
+//data = uiz_xml_readtag(file,tree)
 
 //get a handle
 var m=obj_uiz_xmlparser.id;

@@ -10,9 +10,12 @@ argument_arr[i] = argument[i];
 }
 //if (live_call_ext(argument_arr)) return live_result;
 */
-if argument[1]==argument[2] and argument_count=3 then exit;//if current position and destination are the same we don't need to do anything. However, if we have a different indentLevel, we might need to change up stuff
+//sdbm("uiz_treelist_moveEntry_recursive",argument[0],argument[1],argument[2]);
+if argument[1]==argument[2] and (argument_count=3 or (argument_count>3 and uiz_treelist_item_get_indentLevel(argument[0],argument[2])==argument[3])) then exit;//if current position and destination are the same we don't need to do anything. However, if we have a different indentLevel, we might need to change up stuff
 
 with(argument[0]){
+    
+
     //get information about entry
     var baseIndent;
     if argument_count==4 then{
@@ -31,6 +34,26 @@ with(argument[0]){
     
     var curIndent = indentEnabledAndBoxList[|argument[1]]>>3;
     var indentOffset = baseIndent - curIndent;
+    
+    //prevent creating an invalid hierachy.
+    //check if the destination is below the hierarchy of the source. e.g. inside itself.
+    var sourceIndent = indentEnabledAndBoxList[|argument[1]]>>3;
+//    var destinationIndent = indentEnabledAndBoxList[|argument[2]]>>3;
+    var destinationIndent = baseIndent;
+    if (destinationIndent > sourceIndent and argument[2]>argument[1]){
+        var foundValidHierarchy = false;
+        for(var i = argument[1]+1; i<argument[2]; ++i){
+            var curIndent = (indentEnabledAndBoxList[| i]>>3);
+            if  curIndent <= sourceIndent {
+                foundValidHierarchy = true;
+                break;
+            }
+        }
+        if foundValidHierarchy==false then{
+            sdbm("[uiZ|Warning] Invalid move for treelist: trying to move an item below/within it's own hierachy")
+            exit;
+        }
+    }
     
     //save indents
     var indentList = ds_list_create();

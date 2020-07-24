@@ -1,5 +1,5 @@
 ///uiz_xml_loadstring(string xml)
-var foundtags, len, tagtext, pos, line, fileline, startpos, cha, i, tagtext, len, tagname, tagattributes, e, removedline, found, estart, emid, pos, o, ech;
+var foundtags, len, tagtext, pos, line, fileline, startpos, endpos, cha, i, tagtext, len, tagname, tagattributes, e, removedline, found, estart, emid, pos, o, ech;
 
 //with(obj_uiz_xmlparser){
 
@@ -19,7 +19,8 @@ while (string_char_at(line, 1) = " ") {
 }
 
 //find tags
-var startpos = 0
+var startpos = 0;
+var endpos = 0;
 for (var i = 1; i <= string_length(line); i++) {
     cha = string_char_at(line, i)
     switch (cha) {
@@ -51,7 +52,17 @@ for (var i = 1; i <= string_length(line); i++) {
                     break;
                 }
             }
-            removedline = string_copy(line, 1, startpos - 1)
+            
+            /*
+            //look back to find text between tags <tag>text</tag>:
+            removedline = "";
+            for(var e = startpos - 1; e>=1; --e){
+                if (e == 1 or string_char_at(line,e)==">"){
+                    removedline = string_copy(line, 1, startpos - 1)
+                }
+            }
+            */
+            removedline = string_copy(line, endpos+1, startpos - endpos - 1);
             
             if string_char_at(tagname, 1) = "/" then{
                 //is endtag
@@ -109,6 +120,7 @@ for (var i = 1; i <= string_length(line); i++) {
                                     emid = e
                                     break;
                                 case '"':
+                                //case "'":
                                     if emid != e - 1 then {
                                         //get attribute
                                         var attributename = string_copy(tagattributes, estart, emid - estart)
@@ -138,7 +150,8 @@ for (var i = 1; i <= string_length(line); i++) {
 
                 }
             }
-            startpos = 0
+            startpos = 0;
+            endpos = i;
     }
     break;
 }

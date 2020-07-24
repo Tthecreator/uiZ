@@ -223,20 +223,48 @@ win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
 uiz_fixgeneralpos(win);
 
+/*
 o=uiz_c(obj_uiZ_textarea);
 uiz_setparent(o,win);
 o.posinframex=uiz_fill
 o.posinframey=uiz_fill
-uiz_textarea_setvalue(o,"");
-/*
-o.posinframex=uiz_center
-o.posinframey=uiz_center
-o.posvalwtype=fc;
-o.posvalw=0.5;
-o.posvalhtype=fc;
-o.posvalh=0.5;
-*/
 uiz_fixgeneralpos(o);
+*/
+
+uiz_xml_init()
+//&lt;some_file something="else"&gt;content&lt;/some_file&gt;
+//create xml
+folders=uiz_xml_loadstring('
+&lt;C name="C:\"&gt;
+&lt;some_folder&gt;
+ &lt;workfolder/&gt;
+&lt;/some_folder&gt;
+&lt;video'+"'"+'s&gt;
+ &lt;fun/&gt;
+ &lt;random/&gt;
+&lt;/video'+"'"+'s&gt;
+&lt;system_files&gt;
+ &lt;important/&gt;
+ &lt;viruses/&gt;
+&lt;/system_files&gt;
+&lt;what_you_looking_at&gt;
+ &lt;nothing/&gt;
+ &lt;you/&gt;
+&lt;/what_you_looking_at&gt;
+&lt;homework&gt;
+ &lt;tentacle/&gt;
+&lt;/homework&gt;
+&lt;/C&gt;
+')
+folderview=uiz_c(obj_uiZ_treelist);
+uiz_setparent(folderview,win);
+folderview.posinframey=uiz_fill;
+folderview.posinframex=uiz_fill;
+//folderview.usexml=folders;
+uiz_treelist_setxml(folderview,folders);
+uiz_fixgeneralpos(folderview)
+
+
 //*/
 /*
 sf=uiz_c(obj_uiZ_slideframe);

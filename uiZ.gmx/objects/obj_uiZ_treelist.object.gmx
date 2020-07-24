@@ -232,7 +232,7 @@ if doscroll==false or uiz_getmouse_x()&lt;scrollBarX then{//if mouse not on scro
     currentSelectionList = startList;
     if mouseRelativeItemPos&gt;0 then{
         repeat(mouseRelativeItemPos){
-            if currentSelectionList = -1 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
+            if currentSelectionList &lt; 0 or currentSelectionList&gt;=ds_list_size(nextItemList) then{
                 currentSelectionList = -1;
                 currentSelectionPos = -1;
                 break;//no further mouse checking is needed
@@ -442,11 +442,11 @@ if uiz_cntn() then {
     
         //selfmarked draw
         if updateMouseAreas then{
-            if currentSelectionPos!=-1 then{
+            if is_real(currentSelectionPos) and currentSelectionPos &gt;= 0 and currentSelectionList &gt;= 0 then{
                 //sdbm("update curpos",currentSelectionList);
                 uiz_treelist_drawEntry(currentSelectionList,startOffset+(currentSelectionPos-startPos)*fontHeight,rx,srlx);
             }
-            if lastSelectionPos!=currentSelectionPos and lastSelectionPos!=-1 then{
+            if is_real(lastSelectionPos) and lastSelectionPos!=currentSelectionPos and lastSelectionPos &gt;= 0 and lastSelectionList &gt;=0 then{
                 //sdbm("update lastpos");
                 uiz_treelist_drawEntry(lastSelectionList,startOffset+(lastSelectionPos-startPos)*fontHeight,rx,srlx);
             }
@@ -461,13 +461,14 @@ if uiz_cntn() then {
         
     }else{//default draw
         if uiz_xml_isempty(usexml) = 0 then {
-            
+            //sdbm("xml not empty!");
             var lsz = ds_list_size(textList);
             var ih=startOffset;
             
             for(var i=startList;i&lt;lsz;i+=0){    
                 var oldi = i;
                 i = uiz_treelist_drawEntry(i,ih,rx,srlx);
+                //sdbm("Just ran!, i = ",i," oldi = ",oldi);
                 if i&lt;=0 or i&lt;oldi or is_undefined(i) then{break;}
                 ih+=fontHeight;
             }
@@ -604,6 +605,28 @@ if draggingItem!=-1 then{
     backselalpha/=backdragalpha
     hierarchyLines = oldHierarchy;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_black);
+draw_text(10,10,uiz_xml_getdebugstringtotal(usexml));
 </string>
           </argument>
         </arguments>

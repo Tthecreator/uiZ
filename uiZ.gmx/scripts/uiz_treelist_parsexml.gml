@@ -27,6 +27,7 @@ with(argument0){
     var handle = uiz_xml_gethandle_begin(usexml);
     var lastTagHandle = handle;
     var isCollectingLineData=false;
+    var lastHeadTagType = -1;
     
     var fillNextPosQueue = ds_stack_create()
     
@@ -41,15 +42,24 @@ with(argument0){
     while(handle<lsz){
         var tagType = (l[|handle] mod 8)
         switch(tagType){
-            case uiz_xml_headTag: case uiz_xml_headAttributeTag:
+            case uiz_xml_headTag: case uiz_xml_headAttributeTag: case uiz_xml_dataTag: case uiz_xml_dataTagWithAttributes:
                 
                 //save line data
                 if isCollectingLineData==true then{
-                    if boxState==-1 then{
+                    if boxState==-1 and lastHeadTagType==uiz_xml_headTag or lastHeadTagType==uiz_xml_headAttributeTag then{
                         boxState = uiz_treelist_boxState_collapsed;
                     }
+                    //since we've encountered a new tag, we can say all data from the previous tag is final, and we can save the previousely read tag.
                     uiz_treelist_parsexml_saveLineData(spr,img,name,lastTagHandle,level,enabled,boxState,fillNextPosQueue)
+                    if lastHeadTagType==uiz_xml_dataTag or lastHeadTagType==uiz_xml_dataTagWithAttributes then{
+                        --level;
+                    }
                 }
+                
+                //if tagType==uiz_xml_headTag or tagType==uiz_xml_headAttributeTag then{
+                    ++level;//go a level deeper  
+                //}
+                
                 isCollectingLineData = true;
                 //reset values
                 spr = -1;
@@ -58,7 +68,8 @@ with(argument0){
                 enabled = true;
                 boxState = -1;
                 lastTagHandle = handle;
-                ++level;//go a level deeper
+                lastHeadTagType = tagType;
+                
             break;
             case uiz_xml_attributeName:
                 //read name and data
