@@ -80,7 +80,7 @@ with(argument[0]){
             nextItemList[|handle] = handle+1;
         break;
         case uiz_treelist_boxState_collapsed:
-            nextItemList[|handle] = uiz_treelist_findNextNodeAtLevel(handle+1,level);
+            nextItemList[|handle] = uiz_treelist_findNextNodeAtOrBelowLevel(handle+1,level);
         break;
         default:
             nextItemList[|handle] = handle+1;

@@ -130,13 +130,14 @@ if mouse_check_button(mb_left){
 global.mousefrozen=true
 scrollsel=1
 //mouse safety
-global.mousefrozensafety=1;
-global.mousefrozensafetynumber=global.uiz_instep;
+//global.mousefrozensafety=1;
+//global.mousefrozensafetynumber=global.uiz_instep;
 
 if uiz_getmouse_y()<argument1+width then{scroll=0;}else{//begin
 if uiz_getmouse_y()>argument3-width then{scroll=argument5;}else{//end
-scroll=clamp(round(scroll-(((global.lastmousemovedy)/(nheight-barh))*argument5)),0,argument5)
 
+var oldscrollabc=scroll
+scroll=clamp((scroll-(((global.lastmousemovedy)/(nheight-barh))*argument5)),0,argument5)
 }}
 mstate=6;
 }else{

@@ -28,6 +28,8 @@ if (boxState!=uiz_treelist_boxState_noBox) then{//if this item is even expandabl
         indentEnabledAndBoxList[|argument0] = miscl - boxState + uiz_treelist_boxState_extended;
     }
     uiz_treelist_switch_node_updateXML(argument0);
+    uiz_treelist_getExpandedLines();
+    uiz_treelist_fixScroll();
 }
 
 #define uiz_treelist_switch_node_updateXML

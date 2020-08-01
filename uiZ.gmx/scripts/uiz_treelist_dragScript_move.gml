@@ -19,6 +19,6 @@ if instance_exists(argument0) and draggingItem!=-1 and itemDestination!=-1{
         }
         */
     }
-    
+    uiz_selfmarked = false;
     uiz_updater_FixViews();
 }

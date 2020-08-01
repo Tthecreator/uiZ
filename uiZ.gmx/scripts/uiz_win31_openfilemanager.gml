@@ -11,7 +11,7 @@ uiz_setparent(folderview,f10)
 folderview.posinframey=uiz_fill;
 folderview.posinframex=uiz_fill;
 folderview.usexml=folders;
-folderview.showtags=false;//don't show files, just folders
+//folderview.showtags=false;//don't show files, just folders
 uiz_fixgeneralpos(folderview)
 
 fileview=uiz_c(obj_uiZ_gridlist)

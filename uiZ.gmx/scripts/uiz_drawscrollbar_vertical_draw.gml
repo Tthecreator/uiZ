@@ -50,12 +50,13 @@ mstate codes:
 //argument7=50
 //argument8=100
 
+/*
 var argument_arr = array_create(argument_count);
 for (var i = 0; i < argument_count; i++) {
     argument_arr[i] = argument[i];
 }
 if (live_call_ext(argument_arr)) return live_result;
-
+*/
 
 //argument0+=1;
 var arg7=argument7;
@@ -142,6 +143,9 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     break;
             }
             draw_sprite_ext(argument4, sel, x0, y2, width / sw, width / sh, 0, argument5, 1) //bottom
+        }
+        if keyboard_check(vk_space){
+            sdbm("break;!");
         }
         if updated = false or update_bar=true or (state_change = true and((mstate >= 5 and mstate <= 6) or(mstate_last >= 5 and mstate_last <= 6))) {
             //draw the background

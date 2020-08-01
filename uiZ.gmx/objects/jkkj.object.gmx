@@ -232,7 +232,6 @@ uiz_fixgeneralpos(o);
 */
 
 uiz_xml_init()
-//&lt;some_file something="else"&gt;content&lt;/some_file&gt;
 //create xml
 folders=uiz_xml_loadstring('
 &lt;C name="C:\"&gt;
@@ -262,6 +261,7 @@ folderview.posinframey=uiz_fill;
 folderview.posinframex=uiz_fill;
 //folderview.usexml=folders;
 uiz_treelist_setxml(folderview,folders);
+//uiz_treelist_setboxsettings
 uiz_fixgeneralpos(folderview)
 
 

@@ -129,7 +129,7 @@ global.mousefrozensafetynumber=global.uiz_instep;
 
 if uiz_getmouse_x()<argument0+height then{scroll=0;}else{//begin
 if uiz_getmouse_x()>argument2-height then{scroll=argument5;}else{//end
-scroll=clamp(round(scroll-(((global.lastmousemovedx)/(nwidth-barw))*argument5)),0,argument5)
+scroll=clamp((scroll-(((global.lastmousemovedx)/(nwidth-barw))*argument5)),0,argument5)
 
 }}
 mstate=6;

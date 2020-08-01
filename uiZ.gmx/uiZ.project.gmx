@@ -1280,6 +1280,7 @@
             <script>scripts\uiz_easybutton_setcolor.gml</script>
             <script>scripts\uiz_easybutton_settext.gml</script>
             <script>scripts\uiz_easybutton_setsprite.gml</script>
+            <script>scripts\uiz_easybutton_create.gml</script>
           </scripts>
           <scripts name="frame">
             <script>scripts\uiz_frame_mark.gml</script>
@@ -1721,6 +1722,7 @@
             <scripts name="internal">
               <script>scripts\uiz_treelist_drawEntry.gml</script>
               <script>scripts\uiz_treelist_parsexml.gml</script>
+              <script>scripts\uiz_treelist_getExpandedLines.gml</script>
               <script>scripts\uiz_treelist_cleanup.gml</script>
               <script>scripts\uiz_treelist_fixScroll.gml</script>
               <script>scripts\uiz_treelist_updateScrollbar.gml</script>
@@ -1729,18 +1731,22 @@
               <script>scripts\uiz_treelist_generateHierarchyItemList.gml</script>
               <script>scripts\uiz_treelist_fixNextItemList.gml</script>
               <script>scripts\uiz_treelist_findNextNodeAtLevel.gml</script>
+              <script>scripts\uiz_treelist_findNextNodeAtOrBelowLevel.gml</script>
               <script>scripts\uiz_treelist_fixNewHierarchyItemList.gml</script>
+              <script>scripts\uiz_treelist_settags.gml</script>
+              <script>scripts\uiz_treelist_getxmlpos.gml</script>
             </scripts>
             <script>scripts\uiz_treelist_setmargin.gml</script>
             <script>scripts\uiz_treelist_setboxsettings.gml</script>
             <script>scripts\uiz_treelist_settextsettings.gml</script>
             <script>scripts\uiz_treelist_setbackgroundsettings.gml</script>
             <script>scripts\uiz_treelist_setscrollbarsettings.gml</script>
-            <script>scripts\uiz_treelist_settags.gml</script>
             <script>scripts\uiz_treelist_expand.gml</script>
             <script>scripts\uiz_treelist_setScrollbarWidth.gml</script>
+            <script>scripts\uiz_treelist_setXMLSettings.gml</script>
+            <script>scripts\uiz_treelist_onDrag.gml</script>
+            <script>scripts\uiz_treelist_setHierarchyLinesSettings.gml</script>
             <scripts name="xml">
-              <script>scripts\uiz_treelist_getxmlpos.gml</script>
               <script>scripts\uiz_treelist_setxml.gml</script>
               <script>scripts\uiz_treelist_exportxml.gml</script>
             </scripts>
@@ -1769,7 +1775,6 @@
               <script>scripts\uiz_treelist_item_get_boxState.gml</script>
             </scripts>
           </scripts>
-          <script>scripts\uiz_easybutton_create.gml</script>
           <scripts name="valuebox">
             <script>scripts\uiz_valuebox_setvalue.gml</script>
             <script>scripts\uiz_valuebox_getvalue.gml</script>

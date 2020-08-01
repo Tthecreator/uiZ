@@ -73,9 +73,7 @@ with(argument[0]){
         uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState);
     }
     
-    if updXML then{
-             
-    }
+   
     //sdbm("Did moveEntry");
     //sdbm(uiz_xml_toString(folders))
     //sdbm(uiz_xml_getdebugstringtotal(usexml))

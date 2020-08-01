@@ -34,7 +34,6 @@ margin=1//v//margin//
 boxcolor=c_black//c//box color//
 boxoncolor=c_gray//c//box on color//
 boxincolor=c_ltgray//box in color//
-boxemptyalpha=0.5//box empty alpha//
 boxsprite=spr_uiZ_plusminbox//p//box sprite//
 font=-1//f//font//
 textcolor=c_black//c//text color//
@@ -42,7 +41,7 @@ textoncolor=c_blue//c//text on color//
 textselcolor=c_blue//c//text selection color//
 backcolor=c_white//c//item back color//
 backoncolor=c_ltgray//c//item back on color//
-backselcolor=c_ltgray//c//item back over color//
+backselcolor=c_ltgray//c//item back click color//
 backdragcolor=$ffd1ab//c//item back color while dragging//
 backalpha=0//v//item back alpha//
 backonalpha=0.5//v//item back on alpha//
@@ -138,7 +137,6 @@ selectxml=-1;
 scroll=uiz_drawscrollbar_init();
 scrollat=0;
 //startscrollat=0;
-showtags=true;
 //maxscrolllines=0
 usexml=0
 </string>
@@ -169,7 +167,7 @@ usexml=0
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="13">
+    <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -203,6 +201,8 @@ if doscroll=true then{
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -290,7 +290,7 @@ if draggingItem=-1 and draggingItemCandidate!=-1 and (global.uiz_mouseswipeclick
 //check for differences between old and new mouse pos and update view
 if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!=kmouseover) then{
     var srlx = rlx;
-    if doscroll then{srlx=scrollBarX;}
+    if doscroll then{srlx=scrollBarX-1;}
     updateMouseAreas = true;
     //update specific list items
     if currentSelectionPos!=-1 then{
@@ -303,13 +303,15 @@ if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!
 
 if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
         var srlx = rlx;
-        if doscroll then{srlx=scrollBarX;}
+        if doscroll then{srlx=scrollBarX-1;}
         drawDraggingItem=draggingItem;
         draggingItem=-1;
         uiz_mouse_unfreeze();
-        script_execute(onDragScript,id,drawDraggingItem,currentSelectionPos, (uiz_getmouse_y()-(ry+fontHeight*currentSelectionPos-startOffset))/fontHeight,true);
+        script_execute(onDragScript,id,drawDraggingItem,currentSelectionList, (uiz_getmouse_y()-(ry+fontHeight*currentSelectionPos-startOffset))/fontHeight,true);
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight-1);
         updateDragArea = true;
+        //lastSelectionPos=-1;
+        currentSelectionPos=-1;
     }
     
 if mouse_check_button_released(mb_left) then{
@@ -348,7 +350,7 @@ kmouseover_last = kmouseover;
 //if live_call() return live_result;
 if kmouseover=0 then{
     var srlx = rlx;
-    if doscroll then{srlx=scrollBarX;}
+    if doscroll then{srlx=scrollBarX-1;}
     if currentSelectionPos!=-1 then{
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight-1);    
         updateMouseAreas = true;
@@ -358,31 +360,8 @@ if kmouseover=0 then{
     currentSelectionList = -1;
     currentSelectionPos = -1;
     kmouseover_last=0;
-    uiz_drawscrollbar_deselect(scrollBarX,iy,ilx,ily,uiz_vertical,scroll);
+    //uiz_drawscrollbar_deselect(scrollBarX,iy,ilx,ily,uiz_vertical,scroll);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///dragitem deselection
-//if live_call() return live_result
-
 </string>
           </argument>
         </arguments>
@@ -405,7 +384,7 @@ if kmouseover=0 then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>uiz_mouse_docheck_scrollable()
 </string>
           </argument>
         </arguments>
@@ -432,7 +411,7 @@ if kmouseover=0 then{
 if uiz_cntn() then {
     //draw settings
     var srlx = rlx;
-    if doscroll then{srlx=scrollBarX;}
+    if doscroll then{srlx=scrollBarX-1;}
     if font&gt;-1 then{draw_set_font(font)}        
     draw_set_halign(fa_left)
     draw_set_valign(fa_top)
@@ -460,6 +439,9 @@ if uiz_cntn() then {
         }
         
     }else{//default draw
+        updateDragArea = false;
+        updateMouseAreas = false;
+        
         if uiz_xml_isempty(usexml) = 0 then {
             //sdbm("xml not empty!");
             var lsz = ds_list_size(textList);
@@ -625,8 +607,10 @@ if draggingItem!=-1 then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
+            <string>/*
+draw_set_color(c_black);
 draw_text(10,10,uiz_xml_getdebugstringtotal(usexml));
+*/
 </string>
           </argument>
         </arguments>
