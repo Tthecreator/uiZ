@@ -1,4 +1,4 @@
-///uiz_window_setanimation(instanceid,maximizeanimation[uiz_elastic_inout],maximizeanimationspeed[0.3],unmaximizeanimation[uiz_elastic_inout],unmaximizeanimationspeed[0.2],minimizeanimation[uiz_wigle],minimizeanimationspeed[0.3],unminimizeanimation[uiz_wigle],unminimizeanimationspeed[0.3])
+///uiz_window_setanimation(instanceid, maximizeanimation[uiz_elastic_inout], maximizeanimationspeed[0.3], unmaximizeanimation[uiz_elastic_inout], unmaximizeanimationspeed[0.2], minimizeanimation[uiz_wigle], minimizeanimationspeed[0.3], unminimizeanimation[uiz_wigle], unminimizeanimationspeed[0.3])
 gml_pragma("forceinline");
 argument0.maximizeanimation=argument1;
 argument0.maximizeanimationspeed=argument2;

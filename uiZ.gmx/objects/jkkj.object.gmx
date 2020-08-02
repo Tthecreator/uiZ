@@ -221,6 +221,7 @@ win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
 win.posinframey=uiz_center;
 win.color_normal=$EEEEEE;
+//uiz_window_setbuttons(win,false,true,true);
 uiz_fixgeneralpos(win);
 
 /*
@@ -230,7 +231,7 @@ o.posinframex=uiz_fill
 o.posinframey=uiz_fill
 uiz_fixgeneralpos(o);
 */
-
+/*
 uiz_xml_init()
 //create xml
 folders=uiz_xml_loadstring('
@@ -263,7 +264,7 @@ folderview.posinframex=uiz_fill;
 uiz_treelist_setxml(folderview,folders);
 //uiz_treelist_setboxsettings
 uiz_fixgeneralpos(folderview)
-
+*/
 
 //*/
 /*

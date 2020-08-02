@@ -113,9 +113,9 @@ uiz_destroyobject_animation_default(w)
             <kind>1</kind>
             <string>if live_call() return live_result;
 if global.colorscreen=id and !instance_exists(w) then{global.colorscreen=0}
-if global.colorscreen=id and instance_exists(w) then{
-if w.finaldestroy=1 then{global.colorscreen=0}
-}
+//if global.colorscreen=id and instance_exists(w) then{
+//if w.finaldestroy=1 then{global.colorscreen=0}
+//}
 if global.colorscreen!=id or !instance_exists(w) then{
     uiz_updater_unstep();
     exit;

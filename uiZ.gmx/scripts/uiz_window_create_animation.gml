@@ -1,4 +1,4 @@
-///uiz_window_create_animation(width,valuetype[px dp or fc],height,valuetype[px dp or fc],xfunction,yfunction,alphafunction,animationtime) -returns windowid
+///uiz_window_create_animation(width, widthtype, height, heighttype, xfunction, yfunction, alphafunction, animationtime) -returns windowid
 /*
 Creates a window holder object and returns the id of that object.
 See "windows in general" for more information on how to handle windows.

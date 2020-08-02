@@ -63,63 +63,6 @@ margin_out=-1//v//margin out//
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-///#define uiZ
-//#sprite images
-//#spritenum 4
-
-width=10
-height=10
-lx=x+width
-ly=y+height
-color=c_white
-children=-1
-listpos=-1
-uiz_initparent()
-rx=parent.rx+x
-ry=parent.ry+y
-rlx=parent.rx+lx
-rly=parent.ry+ly
-sprite=spr_uiZ_button;
-texturemode=uiz_texturemode_fill;
-topbordermargin=0;
-rightbordermargin=0;
-bottombordermargin=0;
-leftbordermargin=0;
-posinframex=uiz_center
-posinframey=uiz_snaptop
-posvalx=0
-posvaly=0
-addx=0
-addy=0
-setpointx=uiz_auto
-setpointy=uiz_auto
-topframemargin=0;
-rightframemargin=0;
-bottomframemargin=0;
-leftframemargin=0;
-uiz_shader=1
-adddepth=0
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>

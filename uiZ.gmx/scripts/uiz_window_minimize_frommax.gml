@@ -1,4 +1,4 @@
-if live_call() return live_result;
+//if live_call() return live_result;
 uiz_animation_capture_oldstate(id)
 posinframex=uiz_static;
 posinframey=uiz_static;

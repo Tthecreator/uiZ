@@ -26,7 +26,7 @@ The obj_uiZ_windowholder object can always be accessed trough "r.window".
 The obj_uiZ_drawtextlines object can always be accessed trough "r.textlines".
 The obj_uiZ_popupok object can always be accessed trough "r.popup"
 The obj_uiZ_square can be accessed trough "r.square", but only if argument2 is true.
-The mainframe of the window can always be accessed trough "r.window.mainframe"
+The window can always be accessed trough "r.window"
 Look at the other articles on how these objects work, and how they can be customized.
 obj_uiZ_popupok acts as the ok button has the following customizabilities:
 -color: the image blend of the sprite used for the button;
@@ -62,7 +62,6 @@ var dx=uiz_todpix(string_width(argument[0]))
 var dy=uiz_todpiy(string_height(argument[0]))
 var w=uiz_window_create(dx+0.5,dp,dy+1,dp);
 if argument[2]=1 then{uiz_setparent(w,p)}
-w.addwindowdepth=500000
 w.addwindowmydepth=500000
 //w.adddepth+=100000
 //if argument[2]=1 then{

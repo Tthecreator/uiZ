@@ -25,31 +25,6 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.lockwindowresel=global.lockwindowreseltime;
-lastparent=obj_uiZ_controller.id;
-//lastparent=0;
-m=0;
-u=0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///#define uiZ
 //#sprite images
 //#spritenum 17
@@ -57,113 +32,62 @@ u=0;
 //#exclude
 //global.count=2
 uiz_objinit()
-draw=0
-mark=1
-markcolor=irandom(255*255*255)
-//texturemode=uiz_texturemode_tile
-//bordertexturemode=uiz_texturemode_fill
-//bordercolor=c_white
-iscover=0
-fromx=0
-fromy=0
-tox=0
-toy=0
-topbordermargin=3;
-rightbordermargin=3;
-bottombordermargin=3;
-leftbordermargin=3;
-maximizesnapmargin=5//v//snap maximize margin//
-//bordersprite=spr_uiZ_windowborder;
-//bordersprite=spr_uiZ_border1;
 windowtext="window"//s//window text//
-//drawwindowtext=""
 windowtextcolor=c_black//c//window text color//
-barsize=0.25
-barsizevaltype=dp
-//windowtopcolor=c_aqua
-//windowtopalpha=1
-//windowmaincolor=c_white
-//windowmainalpha=1
-button_cross=1
-button_maximize=1
-button_minimize=1
-oldbutton_cross=1
-oldbutton_maximize=1
-oldbutton_minimize=1
+halign=fa_left//v//window text horizontal align//
+valign=fa_center//v//window text vertical align//
+font=-1;//f//window text font//
+wholewidthalign=false;//b//align type//
+barsize=0.25//v//top bar size//
+barsizevaltype=dp//z//top bar size type//
 
-button_cross_color_normal=c_white;
-button_cross_color_over=c_white;
-button_cross_color_in=c_white;
-button_cross_sprite=spr_uiZ_windowbutton_cross;
+button_cross=true//b//enable close button//
+button_maximize=true//b//enable maximize button//
+button_minimize=true//b//enable minimize button//
 
-button_maximize_color_normal=c_white;
-button_maximize_color_over=c_white;
-button_maximize_color_in=c_white;
-button_maximize_sprite=spr_uiZ_windowbutton_maximize;
+button_cross_color_normal=c_white;//c//close button normal color// 
+button_cross_color_over=c_white;//c//close button over color//
+button_cross_color_in=c_white;//c//close button in color//
+button_cross_sprite=spr_uiZ_windowbutton_cross;//p//close button sprite//
 
-button_minimize_color_normal=c_white;
-button_minimize_color_over=c_white;
-button_minimize_color_in=c_white;
-button_minimize_sprite=spr_uiZ_windowbutton_minimize;
+button_maximize_color_normal=c_white;//c//maximize button normal color// 
+button_maximize_color_over=c_white;//c//maximize button over color//
+button_maximize_color_in=c_white;//c//maximize button in color//
+button_maximize_sprite=spr_uiZ_windowbutton_maximize;//p//maximize button sprite//
 
-addwindowdepth=0
-mainframe=0
-snaptomouse=0
-mouseminx=0
-mouseminy=0
-//windowminx=0
-//windowminy=0
-sizestatus=1
-oldx=x
-oldy=y
-olda=1
-oldwidth=width
-oldheight=height
-inanimation=0
-maximizeanimation=uiz_elastic_inout
-maximizeanimationspeed=0.3
-unmaximizeanimation=uiz_elastic_inout
-unmaximizeanimationspeed=0.2
-minimizeanimation=uiz_wigle
-minimizeanimationspeed=0.3
-unminimizeanimation=uiz_wigle
-unminimizeanimationspeed=0.2
-destroyyfunction=uiz_straight
-destroyxfunction=uiz_straight
-destroyafunction=uiz_straight
-destroyspeed=0.5
-destroy=0
-finaldestroy=0
-destroycount=0
-destroycountspeed=0.1
-destroycountanimation=uiz_elastic_inout
+button_minimize_color_normal=c_white;//c//minimize button normal color// 
+button_minimize_color_over=c_white;//c//minimize button over color//
+button_minimize_color_in=c_white;//c//minimize button in color//
+button_minimize_sprite=spr_uiZ_windowbutton_minimize;//p//minimize button sprite//
+
+maximizeanimation=uiz_elastic_inout//a//maximize animation//
+maximizeanimationspeed=0.3//v//maximize animation duration//
+unmaximizeanimation=uiz_elastic_inout//a//unmaximize animation//
+unmaximizeanimationspeed=0.2//v//unmaximize animation duration//
+
+minimizeanimation=uiz_wigle//a//minimize animation//
+minimizeanimationspeed=0.3//v//minimize animation duration//
+unminimizeanimation=uiz_wigle//a//unminimize animation//
+unminimizeanimationspeed=0.2//v//unminimize animation duration//
+
+destroyyfunction=uiz_straight//a//closing height animation//
+destroyxfunction=uiz_straight//a//closing width animation//
+destroyafunction=uiz_zero//a//closing alpha animation//
+destroyspeed=0.5//a//closing animation duration//
+
+
 contain=uiz_window_contain_corner//v//contain constant//
-resizable=true;
-halign=fa_left
-valign=fa_center
-font=-1;
-wholewidthalign=false;
-keepratio=false;
-minwidth=0;
-minwidthtype=px;
-minheight=0;
-minheighttype=px;
-ratio=1;
-minw=0;
-minh=0;
-bars=0;
-//uiz_window_fixminwh()
+resizable=true;//b//resizable//
 
-graboffx=0;
-graboffy=0;
+keepratio=false;//b//keep window ratio//
+minwidth=0;//v//minimum window width//
+minwidthtype=px;//z//minimum window width type//
+minheight=0;//v//minimum window height//
+minheighttype=px;//z//minimum window height type//
 
-//lastparent=0;
-
-
-isresizing=false;
 doublemargins=false//b//double topbar margins//
 topbarInside=false//b//topbar in inner margins//
-topbackuse=-1;
+topbackuse=-1;//v//top bar background type//
 
 hasbackground=true;
 texturescript=uiz_back_circlestitch//i//texturescript//
@@ -190,8 +114,6 @@ color_out=-1//c//color out//
 margin_out=-1//v//margin out//
 
 usebackgroundmargins=true;
-
-
 
 top_texturescript=uiz_back_circlestitch//i//top texturescript//
 top_texturescript_over=-1//i//top texturescript over//
@@ -221,7 +143,62 @@ top_bkcol=top_color_normal;
 top_bkmar=top_margin_normal;
 top_texas=top_texturescript
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.lockwindowresel=global.lockwindowreseltime;
+lastparent=obj_uiZ_controller.id;
+//lastparent=0;
+m=0;
+u=0;
+draw=0
+mark=1
+markcolor=irandom(255*255*255)
+iscover=0
+fromx=0
+fromy=0
+tox=0
+toy=0
+snaptomouse=0
+mouseminx=0
+mouseminy=0
 
+sizestatus=1
+oldx=x
+oldy=y
+olda=1
+oldwidth=width
+oldheight=height
+inanimation=0
+maximizesnapmargin=5//v//snap maximize margin//
+destroy=0;
+
+ratio=1;
+minw=0;
+minh=0;
+bars=0;
+
+graboffx=0;
+graboffy=0;
+
+isresizing=false;
 
 button_cross_state=0;
 button_maximize_state=0;
@@ -607,7 +584,6 @@ if resizable and isresizing then{
     }
     
     if isresizing_y=uiz_top then{
-    sdbm("changing y")
         y += oldheight - iheight;
     }
     if isresizing_x=uiz_left then{
@@ -752,9 +728,9 @@ if (loverbut != overbut and((loverbut &gt;= 0 and loverbut &lt; buttonssize) or(
             if customButtonPosition&gt;=0 &amp;&amp; customButtonPosition&lt;customButtonSize then{
                 custom_buttons_right_state[| customButtonPosition] = 1;
                 
-            }else{
-                sdbm("[uiZ|Warning] window custom button ID ",customButtonPosition," not found for window ",id)
-            }
+            }//else{
+            //    sdbm("[uiZ|Warning] window custom button ID ",customButtonPosition," not found for window ",id)
+            //}
             
             break;
     }
@@ -902,7 +878,7 @@ uiz_updater_FixViews_area(ilx-bars*buttonssize,ry,ilx,iy-1);//REENABLE//
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
+            <string>//if live_call() return live_result;
 if uiz_cntn(){
 
 uiz_back()

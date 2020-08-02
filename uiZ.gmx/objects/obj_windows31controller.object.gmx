@@ -114,7 +114,7 @@ window_ProgramManager.top_color_out=topcolor;
 window_ProgramManager.doublemargins=false;
 uiz_window_setbuttons(window_ProgramManager,false,true,true);
 window_ProgramManager.button_cross=false;
-uiz_window_topbarsettings(window_ProgramManager,18,px);
+uiz_window_setTopBarSize(window_ProgramManager,18,px);
 window_ProgramManager.barsize=18;
 window_ProgramManager.barsizevaltype=px;
 //change buttons

@@ -1,4 +1,4 @@
-///uiz_window_setminimumsize(instanceid,width,widthtype,height,heighttype)
+///uiz_window_setminimumsize(instanceid, width[0], widthtype[px], height[0], heighttype[px])
 with(argument0){
 minwidth=argument1;
 minwidthtype=argument2;

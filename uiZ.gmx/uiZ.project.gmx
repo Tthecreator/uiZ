@@ -889,7 +889,7 @@
         </scripts>
         <scripts name="destroy">
           <script>scripts\uiz_destroyobject_animation.gml</script>
-          <script>scripts\uiz_setdestroyanimation_legacy.gml</script>
+          <script>scripts\uiz_setdestroyanimation.gml</script>
           <script>scripts\uiz_destroyobject_animation_default.gml</script>
           <script>scripts\uiz_destroyobject.gml</script>
           <script>scripts\uiz_destroyobject_notself.gml</script>
@@ -954,7 +954,6 @@
             <script>scripts\uiz_fix_Base_Pos_Values.gml</script>
             <script>scripts\uiz_getvaluesy.gml</script>
             <script>scripts\uiz_getvaluesx.gml</script>
-            <script>scripts\uiz_insideframe_ext_margin.gml</script>
             <script>scripts\uiz_getscalervalues.gml</script>
             <script>scripts\uiz_getscalervalues_xy.gml</script>
             <script>scripts\uiz_getscalervalues_counter.gml</script>
@@ -1901,38 +1900,6 @@
           <script>scripts\uiz_setwindowsize.gml</script>
         </scripts>
         <scripts name="windows (uiz)">
-          <script>scripts\uiz_window_checkcontainment.gml</script>
-          <script>scripts\uiz_window_contain.gml</script>
-          <script>scripts\uiz_window_create.gml</script>
-          <script>scripts\uiz_window_create_animation.gml</script>
-          <script>scripts\uiz_window_create_finish.gml</script>
-          <script>scripts\uiz_window_create_legacy.gml</script>
-          <script>scripts\uiz_window_fixadddepth.gml</script>
-          <script>scripts\uiz_window_fixadddepth_maindepth.gml</script>
-          <script>scripts\uiz_window_fixbackground.gml</script>
-          <script>scripts\uiz_window_fixminwh.gml</script>
-          <script>scripts\uiz_window_getgraboff.gml</script>
-          <script>scripts\uiz_window_getgraboff_x.gml</script>
-          <script>scripts\uiz_window_getgraboff_y.gml</script>
-          <script>scripts\uiz_window_keepratio.gml</script>
-          <script>scripts\uiz_window_maximize.gml</script>
-          <script>scripts\uiz_window_maximize_frommin.gml</script>
-          <script>scripts\uiz_window_minimize.gml</script>
-          <script>scripts\uiz_window_minimize_frommax.gml</script>
-          <script>scripts\uiz_window_resetbuttons.gml</script>
-          <script>scripts\uiz_window_select.gml</script>
-          <script>scripts\uiz_window_setanimations.gml</script>
-          <script>scripts\uiz_window_setbuttons.gml</script>
-          <script>scripts\uiz_window_setminimumsize.gml</script>
-          <script>scripts\uiz_window_settextsettings.gml</script>
-          <script>scripts\uiz_window_settopbarBackgroundState.gml</script>
-          <script>scripts\uiz_window_setwindowtext.gml</script>
-          <script>scripts\uiz_window_switchmaximize.gml</script>
-          <script>scripts\uiz_window_switchminimize.gml</script>
-          <script>scripts\uiz_window_topbarsettings.gml</script>
-          <script>scripts\uiz_window_unmaximize.gml</script>
-          <script>scripts\uiz_window_unminimize.gml</script>
-          <script>scripts\uiz_window_an_old.gml</script>
           <scripts name="custom_buttons">
             <script>scripts\uiz_window_custom_button_create_left.gml</script>
             <script>scripts\uiz_window_custom_button_create_right.gml</script>
@@ -1940,6 +1907,46 @@
             <script>scripts\uiz_window_custom_button_edit_left.gml</script>
             <script>scripts\uiz_window_custom_empty_script.gml</script>
           </scripts>
+          <scripts name="internal">
+            <script>scripts\uiz_window_checkcontainment.gml</script>
+            <script>scripts\uiz_window_an_old.gml</script>
+            <script>scripts\uiz_window_resetbuttons.gml</script>
+            <script>scripts\uiz_window_getgraboff_y.gml</script>
+            <script>scripts\uiz_window_getgraboff_x.gml</script>
+            <script>scripts\uiz_window_getgraboff.gml</script>
+            <script>scripts\uiz_window_fixminwh.gml</script>
+            <script>scripts\uiz_window_fixbackground.gml</script>
+            <script>scripts\uiz_window_fixadddepth_maindepth.gml</script>
+            <script>scripts\uiz_window_fixadddepth.gml</script>
+            <script>scripts\uiz_window_create_legacy.gml</script>
+            <script>scripts\uiz_window_create_finish.gml</script>
+          </scripts>
+          <script>scripts\uiz_window_contain.gml</script>
+          <script>scripts\uiz_window_create.gml</script>
+          <script>scripts\uiz_window_create_animation.gml</script>
+          <script>scripts\uiz_window_keepratio.gml</script>
+          <script>scripts\uiz_window_maximize.gml</script>
+          <script>scripts\uiz_window_maximize_frommin.gml</script>
+          <script>scripts\uiz_window_minimize.gml</script>
+          <script>scripts\uiz_window_minimize_frommax.gml</script>
+          <script>scripts\uiz_window_select.gml</script>
+          <script>scripts\uiz_window_setanimations.gml</script>
+          <script>scripts\uiz_window_setbuttons.gml</script>
+          <script>scripts\uiz_window_setCloseButtonSettings.gml</script>
+          <script>scripts\uiz_window_setMaximizeButtonSettings.gml</script>
+          <script>scripts\uiz_window_setMinimizeButtonSettings.gml</script>
+          <script>scripts\uiz_window_setminimumsize.gml</script>
+          <script>scripts\uiz_window_setResizable.gml</script>
+          <script>scripts\uiz_window_settextsettings.gml</script>
+          <script>scripts\uiz_window_settopbarBackgroundState.gml</script>
+          <script>scripts\uiz_window_setTopBarDoubleMargins.gml</script>
+          <script>scripts\uiz_window_setTopBarInside.gml</script>
+          <script>scripts\uiz_window_setTopBarSize.gml</script>
+          <script>scripts\uiz_window_setwindowtext.gml</script>
+          <script>scripts\uiz_window_switchmaximize.gml</script>
+          <script>scripts\uiz_window_switchminimize.gml</script>
+          <script>scripts\uiz_window_unmaximize.gml</script>
+          <script>scripts\uiz_window_unminimize.gml</script>
         </scripts>
         <scripts name="snapper">
           <script>scripts\uiz_snapper_enable.gml</script>

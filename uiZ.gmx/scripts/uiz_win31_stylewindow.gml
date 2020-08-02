@@ -22,7 +22,7 @@ win.top_color_out=topcolor;
 win.doublemargins=false;
 uiz_window_setbuttons(win,false,true,true);
 win.button_cross=false;
-uiz_window_topbarsettings(win,18,px);
+uiz_window_setTopBarSize(win,18,px);
 win.barsize=18;
 win.barsizevaltype=px;
 //change buttons

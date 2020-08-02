@@ -27,7 +27,7 @@ The obj_uiZ_windowholder object can always be accessed trough "r.window".
 The obj_uiZ_drawtextlines object can always be accessed trough "r.textlines".
 The obj_uiZ_square can be accessed trough "r.square", but only if argument2 is true.
 The yes and no obj_uiz_3waybuttons can be accessed trough "r.nobutton" and "r.yesbutton".
-The mainframe of the window can always be accessed trough "r.window.mainframe"
+The window can always be accessed trough "r.window"
 Look at the other articles on how these objects work, and how they can be customized.
 There is no obj_uiZ_popupok object for a yes/no window.
 
@@ -74,7 +74,6 @@ uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_straight,0.05,false)
 var dx=uiz_todpix(string_width(argument[0]))
 var dy=uiz_todpiy(string_height(argument[0]))
 var w=uiz_window_create_animation(dx+0.5,dp,dy+1,dp,uiz_cubic_in,uiz_cubic_out,uiz_one,0.1);
-w.addwindowdepth=100000
 w.addwindowmydepth=100000
 /*
 if argument[2]=1 then{
