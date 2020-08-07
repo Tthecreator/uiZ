@@ -1,5 +1,5 @@
 #define uiz_treelist_addEntryAt
-///uiz_treelist_addEntryAt(id, handle, name, [sprite], [spriteImage], [indentLevel],[enabled], [boxState],[extraAttributeNameList,extraAttributeDataList])
+///uiz_treelist_addEntryAt(id, handle, name, [sprite], [spriteImage], [indentLevel],[enabled], [boxState],[extraAttributeNameList,extraAttributeDataList],[entryName],[entryData])
 //adds an entry right before a handle, with the same indentation as the item on the handle
 //enabled: This item is grayed out
 //extraAttributeNameList: Add extra attribute data to the xml file (has no visible effect on treelist)
@@ -25,8 +25,16 @@ with(argument[0]){
     }
     var originalLevel = level;
     var lsz = ds_list_size(indentEnabledAndBoxList);
+    
+    var givenName = argument[2];
+    var entryData = "";
+    
     switch(argument_count){
         default:
+        case 12:
+        entryData = argument[11];
+        case 11:
+        givenName = argument[10];
         case 10:
         case 9:
         case 8://boxState
@@ -116,10 +124,19 @@ with(argument[0]){
             handleList[|handle]=uiz_xml_gethandleend(usexml, xmlInHandle)+1;
             
             if argument_count>=10 then{
-                uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2]);
-                uiz_treelist_addEntryAt_addExtraAttributes(handleList[|handle]-1,argument[8],argument[9]);
+                if argument_count>=12 then{
+                    uiz_xml_writeDataTag_in(usexml,xmlInHandle,givenName, entryData);
+                    uiz_treelist_addEntryAt_addExtraAttributes(handleList[|handle]-1,argument[8],argument[9]);
+                }else{
+                    uiz_xml_writeHeadTag_in(usexml,xmlInHandle,givenName);
+                    uiz_treelist_addEntryAt_addExtraAttributes(handleList[|handle]-1,argument[8],argument[9]);
+                }
             }else{
-                uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+                //if boxState==uiz_treelist_boxState_noBox then{
+                //    uiz_xml_writeDataTag_in(usexml,xmlInHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+                //}else{
+                    uiz_xml_writeHeadTag_in(usexml,xmlInHandle,givenName,"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+                //}
             }
             //uiz_xml_writeHeadTag_in(usexml,xmlInHandle,argument[2],"name",argument[2]);
             //sdbm("refitHandles in");
@@ -133,10 +150,10 @@ with(argument[0]){
         if updateXML then{
             
             if argument_count>=10 then{
-                uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2]);
+                uiz_xml_writeHeadTag_before(usexml,xmlHandle,givenName);
                 uiz_treelist_addEntryAt_addExtraAttributes(xmlHandle,argument[8],argument[9]);
             }else{
-                uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
+                uiz_xml_writeHeadTag_before(usexml,xmlHandle,givenName,"name",argument[2],"sprite",string(spr>>7),"image",string(spr mod 128),"enabled",string(enabled),"boxState",string(boxState));
             }
             //uiz_xml_writeHeadTag_before(usexml,xmlHandle,argument[2],"name");
             if (argument_count>=6){

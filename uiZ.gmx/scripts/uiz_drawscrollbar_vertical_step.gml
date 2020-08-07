@@ -194,9 +194,9 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel] = scrollsel;//save scroll
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate] = mstate;//save scrollsel
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate_last] = mstate_last;//save scrollsel
 
-if scrollsel=1 then{
-uiz_set_cursor(cr_handpoint)
-}
+//if scrollsel=1 then{
+//uiz_set_cursor(cr_handpoint)
+//}
 
 return updated;
 

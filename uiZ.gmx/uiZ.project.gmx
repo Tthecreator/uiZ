@@ -824,6 +824,7 @@
           </scripts>
           <script>scripts\uiz_shader_object.gml</script>
           <script>scripts\uiz_depth_set.gml</script>
+          <script>scripts\uiz_depth_foreground.gml</script>
           <script>scripts\uiz_getmouseover.gml</script>
           <script>scripts\uiz_depth_get.gml</script>
           <script>scripts\uiz_alpha.gml</script>
@@ -986,6 +987,7 @@
             <script>scripts\uiz_fixslicksliderpos.gml</script>
             <script>scripts\uiz_fixslideframepos.gml</script>
             <script>scripts\uiz_fixsliderpos.gml</script>
+            <script>scripts\uiz_fixsliderpos_2col.gml</script>
             <script>scripts\uiz_fixsliderstructpos.gml</script>
             <script>scripts\uiz_fixsprbuttonpos.gml</script>
             <script>scripts\uiz_fixstringboxpos.gml</script>
@@ -1142,6 +1144,7 @@
           <script>scripts\uiz_mouse_isFrozen_on.gml</script>
           <script>scripts\uiz_isMouseSwipeClickWhiteListed.gml</script>
           <script>scripts\uiz_mouse_getStateWithin.gml</script>
+          <script>scripts\uiz_mouse_isDoubleClick.gml</script>
         </scripts>
         <scripts name="numbers">
           <script>scripts\uiz_pxtodpx.gml</script>
@@ -1262,6 +1265,7 @@
           </scripts>
           <scripts name="dropdown">
             <script>scripts\uiz_dropdown_setbuttoncolor.gml</script>
+            <script>scripts\uiz_dropdown_setbuttonalpha.gml</script>
             <script>scripts\uiz_dropdown_setbuttontrianglecolor.gml</script>
             <script>scripts\uiz_dropdown_setmargins.gml</script>
             <script>scripts\uiz_dropdown_setlist.gml</script>
@@ -1744,10 +1748,12 @@
             <script>scripts\uiz_treelist_setScrollbarWidth.gml</script>
             <script>scripts\uiz_treelist_setXMLSettings.gml</script>
             <script>scripts\uiz_treelist_onDrag.gml</script>
+            <script>scripts\uiz_treelist_onClick.gml</script>
             <script>scripts\uiz_treelist_setHierarchyLinesSettings.gml</script>
             <scripts name="xml">
               <script>scripts\uiz_treelist_setxml.gml</script>
               <script>scripts\uiz_treelist_exportxml.gml</script>
+              <script>scripts\uiz_treelist_getXmlHandle.gml</script>
             </scripts>
             <scripts name="manipulation">
               <script>scripts\uiz_treelist_addEntryAt.gml</script>
@@ -1762,6 +1768,9 @@
               <script>scripts\uiz_treelist_handle_getByNamePath.gml</script>
               <script>scripts\uiz_treelist_handle_getEnd.gml</script>
             </scripts>
+            <scripts name="clickScripts">
+              <script>scripts\uiz_treelist_clickScript_switch_node.gml</script>
+            </scripts>
             <scripts name="dragScripts">
               <script>scripts\uiz_treelist_dragScript_move.gml</script>
             </scripts>
@@ -1773,6 +1782,7 @@
               <script>scripts\uiz_treelist_item_get_enabled.gml</script>
               <script>scripts\uiz_treelist_item_get_boxState.gml</script>
             </scripts>
+            <script>scripts\uiz_treelist_isMouseOverBox.gml</script>
           </scripts>
           <scripts name="valuebox">
             <script>scripts\uiz_valuebox_setvalue.gml</script>
@@ -1788,6 +1798,7 @@
           <scripts name="slideframe">
             <scripts name="internal">
               <script>scripts\uiz_slideframe_blackframe_calculate.gml</script>
+              <script>scripts\uiz_slideframe_menubutton_calculate.gml</script>
             </scripts>
           </scripts>
         </scripts>
@@ -2015,16 +2026,19 @@
               <script>scripts\uiz_xml_gettaginfo_at.gml</script>
               <script>scripts\uiz_xml_makelistfromattributes_at.gml</script>
               <script>scripts\uiz_xml_makelistfromattributes_nonsub_at.gml</script>
+              <script>scripts\uiz_xml_makelistfromattributes_nonsub_withEmptyTags_at.gml</script>
               <script>scripts\uiz_xml_isempty.gml</script>
               <script>scripts\uiz_xml_somethinghasdata.gml</script>
               <script>scripts\uiz_xml_attribute_getName.gml</script>
               <script>scripts\uiz_xml_attribute_getValue.gml</script>
+              <script>scripts\uiz_xml_getTagType.gml</script>
             </scripts>
             <scripts name="writing">
               <scripts name="adding tags">
                 <script>scripts\uiz_xml_writetag_at.gml</script>
                 <script>scripts\uiz_xml_writeHeadTag_at.gml</script>
                 <script>scripts\uiz_xml_writeHeadTag_in.gml</script>
+                <script>scripts\uiz_xml_writeDataTag_in.gml</script>
                 <script>scripts\uiz_xml_writeHeadTag_before.gml</script>
                 <script>scripts\uiz_xml_writetag_at_end.gml</script>
               </scripts>
@@ -2171,32 +2185,38 @@
         <script>scripts\scr_sort.gml</script>
         <script>scripts\scr_sort_debug.gml</script>
       </scripts>
-      <scripts name="win31">
-        <script>scripts\uiz_win31_template_mousemenu.gml</script>
-        <script>scripts\uiz_win31_destroy.gml</script>
-        <script>scripts\uiz_win32_addmenulist.gml</script>
-        <script>scripts\uiz_win31_createwindow.gml</script>
-        <script>scripts\uiz_win31_createwindow_size.gml</script>
-        <script>scripts\uiz_win31_stylewindow.gml</script>
-        <script>scripts\uiz_win31_addicon.gml</script>
-        <script>scripts\uiz_win31_closefilemanager.gml</script>
-        <script>scripts\uiz_win31_openfilemanager.gml</script>
-        <script>scripts\uiz_win31_openclipboard.gml</script>
-        <script>scripts\uiz_win31_opencalculator.gml</script>
-        <scripts name="minesweeper">
-          <script>scripts\uiz_win31_openminesweeper.gml</script>
-          <script>scripts\uiz_minesweeper_reset.gml</script>
-        </scripts>
-        <script>scripts\uiz_win31_calculatorgrid.gml</script>
-        <script>scripts\uiz_win31_window_spawnMouseMenu.gml</script>
-        <script>scripts\uiz_win31_window_handleMouseMenu.gml</script>
-      </scripts>
       <script>scripts\UIZ_versioninformation.gml</script>
+      <scripts name="examples, tutorials and templates">
+        <script>scripts\scr_slide_reactor_createObjects.gml</script>
+        <scripts name="win31">
+          <script>scripts\uiz_win31_template_mousemenu.gml</script>
+          <script>scripts\uiz_win31_destroy.gml</script>
+          <script>scripts\uiz_win32_addmenulist.gml</script>
+          <script>scripts\uiz_win31_createwindow.gml</script>
+          <script>scripts\uiz_win31_createwindow_size.gml</script>
+          <script>scripts\uiz_win31_stylewindow.gml</script>
+          <script>scripts\uiz_win31_addicon.gml</script>
+          <script>scripts\uiz_win31_closefilemanager.gml</script>
+          <script>scripts\uiz_win31_openfilemanager.gml</script>
+          <script>scripts\uiz_win31_filemanager_clickFolder.gml</script>
+          <script>scripts\uiz_win31_filemanager_selectFolder.gml</script>
+          <script>scripts\uiz_win31_filemanager_dragFolder.gml</script>
+          <script>scripts\uiz_win31_openclipboard.gml</script>
+          <script>scripts\uiz_win31_opencalculator.gml</script>
+          <scripts name="minesweeper">
+            <script>scripts\uiz_win31_openminesweeper.gml</script>
+            <script>scripts\uiz_minesweeper_reset.gml</script>
+            <script>scripts\uiz_minesweeper_openSpots.gml</script>
+          </scripts>
+          <script>scripts\uiz_win31_calculatorgrid.gml</script>
+          <script>scripts\uiz_win31_window_spawnMouseMenu.gml</script>
+          <script>scripts\uiz_win31_window_handleMouseMenu.gml</script>
+        </scripts>
+      </scripts>
     </scripts>
     <script>scripts\live_call.gml</script>
     <script>scripts\live_call_ext.gml</script>
-    <script>scripts\script1153.gml</script>
-    <script>scripts\scr_slide_reactor_createObjects.gml</script>
+    <script>scripts\script1214.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="uiz">
@@ -2222,12 +2242,32 @@
   </fonts>
   <objects name="objects">
     <objects name="uiZ">
-      <objects name="examples and tutorials">
-        <object>objects\obj_uiZ_ownuiz_example1</object>
-        <object>objects\obj_uiz_basictutorial</object>
-        <object>objects\obj_uiz_ownuiz</object>
-        <object>objects\obj_uiz_example1_old</object>
+      <objects name="examples, tutorials and templates">
         <object>objects\obj_sort_example</object>
+        <object>objects\obj_uiz_basictutorial</object>
+        <object>objects\obj_uiz_example1_old</object>
+        <object>objects\obj_uiz_ownuiz</object>
+        <object>objects\obj_uiZ_ownuiz_example1</object>
+        <objects name="serverbrowser">
+          <object>objects\obj_uiZ_serverbrowser</object>
+        </objects>
+        <objects name="templateobjects">
+          <object>objects\obj_uiZ_template</object>
+          <object>objects\obj_uiZ_template_background</object>
+          <object>objects\obj_uiZ_template_scrollbar</object>
+        </objects>
+        <objects name="templates">
+          <object>objects\obj_uiZ_template_0</object>
+          <object>objects\obj_uiZ_template_1</object>
+        </objects>
+        <objects name="windows 3.1">
+          <object>objects\obj_windows31controller</object>
+          <object>objects\obj_windows31_filemanager</object>
+          <object>objects\obj_windows31_clipboard</object>
+          <object>objects\obj_windows31_calculator</object>
+          <object>objects\obj_windows31_minesweeper</object>
+          <object>objects\obj_uiZ_minesweeper</object>
+        </objects>
       </objects>
       <objects name="keepoff">
         <object>objects\obj_uiZ_animationtest</object>
@@ -2306,18 +2346,6 @@
         <object>objects\obj_uiZ_treelist</object>
         <object>objects\obj_uiZ_window</object>
       </objects>
-      <objects name="serverbrowser">
-        <object>objects\obj_uiZ_serverbrowser</object>
-      </objects>
-      <objects name="templateobjects">
-        <object>objects\obj_uiZ_template</object>
-        <object>objects\obj_uiZ_template_mouse</object>
-        <object>objects\obj_uiZ_template_tiles</object>
-      </objects>
-      <objects name="templates">
-        <object>objects\obj_uiZ_template_0</object>
-        <object>objects\obj_uiZ_template_1</object>
-      </objects>
       <objects name="uiz_designer">
         <objects name="uiz_shadow">
           <object>objects\obj_uiz_des_minesweeper</object>
@@ -2394,25 +2422,12 @@
         <object>objects\obj_uiz_des_frameset_bak</object>
         <object>objects\obj_uiz_des_frameset</object>
       </objects>
-      <objects name="windows 3.1">
-        <object>objects\obj_windows31controller</object>
-        <object>objects\obj_windows31_filemanager</object>
-        <object>objects\obj_windows31_clipboard</object>
-        <object>objects\obj_windows31_calculator</object>
-        <object>objects\obj_windows31_minesweeper</object>
-        <object>objects\obj_uiZ_minesweeper</object>
-      </objects>
     </objects>
     <object>objects\jkkj</object>
-    <object>objects\object154</object>
-    <object>objects\object155</object>
-    <object>objects\charSpeedTest</object>
-    <object>objects\obj_spriteStretchTest</object>
-    <object>objects\jkkj_creator</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
     <room>rooms\rm_uiz_windows31</room>
+    <room>rooms\rm_test</room>
     <room>rooms\rm_uiz_serverbrowser</room>
     <room>rooms\uiz_designer</room>
     <room>rooms\uiz_macromanager</room>

@@ -8,7 +8,10 @@ uiz_getscalervalues();
 uiz_fix_Base_Pos_Values();
 uiz_fix_Base_View();
 uiz_fix_Base_iValues();
-if animation_updatechildren and (destroy!=1 or function_count<1) then{uiz_fixchildren(id,true)}
+if animation_updatechildren and (destroy!=1 or function_count<1) then{
+    uiz_fixchildren(id,true);
+}
+uiz_updater_FixViews();
 if function_count=1 then{
 function_count=-1;
 if destroy=1 then{

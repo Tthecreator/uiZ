@@ -673,7 +673,9 @@ if checkbuttons = false and isresizing = 0 and global.selectedwindow = id and mo
             an_old_posinframex = uiz_static
             an_old_posinframey = uiz_static
             uiz_window_unmaximize();
-            windowsminx = uiz_getmouse_x() - (uiz_getmouse_x() / obj_uiZ_controller.width) * (an_old_width)
+            //windowsminx = uiz_getmouse_x() - ((uiz_getmouse_x()-parent.ix) / parent.width) * (an_old_width)
+            var mouseXFactor = (uiz_getmouse_x() - parent.ix) / parent.width;
+            windowsminx += parent.width * mouseXFactor - an_old_width * mouseXFactor
             fix = 2;
         }
 
@@ -963,9 +965,9 @@ draw_set_valign(valign)
 draw_set_halign(halign)
 draw_text(ix+(ilx-ix)*(halign/2),iy+(ily-iy)*(valign/2),uiz_gettext_contained(windowtext,width-bars*(1+button_cross+button_maximize+button_minimize)))
 
-if button_cross then{uiz_draw_spritebutton_state(ilx-bars,iy,ilx,ily-bkmar_bot,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,1,button_cross_state)}
-if button_maximize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily-bkmar_bot,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,1,button_maximize_state)}
-if button_minimize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross+button_maximize),iy,ilx-bars*(button_cross+button_maximize),ily-bkmar_bot,button_minimize_color_normal,button_minimize_color_over,button_minimize_color_in,button_minimize_sprite,1,button_minimize_state)}
+if button_cross then{uiz_draw_spritebutton_state(ilx-bars,iy,ilx,ily-bkmar_bot,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,alpha,button_cross_state)}
+if button_maximize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily-bkmar_bot,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,alpha,button_maximize_state)}
+if button_minimize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross+button_maximize),iy,ilx-bars*(button_cross+button_maximize),ily-bkmar_bot,button_minimize_color_normal,button_minimize_color_over,button_minimize_color_in,button_minimize_sprite,alpha,button_minimize_state)}
 
 //draw custom buttons on the left
 var leftButtons = ds_list_size(custom_buttons_left_sprite);

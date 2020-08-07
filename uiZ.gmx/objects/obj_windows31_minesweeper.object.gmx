@@ -58,31 +58,32 @@ winpopspawned=false;
           <argument>
             <kind>1</kind>
             <string>if instance_exists(minefield)  then{
-if minefield.update=true then{running=true;}//make the timer start running on the first click
-if minefield.won!=-1 then{running=false;}
-if instance_exists(scorecounter) then{
-scorecounter.value=max(0,minefield.mines-minefield.markings)
-}
-if instance_exists(button) then{
-if button.kmouseover=4 then{uiz_minesweeper_reset(minefield)}
-//handle the different sprites for the button
-button.sprite=spr_uiZ_win31_happybutton;
-if minefield.kmouseover=2 then{button.sprite=spr_uiZ_win31_wowbutton;}
-if minefield.won=0 then{button.sprite=spr_uiZ_win31_deadbutton;}
-if minefield.won=1 or keyboard_check(vk_space) then{button.sprite=spr_uiZ_win31_coolbutton;
-if !instance_exists(winpop) and winpopspawned=false then{
-//launch you won screen
-winpopspawned=true
-winpop=uiz_popup_string("Congratulations!, you have the fastest time!#Please type your name.","Congratulations!",true,"Anonymouse")
-var wp=winpop.window;
-with(obj_windows31controller){uiz_win31_stylewindow(wp);}
-}
-}else{winpopspawned=false}
-}
-if running=true and instance_exists(timecounter) then{
-time+=uiz_sc(1);
-timecounter.value=floor(time)
-}
+    if minefield.update=true then{running=true;}//make the timer start running on the first click
+    if minefield.won!=-1 then{running=false;}
+    if instance_exists(scorecounter) then{
+        uiz_spritecounter_setvalue(scorecounter,max(0,minefield.mines-minefield.markings));
+    }
+    if instance_exists(button) then{
+        if button.kmouseover=4 then{uiz_minesweeper_reset(minefield);}
+        //handle the different sprites for the button
+        button.sprite=spr_uiZ_win31_happybutton;
+        if minefield.kmouseover=2 then{button.sprite=spr_uiZ_win31_wowbutton;}
+        if minefield.won=0 then{button.sprite=spr_uiZ_win31_deadbutton;}
+        if minefield.won=1 or keyboard_check(vk_space) then{
+            button.sprite=spr_uiZ_win31_coolbutton;
+            if !instance_exists(winpop) and winpopspawned=false then{
+            //launch you won screen
+            winpopspawned=true
+            winpop=uiz_popup_string("Congratulations!, you have the fastest time!#Please type your name.","Congratulations!",true,"Anonymouse")
+            var wp=winpop.window;
+            with(obj_windows31controller){uiz_win31_stylewindow(wp);}
+            }
+        }else{winpopspawned=false}
+    }
+    if running=true and instance_exists(timecounter) then{
+        time+=uiz_sc(1);
+        uiz_spritecounter_setvalue(timecounter,floor(time));
+    }
 }
 
 if !instance_exists(window) then{instance_destroy()}

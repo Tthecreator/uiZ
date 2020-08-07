@@ -156,8 +156,8 @@ if outline=1 then{
 //draw_set_color(outlinecolor)
 uiz_km_setcolor(outlinecolor,outlineoncolor,outlineincolor)
 draw_set_alpha(outlinealpha*alpha)
-draw_rectangle(rx-1,ry-1,rlx,rly,1)
-draw_line(rx,rly,rlx,rly);
+draw_rectangle(rx-1,ry-1,rlx-1,rly-1,1)
+draw_line(rx,rly-1,rlx,rly-1);
 draw_set_color(c_white)
 draw_set_alpha(1)
 }

@@ -34,10 +34,12 @@ value=0
 buttoncolor=c_white//c//button color//
 buttononcolor=c_gray//c//button mouse over color//
 buttonincolor=c_black//c//button mouse click color//
+buttonbackalpha=1//c//button back alpha//
+buttontrianglealpha=1//c//button triangle alpha//
 buttontrianglecolor=c_black//c//button triangle color//
 buttontriangleoncolor=c_dkgray//c//button triangle mouse over color//
 buttontriangleincolor=c_white//c//button triangle mouse click color//
-buttonmargin=3//v//button margin//
+buttonmargin=5//v//button margin//
 trianglemargin=4//v//triangle margin//
 uselist=-1
 masklist=-1
@@ -278,17 +280,18 @@ var mk=uselist
 if uselist!=-1 and ds_exists(uselist,ds_type_list) and ds_list_size(uselist)&gt;selected then{value=string(uselist[| selected]);maskvalue=value}else{value=""}
 if masklist!=-1 and ds_exists(masklist,ds_type_list) and ds_list_size(masklist)&gt;=ds_list_size(uselist) then{mk=masklist;maskvalue=string(masklist[| selected])}else{maskvalue=value}
 //if doupdatebutton=true then{
-draw_square(rlx+buttonmargin-buttonsz,ry+height/2-buttonsz/2+buttonmargin,rlx-buttonmargin,ry+height/2+buttonsz/2-buttonmargin,ucolor,1)
+draw_square(rlx+buttonmargin-buttonsz,ry+height/2-buttonsz/2+buttonmargin,rlx-buttonmargin+1,ry+height/2+buttonsz/2-buttonmargin+1,ucolor,buttonbackalpha*alpha);
 //draw the dropdown triangle
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(spr_square,0));
-draw_vertex_texture_colour(rlx+buttonmargin-buttonsz+trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin,0.5,0.5,icolor,1)
-draw_vertex_texture_colour(rlx-buttonmargin-trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin,0.5,0.5,icolor,1)
-draw_vertex_texture_colour(rlx-buttonsz/2,ry+height/2+buttonsz/2-buttonmargin-trianglemargin,0.5,0.5,icolor,1)
+draw_vertex_texture_colour(rlx+buttonmargin-buttonsz+trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin,0.5,0.5,icolor,buttontrianglealpha*alpha)
+draw_vertex_texture_colour(rlx-buttonmargin-trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin,0.5,0.5,icolor,buttontrianglealpha*alpha)
+draw_vertex_texture_colour(rlx-buttonsz/2,ry+height/2+buttonsz/2-buttonmargin-trianglemargin,0.5,0.5,icolor,buttontrianglealpha*alpha)
 draw_primitive_end()
 //}
 if doupdatebutton=false then{
 //draw text
 draw_set_color(textcolor)
+draw_set_alpha(alpha)
 draw_set_valign(fa_center)
 var txt="";
 if containtext=1 then{

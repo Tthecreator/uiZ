@@ -54,8 +54,11 @@ break;
 case obj_uiZ_surfaceholder:
 uiz_fixsurfaceholderpos(argument0);
 break;
-case obj_uiZ_slider:case obj_uiZ_slider_2col:
+case obj_uiZ_slider:
 uiz_fixsliderpos(argument0);
+break;
+case obj_uiZ_slider_2col:
+uiz_fixsliderpos_2col(argument0);
 break;
 case obj_uiZ_slickslider:
 uiz_fixslicksliderpos(argument0);

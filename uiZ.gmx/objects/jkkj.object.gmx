@@ -216,7 +216,7 @@ uiz_init()
 //uiz_useAppSurf(false);
 
 
-win=uiz_window_create(700,px,300,px)
+win=uiz_window_create(300,px,300,px)
 win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
 win.posinframey=uiz_center;
@@ -224,13 +224,19 @@ win.color_normal=$EEEEEE;
 //uiz_window_setbuttons(win,false,true,true);
 uiz_fixgeneralpos(win);
 
-/*
-o=uiz_c(obj_uiZ_textarea);
+
+
+o=uiz_c(obj_uiZ_button);
 uiz_setparent(o,win);
-o.posinframex=uiz_fill
-o.posinframey=uiz_fill
+o.posinframex=uiz_center
+o.posinframey=uiz_center
+o.posvalw = 0.5;
+o.posvalwtype = fc;
+o.posvalh = 0.5;
+o.posvalhtype = fc;
+
 uiz_fixgeneralpos(o);
-*/
+
 /*
 uiz_xml_init()
 //create xml
@@ -264,7 +270,7 @@ folderview.posinframex=uiz_fill;
 uiz_treelist_setxml(folderview,folders);
 //uiz_treelist_setboxsettings
 uiz_fixgeneralpos(folderview)
-*/
+//*/
 
 //*/
 /*

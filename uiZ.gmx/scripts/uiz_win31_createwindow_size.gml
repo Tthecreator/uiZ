@@ -18,7 +18,7 @@ win.button_minimize_sprite=spr_uiZ_win31_minimize;
 //change text
 win.windowtext=argument1
 uiz_win31_stylewindow(win);
-
+uiz_depth_foreground(win);
 uiz_fixwindowpos(win)
 uiz_fixchildren(win,true)
 //change frame options to be scrollable

@@ -151,10 +151,11 @@ if(keyboard_check(vk_control)){
            }else{
                var char = obj_uiZ_controller.keyboard_lastcurrentchar
            }
-           if acceptOnlyNumbers==false //we don't need to check if this is creates a valid number
+           if (acceptOnlyNumbers==false //we don't need to check if this is creates a valid number
            or (char==string_digits(char) and (typepos_real > 0 or string_char_at(str_real,1)!="-"))//we are typing a number (and we aren't typing it in front of a "-"
            or (acceptOnlyPositive==false and char=="-" and typepos_real = 0 and string_char_at(str_real,1)!="-")//we are typing a "-" at the beginning of the string
-           or (acceptOnlyIntegers==false and char=="." and string_count(".",str_real)==0)//we are typing a "." and there are no other "." in the string
+           or (acceptOnlyIntegers==false and char=="." and string_count(".",str_real)==0))//we are typing a "." and there are no other "." in the string
+           and (char!=chr($0A) and char!=chr($0D))
            then{
               if hasselection then{
                     uiz_stringbox_deleteselection();

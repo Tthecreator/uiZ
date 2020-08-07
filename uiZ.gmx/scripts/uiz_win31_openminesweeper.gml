@@ -10,8 +10,8 @@ uiz_fixgeneralpos(back)
 //add button
 //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
 button=uiz_c(obj_uiZ_easybutton)
-uiz_setparent(button,f)
-button.depth=-3;//put it above the background
+uiz_setparent(button,f);
+uiz_depth_set(button,-3);//put it above the background
 button.posinframex=uiz_center;
 button.posinframey=fc;
 button.posvaly=15/195;
@@ -26,7 +26,7 @@ uiz_fixgeneralpos(button)
 //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
 scorecounter=uiz_c(obj_uiZ_spritecounter)
 uiz_setparent(scorecounter,f)
-scorecounter.depth=-3;//put it above the background
+uiz_depth_set(scorecounter,-3);//put it above the background
 scorecounter.posinframex=fc;
 scorecounter.posvalx=17/152;
 scorecounter.posinframey=fc;
@@ -43,7 +43,7 @@ uiz_fixgeneralpos(scorecounter)
 //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
 timecounter=uiz_c(obj_uiZ_spritecounter)
 uiz_setparent(timecounter,f)
-timecounter.depth=-3;//put it above the background
+uiz_depth_set(timecounter,-3);//put it above the background
 timecounter.posinframex=fc;
 timecounter.posvalx=94/152;
 timecounter.posinframey=fc;
@@ -60,7 +60,7 @@ uiz_fixgeneralpos(timecounter)
 //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
 minefield=uiz_c(obj_uiZ_minesweeper)
 uiz_setparent(minefield,f)
-minefield.depth=-4;//put it above the background, and other objects (may there be any problems)
+uiz_depth_set(minefield,-4);//put it above the background, and other objects (may there be any problems)
 minefield.posinframex=fc;
 minefield.posvalx=12/152;
 minefield.posinframey=fc;

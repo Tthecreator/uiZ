@@ -17,6 +17,8 @@ with(argument0){
 destroy=true;
 function_x=destroyxfunction
 function_y=destroyyfunction
+function_w=destroyxfunction
+function_h=destroyyfunction
 function_a=destroyafunction
 function_time=destroyspeed
 oldx=x

@@ -77,7 +77,9 @@ indestroying=1
 if box&gt;0 and instance_exists(box) then{global.uiz_popupreturnstring=box.value;}
 //if 
 //uiz_destroyobject(destroyframe)
-uiz_destroyobject_animation(destroyframe,window.destroyxfunction,window.destroyyfunction,window.destroyafunction,window.destroyspeed)
+//uiz_destroyobject_animation(destroyframe,window.destroyxfunction,window.destroyyfunction,window.destroyafunction,window.destroyspeed)
+uiz_destroyobject_animation(destroyframe,uiz_zero,uiz_zero,uiz_smoothstep,window.destroyspeed)
+uiz_animation_updatechildren(destroyframe, true);
 
 }
 if box&gt;0 and instance_exists(box) then{str=box.value;}
@@ -89,6 +91,29 @@ destroyframe.str=str;
 }else{
 uiz_destroyobject(id)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_updater_FixViews();
 </string>
           </argument>
         </arguments>
@@ -135,7 +160,7 @@ uiz_destroyobject(id)
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-draw_sprite_ext(sprite,kmouseover+spraddto,rx,ry,width/sprite_get_width(sprite),height/sprite_get_height(sprite),0,color,image_alpha)
+draw_sprite_ext(sprite,kmouseover+spraddto,rx,ry,width/sprite_get_width(sprite),height/sprite_get_height(sprite),0,color,alpha);
 if text!="" then{
 draw_set_alpha(1)
 draw_set_color(textcolor)

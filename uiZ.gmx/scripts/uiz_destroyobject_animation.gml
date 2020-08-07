@@ -1,4 +1,4 @@
-///uiz_destroyobject_animation(id,xfunction,yfunction,alphafundtion,time)
+///uiz_destroyobject_animation(id,xfunction,yfunction,alphafunction,time)
 /*
 Safely destroys an uiZ object, but does it with style.
 It is important you use this script instead of the normal instance_destroy() script, as this script removes the reference to this object from its parent.
@@ -14,6 +14,8 @@ with(argument0){
 destroy=true;
 function_x=argument1
 function_y=argument2
+function_w=argument1
+function_h=argument2
 function_a=argument3
 function_time=argument4
 oldx=x

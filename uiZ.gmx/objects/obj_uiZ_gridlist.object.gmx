@@ -585,17 +585,17 @@ if uiz_cntn() then {
                 }
                 if cur_nwat_old&gt;-1 and cur_nhat_old&gt;-1 and (selectedx!=selectedx_old or selectedy!=selectedy_old) then{
                     if clickedy == selectedy_old and clickedx == selectedx_old then{
-                        if selectedx_old &lt; ds_list_size(mainlist)-1 then{
-                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old-1,yh+cur_nhat_old,selectionincolor,selectioninalpha*alpha);
-                        }else{
-                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old,yh+cur_nhat_old,selectionincolor,selectioninalpha*alpha);
-                        }
+//                        if selectedx_old &lt; ds_list_size(mainlist)-1 then{
+//                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old-1,yh+cur_nhat_old,selectionincolor,selectioninalpha*alpha);
+//                        }else{
+                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old,yh+cur_nhat_old+1,selectionincolor,selectioninalpha*alpha);
+//                        }
                     }else{
-                        if selectedx_old &lt; ds_list_size(mainlist)-1 then{
-                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old-1,yh+cur_nhat_old,normalcolor,normalalpha*alpha);        
-                        }else{
-                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old,yh+cur_nhat_old,normalcolor,normalalpha*alpha);
-                        }
+//                        if selectedx_old &lt; ds_list_size(mainlist)-1 then{
+//                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old-1,yh+cur_nhat_old,normalcolor,normalalpha*alpha);        
+//                        }else{
+                            draw_square(rx+cur_wat_old,yh+cur_hat_old,rx+cur_nwat_old,yh+cur_nhat_old+1,normalcolor,normalalpha*alpha);
+//                        }
                     }
                     uiz_gridlist_drawcell(selectedx_old,selectedy_old,rx+cur_wat_old,yh+cur_hat_old,sizelist[|selectedx_old]);
                 }
@@ -612,9 +612,9 @@ if uiz_cntn() then {
                     //sdbm("seke",selectedy,selectedy_old,selectedx,selectedx_old,uiz_getmouse_x()-rx,cur_wat,cur_nwat,width)
                     if (cur_hat_old&gt;-1 or cur_nhat_old&gt;-1) and selectedy!=selectedy_old and selectedy_old!=-1 then{
                         if clickedy == selectedy_old then{
-                            draw_square(rx,yh+cur_hat_old,rlx-scrollbarw,yh+cur_nhat_old,selectionincolor,selectioninalpha*alpha);
+                            draw_square(rx,yh+cur_hat_old,rlx-scrollbarw,yh+cur_nhat_old+1,selectionincolor,selectioninalpha*alpha);
                         }else{
-                            draw_square(rx,yh+cur_hat_old,rlx-scrollbarw,yh+cur_nhat_old,normalcolor,normalalpha*alpha);        
+                            draw_square(rx,yh+cur_hat_old,rlx-scrollbarw,yh+cur_nhat_old+1,normalcolor,normalalpha*alpha);        
                         }
                         //draw_square(rx,yh+cur_hat_old,rlx-scrollbarw,yh+cur_nhat_old,uiz_gridlist_randomcolor(50,-1),normalalpha*alpha);        
                         uiz_gridlist_drawrow(selectedy_old,rx,yh+cur_hat_old)
@@ -650,24 +650,24 @@ if uiz_cntn() then {
 //                }
                 if (selectedx_old!=selectedx) and (cur_wat_old&gt;-1 or cur_nwat_old&gt;-1) then{
                     if clickedx == selectedx_old and updatemode=3 then{
-                        if selectedx_old &lt; ds_list_size(mainlist)-1 then{
-                            draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old-1,rly,selectionincolor,selectioninalpha*alpha);
-                        }else{
+//                        if selectedx_old &lt; ds_list_size(mainlist)-1 then{
+//                            draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old-1,rly,selectionincolor,selectioninalpha*alpha);
+//                        }else{
                             draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old,rly,selectionincolor,selectioninalpha*alpha);
-                        }
+//                        }
                     }else{
                         if clickedx == selectedx_old and updatemode=4 then{
-                            if selectedx_old &lt; ds_list_size(mainlist)-1 then{
-                                draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old-1,rly,selectionincolor,selectioninalpha*alpha);
-                            }else{
+//                            if selectedx_old &lt; ds_list_size(mainlist)-1 then{
+//                                draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old-1,rly,selectionincolor,selectioninalpha*alpha);
+//                            }else{
                                 draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old,rly,selectionincolor,selectioninalpha*alpha);
-                            }
+//                            }
                         }else{
-                            if selectedx_old &lt; ds_list_size(mainlist)-1 then{
-                                draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old-1,rly,normalcolor,normalalpha*alpha);
-                            }else{
+//                            if selectedx_old &lt; ds_list_size(mainlist)-1 then{
+//                                draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old-1,rly,normalcolor,normalalpha*alpha);
+//                            }else{
                                 draw_square(rx+cur_wat_old,yh,rx+cur_nwat_old,rly,normalcolor,normalalpha*alpha);
-                            }
+//                            }
                         }
                     }
                     uiz_gridlist_drawcolumn(selectedx_old,rx+cur_wat_old,yh,cur_nwat_old-cur_wat_old);

@@ -30,10 +30,10 @@ f=g.gridobject[e,i]
 }
 //f.parent=g
 uiz_setparent(f,g)
-f.x=e*(framew)+g.marginl+g.margincellw
-f.y=i*(frameh)+g.margint+g.margincellh
-f.width=framew-g.margincellw*2
-f.height=frameh-g.margincellh*2
+f.x=round(e*(framew)+g.marginl+g.margincellw)
+f.y=round(i*(frameh)+g.margint+g.margincellh)
+f.width=round(framew-g.margincellw*2)
+f.height=round(frameh-g.margincellh*2)
 uiz_fixgeneralpos(f)
 }
 }

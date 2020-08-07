@@ -71,6 +71,7 @@ onDragScript = uiz_treelist_dragScript_move;//this script is called whenever an 
 //1: the handle/id of the item being dragged
 //2: destinationItem, the handle/id of the item the mouse is currently over
 //3: a float between 0 and 1 of how far the mouse is currently over the destinationItem.
+onClickScript = uiz_treelist_clickScript_switch_node///this script is called whenever the user clicks an item in the list
 
 update=0;
 updated=0;
@@ -258,8 +259,9 @@ if currentSelectionPos!=-1 then{
         case uiz_mousereleased:
             //expand node
             if draggingItem=-1 then{
-                uiz_treelist_switch_node(currentSelectionList);
-                uiz_updater_FixViews();
+                if onClickScript&gt;=0 and script_exists(onClickScript) then{
+                    script_execute(onClickScript,id,currentSelectionList)
+                }
             }
         case uiz_mousepressed:
             if draggingItemCandidate=-1 and mouse_check_button_pressed(mb_left) then{
@@ -307,7 +309,7 @@ if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
         drawDraggingItem=draggingItem;
         draggingItem=-1;
         uiz_mouse_unfreeze();
-        script_execute(onDragScript,id,drawDraggingItem,currentSelectionList, (uiz_getmouse_y()-(ry+fontHeight*currentSelectionPos-startOffset))/fontHeight,true);
+        script_execute(onDragScript,id,drawDraggingItem,currentSelectionList, (uiz_getmouse_y()-(ry+fontHeight*(currentSelectionPos-startPos)+startOffset))/fontHeight,true);
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight-1);
         updateDragArea = true;
         //lastSelectionPos=-1;
@@ -317,7 +319,9 @@ if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
 if mouse_check_button_released(mb_left) then{
     if draggingItem!=-1 then{
         uiz_mouse_unfreeze();
-    }
+    }//else{
+        
+//    }
     draggingItem=-1;
     draggingItemCandidate=-1;
 }
@@ -577,6 +581,10 @@ for(var i=startList;i&lt;lsz;i+=0){
 //sdbm("draggingItem",draggingItem,global.mousefrozen)
 updateDragArea = false;
 if draggingItem!=-1 then{
+    if font&gt;-1 then{draw_set_font(font)}        
+    draw_set_halign(fa_left)
+    draw_set_valign(fa_top)
+    draw_set_color(textcolor);
     var srlx;
     if doscroll then{srlx=scrollBarX-rx;}else{srlx=width}
     var oldHierarchy = hierarchyLines;
@@ -609,8 +617,8 @@ if draggingItem!=-1 then{
             <kind>1</kind>
             <string>/*
 draw_set_color(c_black);
-draw_text(10,10,uiz_xml_getdebugstringtotal(usexml));
-*/
+draw_text(10,30,uiz_xml_getdebugstringtotal(usexml));
+//*/
 </string>
           </argument>
         </arguments>

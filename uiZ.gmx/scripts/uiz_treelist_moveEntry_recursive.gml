@@ -1,4 +1,4 @@
-///uiz_treelist_moveEntry(treelist,itemHandle,destinationHandle,[indentLevel],[isOffset])
+///uiz_treelist_moveEntry_recursive(treelist,itemHandle,destinationHandle,[indentLevel],[isOffset])
 //Moves an entry and all its children from item to destination.
 
 //Optional: indentLevel. If this argument is omitted the indent of the item already at the destinationHandle is used.

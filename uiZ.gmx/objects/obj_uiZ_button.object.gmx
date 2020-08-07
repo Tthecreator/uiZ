@@ -106,6 +106,7 @@ margin_out=-1//v//margin out//
             <kind>1</kind>
             <string>
 if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
+uiz_fix_Background();
 uiz_updater_FixViews();
 </string>
           </argument>

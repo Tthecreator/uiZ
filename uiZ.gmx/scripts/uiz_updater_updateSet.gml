@@ -3,7 +3,7 @@
 //argumetn1: force update all objects
 with(argument0){
 
-    if argument1 or ((object_index=obj_uiZ_controller or uiz_doredraw=true or uiz_dodraw=true or obj_uiZ_controller.uiz_updateall=true) and uiz_enabled=true) then{
+    if (argument1 or (object_index=obj_uiZ_controller or uiz_doredraw=true or uiz_dodraw=true or obj_uiZ_controller.uiz_updateall=true))and uiz_enabled=true then{
     
         if object_index!=obj_uiZ_controller then{
             global.uiz_fix_updates_draw++;

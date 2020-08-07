@@ -129,28 +129,6 @@ containtowhosparent=id
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -223,8 +201,9 @@ if height&gt;=width/2 then{
 //if the button is really narrow, and the sprite doesn't accually fit
 var hsc=floor(height)/sprite_get_height(sprite);
 var sprpx=round(width/hsc/2);
-draw_sprite_part_ext(sprite,kmouseover*3+spraddto,0,0,sprpx,height,rx,ry,hsc,hsc,color,alpha)
-draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,height,rx+sprpx+1,ry,hsc,hsc,color,alpha)
+var wsc = floor(width/2) / sprpx;
+draw_sprite_part_ext(sprite,kmouseover*3+spraddto,0,0,sprpx,height,rx,ry,wsc,hsc,color,alpha)
+draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,height,rx+width/2,ry,wsc,hsc,color,alpha)
 }else{
 //draw normally
 var nsw=sprite_get_width(sprite)

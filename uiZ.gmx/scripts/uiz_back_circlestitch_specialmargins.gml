@@ -126,13 +126,13 @@ uiz_draw_sprite_tiles(bkspr,3,nrx-nsw,nry,nrx,nrly,szx,1,bkcol,alpha,0,0)//left
 }
 
 //top-left
-draw_sprite_ext(bkspr,4,(nrx2-nsw),(nry2-nsh),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,4,(nrx2-nsw),(nry2-nsh),1,1,0,bkcol,alpha)
 //top right
-draw_sprite_ext(bkspr,5,(nrlx2),(nry2-nsh),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,5,(nrlx2),(nry2-nsh),1,1,0,bkcol,alpha)
 //bottom right
-draw_sprite_ext(bkspr,6,(nrlx2),(nrly2),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,6,(nrlx2),(nrly2),1,1,0,bkcol,alpha)
 //bottom left
-draw_sprite_ext(bkspr,7,(nrx2-nsw),(nrly2),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,7,(nrx2-nsw),(nrly2),1,1,0,bkcol,alpha)
 
 }
 //draw_set_alpha(1)

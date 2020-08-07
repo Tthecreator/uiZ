@@ -40,6 +40,14 @@ with(argument[0]){
         var readXMLHandle = handleList[|argument[1]];
         var attributeList = ds_list_create();
         var attributeDataList = ds_list_create();
+        var tagName = uiz_xml_gettag_name_at(usexml, readXMLHandle);
+        var tagContents = "";
+        var hasTagContents = false;
+        var tagType = uiz_xml_getTagType(usexml, readXMLHandle);
+        if tagType==uiz_xml_dataTag or tagType==uiz_xml_dataTagWithAttributes then{
+            var tagContents = uiz_xml_readtag(usexml, readXMLHandle);
+            var hasTagContents = true;
+        }
         while(true){
             readXMLHandle = uiz_xml_nextattribute(usexml,readXMLHandle);
             if readXMLHandle=-1 then{
@@ -62,7 +70,11 @@ with(argument[0]){
     if argument[2]>argument[1] then{--argument[2];}
     if updXML then{
         //sdbm("before add");
-        uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState,attributeList,attributeDataList);
+        if hasTagContents then{
+            uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState,attributeList,attributeDataList,tagName,tagContents);
+        }else{
+            uiz_treelist_addEntryAt(argument[0],argument[2],name,sprite,img,indent,enabled,boxState,attributeList,attributeDataList,tagName);
+        }
         //sdbm("after add");
         //sdbm("addedEntry",usexml)
         //sdbm(uiz_dslist_print(handleList));

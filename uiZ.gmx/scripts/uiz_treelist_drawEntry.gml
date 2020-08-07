@@ -1,4 +1,4 @@
-///uiz_treelist_drawEntry(item,ypos,rx,rlx)
+///uiz_treelist_drawEntry(itemHandle,ypos,rx,rlx)
 //if live_call(argument0,argument1,argument2,argument3) return live_result
 var i = argument0;
 var h = fontHeight;
@@ -20,15 +20,15 @@ var boxState = miscl mod 4;
 var tcol = textcolor;
 
 if draggingItem=i then{
-    draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backdragcolor,backdragalpha);
+    draw_square(rx,ry + hi,srlx,ry+ hi+h,backdragcolor,backdragalpha);
     tcol = textselcolor;
 }else{
     if currentSelectionList=i then{
         if kmouseover=uiz_mouseclick then{
-            draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backselcolor,backselalpha);
+            draw_square(rx,ry + hi,srlx,ry+ hi+h,backselcolor,backselalpha);
             tcol = textselcolor;
         }else{
-            draw_square(rx,ry + hi,srlx,ry+ hi+h-1,backoncolor,backonalpha);
+            draw_square(rx,ry + hi,srlx,ry+ hi+h,backoncolor,backonalpha);
             tcol = textoncolor;
         }
     }else{
@@ -97,6 +97,9 @@ if enabled {
     //boxadd += h+margin;
     draw_set_color(tcol);
     draw_text(rx+boxadd,ry + hi,name);
+    
+    //debug text
+    //draw_text(rx+boxadd,ry + hi,string_copy(name,1,5)+" @"+string(handleList[|i])+" = "+uiz_xml_getdebugstringtotal_one(usexml, handleList[|i]));
 }
 
 //if currentSelectionList=i then{draw_set_color(textcolor);draw_set_alpha(1);} //reset text color for next item

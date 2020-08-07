@@ -10,7 +10,11 @@ var h = argument1;
 var seh=uiz_xml_gethandleshortend(argument0,h)
 var eh=uiz_xml_gethandleend(argument0,h)
 repeat(seh-h){//remove tag part
-ds_list_delete(l,h)
+    ds_list_delete(l,h);
 }
-ds_list_delete(l,eh-(seh-h))//remove closing tag
-return seh-h+1;
+if eh!=-1 then{
+    ds_list_delete(l,eh-(seh-h))//remove closing tag
+    return seh-h+1;
+}else{
+    return seh-h;
+}

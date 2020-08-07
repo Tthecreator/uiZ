@@ -75,7 +75,7 @@ mscrollbary=0;
 mscrollbarx=0;
 scrollbarcorner_x=0;
 scrollbarcorner_y=0;
-
+scrollupdateobjs=ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -268,12 +268,26 @@ var ss;
 if posmode = uiz_horizontal then{
 var mouse_val=(uiz_getmouse_x()-mouse_snapx)/width;
 setpointx=clamp((1-value)-mouse_val*posmult,0,1);
-uiz_slideframe_blackframe_calculate(setpointx);
+if posmult=-1 then{
+    setpointx = 1-setpointx;
+    uiz_slideframe_blackframe_calculate(1-setpointx);
+    uiz_slideframe_menubutton_calculate(1-setpointx);
+}else{
+    uiz_slideframe_blackframe_calculate(setpointx);
+    uiz_slideframe_menubutton_calculate(setpointx);
+}
 ss = global.uiz_mouseswipedx;
 }else{
 var mouse_val=(uiz_getmouse_y()-mouse_snapy)/height;
 setpointy=clamp((1-posbool)-mouse_val,0,1);
-uiz_slideframe_blackframe_calculate(setpointy);
+if posmult=-1 then{
+    setpointy = 1-setpointy;
+    uiz_slideframe_blackframe_calculate(1-setpointy);
+    uiz_slideframe_menubutton_calculate(1-setpointy);
+}else{
+    uiz_slideframe_blackframe_calculate(setpointy);
+    uiz_slideframe_menubutton_calculate(setpointy);
+}
 ss = global.uiz_mouseswipedy;
 }
 //set to what value we are going
@@ -304,8 +318,13 @@ if posmode = uiz_horizontal then{
 }else{
     setpointy = setp;
 }
-
-uiz_slideframe_blackframe_calculate(setp);
+if posmult=-1 then{
+    uiz_slideframe_blackframe_calculate(1-setp);
+    uiz_slideframe_menubutton_calculate(1-setp);
+}else{
+    uiz_slideframe_blackframe_calculate(setp);
+    uiz_slideframe_menubutton_calculate(setp);
+}
 dofix=true;
 }
 }

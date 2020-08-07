@@ -59,7 +59,7 @@ uizreturnyes=0
 popwindow=0
 uiz_init()
 ///set the loading screen
-draw_set_font(uiz_fnt_dp_15)
+draw_set_font(uiz_fnt_dp_20)
 //create frame
 var c=obj_uiZ_controller.id;
 loadingf=uiz_frame_create()

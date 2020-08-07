@@ -28,9 +28,11 @@ win.barsizevaltype=px;
 //change buttons
 //if instance_exists(win.maxim) then{win.maxim.sprite=spr_uiZ_win31_maximize;}
 //if instance_exists(win.minim) then{win.minim.sprite=spr_uiZ_win31_minimize;}
-win.maxim_sprite=spr_uiZ_win31_maximize;
-win.minim_sprite=spr_uiZ_win31_minimize;
+win.button_maximize_sprite=spr_uiZ_win31_maximize;
+win.button_minimize_sprite=spr_uiZ_win31_minimize;
 //change text
 win.windowtextcolor=c_white
 win.halign=fa_center
 win.wholewidthalign=true;
+uiz_fixgeneralpos(win);
+uiz_fixchildren(win, true);

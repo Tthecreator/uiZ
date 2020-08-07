@@ -58,6 +58,7 @@ serveritemlist=ds_list_create();
 ds_list_add(serveritemlist,spr_uiZ_lock,spr_uiZ_shield,spr_uiZ_movie,"ServerName","Game","Players","Bots","Map","Latency")
 maingrid=ds_grid_create(9,3)
 serverlist.maingrid=maingrid
+//uiz_gridlist_selectionmode(serverlist,uiz_gridlist_selection_cell, true);
 ds_grid_set(maingrid,0,0,spr_uiZ_lock)
 ds_grid_set(maingrid,1,0,false)
 ds_grid_set(maingrid,2,0,true)

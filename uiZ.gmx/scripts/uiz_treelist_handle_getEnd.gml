@@ -9,6 +9,7 @@
 //          whats_up
 // + TEST2
 //
+//uiz_treelist_handle_getEnd(treelist, handleToTest)
 //In the above example a handle to whats_up would be returned.
 
 

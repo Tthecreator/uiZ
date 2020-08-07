@@ -162,7 +162,7 @@ if kmouseover&gt;1 and global.uiz_mouseswipeclick=true then{hasmouse=true global
             <kind>1</kind>
             <string>updated=false
 if kmouseover=uiz_mousepressed then{selected=true if global.doubleclick=1 then{updated=true}}else{
-if !mouse_check_button(mb_left) or mouse_check_button_released(mb_left) then{selected=false}
+if !mouse_check_button(mb_left) or mouse_check_button_released(mb_left) or kmouseover=uiz_nomouse then{selected=false}
 //if kmouseover=uiz_mousereleased then{
 //   selected=false;
 //}

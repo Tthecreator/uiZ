@@ -36,8 +36,8 @@ minegrid=-1;
 mines=10//v//number of mines//
 color=c_white//c//color blend//
 sprite=spr_uiZ_win31_minetiles//p//sprite to use//
-selx=0;
-sely=0;
+selx=-1;
+sely=-1;
 won=-1
 markings=0;
 openings=0;
@@ -67,29 +67,6 @@ uiz_minesweeper_reset(id)
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>uiz_beginstep()
 </string>
           </argument>
         </arguments>
@@ -125,7 +102,7 @@ if mouse_check_button_released(mb_right) then{
 //mark
 var szx=ds_grid_width(minegrid);
 var szy=ds_grid_height(minegrid);
-if ds_exists(minegrid,ds_type_grid) and szx&gt;=selx and szy&gt;=sely then{
+if ds_exists(minegrid,ds_type_grid) and szx&gt;=selx and szy&gt;=sely and selx&gt;=0 and sely&gt;=0 then{
 var m=minegrid[# selx,sely];
 update=true;
 if ((m &amp; 32)&gt;&gt;5)=0 then{
@@ -146,9 +123,12 @@ var m=minegrid[# selx,sely];
 if ((m &amp; 32)&gt;&gt;5)=0 and ((m &amp; 16)&gt;&gt;4)=0 then{
 if m mod 8=0 then{won=0;updated=true;}
 update=true;
-minegrid[# selx,sely]=m | 16;
-openings++;
+//minegrid[# selx,sely]=m | 16;
+//openings++;
+uiz_minesweeper_openSpots(selx,sely);
+
 //search around cell for empty grid spaces to enable (very optimized diamond shape search script)
+/*
 var squaresize=1
 var maxsquaresize=sqr(max(szx,szy))
 while(squaresize&lt;maxsquaresize){
@@ -223,11 +203,127 @@ or (((rb &amp; 16)&gt;&gt;4)=1 and (rb mod 8)=1) or (((rt &amp; 16)&gt;&gt;4)=1 
 }
 squaresize++
 }
+*/
 if openings&gt;=szx*szy-mines then{won=1;updated=true;}//check if won
 }
 }
 }
+uiz_updater_FixViews();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if kmouseover==uiz_nomouse then{
+    selx=-1;
+    sely=-1;
+    uiz_updater_FixViews();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_mouse_docheck();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if uiz_cntn() then{
+//draw_square(rx,ry,rlx,rly,c_red,1);
+if ds_exists(minegrid,ds_type_grid) then{
+var szx=ds_grid_width(minegrid);
+var szy=ds_grid_height(minegrid);
+var scx=(width/sprite_get_width(sprite))/sizex;
+var scy=(height/sprite_get_height(sprite))/sizey;
+var wx=width/szx;
+var wy=height/szy;
+var celltype,cellimage,cellenabled,cellflagged,m;
+for(var i=0;i&lt;szx;i++){
+for(var e=0;e&lt;szy;e++){
+m=minegrid[# i,e];
+celltype=m mod 8;
+//cellenabled=(m mod 16)div 8;
+//cellflagged=(m mod 32)div 16;
+cellenabled=(m &amp; 16)&gt;&gt;4;
+cellflagged=(m &amp; 32)&gt;&gt;5;
+//sdbm(cellenabled)
+if cellenabled=true or won!=-1 then{
+
+if celltype=0 then{
+if selx=i and sely=e then{cellimage=5}else{cellimage=4}
+}else{
+cellimage=5+celltype
+
+}
+
+}else{
+if cellflagged=false then{
+if selx=i and sely=e then{cellimage=1}else{cellimage=0}
+}else{if selx=i and sely=e then{cellimage=3}else{cellimage=2}}
+}
+
+draw_sprite_ext(sprite,cellimage,rx+wx*i,ry+wy*e,scx,scy,0,color,alpha)
+
+}}
+
+}
+uiz_containend()
+}
+
 </string>
           </argument>
         </arguments>
@@ -274,69 +370,6 @@ if openings&gt;=szx*szy-mines then{won=1;updated=true;}//check if won
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if uiz_cntn() then{
-if ds_exists(minegrid,ds_type_grid) then{
-var szx=ds_grid_width(minegrid);
-var szy=ds_grid_height(minegrid);
-var scx=(width/sprite_get_width(sprite))/sizex;
-var scy=(height/sprite_get_height(sprite))/sizey;
-var wx=width/szx;
-var wy=height/szy;
-var celltype,cellimage,cellenabled,cellflagged,m;
-for(var i=0;i&lt;szx;i++){
-for(var e=0;e&lt;szy;e++){
-m=minegrid[# i,e];
-celltype=m mod 8;
-//cellenabled=(m mod 16)div 8;
-//cellflagged=(m mod 32)div 16;
-cellenabled=(m &amp; 16)&gt;&gt;4;
-cellflagged=(m &amp; 32)&gt;&gt;5;
-//sdbm(cellenabled)
-if cellenabled=true or won!=-1 then{
-
-if celltype=0 then{
-if selx=i and sely=e then{cellimage=5}else{cellimage=4}
-}else{
-cellimage=5+celltype
-
-}
-
-}else{
-if cellflagged=false then{
-if selx=i and sely=e then{cellimage=1}else{cellimage=0}
-}else{if selx=i and sely=e then{cellimage=3}else{cellimage=2}}
-}
-
-draw_sprite_ext(sprite,cellimage,rx+wx*i,ry+wy*e,scx,scy,0,color,alpha)
-
-}}
-
-}
-uiz_containend()
-}
-
 </string>
           </argument>
         </arguments>

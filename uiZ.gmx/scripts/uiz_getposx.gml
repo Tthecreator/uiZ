@@ -42,7 +42,7 @@ return round(argument0*(parent.iheight)/*-leftmargin-rightmargin*/)
 return round(argument0*(parent.iwidth)/*-leftmargin-rightmargin*/);
 }
 break;
-default:
-return argument0;
-break;
+//default:
+//return argument0;
+//break;
 }

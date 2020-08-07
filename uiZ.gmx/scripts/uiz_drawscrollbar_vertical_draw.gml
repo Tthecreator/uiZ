@@ -144,9 +144,6 @@ if updated_o > 0 or uiz_selfmarked = false then {
             }
             draw_sprite_ext(argument4, sel, x0, y2, width / sw, width / sh, 0, argument5, 1) //bottom
         }
-        if keyboard_check(vk_space){
-            sdbm("break;!");
-        }
         if updated = false or update_bar=true or (state_change = true and((mstate >= 5 and mstate <= 6) or(mstate_last >= 5 and mstate_last <= 6))) {
             //draw the background
             switch (argument6) {

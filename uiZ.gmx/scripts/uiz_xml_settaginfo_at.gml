@@ -49,12 +49,13 @@ if(h-eh<=1) then{//if this tag is a headtag and not an headAttributeTag
         l[| h] = (lv<<3) + uiz_xml_dataTagWithAttributes;
     }else{
         if lt!=uiz_xml_headAttributeTag and lt!=uiz_xml_dataTagWithAttributes then{
+            sdbm(uiz_xml_getdebugstringtotal(usexml));
             sdbm("[uiZ|Warning]Could not change xml Tag into AttributeTag",h,lt);
             show_error("[uiZ|Warning]Could not change Tag into AttributeTag",false);
         }
     }
 }
-if lt==uiz_xml_dataTag or lt==uiz_xml_dataTagWithAttributes then{--eh;}
+//if lt==uiz_xml_dataTag or lt==uiz_xml_dataTagWithAttributes then{--eh;}
 ds_list_insert(l, eh, (uiz_list_getadd(d, argument2) << 3) + 4)
 ds_list_insert(l, eh + 1, (uiz_list_getadd(v, argument3) << 3) + 5)
 return true;

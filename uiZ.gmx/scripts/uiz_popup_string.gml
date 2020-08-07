@@ -48,20 +48,23 @@ One thing to note is that the window needs to have an animation that takes at le
 */
 if argument_count=5 then{draw_set_font(argument[4])}
 if argument[2]=1 then{
-var f=uiz_c(obj_uiZ_frame);
-f.posinframex=uiz_fill
-f.posinframey=uiz_fill
-f.depth=-1000000
-uiz_compatibility_popupfix(f)
-uiz_fixgeneralpos(f)
-var p=uiz_c(obj_uiZ_square);
-uiz_setparent(p,f)
-p.posinframex=uiz_fill
-p.posinframey=uiz_fill
-p.color=c_black
-p.image_alpha=0.3;
-//p.adddepth=1000000
-uiz_fixgeneralpos(p)
+    var f=uiz_c(obj_uiZ_frame);
+    f.posinframex=uiz_fill
+    f.posinframey=uiz_fill
+    //f.depth=-1000000
+//    uiz_depth_set(f,-1000000);
+    uiz_depth_foreground(f);
+    
+    uiz_compatibility_popupfix(f)
+    uiz_fixgeneralpos(f)
+    var p=uiz_c(obj_uiZ_square);
+    uiz_setparent(p,f)
+    p.posinframex=uiz_fill
+    p.posinframey=uiz_fill
+    p.color=c_black
+    p.image_alpha=0.3;
+    //p.adddepth=1000000
+    uiz_fixgeneralpos(p)
 }
 var dx=uiz_todpix(string_width(argument[0]))
 var dy=uiz_todpiy(string_height(argument[0]))
@@ -77,21 +80,24 @@ w.button_minimize=0;
 w.button_cross=1;
 w.contain=3
 w.windowtext=argument[1]
+uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
-var t=instance_create(0,0,obj_uiZ_drawtextlines)
+var t=instance_create(0,0,obj_uiZ_text)
 uiz_setparent(t,wf)
 t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
+uiz_text_setmultiline(t, true);
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
 t.posvalh=0.5
 t.center=1
 //t.posvalhtype=dp
 //t.posvalh=1
-t.text=argument[0]
+//t.text=argument[0];
+uiz_text_settext(t,argument[0]);
 if argument_count=5 then{t.font=argument[4]}
-uiz_fixgeneralpos(t)
+uiz_fixgeneralpos(t);
 
 
 var c=instance_create(0,0,obj_uiZ_stringbox)

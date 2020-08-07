@@ -34,8 +34,9 @@ object_explorer=0;
 object_clipboard=0;
 window_notepad=0;
 object_calculator=0;
+object_minesweeper=0;
 window_clock=0;
-show_debug_overlay(true)
+//show_debug_overlay(true)
 </string>
           </argument>
         </arguments>
@@ -453,7 +454,7 @@ with(object_clipboard){uiz_win31_openclipboard()}//handle setup script
             <string>///handle the Games window
 if instance_exists(window_Games) then{
 
-if button_minesweeper.updated=true and !instance_exists(object_explorer) then{
+if button_minesweeper.updated=true and !instance_exists(object_minesweeper) then{
 object_minesweeper=instance_create(0,0,obj_windows31_minesweeper)//this is not a uiz object, just a controller object
 window_minesweeper=uiz_win31_createwindow_size(obj_uiZ_controller.id,"Minesweeper",true,3,dp,3.8,dp)//we create the window in this object to keep the window controls working
 object_minesweeper.window=window_minesweeper;//give our new object a reference to our window
@@ -483,8 +484,8 @@ with(object_minesweeper){uiz_win31_openminesweeper()}//handle setup script
           <argument>
             <kind>1</kind>
             <string>///check if folderbuttons have been pressed
-//if folderbutton_Main.updated=true and !instance_exists(window_Main) then{
-if !instance_exists(window_Main) then{
+if folderbutton_Main.updated=true and !instance_exists(window_Main) then{
+//if !instance_exists(window_Main) then{
 window_Main=uiz_win31_createwindow(frame_ProgramManager,"Main",true)
 frame_Main=window_Main;
 //add icons to menu
@@ -493,16 +494,17 @@ button_clipboard=uiz_win31_addicon(frame_Main,"Clipboard",spr_uiZ_win31_clipboar
 }
 
 
-//if folderbutton_Games.updated=true and !instance_exists(window_Games) then{
-if !instance_exists(window_Games) then{
+if folderbutton_Games.updated=true and !instance_exists(window_Games) then{
+//if !instance_exists(window_Games) then{
 window_Games=uiz_win31_createwindow(frame_ProgramManager,"Games",true)
 frame_Games=window_Games;
 //add icons to menu
 button_minesweeper=uiz_win31_addicon(frame_Games,"Minesweeper",spr_uiZ_win31_minesweeper,0)
 }
 
-//if folderbutton_Accessories.updated=true and !instance_exists(window_Accessories) then{
-if !instance_exists(window_Accessories) then{
+
+if folderbutton_Accessories.updated=true and !instance_exists(window_Accessories) then{
+//if !instance_exists(window_Accessories) then{
 window_Accessories=uiz_win31_createwindow(frame_ProgramManager,"Accessories",true)
 frame_Accessories=window_Accessories;
 //add icons to menu
@@ -510,6 +512,7 @@ button_notepad=uiz_win31_addicon(frame_Accessories,"Notepad",spr_uiZ_win31_notep
 button_calculator=uiz_win31_addicon(frame_Accessories,"Calculator",spr_uiZ_win31_calculator,1)
 button_clock=uiz_win31_addicon(frame_Accessories,"Clock",spr_uiZ_win31_clock,2)
 }
+
 </string>
           </argument>
         </arguments>
@@ -541,7 +544,7 @@ uiz_setparent(notepad_text,window_notepad)
 notepad_text.posinframex=uiz_fill;
 notepad_text.posinframey=uiz_fill;
 notepad_text.texturescript=-1;
-notepad_text.value="You are free to type whatever you want here! Type as much as you like to, I won't hold you back. Do your best.";
+uiz_textarea_setvalue(notepad_text,"You are free to type whatever you want here! Type as much as you like to, I won't hold you back. Do your best.");
 uiz_fixgeneralpos(notepad_text)
 }
 
@@ -594,6 +597,33 @@ uiz_fixgeneralpos(object_clock)
             <kind>1</kind>
             <string>///run debug
 uiz_win31_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_black);
+draw_set_alpha(1);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_text(0,0,"fps: "+string(fps)+", fps_real: "+string(fps_real));
 </string>
           </argument>
         </arguments>

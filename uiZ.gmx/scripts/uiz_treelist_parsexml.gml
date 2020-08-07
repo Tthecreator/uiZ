@@ -98,6 +98,9 @@ with(argument0){
                 if isCollectingLineData==true then{
                     //new headtag, write previous values
                     uiz_treelist_parsexml_saveLineData(spr,img,name,lastTagHandle,level,enabled,boxState,fillNextPosQueue);
+                    if lastHeadTagType==uiz_xml_dataTag or lastHeadTagType==uiz_xml_dataTagWithAttributes then{
+                        --level;
+                    }
                 }
                 
                 isCollectingLineData=false;
@@ -118,6 +121,7 @@ with(argument0){
     }
     ds_stack_destroy(fillNextPosQueue);
     uiz_treelist_generateHierarchyItemList();
+    expandedLines = uiz_treelist_getExpandedLines();
 }
 
 #define uiz_treelist_parsexml_saveLineData
@@ -148,9 +152,9 @@ while(ds_stack_size(argument7)-1>=argument4){//stack level higher than desired l
             if nextItemList[|checkId]=-1 then{
                 nextItemList[|checkId] = curId//make other entry point to this one as it's next item in the list.
             }
-            if (checkId==curId-1){
-                ++expandedLines;
-            }
+            //if (checkId==curId-1){
+            //    ++expandedLines;
+            //}
         }
 }
 //if curLevel<=argument4 then{//if current stack level is less than desired level

@@ -9,7 +9,7 @@
 //can become this using uiz_xml_writeHeadTag_in(file,handle,"insertedTag"):
 //<test>
 //  <test2/>
-//  <insertedTag/>
+//  <insertedTag></insertedTag>
 //</test>
 var h = argument[1]
 if h > -1 and(argument_count mod 2) = 1 then {

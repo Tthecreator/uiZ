@@ -69,5 +69,5 @@ minegrid[# i,e]=minecount;
 
 
 
-
+uiz_updater_FixViews();
 }

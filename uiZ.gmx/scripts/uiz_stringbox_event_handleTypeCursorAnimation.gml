@@ -11,5 +11,6 @@ if (hasselection=false and typing=true) then{//draw selector
         var anim = 1 - uiz_animation_getfunction((count - 0.5) * 2, typeanimationout)
     }
  uiz_typecursor_setalpha(anim*alpha); 
- uiz_typecursor_register(typepos_dis_px,iy,typepos_dis_px,ily,cursorcolor,cursorwidth)  
+// uiz_typecursor_register(clamp(typepos_dis_px,cntnx,cntnlx),iy,clamp(typepos_dis_px,cntnx,cntnlx),ily,cursorcolor,cursorwidth)  
+uiz_stringbox_typecursor_register();
 }

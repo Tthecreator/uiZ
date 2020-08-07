@@ -22,6 +22,7 @@ global.uiz_windows+=2
 
 with(w){
 uiz_window_fixadddepth();
+uiz_depth_foreground(id);
 //sdbm("set new window depth to ",depth);
 global.selectedwindow=id
 }

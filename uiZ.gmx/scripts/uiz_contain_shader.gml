@@ -5,5 +5,5 @@
 //shader_set(sh_uiz_contain);
 //texture_set_stage(global.uniformid_texture, surface_get_texture(obj_uiZ_controller.uiz_appsurf));
 
-shader_set_uniform_f(global.uniformid_toy,cntnx,cntny,cntnlx+1,cntnly+1)
+shader_set_uniform_f(global.uniformid_toy,cntnx,cntny,cntnlx,cntnly)
 

@@ -1,4 +1,4 @@
-///uiz_xml_getabove(xml,at)
+///uiz_xml_getabove_at(xml, at)
 //return -1 if position is not found, or position is top level
 var m=obj_uiz_xmlparser;
 var l=m.filelistl[| argument0];

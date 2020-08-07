@@ -24,7 +24,7 @@ var i=argument0;
             draw_set_color(c_black)
             draw_set_valign(fa_top)
             draw_set_halign(fa_center)
-            draw_set_font(uiz_fnt_dp_15)
+            draw_set_font(uiz_fnt_dp_20)
             var marry=marginy+bkmar;
             draw_text(p + isz / 2, ry + marry + 3, uiz_gettext_contained(text[i], isz))
             var sc = min(isz - 10, 0.5 * (height - marry * 2))

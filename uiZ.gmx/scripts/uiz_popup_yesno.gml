@@ -57,7 +57,8 @@ if argument[2]=1 then{
 var f=uiz_c(obj_uiZ_frame);
 f.posinframex=uiz_fill
 f.posinframey=uiz_fill
-f.depth=-1000000
+//f.depth=-1000000
+uiz_depth_foreground(f);
 uiz_compatibility_popupfix(f)
 uiz_fixgeneralpos(f)
 var p=uiz_c(obj_uiZ_square);
@@ -88,6 +89,7 @@ w.button_minimize=0;
 w.button_cross=0;
 w.contain=3
 w.windowtext=argument[1]
+uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
 var t=instance_create(0,0,obj_uiZ_drawtextlines)

@@ -41,7 +41,7 @@ ix=0;
 iy=0;
 ilx=0;
 ily=0;
-doubleclicktime=0.75//in seconds
+doubleclicktime=0.5//in seconds
 doubleclickcount=0;
 global.colorscreen=noone
 addx=0
@@ -842,6 +842,30 @@ if keyboard_check(vk_alt){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reset double click
+if mouse_check_button_released(mb_left) or !mouse_check_button(mb_left){
+    global.doubleclick=0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="1">
       <action>
@@ -997,7 +1021,6 @@ if global.lastmousemovedy!=0 then{global.lastmousemovedysign=uiz_sign(global.las
           <argument>
             <kind>1</kind>
             <string>///control double click
-global.doubleclick=0;
 if doubleclickcount&gt;0 then{
 doubleclickcount++;
 if mouse_check_button_pressed(mb_left) then{global.doubleclick=1;doubleclickcount=0;}
@@ -1702,6 +1725,35 @@ if keyboard_check(vk_control) &amp;&amp; keyboard_check(vk_f5) then{
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*
+draw_set_color(c_black);
+draw_set_alpha(1);
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
+draw_text(10, 30, "doubleclickcount = "+string(doubleclickcount)+", doubleclick = "+string(global.doubleclick));
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="72">
       <action>
         <libid>1</libid>
@@ -1817,7 +1869,7 @@ draw_text(o.rx,o.ry+20,o)
           <argument>
             <kind>1</kind>
             <string>///utilize updater
-if (live_call()) return live_result;
+//if (live_call()) return live_result;
 global.uiz_fix_updates_draw=0;
 var l=uiz_arealist
 if (ds_exists(l,ds_type_list) and ds_list_size(l)&gt;=4) or uiz_updateall=true then{
@@ -1900,10 +1952,6 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
     }else{
     draw_set_blend_mode(bm_normal);
     }
-    
-    //draw_set_blend_mode(bm_normal);
-    
-    draw_set_color(c_blue)
     
     draw_set_color(c_white)
     
