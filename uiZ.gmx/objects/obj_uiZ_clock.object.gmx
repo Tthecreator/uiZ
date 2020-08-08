@@ -46,6 +46,7 @@ ats=0;
 atcs=0;
 atm=0;
 ath=0;
+sec=date_get_second(date_current_datetime());
 
 lastsecond=0;
 seconds=true//b//seconds pointer//
@@ -102,11 +103,29 @@ houranimation=uiz_straight//a//hour animation//
             <string>if time=-1 then{
 tm=date_current_datetime();
 }else{tm=time}
-var sec=date_get_second(tm);
-if lastsecond!=sec then{atcs=0; lastsecond=sec}
-atcs+=uiz_sc(1);//make the animation last one whole second
-ats=uiz_animation_getfunction(atcs,secondanimation)*6
+if os_browser == browser_not_a_browser or time!=-1 then{
+    sec=date_get_second(tm);
+    if lastsecond!=sec then{atcs=0; lastsecond=sec}
+    atcs+=uiz_sc(1);//make the animation last one whole second
+}else{//html time inaccuracy bug fix
+    atcs+=uiz_sc(1);//make the animation last one whole second
+    if atcs&gt;=1 then{
+        atcs = 0;
+        ++sec;
+        if sec&gt;=60 then{
+            sec = 0;
+        }
+    }
+}
+/*else{
+    
+}
+*/
 
+
+
+ats=uiz_animation_getfunction(atcs,secondanimation)*6
+sdbm("updating, ",atcs,uiz_sc(1),ats,sec);
 atm=uiz_animation_getfunction(sec/60,minuteanimation)*6
 
 ath=uiz_animation_getfunction(date_get_minute(tm)/60,houranimation)*30
@@ -181,7 +200,7 @@ if sprite_exists(pointersprite) then{
 var sz=uiz_getposx_self(0.5,fcm);
 var hk=0;
 var sc=sz/sprite_get_height(pointersprite);
-if seconds=true then{draw_sprite_ext(pointersprite,0,hx,hy,sc,sc,-(date_get_second(tm))*6-ats,pointercolor,alpha)}
+if seconds=true then{draw_sprite_ext(pointersprite,0,hx,hy,sc,sc,-(sec)*6-ats,pointercolor,alpha)}
 if minutes=true then{draw_sprite_ext(pointersprite,1,hx,hy,sc,sc,-date_get_minute(tm)*6-atm,pointercolor,alpha)}
 if hours=true then{draw_sprite_ext(pointersprite,2,hx,hy,sc,sc,-date_get_hour(tm)*30-ath,pointercolor,alpha)}
 }

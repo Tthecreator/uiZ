@@ -259,7 +259,7 @@ if currentSelectionPos!=-1 then{
         case uiz_mousereleased:
             //expand node
             if draggingItem=-1 then{
-                if onClickScript&gt;=0 and script_exists(onClickScript) then{
+                if onClickScript&gt;=0 and script_exists(onClickScript) and currentSelectionList&gt;=0 and currentSelectionList&lt;ds_list_size(textList) then{
                     script_execute(onClickScript,id,currentSelectionList)
                 }
             }
@@ -279,27 +279,33 @@ if currentSelectionPos!=-1 then{
 }
 
 
-
+var srlx = rlx;
+if doscroll then{srlx=scrollBarX-1;}
 
 if draggingItem=-1 and draggingItemCandidate!=-1 and (global.uiz_mouseswipeclick or abs(draggingStartY - uiz_getmouse_y())&gt;5) and mouse_check_button(mb_left) then{
     //sdbm("Initializing swipe2")
     draggingItem = draggingItemCandidate;
     draggingItemRelativePos = draggingItemCandidateRelativePos;
     draggingItemCandidate = -1;
+    
+    if draggingItem!=-1 and draggingItem&lt;ds_list_size(textList) then{
+        drawDraggingItem=draggingItem;
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight);
+        updateDragArea = true;
+    }
+
     uiz_mouse_freeze();
 }
 
 //check for differences between old and new mouse pos and update view
 if view_fix=false and (lastSelectionPos!=currentSelectionPos or kmouseover_last!=kmouseover) then{
-    var srlx = rlx;
-    if doscroll then{srlx=scrollBarX-1;}
     updateMouseAreas = true;
     //update specific list items
     if currentSelectionPos!=-1 then{
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+mouseRelativeItemPos*fontHeight,srlx,ry+startOffset+(mouseRelativeItemPos+1)*fontHeight-1);
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+mouseRelativeItemPos*fontHeight,srlx,ry+startOffset+(mouseRelativeItemPos+1)*fontHeight);
     }
     if lastSelectionPos!=currentSelectionPos and lastSelectionPos!=-1 then{
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight-1);    
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(lastSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(lastSelectionPos-startPos+1)*fontHeight);    
     }
 }
 
@@ -310,7 +316,7 @@ if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
         draggingItem=-1;
         uiz_mouse_unfreeze();
         script_execute(onDragScript,id,drawDraggingItem,currentSelectionList, (uiz_getmouse_y()-(ry+fontHeight*(currentSelectionPos-startPos)+startOffset))/fontHeight,true);
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight-1);
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight);
         updateDragArea = true;
         //lastSelectionPos=-1;
         currentSelectionPos=-1;
@@ -356,7 +362,7 @@ if kmouseover=0 then{
     var srlx = rlx;
     if doscroll then{srlx=scrollBarX-1;}
     if currentSelectionPos!=-1 then{
-        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight-1);    
+        uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+(currentSelectionPos-startPos)*fontHeight,srlx,ry+startOffset+(currentSelectionPos-startPos+1)*fontHeight);    
         updateMouseAreas = true;
     }
     lastSelectionPos = currentSelectionPos;
@@ -438,7 +444,7 @@ if uiz_cntn() then {
         
         if updateDragArea then{
             //sdbm("update dragarea",drawDraggingItem);
-            uiz_treelist_drawEntry(drawDraggingItem,startOffset+(draggingItemRelativePos-startPos)*fontHeight,rx,srlx);
+            uiz_treelist_drawEntry(drawDraggingItem,startOffset+(draggingItemRelativePos)*fontHeight,rx,srlx);
             updateDragArea = false;
         }
         
@@ -618,6 +624,11 @@ if draggingItem!=-1 then{
             <string>/*
 draw_set_color(c_black);
 draw_text(10,30,uiz_xml_getdebugstringtotal(usexml));
+//*/
+/*
+draw_set_color(c_red);
+draw_set_alpha(1);
+draw_rectangle(rx,startOffset+(draggingItemRelativePos)*fontHeight,rlx,startOffset+(draggingItemRelativePos+1)*fontHeight,true)
 //*/
 </string>
           </argument>

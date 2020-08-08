@@ -1914,7 +1914,8 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
             var lh=l[|i+3]-l[|i+1];
             var lah=0;
             //sdbm("drawing rectangle",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
-            draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
+            //draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false);
+            draw_square(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,c_white,1);
         }
         for(var i=m;i&lt;sz;i+=5){
             var lw=l[|i+2]-l[|i];
@@ -1922,7 +1923,8 @@ if uiz_updateall=true or ds_list_size(l)&gt;0 then{
             var lh=l[|i+3]-l[|i+1];
             var lah=0;
             //sdbm("drawing rectangle 2",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
-            draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
+            //draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
+            draw_square(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,c_white,1);
         }
     
     }

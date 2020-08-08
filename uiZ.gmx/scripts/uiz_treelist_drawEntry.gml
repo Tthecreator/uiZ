@@ -20,7 +20,7 @@ var boxState = miscl mod 4;
 var tcol = textcolor;
 
 if draggingItem=i then{
-    draw_square(rx,ry + hi,srlx,ry+ hi+h,backdragcolor,backdragalpha);
+    draw_square(rx,ry + hi,srlx,ry+hi+h,backdragcolor,backdragalpha);
     tcol = textselcolor;
 }else{
     if currentSelectionList=i then{
@@ -36,7 +36,7 @@ if draggingItem=i then{
         tcol = textcolor;
     }
 }
-draw_set_alpha(1);
+draw_set_alpha(alpha);
 
 
 var boxadd=indent*h;

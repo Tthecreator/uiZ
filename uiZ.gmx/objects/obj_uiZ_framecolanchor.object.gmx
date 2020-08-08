@@ -93,7 +93,7 @@ snaptoparent=1
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -111,7 +111,7 @@ snaptoparent=1
           <argument>
             <kind>1</kind>
             <string>
-if global.mouseover=id and mouse_check_button(mb_left) then{
+if kmouseover&gt;=uiz_mouseclick then{
 if snaptomouse=0 and frameat[overframebar].framesetbar=1 then{
 
 snaptomouse=1
@@ -185,7 +185,8 @@ if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nwidth/uiz_dp stopsnap=1}
 if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nx/uiz_dp stopsnap=1}
 break;
 }
-uiz_framesetfixvertical(id)
+uiz_framesetfixvertical(id);
+uiz_updater_FixViews();
 }
 </string>
           </argument>

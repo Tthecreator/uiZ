@@ -9,7 +9,7 @@ for(var i=0;i<argument_count;i++){
 str=str+string(argument[i])+"#"
 }
 if live_enabled then{
-    //netlog(str);
+    netlog(str);
 }else{
     show_debug_message(str)
 }

@@ -14,10 +14,10 @@ On the scroll variable you can use "uiz_scrollbar_setvalue" and "uiz_scrollbar_g
 
 
 A valid scrollbar sprite holds the following images:
-0. A button down sprite that also acts as a right button on horizontal scrollbars.
+0.A button down sprite that also acts as a right button on horizontal scrollbars.
 1. The same as 0, but then when the mouse hovers over it.
 2. The same as 0, but then when the mouse clicks it.
-3. A button up sprite that also acts as a left button on horizontal scrollbars.
+3.A button up sprite that also acts as a left button on horizontal scrollbars.
 4. The same as 3, but then when the mouse hovers over it.
 5. The same as 3, but then when the mouse clicks it.
 6.The top/left part of a scrollbar.
@@ -29,14 +29,31 @@ A valid scrollbar sprite holds the following images:
 12.The middle part of a vertical scrollbar.
 13. The same as 12, but then when the mouse hovers over it.
 14. The same as 12, but then when the mouse clicks it.
-15: A sprite to put on the middle of the scrollbar.
-16: A background sprite for behind the scrollbar.
-17.The middle part of a horizontal scrollbar.
-18. The same as 17, but then when the mouse hovers over it.
-19. The same as 17, but then when the mouse clicks it.
+15.A sprite to put on the middle of the scrollbar.
+16.A background sprite for behind the vertical scrollbar.
+
+17.A button right sprite
+18. The same as 0, but then when the mouse hovers over it.
+19. The same as 0, but then when the mouse clicks it.
+20.A button left sprite
+21. The same as 3, but then when the mouse hovers over it.
+22. The same as 3, but then when the mouse clicks it.
+23.The left part of a scrollbar.
+24. The same as 6, but then when the mouse hovers over it.
+25. The same as 6, but then when the mouse clicks it.
+26.The right part of a scrollbar.
+27. The same as 9, but then when the mouse hovers over it.
+28. The same as 9, but then when the mouse clicks it.
+29.The middle part of a horizontal scrollbar.
+30. The same as 12, but then when the mouse hovers over it.
+31. The same as 12, but then when the mouse clicks it.
+32.A sprite to put on the middle of the scrollbar.
+33.A background sprite for behind the scrollbar.
 
 Note: you can use spr_uiZ_scrollbar as a reference.
 
+If the given sprite only contains 17 (index 0 counts towards this number) subimages, then the vertical scrollbar images are used and rotates 90 degrees counter clockwise.
+If there are at least 34 (index 0 counts towards this number) subimages then the first 17 subimages are ignored by this functions and the horizontal versions are used instead.
 
 mstate codes:
 .0-none
@@ -62,15 +79,17 @@ if updated_o > 0 or uiz_selfmarked = false then {
         }
         updated = uiz_selfmarked;
     }
-
-    var width = round(argument2 - argument0);
+    
+    
+    var x0 = round(argument0);
+    var x3 = round(argument2);
+    var width = x3-x0;
     var height = round(argument3 - argument1);
     var y0 = floor(argument1);
     var y1 = y0 + height;
-    var x0 = argument0;
-    var x1 = argument0 + height;
-    var x2 = argument2 - height;
-    var x3 = argument2;
+    var x1 = x0 + height;
+    var x2 = x3 - height;
+    
     var sel = 0;
     var addEdge = 0;
     var sw = sprite_get_width(argument4)
@@ -81,6 +100,16 @@ if updated_o > 0 or uiz_selfmarked = false then {
         var state_change = false;
     } else {
         var state_change = true;
+    }
+    
+    //get sprite information
+    var addImg = 0;
+    var rotate = 90;
+    var rotHeight = height;
+    if sprite_get_number(argument4)>=34 then{
+        addImg = 17;
+        rotate = 0;
+        rotHeight = 0;
     }
 
     var nwidth = width - height * 2
@@ -95,8 +124,8 @@ if updated_o > 0 or uiz_selfmarked = false then {
         var sca = sc / argument8;
     }
     var comph = min(barw / 2, height)
+    
     var x4 = floor(x1 + sca * scw);
-
     var x5 = floor(x4 + comph);
     var x7 = x4 + barw;
     var x6 = floor(x7 - comph);
@@ -118,7 +147,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
 
             }
             //if id=100054 then{sdbm("I think, ",argument7,mstate,sel,argument8,id)}
-            draw_sprite_ext(argument4, sel, x0, argument1 + height, height / sw, height / sh, 90, argument5, 1) //left
+            draw_sprite_ext(argument4, sel + addImg, x0, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //left
         }
         if updated = false or(state_change = true and((mstate >= 3 and mstate <= 4) or(mstate_last >= 3 and mstate_last <= 4))) {
             switch (mstate) {
@@ -132,7 +161,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     sel = 0;
                     break;
             }
-            draw_sprite_ext(argument4, sel, x2, argument1 + height, height / sw, height / sh, 90, argument5, 1) //right
+            draw_sprite_ext(argument4, sel + addImg, x2, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //right
 
         }
         if updated = false or update_bar = true or(state_change = true and((mstate >= 5 and mstate <= 6) or(mstate_last >= 5 and mstate_last <= 6))) {
@@ -161,7 +190,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     szy = 1
             }
 
-            uiz_draw_sprite_tiles(argument4, 16, x1, argument1, x2, y1, szx, szy, argument5, 1,0,0);
+            uiz_draw_sprite_tiles(argument4, 16 + addImg, x1, argument1, x2, y1, szx, szy, argument5, 1,0,0);
             //end of draw background
 
             //draw scrollbar
@@ -183,27 +212,29 @@ if updated_o > 0 or uiz_selfmarked = false then {
                         x6--;
                     }
                     //sdbm(x1,x4,x6,sca*scw,sca,scw,sc,argument8)
-                    draw_sprite_ext(argument4, 6 + sel, x4, argument1 + height, height / sw, (barw / sh) / 2, 90, argument5, 1) //left
-                    draw_sprite_ext(argument4, 9 + sel, x6, argument1 + height, height / sw, (barw / sh) / 2, 90, argument5, 1) //right
+                    draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, height / sw, (barw / sh) / 2, rotate, argument5, 1) //left
+                    draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, height / sw, (barw / sh) / 2, rotate, argument5, 1) //right
     
                 } else {
                     //sdbm("stopping at,",x4+(height/sh)*sh,"starting at,",x6);
                     if ((x4 + (height / sh) * sh) <= x6) {
                         x6--;
                     }
-                    draw_sprite_ext(argument4, 6 + sel, x4, argument1 + height, height / sw, height / sh, 90, argument5, 1) //left
-                    draw_sprite_ext(argument4, 9 + sel, x6, argument1 + height, height / sw, height / sh, 90, argument5, 1) //right
+                    draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //left
+                    draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //right
                 }
     
                 if x5 < x6 then {
                     if (x4 + (height / sw) * sw <= x5) {
                         x5--;
                     }
-                    uiz_draw_sprite_tiles(argument4, 17 + sel, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge)
+                    //uiz_draw_sprite_tiles(argument4, 12 + sel + addImg, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge,90)
+                    uiz_draw_sprite_tiles_rotation(argument4, 12 + sel + addImg, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge,rotate)
+                    //draw_square(x5,y0+height/2,x6,y1,c_red,1);
                 }
                 
                 var conh = height - comph;
-                draw_sprite_ext(argument4, 15, x4 + barw / 2 - comph / 2, argument1 + conh / 2, comph / sw, comph / sh, 0, argument5, 1) //middle
+                draw_sprite_ext(argument4, 15 + addImg, x4 + barw / 2 - comph / 2, argument1 + conh / 2 + rotHeight, comph / sw, comph / sh, rotate, argument5, 1) //middle
                 }
             }
     } else {
@@ -222,7 +253,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
             }
 
             //if id=100054 then{sdbm("I think, ",argument7,mstate,sel,argument8,id)}
-            draw_sprite_ext(argument4, sel, rx, argument1 + height, height / sh, (width / sw) / 2, 90, argument5, 1) //left
+            draw_sprite_ext(argument4, sel + addImg, rx, argument1 + rotHeight, height / sh, (width / sw) / 2, rotate, argument5, 1) //left
         }
         if updated = false or(state_change = true and((mstate >= 3 and mstate <= 4) or(mstate_last >= 3 and mstate_last <= 4))) {
             switch (mstate) {
@@ -237,7 +268,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     break;
             }
 
-            draw_sprite_ext(argument4, sel, rlx - width / 2, argument1 + height, height / sh, (width / sw) / 2, 90, argument5, 1) //right
+            draw_sprite_ext(argument4, sel + addImg, rlx - width / 2, argument1 + rotHeight, height / sh, (width / sw) / 2, rotate, argument5, 1) //right
         }
     }
 }

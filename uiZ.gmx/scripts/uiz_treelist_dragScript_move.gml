@@ -2,7 +2,7 @@
 var draggingItem = argument1;//the #id of the item being dragged
 var itemDestination = argument2;//the #id of the item being dragged to
 var itemDestinationYPosition = argument3;//if the draggingItem was dragged to the bottom half of the itemDestination (=1) or if the draggingItem was dragged to the top half of the itemDestination (=0), and everthing between those two values.
-if instance_exists(argument0) and draggingItem!=-1 and itemDestination!=-1{
+if instance_exists(argument0) and draggingItem!=-1 and itemDestination!=-1{//if itemDestination==-1 then the user dragged the item onto nothingness
     with(argument0){
         if itemDestinationYPosition<0.5 then{//if we are hovering over the top of the item
             uiz_treelist_moveEntry_recursive(argument0,draggingItem,itemDestination);
