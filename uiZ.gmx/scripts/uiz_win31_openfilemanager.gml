@@ -1,16 +1,28 @@
 //setup frameset
 frameset=uiz_frameset_create()
 uiz_setparent(frameset,window)
-a1=uiz_framedivisionvertical(frameset,0.4,fc,1,xtra)
+a0=uiz_framedivisionvertical(frameset,0.4,fc,1,xtra);
+uiz_frameset_setDividerThickness(a0,0.2,dp);
+a1=uiz_framedivisionhorizontal(a0.frameat[0],0.4,fc,1,xtra);
+//a1=uiz_framedivisionvertical(frameset,0.4,fc,1,xtra);
+f00=a0.frameat[1];
 f10=a1.frameat[0];
 f11=a1.frameat[1];
-f10.framesetbar = true;
+uiz_frameset_setBarSlider(a0, 0, true);
+uiz_frameset_setBarSlider(a1, 0, true);
+//f10.framesetbar = true;
+//a1.framesetbar = true;
 //f11.framesetbar = true;
 a1.draw = true;
+a0.draw = true;
 uiz_fixframesetpos(frameset)
 
-
-
+///*
+button = uiz_c(obj_uiZ_easybutton)
+uiz_setparent(button,f00);
+uiz_position(button,0,uiz_fill,0,uiz_fill);
+uiz_fixgeneralpos(button);
+//*/
 
 folderview=uiz_c(obj_uiZ_treelist)
 uiz_setparent(folderview,f10)

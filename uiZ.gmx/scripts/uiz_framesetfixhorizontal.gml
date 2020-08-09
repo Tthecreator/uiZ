@@ -10,9 +10,9 @@ with(argument0) {
     uiz_fix_Base_Alpha();
     uiz_fix_Base_Margins()
 }
-if global.debug_action = true then {
-    global.debug_action_count++
-}
+
+uiz_frameset_fixThickness();
+
 var g = argument0;
 
 g.starsr = 0
@@ -44,6 +44,9 @@ for (var i = 0; i < g.divisions; i++) {
             g.isz[i] = round(g.isize[i] * (g.iwidth - g.marginr - g.marginl) + g.margincellh * 2);
             toleft -= g.isz[i]
             break;
+    }
+    if g.hasBar[i] then{
+        toleft -= g.thickness;
     }
 }
 
@@ -81,26 +84,11 @@ if toleft < 0 then {
 at = g.margint
 for (var i = 0; i < g.divisions; i++) {
     g.doxt[i] = 0
-    if i > 0 and g.frameat[i - 1].framesetbar = 1 then {
-        g.frameat[i].y = at + g.margincellh + g.thickness / 2 //+g.frameat[i].topmargin
-    } else {
-        g.frameat[i].y = at + g.margincellh
-    }
+    g.frameat[i].y = at + g.margincellh
     at += g.isz[i]
+    if g.hasBar[i] then{ at += g.thickness;}
     //set the final framesizes
-    if g.frameat[i].framesetbar = 1 then {
-        if i > 0 and g.frameat[i - 1].framesetbar = 1 then {
-            g.frameat[i].height = g.isz[i] - g.margincellh * 2 - g.thickness
-        } else {
-            g.frameat[i].height = g.isz[i] - g.margincellh * 2 - g.thickness / 2
-        }
-    } else {
-        if i > 0 and g.frameat[i - 1].framesetbar = 1 then {
-            g.frameat[i].height = g.isz[i] - g.margincellh * 2 - g.thickness / 2
-        } else {
-            g.frameat[i].height = g.isz[i] - g.margincellh * 2
-        }
-    }
+    g.frameat[i].height = g.isz[i] - g.margincellh * 2
     g.frameat[i].width = g.iwidth;
 
     
@@ -110,16 +98,12 @@ for (var i = 0; i < g.divisions; i++) {
     if g.frameat[i].object_index = obj_uiZ_framecolanchor then {
         g.doxt[i] = 2
     }
-
 }
 
 for (var i = 0; i < g.divisions; i++) {
     if global.isfixinggrandchildren = false then {
         uiz_fixgeneralpos(g.frameat[i])
         uiz_fixchildren(g.frameat[i], 1)
-    }
-    if global.debug_action = true then {
-        global.debug_action_string = global.debug_action_string + chr(10) + chr(13) + string_repeat("      ", global.debug_action_count) + "[hor] i: " + string(i) + string(i) + "  gwidth: " + string(g.width) + "  giwidth: " + string(g.iwidth) + "  toleft: " + string(toleft) + "  width: " + string(g.frameat[i].width) + "  height: " + string(g.frameat[i].height);
     }
     switch (g.doxt[i]) {
         case 1:
@@ -129,7 +113,4 @@ for (var i = 0; i < g.divisions; i++) {
             uiz_framesetfixvertical(g.frameat[i])
             break;
     }
-}
-if global.debug_action = true then {
-    global.debug_action_count--
 }

@@ -11,14 +11,12 @@ with(argument0) {
     uiz_fix_Base_Margins()
 }
 
-if global.debug_action = true then {
-    global.debug_action_count++
-}
+uiz_frameset_fixThickness();
+
 var g = argument0;
-//if id=100055 then{sdbm(id,g.width)}
+
 g.starsr = 0
 var toleft = g.iwidth - g.marginl - g.marginr;
-//sdbm("at1",g,g.width,g.iwidth,toleft)
 for (var i = 0; i < g.divisions; i++) {
 
     if g.isize[i] < 0 then {
@@ -47,9 +45,11 @@ for (var i = 0; i < g.divisions; i++) {
             toleft -= g.isz[i]
             break;
     }
+    if g.hasBar[i] then{
+        toleft -= g.thickness;
+    }
 }
 
-//var lastStar = -1;
 if g.starsr > 0 then {
     if toleft > 0 then {
         var startSize = floor(toleft / g.starsr);
@@ -68,7 +68,6 @@ if g.starsr > 0 then {
         for (var i = 0; i < g.divisions; i++) {
             if g.isizetype[i] = xtra then {
                 g.isz[i] = 0;
-                //lastStar = i;
             }
         }
     }
@@ -85,26 +84,11 @@ if toleft < 0 then {
 at = g.marginl
 for (var i = 0; i < g.divisions; i++) {
     g.doxt[i] = 0
-    if i > 0 and g.frameat[i - 1].framesetbar = 1 then {
-        g.frameat[i].x = at + g.margincellw + g.thickness / 2
-    } else {
-        g.frameat[i].x = at + g.margincellw
-    }
-    at += g.isz[i]
+    g.frameat[i].x = at + g.margincellw
+    at += g.isz[i];
+    if g.hasBar[i] then{ at += g.thickness;}
     //set the final framesizes
-    if g.frameat[i].framesetbar = 1 then {
-        if i > 0 and g.frameat[i - 1].framesetbar = 1 then {
-            g.frameat[i].width = g.isz[i] - g.margincellw * 2 - g.thickness
-        } else {
-            g.frameat[i].width = g.isz[i] - g.margincellw * 2 - g.thickness / 2
-        }
-    } else {
-        if i > 0 and g.frameat[i - 1].framesetbar = 1 then {
-            g.frameat[i].width = g.isz[i] - g.margincellw * 2 - g.thickness / 2
-        } else {
-            g.frameat[i].width = g.isz[i] - g.margincellw * 2
-        }
-    }
+    g.frameat[i].width = g.isz[i] - g.margincellw * 2
     g.frameat[i].height = g.iheight;
     
 
@@ -115,23 +99,6 @@ for (var i = 0; i < g.divisions; i++) {
         g.doxt[i] = 2
     }
 }
-
-//fix rounding mismatches
-/*
-if g.divisions>0 then{
-    var roundMismatch = (g.iwidth - g.marginl - g.marginr) - at;
-    if roundMismatch > 0 then{//last item doesn't quite touch our size. This may be because of rounding errors.
-        //make last (preferrably star) item a bit bigger
-        if lastStar == -1 then{//if no star item is available
-            lastStar = g.divisions-1;
-        }
-        g.frameat[lastStar].width += roundMismatch;
-        for(var i=lastStar+1; i < g.divisions; ++i){//move all objects
-            g.frameat[i].x += roundMismatch;
-        }
-    }
-}
-*/
 
 for (var i = 0; i < g.divisions; i++) {
     if global.isfixinggrandchildren = false then {

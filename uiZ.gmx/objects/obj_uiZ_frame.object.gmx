@@ -43,7 +43,6 @@ minsizeinframeset=0
 minsizeinframesetvaltype=px
 maxsizeinframeset=0
 maxsizeinframesetvaltype=px
-framesetbar=0//added because else it wouldn't work
 inlistpos=0
 snaptoparent=1
 scrolly=false//b//scroll y//

@@ -591,7 +591,7 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
-    <extension index="3">extensions\netlog</extension>
+    <extension index="1">extensions\netlog</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -650,18 +650,11 @@
       <sprite>sprites\spr_uiZ_export</sprite>
       <sprite>sprites\spr_uiZ_folder</sprite>
       <sprite>sprites\spr_uiZ_framepullline</sprite>
-      <sprite>sprites\spr_uiZ_framepullline_bak</sprite>
       <sprite>sprites\spr_uiZ_framepulllineconnectionbottom</sprite>
-      <sprite>sprites\spr_uiZ_framepulllineconnectionbottom_bak</sprite>
       <sprite>sprites\spr_uiZ_framepulllineconnectionleft</sprite>
-      <sprite>sprites\spr_uiZ_framepulllineconnectionleft_bak</sprite>
-      <sprite>sprites\spr_uiZ_framepulllineconnectionleft_old</sprite>
       <sprite>sprites\spr_uiZ_framepulllineconnectionright</sprite>
-      <sprite>sprites\spr_uiZ_framepulllineconnectionright_bak</sprite>
       <sprite>sprites\spr_uiZ_framepulllineconnectiontop</sprite>
-      <sprite>sprites\spr_uiZ_framepulllineconnectiontop_bak</sprite>
       <sprite>sprites\spr_uiZ_framepulllinevertical</sprite>
-      <sprite>sprites\spr_uiZ_framepulllinevertical_bak</sprite>
       <sprite>sprites\spr_uiZ_functionbar_triangle</sprite>
       <sprite>sprites\spr_uiZ_gear</sprite>
       <sprite>sprites\spr_uiz_hue</sprite>
@@ -1034,8 +1027,6 @@
           <script>scripts\uiz_frame_disablescroll_y.gml</script>
         </scripts>
         <scripts name="frameset">
-          <script>scripts\uiz_framesetfixhorizontal.gml</script>
-          <script>scripts\uiz_framesetfixvertical.gml</script>
           <script>scripts\uiz_framesetfixparent.gml</script>
           <script>scripts\uiz_framedivisionhorizontal.gml</script>
           <script>scripts\uiz_framedivisionvertical.gml</script>
@@ -1055,6 +1046,15 @@
           <script>scripts\uiz_frameset_getobject.gml</script>
           <script>scripts\uiz_frameset_setmargins.gml</script>
           <script>scripts\uiz_frameset_setcellmargins.gml</script>
+          <scripts name="internal">
+            <script>scripts\uiz_framesetfixhorizontal.gml</script>
+            <script>scripts\uiz_framesetfixvertical.gml</script>
+            <script>scripts\uiz_frameset_colanchor_CalculateOverFrameBar.gml</script>
+            <script>scripts\uiz_frameset_rowanchor_CalculateOverFrameBar.gml</script>
+            <script>scripts\uiz_frameset_fixThickness.gml</script>
+          </scripts>
+          <script>scripts\uiz_frameset_setDividerThickness.gml</script>
+          <script>scripts\uiz_frameset_setBarSlider.gml</script>
         </scripts>
         <scripts name="general">
           <script>scripts\uiz_init.gml</script>
@@ -2298,6 +2298,7 @@
         <object>objects\obj_uiz_dummy</object>
         <object>objects\obj_uiZ_framecolanchor</object>
         <object>objects\obj_uiZ_framerowanchor</object>
+        <object>objects\obj_uiZ_framerowanchor_bak</object>
         <object>objects\obj_uiZ_frameset</object>
         <object>objects\obj_uiZ_grid</object>
         <object>objects\obj_uiZ_menuholder</object>

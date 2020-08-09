@@ -35,6 +35,7 @@ p.frameat[i]=g
 p.frameat[i].inlistpos=i;
 p.frameat[i].x=0
 p.frameat[i].y=0
+p.hasBar[i] = false;
 
 }
 

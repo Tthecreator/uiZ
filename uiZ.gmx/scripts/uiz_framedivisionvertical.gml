@@ -17,7 +17,10 @@ var resethead=1
 var resethead=0
 }
 var f=0;
-p.isize[p.divisions]=0
+p.isize[p.divisions-1]=0
+p.isizetype[p.divisions-1]=0
+p.frameat[p.divisions-1]=0
+p.hasBar[p.divisions-1]=0
 p.width=g.iwidth;
 p.height=g.iheight;
 //p.master=g.master
@@ -52,6 +55,7 @@ p.frameat[i].y=0
 //if g.parent=obj_uiZ_framerowanchor or g.parent=obj_uiZ_framecolanchor then{g.parent.frameat[i]=p}
 
 }
+p.hasBar[i] = false;
 }
 //uiz_framesetfixvertical(p)
 if resethead=1 then{argument[0].headframe=p}

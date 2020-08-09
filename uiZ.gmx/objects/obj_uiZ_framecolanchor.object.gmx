@@ -30,41 +30,64 @@
 uiz_objinit()
 draw=false;
 color=c_white
-alpha=1
 sprite=spr_uiZ_framepulllinevertical
-texturemode=uiz_texturemode_fill
+texturemode_horizontal=uiz_texturemode_fill
+texturemode_vertical=uiz_texturemode_fill
 spriteconnectionleft=spr_uiZ_framepulllineconnectionleft
 spriteconnectionright=spr_uiZ_framepulllineconnectionright
 spriteconnectiontop=spr_uiZ_framepulllineconnectiontop
 spriteconnectionbottom=spr_uiZ_framepulllineconnectionbottom
+frameBarThickness = .10
+frameBarThicknessType = dp
 iscover=0
 fromx=0
 fromy=0
 tox=0
 toy=0
-frameat[0]=noone
-isize[0]=0
+
 marginl=0
 marginr=0
 margint=0
 marginb=0
 margincellw=0
 margincellh=0
-overframebar=0
-lastmouse=0
-snaptomouse=0
-snaptobar=0
-stopsnap=0
 margin=30
 minsizeinframeset=0
 minsizeinframesetvaltype=px
 maxsizeinframeset=0
 maxsizeinframesetvaltype=px
-thickness=15
-framesetbar=0
 automargins=true;
-
 snaptoparent=1
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>frameat[0]=noone
+isize[0]=0
+hasBar[0]=false;
+thickness=15
+overframebar=0
+lastmouse=0
+snaptomouse=0
+snaptobar=0
+stopsnap=0
+uiz_frameset_fixThickness();
 </string>
           </argument>
         </arguments>
@@ -93,7 +116,7 @@ snaptoparent=1
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="13">
+    <event eventtype="7" enumb="14">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -110,83 +133,163 @@ snaptoparent=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if kmouseover&gt;=uiz_mouseclick then{
-if snaptomouse=0 and frameat[overframebar].framesetbar=1 then{
+            <string>uiz_frameset_colanchor_CalculateOverFrameBar();
+kmouseover = uiz_mouse_isonobject_leftcheck(id);
 
-snaptomouse=1
-snaptobar=overframebar
-global.mousefrozen=1
-lastmouse=uiz_getmouse_x()
+if kmouseover==uiz_mousereleased {
+    if snaptomouse = 1 then {
+        stopsnap = 0
+        snaptomouse = 0
+        uiz_mouse_unfreeze();
+        uiz_updater_unstep();
+    }
 }
-}else{if snaptomouse=1 then{
-stopsnap=0
-snaptomouse=0 global.mousefrozen=0}}
-if snaptomouse&gt;0 then{
-if frameat[snaptobar].maxsizeinframeset=0 then{
-var dm=0
-}else{
-var dm=(frameat[snaptobar+1].lx-uiz_getposx(frameat[snaptobar].maxsizeinframeset,frameat[snaptobar].maxsizeinframesetvaltype));
-}
-if frameat[snaptobar+1].maxsizeinframeset=0 then{
-var du=0
-}else{
-var du=(frameat[snaptobar+1].lx-uiz_getposx(frameat[snaptobar+1].maxsizeinframeset,frameat[snaptobar+1].maxsizeinframesetvaltype));
-}
+if snaptomouse &gt; 0 then {
+    if frameat[snaptobar].maxsizeinframeset = 0 then {
+        var dm = 0
+    } else {
+        var dm = (frameat[snaptobar + 1].lx - uiz_getposx(frameat[snaptobar].maxsizeinframeset, frameat[snaptobar].maxsizeinframesetvaltype));
+    }
+    if frameat[snaptobar + 1].maxsizeinframeset = 0 then {
+        var du = 0
+    } else {
+        var du = (frameat[snaptobar + 1].lx - uiz_getposx(frameat[snaptobar + 1].maxsizeinframeset, frameat[snaptobar + 1].maxsizeinframesetvaltype));
+    }
 
-var nwidth=frameat[snaptobar+1].lx-margin+min(-uiz_getposx(frameat[snaptobar+1].minsizeinframeset,frameat[snaptobar+1].minsizeinframesetvaltype),-dm)
-var nx=frameat[snaptobar].x+margin+max(uiz_getposx(frameat[snaptobar].minsizeinframeset,frameat[snaptobar].minsizeinframesetvaltype),du)
-var cwidth=frameat[snaptobar+1].rlx-margin+min(-uiz_getposx(frameat[snaptobar+1].minsizeinframeset,frameat[snaptobar+1].minsizeinframesetvaltype),-dm)
-var cx=frameat[snaptobar].rx+margin+max(uiz_getposx(frameat[snaptobar].minsizeinframeset,frameat[snaptobar].minsizeinframesetvaltype),du)
+    var nwidth = frameat[snaptobar + 1].lx - margin + min(-uiz_getposx(frameat[snaptobar + 1].minsizeinframeset, frameat[snaptobar + 1].minsizeinframesetvaltype), -dm)
+    var nx = frameat[snaptobar].x + margin + max(uiz_getposx(frameat[snaptobar].minsizeinframeset, frameat[snaptobar].minsizeinframesetvaltype), du)
+    var cwidth = frameat[snaptobar + 1].rlx - margin + min(-uiz_getposx(frameat[snaptobar + 1].minsizeinframeset, frameat[snaptobar + 1].minsizeinframesetvaltype), -dm)
+    var cx = frameat[snaptobar].rx + margin + max(uiz_getposx(frameat[snaptobar].minsizeinframeset, frameat[snaptobar].minsizeinframesetvaltype), du)
 
-if uiz_getmouse_x()&lt;0 or uiz_getmouse_y()&lt;0 or uiz_getmouse_x()&gt;global.screenpxwidth or uiz_getmouse_y()&gt;global.screenpxheight then{stopsnap=1}
+    if uiz_getmouse_x() &lt; 0 or uiz_getmouse_y() &lt; 0 or uiz_getmouse_x() &gt; global.screenpxwidth or uiz_getmouse_y() &gt; global.screenpxheight then {
+        stopsnap = 1
+    }
 
-if stopsnap=1 then{mousediff=0}else{mousediff=lastmouse-uiz_getmouse_x()}
-lastmouse=uiz_getmouse_x()
+    if stopsnap = 1 then {
+        mousediff = 0
+    } else {
+        mousediff = lastmouse - uiz_getmouse_x()
+    }
+    lastmouse = uiz_getmouse_x()
 
-if isizetype[snaptobar]=xtra and isizetype[snaptobar+1]=xtra then{
-//convert the first to a factor
-isizetype[snaptobar]=fc
-//set appropriate size
-isize[snaptobar]=frameat[snaptobar].width/width
+    if isizetype[snaptobar] = xtra and isizetype[snaptobar + 1] = xtra then {
+        //convert the first to a factor
+        isizetype[snaptobar] = fc
+        //set appropriate size
+        isize[snaptobar] = frameat[snaptobar].width / width
+    }
+    stopsnap = 0
+    switch (isizetype[snaptobar]) {
+        case px:
+            isize[snaptobar] -= mousediff
+            if uiz_getmouse_x() &lt; cx then {
+                isize[snaptobar] = nx stopsnap = 1
+            }
+            if uiz_getmouse_x() &gt; cwidth then {
+                isize[snaptobar] = nwidth stopsnap = 1
+            }
+            break;
+        case fc:
+            isize[snaptobar] = min(1 - 1 / width, max(1 / width, ((isize[snaptobar] * width) - mousediff) / width))
+            if uiz_getmouse_x() &lt; cx then {
+                isize[snaptobar] = nx / width stopsnap = 1
+            }
+            if uiz_getmouse_x() &gt; cwidth then {
+                isize[snaptobar] = nwidth / width stopsnap = 1
+            }
+            break;
+        case dp:
+            isize[snaptobar] -= mousediff / uiz_dp
+            if uiz_getmouse_x() &lt; cx then {
+                isize[snaptobar] = nx / uiz_dp stopsnap = 1
+            }
+            if uiz_getmouse_x() &gt; cwidth then {
+                isize[snaptobar] = nwidth / uiz_dp stopsnap = 1
+            }
+            break;
+    }
+    switch (isizetype[snaptobar + 1]) {
+        case px:
+            isize[snaptobar + 1] += mousediff
+            if uiz_getmouse_x() &lt; cx then {
+                isize[snaptobar] = nwidth stopsnap = 1
+            }
+            if uiz_getmouse_x() &gt; cwidth then {
+                isize[snaptobar] = nx stopsnap = 1
+            }
+            break;
+        case fc:
+            isize[snaptobar + 1] = min(1 - 1 / width, max(1 / width, ((isize[snaptobar + 1] * width) + mousediff) / width))
+            if uiz_getmouse_x() &lt; cx then {
+                isize[snaptobar] = nwidth / width stopsnap = 1
+            }
+            if uiz_getmouse_x() &gt; cwidth then {
+                isize[snaptobar] = nx / width stopsnap = 1
+            }
+            break;
+        case dp:
+            isize[snaptobar + 1] += mousediff / uiz_dp
+            if uiz_getmouse_x() &lt; cx then {
+                isize[snaptobar] = nwidth / uiz_dp stopsnap = 1
+            }
+            if uiz_getmouse_x() &gt; cwidth then {
+                isize[snaptobar] = nx / uiz_dp stopsnap = 1
+            }
+            break;
+    }
+    uiz_framesetfixvertical(id);
+    uiz_updater_FixViews();
 }
-stopsnap=0
-switch(isizetype[snaptobar]){
-case px:
-isize[snaptobar]-=mousediff
-if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nx stopsnap=1}
-if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nwidth stopsnap=1}
-break;
-case fc:
-isize[snaptobar]=min(1-1/width,max(1/width,((isize[snaptobar]*width)-mousediff)/width))
-if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nx/width stopsnap=1}
-if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nwidth/width stopsnap=1}
-break;
-case dp:
-isize[snaptobar]-=mousediff/uiz_dp
-if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nx/uiz_dp stopsnap=1}
-if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nwidth/uiz_dp stopsnap=1}
-break;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_frameset_colanchor_CalculateOverFrameBar();
+
+//update view
+var x1 = frameat[overframebar].rlx;
+var x2 = x1 + thickness;
+var extendTop = 0;
+var extendBottom = 0;
+if parent.object_index = obj_uiZ_framerowanchor then {
+    if inlistpos &gt; 0 and parent.hasBar[inlistpos - 1] then {
+        extendTop = parent.thickness;
+    }
+    if inlistpos + 1 &lt; parent.divisions and parent.hasBar[inlistpos] then {
+        extendBottom = parent.thickness;
+    }
 }
-switch(isizetype[snaptobar+1]){
-case px:
-isize[snaptobar+1]+=mousediff
-if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nwidth stopsnap=1}
-if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nx stopsnap=1}
-break;
-case fc:
-isize[snaptobar+1]=min(1-1/width,max(1/width,((isize[snaptobar+1]*width)+mousediff)/width))
-if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nwidth/width stopsnap=1}
-if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nx/width stopsnap=1}
-break;
-case dp:
-isize[snaptobar+1]+=mousediff/uiz_dp
-if uiz_getmouse_x()&lt;cx then{isize[snaptobar]=nwidth/uiz_dp stopsnap=1}
-if uiz_getmouse_x()&gt;cwidth then{isize[snaptobar]=nx/uiz_dp stopsnap=1}
-break;
-}
-uiz_framesetfixvertical(id);
-uiz_updater_FixViews();
+uiz_updater_FixViews_area_selfmarked(x1,ry-extendTop,x2,rly+extendBottom);
+
+switch(kmouseover){
+    case uiz_mousepressed:
+        if snaptomouse = 0 and hasBar[overframebar] then {
+            snaptomouse = 1
+            snaptobar = overframebar
+            global.mousefrozen = 1
+            lastmouse = uiz_getmouse_x()
+            uiz_mouse_freeze();
+            uiz_updater_step();
+        }
+    break;
 }
 </string>
           </argument>
@@ -233,130 +336,142 @@ uiz_updater_FixViews();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if draw=true then{
-var ux,uwidth,uy,uheight
-var h=-thickness/2;
-draw_set_alpha(alpha)
-draw_set_color(color)
-for(var i=0;i&lt;divisions-1;i++){
+            <string>if draw and uiz_cntn() then{
+    var ux, uwidth, uy, uheight
+    var h = 0//-thickness / 2;
+    draw_set_alpha(alpha)
+    draw_set_color(color)
+    for (var i = 0; i &lt; divisions - 1; i++) {
 
-if frameat[i].framesetbar=1 then{
-uy=0
-uheight=height
-//get the y of the frames
-h+=isz[i]
-ux=h
-uwidth=thickness
-if parent.object_index=obj_uiZ_framerowanchor then{
-var nwidth=uwidth
-var nheight=uheight
-var nrx=rx+ux
-//var nry=ry+uy
-if inlistpos&gt;0 and parent.frameat[inlistpos-1].framesetbar=1 then{
-var nry=ry+uy//+parent.thickness/2
-if spriteconnectiontop!=0 then{
-var simg;
-if mouseover=id and overframebar=i then{
-if mouse_check_button(mb_left) then{
-simg=2
-}else{
-simg=1
-}
-}else{
-if mouseover=parent.id and parent.overframebar=inlistpos-1 then{
-if mouse_check_button(mb_left) then{
-simg=4
-}else{
-simg=3
-}
-}else{
-simg=0}}
-
-
-draw_sprite_ext(spriteconnectiontop,simg,nrx,ry+uy-parent.thickness,thickness/sprite_get_width(spriteconnectiontop),parent.thickness/sprite_get_height(spriteconnectiontop),0,c_white,1)
-}
-}else{
-var nry=ry+uy
-}
-
-var nrlx=rx+ux+uwidth
-//var nrly=ry+uy+uheight
-
-if inlistpos+1&lt;parent.divisions and framesetbar=1 then{
-var nrly=ry+uy+uheight-parent.thickness/2
-if spriteconnectionbottom!=0 then{
-if mouseover=id and overframebar=i then{
-if mouse_check_button(mb_left) then{
-simg=2
-}else{
-simg=1
-}
-}else{
-if mouseover=parent.id and parent.overframebar=inlistpos then{
-if mouse_check_button(mb_left) then{
-simg=4
-}else{
-simg=3
-}
-}else{
-simg=0}}
-
-draw_sprite_ext(spriteconnectionbottom,simg,nrx,nrly,thickness/sprite_get_width(spriteconnectionbottom),parent.thickness/sprite_get_height(spriteconnectionbottom),0,c_white,1)
-}
-}else{
-var nrly=ry+uy+uheight
-}
+        if hasBar[i] then {
+            uy = 0
+            uheight = height
+            //get the y of the frames
+            h += isz[i]
+            ux = h
+            uwidth = thickness
+            if parent.object_index = obj_uiZ_framerowanchor then {
+                var nwidth = uwidth
+                var nheight = uheight
+                var nrx = rx + ux
+                //var nry=ry+uy
+                if inlistpos &gt; 0 and parent.hasBar[inlistpos - 1] then {
+                    var nry = ry + uy //+parent.thickness/2
+                    if spriteconnectiontop != 0 then {
+                        var simg;
+                        if global.mouseover = id and overframebar = i then {
+                            if kmouseover&gt;=uiz_mouseclick then {
+                                simg = 2
+                            } else {
+                                simg = 1
+                            }
+                        } else {
+                            if global.mouseover = parent.id and parent.overframebar = inlistpos - 1 then {
+                                if parent.kmouseover&gt;=uiz_mouseclick then {
+                                    simg = 4
+                                } else {
+                                    simg = 3
+                                }
+                            } else {
+                                simg = 0
+                            }
+                        }
 
 
-}else{
-var nwidth=uwidth
-var nheight=uheight
-var nrx=rx+ux
-var nry=ry+uy
-var nrlx=rx+ux+uwidth
-var nrly=ry+uy+uheight
-}
-if sprite!=0 then{
-var nsw=sprite_get_width(sprite)
-var nsh=sprite_get_height(sprite)
-switch(texturemode){
-case uiz_texturemode_fill:
-var szx=1
-var szy=1
-break;
-case uiz_texturemode_tile:
-var szx=nwidth/nsw
-var szy=nheight/nsh
-break;
-case uiz_texturemode_tilefit:
-var szx=round(nwidth/nsw);
-var szy=round(nheight/nsh);
-break;
-default:
-szx=1
-szy=1
-}
-//texture_set_repeat(0)
-//top
-if mouseover=id and overframebar=i then{
-if mouse_check_button(mb_left) then{
-tex=sprite_get_texture(sprite,2)
-}else{
-tex=sprite_get_texture(sprite,1)
-}
-}else{
-tex=sprite_get_texture(sprite,0)}
-draw_primitive_begin_texture(pr_trianglestrip,tex)
-draw_vertex_texture(nrx,nry,0,0)
-draw_vertex_texture(nrx,nrly,0,1)
-draw_vertex_texture(nrlx,nry,szx,0)
-draw_vertex_texture(nrlx,nrly,szx,1)
-draw_primitive_end()
-}else{
-draw_square(nrx,nry,nrlx,nrly,color,1)
-}
-}
-}
+                        draw_sprite_ext(spriteconnectiontop, simg, nrx, ry + uy - parent.thickness, thickness / sprite_get_width(spriteconnectiontop), parent.thickness / sprite_get_height(spriteconnectiontop), 0, c_white, 1)
+                    }
+                } else {
+                    var nry = ry + uy
+                }
+
+                var nrlx = rx + ux + uwidth
+                //var nrly=ry+uy+uheight
+
+                if inlistpos + 1 &lt; parent.divisions and parent.hasBar[inlistpos] then {
+                    var nrly = ry + uy + uheight// - parent.thickness / 2
+                    if spriteconnectionbottom != 0 then {
+                        if global.mouseover = id and overframebar = i then {
+                            if kmouseover&gt;=uiz_mouseclick then {
+                                simg = 2
+                            } else {
+                                simg = 1
+                            }
+                        } else {
+                            if global.mouseover = parent.id and parent.overframebar = inlistpos then {
+                                if parent.kmouseover&gt;=uiz_mouseclick then {
+                                    simg = 4
+                                } else {
+                                    simg = 3
+                                }
+                            } else {
+                                simg = 0
+                            }
+                        }
+
+                        draw_sprite_ext(spriteconnectionbottom, simg, nrx, nrly, thickness / sprite_get_width(spriteconnectionbottom), parent.thickness / sprite_get_height(spriteconnectionbottom), 0, c_white, 1)
+                    }
+                } else {
+                    var nrly = ry + uy + uheight
+                }
+
+
+            } else {
+                var nwidth = uwidth
+                var nheight = uheight
+                var nrx = rx + ux
+                var nry = ry + uy
+                var nrlx = rx + ux + uwidth
+                var nrly = ry + uy + uheight
+            }
+            if sprite != 0 then {
+                var nsw = sprite_get_width(sprite)
+                var nsh = sprite_get_height(sprite)
+                switch (texturemode_horizontal) {
+                    case uiz_texturemode_fill:
+                        var szx = 1
+                        break;
+                    case uiz_texturemode_tile:
+                        var szx = nwidth / nsw
+                        break;
+                    case uiz_texturemode_tilefit:
+                        var szx = round(nwidth / nsw);
+                        break;
+                    default:
+                        szx = 1
+                }
+                switch (texturemode_vertical) {
+                    case uiz_texturemode_fill:
+                        var szy = 1
+                        break;
+                    case uiz_texturemode_tile:
+                        var szy = nheight / nsh
+                        break;
+                    case uiz_texturemode_tilefit:
+                        var szy = round(nheight / nsh);
+                        break;
+                    default:
+                        szy = 1
+                }
+                //top
+                
+                if mouseover = id and overframebar = i then {
+                    if kmouseover&gt;=uiz_mouseclick then {
+                        tex = 2
+                    } else {
+                        tex = 1
+                    }
+                } else {
+                    tex = 0
+                }
+                
+                uiz_draw_sprite_tiles(sprite, tex, nrx, nry, nrlx, nrly, szx, szy, color, alpha, 0, 0);
+
+            } else {
+                draw_square(nrx, nry, nrlx, nrly, color, alpha)
+            }
+        }
+    }
+uiz_containend()
 }
 </string>
           </argument>
