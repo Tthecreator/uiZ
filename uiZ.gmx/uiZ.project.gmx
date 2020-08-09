@@ -2099,105 +2099,6 @@
           <script>scripts\uiz_typecursor_setalpha.gml</script>
         </scripts>
       </scripts>
-      <scripts name="uiz_designer">
-        <scripts name="framewindow">
-          <script>scripts\uiz_des_framewindow_findframefromxml.gml</script>
-          <script>scripts\uiz_des_framewindow.gml</script>
-          <script>scripts\uiz_des_framewindow_bak.gml</script>
-          <script>scripts\uiz_des_framewindow_parent.gml</script>
-          <script>scripts\uiz_des_framewindow_makenames.gml</script>
-          <script>scripts\uiz_des_framewindow_save.gml</script>
-          <script>scripts\uiz_des_framesetload.gml</script>
-          <script>scripts\uiz_des_framesetparent.gml</script>
-          <script>scripts\uiz_des_framewindow_drawlines.gml</script>
-        </scripts>
-        <scripts name="functionscripts">
-          <script>scripts\uiz_des_func_view.gml</script>
-          <script>scripts\uiz_des_func_view_menu.gml</script>
-          <script>scripts\uiz_des_func_delete.gml</script>
-          <script>scripts\uiz_des_func_load.gml</script>
-          <script>scripts\uiz_des_func_save.gml</script>
-          <script>scripts\uiz_des_func_exitsave.gml</script>
-          <script>scripts\uiz_des_func_export.gml</script>
-        </scripts>
-        <scripts name="os handling">
-          <script>scripts\uiz_findfile_dslist.gml</script>
-          <script>scripts\uiz_findfile_init.gml</script>
-          <script>scripts\uiz_executecmdinit.gml</script>
-          <script>scripts\uiz_executecmd.gml</script>
-          <script>scripts\uiz_direxists.gml</script>
-          <script>scripts\uiz_copyfilewin.gml</script>
-          <script>scripts\uiz_fileexists.gml</script>
-          <script>scripts\uiz_executebat.gml</script>
-          <script>scripts\uiz_findappdata_main.gml</script>
-          <script>scripts\uiz_findfile_free.gml</script>
-          <script>scripts\uiz_findfile_createfile.gml</script>
-          <script>scripts\uiz_findappdata.gml</script>
-          <script>scripts\uiz_addfiletofile.gml</script>
-        </scripts>
-        <scripts name="other">
-          <script>scripts\uiz_des_setvalueof.gml</script>
-          <script>scripts\uiz_des_getconststring.gml</script>
-          <script>scripts\uiz_des_checkitems.gml</script>
-          <script>scripts\uiz_des_updateset.gml</script>
-          <script>scripts\uiz_constantlist.gml</script>
-          <script>scripts\uiz_des_updateset_destroylater.gml</script>
-          <script>scripts\uiz_designerend.gml</script>
-          <script>scripts\uiz_des_getdesname.gml</script>
-          <script>scripts\uiz_des_getconststring_values.gml</script>
-        </scripts>
-        <scripts name="uiz_des_object">
-          <script>scripts\uiz_des_object_create.gml</script>
-          <script>scripts\uiz_des_object_destroy.gml</script>
-          <script>scripts\uiz_des_object_alarm0.gml</script>
-          <script>scripts\uiz_des_object_alarm0_barebone.gml</script>
-          <script>scripts\uiz_des_object_alarm1.gml</script>
-          <script>scripts\uiz_des_object_begstep_bak.gml</script>
-          <script>scripts\uiz_des_object_alarm0end.gml</script>
-          <script>scripts\uiz_des_object_draw.gml</script>
-          <script>scripts\obj_uiz_des_name.gml</script>
-          <script>scripts\obj_des_object_beginstep.gml</script>
-          <script>scripts\uiz_des_object_loadingobjects_bussy.gml</script>
-          <script>scripts\uiz_des_object_loadingobjects_end.gml</script>
-        </scripts>
-        <scripts name="uiz_des_update">
-          <script>scripts\uiz_des_update_wh.gml</script>
-          <script>scripts\uiz_des_update_whxy.gml</script>
-          <script>scripts\uiz_des_update_xy.gml</script>
-          <script>scripts\uiz_des_update_xy_bak.gml</script>
-          <script>scripts\uiz_des_update_why.gml</script>
-          <script>scripts\uiz_des_update_hy.gml</script>
-          <script>scripts\uiz_des_update_ym.gml</script>
-          <script>scripts\uiz_des_update_hr_bak.gml</script>
-          <script>scripts\uiz_des_update_hm.gml</script>
-          <script>scripts\uiz_des_update_whx.gml</script>
-          <script>scripts\uiz_des_update_wx.gml</script>
-          <script>scripts\uiz_des_update_wr.gml</script>
-          <script>scripts\uiz_des_update_wm.gml</script>
-          <script>scripts\uiz_des_update_xm.gml</script>
-          <script>scripts\uiz_des_update_w.gml</script>
-          <script>scripts\uiz_des_update_xr.gml</script>
-          <script>scripts\uiz_des_update_h.gml</script>
-          <script>scripts\uiz_des_update_yr.gml</script>
-          <script>scripts\uiz_des_update_hr.gml</script>
-        </scripts>
-        <scripts name="valbox">
-          <script>scripts\uiz_des_updatevalbox.gml</script>
-          <script>scripts\uiz_des_addtolist_val.gml</script>
-          <script>scripts\uiz_des_addtolist_button.gml</script>
-          <script>scripts\uiz_des_addtolist_text.gml</script>
-          <script>scripts\uiz_des_addtolist_parent.gml</script>
-          <script>scripts\uiz_des_addtolist_list.gml</script>
-          <script>scripts\uiz_des_addtolist_sprite.gml</script>
-          <script>scripts\uiz_des_addtolist_font.gml</script>
-          <script>scripts\uiz_des_addtolist_bool.gml</script>
-          <script>scripts\uiz_des_addtolist_color.gml</script>
-          <script>scripts\uiz_des_addtolist_color_bak.gml</script>
-          <script>scripts\uiz_des_addtolist_string.gml</script>
-          <script>scripts\uiz_des_addtolist_pos.gml</script>
-          <script>scripts\uiz_des_addtolist_pos_bak.gml</script>
-        </scripts>
-      </scripts>
       <scripts name="sort">
         <script>scripts\scr_sort_drawswap.gml</script>
         <script>scripts\scr_sort_drawvalue.gml</script>
@@ -2299,6 +2200,7 @@
         <object>objects\obj_uiZ_debugmanager</object>
         <object>objects\obj_uiz_dummy</object>
         <object>objects\obj_uiZ_framecolanchor</object>
+        <object>objects\obj_uiz_xmlparser</object>
         <object>objects\obj_uiZ_framerowanchor</object>
         <object>objects\obj_uiZ_framerowanchor_bak</object>
         <object>objects\obj_uiZ_frameset</object>
@@ -2322,9 +2224,6 @@
           <object>objects\obj_uiZ_valuebox_legacy</object>
           <object>objects\obj_uiZ_treelist_bak</object>
         </objects>
-      </objects>
-      <objects name="macromanager">
-        <object>objects\uiz_macromanager_controller</object>
       </objects>
       <objects name="objects">
         <object>objects\obj_uiZ_3waybutton</object>
@@ -2370,82 +2269,6 @@
         <object>objects\obj_uiZ_treelist</object>
         <object>objects\obj_uiZ_window</object>
       </objects>
-      <objects name="uiz_designer">
-        <objects name="uiz_shadow">
-          <object>objects\obj_uiz_des_minesweeper</object>
-          <object>objects\obj_uiz_des_tabs</object>
-          <object>objects\obj_uiz_des_text_background</object>
-          <object>objects\obj_uiz_des_tabslider</object>
-          <object>objects\obj_uiz_des_swipicon</object>
-          <object>objects\obj_uiz_des_spritecounter</object>
-          <object>objects\obj_uiz_des_sliderstruct</object>
-          <object>objects\obj_uiz_des_clock</object>
-          <object>objects\obj_uiz_des_template_tiles</object>
-          <object>objects\obj_uiz_des_template_mouse</object>
-          <object>objects\obj_uiz_des_template</object>
-          <object>objects\obj_uiz_des_switch</object>
-          <object>objects\obj_uiz_des_cover</object>
-          <object>objects\obj_uiz_des_mouseband</object>
-          <object>objects\obj_uiz_des_textplane</object>
-          <object>objects\obj_uiz_des_text</object>
-          <object>objects\obj_uiz_des_spriteanimationbutton</object>
-          <object>objects\obj_uiz_des_menubutton</object>
-          <object>objects\obj_uiz_des_slideframe</object>
-          <object>objects\obj_uiz_des_gridlist</object>
-          <object>objects\obj_uiz_des_textarea</object>
-          <object>objects\obj_uiz_des_loadingbar</object>
-          <object>objects\obj_uiz_des_surfacecanvas</object>
-          <object>objects\obj_uiz_des_ownuiz_example1</object>
-          <object>objects\obj_uiz_des_framescrollbar</object>
-          <object>objects\obj_uiz_des_button</object>
-          <object>objects\obj_uiz_des_radiobox</object>
-          <object>objects\obj_uiz_des_rotator</object>
-          <object>objects\obj_uiz_des_checkbox</object>
-          <object>objects\obj_uiz_des_treelist</object>
-          <object>objects\obj_uiz_des_stringbox</object>
-          <object>objects\obj_uiz_des_mousemenu</object>
-          <object>objects\obj_uiz_des_surfaceholder</object>
-          <object>objects\obj_uiz_des_dropdown</object>
-          <object>objects\obj_uiz_des_colorbox</object>
-          <object>objects\obj_uiz_des_valuebox</object>
-          <object>objects\obj_uiz_des_grid</object>
-          <object>objects\obj_uiz_des_gradientroundrect</object>
-          <object>objects\obj_uiz_des_drawloadingcirc</object>
-          <object>objects\obj_uiz_des_drawtextlines</object>
-          <object>objects\obj_uiz_des_scrollbar</object>
-          <object>objects\obj_uiz_des_drawtext</object>
-          <object>objects\obj_uiz_des_functionbar</object>
-          <object>objects\obj_uiz_des_drawdslist</object>
-          <object>objects\obj_uiz_des_huesquare</object>
-          <object>objects\obj_uiz_des_slider_2col</object>
-          <object>objects\obj_uiz_des_slider</object>
-          <object>objects\obj_uiz_des_squarebutton</object>
-          <object>objects\obj_uiz_des_square</object>
-          <object>objects\obj_uiz_des_gradientsquare</object>
-          <object>objects\obj_uiz_des_3waybutton</object>
-          <object>objects\obj_uiz_des_easybutton</object>
-          <object>objects\obj_uiz_des_sprbutton</object>
-          <object>objects\obj_uiz_des_frame</object>
-          <object>objects\obj_uiz_des_windowholder</object>
-          <object>objects\obj_uiz_des_testobject</object>
-          <object>objects\obj_uiz_des_menuitem</object>
-          <object>objects\obj_uiz_des_object_1</object>
-          <object>objects\obj_uiz_des_menuholder</object>
-          <object>objects\obj_uiz_des_popupok</object>
-        </objects>
-        <object>objects\obj_uiz_designer</object>
-        <object>objects\obj_uiz_des_gradientsquare_bak</object>
-        <object>objects\obj_uiz_des_empty</object>
-        <object>objects\obj_uiz_des_templateobject</object>
-        <objects name="uiz_designer_fileservice">
-          <object>objects\obj_uiz_des_fileservice</object>
-        </objects>
-        <object>objects\obj_uiz_xmlparser</object>
-        <object>objects\obj_uiz_emptyobject</object>
-        <object>objects\obj_uiz_des_dummy</object>
-        <object>objects\obj_uiz_des_frameset_bak</object>
-        <object>objects\obj_uiz_des_frameset</object>
-      </objects>
     </objects>
     <object>objects\jkkj</object>
   </objects>
@@ -2453,8 +2276,6 @@
     <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_uiz_serverbrowser</room>
-    <room>rooms\uiz_designer</room>
-    <room>rooms\uiz_macromanager</room>
     <rooms name="uiz">
       <rooms name="examples tutorials">
         <room>rooms\uiz_tutorial</room>
