@@ -1,4 +1,4 @@
-///uiz_framedivisionhorizontal_part_end(begobject,object)
+///uiz_framedivisionvertical_part_end(begobject,object)
 /*
 For advanced users only.
 Sometimes when you need have more frames than game maker allows arguments for and are thus unable to use uiz_framedivision horizontal/vertical,

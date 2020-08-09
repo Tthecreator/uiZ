@@ -22,9 +22,7 @@ win.top_color_out=topcolor;
 win.doublemargins=false;
 uiz_window_setbuttons(win,false,true,true);
 win.button_cross=false;
-uiz_window_setTopBarSize(win,18,px);
-win.barsize=18;
-win.barsizevaltype=px;
+uiz_window_setTopBarSize(win,.2,dp);
 //change buttons
 //if instance_exists(win.maxim) then{win.maxim.sprite=spr_uiZ_win31_maximize;}
 //if instance_exists(win.minim) then{win.minim.sprite=spr_uiZ_win31_minimize;}

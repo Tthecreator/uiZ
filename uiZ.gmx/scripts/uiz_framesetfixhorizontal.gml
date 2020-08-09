@@ -8,10 +8,11 @@ A more global and easier function would be: uiz_fixframesetpos() which can also 
 with(argument0) {
     uiz_fix_Base_Pos();
     uiz_fix_Base_Alpha();
-    uiz_fix_Base_Margins()
+    uiz_fix_Base_Margins();
+    uiz_frameset_fixThickness();
 }
 
-uiz_frameset_fixThickness();
+
 
 var g = argument0;
 

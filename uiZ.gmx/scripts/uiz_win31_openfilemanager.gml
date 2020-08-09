@@ -33,7 +33,7 @@ uiz_treelist_setxml(folderview, folders);
 uiz_treelist_onClick(folderview, uiz_win31_filemanager_clickFolder)
 uiz_treelist_onDrag(folderview, uiz_win31_filemanager_dragFolder)
 //folderview.showtags=false;//don't show files, just folders
-uiz_treelist_setscrollbarsettings(folderview, 16, px, spr_uiZ_win31_scrollbar, uiz_texturemode_fill, c_white);
+uiz_treelist_setscrollbarsettings(folderview, .18, dp, spr_uiZ_win31_scrollbar, uiz_texturemode_fill, c_white);
 uiz_fixgeneralpos(folderview)
 
 fileview=uiz_c(obj_uiZ_gridlist)

@@ -591,7 +591,6 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
-    <extension index="1">extensions\netlog</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -1029,7 +1028,9 @@
         <scripts name="frameset">
           <script>scripts\uiz_framesetfixparent.gml</script>
           <script>scripts\uiz_framedivisionhorizontal.gml</script>
+          <script>scripts\uiz_framedivisionhorizontal_bak.gml</script>
           <script>scripts\uiz_framedivisionvertical.gml</script>
+          <script>scripts\uiz_framedivisionvertical_bak.gml</script>
           <script>scripts\uiz_frameset_create.gml</script>
           <script>scripts\uiz_framedivisionsetvalue.gml</script>
           <script>scripts\uiz_framedivisionsetdivisions.gml</script>
@@ -1672,6 +1673,7 @@
           </scripts>
           <scripts name="text">
             <script>scripts\uiz_text_settext.gml</script>
+            <script>scripts\uiz_text_gettext.gml</script>
             <script>scripts\uiz_text_setalign.gml</script>
             <script>scripts\uiz_text_setfont.gml</script>
             <script>scripts\uiz_text_setcolor.gml</script>

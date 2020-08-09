@@ -95,7 +95,7 @@ uiz_setparent(frame_ProgramManager,window_ProgramManager);
 //uiz_size(frame_ProgramManager,1,uiz_fill,1,uiz_fill);
 uiz_position(frame_ProgramManager,0,uiz_fill,0,uiz_fill);
 uiz_frame_setscrollautoupdate(frame_ProgramManager,true,true)
-uiz_frame_setscrollbarsettings(frame_ProgramManager, 16, px, spr_uiZ_win31_scrollbar, c_white, uiz_texturemode_fill);
+uiz_frame_setscrollbarsettings(frame_ProgramManager, .18, dp, spr_uiZ_win31_scrollbar, c_white, uiz_texturemode_fill);
 //setup background
 window_ProgramManager.topbarInside=true;
 window_ProgramManager.texturescript=uiz_back_circlestitch_specialmargins;
@@ -116,9 +116,7 @@ window_ProgramManager.top_color_out=topcolor;
 window_ProgramManager.doublemargins=false;
 uiz_window_setbuttons(window_ProgramManager,false,true,true);
 window_ProgramManager.button_cross=false;
-uiz_window_setTopBarSize(window_ProgramManager,18,px);
-window_ProgramManager.barsize=18;
-window_ProgramManager.barsizevaltype=px;
+uiz_window_setTopBarSize(window_ProgramManager,.2,dp);
 //change buttons
 window_ProgramManager.button_maximize_sprite=spr_uiZ_win31_maximize;
 window_ProgramManager.button_minimize_sprite=spr_uiZ_win31_minimize;
@@ -545,7 +543,7 @@ uiz_setparent(notepad_text,window_notepad)
 notepad_text.posinframex=uiz_fill;
 notepad_text.posinframey=uiz_fill;
 notepad_text.texturescript=-1;
-uiz_textarea_setscrollbarsettings(notepad_text, 16, px, spr_uiZ_win31_scrollbar_edge, c_white, uiz_texturemode_fill, 1, uiz_smoothstep, .2);
+uiz_textarea_setscrollbarsettings(notepad_text, .18, dp, spr_uiZ_win31_scrollbar_edge, c_white, uiz_texturemode_fill, 1, uiz_smoothstep, .2);
 uiz_textarea_setvalue(notepad_text,"You are free to type whatever you want here! Type as much as you like to, I won't hold you back. Do your best.");
 uiz_fixgeneralpos(notepad_text)
 }
