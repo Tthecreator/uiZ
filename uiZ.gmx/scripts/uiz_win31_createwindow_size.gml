@@ -3,7 +3,7 @@
 ///create window
 var win,mf;
 win=uiz_window_create(argument3,argument4,argument5,argument6)
-uiz_setparent(win,argument0)
+uiz_setparent(win,argument0);
 //with(win){uiz_window_fixadddepth()}
 win.posinframex=uiz_center
 win.posinframey=uiz_center

@@ -13,5 +13,5 @@ the variable returned by the "_beg" script and the object(same as argument0 of y
 */
 var p=argument0
 uiz_framesetfixvertical(p)
-if argument1.object_index=obj_uiZ_frameset.object_index then{argument1.headframe=p}
+if instance_exists(argument1) and argument1.object_index=obj_uiZ_frameset.object_index then{argument1.headframe=p}
 return p;

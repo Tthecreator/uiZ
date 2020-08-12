@@ -24,11 +24,10 @@ height=parent.iheight
 ;
 uiz_compatibility_fixframesetpos_depth()
 
-if object_index=obj_uiZ_framerowanchor then{
-uiz_framesetfixhorizontal(id)
-}
-if object_index=obj_uiZ_framecolanchor then{
-uiz_framesetfixvertical(id)
+if object_index == obj_uiZ_framerowanchor then{
+uiz_framesetfixhorizontal(id);
+}else if object_index == obj_uiZ_framecolanchor then{
+uiz_framesetfixvertical(id);
 }
 
 }

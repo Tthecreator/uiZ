@@ -28,4 +28,4 @@ for(var i = 1; i<=string_length(argument2);++i){
             w += string_width(c);        
     }   
 }
-*/
+//*/

@@ -111,7 +111,6 @@ mstate=1;
 }
 }else{
 //right button
-//sdbm("scroll right almost",uiz_getmouse_x(),argument2-height,argument2,height)
 if scrollsel=0 and uiz_getmouse_y()>argument3-cwidth and uiz_getmouse_y()<argument3 then{
 if mouse_check_button(mb_left) then{
 scroll=clamp(scroll+argument7/5,0,argument5);

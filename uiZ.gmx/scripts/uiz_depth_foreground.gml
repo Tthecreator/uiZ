@@ -7,7 +7,7 @@ with(argument0){
     
     //gather variables
     var l=parent.children;
-    var sz=ds_list_size(l)
+    var sz=ds_list_size(l);
     
     /*
     //we're placing this on the front, make sure every listpos is updated
@@ -26,6 +26,7 @@ with(argument0){
     }
     */
     
+    sdbm("foregrounding window",argument0,parent,l,sz,l[| sz-1].depth,l[| sz-1])
     if sz > 1 and listpos != sz-1 then{
         uiz_depth_set(argument0, -l[| sz-1].depth-1)
     }

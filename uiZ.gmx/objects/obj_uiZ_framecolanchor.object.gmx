@@ -51,11 +51,7 @@ margint=0
 marginb=0
 margincellw=0
 margincellh=0
-margin=30
-minsizeinframeset=0
-minsizeinframesetvaltype=px
-maxsizeinframeset=0
-maxsizeinframesetvaltype=px
+margin=1
 automargins=true;
 snaptoparent=1
 </string>
@@ -81,6 +77,10 @@ snaptoparent=1
             <string>frameat[0]=noone
 isize[0]=0
 hasBar[0]=false;
+minSize[0]=0;
+minSizeType[0]=px;
+maxSize[0]=0;
+maxSizeType[0]=px;
 thickness=15
 overframebar=0
 lastmouse=0
@@ -145,21 +145,21 @@ if kmouseover==uiz_mousereleased {
     }
 }
 if snaptomouse &gt; 0 then {
-    if frameat[snaptobar].maxsizeinframeset = 0 then {
+    if maxSize[snaptobar] == 0 then {
         var dm = 0
     } else {
-        var dm = (frameat[snaptobar + 1].lx - uiz_getposx(frameat[snaptobar].maxsizeinframeset, frameat[snaptobar].maxsizeinframesetvaltype));
+        var dm = (frameat[snaptobar + 1].lx - uiz_getposx_self(maxSize[snaptobar], maxSizeType[snaptobar]));
     }
-    if frameat[snaptobar + 1].maxsizeinframeset = 0 then {
+    if maxSize[snaptobar + 1] == 0 then {
         var du = 0
     } else {
-        var du = (frameat[snaptobar + 1].lx - uiz_getposx(frameat[snaptobar + 1].maxsizeinframeset, frameat[snaptobar + 1].maxsizeinframesetvaltype));
+        var du = (frameat[snaptobar + 1].lx - uiz_getposx_self(maxSize[snaptobar + 1], maxSizeType[snaptobar + 1]));
     }
 
-    var nwidth = frameat[snaptobar + 1].lx - margin + min(-uiz_getposx(frameat[snaptobar + 1].minsizeinframeset, frameat[snaptobar + 1].minsizeinframesetvaltype), -dm)
-    var nx = frameat[snaptobar].x + margin + max(uiz_getposx(frameat[snaptobar].minsizeinframeset, frameat[snaptobar].minsizeinframesetvaltype), du)
-    var cwidth = frameat[snaptobar + 1].rlx - margin + min(-uiz_getposx(frameat[snaptobar + 1].minsizeinframeset, frameat[snaptobar + 1].minsizeinframesetvaltype), -dm)
-    var cx = frameat[snaptobar].rx + margin + max(uiz_getposx(frameat[snaptobar].minsizeinframeset, frameat[snaptobar].minsizeinframesetvaltype), du)
+    var nwidth = frameat[snaptobar + 1].lx - margin + min(-uiz_getposx_self(minSize[snaptobar + 1], minSizeType[snaptobar + 1]), -dm)
+    var nx = frameat[snaptobar].x + margin + max(uiz_getposx_self(minSize[snaptobar], minSizeType[snaptobar]), du)
+    var cwidth = frameat[snaptobar + 1].rlx - margin + min(-uiz_getposx_self(minSize[snaptobar + 1], minSizeType[snaptobar + 1]), -dm)
+    var cx = frameat[snaptobar].rx + margin + max(uiz_getposx_self(minSize[snaptobar], minSizeType[snaptobar]), du)
 
     if uiz_getmouse_x() &lt; 0 or uiz_getmouse_y() &lt; 0 or uiz_getmouse_x() &gt; global.screenpxwidth or uiz_getmouse_y() &gt; global.screenpxheight then {
         stopsnap = 1

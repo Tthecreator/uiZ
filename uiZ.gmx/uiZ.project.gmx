@@ -1028,9 +1028,9 @@
         <scripts name="frameset">
           <script>scripts\uiz_framesetfixparent.gml</script>
           <script>scripts\uiz_framedivisionhorizontal.gml</script>
-          <script>scripts\uiz_framedivisionhorizontal_bak.gml</script>
+          <script>scripts\uiz_framedivisionhorizontal_objects.gml</script>
+          <script>scripts\uiz_framedivisionvertical_objects.gml</script>
           <script>scripts\uiz_framedivisionvertical.gml</script>
-          <script>scripts\uiz_framedivisionvertical_bak.gml</script>
           <script>scripts\uiz_frameset_create.gml</script>
           <script>scripts\uiz_framedivisionsetvalue.gml</script>
           <script>scripts\uiz_framedivisionsetdivisions.gml</script>
@@ -1044,7 +1044,7 @@
           <script>scripts\uiz_framesetundivide.gml</script>
           <script>scripts\uiz_frameset_switch.gml</script>
           <script>scripts\uiz_ispartofframeset.gml</script>
-          <script>scripts\uiz_frameset_getobject.gml</script>
+          <script>scripts\uiz_frameset_getFrameSetMainObject.gml</script>
           <script>scripts\uiz_frameset_setmargins.gml</script>
           <script>scripts\uiz_frameset_setcellmargins.gml</script>
           <scripts name="internal">
@@ -1056,6 +1056,9 @@
           </scripts>
           <script>scripts\uiz_frameset_setDividerThickness.gml</script>
           <script>scripts\uiz_frameset_setBarSlider.gml</script>
+          <script>scripts\uiz_frameset_setMinimumSize.gml</script>
+          <script>scripts\uiz_frameset_setMaximumSize.gml</script>
+          <script>scripts\uiz_frameset_getObject.gml</script>
         </scripts>
         <scripts name="general">
           <script>scripts\uiz_init.gml</script>
@@ -2200,9 +2203,8 @@
         <object>objects\obj_uiZ_debugmanager</object>
         <object>objects\obj_uiz_dummy</object>
         <object>objects\obj_uiZ_framecolanchor</object>
-        <object>objects\obj_uiz_xmlparser</object>
         <object>objects\obj_uiZ_framerowanchor</object>
-        <object>objects\obj_uiZ_framerowanchor_bak</object>
+        <object>objects\obj_uiz_xmlparser</object>
         <object>objects\obj_uiZ_frameset</object>
         <object>objects\obj_uiZ_grid</object>
         <object>objects\obj_uiZ_menuholder</object>
@@ -2232,6 +2234,7 @@
         <object>objects\obj_uiZ_clock</object>
         <object>objects\obj_uiZ_colorbox</object>
         <object>objects\obj_uiZ_cover</object>
+        <object>objects\obj_uiZ_canvas</object>
         <object>objects\obj_uiZ_drawdslist</object>
         <object>objects\obj_uiZ_dropdown</object>
         <object>objects\obj_uiZ_easybutton</object>

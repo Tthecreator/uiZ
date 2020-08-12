@@ -4,7 +4,7 @@ if live_call_ext(arr) return live_result;
 var t = argument0;
 var i=0;
 with(t) {
-    var ow = width - scrollbarw;
+    var ow = (rlx-rx) - scrollbarw;//we don't use width here, to make this object compatible with framesets. (rx and rlx aren't set but width is)
     var orx = rx;
     var orlx = rlx;
 

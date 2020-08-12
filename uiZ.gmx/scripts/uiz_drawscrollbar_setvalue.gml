@@ -6,7 +6,6 @@ Set newvalue to the amount you want the scrollbar to be scrolled. Should be 0 or
 
 don't forget to call uiz_drawscrollbar_update to make sure the scrollbar displays the right values.
 */
-
 if argument0[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel] then{
 global.mousefrozen=0;
 global.mousefrozensafety=0;
@@ -19,8 +18,13 @@ if updated<=3 then{
 argument0[@uiz_drawscrollbar_struct.uiz_dsb_updated] = 5-updated;
 }
 
-argument0[@uiz_drawscrollbar_struct.uiz_dsb_scroll] = argument1
 
+//set animation parameters
+argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = 1;
+argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]=argument0[@uiz_drawscrollbar_struct.uiz_dsb_scroll];
+argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=argument1
+
+argument0[@uiz_drawscrollbar_struct.uiz_dsb_scroll] = argument1
 /*
 if sign(argument0)=1 then{
 global.mousefrozen=0;

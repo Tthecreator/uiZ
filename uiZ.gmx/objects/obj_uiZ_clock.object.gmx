@@ -125,7 +125,6 @@ if os_browser == browser_not_a_browser or time!=-1 then{
 
 
 ats=uiz_animation_getfunction(atcs,secondanimation)*6
-sdbm("updating, ",atcs,uiz_sc(1),ats,sec);
 atm=uiz_animation_getfunction(sec/60,minuteanimation)*6
 
 ath=uiz_animation_getfunction(date_get_minute(tm)/60,houranimation)*30

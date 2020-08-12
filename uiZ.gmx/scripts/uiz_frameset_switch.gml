@@ -2,6 +2,7 @@
 //switches horizotantal divisions to vertical divisions, and vertical divisions to horizontal ones.
 //Made to be applied to an entire frameset, but can also be assigned to an anchor in a frameset. 
 with(argument0){
+uiz_updater_FixViews();
 //sdbm("object index:",object_index,object_get_name(object_index),divisions)
 if object_index=obj_uiZ_framerowanchor or object_index=obj_uiZ_framecolanchor then{
 if divisions>0 and array_length_1d(frameat)>0 then{
@@ -33,12 +34,19 @@ n.frameat=frameat;
 n.isz=isz;
 n.isize=isize;
 n.isizetype=isizetype;
+n.hasBar = hasBar;
+n.minSize = minSize;
+n.minSizeType = minSizeType;
+n.maxSize = maxSize;
+n.maxSizeType = maxSizeType;
 n.doxt=doxt;
 n.depth=depth
 n.head_alpha=head_alpha
 n.main_alpha=main_alpha
 n.alpha=alpha
 n.thickness=thickness;
+n.frameBarThickness = frameBarThickness;
+n.frameBarThicknessType = frameBarThicknessType;
 n.topframemargin=topframemargin;
 n.bottomframemargin=bottomframemargin;
 n.leftframemargin=leftframemargin;
@@ -48,17 +56,13 @@ n.margint=margint;
 n.marginb=marginb;
 n.marginr=marginr;
 n.marginl=marginl;
-//n.framesetbar=framesetbar;
-n.texturemode=texturemode;
+n.texturemode_horizontal=texturemode_horizontal;
+n.texturemode_vertical=texturemode_vertical;
 n.iscover=iscover;
 n.draw=draw;
 n.spriteconnectionleft=spriteconnectionleft;
 n.spriteconnectionright=spriteconnectionright;
 n.overframebar=overframebar;
-n.minsizeinframeset=minsizeinframeset;
-n.minsizeinframesetvaltype=minsizeinframesetvaltype;
-n.maxsizeinframeset=maxsizeinframeset;
-n.maxsizeinframesetvaltype=maxsizeinframesetvaltype;
 uiz_destroyobject(id)
 /*
 if object_index=obj_uiZ_framecolanchor then{

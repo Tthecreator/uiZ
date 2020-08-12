@@ -1,5 +1,4 @@
 ///uiz_fixgeneralpos(object)
-
 switch(argument0.id.object_index){
 case obj_uiZ_textarea:
 uiz_fixtextareapos(argument0);

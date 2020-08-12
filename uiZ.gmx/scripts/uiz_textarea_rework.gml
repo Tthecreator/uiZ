@@ -247,9 +247,11 @@ if shouldScroll!=doscroll && argument0 then{
 }
 
 if doscroll and uiz_drawscrollbar_getvalue(scroll)>scrolllines then{
+    sdbm("scroll value to scrolllines")
     uiz_drawscrollbar_setvalue(scroll,scrolllines);
     uiz_textarea_updateScrollPx();
 }else if !doscroll and listFromPx!=0 then{
+    sdbm("resetting scroll value")
     uiz_drawscrollbar_setvalue(scroll,0);
     uiz_textarea_updateScrollPx();
 }

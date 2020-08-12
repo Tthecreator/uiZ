@@ -99,12 +99,15 @@ for (var i = 0; i < g.divisions; i++) {
     if g.frameat[i].object_index = obj_uiZ_framecolanchor then {
         g.doxt[i] = 2
     }
+    /*if g.frameat[i].object_index != obj_uiZ_canvas and g.frameat[i].object_index != obj_uiZ_frame then{
+        g.doxt[i] = 3;
+    }*/
 }
 
 for (var i = 0; i < g.divisions; i++) {
     if global.isfixinggrandchildren = false then {
-        uiz_fixgeneralpos(g.frameat[i])
-        uiz_fixchildren(g.frameat[i], 1)
+        uiz_fixgeneralpos(g.frameat[i]);
+        uiz_fixchildren(g.frameat[i], true);
     }
     switch (g.doxt[i]) {
         case 1:

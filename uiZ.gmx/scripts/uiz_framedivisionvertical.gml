@@ -14,11 +14,14 @@ p.isize[divisions-1]=0;
 p.isizetype[divisions-1]=0;
 p.frameat[divisions-1]=0;
 p.hasBar[divisions-1]=0;
-
+p.minSize[divisions-1]=0;
+p.minSizeType[divisions-1]=px;
+p.maxSize[divisions-1]=0;
+p.maxSizeType[divisions-1]=px;
 
 for(var i=0;i<divisions;++i){
     var at=i*2+1;
-    uiz_framedivision_part_mid(p, argument[0], argument[at], argument[at+1]);
+    uiz_framedivision_part_mid(p, argument[0], argument[at], argument[at+1], obj_uiZ_canvas);
 }
 
 uiz_framedivisionvertical_part_end(p, argument[0]);

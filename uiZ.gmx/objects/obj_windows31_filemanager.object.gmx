@@ -135,25 +135,7 @@ folders=uiz_xml_loadstring('
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if instance_exists(folderview) then{
-if folderview.update=true then{
-//get xml handle
-var handle=folderview.selectxml;
-ds_list_destroy(namelist)//delete old list
-ds_list_destroy(sizelist)//delete old list
-ds_list_destroy(datelist)//delete old list
-namelist=uiz_xml_makelistfromattributes_nonsub_at(folders,handle,"name")//generate new list
-sizelist=uiz_xml_makelistfromattributes_nonsub_at(folders,handle,"size")//generate new list
-datelist=uiz_xml_makelistfromattributes_nonsub_at(folders,handle,"dat")//generate new list
-listlist[|0]=namelist//rebind list
-listlist[|1]=sizelist//rebind list
-listlist[|2]=datelist//rebind list
-}
-}
-*/
-
-if !instance_exists(window) then{instance_destroy();}
+            <string>if !instance_exists(window) then{instance_destroy();}
 </string>
           </argument>
         </arguments>

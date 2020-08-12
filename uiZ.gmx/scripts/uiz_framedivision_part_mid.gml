@@ -1,4 +1,4 @@
-///uiz_framedivision_part_mid(begpartid,object,divisionval,valuetype[px dp or fc])
+///uiz_framedivision_part_mid(begpartid,object,divisionval,valuetype[px dp or fc],objectType)
 /*
 For advanced users only.
 Sometimes when you need have more frames than game maker allows arguments for and are thus unable to use uiz_framedivision horizontal/vertical,
@@ -13,7 +13,7 @@ the variable returned by the "_beg" script and the object(same as argument0 of y
 */
 var p=argument0
 var g=argument1;
-if g.object_index=obj_uiZ_frameset.object_index then{g=g.headframe;}
+if instance_exists(g) and g.object_index==obj_uiZ_frameset.object_index then{g=g.headframe;}
 
 //for(var i=0;i<p.divisions;i++){
 var i=p.divisions;
@@ -22,22 +22,36 @@ p.isize[i]=argument2
 p.isizetype[i]=argument3
 //if g=100015 then{dbm(i,p)}
 if i>0 then{
-p.frameat[i]=uiz_frame_create()
+p.frameat[i]=uiz_c(argument4);
 uiz_setparent(p.frameat[i],p)
 p.frameat[i].inlistpos=i;
 }else{
-
+//place this division at parent
 g.parent.frameat[g.inlistpos]=p
-//new codeline:
+//adopt old frame if possible
+
 p.inlistpos=g.inlistpos
-uiz_setparent(g,p)
-p.frameat[i]=g
+if (p.object_index == argument4) then{
+    uiz_setparent(g,p)
+    p.frameat[i]=g  
+}else{
+    p.frameat[i]=uiz_c(argument4);
+    uiz_children_adopt(g, p.frameat[i]);
+    uiz_setparent(p.frameat[i],p);
+    uiz_destroyobject(g);
+}
+
 p.frameat[i].inlistpos=i;
 p.frameat[i].x=0
 p.frameat[i].y=0
-p.hasBar[i] = false;
-
 }
+
+//set other properties
+p.hasBar[i] = false;
+p.minSize[i]=0;
+p.minSizeType[i]=px;
+p.maxSize[i]=0;
+p.maxSizeType[i]=px;
 
 p.divisions++;
 //}

@@ -21,7 +21,7 @@ argument0.parent=t
 if !ds_exists(t.children,ds_type_list) then{t.children=ds_list_create()}
 ds_list_add(t.children,argument0.id)
 argument0.listpos=ds_list_size(t.children)-1
-with(t){
-uiz_fix_Depth();
+with(argument0){
+    uiz_fix_Depth();
 }
 }
