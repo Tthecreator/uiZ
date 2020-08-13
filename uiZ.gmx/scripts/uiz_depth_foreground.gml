@@ -26,7 +26,6 @@ with(argument0){
     }
     */
     
-    sdbm("foregrounding window",argument0,parent,l,sz,l[| sz-1].depth,l[| sz-1])
     if sz > 1 and listpos != sz-1 then{
         uiz_depth_set(argument0, -l[| sz-1].depth-1)
     }
