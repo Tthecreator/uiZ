@@ -36,12 +36,15 @@ break;
 }
 //middle
 if (nwidth>0 or nheight>0) and sprite_get_number(bkspr)>=9 then{
+/*
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,8))
 draw_vertex_texture(nrx,nry,0,0)
 draw_vertex_texture(nrx,nrly,0,szy)
 draw_vertex_texture(nrlx,nry,szx,0)
 draw_vertex_texture(nrlx,nrly,szx,szy)
 draw_primitive_end()
+*/
+uiz_draw_sprite_tiles(bkspr,8,nrx,nry,nrlx,nrly,szx,szy,bkcol,alpha,0,0);
 }
 var bbr=sprite_get_bbox_right(bkspr)+1
 var bbb=sprite_get_bbox_bottom(bkspr)+1

@@ -1643,6 +1643,7 @@
             <script>scripts\uiz_swipicon_keepinsidemode.gml</script>
             <script>scripts\uiz_swipicon_getselected.gml</script>
             <script>scripts\uiz_swipicon_getdoubleclick.gml</script>
+            <script>scripts\uiz_swipicon_onDoubleClick.gml</script>
           </scripts>
           <scripts name="switch">
             <script>scripts\uiz_switch_setvalue.gml</script>
@@ -2119,26 +2120,42 @@
         <scripts name="win31">
           <script>scripts\uiz_win31_template_mousemenu.gml</script>
           <script>scripts\uiz_win31_destroy.gml</script>
-          <script>scripts\uiz_win32_addmenulist.gml</script>
+          <script>scripts\uiz_win31_addmenulist.gml</script>
           <script>scripts\uiz_win31_createwindow.gml</script>
           <script>scripts\uiz_win31_createwindow_size.gml</script>
-          <script>scripts\uiz_win31_stylewindow.gml</script>
           <script>scripts\uiz_win31_addicon.gml</script>
-          <script>scripts\uiz_win31_closefilemanager.gml</script>
-          <script>scripts\uiz_win31_openfilemanager.gml</script>
-          <script>scripts\uiz_win31_filemanager_clickFolder.gml</script>
-          <script>scripts\uiz_win31_filemanager_selectFolder.gml</script>
-          <script>scripts\uiz_win31_filemanager_dragFolder.gml</script>
-          <script>scripts\uiz_win31_openclipboard.gml</script>
-          <script>scripts\uiz_win31_opencalculator.gml</script>
-          <scripts name="minesweeper">
-            <script>scripts\uiz_win31_openminesweeper.gml</script>
-            <script>scripts\uiz_minesweeper_reset.gml</script>
-            <script>scripts\uiz_minesweeper_openSpots.gml</script>
-          </scripts>
-          <script>scripts\uiz_win31_calculatorgrid.gml</script>
           <script>scripts\uiz_win31_window_spawnMouseMenu.gml</script>
           <script>scripts\uiz_win31_window_handleMouseMenu.gml</script>
+          <script>scripts\uiz_win31_stylewindow.gml</script>
+          <scripts name="programManager">
+            <script>scripts\uiz_win31_openMainWindow.gml</script>
+            <script>scripts\uiz_win31_openGamesWindow.gml</script>
+            <script>scripts\uiz_win31_openAccessoriesWindow.gml</script>
+            <scripts name="MainWindow">
+              <script>scripts\uiz_win31_openExplorer.gml</script>
+              <script>scripts\uiz_win31_openClipboard.gml</script>
+              <scripts name="fileManager">
+                <script>scripts\uiz_win31_closefilemanager.gml</script>
+                <script>scripts\uiz_win31_openfilemanager.gml</script>
+                <script>scripts\uiz_win31_filemanager_clickFolder.gml</script>
+                <script>scripts\uiz_win31_filemanager_selectFolder.gml</script>
+                <script>scripts\uiz_win31_filemanager_dragFolder.gml</script>
+              </scripts>
+            </scripts>
+            <scripts name="GamesWindow">
+              <scripts name="minesweeper">
+                <script>scripts\uiz_win31_openMineSweeper.gml</script>
+                <script>scripts\uiz_minesweeper_reset.gml</script>
+                <script>scripts\uiz_minesweeper_openSpots.gml</script>
+              </scripts>
+            </scripts>
+            <scripts name="AccessoriesWindow">
+              <script>scripts\uiz_win31_openCalculator.gml</script>
+              <script>scripts\uiz_win31_calculatorgrid.gml</script>
+              <script>scripts\uiz_win31_openNotepad.gml</script>
+              <script>scripts\uiz_win31_openClock.gml</script>
+            </scripts>
+          </scripts>
         </scripts>
       </scripts>
     </scripts>

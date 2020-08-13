@@ -42,6 +42,8 @@ hasmouse=false;
 keepratio=true//b//keep icon ratio//
 selected=false;
 keepinsidemode=1//v//keepinsidemode//
+onDoubleClick = -1;//v//script on double click//
+onDoubleClickArgument = 0;//v//on double click script argument//
 
 hasbackground=true;
 texturescript=uiz_back_circlestitch//i//texturescript//
@@ -161,7 +163,14 @@ if kmouseover&gt;1 and global.uiz_mouseswipeclick=true then{hasmouse=true global
           <argument>
             <kind>1</kind>
             <string>updated=false
-if kmouseover=uiz_mousepressed then{selected=true if global.doubleclick=1 then{updated=true}}else{
+if kmouseover=uiz_mousepressed then{
+    selected=true;
+    if global.doubleclick=1 then{
+        updated=true;
+        if onDoubleClick!=-1 and script_exists(onDoubleClick) then{
+            script_execute(onDoubleClick, id, onDoubleClickArgument);
+        }
+    }}else{
 if !mouse_check_button(mb_left) or mouse_check_button_released(mb_left) or kmouseover=uiz_nomouse then{selected=false}
 //if kmouseover=uiz_mousereleased then{
 //   selected=false;

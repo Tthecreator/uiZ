@@ -146,7 +146,6 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     break;
 
             }
-            //if id=100054 then{sdbm("I think, ",argument7,mstate,sel,argument8,id)}
             draw_sprite_ext(argument4, sel + addImg, x0, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //left
         }
         if updated = false or(state_change = true and((mstate >= 3 and mstate <= 4) or(mstate_last >= 3 and mstate_last <= 4))) {
@@ -207,16 +206,13 @@ if updated_o > 0 or uiz_selfmarked = false then {
             }
             if argument8>0 then{
                 if height * 2 > barw then {
-                    //sdbm("placd 2: stopping at,",x4+(height/sh)*sh,"starting at,",x6);
                     if ((x4 + (barw / sh) / 2 * sh) <= x6) {
                         x6--;
                     }
-                    //sdbm(x1,x4,x6,sca*scw,sca,scw,sc,argument8)
-                    draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, height / sw, (barw / sh) / 2, rotate, argument5, 1) //left
-                    draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, height / sw, (barw / sh) / 2, rotate, argument5, 1) //right
+                    draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, (barw / sw) / 2, height / sh, rotate, argument5, 1) //left
+                    draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, (barw / sw) / 2, height / sh, rotate, argument5, 1) //right
     
                 } else {
-                    //sdbm("stopping at,",x4+(height/sh)*sh,"starting at,",x6);
                     if ((x4 + (height / sh) * sh) <= x6) {
                         x6--;
                     }
@@ -228,9 +224,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     if (x4 + (height / sw) * sw <= x5) {
                         x5--;
                     }
-                    //uiz_draw_sprite_tiles(argument4, 12 + sel + addImg, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge,90)
                     uiz_draw_sprite_tiles_rotation(argument4, 12 + sel + addImg, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge,rotate)
-                    //draw_square(x5,y0+height/2,x6,y1,c_red,1);
                 }
                 
                 var conh = height - comph;
@@ -272,4 +266,3 @@ if updated_o > 0 or uiz_selfmarked = false then {
         }
     }
 }
-//draw_text(rx,ry,argument7)
