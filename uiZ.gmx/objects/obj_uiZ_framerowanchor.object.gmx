@@ -81,12 +81,18 @@ minSize[0]=0;
 minSizeType[0]=px;
 maxSize[0]=0;
 maxSizeType[0]=px;
+absorbPixelDiff[0]=0;
+absorbPixelDiffTotal = 0;
 thickness=15
 overframebar=0
 lastmouse=0
 snaptomouse=0
 snaptobar=0
 stopsnap=0
+mousesnappoint=0;
+toleft = 0;
+lastFixSize = 0;
+forceFixSize = true;
 
 uiz_frameset_fixThickness();
 </string>
@@ -134,8 +140,8 @@ uiz_frameset_fixThickness();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_frameset_rowanchor_CalculateOverFrameBar();
-kmouseover = uiz_mouse_isonobject_leftcheck(id); //needed here when mouse is frozen
+            <string>kmouseover = uiz_mouse_isonobject_leftcheck(id); //needed here when mouse is frozen
+uiz_frameset_rowanchor_CalculateOverFrameBar();
 
 if kmouseover == uiz_mousereleased {
     if snaptomouse = 1 then {
@@ -146,98 +152,188 @@ if kmouseover == uiz_mousereleased {
     }
 }
 if snaptomouse &gt; 0 then {
-    if maxSize[snaptobar] == 0 then {
-        var dm = 0
-    } else {
-        var dm = (frameat[snaptobar + 1].ly - uiz_getposy_self(maxSize[snaptobar], maxSizeType[snaptobar]));
-    }
-    if maxSize[snaptobar + 1] == 0 then {
-        var du = 0
-    } else {
-        var du = (frameat[snaptobar + 1].ly - uiz_getposy_self(maxSize[snaptobar + 1], maxSizeType[snaptobar + 1]));
-    }
-
-    var nheight = frameat[snaptobar + 1].ly - margin + min(-uiz_getposy_self(minSize[snaptobar + 1], minSizeType[snaptobar + 1]), -dm)
-    var ny = frameat[snaptobar].y + margin + max(uiz_getposy_self(minSize[snaptobar], minSizeType[snaptobar]), du)
-    var cheight = frameat[snaptobar + 1].rly - margin + min(-uiz_getposy_self(minSize[snaptobar + 1], minSizeType[snaptobar + 1]), -dm)
-    var cy = frameat[snaptobar].ry + margin + max(uiz_getposy_self(minSize[snaptobar], minSizeType[snaptobar]), du)
 
     if uiz_getmouse_x() &lt; 0 or uiz_getmouse_y() &lt; 0 or uiz_getmouse_x() &gt; global.screenpxwidth or uiz_getmouse_y() &gt; global.screenpxheight then {
-        stopsnap = 1
+        stopsnap = true;
     }
 
-    if stopsnap = 1 then {
-        mousediff = 0
+    if stopsnap then {
+        mousediff = 0;
     } else {
-        mousediff = lastmouse - uiz_getmouse_y()
+        mousediff = - ((uiz_getmouse_y() - frameat[overframebar].rly) - mousesnappoint);
     }
-    lastmouse = uiz_getmouse_y()
+    lastmouse = uiz_getmouse_y();
+    stopsnap = false;
+    
+    var bothHeight = frameat[snaptobar].height + frameat[snaptobar + 1].height
+    if maxSize[snaptobar+1] == 0 then {
+        var du = 0;
+    } else {
+        var du = bothHeight - uiz_getposy_self(maxSize[snaptobar+1], maxSizeType[snaptobar+1]);
+    }
+    
+    if maxSize[snaptobar] == 0 then {
+        var dm = 0;
+    } else {
+        var dm = bothHeight - uiz_getposy_self(maxSize[snaptobar], maxSizeType[snaptobar]);
+    }
+    
+    var thisMinSize = max(uiz_getposy_self(minSize[snaptobar], minSizeType[snaptobar]), du, 0*(isizetype[snaptobar]==xtra));
+    var otherMinSize = max(uiz_getposy_self(minSize[snaptobar + 1], minSizeType[snaptobar + 1]), dm, 0*(isizetype[snaptobar + 1]==xtra));
+    var thisMaxSize = bothHeight - otherMinSize;
+    var otherMaxSize = bothHeight - thisMinSize;
+    
+    if thisMinSize &gt; thisMaxSize then{
+        sdbm("[uiZ|WARNING] Frameset minimum and frame maximum sizes are incompatible with each other!");
+        exit;
+    }
+    
+    //fix isz
+    isz[snaptobar] -= mousediff
+    if isz[snaptobar] &lt; thisMinSize then{
+        isz[snaptobar] = thisMinSize;
+    }else if isz[snaptobar] &gt; thisMaxSize then{
+        isz[snaptobar] = thisMaxSize;
+    }
+    isz[snaptobar + 1] += mousediff
+    if isz[snaptobar + 1] &lt; otherMinSize then{
+        isz[snaptobar + 1] = otherMinSize;
+    }else if isz[snaptobar + 1] &gt; otherMaxSize then{
+        isz[snaptobar + 1] = otherMaxSize;
+    }
 
-    if isizetype[snaptobar] = xtra and isizetype[snaptobar + 1] = xtra then {
-        //convert the first to a factor
-        isizetype[snaptobar] = fc
-        //set appropriate size
-        isize[snaptobar] = frameat[snaptobar].width / width
-    }
-    stopsnap = 0
+    var oldISizeThis = isize[snaptobar];
+    
     switch (isizetype[snaptobar]) {
         case px:
             isize[snaptobar] -= mousediff
-            if uiz_getmouse_y() &lt; cy then {
-                isize[snaptobar] = ny stopsnap = 1
-            }
-            if uiz_getmouse_y() &gt; cheight then {
-                isize[snaptobar] = nheight stopsnap = 1
+            if isize[snaptobar] &lt; thisMinSize then{
+                isize[snaptobar] = thisMinSize;
+                stopsnap = true;
+            }else if isize[snaptobar] &gt; thisMaxSize then{
+                isize[snaptobar] = thisMaxSize;
+                stopsnap = true;
             }
             break;
         case fc:
             isize[snaptobar] = min(1 - 1 / height, max(1 / height, ((isize[snaptobar] * height) - mousediff) / height))
-            if uiz_getmouse_y() &lt; cy then {
-                isize[snaptobar] = ny / height stopsnap = 1
-            }
-            if uiz_getmouse_y() &gt; cheight then {
-                isize[snaptobar] = nheight / height stopsnap = 1
+            if isize[snaptobar] &lt; thisMinSize / height then{
+                isize[snaptobar] = thisMinSize / height;
+                stopsnap = true;
+            }else if isize[snaptobar] &gt; thisMaxSize / height then{
+                isize[snaptobar] = thisMaxSize / height;
+                stopsnap = true;
             }
             break;
         case dp:
             isize[snaptobar] -= mousediff / uiz_dp
-            if uiz_getmouse_y() &lt; cy then {
-                isize[snaptobar] = ny / uiz_dp stopsnap = 1
-            }
-            if uiz_getmouse_y() &gt; cheight then {
-                isize[snaptobar] = nheight / uiz_dp stopsnap = 1
+            if isize[snaptobar] &lt; thisMinSize / uiz_dp then{
+                isize[snaptobar] = thisMinSize / uiz_dp;
+                stopsnap = true;
+            }else if isize[snaptobar] &gt; thisMaxSize / uiz_dp then{
+                isize[snaptobar] = thisMaxSize / uiz_dp;
+                stopsnap = true;
             }
             break;
     }
+    
+    var oldISizeOther = isize[snaptobar + 1];
+    
     switch (isizetype[snaptobar + 1]) {
         case px:
             isize[snaptobar + 1] += mousediff
-            if uiz_getmouse_y() &lt; cy then {
-                isize[snaptobar] = nheight stopsnap = 1
-            }
-            if uiz_getmouse_y() &gt; cheight then {
-                isize[snaptobar] = ny stopsnap = 1
+            if isize[snaptobar + 1] &lt; otherMinSize then{
+                isize[snaptobar + 1] = otherMinSize;
+                stopsnap = true;
+            }else if isize[snaptobar + 1] &gt; otherMaxSize then{
+                isize[snaptobar + 1] = otherMaxSize;
+                stopsnap = true;
             }
             break;
         case fc:
             isize[snaptobar + 1] = min(1 - 1 / height, max(1 / height, ((isize[snaptobar + 1] * height) + mousediff) / height))
-            if uiz_getmouse_y() &lt; cy then {
-                isize[snaptobar] = nheight / height stopsnap = 1
-            }
-            if uiz_getmouse_y() &gt; cheight then {
-                isize[snaptobar] = ny / height stopsnap = 1
-            }
+            if isize[snaptobar + 1] &lt; otherMinSize / height then{
+                isize[snaptobar + 1] = otherMinSize / height;
+                stopsnap = true;
+            }else if isize[snaptobar + 1] &gt; otherMaxSize / height then{
+                isize[snaptobar + 1] = otherMaxSize / height;
+                stopsnap = true;
+            }            
             break;
         case dp:
             isize[snaptobar + 1] += mousediff / uiz_dp
-            if uiz_getmouse_y() &lt; cy then {
-                isize[snaptobar] = nheight / uiz_dp stopsnap = 1
-            }
-            if uiz_getmouse_y() &gt; cheight then {
-                isize[snaptobar] = ny / uiz_dp stopsnap = 1
+            if isize[snaptobar + 1] &lt; otherMinSize / uiz_dp then{
+                isize[snaptobar + 1] = otherMinSize / uiz_dp;
+                stopsnap = true;
+            }else if isize[snaptobar + 1] &gt; otherMaxSize / uiz_dp then{
+                isize[snaptobar + 1] = otherMaxSize / uiz_dp;
+                stopsnap = true;
             }
             break;
     }
+    
+    if isizetype[snaptobar]==xtra then{
+        if isizetype[snaptobar+1]==xtra then{
+        //BOTH XTRA
+            var startSize = floor(toleft / starsr);
+        
+            var newH = (frameat[snaptobar].height - mousediff);
+            if newH &lt; thisMinSize then{
+                newH = thisMinSize;
+                stopsnap = true;
+            }else if newH &gt; thisMaxSize then{
+                newH = thisMaxSize;
+                stopsnap = true;
+            }
+            
+            var oldIsize = isize[snaptobar];
+            var totISize = isize[snaptobar] + isize[snaptobar + 1];
+            isize[snaptobar] = newH / startSize;
+            isize[snaptobar + 1] -= (isize[snaptobar] - oldIsize)
+            var newTotISize = isize[snaptobar] + isize[snaptobar + 1];
+            
+            //recalculate starsr to forgo rounding errors
+            starsr = 0;
+            for (var i = 0; i &lt; divisions; i++) {
+                if isizetype[i]==xtra then{
+                    starsr+=isize[i];
+                }
+            }
+            
+            uiz_frameset_fixAbsorbPixelDiff(0);
+        }else{
+        //TOP FRAME ONLY XTRA
+            switch (isizetype[snaptobar + 1]) {
+                case px:
+                    var toleftOffset = (isize[snaptobar + 1] - oldISizeOther)
+                    break;
+                case fc:
+                    var toleftOffset = (isize[snaptobar + 1] - oldISizeOther)*height
+                    break;
+                case dp:
+                    var toleftOffset = (isize[snaptobar + 1] - oldISizeOther)*uiz_dp
+                    break;
+            }
+            //get total amount of xtra
+            uiz_frameset_handleExtraOffset(toleftOffset, 0);
+        }
+    } else if isizetype[snaptobar+1]==xtra then{
+        //BOTTOM FRAME ONLY XTRA
+        switch (isizetype[snaptobar]) {
+            case px:
+                var toleftOffset = (isize[snaptobar] - oldISizeThis)
+                break;
+            case fc:
+                var toleftOffset = (isize[snaptobar] - oldISizeThis)*height
+                break;
+            case dp:
+                var toleftOffset = (isize[snaptobar] - oldISizeThis)*uiz_dp
+                break;
+        }
+        //get total amount of xtra
+        uiz_frameset_handleExtraOffset(toleftOffset, 1);
+    }
+    
     uiz_framesetfixhorizontal(id);
     uiz_updater_FixViews();
 }
@@ -285,6 +381,7 @@ switch(kmouseover){
         if snaptomouse = 0 and hasBar[overframebar] then {
             snaptomouse = 1
             snaptobar = overframebar
+            mousesnappoint = uiz_getmouse_y() - frameat[overframebar].rly;
             global.mousefrozen = 1
             lastmouse = uiz_getmouse_y()
             uiz_mouse_freeze();
@@ -343,12 +440,12 @@ switch(kmouseover){
     draw_set_alpha(alpha)
     draw_set_color(color)
     for (var i = 0; i &lt; divisions - 1; i++) {
-
+        h += isz[i]
         if hasBar[i] = 1 then {
             ux = 0
             uwidth = width
             //get the y of the frames
-            h += isz[i]
+            
             uy = h
             uheight = thickness
             if parent.object_index = obj_uiZ_framecolanchor then {

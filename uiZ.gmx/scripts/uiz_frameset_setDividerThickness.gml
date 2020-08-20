@@ -3,5 +3,6 @@ with(argument0){
     frameBarThickness = argument1;
     frameBarThicknessType = argument2;
     uiz_frameset_fixThickness();
+    uiz_frameset_forceFixSize(argument0);
 }
 

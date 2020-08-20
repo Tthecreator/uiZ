@@ -16,69 +16,75 @@ with(argument0) {
 
 var g = argument0;
 
-g.starsr = 0
-var toleft = g.iheight - g.margint - g.marginb;
-for (var i = 0; i < g.divisions; i++) {
-
-    if g.isize[i] < 0 then {
-        g.isize[i] = 0
-    }
-
-    switch (g.isizetype[i]) {
-        case xtra:
-            g.starsr += g.isize[i]
-            break;
-        case px:
-            g.isz[i] = round(g.isize[i] + g.margincellh * 2);
-            toleft -= g.isz[i]
-            break;
-        case dp:
-            g.isz[i] = round(g.isize[i] * uiz_dp + g.margincellh * 2);
-            toleft -= round(g.isz[i]);
-            break;
-        case fc:
-        case fcy:
-            g.isz[i] = round(g.isize[i] * (g.iheight - g.margint - g.marginb) + g.margincellh * 2);
-            toleft -= g.isz[i]
-            break;
-        case fcx:
-            g.isz[i] = round(g.isize[i] * (g.iwidth - g.marginr - g.marginl) + g.margincellh * 2);
-            toleft -= g.isz[i]
-            break;
-    }
-    if g.hasBar[i] then{
-        toleft -= g.thickness;
-    }
+var updateIsz = false;
+if g.lastFixSize != g.height or forceFixSize then{
+    updateIsz = true;
+    forceFixSize = false;
 }
 
-if g.starsr > 0 then {
-    if toleft > 0 then {
-        var startSize = floor(toleft / g.starsr);
-        var pixelDiff = floor(toleft - startSize * g.starsr);
-        for (var i = 0; i < g.divisions; i++) {
-            if g.isizetype[i] = xtra then {
-                if pixelDiff>0 then{
-                    --pixelDiff;
-                    g.isz[i] = startSize * g.isize[i]+1;
-                }else{
-                    g.isz[i] = startSize * g.isize[i];
+if updateIsz then{
+    g.starsr = 0
+    var toleft = g.iheight - g.margint - g.marginb;
+    for (var i = 0; i < g.divisions; i++) {
+    
+        if g.isize[i] < 0 then {
+            g.isize[i] = 0
+        }
+    
+        switch (g.isizetype[i]) {
+            case xtra:
+                g.starsr += g.isize[i]
+                break;
+            case px:
+                g.isz[i] = round(g.isize[i] + g.margincellh * 2);
+                toleft -= g.isz[i]
+                break;
+            case dp:
+                g.isz[i] = round(g.isize[i] * uiz_dp + g.margincellh * 2);
+                toleft -= round(g.isz[i]);
+                break;
+            case fc:
+            case fcy:
+                g.isz[i] = round(g.isize[i] * (g.iheight - g.margint - g.marginb) + g.margincellh * 2);
+                toleft -= g.isz[i]
+                break;
+            case fcx:
+                g.isz[i] = round(g.isize[i] * (g.iwidth - g.marginr - g.marginl) + g.margincellh * 2);
+                toleft -= g.isz[i]
+                break;
+        }
+        if g.hasBar[i] then{
+            toleft -= g.thickness;
+        }
+    }
+    
+    g.toleft = toleft;
+    
+    if g.starsr > 0 then {
+        if toleft > 0 then {
+            var startSize = (toleft / g.starsr);
+            uiz_frameset_getLeftOverXtraPixels(g);
+    
+            for (var i = 0; i < g.divisions; ++i) {
+                if g.isizetype[i] = xtra then {
+                    g.isz[i] = round(startSize * g.isize[i])+g.absorbPixelDiff[i];
+                    
+                }
+            }
+        } else {
+            for (var i = 0; i < g.divisions; i++) {
+                if g.isizetype[i] = xtra then {
+                    g.isz[i] = 0;
                 }
             }
         }
-    } else {
-        for (var i = 0; i < g.divisions; i++) {
-            if g.isizetype[i] = xtra then {
-                g.isz[i] = 0;
-            }
-        }
     }
-}
-
-
-if toleft < 0 then {
-    var factor = (g.iheight - g.margint - g.marginb) / (g.iheight - g.margint - g.marginb - toleft)
-    for (var i = 0; i < g.divisions; i++) {
-        g.isz[i] *= factor
+    
+    if toleft < 0 then {
+        var factor = (g.iheight - g.margint - g.marginb) / (g.iheight - g.margint - g.marginb - toleft)
+        for (var i = 0; i < g.divisions; i++) {
+            g.isz[i] *= factor
+        }
     }
 }
 //really set the objects sizes
@@ -91,8 +97,8 @@ for (var i = 0; i < g.divisions; i++) {
     //set the final framesizes
     g.frameat[i].height = g.isz[i] - g.margincellh * 2
     g.frameat[i].width = g.iwidth;
+    //sdbm("       i:",i," isz:",g.isz[i]," isize:",g.isize[i]," absorb:",g.absorbPixelDiff[i]," height:",g.frameat[i].height," y:",g.frameat[i].y)
 
-    
     if g.frameat[i].object_index = obj_uiZ_framerowanchor then {
         g.doxt[i] = 1
     }
@@ -115,3 +121,5 @@ for (var i = 0; i < g.divisions; i++) {
             break;
     }
 }
+
+g.lastFixSize = g.height;

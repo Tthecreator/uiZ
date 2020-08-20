@@ -673,6 +673,8 @@
       <sprite>sprites\spr_uiZ_windowbutton_minimize</sprite>
       <sprite>sprites\spr_uiZ_windowbuttons</sprite>
       <sprite>sprites\spr_windowbackground</sprite>
+      <sprite>sprites\spr_uiZ_analogclock_dots</sprite>
+      <sprite>sprites\spr_uiZ_analogclock_pointer</sprite>
       <sprites name="serverbrowser">
         <sprite>sprites\spr_uiZ_lock</sprite>
         <sprite>sprites\spr_uiZ_shield</sprite>
@@ -1026,39 +1028,42 @@
           <script>scripts\uiz_frame_disablescroll_y.gml</script>
         </scripts>
         <scripts name="frameset">
-          <script>scripts\uiz_framesetfixparent.gml</script>
-          <script>scripts\uiz_framedivisionhorizontal.gml</script>
-          <script>scripts\uiz_framedivisionhorizontal_objects.gml</script>
-          <script>scripts\uiz_framedivisionvertical_objects.gml</script>
-          <script>scripts\uiz_framedivisionvertical.gml</script>
-          <script>scripts\uiz_frameset_create.gml</script>
-          <script>scripts\uiz_framedivisionsetvalue.gml</script>
-          <script>scripts\uiz_framedivisionsetdivisions.gml</script>
-          <scripts name="uiz_framedivision_part">
-            <script>scripts\uiz_framedivisionhorizontal_part_beg.gml</script>
-            <script>scripts\uiz_framedivisionvertical_part_beg.gml</script>
-            <script>scripts\uiz_framedivision_part_mid.gml</script>
-            <script>scripts\uiz_framedivisionhorizontal_part_end.gml</script>
-            <script>scripts\uiz_framedivisionvertical_part_end.gml</script>
-          </scripts>
-          <script>scripts\uiz_framesetundivide.gml</script>
-          <script>scripts\uiz_frameset_switch.gml</script>
-          <script>scripts\uiz_ispartofframeset.gml</script>
-          <script>scripts\uiz_frameset_getFrameSetMainObject.gml</script>
-          <script>scripts\uiz_frameset_setmargins.gml</script>
-          <script>scripts\uiz_frameset_setcellmargins.gml</script>
           <scripts name="internal">
             <script>scripts\uiz_framesetfixhorizontal.gml</script>
             <script>scripts\uiz_framesetfixvertical.gml</script>
             <script>scripts\uiz_frameset_colanchor_CalculateOverFrameBar.gml</script>
             <script>scripts\uiz_frameset_rowanchor_CalculateOverFrameBar.gml</script>
             <script>scripts\uiz_frameset_fixThickness.gml</script>
+            <script>scripts\uiz_frameset_getLeftOverXtraPixels.gml</script>
+            <script>scripts\uiz_frameset_handleExtraOffset.gml</script>
+            <scripts name="uiz_framedivision_part">
+              <script>scripts\uiz_framedivisionhorizontal_part_beg.gml</script>
+              <script>scripts\uiz_framedivisionvertical_part_beg.gml</script>
+              <script>scripts\uiz_framedivision_part_mid.gml</script>
+              <script>scripts\uiz_framedivisionhorizontal_part_end.gml</script>
+              <script>scripts\uiz_framedivisionvertical_part_end.gml</script>
+            </scripts>
+            <script>scripts\uiz_framesetfixparent.gml</script>
           </scripts>
-          <script>scripts\uiz_frameset_setDividerThickness.gml</script>
-          <script>scripts\uiz_frameset_setBarSlider.gml</script>
-          <script>scripts\uiz_frameset_setMinimumSize.gml</script>
-          <script>scripts\uiz_frameset_setMaximumSize.gml</script>
+          <script>scripts\uiz_frameset_create.gml</script>
+          <script>scripts\uiz_frameset_divide_horizontal.gml</script>
+          <script>scripts\uiz_frameset_divide_objects_horizontal.gml</script>
+          <script>scripts\uiz_frameset_divide_vertical.gml</script>
+          <script>scripts\uiz_frameset_divide_objects_vertical.gml</script>
+          <script>scripts\uiz_frameset_setAnchorDivisions.gml</script>
+          <script>scripts\uiz_frameset_setFrameSize.gml</script>
+          <script>scripts\uiz_frameset_forceFixSize.gml</script>
+          <script>scripts\uiz_frameset_getFrameSetMainObject.gml</script>
           <script>scripts\uiz_frameset_getObject.gml</script>
+          <script>scripts\uiz_frameset_setBarSlider.gml</script>
+          <script>scripts\uiz_frameset_setcellmargins.gml</script>
+          <script>scripts\uiz_frameset_setDividerThickness.gml</script>
+          <script>scripts\uiz_frameset_setmargins.gml</script>
+          <script>scripts\uiz_frameset_setMaximumSize.gml</script>
+          <script>scripts\uiz_frameset_setMinimumSize.gml</script>
+          <script>scripts\uiz_frameset_switch.gml</script>
+          <script>scripts\uiz_frameset_removeDivision.gml</script>
+          <script>scripts\uiz_ispartofframeset.gml</script>
         </scripts>
         <scripts name="general">
           <script>scripts\uiz_init.gml</script>
@@ -2293,8 +2298,8 @@
     <object>objects\jkkj</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_uiz_serverbrowser</room>
     <rooms name="uiz">
       <rooms name="examples tutorials">

@@ -1,4 +1,4 @@
-///uiz_ispartofframeset(object)
+///uiz_frameset_isPartOf(object)
 //returns frameset object if found, else -1.
 /*
 Checks for a frame or anchor whether it is inside a framesetstructure.

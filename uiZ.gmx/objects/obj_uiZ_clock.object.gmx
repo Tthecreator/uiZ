@@ -34,8 +34,8 @@ uiz_objinit()
 //put init variables here
 bigdots=12//v//nubmer of big dots//
 smalldots=4//v//nubmer of small dots between big dots//
-dotsprite=spr_uiZ_win31_analogclock_dots//p//sprite for dots//
-pointersprite=spr_uiZ_win31_analogclock_pointer//p//sprite for the pointers//
+dotsprite=spr_uiZ_analogclock_dots//p//sprite for dots//
+pointersprite=spr_uiZ_analogclock_pointer//p//sprite for the pointers//
 pointersize=0.5//v//pointer size//
 pointersizetype=fcm//z//pointer size type//
 pointercolor=c_white//c//pointer color//
@@ -103,11 +103,13 @@ houranimation=uiz_straight//a//hour animation//
             <string>if time=-1 then{
 tm=date_current_datetime();
 }else{tm=time}
+/*
 if os_browser == browser_not_a_browser or time!=-1 then{
     sec=date_get_second(tm);
     if lastsecond!=sec then{atcs=0; lastsecond=sec}
     atcs+=uiz_sc(1);//make the animation last one whole second
 }else{//html time inaccuracy bug fix
+*/
     atcs+=uiz_sc(1);//make the animation last one whole second
     if atcs&gt;=1 then{
         atcs = 0;
@@ -116,7 +118,7 @@ if os_browser == browser_not_a_browser or time!=-1 then{
             sec = 0;
         }
     }
-}
+//}
 /*else{
     
 }

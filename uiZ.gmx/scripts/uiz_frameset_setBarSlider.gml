@@ -5,4 +5,5 @@ with(argument0){
         hasBar[argument1]=argument2;
     }
     draw = true;//enable drawing
+    uiz_frameset_forceFixSize(argument0);
 }

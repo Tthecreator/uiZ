@@ -214,8 +214,57 @@ uiz_init()
 //draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
+/*
+frameset = uiz_frameset_create()//creating the frameset
+//make our cuts in the frameset
+anchor_1 = uiz_framedivisionhorizontal(frameset, 0.4,fc, 1,xtra);//we don't use _objects here, because we are going to replace the top panel with a vertical division anyways and because we need a canvas (or other object) to make our clock always square.
+anchor_2 = uiz_framedivisionvertical_objects(uiz_frameset_getObject(anchor_1,0), 1,xtra,obj_uiZ_button, 1,xtra,obj_uiZ_button, 3,xtra,obj_uiZ_gradientsquare, 1,dp,obj_uiZ_sprite);
+//get references to our frames, because we didn't specify any object types to use, we can only get obj_uiZ_canvas. 
+button_1 = uiz_frameset_getObject(anchor_2, 0)//the id of the first button.
+button_2 = uiz_frameset_getObject(anchor_2, 1)//the id of the second button.
+grad = uiz_frameset_getObject(anchor_2, 2)//the id of the second to last gradientrect.
+spr = uiz_frameset_getObject(anchor_2, 3)//the id of a last sprite.
+rightCanvas = uiz_frameset_getObject(anchor_1, 1)//the id of a right sprite.
 
+//create clock inside or right canvas
+clock = uiz_c(obj_uiZ_clock);
+uiz_setparent(clock, rightCanvas);
+uiz_size(clock, 1, fcmin, 1, fcmin);
+uiz_position(clock, 0, uiz_center, 0, uiz_center);//it doesn't matter what we fill in for argument 1 or 3 (starting from 0), because we use uiz_center.
 
+//enable frame bars
+uiz_frameset_setBarSlider(anchor_1, 0, true);//position 0 means between first and second frame
+uiz_frameset_setBarSlider(anchor_2, 2, true);//position 1 means between second and second third
+uiz_frameset_setMinimumSize(anchor_2, 2, 3, dp);//set second to last frame to minimum size of 3 dp
+uiz_frameset_setMinimumSize(anchor_2, 3, .05, fc);//set last frame to minimum size of 0.05 fc
+uiz_frameset_setMaximumSize(anchor_2, 2, 10, dp);//set second to last frame to maximum size of 3 dp
+uiz_frameset_setMaximumSize(anchor_2, 3, .3, fc);//set last frame to maximum size of 0.05 fc
+
+//don't forget to fix;
+uiz_fixgeneralpos(frameset);
+*/
+
+frameset=uiz_frameset_create()//creating the frameset
+//"chop" the frame in pieces and make sure that the left frame is always 1 dp wide, the right frame always 0.1 fc wide and the middle frame whatever is left
+anchor_1=uiz_framedivisionhorizontal_objects(frameset,1,dp,obj_uiZ_button,1,xtra,obj_uiZ_gradientsquare,0.1,fc,obj_uiZ_sprite);
+//get references to our frames, because we didn't specify any object types to use, we can only get obj_uiZ_canvas. 
+button=uiz_frameset_getObject(anchor_1,0)//the id of the top button.
+grad=uiz_frameset_getObject(anchor_1,1)//the id of the middle gradientrect.
+spr=uiz_frameset_getObject(anchor_1,2)//the id of a bottom sprite.
+//now DON'T manually change the size or position of our objects again, this is now handled by our frame anchor.
+//don't forget to fix;
+uiz_fixgeneralpos(frameset);
+uiz_fixgeneralpos(button);
+uiz_fixgeneralpos(grad);
+uiz_fixgeneralpos(spr);
+
+/*
+uiz_fixgeneralpos(button);
+uiz_fixgeneralpos(grad);
+uiz_fixgeneralpos(spr);
+uiz_fixgeneralpos(clock);
+*/
+/*
 win=uiz_window_create(300,px,300,px)
 win.posinframex=uiz_snapleft;
 win.setpointx=uiz_left;
@@ -236,6 +285,7 @@ o.posvalh = 0.5;
 o.posvalhtype = fc;
 
 uiz_fixgeneralpos(o);
+*/
 
 /*
 uiz_xml_init()
@@ -331,10 +381,12 @@ uiz_fixgeneralpos(win);
 uiz_fixchildren(win,true);
 }
 
+/*
 if keyboard_check(vk_space) then{
 uiz_fixgeneralpos(win);
 uiz_fixchildren(win,true);
 }
+*/
 
 /*
 if (surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height()) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
@@ -376,6 +428,30 @@ fps_avg/=fps_counts;
 }
 draw_set_color(c_white)
 draw_text(100,100,fps_avg);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_frameset_switch(frameset);
+uiz_fixgeneralpos(frameset);
 </string>
           </argument>
         </arguments>
