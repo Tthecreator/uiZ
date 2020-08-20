@@ -1536,12 +1536,12 @@ uiz_setwindowsize(display_get_width()*0.9,display_get_height()*0.9)
 
 //create new ui
 fset=uiz_frameset_create()
-a=uiz_framedivisionhorizontal(fset,1,dp,1,xtra)
+a=uiz_frameset_divide_horizontal(fset,1,dp,1,xtra)
 functionbar=a.frameat[0]
 mainframe1=a.frameat[1]
 
 
-b=uiz_framedivisionvertical(mainframe1,2.5,dp,1,xtra,2.5,dp,0.2,dp)
+b=uiz_frameset_divide_vertical(mainframe1,2.5,dp,1,xtra,2.5,dp,0.2,dp)
 //b.minsizeinframeset=0.8
 b.minsizeinframeset=0.1
 b.minsizeinframesetvaltype=fc
@@ -1570,7 +1570,7 @@ gridscrollbar.posinframey=uiz_fill;
 gridscrollbar.frame=rightbar;
 uiz_fixgeneralpos(gridscrollbar)
 
-c=uiz_framedivisionhorizontal(leftbar,1,xtra,1,xtra)
+c=uiz_frameset_divide_horizontal(leftbar,1,xtra,1,xtra)
 c.framesetbar=1
 c.minsizeinframeset=0.05
 c.minsizeinframesetvaltype=fc
@@ -1583,7 +1583,7 @@ c.maxsizeinframeset=3.2
 c.maxsizeinframesetvaltype=dp
 
 /*
-d=uiz_framedivisionhorizontal(mainframe2,0.3,dp,1,xtra,2.5,dp)
+d=uiz_frameset_divide_horizontal(mainframe2,0.3,dp,1,xtra,2.5,dp)
 d.minsizeinframeset=0.6
 d.minsizeinframesetvaltype=fc
 d.framesetbar=1
@@ -1591,11 +1591,11 @@ tabbar=d.frameat[0]
 tabbar.framesetbar=0
 mainframe4=d.frameat[1]
 //mainframe4.framesetbar=1
-f=uiz_framedivisionhorizontal(mainframe4,1,px,1,xtra)
+f=uiz_frameset_divide_horizontal(mainframe4,1,px,1,xtra)
 tf=f.frameat[0]
 taf=f.frameat[1]
 */
-d=uiz_framedivisionhorizontal(mainframe2,1,xtra,2.5,dp)
+d=uiz_frameset_divide_horizontal(mainframe2,1,xtra,2.5,dp)
 d.minsizeinframeset=0.6
 d.minsizeinframesetvaltype=fc
 d.framesetbar=1
@@ -1604,7 +1604,7 @@ d.framesetbar=1
 mainframe4=d.frameat[0]
 mainframe3=d.frameat[1]
 
-f=uiz_framedivisionhorizontal(mainframe4,1,px,1,xtra)
+f=uiz_frameset_divide_horizontal(mainframe4,1,px,1,xtra)
 tf=f.frameat[0]
 taf=f.frameat[1]
 
@@ -1613,7 +1613,7 @@ f.framesetbar=1
 
 
 
-//e=uiz_framedivisionvertical(mainframe3,1,xtra,1,xtra)
+//e=uiz_frameset_divide_vertical(mainframe3,1,xtra,1,xtra)
 
 //log=e.frameat[0]
 //log.framesetbar=1

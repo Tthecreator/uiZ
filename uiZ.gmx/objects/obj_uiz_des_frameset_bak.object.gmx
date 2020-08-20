@@ -424,9 +424,9 @@ uiz_des_framewindow_save()
 var fp=uiz_des_framewindow_findframefromxml(object,uxml,xml.selectxml)
 //sdbm("fpadd:",fp,usetag,istag)
 if istag="horizontal" then{
-uiz_framedivisionhorizontal(fp,1,xtra)
+uiz_frameset_divide_horizontal(fp,1,xtra)
 }else{
-uiz_framedivisionvertical(fp,1,xtra)
+uiz_frameset_divide_vertical(fp,1,xtra)
 }
 
 
@@ -658,9 +658,9 @@ uiz_des_framewindow_save()
 var fp=uiz_des_framewindow_findframefromxml(object,global.xml,xml.selectxml)
 //sdbm("fpadd:",fp,usetag,istag)
 if istag="horizontal" then{
-uiz_framedivisionhorizontal(fp,1,xtra)
+uiz_frameset_divide_horizontal(fp,1,xtra)
 }else{
-uiz_framedivisionvertical(fp,1,xtra)
+uiz_frameset_divide_vertical(fp,1,xtra)
 }
 
 

@@ -1044,6 +1044,7 @@
               <script>scripts\uiz_framedivisionvertical_part_end.gml</script>
             </scripts>
             <script>scripts\uiz_framesetfixparent.gml</script>
+            <script>scripts\uiz_frameset_getFramesetMainObject.gml</script>
           </scripts>
           <script>scripts\uiz_frameset_create.gml</script>
           <script>scripts\uiz_frameset_divide_horizontal.gml</script>
@@ -1053,7 +1054,6 @@
           <script>scripts\uiz_frameset_setAnchorDivisions.gml</script>
           <script>scripts\uiz_frameset_setFrameSize.gml</script>
           <script>scripts\uiz_frameset_forceFixSize.gml</script>
-          <script>scripts\uiz_frameset_getFrameSetMainObject.gml</script>
           <script>scripts\uiz_frameset_getObject.gml</script>
           <script>scripts\uiz_frameset_setBarSlider.gml</script>
           <script>scripts\uiz_frameset_setcellmargins.gml</script>

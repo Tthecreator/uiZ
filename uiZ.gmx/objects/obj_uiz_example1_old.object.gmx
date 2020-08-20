@@ -129,11 +129,11 @@ uiz_fixgeneralpos(o)
             <string>/*
 uiz_init();
 frameset=uiz_frameset_create();
-div1=uiz_framedivisionhorizontal(frameset,1.5,dp,1,xtra,0.4,dp)
+div1=uiz_frameset_divide_horizontal(frameset,1.5,dp,1,xtra,0.4,dp)
 topframe=div1.frameat[0];
 bottomframe=div1.frameat[1];
 scrollframe1=div1.frameat[2];
-div2=uiz_framedivisionvertical(bottomframe,0.25,fc,1,xtra,0.4,dp)
+div2=uiz_frameset_divide_vertical(bottomframe,0.25,fc,1,xtra,0.4,dp)
 leftframe=div2.frameat[0];
 rightframe=div2.frameat[1];
 scrollframe2=div2.frameat[2];

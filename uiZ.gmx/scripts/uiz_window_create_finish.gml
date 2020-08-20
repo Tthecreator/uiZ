@@ -4,10 +4,10 @@ uiz_setparent(fs,id)
 
 
 uiz_framesetfixparent(fs)
-h=uiz_framedivisionhorizontal(fs,barsize,barsizevaltype,1,xtra)
+h=uiz_frameset_divide_horizontal(fs,barsize,barsizevaltype,1,xtra)
 uiz_fixgeneralpos(fs)
 topbar=h.frameat[0]
-h2=uiz_framedivisionvertical(topbar,1,xtra,barsize*(button_cross+button_maximize+button_minimize),barsizevaltype)
+h2=uiz_frameset_divide_vertical(topbar,1,xtra,barsize*(button_cross+button_maximize+button_minimize),barsizevaltype)
 buttons=h2.frameat[1]
 //the cross button
 if button_cross=1 then{

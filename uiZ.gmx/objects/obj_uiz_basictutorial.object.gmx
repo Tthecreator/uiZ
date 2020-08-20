@@ -1562,11 +1562,11 @@ uiz_init()
 //create frameset
 frset=uiz_frameset_create()
 //divide horizontally
-div1=uiz_framedivisionhorizontal(frset,1,dp,1,xtra)
+div1=uiz_frameset_divide_horizontal(frset,1,dp,1,xtra)
 topbar=div1.frameat[0];
 mainpart=div1.frameat[1];
 //divide vertically
-div2=uiz_framedivisionvertical(mainpart,0.1,fc,1,xtra)
+div2=uiz_frameset_divide_vertical(mainpart,0.1,fc,1,xtra)
 leftframe=div2.frameat[0];
 mainframe=div2.frameat[1];
 uiz_fixgeneralpos(frset)
@@ -1597,11 +1597,11 @@ uiz_init()
 //create frameset
 frset=uiz_frameset_create()
 //divide horizontally
-div1=uiz_framedivisionhorizontal(frset,1,dp,1,xtra)
+div1=uiz_frameset_divide_horizontal(frset,1,dp,1,xtra)
 topbar=div1.frameat[0];//the top frame
 mainpart=div1.frameat[1];//this variable will be unusable after our second devision
 //divide vertically
-div2=uiz_framedivisionvertical(mainpart,0.1,fc,1,xtra)
+div2=uiz_frameset_divide_vertical(mainpart,0.1,fc,1,xtra)
 leftframe=div2.frameat[0];//the left bar
 mainframe=div2.frameat[1];//the big, bottom-right frame.
 //fix our frameset
@@ -1642,14 +1642,14 @@ uiz_init()
 //create frameset
 frset=uiz_frameset_create()
 //divide horizontally
-div1=uiz_framedivisionhorizontal(frset,1,dp,1,xtra)
+div1=uiz_frameset_divide_horizontal(frset,1,dp,1,xtra)
 topbar=div1.frameat[0];//the top frame
 mainpart=div1.frameat[1];//this variable will be unusable after our second devision
 //divide vertically
-div2=uiz_framedivisionvertical(mainpart,0.1,fc,3,xtra,1,xtra)
+div2=uiz_frameset_divide_vertical(mainpart,0.1,fc,3,xtra,1,xtra)
 leftframe=div2.frameat[0];//the left bar
 mainframe=div2.frameat[1];//the big, bottom-right frame.
-rightframe=div2.frameat[2];//an extra frame on the right, created by supplying more argumetns to uiz_framedivisionvertical
+rightframe=div2.frameat[2];//an extra frame on the right, created by supplying more argumetns to uiz_frameset_divide_vertical
 //fix our frameset
 uiz_fixgeneralpos(frset)
 //create a gradientsquare in the mainframe.

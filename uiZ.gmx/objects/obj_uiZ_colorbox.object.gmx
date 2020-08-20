@@ -619,11 +619,11 @@ if global.colorscreen != id or!instance_exists(w) then {
         f = w;
         fs = uiz_frameset_create();
         uiz_setparent(fs, f)
-        div1 = uiz_framedivisionvertical(fs, 0.7, fc, 1, xtra)
+        div1 = uiz_frameset_divide_vertical(fs, 0.7, fc, 1, xtra)
         picker = div1.frameat[0]
         sep = div1.frameat[1]
 
-        div2 = uiz_framedivisionhorizontal(picker, 0.4, fc, 0.2, fc, 1, xtra)
+        div2 = uiz_frameset_divide_horizontal(picker, 0.4, fc, 0.2, fc, 1, xtra)
         hue = div2.frameat[0]
         valsz = div2.frameat[1]
         valsels = div2.frameat[2]
@@ -638,7 +638,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         uh.posvaly = 0
         uiz_fixgeneralpos(uh)
 
-        div3 = uiz_framedivisionhorizontal(sep, 0.1, fc, 1, xtra)
+        div3 = uiz_frameset_divide_horizontal(sep, 0.1, fc, 1, xtra)
         colbox = div3.frameat[0]
         selector = div3.frameat[1]
 

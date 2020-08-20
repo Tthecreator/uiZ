@@ -111,10 +111,10 @@ uiz_fixframepos(f)
 g=uiz_frameset_create()
 uiz_setparent(g,f)
 uiz_framesetfixparent(g)
-a=uiz_framedivisionvertical(g,1,xtra,300,px)
+a=uiz_frameset_divide_vertical(g,1,xtra,300,px)
 o=a.frameat[0];
 q=a.frameat[1];
-b=uiz_framedivisionhorizontal(o,1,xtra,2,xtra,1,xtra)
+b=uiz_frameset_divide_horizontal(o,1,xtra,2,xtra,1,xtra)
 c=b.frameat[1]
 t=uiz_testobject_create()
 uiz_setparent(t,c)

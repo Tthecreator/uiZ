@@ -19,7 +19,7 @@ loadfilelist=uiz_findfile_dslist(projectfolder+"uiZ\*.ini")
 sdbm("[uiZ,Designer:ERROR] Folder '"+projectfolder+"uiZ' not found, even after attempting to create it.");
 }
 dbm("THIS STUFF SHOULD GIVE AN ERROR, FRAMEDIVISION NOT COMPATIBLE WITH FRAMESET ANYMORE")
-var di=uiz_framedivisionhorizontal(ldwin,1,xtra,0.3,dp)
+var di=uiz_frameset_divide_horizontal(ldwin,1,xtra,0.3,dp)
 var p1=di.frameat[0];
 var p2=di.frameat[1];
 uiz_fixgeneralpos(ldwin);

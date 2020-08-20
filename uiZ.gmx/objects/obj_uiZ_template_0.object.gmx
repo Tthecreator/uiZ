@@ -31,7 +31,7 @@ uiz_init()
 //setup frameset
 frameset=uiz_frameset_create()
 //uiz_setparent(frameset,frame_test)
-anchor_1=uiz_framedivisionhorizontal(frameset,0.5,dp,1,xtra)
+anchor_1=uiz_frameset_divide_horizontal(frameset,0.5,dp,1,xtra)
 //get the top bar (the first frame, so array index 0)
 frame_topbar=anchor_1.frameat[0]
 //make the topbar draw a color

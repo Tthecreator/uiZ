@@ -34,7 +34,7 @@ frameset=uiz_frameset_create();
 uiz_setparent(frameset,window)
 frameset.posinframex=uiz_fill;
 frameset.posinframey=uiz_fill;
-frameanchor=uiz_framedivisionhorizontal(frameset,25,px,1,xtra,30,px,90,px,30,px)
+frameanchor=uiz_frameset_divide_horizontal(frameset,25,px,1,xtra,30,px,90,px,30,px)
 frame_bar=frameanchor.frameat[0];
 frame_list=frameanchor.frameat[1];
 frame_tags=frameanchor.frameat[2];
@@ -97,7 +97,7 @@ uiz_fixgeneralpos(serverlist)
 
 
 //add the tag and workshop bar
-tagsanchor=uiz_framedivisionvertical(frame_tags,60,px,1,xtra,40,px,1,xtra,1,xtra,1,xtra)
+tagsanchor=uiz_frameset_divide_vertical(frame_tags,60,px,1,xtra,40,px,1,xtra,1,xtra,1,xtra)
 
 text_workshop=uiz_c(obj_uiZ_text)
 uiz_setparent(text_workshop,tagsanchor.frameat[0])
@@ -149,9 +149,9 @@ uiz_fixgeneralpos(button_tags)
 
 
 //add stuff to the main settings area
-mainanchor=uiz_framedivisionvertical(frame_settings,1,xtra,1,xtra,0.1,fc,1,xtra)
+mainanchor=uiz_frameset_divide_vertical(frame_settings,1,xtra,1,xtra,0.1,fc,1,xtra)
 
-leftanchor=uiz_framedivisionhorizontal(mainanchor.frameat[0],1,xtra,1,xtra,1,xtra)
+leftanchor=uiz_frameset_divide_horizontal(mainanchor.frameat[0],1,xtra,1,xtra,1,xtra)
 
 //Game
 text_Game=uiz_c(obj_uiZ_text)
@@ -213,7 +213,7 @@ dropdown_MaxP.posvalw=0.3;
 dropdown_MaxP.posinframey=uiz_fill;
 uiz_fixgeneralpos(dropdown_MaxP)
 
-middleanchor=uiz_framedivisionhorizontal(mainanchor.frameat[1],1,xtra,1,xtra,1,xtra)
+middleanchor=uiz_frameset_divide_horizontal(mainanchor.frameat[1],1,xtra,1,xtra,1,xtra)
 
 //Latency
 text_Latency=uiz_c(obj_uiZ_text)
@@ -366,7 +366,7 @@ text_4.posvaly=uiz_getpositionvalue(1,4,3)
 uiz_fixgeneralpos(text_4)
 
 //Add stuff to the lowest bar part
-actionsanchor=uiz_framedivisionvertical(frame_actions,0.05,fc,0.2,fc,0.25,fc,0.15,fc,0.125,fc,0.125,fc,0.1,fc)
+actionsanchor=uiz_frameset_divide_vertical(frame_actions,0.05,fc,0.2,fc,0.25,fc,0.15,fc,0.125,fc,0.125,fc,0.1,fc)
 
 check_5=uiz_c(obj_uiZ_checkbox)
 uiz_setparent(check_5,actionsanchor.frameat[0])

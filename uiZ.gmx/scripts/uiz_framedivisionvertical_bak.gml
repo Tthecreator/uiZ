@@ -1,4 +1,4 @@
-///uiz_framedivisionvertical(object,divisionval,valuetype[px dp or fc],divisionval,valuetype[px dp or fc],........)
+///uiz_frameset_divide_vertical(object,divisionval,valuetype[px dp or fc],divisionval,valuetype[px dp or fc],........)
 /*
 Requires you to have a previously created frameset.
 Cannot be applied to another anchor, only to a frame assigned to that anchor.

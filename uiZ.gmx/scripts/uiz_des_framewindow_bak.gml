@@ -9,24 +9,24 @@ global.haswindow=id;
 frset=uiz_frameset_create()
 uiz_setparent(frset,frwin)
 /*
-frmix=uiz_framedivisionvertical(frset,0.65,fc,0.35,fc)
+frmix=uiz_frameset_divide_vertical(frset,0.65,fc,0.35,fc)
 frleft=frmix.frameat[0];
 frright=frmix.frameat[1];
-frleftmix=uiz_framedivisionhorizontal(frleft,1,xtra,0.3,dp)
+frleftmix=uiz_frameset_divide_horizontal(frleft,1,xtra,0.3,dp)
 frmain=frleftmix.frameat[0];
 frbottom=frleftmix.frameat[1];
-frbottommix=uiz_framedivisionvertical(frbottom,3,fcy,1,xtra)
+frbottommix=uiz_frameset_divide_vertical(frbottom,3,fcy,1,xtra)
 frbuttons=frbottommix.frameat[0];
 frsettings=frbottommix.frameat[1];
 */
-frmix=uiz_framedivisionhorizontal(frset,1,xtra,0.3,dp)
+frmix=uiz_frameset_divide_horizontal(frset,1,xtra,0.3,dp)
 frmain=frmix.frameat[0];
 frbottom=frmix.frameat[1];
-//frtopmix=uiz_framedivisionvertical(frtop,0.65,fc,0.35,fc)
+//frtopmix=uiz_frameset_divide_vertical(frtop,0.65,fc,0.35,fc)
 //frmain=frmix.frameat[0];
 //frright=frmix.frameat[1];
 
-frbottommix=uiz_framedivisionvertical(frbottom,3,fcy,1,xtra)
+frbottommix=uiz_frameset_divide_vertical(frbottom,3,fcy,1,xtra)
 frbuttons=frbottommix.frameat[0];
 frsettings=frbottommix.frameat[1];
 

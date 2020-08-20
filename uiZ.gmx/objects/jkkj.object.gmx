@@ -214,11 +214,11 @@ uiz_init()
 //draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
-/*
+
 frameset = uiz_frameset_create()//creating the frameset
 //make our cuts in the frameset
-anchor_1 = uiz_framedivisionhorizontal(frameset, 0.4,fc, 1,xtra);//we don't use _objects here, because we are going to replace the top panel with a vertical division anyways and because we need a canvas (or other object) to make our clock always square.
-anchor_2 = uiz_framedivisionvertical_objects(uiz_frameset_getObject(anchor_1,0), 1,xtra,obj_uiZ_button, 1,xtra,obj_uiZ_button, 3,xtra,obj_uiZ_gradientsquare, 1,dp,obj_uiZ_sprite);
+anchor_1 = uiz_frameset_divide_horizontal(frameset, 0.4,fc, 1,xtra);//we don't use _objects here, because we are going to replace the top panel with a vertical division anyways and because we need a canvas (or other object) to make our clock always square.
+anchor_2 = uiz_frameset_divide_objects_vertical(uiz_frameset_getObject(anchor_1,0), 1,xtra,obj_uiZ_button, 1,xtra,obj_uiZ_button, 3,xtra,obj_uiZ_gradientsquare, 1,dp,obj_uiZ_sprite);
 //get references to our frames, because we didn't specify any object types to use, we can only get obj_uiZ_canvas. 
 button_1 = uiz_frameset_getObject(anchor_2, 0)//the id of the first button.
 button_2 = uiz_frameset_getObject(anchor_2, 1)//the id of the second button.
@@ -242,11 +242,11 @@ uiz_frameset_setMaximumSize(anchor_2, 3, .3, fc);//set last frame to maximum siz
 
 //don't forget to fix;
 uiz_fixgeneralpos(frameset);
-*/
 
+/*
 frameset=uiz_frameset_create()//creating the frameset
 //"chop" the frame in pieces and make sure that the left frame is always 1 dp wide, the right frame always 0.1 fc wide and the middle frame whatever is left
-anchor_1=uiz_framedivisionhorizontal_objects(frameset,1,dp,obj_uiZ_button,1,xtra,obj_uiZ_gradientsquare,0.1,fc,obj_uiZ_sprite);
+anchor_1=uiz_frameset_divide_objects_horizontal(frameset,1,dp,obj_uiZ_button,1,xtra,obj_uiZ_gradientsquare,0.1,fc,obj_uiZ_sprite);
 //get references to our frames, because we didn't specify any object types to use, we can only get obj_uiZ_canvas. 
 button=uiz_frameset_getObject(anchor_1,0)//the id of the top button.
 grad=uiz_frameset_getObject(anchor_1,1)//the id of the middle gradientrect.
@@ -257,7 +257,7 @@ uiz_fixgeneralpos(frameset);
 uiz_fixgeneralpos(button);
 uiz_fixgeneralpos(grad);
 uiz_fixgeneralpos(spr);
-
+*/
 /*
 uiz_fixgeneralpos(button);
 uiz_fixgeneralpos(grad);
@@ -450,7 +450,8 @@ draw_text(100,100,fps_avg);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_frameset_switch(frameset);
+            <string>//uiz_frameset_switch(frameset);
+uiz_frameset_setAnchorDivisions(anchor_1, 1, true);
 uiz_fixgeneralpos(frameset);
 </string>
           </argument>
