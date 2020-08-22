@@ -326,7 +326,7 @@ draw_circle(knobX,,round(width*knobsize/2),0)
 }else{
 var osize=(width*knobsize/2)
 var asize=osize*2;
-draw_sprite_ext(sprite,spriteimg,round(rx+width/2-osize),round(ry+begSpace+moveSpace*uiz_animation_getfunction(inbetvalue,animation)-osize),(asize/sprite_get_width(sprite)),(asize/sprite_get_height(sprite)),0,uiz_km_retval(spritecolor,spriteoncolor,spriteincolor),alpha)
+draw_sprite_ext(sprite,spriteimg,round(rx+width/2-osize),round(ry+begSpace+moveSpace*uiz_animation_getFunction(inbetvalue,animation)-osize),(asize/sprite_get_width(sprite)),(asize/sprite_get_height(sprite)),0,uiz_km_retval(spritecolor,spriteoncolor,spriteincolor),alpha)
 }
 
 }

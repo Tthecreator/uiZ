@@ -209,7 +209,7 @@ draw_set_color(color)
 
 draw_primitive_begin(pr_trianglestrip)
 if countadd=1 then{
-var to=precision*1.5-(precision*uiz_animation_getfunction(count,graph1))
+var to=precision*1.5-(precision*uiz_animation_getFunction(count,graph1))
 for(var i=precision/2;i&lt;=to;i++){
 var angle=(i/precision)*2*pi;
 var angle2=((i+1)/precision)*2*pi;
@@ -217,7 +217,7 @@ draw_vertex(mx+w*sin(angle),my+h*cos(angle))
 draw_vertex(mx+w2*sin(angle),my+h2*cos(angle))
 }
 }else{
-var to=precision*1.5-(precision*uiz_animation_getfunction(1-count,graph2))
+var to=precision*1.5-(precision*uiz_animation_getFunction(1-count,graph2))
 for(var i=precision/2;i&lt;=to;i++){
 var angle=(i/precision)*2*pi;
 var angle2=((i+1)/precision)*2*pi;

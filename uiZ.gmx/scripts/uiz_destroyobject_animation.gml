@@ -1,4 +1,4 @@
-///uiz_destroyobject_animation(id,xfunction,yfunction,alphafunction,time)
+///uiz_destroyObject_animation(instanceid, xfunction, yfunction, alphafunction, time)
 /*
 Safely destroys an uiZ object, but does it with style.
 It is important you use this script instead of the normal instance_destroy() script, as this script removes the reference to this object from its parent.
@@ -6,7 +6,7 @@ If the normal instance_destroy script is called, crashes are likely to occur.
 Also deletes ALL CHILDREN and GRANDCHILDREN of the object being deleted.
 If you don't want everything to be deleted you can use uiz_children_adopt() to place the children somewhere else.
 The object is still accessible until the animation is over, then it will be destroyed.
-For information on how the animation part works, see "uiz_setopeninganimation" and "Animations in general".
+For information on how the animation part works, see "uiz_animation_setOpeningAnimation" and "Animations in general".
 */
 with(argument0){
 //if destroy=0 then{destroy=1}

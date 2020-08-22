@@ -242,8 +242,8 @@ if hasSelection = true then {
 
 if isTyping then {
     //handle typing animation
-    typeanimcount = uiz_animation_increasecounter(typeanimcount, typeAnimationTime)
-    uiz_typecursor_setalpha(uiz_animation_getfunction_twoway(typeanimcount, uiz_exponential_in, uiz_exponential_in))
+    typeanimcount = uiz_animation_increaseCounter(typeanimcount, typeAnimationTime)
+    uiz_typecursor_setalpha(uiz_animation_getFunction_twoWay(typeanimcount, uiz_exponential_in, uiz_exponential_in))
 }
 
 

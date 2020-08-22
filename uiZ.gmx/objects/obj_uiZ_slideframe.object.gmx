@@ -176,8 +176,8 @@ if mouse_check_button(mb_left) then{
 if (menubutton!=noone and menubutton.kmouseover=3) or (newvalue=true and blackframe!=noone and blackframe.kmouseover=3) then{
 if inanim=0 or inanim=1 then{inanim=uiz_sc(snapanimationtime);newvalue=!value;}else{
 newvalue=!newvalue;
-var animval=1-uiz_animation_getfunction(inanim,snapanimation);
-inanim=uiz_animation_revertfunction(animval,snapanimation);
+var animval=1-uiz_animation_getFunction(inanim,snapanimation);
+inanim=uiz_animation_revertFunction(animval,snapanimation);
 };
 }
 if posmode = uiz_horizontal then{
@@ -233,9 +233,9 @@ right:
 
 */
 if newvalue^posbool=false then{
-inanim = uiz_animation_revertfunction(1-setpoint,snapanimation);
+inanim = uiz_animation_revertFunction(1-setpoint,snapanimation);
 }else{
-inanim = uiz_animation_revertfunction(setpoint,snapanimation);
+inanim = uiz_animation_revertFunction(setpoint,snapanimation);
 }
 moves_mouse=false;
 uiz_mouse_unfreeze();
@@ -302,7 +302,7 @@ value=newvalue;
 inanim=0;
 setp=1;
 }else{
-setp = uiz_animation_getfunction(inanim,snapanimation);
+setp = uiz_animation_getFunction(inanim,snapanimation);
 }
 
 if (newvalue^posbool)=false then{

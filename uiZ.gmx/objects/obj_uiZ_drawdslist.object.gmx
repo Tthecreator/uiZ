@@ -206,7 +206,7 @@ toscroll=max(0,min(1,toscroll))
 }
 if fromscroll!=toscroll then{
 var scrolldelta=toscroll-fromscroll
-scroll=fromscroll+scrolldelta*uiz_animation_getfunction(count,graph);
+scroll=fromscroll+scrolldelta*uiz_animation_getFunction(count,graph);
 count+=1/(countspeed*room_speed);
 if count&gt;=1 then{fromscroll=toscroll scroll=toscroll}
 addy=min(0,-scroll*(height-parent.height))

@@ -1,4 +1,4 @@
-///uiz_animation_revertfunction(animationfactor,graphtype)
+///uiz_animation_revertFunction(animationFactor, graphType)
 ///Use script only when absolutely needed.
 //Some functions are very hard to reverse and thus only have approximations.
 //other functions have problems with float rounding errors. (I think)

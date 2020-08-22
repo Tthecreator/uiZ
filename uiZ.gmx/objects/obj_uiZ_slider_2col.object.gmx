@@ -125,7 +125,7 @@ if selected = true then{
 }
 
 if !(fromvalue = value) and animation = 1 then {
-    invalue = fromvalue + (uiz_animation_getfunction(anicount, animationtype) * (value - fromvalue))
+    invalue = fromvalue + (uiz_animation_getFunction(anicount, animationtype) * (value - fromvalue))
     anicount += 1 / (anicountspeed * room_speed)
     update = 1;
     if anicount &gt;= 1 then {

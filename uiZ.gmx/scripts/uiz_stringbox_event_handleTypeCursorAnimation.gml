@@ -6,9 +6,9 @@ if (hasselection=false and typing=true) then{//draw selector
         count = 0
     }
     if count < 0.5 then {
-        var anim = uiz_animation_getfunction(count * 2, typeanimationin)
+        var anim = uiz_animation_getFunction(count * 2, typeanimationin)
     } else {
-        var anim = 1 - uiz_animation_getfunction((count - 0.5) * 2, typeanimationout)
+        var anim = 1 - uiz_animation_getFunction((count - 0.5) * 2, typeanimationout)
     }
  uiz_typecursor_setalpha(anim*alpha); 
 // uiz_typecursor_register(clamp(typepos_dis_px,cntnx,cntnlx),iy,clamp(typepos_dis_px,cntnx,cntnlx),ily,cursorcolor,cursorwidth)  

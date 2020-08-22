@@ -126,10 +126,10 @@ if os_browser == browser_not_a_browser or time!=-1 then{
 
 
 
-ats=uiz_animation_getfunction(atcs,secondanimation)*6
-atm=uiz_animation_getfunction(sec/60,minuteanimation)*6
+ats=uiz_animation_getFunction(atcs,secondanimation)*6
+atm=uiz_animation_getFunction(sec/60,minuteanimation)*6
 
-ath=uiz_animation_getfunction(date_get_minute(tm)/60,houranimation)*30
+ath=uiz_animation_getFunction(date_get_minute(tm)/60,houranimation)*30
 uiz_updater_FixViews();
 </string>
           </argument>

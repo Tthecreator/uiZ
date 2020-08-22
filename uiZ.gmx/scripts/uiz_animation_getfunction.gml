@@ -1,4 +1,4 @@
-///uiz_animation_getfunction(factor from 0 to 1,graphtype)
+///uiz_animation_getFunction(factor from 0 to 1,graphtype)
 var bf=argument0
 if bf=0 then{return 0;}
 if bf=1 then{return 1;}

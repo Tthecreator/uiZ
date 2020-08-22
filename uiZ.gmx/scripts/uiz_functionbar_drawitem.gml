@@ -9,7 +9,7 @@ var i=argument0;
                 if decount[i] >= 0 then{
                 uimg = 1;
                 //sdbm("selectioncolro_old",selectioncolor_old)
-                    var fac = (uiz_animation_getfunction(decount[i], graphtype));
+                    var fac = (uiz_animation_getFunction(decount[i], graphtype));
                     var col=uiz_functionbar_createcolor(color[i],fac);
                 }else{
                 if uiz_selfmarked=true then{exit;}

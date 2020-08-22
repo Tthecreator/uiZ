@@ -83,7 +83,7 @@ if mouse_wheel_down() then{
     }else{//busy doing an animation
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]+argument7,0,argument5);
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 }
 if mouse_wheel_up() then{
@@ -95,7 +95,7 @@ if mouse_wheel_up() then{
     }else{//busy doing an animation
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]-argument7,0,argument5);
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 }
 }
@@ -153,7 +153,7 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(round(((uiz_g
         twn_fac=0;
     }else{//busy doing an animation
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 
 //sdbm((uiz_getmouse_y()-argument1-width),nheight,(uiz_getmouse_x()-argument1-width)/nheight)
@@ -170,7 +170,7 @@ if(twn_fac!=1){
         ds_list_add(obj_uiZ_controller.scrollbarStepList,id);
     }
     twn_fac = clamp(twn_fac+uiz_sc(argument9),0,1);
-    scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getfunction(twn_fac,argument8));
+    scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getFunction(twn_fac,argument8));
     argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = twn_fac;
     if twn_fac>=1 and uiz_steps_scrollable then{
         uiz_steps_scrollable = false;

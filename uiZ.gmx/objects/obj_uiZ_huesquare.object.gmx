@@ -114,10 +114,10 @@ update=0;
 if animation then{
 //sdbm("anicount",anicount,fromh,h);
 if fromh!=h or froms!=s then{
-inh=fromh+(uiz_animation_getfunction(anicount,hanimationtype)*(h-fromh))
-ins=froms+(uiz_animation_getfunction(anicount,sanimationtype)*(s-froms))
+inh=fromh+(uiz_animation_getFunction(anicount,hanimationtype)*(h-fromh))
+ins=froms+(uiz_animation_getFunction(anicount,sanimationtype)*(s-froms))
 ///rgb
-var fnc=uiz_animation_getfunction(anicount,rgbanimationtype);
+var fnc=uiz_animation_getFunction(anicount,rgbanimationtype);
 inr=fromr+(fnc*(tor-fromr))
 ing=fromg+(fnc*(tog-fromg))
 inb=fromb+(fnc*(tob-fromb))

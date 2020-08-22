@@ -515,9 +515,9 @@ draw_text(brx-butmargin-typewidth-laststrsz-typewidth,ry+height/2,firststr)
 count+=1/(countspeed*room_speed);
 if count&gt;=1 then{count=0}
 if count&lt;0.5 then{
-var anim=uiz_animation_getfunction(count*2,typeanimationin)
+var anim=uiz_animation_getFunction(count*2,typeanimationin)
 }else{
-var anim=1-uiz_animation_getfunction((count-0.5)*2,typeanimationout)}
+var anim=1-uiz_animation_getFunction((count-0.5)*2,typeanimationout)}
 draw_set_alpha(anim)
 draw_text(brx-butmargin-laststrsz-4,ry+height/2-1,"|")
 draw_set_alpha(1)

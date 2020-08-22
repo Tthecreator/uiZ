@@ -45,10 +45,10 @@ CODE A
 }"
 
 CODE A changes depending on whether you are using a background (if argument2=true). if argument2=true then this code is used:
-uiz_destroyobject_animation(r,uiz_zero,uiz_zero,uiz_acceldecel,1)
-uiz_destroyobject_animation_default(r.window)
+uiz_destroyObject_animation(r,uiz_zero,uiz_zero,uiz_acceldecel,1)
+uiz_destroyObject_animation_default(r.window)
 else this code is used(argument2=false):
-uiz_destroyobject_animation_default(r)
+uiz_destroyObject_animation_default(r)
 
 
 */
@@ -69,8 +69,8 @@ p.color=c_black
 p.image_alpha=0.3;
 //p.adddepth=1000000
 uiz_fixgeneralpos(p)
-//uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_sin_inout,0.01)
-uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_straight,0.05,false)
+//uiz_animation_setOpeningAnimation(p,uiz_one,uiz_one,uiz_sin_inout,0.01)
+uiz_animation_setOpeningAnimation(p,uiz_one,uiz_one,uiz_straight,0.05,false)
 }
 var dx=uiz_todpix(string_width(argument[0]))
 var dy=uiz_todpiy(string_height(argument[0]))

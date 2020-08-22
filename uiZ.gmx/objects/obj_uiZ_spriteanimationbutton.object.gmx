@@ -90,11 +90,11 @@ img=0;
             <string>if (oldvalue!=value) then{
 if value=true then{
 linearvalue+=uiz_sc(animationintime)
-intervalue=uiz_animation_getfunction(linearvalue,animationin)
+intervalue=uiz_animation_getFunction(linearvalue,animationin)
 img=round(endframe*intervalue)
 }else{
 linearvalue+=uiz_sc(animationouttime)
-intervalue=uiz_animation_getfunction(linearvalue,animationout)
+intervalue=uiz_animation_getFunction(linearvalue,animationout)
 img=endframe+round((sprite_get_number(sprite)-endframe)*intervalue)
 }
 if linearvalue&gt;=1 then{
@@ -117,12 +117,12 @@ update=true;
 if value=false then{
 //move back
 linearvalue-=uiz_sc(animationintime)
-intervalue=uiz_animation_getfunction(linearvalue,animationin)
+intervalue=uiz_animation_getFunction(linearvalue,animationin)
 img=round(endframe*intervalue)
 }else{
 //move forward
 linearvalue-=uiz_sc(animationouttime)
-intervalue=uiz_animation_getfunction(linearvalue,animationout)
+intervalue=uiz_animation_getFunction(linearvalue,animationout)
 img=endframe+round((sprite_get_number(sprite)-endframe)*intervalue)
 }
 if linearvalue&lt;0 then{linearvalue=0;

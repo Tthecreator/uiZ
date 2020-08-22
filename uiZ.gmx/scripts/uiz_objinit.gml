@@ -45,6 +45,8 @@ containframe=-1
 incontainframe=0
 setpointx=uiz_auto
 setpointy=uiz_auto
+spx=0;
+spy=0;
 topframemargin=0;
 rightframemargin=0;
 bottomframemargin=0;
@@ -88,6 +90,11 @@ function_a=uiz_straight
 function_time=0.5
 uiz_enabled=true;
 
+destroyxfunction=uiz_straight;
+destroyyfunction=uiz_straight;
+destroyafunction=uiz_straight;
+destroyspeed=0.5;
+
 oldx=0;
 oldy=0;
 olda=0;
@@ -117,18 +124,11 @@ leftmargin=0;
 rightmargin=0;
 uiz_nused=0;
 
-//uiz_surf=0;
 uiz_dodraw=true;
 uiz_doredraw=false;
 uiz_diddepth=false;
 uiz_forceFixView=false;
 
-/*
-uiz_dodraw_rx=0;
-uiz_dodraw_ry=0;
-uiz_dodraw_rlx=0;
-uiz_dodraw_rly=0;
-*/
 uiz_doclear=false;
 last_rx=rx;
 last_ry=ry;

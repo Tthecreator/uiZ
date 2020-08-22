@@ -78,8 +78,8 @@ if box&gt;0 and instance_exists(box) then{global.uiz_popupreturnstring=box.value
 //if 
 //uiz_destroyobject(destroyframe)
 //uiz_destroyobject_animation(destroyframe,window.destroyxfunction,window.destroyyfunction,window.destroyafunction,window.destroyspeed)
-uiz_destroyobject_animation(destroyframe,uiz_zero,uiz_zero,uiz_smoothstep,window.destroyspeed)
-uiz_animation_updatechildren(destroyframe, true);
+uiz_destroyObject_animation(destroyframe,uiz_zero,uiz_zero,uiz_smoothstep,window.destroyspeed)
+uiz_animation_updateChildren(destroyframe, true);
 
 }
 if box&gt;0 and instance_exists(box) then{str=box.value;}

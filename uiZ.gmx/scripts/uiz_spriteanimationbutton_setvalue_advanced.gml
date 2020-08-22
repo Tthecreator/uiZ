@@ -18,10 +18,10 @@ if argument2>-1 then{value=argument2
 
 oldvalue=!value
 if value=true then{
-intervalue=uiz_animation_getfunction(linearvalue,animationin)
+intervalue=uiz_animation_getFunction(linearvalue,animationin)
 img=round(endframe*intervalue)
 }else{
-intervalue=uiz_animation_getfunction(linearvalue,animationout)
+intervalue=uiz_animation_getFunction(linearvalue,animationout)
 img=endframe+round((sprite_get_number(sprite)-endframe)*intervalue)
 }
 if linearvalue=1 then{oldvalue=value; linearvalue=0;}

@@ -735,13 +735,11 @@
             <script>scripts\uiz_animation_setfirstpoint_legacy.gml</script>
             <script>scripts\uiz_animation_addlastpoint_legacy.gml</script>
             <script>scripts\uiz_animation_setlastpoint_legacy.gml</script>
-            <script>scripts\uiz_animation_bakeargument_legacy.gml</script>
             <script>scripts\uiz_animation_start_legacy.gml</script>
           </scripts>
-          <script>scripts\uiz_animation_capture_newstate.gml</script>
-          <script>scripts\uiz_animation_capture_oldstate.gml</script>
-          <script>scripts\uiz_animation_getfunction.gml</script>
-          <script>scripts\uiz_animation_revertfunction.gml</script>
+          <script>scripts\uiz_animation_capture_oldState.gml</script>
+          <script>scripts\uiz_animation_getFunction.gml</script>
+          <script>scripts\uiz_animation_revertFunction.gml</script>
           <script>scripts\uiz_animation_setFunction.gml</script>
           <script>scripts\uiz_animation_setFunction_alpha.gml</script>
           <script>scripts\uiz_animation_setFunction_time.gml</script>
@@ -749,11 +747,16 @@
           <script>scripts\uiz_animation_setFunction_xy.gml</script>
           <script>scripts\uiz_animation_setFunction_xywh.gml</script>
           <script>scripts\uiz_animation_start.gml</script>
-          <script>scripts\uiz_animation_updatechildren.gml</script>
-          <script>scripts\uiz_animation_wigle.gml</script>
-          <script>scripts\uiz_setopeninganimation.gml</script>
-          <script>scripts\uiz_animation_getfunction_twoway.gml</script>
-          <script>scripts\uiz_animation_increasecounter.gml</script>
+          <script>scripts\uiz_animation_updateChildren.gml</script>
+          <script>scripts\uiz_animation_setOpeningAnimation.gml</script>
+          <script>scripts\uiz_animation_getFunction_twoWay.gml</script>
+          <script>scripts\uiz_animation_increaseCounter.gml</script>
+          <script>scripts\uiz_animation_bakeArgument.gml</script>
+          <script>scripts\uiz_sc.gml</script>
+          <scripts name="internal">
+            <script>scripts\uiz_animation_capture_newState.gml</script>
+            <script>scripts\uiz_animation_wigle.gml</script>
+          </scripts>
         </scripts>
         <scripts name="background">
           <scripts name="_item_">
@@ -904,9 +907,9 @@
           <script>scripts\uiz_dslist_print.gml</script>
         </scripts>
         <scripts name="destroy">
-          <script>scripts\uiz_destroyobject_animation.gml</script>
-          <script>scripts\uiz_setdestroyanimation.gml</script>
-          <script>scripts\uiz_destroyobject_animation_default.gml</script>
+          <script>scripts\uiz_destroyObject_animation.gml</script>
+          <script>scripts\uiz_destroyObject_setDestroyAnimation.gml</script>
+          <script>scripts\uiz_destroyObject_animation_default.gml</script>
           <script>scripts\uiz_destroyobject.gml</script>
           <script>scripts\uiz_destroyobject_notself.gml</script>
         </scripts>
@@ -1055,15 +1058,18 @@
           <script>scripts\uiz_frameset_setFrameSize.gml</script>
           <script>scripts\uiz_frameset_forceFixSize.gml</script>
           <script>scripts\uiz_frameset_getObject.gml</script>
-          <script>scripts\uiz_frameset_setBarSlider.gml</script>
-          <script>scripts\uiz_frameset_setcellmargins.gml</script>
-          <script>scripts\uiz_frameset_setDividerThickness.gml</script>
-          <script>scripts\uiz_frameset_setmargins.gml</script>
-          <script>scripts\uiz_frameset_setMaximumSize.gml</script>
-          <script>scripts\uiz_frameset_setMinimumSize.gml</script>
+          <script>scripts\uiz_frameset_setCellMargins.gml</script>
+          <script>scripts\uiz_frameset_setMargins.gml</script>
           <script>scripts\uiz_frameset_switch.gml</script>
           <script>scripts\uiz_frameset_removeDivision.gml</script>
-          <script>scripts\uiz_ispartofframeset.gml</script>
+          <script>scripts\uiz_frameset_isPartOf.gml</script>
+          <scripts name="frame slide bar">
+            <script>scripts\uiz_frameset_setMaximumSize.gml</script>
+            <script>scripts\uiz_frameset_setMinimumSize.gml</script>
+            <script>scripts\uiz_frameset_setDividerThickness.gml</script>
+            <script>scripts\uiz_frameset_setBarSlider.gml</script>
+            <script>scripts\uiz_frameset_setSliderSettings.gml</script>
+          </scripts>
         </scripts>
         <scripts name="general">
           <script>scripts\uiz_init.gml</script>
@@ -1187,7 +1193,6 @@
           <script>scripts\uiz_spaceareas_format_changelist.gml</script>
           <script>scripts\uiz_ds_list_resize.gml</script>
           <script>scripts\uiz_randomcolor.gml</script>
-          <script>scripts\uiz_sc.gml</script>
           <script>scripts\uiz_sign.gml</script>
           <script>scripts\uiz_positify.gml</script>
           <script>scripts\uiz_generaterandomdigits.gml</script>
@@ -1851,25 +1856,6 @@
           <script>scripts\uiz_popup_ok.gml</script>
         </scripts>
         <scripts name="scroll">
-          <script>scripts\uiz_drawscrollbar_init.gml</script>
-          <script>scripts\uiz_menuobject_create.gml</script>
-          <script>scripts\uiz_menuholder_create.gml</script>
-          <script>scripts\uiz_menu_scroll_add.gml</script>
-          <script>scripts\uiz_menu_scroll_set.gml</script>
-          <script>scripts\uiz_drawscrollbar_vertical_legacy.gml</script>
-          <script>scripts\uiz_drawscrollbar_horizontal_legacy.gml</script>
-          <script>scripts\uiz_drawscrollbar_horizontal_draw.gml</script>
-          <script>scripts\uiz_drawscrollbar_vertical_draw.gml</script>
-          <script>scripts\uiz_drawscrollbar_horizontal_step.gml</script>
-          <script>scripts\uiz_drawscrollbar_vertical_step.gml</script>
-          <script>scripts\uiz_drawscrollbar_getscrollvalue.gml</script>
-          <script>scripts\uiz_drawscrollbar_setvalue.gml</script>
-          <script>scripts\uiz_drawscrollbar_setvalue_animation.gml</script>
-          <script>scripts\uiz_drawscrollbar_getvalue.gml</script>
-          <script>scripts\uiz_drawscrollbar_getselected.gml</script>
-          <script>scripts\uiz_drawscrollbar_legacy.gml</script>
-          <script>scripts\uiz_drawscrollbar_update_mark.gml</script>
-          <script>scripts\uiz_drawscrollbar_update_mark_full.gml</script>
           <scripts name="internal">
             <script>scripts\uiz_drawscrollbar_update.gml</script>
             <script>scripts\uiz_drawscrollbar_update_full.gml</script>
@@ -1878,9 +1864,28 @@
             <script>scripts\uiz_drawscrollbar_getMstate.gml</script>
             <script>scripts\uiz_drawscrollbar_getUpdated.gml</script>
             <script>scripts\uiz_drawscrollbar_getMstate_last.gml</script>
+            <script>scripts\uiz_drawscrollbar_vertical_legacy.gml</script>
+            <script>scripts\uiz_drawscrollbar_horizontal_legacy.gml</script>
+            <script>scripts\uiz_drawscrollbar_legacy.gml</script>
           </scripts>
           <script>scripts\uiz_drawscrollbar_deselect.gml</script>
+          <script>scripts\uiz_drawscrollbar_getscrollvalue.gml</script>
+          <script>scripts\uiz_drawscrollbar_getselected.gml</script>
+          <script>scripts\uiz_drawscrollbar_getvalue.gml</script>
+          <script>scripts\uiz_drawscrollbar_horizontal_draw.gml</script>
+          <script>scripts\uiz_drawscrollbar_horizontal_step.gml</script>
+          <script>scripts\uiz_drawscrollbar_init.gml</script>
           <script>scripts\uiz_drawscrollbar_isAnimating.gml</script>
+          <script>scripts\uiz_drawscrollbar_setvalue.gml</script>
+          <script>scripts\uiz_drawscrollbar_setvalue_animation.gml</script>
+          <script>scripts\uiz_drawscrollbar_update_mark.gml</script>
+          <script>scripts\uiz_drawscrollbar_update_mark_full.gml</script>
+          <script>scripts\uiz_drawscrollbar_vertical_draw.gml</script>
+          <script>scripts\uiz_drawscrollbar_vertical_step.gml</script>
+          <script>scripts\uiz_menu_scroll_add.gml</script>
+          <script>scripts\uiz_menu_scroll_set.gml</script>
+          <script>scripts\uiz_menuholder_create.gml</script>
+          <script>scripts\uiz_menuobject_create.gml</script>
         </scripts>
         <scripts name="strings">
           <script>scripts\uiz_removechars.gml</script>

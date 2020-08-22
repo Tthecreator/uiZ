@@ -268,7 +268,7 @@ if (i&gt;=0 and i&lt;items) then{
     }
     uimg = 1
     var fac;
-        fac = (uiz_animation_getfunction(count, graphtype));
+        fac = (uiz_animation_getFunction(count, graphtype));
         selectioncolor = uiz_functionbar_createcolor(color[i],fac);
         
 

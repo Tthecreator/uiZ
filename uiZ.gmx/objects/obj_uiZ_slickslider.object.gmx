@@ -104,7 +104,7 @@ value=clamp(((uiz_getmouse_x()-rx-snapx)/(width-w)),0,1)
 //handle animation
 if anim=1 then{
 animationcount+=uiz_sc(animationtime);
-value=oldvalue+uiz_animation_getfunction(animationcount,animation)*(newvalue-oldvalue)
+value=oldvalue+uiz_animation_getFunction(animationcount,animation)*(newvalue-oldvalue)
 update=1;
 if animationcount&gt;=1 then{
 animationcount=0;

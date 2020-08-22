@@ -61,7 +61,7 @@ count=0;
             <string>uiz_updater_FixViews();
 count+=uiz_sc(rotationtime)
 if count&gt;=1 then{count=frac(count)}
-rotation=uiz_animation_getfunction(count,animation)*360
+rotation=uiz_animation_getFunction(count,animation)*360
 </string>
           </argument>
         </arguments>

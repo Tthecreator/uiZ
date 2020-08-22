@@ -24,7 +24,7 @@ if argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor]=1 then{//not
     argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = 0;
 }else{//busy doing an animation
     var animfac = (argument0[@uiz_drawscrollbar_struct.uiz_dsb_scroll] - argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-    argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor]=uiz_animation_revertfunction(animfac,argument2);
+    argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor]=uiz_animation_revertFunction(animfac,argument2);
 }
 argument0[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] = argument1
 

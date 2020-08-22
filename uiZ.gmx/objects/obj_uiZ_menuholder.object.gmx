@@ -164,14 +164,14 @@ uiz_endobject()
             <kind>1</kind>
             <string>if addy&gt;0 and scrolledlast=0 then{
 snapbackanimationcount+=snapbackanimationspeed
-addy=(1-uiz_animation_getfunction(snapbackanimationcount,snapbackanimation))*lastuppoint
+addy=(1-uiz_animation_getFunction(snapbackanimationcount,snapbackanimation))*lastuppoint
 uiz_fixchildren(id,1)
 }
 
 if addy&lt;-menulastpx and scrolledlast=0 then{
 //dbm(addy,scrolledlast)
 snapbackanimationcount+=snapbackanimationspeed
-addy=-menulastpx+(1-uiz_animation_getfunction(snapbackanimationcount,snapbackanimation))*(lastuppoint+menulastpx)
+addy=-menulastpx+(1-uiz_animation_getFunction(snapbackanimationcount,snapbackanimation))*(lastuppoint+menulastpx)
 uiz_fixchildren(id,1)
 }
 

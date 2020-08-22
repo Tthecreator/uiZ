@@ -214,7 +214,7 @@ uiz_init()
 //draw_set_font(uiz_fnt_dp_15);
 //application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
-
+/*
 frameset = uiz_frameset_create()//creating the frameset
 //make our cuts in the frameset
 anchor_1 = uiz_frameset_divide_horizontal(frameset, 0.4,fc, 1,xtra);//we don't use _objects here, because we are going to replace the top panel with a vertical division anyways and because we need a canvas (or other object) to make our clock always square.
@@ -242,7 +242,7 @@ uiz_frameset_setMaximumSize(anchor_2, 3, .3, fc);//set last frame to maximum siz
 
 //don't forget to fix;
 uiz_fixgeneralpos(frameset);
-
+*/
 /*
 frameset=uiz_frameset_create()//creating the frameset
 //"chop" the frame in pieces and make sure that the left frame is always 1 dp wide, the right frame always 0.1 fc wide and the middle frame whatever is left
@@ -341,6 +341,32 @@ o2.posinframex=uiz_fill;
 o2.posinframey=uiz_fill;
 uiz_fixgeneralpos(o2);
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///animation test
+testSquare = uiz_c(obj_uiZ_square);//make the object
+//set the test square to the desired end position
+uiz_position(testSquare, 0, uiz_center, 0, uiz_center);
+uiz_size(testSquare, 0.5, fc, 0.5, fc);//fill half of the display
+uiz_fixgeneralpos(testSquare);
 </string>
           </argument>
         </arguments>
@@ -450,9 +476,17 @@ draw_text(100,100,fps_avg);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//uiz_frameset_switch(frameset);
-uiz_frameset_setAnchorDivisions(anchor_1, 1, true);
-uiz_fixgeneralpos(frameset);
+            <string>///space released event
+//remember old position
+uiz_animation_capture_oldState(testSquare);
+//set new position
+uiz_position(testSquare, 0, uiz_snapright, 0, uiz_center);//move the object tot he right edge
+uiz_size(testSquare, 0.3, fc, 0.7, fc);
+//setup animation
+uiz_animation_setFunction(testSquare, uiz_smoothstep, uiz_straight, uiz_acceldecel, uiz_smoothstep, uiz_one, 3);
+uiz_animation_start(testSquare);
+//fix
+uiz_fixgeneralpos(testSquare);
 </string>
           </argument>
         </arguments>

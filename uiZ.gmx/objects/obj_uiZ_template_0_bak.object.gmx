@@ -149,7 +149,7 @@ mainframeblackalpha=0.4;
 //also make the cover above the main frame activate/deactivate
 
 if menubutton.update=true then{
-var f=uiz_animation_getfunction(1-uiz_spriteanimationbutton_getintervalue(menubutton),menubaranimation);
+var f=uiz_animation_getFunction(1-uiz_spriteanimationbutton_getintervalue(menubutton),menubaranimation);
 frame_sidebar.setpointx=f;
 uiz_fixgeneralpos(frame_sidebar)
 if f=1 then{menucover.enabled=false}else{menucover.enabled=true}

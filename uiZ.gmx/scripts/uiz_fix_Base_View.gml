@@ -7,9 +7,9 @@ uiz_updater_FixViews()
 }
 uiz_dodraw=true;
 
+uiz_fix_Base_Alpha();
 
 uiz_compatibility_depthfix()
-uiz_fix_Base_Alpha();
 if uiz_diddepth=false then{
 uiz_fix_Depth()
 }

@@ -140,7 +140,7 @@ if selected = true then{
 }
 
 if !(fromvalue = value) and animation = 1 then {
-    invalue = fromvalue + (uiz_animation_getfunction(anicount, animationtype) * (value - fromvalue))
+    invalue = fromvalue + (uiz_animation_getFunction(anicount, animationtype) * (value - fromvalue))
     anicount += uiz_sc(anicountspeed)
     update = 1;
     if anicount &gt;= 1 then {
@@ -166,7 +166,7 @@ if !(fromvalue = value) and animation = 1 then {
 
 if animateColors&lt;1 then{
     animateColors += uiz_sc(coloranicountspeed);
-    var f = uiz_animation_getfunction(animateColors, coloranimationtype);
+    var f = uiz_animation_getFunction(animateColors, coloranimationtype);
     color1 = merge_colour(color1from,color1to,f);
     color2 = merge_colour(color2from,color2to,f);
     uiz_updater_FixViews();

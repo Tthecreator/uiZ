@@ -56,7 +56,7 @@ var o=toobject;
 if animationtype=uiz_animationtype_multi then{
 progress=uiz_animation_get_legacy(graph,count)
 }else{
-progress=uiz_animation_getfunction(count,graph)
+progress=uiz_animation_getFunction(count,graph)
 }
 o.posinframex=uiz_static
 o.posinframey=uiz_static

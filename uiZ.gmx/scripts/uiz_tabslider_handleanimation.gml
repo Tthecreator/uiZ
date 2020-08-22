@@ -7,8 +7,8 @@ f = 1-f;
 }
 */
 
-placevalue = uiz_animation_getfunction(f, placeanimation)
-widthvalue = uiz_animation_getfunction(f, widthanimation)
+placevalue = uiz_animation_getFunction(f, placeanimation)
+widthvalue = uiz_animation_getFunction(f, widthanimation)
 
 /*
 if goback then{

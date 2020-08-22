@@ -1,5 +1,5 @@
 //if live_call() return live_result;
-uiz_animation_capture_oldstate(id)
+uiz_animation_capture_oldState(id)
 posinframex=uiz_static;
 posinframey=uiz_static;
 uiz_window_fixbackground();
@@ -14,6 +14,6 @@ setpointy=uiz_auto;
 sizestatus=0
 uiz_fixwindowpos(id);
 uiz_fixwindowpos_finalValues();
-uiz_animation_capture_newstate(id)
+uiz_animation_capture_newState(id)
 uiz_animation_setFunction(id,maximizeanimation,maximizeanimation,maximizeanimation,maximizeanimation,uiz_one,maximizeanimationspeed)
 uiz_animation_start(id)

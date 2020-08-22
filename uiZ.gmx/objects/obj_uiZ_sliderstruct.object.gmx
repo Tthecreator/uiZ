@@ -120,11 +120,11 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
     if dir = -1 then {
         fa = oldframe
         fb = newframe
-        f = uiz_animation_getfunction(linearvalue, animation);
+        f = uiz_animation_getFunction(linearvalue, animation);
     } else {
         fb = oldframe
         fa = newframe
-        f = 1 - uiz_animation_getfunction(linearvalue, animation);   
+        f = 1 - uiz_animation_getFunction(linearvalue, animation);   
     }
     
     

@@ -20,7 +20,7 @@ with(argument1){uiz_window_switchmaximize()}
 break;
 case 5:
 //Close
-uiz_destroyobject_animation_default(argument1)
+uiz_destroyObject_animation_default(argument1)
 break;
 case 6:
 //Switch to

@@ -258,7 +258,7 @@ inanim=clamp(abs(global.uiz_mouseswipedx/width),0.01,1);
 if uiz_getmouse_x()&lt;parent.rx then{inanim=1}
 setpointx=inanim;
 if inanim=1 then{value=true; newvalue=true; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -268,7 +268,7 @@ inanim=1-clamp(abs(global.uiz_mouseswipedx/width),0,1);
 if uiz_getmouse_x()&lt;parent.rx then{inanim=1}
 setpointx=inanim;
 if inanim=0 then{value=false; newvalue=false; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -291,7 +291,7 @@ value=true;
 if instance_exists(menubutton) then{uiz_spriteanimationbutton_setvalue(menubutton,inanim,true,1)}
 }
 setpointx=inanim;
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -356,7 +356,7 @@ inanim=clamp(abs(global.uiz_mouseswipedy/height),0.01,1);
 if uiz_getmouse_y()&lt;parent.ry then{inanim=0}
 setpointy=1-inanim;
 if inanim=1 then{value=true; newvalue=true; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -366,7 +366,7 @@ inanim=1-clamp(abs(global.uiz_mouseswipedy/height),0,1);
 if uiz_getmouse_y()&lt;parent.ry then{inanim=0}
 setpointy=1-inanim;
 if inanim=0 then{value=false; newvalue=false; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -389,7 +389,7 @@ value=true;
 if instance_exists(menubutton) then{uiz_spriteanimationbutton_setvalue(menubutton,inanim,true,1)}
 }
 setpointy=1-inanim;
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -454,7 +454,7 @@ inanim=clamp(abs(global.uiz_mouseswipedy/height),0.01,1);
 if uiz_getmouse_y()&lt;parent.ry then{inanim=1}
 setpointy=inanim;
 if inanim=1 then{value=true; newvalue=true; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -464,7 +464,7 @@ inanim=1-clamp(abs(global.uiz_mouseswipedy/height),0,1);
 if uiz_getmouse_y()&lt;parent.ry then{inanim=1}
 setpointy=inanim;
 if inanim=0 then{value=false; newvalue=false; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -487,7 +487,7 @@ value=true;
 if instance_exists(menubutton) then{uiz_spriteanimationbutton_setvalue(menubutton,inanim,true,1)}
 }
 setpointy=inanim;
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -552,7 +552,7 @@ inanim=clamp(abs(global.uiz_mouseswipedx/width),0.01,1);
 if uiz_getmouse_x()&lt;parent.rx then{inanim=0}
 setpointx=1-inanim;
 if inanim=1 then{value=true; newvalue=true; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -562,7 +562,7 @@ inanim=1-clamp(abs(global.uiz_mouseswipedx/width),0,1);
 if uiz_getmouse_x()&lt;parent.rx then{inanim=0}
 setpointx=1-inanim;
 if inanim=0 then{value=false; newvalue=false; global.mousefrozen=false; hasmouse=false}
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 uiz_fixgeneralpos(blackframe)
 }
@@ -585,7 +585,7 @@ value=true;
 if instance_exists(menubutton) then{uiz_spriteanimationbutton_setvalue(menubutton,inanim,true,1)}
 }
 setpointx=1-inanim;
-if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getfunction(inanim,blackframeanimation)*blackframealpha
+if instance_exists(blackframe) then{blackframe.image_alpha=uiz_animation_getFunction(inanim,blackframeanimation)*blackframealpha
 if inanim&gt;0 then{blackframe.enabled=true}else{blackframe.enabled=false}
 with(blackframe){uiz_updater_FixViews();}
 uiz_fixgeneralpos(blackframe)

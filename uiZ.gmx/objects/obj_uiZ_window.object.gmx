@@ -592,7 +592,7 @@ if resizable and isresizing then{
     width=iwidth+end_leftframemargin+end_rightframemargin;
     height=iheight+end_topframemargin+end_bottomframemargin;
     if inanimation=true then{
-    uiz_animation_capture_newstate(id);
+    uiz_animation_capture_newState(id);
     }
     //check for minimization
     if iwidth &lt;= 0 and iheight &lt;= 0 then {
@@ -760,7 +760,7 @@ if button_cross_state &gt; 0 then {
     upd=true;
     }
     if mouse_check_button_released(mb_left) then {
-        uiz_destroyobject_animation(id, destroyxfunction, destroyyfunction, destroyafunction, destroyspeed)
+        uiz_destroyObject_animation(id, destroyxfunction, destroyyfunction, destroyafunction, destroyspeed)
     }
 }
 if button_maximize_state &gt; 0 then {
