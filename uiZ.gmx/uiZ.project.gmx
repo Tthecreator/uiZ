@@ -680,39 +680,6 @@
         <sprite>sprites\spr_uiZ_shield</sprite>
         <sprite>sprites\spr_uiZ_movie</sprite>
       </sprites>
-      <sprites name="windows31">
-        <sprite>sprites\spr_uiZ_borderwin31</sprite>
-        <sprite>sprites\spr_uiZ_win31_buttons</sprite>
-        <sprite>sprites\spr_uiZ_win31_minimize</sprite>
-        <sprite>sprites\spr_uiZ_win31_maximize</sprite>
-        <sprite>sprites\spr_uiZ_win31_options</sprite>
-        <sprite>sprites\spr_uiZ_win31_options_over</sprite>
-        <sprite>sprites\spr_uiZ_win31_options_in</sprite>
-        <sprite>sprites\spr_uiZ_win31_folder</sprite>
-        <sprite>sprites\spr_uiZ_win31_explorer</sprite>
-        <sprite>sprites\spr_uiZ_win31_button_3way_3d</sprite>
-        <sprite>sprites\spr_uiZ_win31_button_3way_bak</sprite>
-        <sprite>sprites\spr_uiZ_win31_button_3way</sprite>
-        <sprite>sprites\spr_uiZ_win31_clipboard</sprite>
-        <sprite>sprites\spr_uiZ_win31_minesweeper</sprite>
-        <sprites name="spr_uiZ_win31_minesweeper">
-          <sprite>sprites\spr_uiZ_win31_happybutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_coolbutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_wowbutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_deadbutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_counter</sprite>
-          <sprite>sprites\spr_uiZ_win31_minetiles</sprite>
-          <sprite>sprites\spr_uiZ_win31_mineback</sprite>
-        </sprites>
-        <sprite>sprites\spr_uiZ_win31_notepad</sprite>
-        <sprite>sprites\spr_uiZ_win31_calculator</sprite>
-        <sprite>sprites\spr_uiZ_win31_clock</sprite>
-        <sprite>sprites\spr_uiZ_win31_calculatorbutton</sprite>
-        <sprite>sprites\spr_uiZ_win31_analogclock_dots</sprite>
-        <sprite>sprites\spr_uiZ_win31_analogclock_pointer</sprite>
-        <sprite>sprites\spr_uiZ_win31_scrollbar</sprite>
-        <sprite>sprites\spr_uiZ_win31_scrollbar_edge</sprite>
-      </sprites>
       <sprite>sprites\spr_test</sprite>
     </sprites>
   </sprites>
@@ -2135,46 +2102,6 @@
       <script>scripts\UIZ_versioninformation.gml</script>
       <scripts name="examples, tutorials and templates">
         <script>scripts\scr_slide_reactor_createObjects.gml</script>
-        <scripts name="win31">
-          <script>scripts\uiz_win31_template_mousemenu.gml</script>
-          <script>scripts\uiz_win31_destroy.gml</script>
-          <script>scripts\uiz_win31_addmenulist.gml</script>
-          <script>scripts\uiz_win31_createwindow.gml</script>
-          <script>scripts\uiz_win31_createwindow_size.gml</script>
-          <script>scripts\uiz_win31_addicon.gml</script>
-          <script>scripts\uiz_win31_window_spawnMouseMenu.gml</script>
-          <script>scripts\uiz_win31_window_handleMouseMenu.gml</script>
-          <script>scripts\uiz_win31_stylewindow.gml</script>
-          <scripts name="programManager">
-            <script>scripts\uiz_win31_openMainWindow.gml</script>
-            <script>scripts\uiz_win31_openGamesWindow.gml</script>
-            <script>scripts\uiz_win31_openAccessoriesWindow.gml</script>
-            <scripts name="MainWindow">
-              <script>scripts\uiz_win31_openExplorer.gml</script>
-              <script>scripts\uiz_win31_openClipboard.gml</script>
-              <scripts name="fileManager">
-                <script>scripts\uiz_win31_closefilemanager.gml</script>
-                <script>scripts\uiz_win31_openfilemanager.gml</script>
-                <script>scripts\uiz_win31_filemanager_clickFolder.gml</script>
-                <script>scripts\uiz_win31_filemanager_selectFolder.gml</script>
-                <script>scripts\uiz_win31_filemanager_dragFolder.gml</script>
-              </scripts>
-            </scripts>
-            <scripts name="GamesWindow">
-              <scripts name="minesweeper">
-                <script>scripts\uiz_win31_openMineSweeper.gml</script>
-                <script>scripts\uiz_minesweeper_reset.gml</script>
-                <script>scripts\uiz_minesweeper_openSpots.gml</script>
-              </scripts>
-            </scripts>
-            <scripts name="AccessoriesWindow">
-              <script>scripts\uiz_win31_openCalculator.gml</script>
-              <script>scripts\uiz_win31_calculatorgrid.gml</script>
-              <script>scripts\uiz_win31_openNotepad.gml</script>
-              <script>scripts\uiz_win31_openClock.gml</script>
-            </scripts>
-          </scripts>
-        </scripts>
       </scripts>
     </scripts>
     <script>scripts\live_call.gml</script>
@@ -2221,14 +2148,6 @@
         <objects name="templates">
           <object>objects\obj_uiZ_template_0</object>
           <object>objects\obj_uiZ_template_1</object>
-        </objects>
-        <objects name="windows 3.1">
-          <object>objects\obj_windows31controller</object>
-          <object>objects\obj_windows31_filemanager</object>
-          <object>objects\obj_windows31_clipboard</object>
-          <object>objects\obj_windows31_calculator</object>
-          <object>objects\obj_windows31_minesweeper</object>
-          <object>objects\obj_uiZ_minesweeper</object>
         </objects>
       </objects>
       <objects name="keepoff">
@@ -2312,7 +2231,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
-    <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_uiz_serverbrowser</room>
     <rooms name="uiz">
       <rooms name="examples tutorials">
