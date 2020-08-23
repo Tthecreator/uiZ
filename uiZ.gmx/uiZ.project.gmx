@@ -488,42 +488,6 @@
       <sprite>sprites\spr_uiZ_windowbutton_minimize</sprite>
       <sprite>sprites\spr_uiZ_windowbuttons</sprite>
       <sprite>sprites\spr_windowbackground</sprite>
-      <sprites name="windows31">
-        <sprite>sprites\spr_uiZ_borderwin31</sprite>
-        <sprite>sprites\spr_uiZ_win31_buttons</sprite>
-        <sprite>sprites\spr_uiZ_win31_minimize</sprite>
-        <sprite>sprites\spr_uiZ_win31_maximize</sprite>
-        <sprite>sprites\spr_uiZ_win31_options</sprite>
-        <sprite>sprites\spr_uiZ_win31_options_over</sprite>
-        <sprite>sprites\spr_uiZ_win31_options_in</sprite>
-        <sprite>sprites\spr_uiZ_win31_folder</sprite>
-        <sprite>sprites\spr_uiZ_win31_explorer</sprite>
-        <sprite>sprites\spr_uiZ_win31_button_3way_3d</sprite>
-        <sprite>sprites\spr_uiZ_win31_button_3way_bak</sprite>
-        <sprite>sprites\spr_uiZ_win31_button_3way</sprite>
-        <sprite>sprites\spr_uiZ_win31_clipboard</sprite>
-        <sprite>sprites\spr_uiZ_win31_minesweeper</sprite>
-        <sprites name="spr_uiZ_win31_minesweeper">
-          <sprite>sprites\spr_uiZ_win31_happybutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_coolbutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_wowbutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_deadbutton</sprite>
-          <sprite>sprites\spr_uiZ_win31_counter</sprite>
-          <sprite>sprites\spr_uiZ_win31_minetiles</sprite>
-          <sprite>sprites\spr_uiZ_win31_mineback</sprite>
-        </sprites>
-        <sprite>sprites\spr_uiZ_win31_notepad</sprite>
-        <sprite>sprites\spr_uiZ_win31_calculator</sprite>
-        <sprite>sprites\spr_uiZ_win31_clock</sprite>
-        <sprite>sprites\spr_uiZ_win31_calculatorbutton</sprite>
-        <sprite>sprites\spr_uiZ_win31_analogclock_dots</sprite>
-        <sprite>sprites\spr_uiZ_win31_analogclock_pointer</sprite>
-        <sprites name="serverbrowser">
-          <sprite>sprites\spr_uiZ_lock</sprite>
-          <sprite>sprites\spr_uiZ_shield</sprite>
-          <sprite>sprites\spr_uiZ_movie</sprite>
-        </sprites>
-      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -1819,24 +1783,6 @@
         <script>scripts\scr_sort.gml</script>
         <script>scripts\scr_sort_debug.gml</script>
       </scripts>
-      <scripts name="win31">
-        <script>scripts\uiz_win31_template_mousemenu.gml</script>
-        <script>scripts\uiz_win31_destroy.gml</script>
-        <script>scripts\uiz_win32_addmenulist.gml</script>
-        <script>scripts\uiz_win31_creatwindow.gml</script>
-        <script>scripts\uiz_win31_createwindow_size.gml</script>
-        <script>scripts\uiz_win31_stylewindow.gml</script>
-        <script>scripts\uiz_win31_addicon.gml</script>
-        <script>scripts\uiz_win31_closefilemanager.gml</script>
-        <script>scripts\uiz_win31_openfilemanager.gml</script>
-        <script>scripts\uiz_win31_openclipboard.gml</script>
-        <script>scripts\uiz_win31_opencalculator.gml</script>
-        <scripts name="minesweeper">
-          <script>scripts\uiz_win31_openminesweeper.gml</script>
-          <script>scripts\uiz_minesweeper_reset.gml</script>
-        </scripts>
-        <script>scripts\uiz_win31_calculatorgrid.gml</script>
-      </scripts>
       <script>scripts\UIZ_versioninformation.gml</script>
     </scripts>
   </scripts>
@@ -2025,14 +1971,6 @@
         <object>objects\obj_uiz_des_frameset_bak</object>
         <object>objects\obj_uiz_des_frameset</object>
       </objects>
-      <objects name="windows 3.1">
-        <object>objects\obj_windows31controller</object>
-        <object>objects\obj_windows31_filemanager</object>
-        <object>objects\obj_windows31_clipboard</object>
-        <object>objects\obj_windows31_calculator</object>
-        <object>objects\obj_windows31_minesweeper</object>
-        <object>objects\obj_uiZ_minesweeper</object>
-      </objects>
       <objects name="deprecated">
         <object>objects\obj_uiZ_surfacecanvas</object>
         <object>objects\obj_uiZ_text_background</object>
@@ -2050,7 +1988,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
-    <room>rooms\rm_uiz_windows31</room>
     <room>rooms\rm_uiz_serverbrowser</room>
     <room>rooms\uiz_designer</room>
     <room>rooms\uiz_macromanager</room>
