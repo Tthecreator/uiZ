@@ -1,4 +1,4 @@
-///uiz_background_setenabled(instanceid,enabled)
+///uiz_background_setEnabled(instanceid, enabled)
 //enables the use of background on a certain object.
 //for this to work the object does need to be compatible with background
 //most objects come with backgrounds enabled by default

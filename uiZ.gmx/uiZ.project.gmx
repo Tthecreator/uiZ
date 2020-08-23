@@ -785,7 +785,7 @@
           <script>scripts\uiz_background_texturescript.gml</script>
           <script>scripts\uiz_background_texturescript_ext.gml</script>
           <script>scripts\uiz_background_set.gml</script>
-          <script>scripts\uiz_background_setenabled.gml</script>
+          <script>scripts\uiz_background_setEnabled.gml</script>
         </scripts>
         <scripts name="background_scripts">
           <script>scripts\uiz_back_circlestitch.gml</script>
