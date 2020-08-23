@@ -1,4 +1,4 @@
-///uiz_margin(instanceid,left,right,top,bottom)
+///uiz_margin(instanceid, left, right, top, bottom)
 gml_pragma("forceinline");
 argument0.leftmargin=argument1
 argument0.rightmargin=argument2

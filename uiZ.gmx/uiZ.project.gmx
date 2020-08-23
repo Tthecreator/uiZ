@@ -808,25 +808,15 @@
             <script>scripts\uiz_position_x.gml</script>
             <script>scripts\uiz_position_y.gml</script>
           </scripts>
-          <scripts name="divisionmiddles">
-            <script>scripts\uiz_getdivisionmiddles.gml</script>
-            <script>scripts\uiz_getdivisionmiddles_range.gml</script>
-            <script>scripts\uiz_getdivisionmiddles_margin.gml</script>
-            <script>scripts\uiz_getdivisionmiddles_marginrange.gml</script>
-            <script>scripts\uiz_getpositionvalue.gml</script>
-            <script>scripts\uiz_getpositionvalue_range.gml</script>
-            <script>scripts\uiz_getpositionvalue_margins.gml</script>
-            <script>scripts\uiz_getpositionvalue_marginrange.gml</script>
-          </scripts>
           <scripts name="uiz_size">
             <script>scripts\uiz_size.gml</script>
             <script>scripts\uiz_size_w.gml</script>
             <script>scripts\uiz_size_h.gml</script>
           </scripts>
           <scripts name="uiz_setpoint">
-            <script>scripts\uiz_setpoint.gml</script>
-            <script>scripts\uiz_setpoint_x.gml</script>
-            <script>scripts\uiz_setpoint_y.gml</script>
+            <script>scripts\uiz_setPoint.gml</script>
+            <script>scripts\uiz_setPoint_x.gml</script>
+            <script>scripts\uiz_setPoint_y.gml</script>
           </scripts>
           <scripts name="uiz_margin">
             <script>scripts\uiz_margin.gml</script>
@@ -834,6 +824,12 @@
             <script>scripts\uiz_margin_right.gml</script>
             <script>scripts\uiz_margin_top.gml</script>
             <script>scripts\uiz_margin_bottom.gml</script>
+            <script>scripts\uiz_margin_frame.gml</script>
+            <script>scripts\uiz_margin_frame_left.gml</script>
+            <script>scripts\uiz_margin_frame_right.gml</script>
+            <script>scripts\uiz_margin_frame_top.gml</script>
+            <script>scripts\uiz_margin_frame_bottom.gml</script>
+            <script>scripts\uiz_margin_useBackgroundMargins.gml</script>
           </scripts>
           <scripts name="uiz_add">
             <script>scripts\uiz_add.gml</script>
@@ -841,14 +837,17 @@
             <script>scripts\uiz_addy.gml</script>
           </scripts>
           <script>scripts\uiz_shader_object.gml</script>
-          <script>scripts\uiz_depth_set.gml</script>
-          <script>scripts\uiz_depth_foreground.gml</script>
           <script>scripts\uiz_getmouseover.gml</script>
-          <script>scripts\uiz_depth_get.gml</script>
           <script>scripts\uiz_alpha.gml</script>
           <script>scripts\uiz_keepupdating.gml</script>
           <script>scripts\uiz_setenabled.gml</script>
           <script>scripts\uiz_update_set.gml</script>
+          <script>scripts\uiz_c.gml</script>
+          <scripts name="depth">
+            <script>scripts\uiz_depth_get.gml</script>
+            <script>scripts\uiz_depth_foreground.gml</script>
+            <script>scripts\uiz_depth_set.gml</script>
+          </scripts>
         </scripts>
         <scripts name="compatibility">
           <script>scripts\uiz_compatibility_depthfix.gml</script>
@@ -1091,7 +1090,6 @@
           <script>scripts\uiz_destroydslist.gml</script>
           <script>scripts\uiz_todpix.gml</script>
           <script>scripts\uiz_todpiy.gml</script>
-          <script>scripts\uiz_c.gml</script>
           <script>scripts\uiz_deletefromlists.gml</script>
           <script>scripts\uiz_searchinarray.gml</script>
           <script>scripts\uiz_endobject.gml</script>
@@ -1108,6 +1106,16 @@
           <script>scripts\uiz_checkScreenResize.gml</script>
           <script>scripts\uiz_useAppSurf.gml</script>
           <script>scripts\uiz_string_digits.gml</script>
+          <scripts name="divisionmiddles">
+            <script>scripts\uiz_getdivisionmiddles.gml</script>
+            <script>scripts\uiz_getdivisionmiddles_range.gml</script>
+            <script>scripts\uiz_getdivisionmiddles_margin.gml</script>
+            <script>scripts\uiz_getdivisionmiddles_marginrange.gml</script>
+            <script>scripts\uiz_getpositionvalue.gml</script>
+            <script>scripts\uiz_getpositionvalue_range.gml</script>
+            <script>scripts\uiz_getpositionvalue_margins.gml</script>
+            <script>scripts\uiz_getpositionvalue_marginrange.gml</script>
+          </scripts>
         </scripts>
         <scripts name="grid">
           <script>scripts\uiz_resizegridframes.gml</script>
