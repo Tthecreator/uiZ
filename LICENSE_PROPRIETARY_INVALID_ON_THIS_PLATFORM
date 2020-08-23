@@ -1,0 +1,46 @@
+This license is an agreement between you (either an individual or organization of some sort), the software product this license covers and the software owner.
+In case this asset has been acquired from the YoYoGames marketplace the following EULA will govern this software product: https://marketplace.yoyogames.com/eula. (This is despite any claims in chapter 1 "alternate EULA ") 
+
+## 1. terminology
+You are being referred to by as "you”, “individual”, “license holder” or “licensee”.
+The “software product” refers to the uiZ user interface framework for Game Maker.
+The person who has made this software is referred to as the “owner”, “software owner” or “licensor”. This person is Thomas Saedt. Contact can be made trough the email address: epostvanthomas@kpnmail.nl. Contact information may be subject to change.
+The software product this license covers is a shared-source codebase provided to you. This means that upon the purchase or the acquirement of a license for the product you receive uncompiled, non-binary (somewhat human readable) computer code. This computer code is not available to the public and not to be made public by the license holder. Some parts of the provided code base may still be supplied in a binary format, including (but not limited to) dynamic linking library files, binary tools, and binary assets such as image or sound. The term “software” in this agreement refers to the binary or non-binary software and surrounding assets provided to you by the owner. Software that follows the restrictions given in part C may be referred to as “distributed software”, “distributable software”, “binary software” or “compiled software”.
+
+## 2. Validity of the license
+The product this license governs is dual-licensed. The GNU GENERAL PUBLIC LICENSE Version 3, with an additional Contributors License Agreement Extension governs the open source part of this software. This specific license is intended and only applicable for buyers of this product. In case this license is viewed on GitHub, or any other free sharing repository or website, this license is invalid. In the case this is listed on GitHub, or any other free sharing repository or website, this document should be considered as a draft for what you could agree to if you did purchase the product.
+This document is both the license and license agreement for the uiZ software product. This license is only valid in combination with the supplied software product and with proof of purchase through any of the following platforms:
+-	Through direct contact with the owner of the software
+This license may not be sublicensed to another organization or individual. This means that no contract or agreement may be made by the license holder that allows another party to use the software outside the restrictions of part C.
+If this license agreement is broken by the license holder, the right to use the software ceases to exist. The software owner may also choose to stop the validity of a license for a person or organization, with or without reason. If a valid license becomes invalid, the software may not be acquired again unless permitted by the software owner.
+This license agreement may be changed at any time by the software owner. Any existing software agreements will then become invalid and license holders may continue use of the software after agreeing to the newly supplied terms.
+
+## 3. use in organization vs individual use
+(part A) If this software and its license are sold to a single individual, it may not be used in a (commercial or non-commercial) “group” or “organization” unless one of the following statements is true:
+-	You are a chief or leader of the organization. 
+-	You are a part of the organization but not a chief or a leader and you haven’t already used this software inside another organization.
+-	You have been given permission by the software owner to do so.
+(end part A)
+The software license may be transferred from an individual to an organization once. The individual may then not use the software anymore for personal purposes, unless that individual is owner or leader of the organization. The software license may not be transferred from organization to organization.
+(part B) To any person in the organization who utilizes this software and hasn’t introduced the software to the organization as described in part A applies the following:
+-	You are not allowed to redistribute the software to anyone outside the organization, or anyone in the organization who does not agree to these terms (the terms described in part B, this part). 
+-	You are not allowed to use the software product for individual use, with exception of use under the GNU GENERAL PUBLIC LICENSE version 3 that this software also comes with. 
+Part C of this document can counter the terms described in this part (part B)
+(end part B)
+
+## 4. Redistribution of the software
+(part C)
+This software may be redistributed if any of the following conditions are true:
+-	The software is redistributed in a compiled, binary form in which the originally provided source code is not accessible. An exception is granted for font files. Another exception is granted for dynamically linked libraries in compiled, binary form in which the source code is not accessible. Image/picture files may be redistributed as separate included files or included in the binary as loose files or in the form of a combined texture page.
+-	The software is redistributed under the accompanying GNU GENERAL PUBLIC LICENSE version 3.
+- 	The software is redistributed to an entity which also holds a valid copy of this license.
+ (end part C)
+Any uncompiled/non-binary version of the software must include this license agreement.
+You are not required to supply a license to any end user of the compiled software. You are not required to give any credit to the software owner in a compiled version of the software.
+
+## 5. Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+This software comes with no guaranteed warranty. Any support or warranty provided is provided in good faith. The software owner may refuse support for any reason. This includes but is not limited to: Lack of skill or competence in understanding matter or explaining oneself or broken or rude language. No warranty or compensation will be given of any kind if the software doesn’t work correctly or if the software breaks something.
+The software owner bears no liability of any kind with the use of the software.
+The Licensor shall not be liable to licensee for any lost profits, lost revenues or opportunities, downtime, or any consequential damages or costs, resulting from any claim or cause of action based on breach of warranty, breach of contract, negligence, or any other legal theory, even if Licensor knew or should have known of the possibility thereof.
