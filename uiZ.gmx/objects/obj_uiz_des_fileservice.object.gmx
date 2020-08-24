@@ -522,7 +522,7 @@ runpop=3
 if instance_exists(continuebutton) and continuebutton.kmouseover=2 then{
 //continue pressed
 //alarm[2]=1
-//uiz_destroyobject(pop)
+//uiz_destroyObject(pop)
 if !instance_exists(secondpop) then{
 secondpop=uiz_popup_yesno("Are you sure you want to continue?#your data is your responsibity.##Continue?","non-foolproof warning",0)
 uizreturnno.color=c_green

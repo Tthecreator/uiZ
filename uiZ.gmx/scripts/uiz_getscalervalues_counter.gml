@@ -18,7 +18,7 @@ if destroy=1 then{
 //uiz_updater_FixViews_area(last_cntnx,last_cntny,last_cntnlx,last_cntnly);
 //sdbm("updating with",cntnx,cntny,cntnlx,cntnly)
 //room_speed = 30;
-uiz_destroyobject(id);
+uiz_destroyObject(id);
 }
 return true;
 }

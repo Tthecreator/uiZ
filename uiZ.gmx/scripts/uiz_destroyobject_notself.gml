@@ -10,6 +10,6 @@ for(var i=0;i<sz;i++){
 //var w=l[| i];
 var w=l[| 0];
 //dbm(w)
-uiz_destroyobject(w)
+uiz_destroyObject(w)
 }
 }

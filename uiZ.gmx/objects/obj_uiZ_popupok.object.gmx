@@ -76,7 +76,7 @@ indestroy=indestroysteps;
 indestroying=1
 if box&gt;0 and instance_exists(box) then{global.uiz_popupreturnstring=box.value;}
 //if 
-//uiz_destroyobject(destroyframe)
+//uiz_destroyObject(destroyframe)
 //uiz_destroyobject_animation(destroyframe,window.destroyxfunction,window.destroyyfunction,window.destroyafunction,window.destroyspeed)
 uiz_destroyObject_animation(destroyframe,uiz_zero,uiz_zero,uiz_smoothstep,window.destroyspeed)
 uiz_animation_updateChildren(destroyframe, true);
@@ -89,7 +89,7 @@ destroyframe.indestroy=indestroy;
 destroyframe.indestroying=indestroying;
 destroyframe.str=str;
 }else{
-uiz_destroyobject(id)
+uiz_destroyObject(id)
 }
 </string>
           </argument>

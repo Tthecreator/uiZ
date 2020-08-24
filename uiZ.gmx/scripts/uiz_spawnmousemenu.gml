@@ -13,7 +13,7 @@ Some optional arguments of this object look like those of the uiz_animation_setO
 */
 while(instance_exists(obj_uiZ_mousemenu)){
 //sdbm("destroying object place 1")
-uiz_destroyobject(obj_uiZ_mousemenu.id)
+uiz_destroyObject(obj_uiZ_mousemenu.id)
 }
 var v=uiz_c(obj_uiZ_mousemenu);
 

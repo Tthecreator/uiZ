@@ -597,7 +597,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         //spawn in a color menu
         if global.colorscreen != 0 and instance_exists(global.colorscreen) and instance_exists(global.colorscreen.w) then {
             //remove old window
-            uiz_destroyobject(global.colorscreenobject)
+            uiz_destroyObject(global.colorscreenobject)
         }
 
         uiz_colorbox_checkcolordump()

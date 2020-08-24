@@ -1529,7 +1529,7 @@ ini_close()
             <kind>1</kind>
             <string>///setup frames
 //destroy the ui
-uiz_destroyobject(loadingf)
+uiz_destroyObject(loadingf)
 uiz_setwindowsize(display_get_width()*0.9,display_get_height()*0.9)
 //uiz_window_center()
 //window_set_position(0,0)
@@ -1841,7 +1841,7 @@ ds_list_add(postypelistlink,px)
 ds_list_add(postypelistlink,dp)
 ds_list_add(postypelistlink,fc)
 
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 if ds_list_size(afobjlist)&gt;0 then{
 afobjlist[| 0].alarm[0]=1
 global.selobj=-1
@@ -1932,7 +1932,7 @@ ini_write_string("backup","path",backupfolder)
 ini_write_string("backup","latest",time)
 ini_write_string("backup","first",time)
 ini_close()
-uiz_destroyobject(w)
+uiz_destroyObject(w)
 backupscreenopen=0
 errtxt.text="backups have been made."
 uiz_fixgeneralpos(errtxt);
@@ -2132,7 +2132,7 @@ uiz_destroyobject_animation(global.windowexists,uiz_exponential_in,uiz_exponenti
 rightbar.addy=0;
 gridscrollbar.scroll=0;
 //uiz_des_updateset(aflist[| gmtreelist.sel])
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 //dbm(afobjlist[| gmtreelist.sel])
 afobjlist[| gmtreelist.sel].alarm[0]=1
 global.selobj=-1
@@ -2239,7 +2239,7 @@ if global.windowexists&gt;0 and instance_exists(global.windowexists) then{
 uiz_destroyobject_animation(global.windowexists,uiz_exponential_in,uiz_exponential_in,uiz_exponential_in,0.1)
 }
 //uiz_des_updateset(aflist[| gmtreelist.sel])
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 //dbm(afobjlist[| gmtreelist.sel])
 afobjlist[| gmtreelist.sel].alarm[0]=1
 global.selobj=-1

@@ -1,4 +1,4 @@
-///uiz_destroyobject(id)
+///uiz_destroyObject(id)
 /*
 Safely destroys an uiZ object.
 It is important you use this script instead of the normal instance_destroy() script, as this script removes the reference to this object from its parent.
@@ -12,7 +12,7 @@ if ds_exists(l,ds_type_list) then{
 var sz=ds_list_size(l)
 for(var i=0;i<sz;i++){
 var w=l[| 0];
-uiz_destroyobject(w)
+uiz_destroyObject(w)
 }
 }
 with(p){

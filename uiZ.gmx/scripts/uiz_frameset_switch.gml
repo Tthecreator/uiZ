@@ -67,7 +67,7 @@ with(argument0) {
         n.spriteconnectionleft = spriteconnectionleft;
         n.spriteconnectionright = spriteconnectionright;
         n.overframebar = overframebar;
-        uiz_destroyobject(id)
+        uiz_destroyObject(id)
     } else {
         if object_index = obj_uiZ_frameset and array_length_1d(frameat) > 0 then {
             var o = frameat[0];

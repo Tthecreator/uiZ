@@ -314,7 +314,7 @@ if button_maximize=1 and maxim.kmouseover=4 then{
 uiz_window_switchmaximize()
 }
 if button_cross=1 and cross.kmouseover=4 then{
-//uiz_destroyobject(id)
+//uiz_destroyObject(id)
 uiz_destroyObject_animation(id,destroyxfunction,destroyyfunction,destroyafunction,destroyspeed)
 /*
 //destroy=1
@@ -333,7 +333,7 @@ break;
 }
 /*
 if destroy=1 then{
-if destroycount&gt;=1 then{uiz_destroyobject(id)}
+if destroycount&gt;=1 then{uiz_destroyObject(id)}
 var st=(1-uiz_animation_getFunction(destroycount,destroycountanimation));
 width=st*oldwidth
 height=st*oldheight

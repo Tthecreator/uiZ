@@ -25,7 +25,7 @@ head_alpha=olda*scale
 if object_index!=obj_uiZ_windowholder then{
 uiz_fixchildren(id,1)}
 //sdbm("executed fixchildren")
-if destroy>=2 then{uiz_destroyobject(id)}
+if destroy>=2 then{uiz_destroyObject(id)}
 updatenextstep=1
 //sdbm("executed destroy")
 }

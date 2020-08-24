@@ -38,7 +38,7 @@ if (p.object_index == argument4) then{
     p.frameat[i]=uiz_c(argument4);
     uiz_children_adopt(g, p.frameat[i]);
     uiz_setParent(p.frameat[i],p);
-    uiz_destroyobject(g);
+    uiz_destroyObject(g);
 }
 
 p.frameat[i].inlistpos=i;

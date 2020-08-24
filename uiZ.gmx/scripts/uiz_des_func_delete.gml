@@ -1,6 +1,6 @@
 with(obj_uiz_designer){
 if ds_list_size(afobjlist)>0 then{
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 var p=gmtreelist.keepselected
 var o=afobjlist[| p]
 sdbm("[uiZ,Designer:INFO]Deleting object: "+string(o))
@@ -24,7 +24,7 @@ if m>=0 then{
 ini_write_real(string(n),"parent",m)}
 }
 }
-//uiz_destroyobject(w)
+//uiz_destroyObject(w)
 }
 //var changewhat=p;
 var m=ds_list_find_index(aflist,o.object.parent);
@@ -47,8 +47,8 @@ ini_write_real(string(i),"parent",m)}
 }
 
 
-uiz_destroyobject(o.object)
-uiz_destroyobject(o)
+uiz_destroyObject(o.object)
+uiz_destroyObject(o)
 uiz_deletefromlists(p,afobjlist,afnamelist,afsprlist,afimglist,aflist)
 gmtreelist.keepselected=0
 gmtreelist.sel=0

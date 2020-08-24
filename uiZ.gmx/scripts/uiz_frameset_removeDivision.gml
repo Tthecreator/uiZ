@@ -20,7 +20,7 @@ var m=frameat[0]
 //destroy all frames
 for(var i=1;i<divisions;i++){
 uiz_children_adopt(frameat[i],m)
-uiz_destroyobject(frameat[i])
+uiz_destroyObject(frameat[i])
 }
 //3
 uiz_setParent(m,parent)
@@ -29,7 +29,7 @@ uiz_frameset_forceFixSize(parent);
 //4
 parent.frameat[inlistpos]=m;
 m.inlistpos=inlistpos;
-uiz_destroyobject(id)
+uiz_destroyObject(id)
 }
 }
 }

@@ -33,7 +33,7 @@ if argument0.object_index = obj_uiZ_framerowanchor or argument0.object_index = o
                     uiz_fixchildren(argument0, true)
 
                 }
-                uiz_destroyobject(frameat[i])
+                uiz_destroyObject(frameat[i])
             }
         }
 

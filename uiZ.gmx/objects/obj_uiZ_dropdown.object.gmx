@@ -153,7 +153,7 @@ if menuis=1 and instance_exists(menu) then{
 menuis=0
 uiz_updater_unstep();
 if instance_exists(menu){
-uiz_destroyobject(menu)}
+uiz_destroyObject(menu)}
 }else{
 menuis=1
 menu=instance_create(0,0,obj_uiZ_mousemenu)

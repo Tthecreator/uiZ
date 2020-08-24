@@ -879,8 +879,8 @@
           <script>scripts\uiz_destroyObject_animation.gml</script>
           <script>scripts\uiz_destroyObject_setDestroyAnimation.gml</script>
           <script>scripts\uiz_destroyObject_animation_default.gml</script>
-          <script>scripts\uiz_destroyobject.gml</script>
-          <script>scripts\uiz_destroyobject_notself.gml</script>
+          <script>scripts\uiz_destroyObject.gml</script>
+          <script>scripts\uiz_destroyObject_notself.gml</script>
         </scripts>
         <scripts name="dpi">
           <script>scripts\uiz_dpi_init.gml</script>

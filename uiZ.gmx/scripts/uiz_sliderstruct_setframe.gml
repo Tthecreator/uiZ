@@ -27,7 +27,7 @@ moveback=1;
 
 
 if oldframe!=newframe and instance_exists(oldframe) then{
-uiz_destroyobject(oldframe)
+uiz_destroyObject(oldframe)
 }
 oldframe=newframe;
 //create newframe

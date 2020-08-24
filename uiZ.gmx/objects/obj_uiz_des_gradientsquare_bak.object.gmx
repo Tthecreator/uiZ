@@ -63,7 +63,7 @@ init=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroyobject_notself(obj_uiz_designer.rightbar)
+            <string>uiz_destroyObject_notself(obj_uiz_designer.rightbar)
 if ds_exists(itemlist,ds_type_list) then{ds_list_destroy(itemlist)}
 </string>
           </argument>
@@ -139,7 +139,7 @@ init=1
           <argument>
             <kind>1</kind>
             <string>/*
-uiz_destroyobject_notself(obj_uiz_designer.rightbar)
+uiz_destroyObject_notself(obj_uiz_designer.rightbar)
 var sz=ds_list_size(itemlist)
 for(var i=0;i&lt;sz;i++){
 

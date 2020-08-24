@@ -96,7 +96,7 @@ mouseborderinside=true;
             <kind>1</kind>
             <string>//if ds_exists(children,ds_type_list) then{ds_list_destroy(children)}
 //if surface_exists(containframe) then{surface_free(containframe)}
-//if instance_exists(menumousecover) then{uiz_destroyobject(menumousecover)}
+//if instance_exists(menumousecover) then{uiz_destroyObject(menumousecover)}
 uiz_endobject()
 </string>
           </argument>

@@ -149,7 +149,7 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
     uiz_fixchildren(fa, true)
     uiz_fixchildren(fb, true)
     if linearvalue = 1 then {
-        uiz_destroyobject(oldframe);
+        uiz_destroyObject(oldframe);
         oldframe = newframe;
         dir = 0;
         moveback = 1;
@@ -159,7 +159,7 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
         }
     }
     if linearvalue = 0 and moveback = -1 then {
-        uiz_destroyobject(newframe);
+        uiz_destroyObject(newframe);
         newframe = oldframe;
         dir = 0;
         moveback = 1;
@@ -188,7 +188,7 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
         //make sure oldframe doesn't exists anymore
         
         if instance_exists(oldframe) &amp;&amp; oldframe!=newframe then{
-            uiz_destroyobject(oldframe);
+            uiz_destroyObject(oldframe);
         }
         
         oldframe = newframe;
@@ -253,7 +253,7 @@ if hasmouse = true then {
     }
     
     if dir != setdir and setdir != 0 then {
-        uiz_destroyobject_notself(newframe)
+        uiz_destroyObject_notself(newframe)
         update = true;
         dir = setdir;
         frame = oldhasmouseframe - setdir;
