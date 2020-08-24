@@ -1,4 +1,4 @@
-////uiz_depth_set(instanceid,adddepth)
+////uiz_depth_set(instanceid, adddepth)
 with(argument0){
 depth=-argument1;//depth is inverted in uiz due to legacy issues.
 //fix place in childrenlist

@@ -800,8 +800,13 @@
           </scripts>
           <scripts name="uiz_add">
             <script>scripts\uiz_add.gml</script>
-            <script>scripts\uiz_addx.gml</script>
-            <script>scripts\uiz_addy.gml</script>
+            <script>scripts\uiz_addX.gml</script>
+            <script>scripts\uiz_addY.gml</script>
+          </scripts>
+          <scripts name="uiz_depth">
+            <script>scripts\uiz_depth_get.gml</script>
+            <script>scripts\uiz_depth_foreground.gml</script>
+            <script>scripts\uiz_depth_set.gml</script>
           </scripts>
           <script>scripts\uiz_shader_object.gml</script>
           <script>scripts\uiz_getmouseover.gml</script>
@@ -810,11 +815,6 @@
           <script>scripts\uiz_setenabled.gml</script>
           <script>scripts\uiz_update_set.gml</script>
           <script>scripts\uiz_c.gml</script>
-          <scripts name="depth">
-            <script>scripts\uiz_depth_get.gml</script>
-            <script>scripts\uiz_depth_foreground.gml</script>
-            <script>scripts\uiz_depth_set.gml</script>
-          </scripts>
         </scripts>
         <scripts name="compatibility">
           <script>scripts\uiz_compatibility_depthfix.gml</script>

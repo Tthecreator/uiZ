@@ -1,4 +1,4 @@
-////uiz_depth_foreground(instanceid)
+///uiz_depth_foreground(instanceid)
 with(argument0){
 
     if uiz_diddepth=false then{
