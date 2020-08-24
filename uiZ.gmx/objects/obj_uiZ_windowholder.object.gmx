@@ -222,8 +222,8 @@ lastparent=parent;
 var fix=false;
 var fixforp=id;
 //
-//if global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseoverobject=0 or (instance_exists(global.mouseoverobject) and uiz_hasparentinchain(global.mouseoverobject,id))) then{
-if global.lockwindowresel=0 and selected=false and global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseover=obj_uiZ_controller.id or (instance_exists(global.mouseover) and uiz_hasparentinchain(global.mouseover,id))) then{
+//if global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseoverobject=0 or (instance_exists(global.mouseoverobject) and uiz_hasParent_inChain(global.mouseoverobject,id))) then{
+if global.lockwindowresel=0 and selected=false and global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseover=obj_uiZ_controller.id or (instance_exists(global.mouseover) and uiz_hasParent_inChain(global.mouseover,id))) then{
 //global.uiz_windows++
 //fix=true;
 

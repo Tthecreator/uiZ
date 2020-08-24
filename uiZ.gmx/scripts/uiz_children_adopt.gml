@@ -1,4 +1,4 @@
-///uiz_children_adopt(from,to)
+///uiz_children_adopt(from, to)
 /*Transfers all children from argument0 to argument1.
 Useful if you want to destroy an object, but don't want all the children to have uiZ_obj_controller as a parent.
 0-from: From what object the children should be transferred. Needs to be a game maker instance id.

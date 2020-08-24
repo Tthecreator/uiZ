@@ -21,7 +21,7 @@ if data>-1 then{
 var setframe=uiz_des_framewindow_findframefromxml(t.object,t.omgxml,data)
 sdbm("[uiZ,Designer:INFO]framesetparentload, setframe to",setframe)
 if instance_exists(setframe) then{
-uiz_setparent(object,setframe)}
+uiz_setParent(object,setframe)}
 }else{
 sdbm("[uiZ,Designer:WARNING] Problem setting frameset as parent, basename '"+string(fr)+"' is not found!")
 }

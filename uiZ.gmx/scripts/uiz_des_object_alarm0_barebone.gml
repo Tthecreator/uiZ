@@ -14,8 +14,8 @@ firstalarm=0
 if ds_exists(itemlist,ds_type_list) then{ds_list_destroy(itemlist) itemlist=ds_list_create()}else{itemlist=ds_list_create()}
 g=uiz_grid_create(2,1)
 g.depth=-20
-uiz_setparent(g,obj_uiz_designer.rightbar)
-//uiz_setparent(g,frame)
+uiz_setParent(g,obj_uiz_designer.rightbar)
+//uiz_setParent(g,frame)
 uiz_fixgridpos(g)
 uiz_setgridframes(g)
 uiz_gridsize_row(g,0,1,px)

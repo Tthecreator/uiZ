@@ -8,7 +8,7 @@ var o=obj_uiZ_controller.id;
 }
 //Handling the object 'UIZ__obj_uiZ_rotator' of index 'obj_uiZ_rotator'
 UIZ__obj_uiZ_rotator=uiz_c(obj_uiZ_rotator)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_rotator,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_rotator,o)}
 UIZ__obj_uiZ_rotator.posinframex=px
 UIZ__obj_uiZ_rotator.posinframey=px
 UIZ__obj_uiZ_rotator.posvalwtype=px
@@ -29,7 +29,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_rotator)
 
 //Handling the object 'UIZ__obj_uiZ_drawtext' of index 'obj_uiZ_drawtext'
 UIZ__obj_uiZ_drawtext=uiz_c(obj_uiZ_drawtext)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_drawtext,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_drawtext,o)}
 UIZ__obj_uiZ_drawtext.posinframex=px
 UIZ__obj_uiZ_drawtext.posinframey=px
 UIZ__obj_uiZ_drawtext.posvalwtype=px
@@ -49,7 +49,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_drawtext)
 
 //Handling the object 'UIZ__obj_uiZ_valuebox' of index 'obj_uiZ_valuebox'
 UIZ__obj_uiZ_valuebox=uiz_c(obj_uiZ_valuebox)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_valuebox,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_valuebox,o)}
 UIZ__obj_uiZ_valuebox.posinframex=px
 UIZ__obj_uiZ_valuebox.posinframey=px
 UIZ__obj_uiZ_valuebox.posvalwtype=px
@@ -100,7 +100,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_valuebox)
 
 //Handling the object 'UIZ__obj_uiZ_checkbox' of index 'obj_uiZ_checkbox'
 UIZ__obj_uiZ_checkbox=uiz_c(obj_uiZ_checkbox)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_checkbox,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_checkbox,o)}
 UIZ__obj_uiZ_checkbox.posinframex=px
 UIZ__obj_uiZ_checkbox.posinframey=px
 UIZ__obj_uiZ_checkbox.posvalwtype=px

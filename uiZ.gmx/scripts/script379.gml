@@ -8,7 +8,7 @@ var o=obj_uiZ_controller.id;
 }
 //Handling the object 'UIZ__obj_uiZ_frameset'of type 'obj_uiZ_frameset'
 UIZ__obj_uiZ_frameset=uiz_c(obj_uiZ_frameset)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_frameset,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_frameset,o)}
 UIZ__obj_uiZ_frameset.posinframex=px
 UIZ__obj_uiZ_frameset.posinframey=px
 UIZ__obj_uiZ_frameset.posvalwtype=px
@@ -24,7 +24,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_frameset)
 
 //Handling the object 'UIZ__obj_uiZ_gradientroundrect1234'of type 'obj_uiZ_gradientroundrect'
 UIZ__obj_uiZ_gradientroundrect1234=uiz_c(obj_uiZ_gradientroundrect)
-uiz_setparent(UIZ__obj_uiZ_gradientroundrect1234,UIZ__obj_uiZ_frameset)
+uiz_setParent(UIZ__obj_uiZ_gradientroundrect1234,UIZ__obj_uiZ_frameset)
 UIZ__obj_uiZ_gradientroundrect1234.posinframex=px
 UIZ__obj_uiZ_gradientroundrect1234.posinframey=px
 UIZ__obj_uiZ_gradientroundrect1234.posvalwtype=px
@@ -38,7 +38,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_gradientroundrect1234)
 
 //Handling the object 'UIZ__obj_uiZ_gradientsquare'of type 'obj_uiZ_gradientsquare'
 UIZ__obj_uiZ_gradientsquare=uiz_c(obj_uiZ_gradientsquare)
-uiz_setparent(UIZ__obj_uiZ_gradientsquare,UIZ__obj_uiZ_frameset)
+uiz_setParent(UIZ__obj_uiZ_gradientsquare,UIZ__obj_uiZ_frameset)
 UIZ__obj_uiZ_gradientsquare.posinframex=dp
 UIZ__obj_uiZ_gradientsquare.posinframey=px
 UIZ__obj_uiZ_gradientsquare.posvalwtype=px

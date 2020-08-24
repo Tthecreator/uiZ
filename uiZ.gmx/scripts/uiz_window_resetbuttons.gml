@@ -5,7 +5,7 @@ if instance_exists(buttons) then{
 if button_cross=1 then{
 if !instance_exists(cross) then{
 cross=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(cross,buttons)
+uiz_setParent(cross,buttons)
 cross.posinframex=fc
 cross.posvalx=2/3;
 cross.posvalwtype=fcy
@@ -18,7 +18,7 @@ if button_maximize=1 then{
 if !instance_exists(maxim) then{
 maxim=uiz_easybutton_create(spr_uiZ_windowbuttons)
 //sdbm("id's",maxim,buttons)
-uiz_setparent(maxim,buttons)
+uiz_setParent(maxim,buttons)
 maxim.posinframex=fc
 maxim.posvalx=(2-button_cross)/3;
 maxim.posvalwtype=fcy
@@ -36,7 +36,7 @@ uiz_fixgeneralpos(maxim)
 if button_minimize=1 then{
 if !instance_exists(minim) then{
 minim=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(minim,buttons)
+uiz_setParent(minim,buttons)
 minim.posinframex=fc
 minim.posvalx=(2-button_cross-button_maximize)/3;
 minim.posvalwtype=fcy

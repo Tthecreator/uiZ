@@ -6,7 +6,7 @@ with(argument1){
     with(object_clipboard){
         //setup object
         text=uiz_c(obj_uiZ_text)
-        uiz_setparent(text,window)
+        uiz_setParent(text,window)
         text.posinframex=uiz_fill;
         text.posinframey=uiz_fill;
         uiz_text_setmultiline(text, true)

@@ -41,7 +41,7 @@ marginb=0
 margincellw=0
 margincellh=0
 headframe=uiz_frame_create()
-uiz_setparent(headframe,id)
+uiz_setParent(headframe,id)
 master=id
 headframe.master=master
 divisions=0
@@ -97,7 +97,7 @@ marginb=0
 margincellw=0
 margincellh=0
 headframe=uiz_frame_create()
-uiz_setparent(headframe,id)
+uiz_setParent(headframe,id)
 
 //if headframe=100028 then{var k=100028;
 //dbm(k.listpos,k.parent)}

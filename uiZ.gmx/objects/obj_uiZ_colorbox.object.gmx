@@ -618,7 +618,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         uiz_fixgeneralpos(w)
         f = w;
         fs = uiz_frameset_create();
-        uiz_setparent(fs, f)
+        uiz_setParent(fs, f)
         div1 = uiz_frameset_divide_vertical(fs, 0.7, fc, 1, xtra)
         picker = div1.frameat[0]
         sep = div1.frameat[1]
@@ -631,7 +631,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         hue = picker
         uiz_fixframesetpos(fs)
         uh = uiz_c(obj_uiZ_huesquare)
-        uiz_setparent(uh, hue)
+        uiz_setParent(uh, hue)
         uh.posinframex = uiz_fill
         uh.posinframey = uiz_fill
         uh.posvalx = 0
@@ -644,14 +644,14 @@ if global.colorscreen != id or!instance_exists(w) then {
 
 
         colorboxes = instance_create(0, 0, obj_uiZ_colorboxes)
-        uiz_setparent(colorboxes, selector)
+        uiz_setParent(colorboxes, selector)
         colorboxes.posinframex = uiz_fill
         colorboxes.posinframey = uiz_fill
         uiz_fixgeneralpos(colorboxes)
 
         //color
         c = instance_create(0, 0, obj_uiZ_square)
-        uiz_setparent(c, colbox)
+        uiz_setParent(c, colbox)
         c.posinframex = uiz_fill
         c.posinframey = uiz_fill
         c.color = value
@@ -667,7 +667,7 @@ if global.colorscreen != id or!instance_exists(w) then {
 
         //value slider
         boxval = instance_create(0, 0, obj_uiZ_slider)
-        uiz_setparent(boxval, valsz)
+        uiz_setParent(boxval, valsz)
         boxval.coloroutline1 = c_black
         boxval.coloroutline2 = c_white
         boxval.value = v / 255
@@ -692,7 +692,7 @@ if global.colorscreen != id or!instance_exists(w) then {
 
         //red slider
         boxred = instance_create(0, 0, obj_uiZ_slider)
-        uiz_setparent(boxred, valsz)
+        uiz_setParent(boxred, valsz)
         boxred.coloroutline1 = c_black
         boxred.coloroutline2 = c_red
         boxred.value = r / 255
@@ -717,7 +717,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         
         //green slider
         boxgreen = instance_create(0, 0, obj_uiZ_slider)
-        uiz_setparent(boxgreen, valsz)
+        uiz_setParent(boxgreen, valsz)
         boxgreen.value = g / 255
         boxgreen.posinframex = uiz_fill
         boxgreen.posinframey = fc
@@ -740,7 +740,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         
         //red slider
         boxblue = instance_create(0, 0, obj_uiZ_slider)
-        uiz_setparent(boxblue, valsz)
+        uiz_setParent(boxblue, valsz)
         boxblue.coloroutline1 = c_black
         boxblue.coloroutline2 = c_blue
         boxblue.value = b / 255
@@ -764,7 +764,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         
         //the valueboxes
         valsgrid = uiz_grid_create(4, 3)
-        uiz_setparent(valsgrid, valsels)
+        uiz_setParent(valsgrid, valsels)
         uiz_fixgridpos(valsgrid)
         uiz_setgridframes(valsgrid)
         uiz_gridsize_col(valsgrid, 0, 0.1, fc)
@@ -775,28 +775,28 @@ if global.colorscreen != id or!instance_exists(w) then {
         uiz_fixgridpos(valsgrid)
 
         valredtext = instance_create(0, 0, obj_uiZ_drawtext)
-        uiz_setparent(valredtext, uiz_gridobject(valsgrid, 0, 0))
+        uiz_setParent(valredtext, uiz_gridobject(valsgrid, 0, 0))
         valredtext.posinframex = uiz_fill
         valredtext.posinframey = uiz_fill
         valredtext.text = "r"
         uiz_fixgeneralpos(valredtext)
 
         valgreentext = instance_create(0, 0, obj_uiZ_drawtext)
-        uiz_setparent(valgreentext, uiz_gridobject(valsgrid, 0, 1))
+        uiz_setParent(valgreentext, uiz_gridobject(valsgrid, 0, 1))
         valgreentext.posinframex = uiz_fill
         valgreentext.posinframey = uiz_fill
         valgreentext.text = "g"
         uiz_fixgeneralpos(valgreentext)
 
         valbluetext = instance_create(0, 0, obj_uiZ_drawtext)
-        uiz_setparent(valbluetext, uiz_gridobject(valsgrid, 0, 2))
+        uiz_setParent(valbluetext, uiz_gridobject(valsgrid, 0, 2))
         valbluetext.posinframex = uiz_fill
         valbluetext.posinframey = uiz_fill
         valbluetext.text = "b"
         uiz_fixgeneralpos(valbluetext)
 
         valred = instance_create(0, 0, obj_uiZ_stringbox)
-        uiz_setparent(valred, uiz_gridobject(valsgrid, 1, 0))
+        uiz_setParent(valred, uiz_gridobject(valsgrid, 1, 0))
         valred.acceptOnlyNumbers = true;
         valred.acceptOnlyIntegers = true;
         valred.acceptOnlyPositive = true;
@@ -815,7 +815,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         uiz_fixgeneralpos(valred)
 
         valgreen = instance_create(0, 0, obj_uiZ_stringbox)
-        uiz_setparent(valgreen, uiz_gridobject(valsgrid, 1, 1))
+        uiz_setParent(valgreen, uiz_gridobject(valsgrid, 1, 1))
         valgreen.acceptOnlyNumbers = true;
         valgreen.acceptOnlyIntegers = true;
         valgreen.acceptOnlyPositive = true;
@@ -834,7 +834,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         uiz_fixgeneralpos(valgreen)
 
         valblue = instance_create(0, 0, obj_uiZ_stringbox)
-        uiz_setparent(valblue, uiz_gridobject(valsgrid, 1, 2))
+        uiz_setParent(valblue, uiz_gridobject(valsgrid, 1, 2))
         valblue.acceptOnlyNumbers = true;
         valblue.acceptOnlyIntegers = true;
         valblue.acceptOnlyPositive = true;
@@ -857,28 +857,28 @@ if global.colorscreen != id or!instance_exists(w) then {
 
         //hsv valueboxes
         valhtext = instance_create(0, 0, obj_uiZ_drawtext)
-        uiz_setparent(valhtext, uiz_gridobject(valsgrid, 2, 0))
+        uiz_setParent(valhtext, uiz_gridobject(valsgrid, 2, 0))
         valhtext.posinframex = uiz_fill
         valhtext.posinframey = uiz_fill
         valhtext.text = "h"
         uiz_fixgeneralpos(valhtext)
 
         valstext = instance_create(0, 0, obj_uiZ_drawtext)
-        uiz_setparent(valstext, uiz_gridobject(valsgrid, 2, 1))
+        uiz_setParent(valstext, uiz_gridobject(valsgrid, 2, 1))
         valstext.posinframex = uiz_fill
         valstext.posinframey = uiz_fill
         valstext.text = "s"
         uiz_fixgeneralpos(valstext)
 
         valvtext = instance_create(0, 0, obj_uiZ_drawtext)
-        uiz_setparent(valvtext, uiz_gridobject(valsgrid, 2, 2))
+        uiz_setParent(valvtext, uiz_gridobject(valsgrid, 2, 2))
         valvtext.posinframex = uiz_fill
         valvtext.posinframey = uiz_fill
         valvtext.text = "v"
         uiz_fixgeneralpos(valvtext)
 
         valh = instance_create(0, 0, obj_uiZ_stringbox)
-        uiz_setparent(valh, uiz_gridobject(valsgrid, 3, 0))
+        uiz_setParent(valh, uiz_gridobject(valsgrid, 3, 0))
         valh.acceptOnlyNumbers = true;
         valh.acceptOnlyIntegers = true;
         valh.acceptOnlyPositive = true;
@@ -894,7 +894,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         uiz_fixgeneralpos(valh)
 
         vals = instance_create(0, 0, obj_uiZ_stringbox)
-        uiz_setparent(vals, uiz_gridobject(valsgrid, 3, 1))
+        uiz_setParent(vals, uiz_gridobject(valsgrid, 3, 1))
         vals.acceptOnlyNumbers = true;
         vals.acceptOnlyIntegers = true;
         vals.acceptOnlyPositive = true;
@@ -910,7 +910,7 @@ if global.colorscreen != id or!instance_exists(w) then {
         uiz_fixgeneralpos(vals)
 
         valv = instance_create(0, 0, obj_uiZ_stringbox)
-        uiz_setparent(valv, uiz_gridobject(valsgrid, 3, 2))
+        uiz_setParent(valv, uiz_gridobject(valsgrid, 3, 2))
         valv.acceptOnlyNumbers = true;
         valv.acceptOnlyIntegers = true;
         valv.acceptOnlyPositive = true;

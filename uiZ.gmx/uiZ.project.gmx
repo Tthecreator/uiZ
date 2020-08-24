@@ -1816,14 +1816,20 @@
           </scripts>
         </scripts>
         <scripts name="parent">
-          <script>scripts\uiz_fittoparent.gml</script>
-          <script>scripts\uiz_setparent_fast.gml</script>
-          <script>scripts\uiz_setparent.gml</script>
-          <script>scripts\uiz_initparent.gml</script>
-          <script>scripts\uiz_removeparent.gml</script>
+          <script>scripts\uiz_setParent.gml</script>
+          <script>scripts\uiz_getParent.gml</script>
           <script>scripts\uiz_children_adopt.gml</script>
-          <script>scripts\uiz_haschild.gml</script>
-          <script>scripts\uiz_hasparentinchain.gml</script>
+          <script>scripts\uiz_hasChild.gml</script>
+          <script>scripts\uiz_hasChild_inChain.gml</script>
+          <script>scripts\uiz_hasParent.gml</script>
+          <script>scripts\uiz_hasParent_inChain.gml</script>
+          <script>scripts\uiz_getChildren.gml</script>
+          <scripts name="internal">
+            <script>scripts\uiz_fittoparent.gml</script>
+            <script>scripts\uiz_setparent_fast.gml</script>
+            <script>scripts\uiz_initparent.gml</script>
+            <script>scripts\uiz_removeparent.gml</script>
+          </scripts>
         </scripts>
         <scripts name="popup">
           <script>scripts\uiz_popup_yesno.gml</script>

@@ -89,7 +89,7 @@ ds_list_add(menulist_main_enabled,false,false,false,true,true,true,false)
 topcolor=uiz_htmltocolor($0000A8);
 window_ProgramManager=uiz_win31_createwindow_size(obj_uiZ_controller.id, "Program Manager", false, 0.5, fc, 0.5, fc);
 frame_ProgramManager=uiz_c(obj_uiZ_frame);
-uiz_setparent(frame_ProgramManager,window_ProgramManager);
+uiz_setParent(frame_ProgramManager,window_ProgramManager);
 //uiz_size(frame_ProgramManager,1,uiz_fill,1,uiz_fill);
 uiz_position(frame_ProgramManager,0,uiz_fill,0,uiz_fill);
 uiz_frame_setscrollautoupdate(frame_ProgramManager,true,true)
@@ -121,7 +121,7 @@ popup_exitwindows=0;
             <kind>1</kind>
             <string>///add folderbuttons to ProgramManager window
 folderbutton_Main=uiz_c(obj_uiZ_swipicon)
-uiz_setparent(folderbutton_Main,frame_ProgramManager)
+uiz_setParent(folderbutton_Main,frame_ProgramManager)
 folderbutton_Main.posinframex=fc
 folderbutton_Main.posinframey=fc
 folderbutton_Main.posvalx=0.1
@@ -143,7 +143,7 @@ uiz_fixgeneralpos(folderbutton_Main)
 
 ///Games folder button
 folderbutton_Games=uiz_c(obj_uiZ_swipicon)
-uiz_setparent(folderbutton_Games,frame_ProgramManager)
+uiz_setParent(folderbutton_Games,frame_ProgramManager)
 folderbutton_Games.posinframex=fc
 folderbutton_Games.posinframey=fc
 folderbutton_Games.posvalx=0.25
@@ -166,7 +166,7 @@ uiz_fixgeneralpos(folderbutton_Games)
 
 ///Games folder button
 folderbutton_Accessories=uiz_c(obj_uiZ_swipicon)
-uiz_setparent(folderbutton_Accessories,frame_ProgramManager)
+uiz_setParent(folderbutton_Accessories,frame_ProgramManager)
 folderbutton_Accessories.posinframex=fc
 folderbutton_Accessories.posinframey=fc
 folderbutton_Accessories.posvalx=0.40

@@ -87,7 +87,7 @@ uiz_des_setvalueof(o,wv)
 
 switch(o.updatetype){
 case "name": o.value=obj_uiz_des_name(object,wv) break;
-case "parent": if wv&gt;-1 then{var setto=obj_uiz_designer.aflist[| wv];if setto.object_index=obj_uiZ_frameset then{uiz_des_framesetparent(wv) ini_open(ini)}else{uiz_setparent(object,setto)} }
+case "parent": if wv&gt;-1 then{var setto=obj_uiz_designer.aflist[| wv];if setto.object_index=obj_uiZ_frameset then{uiz_des_framesetparent(wv) ini_open(ini)}else{uiz_setParent(object,setto)} }
 case "x": object.posvalx=wv;object.x=wv;x=wv;posvalx=wv; break;
 case "y": object.posvaly=wv;object.y=wv;y=wv;posvaly=wv; break;
 case "posvalw": object.posvalw=wv;posvalw=wv; break;
@@ -227,7 +227,7 @@ if global.newparentlist[|u.select].object_index=obj_uiZ_frameset then{
 //give choice
 uiz_des_framewindow_parent(global.newparentlist[|u.select])
 ini_open(ini)
-}else{uiz_setparent(object,global.newparentlist[|u.select]) }  break;
+}else{uiz_setParent(object,global.newparentlist[|u.select]) }  break;
 case "x": o.posvalx=v; posvalx=v; wv=v; break;
 case "y": o.posvaly=v; posvaly=v; wv=v; break;
 case "posvalw": o.posvalw=v; posvalw=v; wv=v; break;

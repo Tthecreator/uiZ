@@ -47,7 +47,7 @@ uiz_fixgeneralpos(frame)
 //create gradientsquare
 grad=uiz_c(obj_uiZ_gradientsquare)
 //put it in our frame
-uiz_setparent(grad,frame)
+uiz_setParent(grad,frame)
 //make it fill our frame
 grad.posinframex=uiz_fill;
 grad.posinframey=uiz_top;

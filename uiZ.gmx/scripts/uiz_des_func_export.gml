@@ -131,23 +131,23 @@ uiz_destroydslist(orderlisted)
 //var par=""
 var par1=Zfes("parent","-1");
 if real(par1)=-1 then{
-return "if argument_count>0 then{uiz_setparent("+naam+",o)}"
+return "if argument_count>0 then{uiz_setParent("+naam+",o)}"
 }else{
 if Zfeso("object","",string(real(par1)))="obj_uiZ_frameset" then{
 var par1=Zfes("parentinframe","")
 if par1="" then{
-return "if argument_count>0 then{uiz_setparent("+naam+",o)}"
+return "if argument_count>0 then{uiz_setParent("+naam+",o)}"
 }else{
 return "
-uiz_setparent("+naam+",UIZ_"+par1+")"
+uiz_setParent("+naam+",UIZ_"+par1+")"
 }
 }else{//sdbm("par1!1",par1)
 par1=Zfeso("name","",string(real(par1)))
 //sdbm("par1!",par1)
 if par1!="" then{
-return "uiz_setparent("+naam+",UIZ_"+par1+")"
+return "uiz_setParent("+naam+",UIZ_"+par1+")"
 }else{
-return "if argument_count>0 then{uiz_setparent("+naam+",o)}"
+return "if argument_count>0 then{uiz_setParent("+naam+",o)}"
 }
 }
 }

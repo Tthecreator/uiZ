@@ -97,7 +97,7 @@ sdbm("outputFile");
 outputFile = uiz_xml_createfile();
 
 o=uiz_c(obj_uiZ_treelist);
-uiz_setparent(o,win);
+uiz_setParent(o,win);
 //o.tablist=ds_list_create();
 //ds_list_add(o.tablist,"item1","ichigo","zero two","556")
 o.posinframex=uiz_fill;
@@ -139,7 +139,7 @@ uiz_fixgeneralpos(win2);
 //sdbm(uiz_xml_getdebugstringtotal(folders))
 
 o2=uiz_c(obj_uiZ_treelist);
-uiz_setparent(o2,win2);
+uiz_setParent(o2,win2);
 //o.tablist=ds_list_create();
 //ds_list_add(o.tablist,"item1","ichigo","zero two","556")
 o2.posinframex=uiz_fill;
@@ -154,7 +154,7 @@ uiz_fixgeneralpos(o2);
 
 /*
 b=uiz_c(obj_uiZ_button);
-uiz_setparent(b,win);
+uiz_setParent(b,win);
 //o.tablist=ds_list_create();
 //ds_list_add(o.tablist,"item1","ichigo","zero two","556")
 b.posinframex=uiz_snapleft;
@@ -167,7 +167,7 @@ uiz_fixgeneralpos(b);
 */
 /*
 o=uiz_c(obj_uiZ_textarea);
-uiz_setparent(o,win);
+uiz_setParent(o,win);
 //o.tablist=ds_list_create();
 //ds_list_add(o.tablist,"item1","ichigo","zero two","556")
 o.posinframex=uiz_fill;
@@ -178,7 +178,7 @@ uiz_fixgeneralpos(o);
 
 /*
 tabslider=uiz_c(obj_uiZ_tabslider)
-uiz_setparent(tabslider,frame_topbar)
+uiz_setParent(tabslider,frame_topbar)
 tabslider.posinframex=uiz_fill
 tabslider.posinframey=uiz_snapbottom
 tabslider.posvalh=0.5
@@ -228,7 +228,7 @@ rightCanvas = uiz_frameset_getObject(anchor_1, 1)//the id of a right sprite.
 
 //create clock inside or right canvas
 clock = uiz_c(obj_uiZ_clock);
-uiz_setparent(clock, rightCanvas);
+uiz_setParent(clock, rightCanvas);
 uiz_size(clock, 1, fcmin, 1, fcmin);
 uiz_position(clock, 0, uiz_center, 0, uiz_center);//it doesn't matter what we fill in for argument 1 or 3 (starting from 0), because we use uiz_center.
 
@@ -276,7 +276,7 @@ uiz_fixgeneralpos(win);
 
 
 o=uiz_c(obj_uiZ_button);
-uiz_setparent(o,win);
+uiz_setParent(o,win);
 o.posinframex=uiz_center
 o.posinframey=uiz_center
 o.posvalw = 0.5;
@@ -313,7 +313,7 @@ folders=uiz_xml_loadstring('
 &lt;/C&gt;
 ')
 folderview=uiz_c(obj_uiZ_treelist);
-uiz_setparent(folderview,win);
+uiz_setParent(folderview,win);
 folderview.posinframey=uiz_fill;
 folderview.posinframex=uiz_fill;
 //folderview.usexml=folders;
@@ -325,7 +325,7 @@ uiz_fixgeneralpos(folderview)
 //*/
 /*
 sf=uiz_c(obj_uiZ_slideframe);
-//uiz_setparent(o,win);
+//uiz_setParent(o,win);
 sf.posinframex=uiz_snapleft
 sf.posinframey=uiz_fill
 sf.posvalwtype=fc
@@ -336,7 +336,7 @@ sf.alpha=1;
 uiz_fixgeneralpos(sf);
 
 o2=uiz_c(obj_uiZ_rotator);
-uiz_setparent(o2,sf);
+uiz_setParent(o2,sf);
 o2.posinframex=uiz_fill;
 o2.posinframey=uiz_fill;
 uiz_fixgeneralpos(o2);

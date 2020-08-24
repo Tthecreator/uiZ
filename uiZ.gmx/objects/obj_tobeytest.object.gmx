@@ -35,7 +35,7 @@ Frame_right=anchor_1.frameat[2]//the id of a frame.
 //We can now use these frames:
 sprite=uiz_c(obj_uiZ_drawsprite)
 sprite.sprite=spr_ball
-uiz_setparent(sprite,Frame_middle)
+uiz_setParent(sprite,Frame_middle)
 sprite.posinframex=uiz_fill;
 sprite.posinframey=uiz_fill;
 //don't forget to fix

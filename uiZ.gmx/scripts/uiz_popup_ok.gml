@@ -51,7 +51,7 @@ uiz_depth_foreground(f);
 uiz_compatibility_popupfix(f)
 uiz_fixgeneralpos(f)
 var p=uiz_c(obj_uiZ_square);
-uiz_setparent(p,f)
+uiz_setParent(p,f)
 p.posinframex=uiz_fill
 p.posinframey=uiz_fill
 p.color=c_black
@@ -62,11 +62,11 @@ uiz_fixgeneralpos(p)
 var dx=uiz_todpix(string_width(argument[0]))
 var dy=uiz_todpiy(string_height(argument[0]))
 var w=uiz_window_create(dx+0.5,dp,dy+1,dp);
-if argument[2]=1 then{uiz_setparent(w,p)}
+if argument[2]=1 then{uiz_setParent(w,p)}
 w.addwindowmydepth=500000
 //w.adddepth+=100000
 //if argument[2]=1 then{
-//uiz_setparent(w,f)
+//uiz_setParent(w,f)
 //}
 w.button_maximize=0;
 w.button_minimize=0;
@@ -77,7 +77,7 @@ uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
 var t=instance_create(0,0,obj_uiZ_drawtextlines)
-uiz_setparent(t,wf)
+uiz_setParent(t,wf)
 t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
 //t.posinframey=uiz_fill
@@ -90,7 +90,7 @@ t.text=argument[0]
 if argument_count=4 then{t.font=argument[3]}
 uiz_fixgeneralpos(t)
 var b=instance_create(0,0,obj_uiZ_popupok)
-uiz_setparent(b,wf)
+uiz_setParent(b,wf)
 b.posinframey=uiz_snapbottom
 b.posinframex=uiz_center
 b.posvalhtype=dp

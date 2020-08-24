@@ -23,7 +23,7 @@ p.isizetype[i]=argument3
 //if g=100015 then{dbm(i,p)}
 if i>0 then{
 p.frameat[i]=uiz_c(argument4);
-uiz_setparent(p.frameat[i],p)
+uiz_setParent(p.frameat[i],p)
 p.frameat[i].inlistpos=i;
 }else{
 //place this division at parent
@@ -32,12 +32,12 @@ g.parent.frameat[g.inlistpos]=p
 
 p.inlistpos=g.inlistpos
 if (p.object_index == argument4) then{
-    uiz_setparent(g,p)
+    uiz_setParent(g,p)
     p.frameat[i]=g  
 }else{
     p.frameat[i]=uiz_c(argument4);
     uiz_children_adopt(g, p.frameat[i]);
-    uiz_setparent(p.frameat[i],p);
+    uiz_setParent(p.frameat[i],p);
     uiz_destroyobject(g);
 }
 

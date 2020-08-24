@@ -83,7 +83,7 @@ wv=ini_read_real(string(object.uiobject),o.updatetype,o.defval)}
 o.value=wv
 switch(o.updatetype){
 case "name": o.value=obj_uiz_des_name(object,wv) break;
-case "parent": if wv&gt;-1 then{uiz_setparent(object,obj_uiz_designer.aflist[| wv])} 
+case "parent": if wv&gt;-1 then{uiz_setParent(object,obj_uiz_designer.aflist[| wv])} 
 case "x": object.x=wv;x=wv; break;
 case "y": object.y=wv;y=wv; break;
 case "posvalw": object.posvalw=wv;posvalw=wv; break;
@@ -198,7 +198,7 @@ var apply=1
 if u.rlorstr=1 then{wv=ini_read_string(string(o.uiobject),updatetype,"")}else{wv=ini_read_real(string(o.uiobject),updatetype,0)}
 switch(updatetype){
 case "name": if u.updated=1 then{wv=obj_uiz_des_name(o,v)}else{apply=0;} break;
-case "parent": uiz_setparent(object,global.newparentlist[|u.select]) wv=ds_list_find_index(obj_uiz_designer.aflist,global.newparentlist[|u.select]);  break;
+case "parent": uiz_setParent(object,global.newparentlist[|u.select]) wv=ds_list_find_index(obj_uiz_designer.aflist,global.newparentlist[|u.select]);  break;
 //case "parent": sdbm(o,global.newparentlist[|u.select]) break;
 case "x": o.posvalx=v; posvalx=v; wv=v; break;
 case "y": o.posvaly=v; posvaly=v; wv=v; break;

@@ -13,7 +13,7 @@ var sz=ds_list_size(l)
 for(var i=0;i<sz;i++){
 var w=l[| i];
 //dbm(l,i,l[| i],o.object.parent)
-uiz_setparent(w,o.object.parent)
+uiz_setParent(w,o.object.parent)
 uiz_fixgeneralpos(w)
 var n=ds_list_find_index(aflist,w)
 if n>=0 then{

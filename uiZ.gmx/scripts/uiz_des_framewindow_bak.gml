@@ -7,7 +7,7 @@ frwin.windowtext="frameset"
 global.windowexists=frwin;
 global.haswindow=id;
 frset=uiz_frameset_create()
-uiz_setparent(frset,frwin)
+uiz_setParent(frset,frwin)
 /*
 frmix=uiz_frameset_divide_vertical(frset,0.65,fc,0.35,fc)
 frleft=frmix.frameat[0];
@@ -62,7 +62,7 @@ ini_close()
 //global.xmlbelongsto=id
 xml.usexml=global.xml
 //t.text="penis"
-uiz_setparent(xml,frmain)
+uiz_setParent(xml,frmain)
 
 uiz_fixgeneralpos(xml)
 frbut_add=uiz_easybutton_create(spr_uiZ_buttons_add)
@@ -71,7 +71,7 @@ frbut_add.posvalx=0
 frbut_add.posvalwtype=fcy
 frbut_add.posvalw=1
 frbut_add.posinframey=uiz_fill
-uiz_setparent(frbut_add,frbuttons)
+uiz_setParent(frbut_add,frbuttons)
 uiz_fixgeneralpos(frbut_add)
 
 frbut_switch=uiz_easybutton_create(spr_uiZ_buttons_switch)
@@ -80,7 +80,7 @@ frbut_switch.posvalx=1
 frbut_switch.posvalwtype=fcy
 frbut_switch.posvalw=1
 frbut_switch.posinframey=uiz_fill
-uiz_setparent(frbut_switch,frbuttons)
+uiz_setParent(frbut_switch,frbuttons)
 uiz_fixgeneralpos(frbut_switch)
 
 
@@ -90,7 +90,7 @@ frbut_min.posvalx=2
 frbut_min.posvalwtype=fcy
 frbut_min.posvalw=1
 frbut_min.posinframey=uiz_fill
-uiz_setparent(frbut_min,frbuttons)
+uiz_setParent(frbut_min,frbuttons)
 uiz_fixgeneralpos(frbut_min)
 
 //add boxes
@@ -103,7 +103,7 @@ frtxt_div.posvalw=1/6
 frtxt_div.minvalue=1
 frtxt_div.maxvalue=50
 frtxt_div.text="divisions:"
-uiz_setparent(frtxt_div,frsettings)
+uiz_setParent(frtxt_div,frsettings)
 uiz_fixgeneralpos(frtxt_div)
 
 frbox_div=uiz_c(obj_uiZ_valuebox);
@@ -115,7 +115,7 @@ frbox_div.posvalw=1/12
 frbox_div.minvalue=1
 frbox_div.maxvalue=50
 frbox_div.value=1;
-uiz_setparent(frbox_div,frsettings)
+uiz_setParent(frbox_div,frsettings)
 uiz_fixgeneralpos(frbox_div)
 
 
@@ -129,7 +129,7 @@ frtxt_name.posvalw=1/12
 frtxt_name.minvalue=1
 frtxt_name.maxvalue=50
 frtxt_name.text="name:"
-uiz_setparent(frtxt_name,frsettings)
+uiz_setParent(frtxt_name,frsettings)
 uiz_fixgeneralpos(frtxt_name)
 
 frbox_name=uiz_c(obj_uiZ_stringbox);
@@ -141,7 +141,7 @@ frbox_name.posvalw=5/18
 frbox_name.minvalue=1
 frbox_name.maxvalue=50
 //frbox_name.value=1;
-uiz_setparent(frbox_name,frsettings)
+uiz_setParent(frbox_name,frsettings)
 uiz_fixgeneralpos(frbox_name)
 
 
@@ -155,7 +155,7 @@ frtxt_size.posvalwtype=fc
 frtxt_size.posvalw=1/12
 frtxt_size.minvalue=0
 frtxt_size.text="size:"
-uiz_setparent(frtxt_size,frsettings)
+uiz_setParent(frtxt_size,frsettings)
 uiz_fixgeneralpos(frtxt_size)
 
 frbox_size=uiz_c(obj_uiZ_valuebox);
@@ -166,7 +166,7 @@ frbox_size.posvalwtype=fc
 frbox_size.posvalw=5/36
 frbox_size.minvalue=0
 frbox_size.value=0
-uiz_setparent(frbox_size,frsettings)
+uiz_setParent(frbox_size,frsettings)
 uiz_fixgeneralpos(frbox_size)
 
 frbox_type=uiz_c(obj_uiZ_dropdown);
@@ -178,14 +178,14 @@ frbox_type.posvalw=3/18
 frbox_type.uselist=global.fyconstantlist
 frbox_type.masklist=global.fyconstantnamelist
 
-uiz_setparent(frbox_type,frsettings)
+uiz_setParent(frbox_type,frsettings)
 uiz_fixgeneralpos(frbox_type)
 
 
 /*
 t=uiz_c(obj_uiZ_drawtext)
 t.text="penis3"
-uiz_setparent(t,frright)
+uiz_setParent(t,frright)
 uiz_fixgeneralpos(t)
 */
 

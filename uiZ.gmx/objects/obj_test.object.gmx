@@ -31,7 +31,7 @@ window=uiz_window_create(5,dp,4,dp)
 uiz_fixgeneralpos(window)
 //create templateobject
 template=uiz_c(obj_uiZ_template_tiles)
-uiz_setparent(template,window.mainframe)
+uiz_setParent(template,window.mainframe)
 template.posinframex=uiz_fill;
 template.posinframey=uiz_fill;
 uiz_fixgeneralpos(template)

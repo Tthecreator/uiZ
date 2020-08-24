@@ -22,7 +22,7 @@ if argument0.object_index = obj_uiZ_framerowanchor or argument0.object_index = o
                 maxSize[i] = 0;
                 maxSizeType[i] = px;
                 absorbPixelDiff[i] = 0;
-                uiz_setparent(frameat[i], id)
+                uiz_setParent(frameat[i], id)
                 frameat[i].inlistpos = i;
             }
         }

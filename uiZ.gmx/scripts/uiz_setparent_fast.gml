@@ -1,4 +1,4 @@
-///uiz_setparent(object,newparent)
+///uiz_setParent(object,newparent)
 //using in parts where rearanging of the list is not necessary. SCRIPT CAN LEAD TO INSTABILITY
 //remove from old parentlist
 //if argument0.parent=100027 then{show_message(argument0.listpos)}

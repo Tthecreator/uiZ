@@ -1,6 +1,6 @@
 //setup frameset
 frameset=uiz_frameset_create()
-uiz_setparent(frameset,window)
+uiz_setParent(frameset,window)
 a1=uiz_frameset_divide_objects_vertical(frameset,0.4,fc,obj_uiZ_treelist,1,xtra,obj_uiZ_gridlist);
 
 uiz_frameset_setBarSlider(a1, 0, true);

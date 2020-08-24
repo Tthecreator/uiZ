@@ -26,10 +26,10 @@ var f=0;
 p.divisions=0;
 p.width=g.width;
 p.height=g.height;
-uiz_setparent(p,argument0)
+uiz_setParent(p,argument0)
 uiz_fixgeneralpos(p)
 uiz_children_adopt(g,p)
-uiz_setparent(p,g.parent)
+uiz_setParent(p,g.parent)
 g.x=0;
 g.y=0;
 return p;

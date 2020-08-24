@@ -1,6 +1,6 @@
 ///uiz_win31_addicon(parent,text,sprite,pos)
 var but=uiz_c(obj_uiZ_swipicon)
-uiz_setparent(but,argument0)
+uiz_setParent(but,argument0)
 but.posinframex=dp
 but.posinframey=dp
 but.posvalx=0.1+(argument3 mod 5)*0.6

@@ -180,7 +180,7 @@ uiz_fixgeneralpos(gradient)
 //create our square object
 square=uiz_c(obj_uiZ_square)
 //set the parent
-uiz_setparent(square,gradient)
+uiz_setParent(square,gradient)
 //setup some variables
 square.posinframex=px;
 square.posinframey=px;
@@ -314,7 +314,7 @@ uiz_fixgeneralpos(gradient)
 //create our square object
 square=uiz_c(obj_uiZ_square)
 //set the parent
-uiz_setparent(square,gradient)
+uiz_setParent(square,gradient)
 //setup some variables
 square.posinframex=fc;
 square.posinframey=fc;
@@ -593,7 +593,7 @@ uiz_fixgeneralpos(frame)
 //create our square object
 square=uiz_c(obj_uiZ_square)
 //set the parent
-uiz_setparent(square,frame)
+uiz_setParent(square,frame)
 //setup some variables
 square.posinframex=fc;
 square.posinframey=fc;
@@ -636,7 +636,7 @@ uiz_fixgeneralpos(window)
 //create button
 button=uiz_c(obj_uiZ_button)
 //put button in window's mainframe
-uiz_setparent(button,window)
+uiz_setParent(button,window)
 //position and size button
 button.posinframex=px
 button.posinframey=px
@@ -691,7 +691,7 @@ uiz_fixgeneralpos(gradient)
 //create our square object
 square=uiz_c(obj_uiZ_square)
 //set the parent
-uiz_setparent(square,gradient)
+uiz_setParent(square,gradient)
 //setup some variables
 square.posinframex=fc;
 square.posinframey=fc;
@@ -747,7 +747,7 @@ uiz_fixgeneralpos(gradient)
 //create our square object
 square=uiz_c(obj_uiZ_square)
 //set the parent
-uiz_setparent(square,gradient)
+uiz_setParent(square,gradient)
 //setup some variables
 square.posinframex=fc;
 square.posinframey=fc;
@@ -804,7 +804,7 @@ uiz_fixgeneralpos(gradient)
 //create our square object
 square=uiz_c(obj_uiZ_square)
 //set the parent
-uiz_setparent(square,gradient)
+uiz_setParent(square,gradient)
 //setup some variables
 square.posinframex=fc;
 square.posinframey=fc;
@@ -1529,7 +1529,7 @@ frame=uiz_gridobject(grid,2,2)//do not change anything about this frame
 //add object to grid
 rot=uiz_c(obj_uiZ_rotator)
 //put the rot inside a frame that we got from inside a grid
-uiz_setparent(rot,frame)
+uiz_setParent(rot,frame)
 //make the objet fill the frame, and therefore fill the cell in the grid
 rot.posinframex=uiz_fill
 rot.posinframey=uiz_fill
@@ -1609,7 +1609,7 @@ uiz_fixgeneralpos(frset)
 //create a gradientsquare in the mainframe.
 grad=uiz_c(obj_uiZ_gradientsquare)
 //put it in the mainframe
-uiz_setparent(grad,mainframe)
+uiz_setParent(grad,mainframe)
 //fill the frame
 grad.posinframex=uiz_fill;
 grad.posinframey=uiz_fill;
@@ -1655,7 +1655,7 @@ uiz_fixgeneralpos(frset)
 //create a gradientsquare in the mainframe.
 grad=uiz_c(obj_uiZ_gradientsquare)
 //put it in the mainframe
-uiz_setparent(grad,mainframe)
+uiz_setParent(grad,mainframe)
 //fill the frame
 grad.posinframex=uiz_fill;
 grad.posinframey=uiz_fill;
@@ -1697,7 +1697,7 @@ mainframe=window;
 //add object
 grad=uiz_c(obj_uiZ_gradientsquare)
 //put it into the mainframe
-uiz_setparent(grad,mainframe)
+uiz_setParent(grad,mainframe)
 grad.posinframex=uiz_fill;
 grad.posinframey=uiz_snaptop;
 grad.posvalhtype=fc;
@@ -1859,7 +1859,7 @@ uiz_fixgeneralpos(frame)
 //create gradientsquare
 grad=uiz_c(obj_uiZ_gradientsquare)
 //put it in our frame
-uiz_setparent(grad,frame)
+uiz_setParent(grad,frame)
 //make it fill our frame
 grad.posinframex=uiz_fill;
 grad.posinframey=uiz_top;
@@ -1906,7 +1906,7 @@ uiz_fixgeneralpos(bigframe)
 //create a frame
 frame=uiz_c(obj_uiZ_frame);
 //put into big frame
-uiz_setparent(frame,bigframe)
+uiz_setParent(frame,bigframe)
 //set values
 frame.posinframex=uiz_snapleft
 frame.posvalwtype=fc
@@ -1919,7 +1919,7 @@ uiz_fixgeneralpos(frame)
 //create scrollbar
 scrollbar=uiz_c(obj_uiZ_framescrollbar)
 //set to the right of our frame
-uiz_setparent(scrollbar,bigframe)
+uiz_setParent(scrollbar,bigframe)
 scrollbar.posinframex=uiz_snapright;
 scrollbar.posvalwtype=fc;
 scrollbar.posvalw=0.1;
@@ -1934,7 +1934,7 @@ uiz_fixgeneralpos(scrollbar)
 //create gradientsquare
 grad=uiz_c(obj_uiZ_gradientsquare)
 //put it in our frame
-uiz_setparent(grad,frame)
+uiz_setParent(grad,frame)
 //make it fill our frame
 grad.posinframex=uiz_fill;
 grad.posinframey=uiz_top;

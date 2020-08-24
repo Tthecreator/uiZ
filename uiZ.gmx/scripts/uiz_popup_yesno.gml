@@ -62,7 +62,7 @@ uiz_depth_foreground(f);
 uiz_compatibility_popupfix(f)
 uiz_fixgeneralpos(f)
 var p=uiz_c(obj_uiZ_square);
-uiz_setparent(p,f)
+uiz_setParent(p,f)
 p.posinframex=uiz_fill
 p.posinframey=uiz_fill
 p.color=c_black
@@ -78,12 +78,12 @@ var w=uiz_window_create_animation(dx+0.5,dp,dy+1,dp,uiz_cubic_in,uiz_cubic_out,u
 w.addwindowmydepth=100000
 /*
 if argument[2]=1 then{
-//uiz_setparent(w,f)
+//uiz_setParent(w,f)
 }else{
 //w.adddepth+=500000
 }
 */
-if argument[2]=1 then{uiz_setparent(w,p)}
+if argument[2]=1 then{uiz_setParent(w,p)}
 w.button_maximize=0;
 w.button_minimize=0;
 w.button_cross=0;
@@ -93,7 +93,7 @@ uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
 var t=instance_create(0,0,obj_uiZ_drawtextlines)
-uiz_setparent(t,wf)
+uiz_setParent(t,wf)
 t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
 //t.posinframey=uiz_fill
@@ -107,7 +107,7 @@ if argument_count=4 then{t.font=argument[3]}
 uiz_fixgeneralpos(t)
 //no
 var n=instance_create(0,0,obj_uiZ_3waybutton)
-uiz_setparent(n,wf)
+uiz_setParent(n,wf)
 n.color=c_red
 n.posinframey=uiz_snapbottom
 n.posinframex=fc
@@ -121,7 +121,7 @@ n.bottomframemargin=4
 uiz_fixgeneralpos(n)
 //yes
 var yes=instance_create(0,0,obj_uiZ_3waybutton)
-uiz_setparent(yes,wf)
+uiz_setParent(yes,wf)
 yes.color=c_green
 yes.posinframey=uiz_snapbottom
 yes.bottomframemargin=4

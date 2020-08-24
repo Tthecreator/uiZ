@@ -23,7 +23,7 @@ uiz_children_adopt(frameat[i],m)
 uiz_destroyobject(frameat[i])
 }
 //3
-uiz_setparent(m,parent)
+uiz_setParent(m,parent)
 uiz_children_adopt(id,parent)
 uiz_frameset_forceFixSize(parent);
 //4

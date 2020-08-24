@@ -15,7 +15,7 @@ for(var e=argument0-1;e>=0;e--){
 for(var i=argument1-1;i>=0;i--){
 var f = uiz_c(obj_uiZ_frame);
 g.gridobject[e,i]=f;
-uiz_setparent(f,g);
+uiz_setParent(f,g);
 }
 }
 //sdbm(argument0,argument1,array_length_2d(g.gridobject,0),array_height_2d(g.gridobject));

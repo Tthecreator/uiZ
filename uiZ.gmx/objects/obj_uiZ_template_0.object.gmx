@@ -30,7 +30,7 @@
 uiz_init()
 //setup frameset
 frameset=uiz_frameset_create()
-//uiz_setparent(frameset,frame_test)
+//uiz_setParent(frameset,frame_test)
 anchor_1=uiz_frameset_divide_horizontal(frameset,0.5,dp,1,xtra)
 //get the top bar (the first frame, so array index 0)
 frame_topbar=anchor_1.frameat[0]
@@ -45,7 +45,7 @@ uiz_fixgeneralpos(frameset)
 //create the slidable frame
 frame_sidebar=uiz_c(obj_uiZ_slideframe)
 //put it side the main frame
-uiz_setparent(frame_sidebar,frame_main)
+uiz_setParent(frame_sidebar,frame_main)
 //put in front
 uiz_depth_set(frame_sidebar,-1000);
 //fill in height
@@ -63,7 +63,7 @@ uiz_fixgeneralpos(frame_sidebar)
 
 //add button
 menubutton=uiz_c(obj_uiZ_spriteanimationbutton)
-uiz_setparent(menubutton,frame_topbar)
+uiz_setParent(menubutton,frame_topbar)
 menubutton.posinframex=uiz_snapleft;
 //make the width the same as the height
 menubutton.posvalw=1;
@@ -74,7 +74,7 @@ frame_sidebar.menubutton=menubutton
 
 //add a cover to gray out the mainframe when the menu is open
 menucover=uiz_c(obj_uiZ_cover)
-uiz_setparent(menucover,frame_main)
+uiz_setParent(menucover,frame_main)
 menucover.posinframex=uiz_fill;
 menucover.posinframey=uiz_fill;
 menucover.destroyonclick=false;
@@ -83,7 +83,7 @@ uiz_fixgeneralpos(menucover)
 frame_sidebar.blackframe=menucover
 
 test = uiz_c(obj_uiZ_square)
-uiz_setparent(test,frame_main)
+uiz_setParent(test,frame_main)
 test.posinframex=uiz_center;
 test.posinframey=uiz_center;
 test.posvalw = 200;
@@ -113,7 +113,7 @@ uiz_fixgeneralpos(test);
             <kind>1</kind>
             <string>//fill the sidebar up with a random object and show how scrollbars can be enabled
 square = uiz_c(obj_uiZ_gradientsquare)
-uiz_setparent(square,frame_sidebar)
+uiz_setParent(square,frame_sidebar)
 uiz_position(square,1,uiz_snapleft,10,px);
 uiz_size(square,300,px,3000,px);
 

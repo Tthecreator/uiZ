@@ -29,7 +29,7 @@ uiz_gridsize_col(g,e,1,xtra)
 f=g.gridobject[e,i]
 }
 //f.parent=g
-uiz_setparent(f,g)
+uiz_setParent(f,g)
 f.x=round(e*(framew)+g.marginl+g.margincellw)
 f.y=round(i*(frameh)+g.margint+g.margincellh)
 f.width=round(framew-g.margincellw*2)

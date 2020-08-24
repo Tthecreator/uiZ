@@ -22,7 +22,7 @@ if i=argument1 then{settoheight+=f2.height+g.margincellh*2}
 
 var sz=ds_list_size(f2.children);
 for(var p=0;p<sz;p++){
-uiz_setparent(f2.children[| 0],f1)
+uiz_setParent(f2.children[| 0],f1)
 }
 //remove frame
 //ds_list_delete(g.children,f2.)

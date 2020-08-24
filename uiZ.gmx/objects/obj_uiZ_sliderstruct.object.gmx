@@ -52,7 +52,7 @@ slidesizetype=dp//z//slidesize type//
 slidedist=1//v//minimum slide distance//
 slidedisttype=dp//z//minimum slide distance type//
 newframe=uiz_c(obj_uiZ_frame)
-uiz_setparent(newframe,id)
+uiz_setParent(newframe,id)
 newframe.posinframex=uiz_snapleft;
 newframe.posinframey=uiz_snaptop;
 newframe.posvalwtype=fc;
@@ -195,7 +195,7 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
         oldhasmouseframe = frame;
         //create newframe
         newframe = uiz_c(obj_uiZ_frame)
-        uiz_setparent(newframe, id)
+        uiz_setParent(newframe, id)
         newframe.posinframex = uiz_snapleft;
         newframe.posinframey = uiz_snaptop;
         newframe.posvalwtype = fc;

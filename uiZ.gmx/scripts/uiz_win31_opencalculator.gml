@@ -7,7 +7,7 @@ with(argument1){
         //setup object
         var buttonmargins=10;//the margins between the buttons
         display=uiz_c(obj_uiZ_text)
-        uiz_setparent(display,window)
+        uiz_setParent(display,window)
         display.posinframex=uiz_fill;
         display.posinframey=fc;
         display.setpointy=uiz_middle;
@@ -27,7 +27,7 @@ with(argument1){
         //add C, CE and back button
         //every button is 0.20fc in size and 0.05fc apart
         button_C=uiz_c(obj_uiZ_3waybutton)
-        uiz_setparent(button_C,window)
+        uiz_setParent(button_C,window)
         button_C.sprite=spr_uiZ_win31_calculatorbutton
         button_C.color=c_red;
         button_C.text="C"
@@ -45,7 +45,7 @@ with(argument1){
         
         
         button_CE=uiz_c(obj_uiZ_3waybutton)
-        uiz_setparent(button_CE,window)
+        uiz_setParent(button_CE,window)
         button_CE.sprite=spr_uiZ_win31_calculatorbutton
         button_CE.color=c_red;
         button_CE.text="CE"
@@ -64,7 +64,7 @@ with(argument1){
         uiz_fixgeneralpos(button_CE)
         
         button_back=uiz_c(obj_uiZ_3waybutton)
-        uiz_setparent(button_back,window)
+        uiz_setParent(button_back,window)
         button_back.sprite=spr_uiZ_win31_calculatorbutton
         button_back.color=c_red;
         button_back.text="Back"
@@ -85,7 +85,7 @@ with(argument1){
         //Add the M thingie
         //setup object
         display_M=uiz_c(obj_uiZ_text)
-        uiz_setparent(display_M,window)
+        uiz_setParent(display_M,window)
         display_M.posinframex=uiz_snapright;
         display_M.posinframey=fc;
         display_M.setpointy=uiz_middle;
@@ -102,7 +102,7 @@ with(argument1){
         
         //create a frame to put the grid in
         frame_grid_buttons=uiz_c(obj_uiZ_frame)
-        uiz_setparent(frame_grid_buttons,window)
+        uiz_setParent(frame_grid_buttons,window)
         frame_grid_buttons.posinframex=uiz_fill;
         frame_grid_buttons.posinframey=uiz_snapbottom;
         frame_grid_buttons.posvalx=0.01
@@ -114,7 +114,7 @@ with(argument1){
         uiz_fixgeneralpos(frame_grid_buttons)
         //create a grid with all the buttons
         grid_buttons=uiz_grid_create(6,4)
-        uiz_setparent(grid_buttons,frame_grid_buttons)
+        uiz_setParent(grid_buttons,frame_grid_buttons)
         uiz_setgrid_custom(grid_buttons,uiz_win31_calculatorgrid)
         grid_buttons.posinframex=uiz_fill;
         grid_buttons.posinframey=uiz_fill;

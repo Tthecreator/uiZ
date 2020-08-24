@@ -21,7 +21,7 @@ with(argument0) {
             var n = uiz_c(obj_uiZ_framerowanchor);
         }
         uiz_children_adopt(id, n);
-        uiz_setparent(n, parent)
+        uiz_setParent(n, parent)
         if parent.object_index = obj_uiZ_frameset then {
             parent.headframe = n;
         }

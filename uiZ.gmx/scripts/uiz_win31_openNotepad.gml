@@ -2,7 +2,7 @@ var swipicon = argument0;
 with(argument1){
     window_notepad=uiz_win31_createwindow_size(obj_uiZ_controller.id,"Notepad",true,3,dp,3.8,dp)//we create the window in this object to keep the window controls working
     notepad_text=uiz_c(obj_uiZ_textarea)
-    uiz_setparent(notepad_text,window_notepad)
+    uiz_setParent(notepad_text,window_notepad)
     notepad_text.posinframex=uiz_fill;
     notepad_text.posinframey=uiz_fill;
     notepad_text.texturescript=-1;

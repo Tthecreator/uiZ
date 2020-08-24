@@ -63,7 +63,7 @@ if global.newparentlist[|u.select].object_index=obj_uiZ_frameset then{
 //give choice
 uiz_des_framewindow_parent(global.newparentlist[|u.select])
 ini_open(ini)
-}else{uiz_setparent(object,global.newparentlist[|u.select]) }  break;
+}else{uiz_setParent(object,global.newparentlist[|u.select]) }  break;
 case "x": o.posvalx=v; posvalx=v; wv=v; break;
 case "y": o.posvaly=v; posvaly=v; wv=v; break;
 case "posvalw": o.posvalw=v; posvalw=v; wv=v; break;

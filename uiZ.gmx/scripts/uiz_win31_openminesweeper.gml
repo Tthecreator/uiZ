@@ -8,7 +8,7 @@ with(argument1){
     with(object_minesweeper){
         var f=window;
         back=uiz_c(obj_uiZ_sprite);
-        uiz_setparent(back,f)
+        uiz_setParent(back,f)
         back.posinframex=uiz_fill;
         back.posinframey=uiz_fill;
         back.sprite_index=spr_uiZ_win31_mineback;
@@ -17,7 +17,7 @@ with(argument1){
         //add button
         //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
         button=uiz_c(obj_uiZ_easybutton)
-        uiz_setparent(button,f);
+        uiz_setParent(button,f);
         uiz_depth_set(button,-3);//put it above the background
         button.posinframex=uiz_center;
         button.posinframey=fc;
@@ -32,7 +32,7 @@ with(argument1){
         //add scorecounter counter
         //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
         scorecounter=uiz_c(obj_uiZ_spritecounter)
-        uiz_setparent(scorecounter,f)
+        uiz_setParent(scorecounter,f)
         uiz_depth_set(scorecounter,-3);//put it above the background
         scorecounter.posinframex=fc;
         scorecounter.posvalx=17/152;
@@ -49,7 +49,7 @@ with(argument1){
         //add timecounter
         //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
         timecounter=uiz_c(obj_uiZ_spritecounter)
-        uiz_setparent(timecounter,f)
+        uiz_setParent(timecounter,f)
         uiz_depth_set(timecounter,-3);//put it above the background
         timecounter.posinframex=fc;
         timecounter.posvalx=94/152;
@@ -66,7 +66,7 @@ with(argument1){
         //add minefield
         //size of the sprite of background is 152x195. All proportions have been taken in fc from spr_uiZ_win31_mineback.
         minefield=uiz_c(obj_uiZ_minesweeper)
-        uiz_setparent(minefield,f)
+        uiz_setParent(minefield,f)
         uiz_depth_set(minefield,-4);//put it above the background, and other objects (may there be any problems)
         minefield.posinframex=fc;
         minefield.posvalx=12/152;

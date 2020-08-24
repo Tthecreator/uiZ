@@ -27,14 +27,14 @@ p.height=g.iheight;
 //p.master=g.master
 
 //show_message(g)
-//uiz_setparent(p,g)
-uiz_setparent(p,argument[0])
+//uiz_setParent(p,g)
+uiz_setParent(p,argument[0])
 //uiz_fixframepos(p)
 //uiz_fixgeneralpos(p)
 uiz_children_adopt(g,p)
-uiz_setparent(p,g.parent)
+uiz_setParent(p,g.parent)
 //uiz_children_adopt(h,p)
-//uiz_setparent(p,h)
+//uiz_setParent(p,h)
 for(var i=0;i<p.divisions;i++){
 var at=i*2+1;
 p.isize[i]=argument[at]
@@ -42,14 +42,14 @@ p.isizetype[i]=argument[at+1]
 //if g=100015 then{dbm(i,p)}
 if i>0 then{
 p.frameat[i]=uiz_frame_create()
-uiz_setparent(p.frameat[i],p)
+uiz_setParent(p.frameat[i],p)
 p.frameat[i].inlistpos=i;
 }else{
 
 g.parent.frameat[g.inlistpos]=p
 //new codeline:
 p.inlistpos=g.inlistpos
-uiz_setparent(g,p)
+uiz_setParent(g,p)
 p.frameat[i]=g
 p.frameat[i].inlistpos=i;
 p.frameat[i].x=0

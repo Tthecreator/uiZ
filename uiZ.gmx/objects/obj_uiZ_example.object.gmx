@@ -40,7 +40,7 @@ uiz_fixframepos(f)
 
 g=uiz_grid_create(5,7);
 //g.parent=f
-uiz_setparent(g,f)
+uiz_setParent(g,f)
 g.marginl=20
 g.marginr=20
 g.margint=10
@@ -56,7 +56,7 @@ t=uiz_testobject_create();
 ui_testobjecttemplate(t)
 t.color=e*i*9785
 //t.parent=uiz_gridobject(g,e,i)
-uiz_setparent(t,uiz_gridobject(g,e-1,i-1))
+uiz_setParent(t,uiz_gridobject(g,e-1,i-1))
 uiz_fixobjectpos(t)
 }}
 for(var i=floor(g.gridh/2)+1;i&lt;=g.gridh;i++){
@@ -65,7 +65,7 @@ t=uiz_object_1_create();
 ui_testobjecttemplate(t)
 t.color=e*i*9785
 //t.parent=uiz_gridobject(g,e,i)
-uiz_setparent(t,uiz_gridobject(g,e-1,i-1))
+uiz_setParent(t,uiz_gridobject(g,e-1,i-1))
 uiz_fixobjectpos(t)
 }}
 uiz_gridsize_row(g,1,2,xtra)
@@ -109,7 +109,7 @@ f.depth=1
 uiz_fixframepos(f)
 
 g=uiz_frameset_create()
-uiz_setparent(g,f)
+uiz_setParent(g,f)
 uiz_framesetfixparent(g)
 a=uiz_frameset_divide_vertical(g,1,xtra,300,px)
 o=a.frameat[0];
@@ -117,18 +117,18 @@ q=a.frameat[1];
 b=uiz_frameset_divide_horizontal(o,1,xtra,2,xtra,1,xtra)
 c=b.frameat[1]
 t=uiz_testobject_create()
-uiz_setparent(t,c)
+uiz_setParent(t,c)
 uiz_fixobjectpos(t)
 
 but=uiz_sprbutton_create(spr_uiZ_button)
-uiz_setparent(but,o)
+uiz_setParent(but,o)
 but.width=300
 but.height=100
 uiz_sprbutton_margins(but,3,3,3,3)
 uiz_fixsprbuttonpos(but)
 //making the menu
 m=uiz_menuholder_create(uiz_vertical)
-uiz_setparent(m,q)
+uiz_setParent(m,q)
 m.width=m.parent.width
 m.height=m.parent.height
 for(var i=0;i&lt;=8;i++){
@@ -157,7 +157,7 @@ uiz_fixmenuholderpos(m)
             <kind>1</kind>
             <string>/*
 win=uiz_window_create(100,px,50,px)
-uiz_setparent(win,c)
+uiz_setParent(win,c)
 //uiz_fixcontainin(win,1,c)
 uiz_fixgeneralpos(win)
 </string>
@@ -185,7 +185,7 @@ uiz_fixgeneralpos(win)
 uiz_init();
 s=instance_create(0,0,obj_uiZ_surfaceholder)
 e=instance_create(100,100,obj_uiZ_easybutton)
-uiz_setparent(e,s)
+uiz_setParent(e,s)
 </string>
           </argument>
         </arguments>
