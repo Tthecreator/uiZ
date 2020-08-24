@@ -1,5 +1,5 @@
-///uiz_contain_custom(x1,y1,x2,y2)
-if uiz_contain_usesshaderorsurface()=1 then{
+///uiz_contain_custom(x1, y1, x2, y2)
+if uiz_contain_usesShaderOrSurface()=1 then{
 //use shaders
 //sdbm("custom shader")
 //shader_reset()

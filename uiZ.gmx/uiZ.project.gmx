@@ -808,7 +808,6 @@
             <script>scripts\uiz_depth_foreground.gml</script>
             <script>scripts\uiz_depth_set.gml</script>
           </scripts>
-          <script>scripts\uiz_shader_object.gml</script>
           <script>scripts\uiz_getmouseover.gml</script>
           <script>scripts\uiz_alpha.gml</script>
           <script>scripts\uiz_keepupdating.gml</script>
@@ -846,26 +845,30 @@
           <script>scripts\uiz_rebuilddepths_processing.gml</script>
         </scripts>
         <scripts name="contain">
-          <script>scripts\scr_shader_reset.gml</script>
-          <script>scripts\uiz_containend_shader.gml</script>
-          <script>scripts\uiz_contain_shader.gml</script>
-          <script>scripts\uiz_contain_surface.gml</script>
-          <script>scripts\uiz_contain.gml</script>
-          <script>scripts\uiz_containend.gml</script>
-          <script>scripts\uiz_cntn.gml</script>
-          <script>scripts\uiz_containend_surface.gml</script>
-          <script>scripts\uiz_contain_regainsurface.gml</script>
-          <script>scripts\uiz_contain_regainshader.gml</script>
-          <script>scripts\uiz_contain_usesshaderorsurface.gml</script>
-          <script>scripts\uiz_contain_custom.gml</script>
-          <script>scripts\uiz_contain_custom_min.gml</script>
-          <script>scripts\uiz_contain_custom_min_right.gml</script>
-          <script>scripts\uiz_contain_custom_min_bottom.gml</script>
-          <script>scripts\uiz_contain_custom_min_left.gml</script>
-          <script>scripts\uiz_contain_custom_min_top.gml</script>
-          <script>scripts\uiz_contain_shader_uniforms_set.gml</script>
+          <scripts name="custom ui objects">
+            <script>scripts\uiz_cntn.gml</script>
+            <script>scripts\uiz_contain_custom.gml</script>
+            <script>scripts\uiz_contain_custom_min.gml</script>
+            <script>scripts\uiz_contain_custom_min_bottom.gml</script>
+            <script>scripts\uiz_contain_custom_min_left.gml</script>
+            <script>scripts\uiz_contain_custom_min_right.gml</script>
+            <script>scripts\uiz_contain_custom_min_top.gml</script>
+            <script>scripts\uiz_containend.gml</script>
+          </scripts>
+          <scripts name="internal">
+            <script>scripts\uiz_contain.gml</script>
+            <script>scripts\uiz_contain_regainshader.gml</script>
+            <script>scripts\uiz_contain_regainsurface.gml</script>
+            <script>scripts\uiz_contain_shader.gml</script>
+            <script>scripts\uiz_contain_shader_uniforms_set.gml</script>
+            <script>scripts\uiz_contain_surface.gml</script>
+            <script>scripts\uiz_containend_shader.gml</script>
+            <script>scripts\uiz_containend_surface.gml</script>
+            <script>scripts\uiz_shader_update.gml</script>
+            <script>scripts\uiz_contain_usesShaderOrSurface.gml</script>
+          </scripts>
+          <script>scripts\uiz_shader_object.gml</script>
           <script>scripts\uiz_shader_setEnabled.gml</script>
-          <script>scripts\uiz_shader_update.gml</script>
           <script>scripts\uiz_shader_useFallbackShader.gml</script>
         </scripts>
         <scripts name="debug">
