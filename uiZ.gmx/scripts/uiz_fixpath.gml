@@ -1,4 +1,4 @@
-///uiz_fixpath(filepath)
+///uiz_fixPath(filepath)
 //returns fixed path
 //changes some things to file paths like changing / to \ andd adding an extra \ to the end
 var ret=argument0

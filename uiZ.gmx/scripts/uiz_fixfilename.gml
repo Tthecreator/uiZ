@@ -1,5 +1,4 @@
-///uiz_fixfilename(filepath,base error string)
-//returns whether a valid path has been entered, and sets the variable uiz_returnerror
+///uiz_fixFileName(filepath)
 /*
 A function made to check the validity of a filename.
 It checks a single file or file path.

@@ -925,9 +925,9 @@
           </scripts>
         </scripts>
         <scripts name="files">
-          <script>scripts\uiz_fixpath.gml</script>
-          <script>scripts\uiz_checkpath.gml</script>
-          <script>scripts\uiz_fixfilename.gml</script>
+          <script>scripts\uiz_fixPath.gml</script>
+          <script>scripts\uiz_checkPath.gml</script>
+          <script>scripts\uiz_fixFileName.gml</script>
         </scripts>
         <scripts name="fix">
           <scripts name="basescripts">

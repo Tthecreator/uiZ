@@ -1,4 +1,4 @@
-///uiz_checkpath(filepath,base error string)
+///uiz_checkPath(filepath,base error string)
 //returns whether a valid path has been entered, and sets the variable uiz_returnerror
 /*
 A function made to check the validity of a filepath.
