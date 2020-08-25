@@ -1,4 +1,4 @@
-///uiz_draw_sprite_tiles(sprite,img,x1,y1,x2,y2,repeatx,repeaty,color,alpha)
+///uiz_draw_sprite_tiles_flippedx(sprite, img, x1, y1, x2, y2, repeatX, repeatY, color, alpha)
 /*
 Does the same as uiz_draw_sprite_tiles, but then flips the image in the x axis.
 A function drawing a flipped sprite an x number of times on a square/rectangle from point (x1,y1) to (x2,y2). 

@@ -1,4 +1,4 @@
-///uiz_draw_spritebutton_step(x1,y1,x2,y2,currentState)
+///uiz_draw_spriteButton_step(x1,y1,x2,y2,currentState)
 /*
 Checks the state of the object and updates the spritebutton if needed.
 Returns state of button (which needs to be fed to uiz_draw_spritebutton_state.

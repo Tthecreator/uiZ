@@ -283,7 +283,7 @@ var mid=floor(ry+height/2);
 draw_rectangle_colour(rx,ry,rlx,mid,color1,color2,color2,color1,false)
 draw_rectangle_colour(rx,mid,rlx,rly,color3,color4,color4,color3,false)
 if outline=1 then{
-uiz_drawrectangleedgecolor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
+uiz_draw_rectangle_edgeColor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
 }
 }
 var pf=round((width-slidersz)*invalue);

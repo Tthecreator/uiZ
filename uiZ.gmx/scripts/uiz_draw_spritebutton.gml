@@ -1,4 +1,4 @@
-///uiz_draw_spritebutton(x1,y1,x2,y2,color,oncolor,incolor,sprite,alpha)
+///uiz_draw_spriteButton(x1,y1,x2,y2,color,oncolor,incolor,sprite,alpha)
 /*
 Draws a quick button without any text, at specified position.
 Color is the normal color

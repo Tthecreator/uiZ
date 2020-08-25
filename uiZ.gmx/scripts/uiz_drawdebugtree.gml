@@ -1,7 +1,7 @@
 ///uiz_drawdebugtree(controller/parentobjectid,x,y)
 /*
 Draws a object family tree with useful information about those objects, sorted by listpos.
-On gms 2.0 listpos is sorted by depth.
+Listpos is sorted by depth.
 */
 var yp=argument2;
 with(argument0){

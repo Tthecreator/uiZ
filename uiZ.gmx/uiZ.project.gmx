@@ -873,7 +873,8 @@
         </scripts>
         <scripts name="debug">
           <script>scripts\uiz_debug_getposes.gml</script>
-          <script>scripts\uiz_dslist_print.gml</script>
+          <script>scripts\draw_debugpoint.gml</script>
+          <script>scripts\uiz_drawdebugtree.gml</script>
         </scripts>
         <scripts name="destroy">
           <script>scripts\uiz_destroyObject_animation.gml</script>
@@ -892,37 +893,36 @@
           <script>scripts\UIZ_FONT.gml</script>
         </scripts>
         <scripts name="draw">
-          <script>scripts\uiz_draw_squarebutton.gml</script>
-          <script>scripts\uiz_draw_spritebutton.gml</script>
-          <script>scripts\uiz_draw_spritebutton_state.gml</script>
-          <script>scripts\uiz_draw_spritebutton_step.gml</script>
-          <script>scripts\uiz_draw_squarebutton_differentmouse_draw.gml</script>
-          <script>scripts\uiz_draw_squarebutton_differentmouse_step.gml</script>
-          <script>scripts\uiz_draw_squarebutton_independent.gml</script>
-          <script>scripts\uiz_draw_line_width.gml</script>
+          <script>scripts\draw_hueSquare.gml</script>
+          <script>scripts\draw_sprite_points.gml</script>
+          <script>scripts\draw_sprite_wh.gml</script>
           <script>scripts\draw_square.gml</script>
           <script>scripts\draw_square_colour.gml</script>
           <script>scripts\draw_square_rounded_colour.gml</script>
           <script>scripts\draw_square_rounded_colour_outlined.gml</script>
-          <script>scripts\draw_huesquare.gml</script>
-          <script>scripts\draw_spritewh.gml</script>
-          <script>scripts\draw_sprite_points.gml</script>
-          <script>scripts\draw_debugpoint.gml</script>
-          <script>scripts\uiz_drawsquare_colour.gml</script>
-          <script>scripts\uiz_draw_sprite_tiles.gml</script>
-          <script>scripts\uiz_draw_sprite_tiles_rotation.gml</script>
-          <script>scripts\uiz_draw_sprite_tiles_flippedx.gml</script>
-          <script>scripts\uiz_draw_sprite_tiles_flippedy.gml</script>
-          <script>scripts\uiz_textmiddle.gml</script>
-          <script>scripts\uiz_textmiddle_topleft.gml</script>
-          <script>scripts\uiz_htmltocolor.gml</script>
-          <script>scripts\uiz_drawshadow_roundrect.gml</script>
-          <script>scripts\uiz_draw_texture_stretched.gml</script>
+          <script>scripts\uiz_draw_line_width.gml</script>
+          <script>scripts\uiz_draw_sprite_texturemode.gml</script>
           <script>scripts\uiz_draw_sprite_texturemode_horizontal.gml</script>
           <script>scripts\uiz_draw_sprite_texturemode_vertical.gml</script>
-          <script>scripts\uiz_drawrectangleedgecolor.gml</script>
-          <script>scripts\uiz_draw_sprite_texturemode.gml</script>
-          <script>scripts\uiz_drawdebugtree.gml</script>
+          <script>scripts\uiz_draw_sprite_tiles.gml</script>
+          <script>scripts\uiz_draw_sprite_tiles_flippedx.gml</script>
+          <script>scripts\uiz_draw_sprite_tiles_flippedy.gml</script>
+          <script>scripts\uiz_draw_sprite_tiles_rotation.gml</script>
+          <script>scripts\uiz_draw_spriteButton.gml</script>
+          <script>scripts\uiz_draw_spriteButton_state.gml</script>
+          <script>scripts\uiz_draw_spriteButton_step.gml</script>
+          <script>scripts\uiz_draw_squareButton.gml</script>
+          <script>scripts\uiz_draw_squareButton_differentMouse_draw.gml</script>
+          <script>scripts\uiz_draw_squareButton_differentMouse_step.gml</script>
+          <script>scripts\uiz_draw_squareButton_independent.gml</script>
+          <script>scripts\uiz_draw_rectangle_edgeColor.gml</script>
+          <script>scripts\uiz_drawsquare_colour.gml</script>
+          <script>scripts\uiz_html2color.gml</script>
+          <script>scripts\uiz_textmiddle.gml</script>
+          <script>scripts\uiz_textmiddle_topleft.gml</script>
+          <scripts name="internal">
+            <script>scripts\uiz_drawshadow_roundrect.gml</script>
+          </scripts>
         </scripts>
         <scripts name="files">
           <script>scripts\uiz_fixpath.gml</script>
@@ -1086,6 +1086,7 @@
             <script>scripts\uiz_getpositionvalue_margins.gml</script>
             <script>scripts\uiz_getpositionvalue_marginrange.gml</script>
           </scripts>
+          <script>scripts\uiz_dslist_print.gml</script>
         </scripts>
         <scripts name="grid">
           <script>scripts\uiz_resizegridframes.gml</script>

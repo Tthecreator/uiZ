@@ -211,7 +211,7 @@ update=true;
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-draw_spritewh(sprite,img,rx,ry,width,height,0,color,alpha)
+draw_sprite_wh(sprite,img,rx,ry,width,height,0,color,alpha)
 uiz_containend()
 }
 

@@ -317,7 +317,7 @@ if uiz_selfmarked=false then{
         if (roundedcorners){
             draw_square_rounded_colour_outlined(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,rounddx,rounddy,outlinewidth)
         }else{
-            uiz_drawrectangleedgecolor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,outlinewidth)
+            uiz_draw_rectangle_edgeColor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,outlinewidth)
         }
     }
 }

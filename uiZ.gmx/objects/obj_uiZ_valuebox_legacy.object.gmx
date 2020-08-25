@@ -348,13 +348,13 @@ var mrlx=slx-butmargin-butrightmargin-margin_normal
 
 //plus button
 var obutup_plus=butup_plus;
-butup_plus=uiz_draw_squarebutton_differentmouse_step(mrx,sy+butmargin,mrlx,sy+(height-butmargin)/2)
+butup_plus=uiz_draw_squareButton_differentMouse_step(mrx,sy+butmargin,mrlx,sy+(height-butmargin)/2)
 if butup_plus=3 then{value=min(maxvalue,max(minvalue,value+valuespeed)) update=1 updated=1 typing=0}
 if butup_plus=2 then{butucount++ if butucount&gt;butsteps*room_speed then{value=min(maxvalue,max(minvalue,value+ceil(valuefastspeed/room_speed))) update=1}}else{butucount=0}
 
 //minus button
 var obutup_minus=butup_minus;
-butup_minus=uiz_draw_squarebutton_differentmouse_step(mrx,sy+(height+butmargin)/2,mrlx,sly-butmargin)
+butup_minus=uiz_draw_squareButton_differentMouse_step(mrx,sy+(height+butmargin)/2,mrlx,sly-butmargin)
 if butup_minus=3 then{value-=valuespeed;value=min(maxvalue,max(minvalue,value)) update=1 updated=1 typing=0}
 if butup_minus=2 then{butdcount++ if butdcount&gt;butsteps*room_speed then{value=min(maxvalue,max(minvalue,value-ceil(valuefastspeed/room_speed))) update=1}}else{butdcount=0}
 //sdbm("current butup",butup_plus,butup_minus)
@@ -468,7 +468,7 @@ mrlx=slx-butmargin-butrightmargin-margin_normal
 //butup=0
 //butup=uiz_draw_squarebutton(mrx,sy+butmargin,mrlx,sy+(height-butmargin)/2,plusbuttoncolor,plusbuttononcolor,plusbuttonincolor,alpha)
 //butup=
-uiz_draw_squarebutton_differentmouse_draw(brx,ry+butmargin,brlx,ry+(height-butmargin)/2,plusbuttoncolor,plusbuttononcolor,plusbuttonincolor,alpha,mrx,sy+butmargin,mrlx,sy+(height-butmargin)/2)
+uiz_draw_squareButton_differentMouse_draw(brx,ry+butmargin,brlx,ry+(height-butmargin)/2,plusbuttoncolor,plusbuttononcolor,plusbuttonincolor,alpha,mrx,sy+butmargin,mrlx,sy+(height-butmargin)/2)
 /*if butup=2 then{value=min(maxvalue,max(minvalue,value+valuespeed)) update=1 updated=1 typing=0}
 if butup=1 then{butucount++ if butucount&gt;butsteps*room_speed then{value=min(maxvalue,max(minvalue,value+ceil(valuefastspeed/room_speed))) update=1}}else{butucount=0}
 */
@@ -478,7 +478,7 @@ draw_line_width_colour(brx+(brlx-brx)/2-1,ry+butmargin+buttonsz/10-1,brx+(brlx-b
 
 //butup=uiz_draw_squarebutton(mrx,sy+(height+butmargin)/2,mrlx,sly-butmargin,minbuttoncolor,minbuttononcolor,minbuttonincolor,alpha)
 //butup=
-uiz_draw_squarebutton_differentmouse_draw(brx,ry+(height+butmargin)/2,brlx,rly-butmargin,minbuttoncolor,minbuttononcolor,minbuttonincolor,alpha,mrx,sy+(height+butmargin)/2,mrlx,sly-butmargin)
+uiz_draw_squareButton_differentMouse_draw(brx,ry+(height+butmargin)/2,brlx,rly-butmargin,minbuttoncolor,minbuttononcolor,minbuttonincolor,alpha,mrx,sy+(height+butmargin)/2,mrlx,sly-butmargin)
 /*if butup=2 then{value-=valuespeed;value=min(maxvalue,max(minvalue,value)) update=1 updated=1 typing=0}
 if butup=1 then{butdcount++ if butdcount&gt;butsteps*room_speed then{value=min(maxvalue,max(minvalue,value-ceil(valuefastspeed/room_speed))) update=1}}else{butdcount=0}
 */

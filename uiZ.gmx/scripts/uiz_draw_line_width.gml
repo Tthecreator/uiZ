@@ -1,4 +1,4 @@
-///uiz_draw_line_width(x1,y1,x2,y2,w,color,alpha)
+///uiz_draw_line_width(x1, y1, x2,y 2, w, color, alpha)
 //if live_call(argument0,argument1,argument2,argument3,argument4,argument5,argument6) return live_result
 
 var x1 = argument0;

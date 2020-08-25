@@ -270,7 +270,7 @@ uiz_updater_step();
 if uiz_cntn() then{
 //sdbm("HSV:",h,s,v)
 //draw_square(rx,ry,rlx,rly,irandom(c_white),1);
-draw_huesquare(rx,ry,width,height,v/255);
+draw_hueSquare(rx,ry,width,height,v/255);
 //sdbm("udpating s;hti",irandom(9))
 
 updated=0;

@@ -35,7 +35,7 @@ anchor_1=uiz_frameset_divide_horizontal(frameset,0.5,dp,1,xtra)
 //get the top bar (the first frame, so array index 0)
 frame_topbar=anchor_1.frameat[0]
 //make the topbar draw a color
-frame_topbar.markcolor=uiz_htmltocolor($3f51b5)//indigo color
+frame_topbar.markcolor=uiz_html2color($3f51b5)//indigo color
 frame_topbar.mark=true//make it markable
 //get the bottom part to put our ui in (the second frame, so array index 1)
 frame_main=anchor_1.frameat[1]

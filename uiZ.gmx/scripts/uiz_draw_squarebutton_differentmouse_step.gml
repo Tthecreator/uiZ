@@ -1,4 +1,4 @@
-///uiz_draw_squarebutton_differentmouse_step(mx1,my1,mx2,my2)
+///uiz_draw_squareButton_differentMouse_step(mx1,my1,mx2,my2)
 /*
 handles step code for a quick button without any text, at specified position.
 Is a version of uiz_draw_squarebutton, but allows you to give it specific values to mark the area where the button will react to the mouse.

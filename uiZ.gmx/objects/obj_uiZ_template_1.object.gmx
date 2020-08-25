@@ -35,7 +35,7 @@ anchor_1=uiz_frameset_divide_horizontal(frameset,1,dp,1,xtra)
 //get the top bar (the first frame, so array index 0)
 frame_topbar=anchor_1.frameat[0]
 //make the topbar draw a color
-frame_topbar.markcolor=uiz_htmltocolor($ffc107)//indigo color
+frame_topbar.markcolor=uiz_html2color($ffc107)//indigo color
 frame_topbar.mark=true//make it markable
 //add shadow
 frame_topbar.shadow=true

@@ -1,4 +1,4 @@
-///uiz_draw_squarebutton_differentmouse_draw(x1,y1,x2,y2,color,oncolor,incolor,alpha,mx1,my1,mx2,my2)
+///uiz_draw_squareButton_differentMouse_draw(x1, y1, x2, y2, color, oncolor, incolor, alpha, mx1, my1, mx2, my2)
 /*
 Draws a quick button without any text, at specified position.
 Is a version of uiz_draw_squarebutton, but allows you to give it specific values to mark the area where the button will react to the mouse.
