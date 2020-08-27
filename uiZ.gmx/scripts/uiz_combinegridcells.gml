@@ -35,7 +35,7 @@ g.gridobject[i,e]=f1
 f1.width=settowith-g.margincellw
 f1.height=settoheight-g.margincellh
 uiz_fixframepos(f1)
-uiz_fixchildren(f1,1)
+uiz_fixChildren(f1,1)
 f1.fromx=argument1
 f1.fromy=argument2
 f1.tox=argument3

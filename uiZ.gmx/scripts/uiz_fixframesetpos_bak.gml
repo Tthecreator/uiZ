@@ -26,7 +26,7 @@ cntnx=parent.cntnx
 cntny=parent.cntny
 cntnlx=parent.cntnlx
 cntnly=parent.cntnly
-uiz_fixchildren(id,1)
+uiz_fixChildren(id,1)
 }
 
 with(g.headframe){

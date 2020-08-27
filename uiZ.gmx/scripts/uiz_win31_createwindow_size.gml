@@ -23,7 +23,7 @@ if argument2=true then{
     uiz_win31_addmenulist(win)
 }
 uiz_fixwindowpos(win)
-uiz_fixchildren(win,true)
+uiz_fixChildren(win,true)
 
 
 

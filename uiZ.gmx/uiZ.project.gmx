@@ -957,7 +957,7 @@
             <script>scripts\uiz_fix_Base_iValues.gml</script>
           </scripts>
           <script>scripts\uiz_fixgeneralpos.gml</script>
-          <script>scripts\uiz_fixchildren.gml</script>
+          <script>scripts\uiz_fixChildren.gml</script>
           <script>scripts\uiz_fixobjectpos.gml</script>
           <script>scripts\uiZ_fixresolution.gml</script>
           <scripts name="objects">
@@ -992,6 +992,8 @@
             <script>scripts\uiz_fixtreelistpos.gml</script>
             <script>scripts\uiz_fixcolorboxes.gml</script>
           </scripts>
+          <script>scripts\uiz_fix.gml</script>
+          <script>scripts\uiz_redraw.gml</script>
         </scripts>
         <scripts name="frame">
           <script>scripts\uiz_removeframe.gml</script>

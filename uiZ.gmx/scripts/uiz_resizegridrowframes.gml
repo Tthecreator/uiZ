@@ -84,7 +84,7 @@ if o.toy=i then{o.height-=domar}
 if o.iscover=0 then{o.height=at2}
 o.height = round(o.height);
 uiz_fixgeneralpos(g.gridobject[e,i])
-uiz_fixchildren(g.gridobject[e,i],0)
+uiz_fixChildren(g.gridobject[e,i],0)
 last=o
 }
 }

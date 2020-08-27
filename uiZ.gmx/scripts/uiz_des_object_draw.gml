@@ -102,6 +102,6 @@ case 8: switch(setpointy){case uiz_bottom: uiz_des_update_yr()break; case uiz_mi
 //case 8: uiz_des_update_h() break;//bottom
 case 9: uiz_des_update_xy() break;//moveing
 }
-if snaptoresize>0 then{uiz_fixchildren(object,1)}
+if snaptoresize>0 then{uiz_fixChildren(object,1)}
 }
 uiz_containend()}else{if snaptoresize>0 then{snaptoresize=0;global.mousefrozen=0}}

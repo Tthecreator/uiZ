@@ -1641,7 +1641,7 @@ window_set_size(uiz_dp_window_w*uiz_dp,uiz_dp_window_h*uiz_dp);
 }
 //redo font
 UIZ_FONT();
-uiz_fixchildren(obj_uiZ_controller,true)
+uiz_fixChildren(obj_uiZ_controller,true)
 }
 
 }

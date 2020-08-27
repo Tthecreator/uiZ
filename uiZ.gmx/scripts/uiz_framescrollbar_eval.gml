@@ -14,7 +14,7 @@ lastadd=frame.addy;
 /*
 frame.addy=-clamp(scroll,0,scrolllines);
 if lastadd!=frame.addy then{lastadd=frame.addy}
-uiz_fixchildren(frame,true)
+uiz_fixChildren(frame,true)
 */
 }else{
 scrolllines=uiz_getmaxxscrollinframe(frame)
@@ -25,7 +25,7 @@ lastadd=frame.addx;
 /*
 frame.addx=-clamp(scroll,0,scrolllines);
 if lastadd!=frame.addx then{lastadd=frame.addx}
-uiz_fixchildren(frame,true)
+uiz_fixChildren(frame,true)
 */
 }
 }else{scrolllines=0;}

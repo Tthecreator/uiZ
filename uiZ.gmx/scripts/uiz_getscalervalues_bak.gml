@@ -23,7 +23,7 @@ var scale=1-uiz_animation_getFunction(clamp(destroy-1,0,1),destroyafunction);
 head_alpha=olda*scale
 //sdbm("executing fixchildren",id)
 if object_index!=obj_uiZ_windowholder then{
-uiz_fixchildren(id,1)}
+uiz_fixChildren(id,1)}
 //sdbm("executed fixchildren")
 if destroy>=2 then{uiz_destroyObject(id)}
 updatenextstep=1

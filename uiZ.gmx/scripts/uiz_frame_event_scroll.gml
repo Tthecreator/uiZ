@@ -87,7 +87,7 @@ if scrolly = true or scrollx = true or snapm = true then {
     }
     
         uiz_frame_tellListeners();
-        uiz_fixchildren(id, true)
+        uiz_fixChildren(id, true)
         uiz_updater_FixViews();
         
     }

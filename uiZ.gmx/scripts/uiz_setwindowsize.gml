@@ -20,5 +20,5 @@ obj_uiZ_controller.cntnx=0
 obj_uiZ_controller.cntny=0
 obj_uiZ_controller.cntnlx=obj_uiZ_controller.width
 obj_uiZ_controller.cntnly=obj_uiZ_controller.height
-uiz_fixchildren(obj_uiZ_controller.id,1)
+uiz_fixChildren(obj_uiZ_controller.id,1)
 }

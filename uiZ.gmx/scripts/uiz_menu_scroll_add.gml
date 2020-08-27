@@ -22,5 +22,5 @@ addy-=argument1*power(max(1,-(menulastpx+addy)),-0.9)
 addy-=argument1}}}
 }
 }
-uiz_fixchildren(id,1)
+uiz_fixChildren(id,1)
 }

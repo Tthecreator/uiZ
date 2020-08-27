@@ -795,7 +795,7 @@ if snaptomouse = 1 then {
 
 if fix &gt;= 1 then {
     uiz_fixwindowpos(fixforp);
-    uiz_fixchildren(id, true)
+    uiz_fixChildren(id, true)
 }
 lkmouseover = kmouseover;
 </string>

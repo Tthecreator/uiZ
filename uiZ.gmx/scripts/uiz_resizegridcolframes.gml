@@ -79,7 +79,7 @@ if o.tox=i then{o.width-=domar}}
 if o.iscover=0 then{o.width=at2}
 o.width = round(o.width);
 uiz_fixgeneralpos(g.gridobject[i,e])
-uiz_fixchildren(g.gridobject[i,e],0)
+uiz_fixChildren(g.gridobject[i,e],0)
 last=o
 }
 }

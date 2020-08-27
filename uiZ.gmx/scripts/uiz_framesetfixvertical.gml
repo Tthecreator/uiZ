@@ -112,7 +112,7 @@ for (var i = 0; i < g.divisions; i++) {
     if global.isfixinggrandchildren = false then {
         uiz_fixgeneralpos(g.frameat[i]);
         //sdbm("       i:",i," isz:",g.isz[i]," isize:",g.isize[i]," absorb:",g.absorbPixelDiff[i]," width:",g.frameat[i].width," rx:",g.frameat[i].rx," rlx:",g.frameat[i].rlx)
-        uiz_fixchildren(g.frameat[i], true);
+        uiz_fixChildren(g.frameat[i], true);
     }
     switch (g.doxt[i]) {
         case 1:

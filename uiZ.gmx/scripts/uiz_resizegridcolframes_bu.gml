@@ -66,7 +66,7 @@ if o.iscover=1 then{o.width+=at2+g.margincellw*2
 if o.tox=i then{o.width-=g.margincellw}}
 if o.iscover=0 then{o.width=at2}
 uiz_fixframepos(g.gridobject[i,e])
-uiz_fixchildren(g.gridobject[i,e],0)
+uiz_fixChildren(g.gridobject[i,e],0)
 last=o
 }
 }

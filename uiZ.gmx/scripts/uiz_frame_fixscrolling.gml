@@ -66,7 +66,7 @@ updatescrollx=!updatescrollx;
 updatescrolly=!updatescrolly;
 if c then{
     if argument0 then{//update object
-        uiz_fixchildren(id, true);
+        uiz_fixChildren(id, true);
         if argument1 then{
             uiz_frame_fixscrolling(argument0,false);
         }

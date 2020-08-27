@@ -325,7 +325,7 @@ dofix=true;
 }
 if dofix then{
 uiz_fixslideframepos(id)
-uiz_fixchildren(id,false)
+uiz_fixChildren(id,false)
 }
 
 }

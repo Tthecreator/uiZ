@@ -53,5 +53,5 @@ uiz_appsurf=surface_create(width,height);
 }
 }
 //sdbm("fixing al children because of window resize")
-uiz_fixchildren(obj_uiZ_controller.id,1)
+uiz_fixChildren(obj_uiZ_controller.id,1)
 }

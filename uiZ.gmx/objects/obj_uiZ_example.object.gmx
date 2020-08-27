@@ -254,12 +254,12 @@ uiz_fixgeneralpos(d)
 if keyboard_check(vk_up) then{
 f.width=f.width+3
 uiz_fixgeneralpos(f)
-uiz_fixchildren(f,1)
+uiz_fixChildren(f,1)
 }
 if keyboard_check(vk_down) then{
 f.width=f.width-3
 uiz_fixgeneralpos(f)
-uiz_fixchildren(f,1)
+uiz_fixChildren(f,1)
 }
 */
 /*

@@ -392,25 +392,25 @@ uiz_fixgeneralpos(testSquare);
             <string>if keyboard_check_released(vk_f4) then{
 win.width=100;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 
 if keyboard_check_released(vk_f5) then{
 win.width=400;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 
 if keyboard_check_released(vk_f6) then{
 win.width=800;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 
 /*
 if keyboard_check(vk_space) then{
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 */
 

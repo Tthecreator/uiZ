@@ -57,7 +57,7 @@ grad.posvalh=20;
 uiz_fixgeneralpos(grad)
 
 uiz_fixgeneralpos(frame)
-uiz_fixchildren(frame,true)
+uiz_fixChildren(frame,true)
 
 autoupdatescrolly=true;
 
@@ -83,8 +83,8 @@ autoupdatescrolly=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if keyboard_check(vk_down) then{frame.addy++ if frame.addy&gt;0 then{frame.addy=0} uiz_fixchildren(frame,true)}
-//if keyboard_check(vk_up) then{frame.addy-- if frame.addy&lt;-uiz_getmaxyscrollinframe(frame) then{frame.addy=-uiz_getmaxyscrollinframe(frame)} uiz_fixchildren(frame,true)}
+            <string>//if keyboard_check(vk_down) then{frame.addy++ if frame.addy&gt;0 then{frame.addy=0} uiz_fixChildren(frame,true)}
+//if keyboard_check(vk_up) then{frame.addy-- if frame.addy&lt;-uiz_getmaxyscrollinframe(frame) then{frame.addy=-uiz_getmaxyscrollinframe(frame)} uiz_fixChildren(frame,true)}
 
 </string>
           </argument>

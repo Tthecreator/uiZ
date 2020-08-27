@@ -110,7 +110,7 @@ for (var i = 0; i < g.divisions; i++) {
 for (var i = 0; i < g.divisions; i++) {
     if global.isfixinggrandchildren = false then {
         uiz_fixgeneralpos(g.frameat[i])
-        uiz_fixchildren(g.frameat[i], 1)
+        uiz_fixChildren(g.frameat[i], 1)
     }
     switch (g.doxt[i]) {
         case 1:

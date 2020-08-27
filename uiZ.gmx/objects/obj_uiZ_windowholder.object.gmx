@@ -215,7 +215,7 @@ addwindowmydepth=0;
             <string>/*
 if lastparent!=parent then{
 uiz_window_fixadddepth()
-uiz_fixchildren(id,true)
+uiz_fixChildren(id,true)
 lastparent=parent;
 }
 */

@@ -1966,8 +1966,8 @@ uiz_fixgeneralpos(grad)
             <kind>1</kind>
             <string>///Example 46:
 /*
-if keyboard_check(vk_down) then{frame.addy++ uiz_fixchildren(frame,true)}
-if keyboard_check(vk_up) then{frame.addy-- uiz_fixchildren(frame,true)}
+if keyboard_check(vk_down) then{frame.addy++ uiz_fixChildren(frame,true)}
+if keyboard_check(vk_up) then{frame.addy-- uiz_fixChildren(frame,true)}
 </string>
           </argument>
         </arguments>

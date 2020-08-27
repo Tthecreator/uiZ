@@ -482,7 +482,7 @@ uizreturnyes.text="retry"
 //uiz_fixgeneralpos(uizreturnno)
 //uiz_fixgeneralpos(uizreturnyes)
 uiz_fixgeneralpos(pop)
-uiz_fixchildren(pop,1)
+uiz_fixChildren(pop,1)
 runpop=2;}else{
 alarm[2]=1
 }

@@ -356,7 +356,7 @@ addy=clamp(addy,mscrollbary,0)
 }
 if cx=true or cy=true then{
 //sdbm("resetchildren",addy)
-uiz_fixchildren(id,true)}
+uiz_fixChildren(id,true)}
 
 </string>
           </argument>
@@ -444,7 +444,7 @@ rlx=krlx;
 rly=krly;
 width=kw;
 height=kh;
-if upd=true then{uiz_fixchildren(id,true)}
+if upd=true then{uiz_fixChildren(id,true)}
 //}
 </string>
           </argument>

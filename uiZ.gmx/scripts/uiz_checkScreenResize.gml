@@ -24,7 +24,7 @@ uiz_dp_window_h = window_h/uiz_dp;
 resetSurfaces=true;
 
 //uiz_updater_FixViews_addsquare(0,0,window_w,window_h);
-uiz_fixchildren(id,true);
+uiz_fixChildren(id,true);
 uiz_updateall=true;
 
 }

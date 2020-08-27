@@ -268,7 +268,7 @@ case "margin_out": o.margin_out=v; wv=v; break;
 }
 uiz_fixgeneralpos(o)
 uiz_fixgeneralpos(id)
-uiz_fixchildren(o,1)
+uiz_fixChildren(o,1)
 if apply=1 then{
 if u.rlorstr=1 then{ini_write_string(string(o.uiobject),updatetype,wv)}else{ini_write_real(string(o.uiobject),updatetype,wv)}
 }

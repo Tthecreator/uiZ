@@ -146,8 +146,8 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
     }
     uiz_fixgeneralpos(fa)
     uiz_fixgeneralpos(fb)
-    uiz_fixchildren(fa, true)
-    uiz_fixchildren(fb, true)
+    uiz_fixChildren(fa, true)
+    uiz_fixChildren(fb, true)
     if linearvalue = 1 then {
         uiz_destroyObject(oldframe);
         oldframe = newframe;
@@ -289,8 +289,8 @@ if hasmouse = true then {
 
         uiz_fixgeneralpos(fa)
         uiz_fixgeneralpos(fb)
-        uiz_fixchildren(fa, true)
-        uiz_fixchildren(fb, true)
+        uiz_fixChildren(fa, true)
+        uiz_fixChildren(fb, true)
         if instance_exists(tabslider) then {
             if hasmouse then {
                 //uiz_tabslider_setvalue(tabslider,frame,abs(of),true)

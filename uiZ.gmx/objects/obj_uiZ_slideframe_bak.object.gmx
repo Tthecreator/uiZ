@@ -202,7 +202,7 @@ if cy=true then{
 addy=clamp(addy,maxis,0)
 }
 if cx=true or cy=true then{
-uiz_fixchildren(id,true)}
+uiz_fixChildren(id,true)}
 </string>
           </argument>
         </arguments>

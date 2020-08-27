@@ -33,4 +33,4 @@ win.windowtextcolor=c_white
 win.halign=fa_center
 win.wholewidthalign=true;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win, true);
+uiz_fixChildren(win, true);

@@ -12,6 +12,6 @@ with(argument0){
         uiz_drawscrollbar_setvalue(uscrolly,-addy);
         uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
     }
-    uiz_fixchildren(id,true);
+    uiz_fixChildren(id,true);
     uiz_updater_FixViews();
 }

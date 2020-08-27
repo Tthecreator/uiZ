@@ -30,7 +30,7 @@ if argument0.object_index = obj_uiZ_framerowanchor or argument0.object_index = o
             for (var i = max(argument1, 0); i < divisions; i++) {
                 if argument2 = true then {
                     uiz_children_adopt(frameat[i], argument0)
-                    uiz_fixchildren(argument0, true)
+                    uiz_fixChildren(argument0, true)
 
                 }
                 uiz_destroyObject(frameat[i])
