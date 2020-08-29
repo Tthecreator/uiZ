@@ -814,6 +814,7 @@
           <script>scripts\uiz_setenabled.gml</script>
           <script>scripts\uiz_update_set.gml</script>
           <script>scripts\uiz_c.gml</script>
+          <script>scripts\uiz_init.gml</script>
         </scripts>
         <scripts name="compatibility">
           <script>scripts\uiz_compatibility_depthfix.gml</script>
@@ -995,12 +996,6 @@
           <script>scripts\uiz_fix.gml</script>
           <script>scripts\uiz_redraw.gml</script>
         </scripts>
-        <scripts name="frame">
-          <script>scripts\uiz_removeframe.gml</script>
-          <script>scripts\uiz_frame_create.gml</script>
-          <script>scripts\uiz_frame_disablescroll_x.gml</script>
-          <script>scripts\uiz_frame_disablescroll_y.gml</script>
-        </scripts>
         <scripts name="frameset">
           <scripts name="internal">
             <script>scripts\uiz_framesetfixhorizontal.gml</script>
@@ -1043,52 +1038,44 @@
           </scripts>
         </scripts>
         <scripts name="general">
-          <script>scripts\uiz_init.gml</script>
-          <script>scripts\uiz_getposx.gml</script>
-          <script>scripts\uiz_getposx_simple.gml</script>
-          <script>scripts\uiz_reverseposx.gml</script>
-          <script>scripts\uiz_reverseposy.gml</script>
-          <script>scripts\uiz_getposy.gml</script>
-          <script>scripts\uiz_getposy_simple.gml</script>
-          <script>scripts\uiz_generalcreate.gml</script>
-          <script>scripts\uiz_keytonumber.gml</script>
-          <script>scripts\uiz_squareinsquare.gml</script>
-          <script>scripts\uiz_squaresoverlap.gml</script>
-          <script>scripts\uiz_objectsoverlap.gml</script>
-          <script>scripts\uiz_getposx_self.gml</script>
-          <script>scripts\uiz_getposy_self.gml</script>
+          <script>scripts\dbm.gml</script>
+          <script>scripts\sdbm.gml</script>
+          <script>scripts\uiz_checkScreenResize.gml</script>
           <script>scripts\uiz_controllerend.gml</script>
-          <script>scripts\uiz_spawnmousemenu.gml</script>
-          <script>scripts\uiz_destroydslist.gml</script>
-          <script>scripts\uiz_todpix.gml</script>
-          <script>scripts\uiz_todpiy.gml</script>
+          <script>scripts\uiz_countobjects.gml</script>
           <script>scripts\uiz_deletefromlists.gml</script>
-          <script>scripts\uiz_searchinarray.gml</script>
+          <script>scripts\uiz_destroydslist.gml</script>
+          <script>scripts\uiz_dslist_print.gml</script>
+          <script>scripts\uiz_ellipse_circumference.gml</script>
           <script>scripts\uiz_endobject.gml</script>
-          <script>scripts\uiz_getmaxyinframe.gml</script>
           <script>scripts\uiz_getmaxxinframe.gml</script>
+          <script>scripts\uiz_getmaxxscrollinframe.gml</script>
+          <script>scripts\uiz_getmaxyinframe.gml</script>
+          <script>scripts\uiz_getmaxyscrollinframe.gml</script>
           <script>scripts\uiz_getminxinframe.gml</script>
           <script>scripts\uiz_getminyinframe.gml</script>
-          <script>scripts\uiz_getmaxyscrollinframe.gml</script>
-          <script>scripts\uiz_getmaxxscrollinframe.gml</script>
-          <script>scripts\uiz_ellipse_circumference.gml</script>
-          <script>scripts\uiz_countobjects.gml</script>
-          <script>scripts\sdbm.gml</script>
-          <script>scripts\dbm.gml</script>
-          <script>scripts\uiz_checkScreenResize.gml</script>
-          <script>scripts\uiz_useAppSurf.gml</script>
+          <script>scripts\uiz_getposx_self.gml</script>
+          <script>scripts\uiz_getposy_self.gml</script>
+          <script>scripts\uiz_keyToNumber.gml</script>
+          <script>scripts\uiz_objectsoverlap.gml</script>
+          <script>scripts\uiz_searchinarray.gml</script>
+          <script>scripts\uiz_spawnmousemenu.gml</script>
+          <script>scripts\uiz_squareinsquare.gml</script>
+          <script>scripts\uiz_squaresoverlap.gml</script>
           <script>scripts\uiz_string_digits.gml</script>
-          <scripts name="divisionmiddles">
-            <script>scripts\uiz_getdivisionmiddles.gml</script>
-            <script>scripts\uiz_getdivisionmiddles_range.gml</script>
-            <script>scripts\uiz_getdivisionmiddles_margin.gml</script>
-            <script>scripts\uiz_getdivisionmiddles_marginrange.gml</script>
-            <script>scripts\uiz_getpositionvalue.gml</script>
-            <script>scripts\uiz_getpositionvalue_range.gml</script>
-            <script>scripts\uiz_getpositionvalue_margins.gml</script>
-            <script>scripts\uiz_getpositionvalue_marginrange.gml</script>
+          <script>scripts\uiz_todpix.gml</script>
+          <script>scripts\uiz_todpiy.gml</script>
+          <script>scripts\uiz_useAppSurf.gml</script>
+          <scripts name="division middles">
+            <script>scripts\uiz_getDivisionMiddles.gml</script>
+            <script>scripts\uiz_getDivisionMiddles_range.gml</script>
+            <script>scripts\uiz_getDivisionMiddles_margins.gml</script>
+            <script>scripts\uiz_getDivisionMiddles_marginRange.gml</script>
+            <script>scripts\uiz_getPositionValue.gml</script>
+            <script>scripts\uiz_getPositionValue_range.gml</script>
+            <script>scripts\uiz_getPositionValue_margins.gml</script>
+            <script>scripts\uiz_getPositionValue_marginRange.gml</script>
           </scripts>
-          <script>scripts\uiz_dslist_print.gml</script>
         </scripts>
         <scripts name="grid">
           <script>scripts\uiz_resizegridframes.gml</script>
@@ -1165,27 +1152,37 @@
           <script>scripts\uiz_mouse_isDoubleClick.gml</script>
         </scripts>
         <scripts name="numbers">
+          <script>scripts\uiz_ds_list_resize.gml</script>
+          <script>scripts\uiz_generaterandomdigits.gml</script>
+          <script>scripts\uiz_getnumbers.gml</script>
+          <script>scripts\uiz_positify.gml</script>
           <script>scripts\uiz_pxtodpx.gml</script>
           <script>scripts\uiz_pxtodpy.gml</script>
-          <script>scripts\uiz_getnumbers.gml</script>
-          <script>scripts\uiz_remdecimal.gml</script>
-          <script>scripts\uiz_spaceareas_format_newlist.gml</script>
-          <script>scripts\uiz_spaceareas_format_changelist_dontmax.gml</script>
-          <script>scripts\uiz_spaceareas_format_changelist.gml</script>
-          <script>scripts\uiz_ds_list_resize.gml</script>
-          <script>scripts\uiz_randomcolor.gml</script>
-          <script>scripts\uiz_sign.gml</script>
-          <script>scripts\uiz_positify.gml</script>
-          <script>scripts\uiz_generaterandomdigits.gml</script>
-          <script>scripts\uiz_realgetdecimalpoints.gml</script>
           <script>scripts\uiz_pyth.gml</script>
+          <script>scripts\uiz_randomcolor.gml</script>
           <script>scripts\uiz_range.gml</script>
           <script>scripts\uiz_range_duo.gml</script>
+          <script>scripts\uiz_realgetdecimalpoints.gml</script>
+          <script>scripts\uiz_remdecimal.gml</script>
+          <script>scripts\uiz_sign.gml</script>
+          <script>scripts\uiz_spaceareas_format_changelist.gml</script>
+          <script>scripts\uiz_spaceareas_format_changelist_dontmax.gml</script>
+          <script>scripts\uiz_spaceareas_format_newlist.gml</script>
         </scripts>
         <scripts name="objectfunctions">
-          <script>scripts\uiz_objinit.gml</script>
-          <script>scripts\uiz_beginstep_nomouse.gml</script>
-          <script>scripts\uiz_beginstep.gml</script>
+          <scripts name="getpos">
+            <script>scripts\uiz_getposx.gml</script>
+            <script>scripts\uiz_getposx_simple.gml</script>
+            <script>scripts\uiz_getposy.gml</script>
+            <script>scripts\uiz_reverseposx.gml</script>
+            <script>scripts\uiz_reverseposy.gml</script>
+            <script>scripts\uiz_getposy_simple.gml</script>
+          </scripts>
+          <scripts name="events">
+            <script>scripts\uiz_objinit.gml</script>
+            <script>scripts\uiz_beginstep_nomouse.gml</script>
+            <script>scripts\uiz_beginstep.gml</script>
+          </scripts>
         </scripts>
         <scripts name="objects">
           <scripts name="3waybutton">
@@ -1318,6 +1315,10 @@
                 <script>scripts\uiz_frame_event_draw.gml</script>
                 <script>scripts\uiz_frame_event_scroll.gml</script>
               </scripts>
+              <script>scripts\uiz_frame_disablescroll_x.gml</script>
+              <script>scripts\uiz_frame_create.gml</script>
+              <script>scripts\uiz_removeframe.gml</script>
+              <script>scripts\uiz_frame_disablescroll_y.gml</script>
             </scripts>
             <script>scripts\uiz_frame_getscrolling.gml</script>
             <script>scripts\uiz_frame_getscrolling_for.gml</script>

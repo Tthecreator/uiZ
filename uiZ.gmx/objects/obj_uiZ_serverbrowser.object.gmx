@@ -285,7 +285,7 @@ check_1.posvalw=0.2;
 check_1.posvalhtype=fcy;
 check_1.posvalh=0.2;
 check_1.posinframey=fc;
-check_1.posvaly=uiz_getpositionvalue(1,4,0)
+check_1.posvaly=uiz_getPositionValue(1,4,0)
 uiz_fixgeneralpos(check_1)
 text_1=uiz_c(obj_uiZ_text)
 uiz_setParent(text_1,mainanchor.frameat[3])
@@ -295,7 +295,7 @@ text_1.posvalhtype=fcy;
 text_1.posvalh=0.2;
 text_1.posinframey=fc;
 text_1.valign=fa_middle;
-text_1.posvaly=uiz_getpositionvalue(1,4,0)
+text_1.posvaly=uiz_getPositionValue(1,4,0)
 uiz_fixgeneralpos(text_1)
 
 
@@ -308,7 +308,7 @@ check_2.posvalw=0.2;
 check_2.posvalhtype=fcy;
 check_2.posvalh=0.2;
 check_2.posinframey=fc;
-check_2.posvaly=uiz_getpositionvalue(1,4,1)
+check_2.posvaly=uiz_getPositionValue(1,4,1)
 uiz_fixgeneralpos(check_2)
 text_2=uiz_c(obj_uiZ_text)
 uiz_setParent(text_2,mainanchor.frameat[3])
@@ -317,7 +317,7 @@ text_2.posinframex=uiz_fill;
 text_2.posvalhtype=fcy;
 text_2.posvalh=0.2;
 text_2.posinframey=fc;
-text_2.posvaly=uiz_getpositionvalue(1,4,1)
+text_2.posvaly=uiz_getPositionValue(1,4,1)
 text_2.valign=fa_middle;
 uiz_fixgeneralpos(text_2)
 
@@ -330,7 +330,7 @@ check_3.posvalw=0.2;
 check_3.posvalhtype=fcy;
 check_3.posvalh=0.2;
 check_3.posinframey=fc;
-check_3.posvaly=uiz_getpositionvalue(1,4,2)
+check_3.posvaly=uiz_getPositionValue(1,4,2)
 uiz_fixgeneralpos(check_3)
 text_3=uiz_c(obj_uiZ_text)
 uiz_setParent(text_3,mainanchor.frameat[3])
@@ -340,7 +340,7 @@ text_3.posvalhtype=fcy;
 text_3.posvalh=0.2;
 text_3.posinframey=fc;
 text_3.valign=fa_middle;
-text_3.posvaly=uiz_getpositionvalue(1,4,2)
+text_3.posvaly=uiz_getPositionValue(1,4,2)
 uiz_fixgeneralpos(text_3)
 
 //Supports replays
@@ -352,7 +352,7 @@ check_4.posvalw=0.2;
 check_4.posvalhtype=fcy;
 check_4.posvalh=0.2;
 check_4.posinframey=fc;
-check_4.posvaly=uiz_getpositionvalue(1,4,3)
+check_4.posvaly=uiz_getPositionValue(1,4,3)
 uiz_fixgeneralpos(check_4)
 text_4=uiz_c(obj_uiZ_text)
 uiz_setParent(text_4,mainanchor.frameat[3])
@@ -362,7 +362,7 @@ text_4.posvalhtype=fcy;
 text_4.posvalh=0.2;
 text_4.posinframey=fc;
 text_4.valign=fa_middle;
-text_4.posvaly=uiz_getpositionvalue(1,4,3)
+text_4.posvaly=uiz_getPositionValue(1,4,3)
 uiz_fixgeneralpos(text_4)
 
 //Add stuff to the lowest bar part

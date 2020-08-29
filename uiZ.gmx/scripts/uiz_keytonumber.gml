@@ -1,4 +1,4 @@
-///uiz_keytonumber(keyboard_key)
+///uiz_keyToNumber(keyboard_key)
 /*
 Changes a keyboard key value to a number value.
 Allows user to press a number key on his/her keyboard and the key value will be transferred back to a number.

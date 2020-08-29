@@ -283,7 +283,7 @@ typepos++;
 }
 break;
 default:
-var key=uiz_keytonumber(lastkeyboard_key)
+var key=uiz_keyToNumber(lastkeyboard_key)
 if keyboard_check_released(vk_anykey) and key!=-1 then{
 str=string_copy(str,0,typepos)+string(key)+string_copy(str,typepos+1,len)
 typepos++;
