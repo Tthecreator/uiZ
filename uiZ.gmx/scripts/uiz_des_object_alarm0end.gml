@@ -1,6 +1,6 @@
 //if init=1 then{alarm[1]=1; init=0;}
 
-uiz_setgridframes(g)
+uiz_setGridObjects_frame(g)
 uiz_resizegridframes(g)
 alarm[1]=2;
 isloading=3;

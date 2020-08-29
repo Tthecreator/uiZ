@@ -115,7 +115,7 @@ with(argument1){
         //create a grid with all the buttons
         grid_buttons=uiz_grid_create(6,4)
         uiz_setParent(grid_buttons,frame_grid_buttons)
-        uiz_setgrid_custom(grid_buttons,uiz_win31_calculatorgrid)
+        uiz_setGridObjects_script(grid_buttons,uiz_win31_calculatorgrid)
         grid_buttons.posinframex=uiz_fill;
         grid_buttons.posinframey=uiz_fill;
         grid_buttons.margincellw=buttonmargins/2;

@@ -1,4 +1,4 @@
-///uiz_combinegridcells(grid,col1,row1,col2,row2)
+///uiz_combineGridCells(grid, col1, row1, col2, row2)
 /*
 A VERY HOT SCRIPT. Call only after you're sure that the grid doesn't need to be ajusted (normal position fixing scripts are ok).
 Gets 2 cells in a grid and makes them and everything between them into one cell.

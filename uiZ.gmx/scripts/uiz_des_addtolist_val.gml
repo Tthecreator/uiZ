@@ -3,8 +3,8 @@ if global.loadingobjects=0 then{
 uiz_grid_addrow(g)
 var o,t;
 o=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setParent(o,uiz_gridobject(g,1,g.gridh-1))
-uiz_gridsize_row(g,g.gridh-1,0.26,dp)
+uiz_setParent(o,uiz_gridObject(g,1,g.gridh-1))
+uiz_gridSize_row(g,g.gridh-1,0.26,dp)
 o.posinframex=uiz_fill
 o.width=uiz_getposx(1,dp)
 o.height=uiz_getposx(0.25,dp)
@@ -17,7 +17,7 @@ o.defval=argument2
 t=instance_create(0,0,obj_uiZ_drawtext)
 t.text=argument0
 t.x=5
-uiz_setParent(t,uiz_gridobject(g,0,g.gridh-1))
+uiz_setParent(t,uiz_gridObject(g,0,g.gridh-1))
 uiz_fixgeneralpos(t)
 
 return o;

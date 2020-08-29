@@ -48,15 +48,15 @@ g.marginb=10
 g.margincellw=5
 g.margincellh=5
 uiz_fixgridpos(g)
-uiz_setgridframes(g)
+uiz_setGridObjects_frame(g)
 
 for(var i=1;i&lt;=floor(g.gridh/2);i++){
 for(var e=1;e&lt;=g.gridw;e++){
 t=uiz_testobject_create();
 ui_testobjecttemplate(t)
 t.color=e*i*9785
-//t.parent=uiz_gridobject(g,e,i)
-uiz_setParent(t,uiz_gridobject(g,e-1,i-1))
+//t.parent=uiz_gridObject(g,e,i)
+uiz_setParent(t,uiz_gridObject(g,e-1,i-1))
 uiz_fixobjectpos(t)
 }}
 for(var i=floor(g.gridh/2)+1;i&lt;=g.gridh;i++){
@@ -64,13 +64,13 @@ for(var e=1;e&lt;=g.gridw;e++){
 t=uiz_object_1_create();
 ui_testobjecttemplate(t)
 t.color=e*i*9785
-//t.parent=uiz_gridobject(g,e,i)
-uiz_setParent(t,uiz_gridobject(g,e-1,i-1))
+//t.parent=uiz_gridObject(g,e,i)
+uiz_setParent(t,uiz_gridObject(g,e-1,i-1))
 uiz_fixobjectpos(t)
 }}
-uiz_gridsize_row(g,1,2,xtra)
-uiz_gridsize_row(g,3,50,px)
-uiz_gridsize_row(g,4,0.5,fc)
+uiz_gridSize_row(g,1,2,xtra)
+uiz_gridSize_row(g,3,50,px)
+uiz_gridSize_row(g,4,0.5,fc)
 uiz_resizegridframes(g)
 
 //uiz_combinegridcells(g,2,0,3,3)

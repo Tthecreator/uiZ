@@ -182,8 +182,8 @@ g.adddepth=20
 uiz_setParent(g,obj_uiz_designer.rightbar)
 //uiz_setParent(g,frame)
 uiz_fixgridpos(g)
-uiz_setgridframes(g)
-uiz_gridsize_row(g,0,1,px)
+uiz_setGridObjects_frame(g)
+uiz_gridSize_row(g,0,1,px)
 gridh=0
 
 xbox=uiz_des_addtolist_val("x:","x",0)
@@ -198,7 +198,7 @@ istextbox=uiz_des_addtolist_bool("text:","istext",0)
 textbox=uiz_des_addtolist_string("text:","text","penis")
 
 
-uiz_setgridframes(g)
+uiz_setGridObjects_frame(g)
 uiz_resizegridframes(g)
 //if init=1 then{alarm[1]=1; init=0;}
 alarm[1]=1;

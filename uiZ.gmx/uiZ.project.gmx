@@ -1008,6 +1008,7 @@
             <script>scripts\uiz_fixtextareapos.gml</script>
             <script>scripts\uiz_fixtreelistpos.gml</script>
             <script>scripts\uiz_fixcolorboxes.gml</script>
+            <script>scripts\uiz_fixgridpos.gml</script>
           </scripts>
           <script>scripts\uiz_fix.gml</script>
           <script>scripts\uiz_redraw.gml</script>
@@ -1080,26 +1081,30 @@
           </scripts>
         </scripts>
         <scripts name="grid">
-          <script>scripts\uiz_resizegridframes.gml</script>
-          <script>scripts\uiz_resizegridrowframes.gml</script>
-          <script>scripts\uiz_fixgridpos.gml</script>
-          <script>scripts\uiz_resizegridcolframes.gml</script>
-          <script>scripts\uiz_resizegridcolframes_bu.gml</script>
-          <script>scripts\uiz_combinegridcells.gml</script>
-          <script>scripts\uiz_gridobject.gml</script>
-          <script>scripts\uiz_gridobject_set.gml</script>
-          <script>scripts\uiz_gridsize_row.gml</script>
-          <script>scripts\uiz_gridsize_col.gml</script>
-          <script>scripts\uiz_grid_create.gml</script>
-          <script>scripts\uiz_setgridframes.gml</script>
-          <script>scripts\uiz_setgridobject.gml</script>
-          <script>scripts\uiz_setgrid_custom.gml</script>
-          <script>scripts\uiz_grid_addrow.gml</script>
-          <script>scripts\uiz_grid_addcol.gml</script>
+          <script>scripts\uiz_combineGridCells.gml</script>
+          <script>scripts\uiz_grid_addCol.gml</script>
+          <script>scripts\uiz_grid_addRow.gml</script>
+          <script>scripts\uiz_grid_cells_h.gml</script>
+          <script>scripts\uiz_grid_cells_w.gml</script>
           <script>scripts\uiz_grid_getminheight.gml</script>
           <script>scripts\uiz_grid_getminwidth.gml</script>
-          <script>scripts\uiz_grid_cellsw.gml</script>
-          <script>scripts\uiz_grid_cellsh.gml</script>
+          <script>scripts\uiz_gridObject.gml</script>
+          <script>scripts\uiz_gridObject_set.gml</script>
+          <script>scripts\uiz_gridSize_col.gml</script>
+          <script>scripts\uiz_gridSize_row.gml</script>
+          <scripts name="creation">
+            <script>scripts\uiz_grid_create.gml</script>
+            <script>scripts\uiz_setGridObjects_frame.gml</script>
+            <script>scripts\uiz_setGridObjects_canvas.gml</script>
+            <script>scripts\uiz_setGridObjects_object.gml</script>
+            <script>scripts\uiz_setGridObjects_script.gml</script>
+          </scripts>
+          <scripts name="internal">
+            <script>scripts\uiz_resizegridcolframes.gml</script>
+            <script>scripts\uiz_resizegridcolframes_bu.gml</script>
+            <script>scripts\uiz_resizegridframes.gml</script>
+            <script>scripts\uiz_resizegridrowframes.gml</script>
+          </scripts>
         </scripts>
         <scripts name="main back scripts">
           <script>scripts\uiz_back.gml</script>
@@ -2174,10 +2179,10 @@
         <object>objects\obj_uiZ_framerowanchor</object>
         <object>objects\obj_uiz_xmlparser</object>
         <object>objects\obj_uiZ_frameset</object>
-        <object>objects\obj_uiZ_grid</object>
         <object>objects\obj_uiZ_menuholder</object>
         <object>objects\obj_uiZ_menuitem</object>
         <object>objects\obj_uiZ_mouseband</object>
+        <object>objects\obj_uiZ_grid</object>
         <object>objects\obj_uiZ_object_1</object>
         <object>objects\obj_uiZ_popupok</object>
         <object>objects\obj_uiZ_resizer</object>
@@ -2198,11 +2203,11 @@
       <objects name="objects">
         <object>objects\obj_uiZ_3waybutton</object>
         <object>objects\obj_uiZ_button</object>
+        <object>objects\obj_uiZ_canvas</object>
         <object>objects\obj_uiZ_checkbox</object>
         <object>objects\obj_uiZ_clock</object>
         <object>objects\obj_uiZ_colorbox</object>
         <object>objects\obj_uiZ_cover</object>
-        <object>objects\obj_uiZ_canvas</object>
         <object>objects\obj_uiZ_drawdslist</object>
         <object>objects\obj_uiZ_dropdown</object>
         <object>objects\obj_uiZ_easybutton</object>

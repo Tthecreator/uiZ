@@ -81,7 +81,7 @@ if instance_exists(grid_buttons) and instance_exists(display) then {
     var my = uiz_grid_cellsh(grid_buttons);
     for (var _x = 0; _x &lt; mx; _x++) {
         for (var _y = 0; _y &lt; my; _y++) {
-            var o = uiz_gridobject(grid_buttons, _x, _y)
+            var o = uiz_gridObject(grid_buttons, _x, _y)
             if instance_exists(o) and o.updated = true then {
                 switch (_x) {
                     case 0:

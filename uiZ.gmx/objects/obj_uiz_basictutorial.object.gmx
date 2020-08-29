@@ -1355,7 +1355,7 @@ uiz_init()
 //create our grid
 grid=uiz_grid_create(5,5)
 
-uiz_setgridframes(grid)
+uiz_setGridObjects_frame(grid)
 uiz_fixgeneralpos(grid)
 </string>
           </argument>
@@ -1383,8 +1383,8 @@ uiz_fixgeneralpos(grid)
 uiz_init()
 //create our grid
 grid=uiz_grid_create(5,5)
-uiz_setgridframes(grid)
-uiz_gridsize_col(grid,2,100,px)
+uiz_setGridObjects_frame(grid)
+uiz_gridSize_col(grid,2,100,px)
 uiz_fixgeneralpos(grid)
 </string>
           </argument>
@@ -1412,11 +1412,11 @@ uiz_fixgeneralpos(grid)
 uiz_init()
 //create our grid
 grid=uiz_grid_create(5,3)
-uiz_setgridframes(grid)
+uiz_setGridObjects_frame(grid)
 //set our grids sizes
-uiz_gridsize_row(grid,0,50,px)
-uiz_gridsize_row(grid,1,0.33,fc)
-uiz_gridsize_row(grid,2,1,xtra)
+uiz_gridSize_row(grid,0,50,px)
+uiz_gridSize_row(grid,1,0.33,fc)
+uiz_gridSize_row(grid,2,1,xtra)
 //fix the grid
 uiz_fixgeneralpos(grid)
 
@@ -1446,12 +1446,12 @@ uiz_fixgeneralpos(grid)
 uiz_init()
 //create our grid
 grid=uiz_grid_create(5,4)
-uiz_setgridframes(grid)
+uiz_setGridObjects_frame(grid)
 //set our grids sizes
-uiz_gridsize_row(grid,0,1,xtra)
-uiz_gridsize_row(grid,1,50,px)
-uiz_gridsize_row(grid,2,0.33,fc)
-uiz_gridsize_row(grid,3,1,xtra)
+uiz_gridSize_row(grid,0,1,xtra)
+uiz_gridSize_row(grid,1,50,px)
+uiz_gridSize_row(grid,2,0.33,fc)
+uiz_gridSize_row(grid,3,1,xtra)
 //fix the grid
 uiz_fixgeneralpos(grid)
 
@@ -1481,12 +1481,12 @@ uiz_fixgeneralpos(grid)
 uiz_init()
 //create our grid
 grid=uiz_grid_create(5,4)
-uiz_setgridframes(grid)
+uiz_setGridObjects_frame(grid)
 //set our grids sizes
-uiz_gridsize_row(grid,0,2,xtra)
-uiz_gridsize_row(grid,1,50,px)
-uiz_gridsize_row(grid,2,0.33,fc)
-uiz_gridsize_row(grid,3,1,xtra)
+uiz_gridSize_row(grid,0,2,xtra)
+uiz_gridSize_row(grid,1,50,px)
+uiz_gridSize_row(grid,2,0.33,fc)
+uiz_gridSize_row(grid,3,1,xtra)
 //fix the grid
 uiz_fixgeneralpos(grid)
 
@@ -1516,16 +1516,16 @@ uiz_fixgeneralpos(grid)
 uiz_init()
 //create our grid
 grid=uiz_grid_create(5,4)
-uiz_setgridframes(grid)
+uiz_setGridObjects_frame(grid)
 //set our grids sizes
-uiz_gridsize_row(grid,0,2,xtra)
-uiz_gridsize_row(grid,1,50,px)
-uiz_gridsize_row(grid,2,0.33,fc)
-uiz_gridsize_row(grid,3,1,xtra)
+uiz_gridSize_row(grid,0,2,xtra)
+uiz_gridSize_row(grid,1,50,px)
+uiz_gridSize_row(grid,2,0.33,fc)
+uiz_gridSize_row(grid,3,1,xtra)
 //fix the grid
 uiz_fixgeneralpos(grid)
 //get a frame from the grid
-frame=uiz_gridobject(grid,2,2)//do not change anything about this frame
+frame=uiz_gridObject(grid,2,2)//do not change anything about this frame
 //add object to grid
 rot=uiz_c(obj_uiZ_rotator)
 //put the rot inside a frame that we got from inside a grid
