@@ -190,9 +190,9 @@ topbar_margin_out=-1//v//top margin out//
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(sizelist)
+            <string>uiz_destroyDsList(sizelist)
 if destroylists=true then{
-uiz_destroydslist(mainlist)
+uiz_destroyDsList(mainlist)
 if ds_exists(maingrid, ds_type_grid) then{ds_grid_destroy(maingrid)}
 }
 uiz_endobject()
@@ -728,9 +728,9 @@ uiz_containend();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(sizelist)
+            <string>uiz_destroyDsList(sizelist)
 if destroylists=true then{
-uiz_destroydslist(mainlist)
+uiz_destroyDsList(mainlist)
 if ds_exists(maingrid, ds_type_grid) then{ds_grid_destroy(maingrid)}
 }
 uiz_endobject()
@@ -757,9 +757,9 @@ uiz_endobject()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(sizelist)
+            <string>uiz_destroyDsList(sizelist)
 if destroylists=true then{
-uiz_destroydslist(mainlist)
+uiz_destroyDsList(mainlist)
 if ds_exists(maingrid, ds_type_grid) then{ds_grid_destroy(maingrid)}
 }
 uiz_endobject()

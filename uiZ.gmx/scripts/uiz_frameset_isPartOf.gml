@@ -11,7 +11,7 @@ if (op.object_index=obj_uiZ_frameset or op.object_index=obj_uiZ_framerowanchor o
 if op.object_index=obj_uiZ_frameset then{
 if op.headframe=argument0 then{return op;}else{return -1;}
 }else{
-var bin=uiz_searchinarray(op.frameat,op.divisions,argument0)
+var bin=uiz_searchInArray(op.frameat,op.divisions,argument0)
 if bin>-1 then{return uiz_frameset_getFramesetMainObject(op);}else{return -1;}
 }
 

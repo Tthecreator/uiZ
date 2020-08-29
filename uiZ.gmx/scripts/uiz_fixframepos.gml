@@ -9,7 +9,7 @@ with(t) {
 
 
     if (scrollx or scrolly) then {      
-        mscrollbarx = -uiz_getmaxxscrollinframe(id)
+        mscrollbarx = -uiz_getMaxXScrollInObject(id)
         if addx < mscrollbarx then {
             addx = clamp(addx, mscrollbarx, 0);
             uiz_drawscrollbar_setvalue(uscrollx,-addx);
@@ -21,7 +21,7 @@ with(t) {
             var sgm_y = max(0, min(uiz_getposy_self(scrollbarsize, scrollbarsizetype), height - 2));
             end_bottomframemargin += sgm_y;
         }
-        mscrollbary = -uiz_getmaxyscrollinframe(id)
+        mscrollbary = -uiz_getMaxYScrollInObject(id)
         if addy < mscrollbary then {
             addy = clamp(addy, mscrollbary, 0)
             uiz_drawscrollbar_setvalue(uscrolly,-addy);

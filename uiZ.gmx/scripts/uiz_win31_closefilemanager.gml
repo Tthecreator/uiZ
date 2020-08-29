@@ -1,7 +1,7 @@
 uiz_xml_unloadfile(folders)
-uiz_destroydslist(toplist)
-//uiz_destroydslist(listlist)
-//uiz_destroydslist(namelist)
-//uiz_destroydslist(sizelist)
-//uiz_destroydslist(datelist)
+uiz_destroyDsList(toplist)
+//uiz_destroyDsList(listlist)
+//uiz_destroyDsList(namelist)
+//uiz_destroyDsList(sizelist)
+//uiz_destroyDsList(datelist)
 

@@ -248,9 +248,9 @@ if isloading&gt;0 then{isloading--;}else{isloading=0;}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+            <string>uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>
@@ -273,9 +273,9 @@ uiz_destroydslist(updatedefvallist)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+            <string>uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>

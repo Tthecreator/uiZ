@@ -1,4 +1,4 @@
-///uiz_deletefromlists(position,list1,list2.......)
+///uiz_deleteFromLists(position,list1,list2.......)
 /*
 Calls the ds_list_delete function on multiple lists at the specified position.
 Takes as many lists as game maker supports arguments.*/

@@ -144,9 +144,9 @@ destroyspeed=0.1
             <kind>1</kind>
             <string>uiz_endobject()
 if destroylist=true then{
-uiz_destroydslist(uselist)
-uiz_destroydslist(actionlist)
-uiz_destroydslist(enabledlist)
+uiz_destroyDsList(uselist)
+uiz_destroyDsList(actionlist)
+uiz_destroyDsList(enabledlist)
 }
 </string>
           </argument>
@@ -431,9 +431,9 @@ if uiz_cntn() then {
             <kind>1</kind>
             <string>uiz_endobject()
 if destroylist=true then{
-uiz_destroydslist(uselist)
-uiz_destroydslist(actionlist)
-uiz_destroydslist(enabledlist)
+uiz_destroyDsList(uselist)
+uiz_destroyDsList(actionlist)
+uiz_destroyDsList(enabledlist)
 }
 </string>
           </argument>
@@ -459,9 +459,9 @@ uiz_destroydslist(enabledlist)
             <kind>1</kind>
             <string>uiz_endobject()
 if destroylist=true then{
-uiz_destroydslist(uselist)
-uiz_destroydslist(actionlist)
-uiz_destroydslist(enabledlist)
+uiz_destroyDsList(uselist)
+uiz_destroyDsList(actionlist)
+uiz_destroyDsList(enabledlist)
 }
 </string>
           </argument>

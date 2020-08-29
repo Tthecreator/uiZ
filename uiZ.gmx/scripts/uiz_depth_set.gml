@@ -18,7 +18,7 @@ if sz>1 and !((listpos=0 or l[|listpos-1].depth<=depth) and
             //before old place
                 for(var e=listpos;e>i;e--){
                     l[|e-1].listpos++;
-                    if uiz_objectsoverlap(l[|e],id){
+                    if uiz_objectsOverlap(l[|e],id){
                         overlapping=true;
                     }
                     l[|e]=l[|e-1];
@@ -31,7 +31,7 @@ if sz>1 and !((listpos=0 or l[|listpos-1].depth<=depth) and
                 for(var e=listpos;e<i;e++){
                     l[|e+1].listpos--;
                     l[|e]=l[|e+1];
-                    if uiz_objectsoverlap(l[|e],id){
+                    if uiz_objectsOverlap(l[|e],id){
                         overlapping=true;
                     }
                 }                

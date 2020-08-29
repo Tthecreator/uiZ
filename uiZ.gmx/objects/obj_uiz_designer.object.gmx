@@ -1231,8 +1231,8 @@ errtxt.text="an error occured while checking and copying files: "+error
 uiz_fixgeneralpos(errtxt)
 alarm[2]=3
 //alarm[0]=3
-uiz_destroydslist(uiznewdeslist)
-uiz_destroydslist(uiznewversionlist)
+uiz_destroyDsList(uiznewdeslist)
+uiz_destroyDsList(uiznewversionlist)
 }else{
 //dbm(ds_list_size(uiznewdeslist))
 if ds_list_size(uiznewdeslist)&gt;0 then{
@@ -1402,8 +1402,8 @@ errtxt.text="an error occured while checking and copying files: "+error
 uiz_fixgeneralpos(errtxt)
 alarm[2]=3
 //alarm[0]=3
-uiz_destroydslist(uiznewdeslist)
-uiz_destroydslist(uiznewversionlist)
+uiz_destroyDsList(uiznewdeslist)
+uiz_destroyDsList(uiznewversionlist)
 }else{
 if ds_list_size(uiznewdeslist)&gt;0 then{
 alarm[0]=1

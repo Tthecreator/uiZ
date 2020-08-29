@@ -1,4 +1,4 @@
-var menu = uiz_spawnmousemenu(obj_windows31controller.menulist_main,false,-1,uiz_acceldecel,uiz_acceldecel,uiz_acceldecel,1);
+var menu = uiz_spawnMouseMenu(obj_windows31controller.menulist_main,false,-1,uiz_acceldecel,uiz_acceldecel,uiz_acceldecel,1);
 uiz_win31_template_mousemenu(menu);
 menu.enabledlist=obj_windows31controller.menulist_main_enabled;
 ds_list_add(obj_windows31controller.WindowMouseMenuList,menu)

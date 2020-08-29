@@ -1,5 +1,5 @@
 //ds_list_delete(parent.children,listpos)
-uiz_destroydslist(children)
+uiz_destroyDsList(children)
 /*
 var l=obj_uiZ_controller.uiz_objlist
 var sz=ds_list_size(l);

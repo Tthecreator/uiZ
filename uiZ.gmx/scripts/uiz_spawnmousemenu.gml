@@ -1,4 +1,4 @@
-///uiz_spawnmousemenu(ds_list,destroylist,[optional actionlist],[optional openinganimation xfunction,openinganimation yfunction, openinganimation alphafunction, openingtime])
+///uiz_spawnMouseMenu(ds_list,destroylist,[optional actionlist],[optional openinganimation xfunction,openinganimation yfunction, openinganimation alphafunction, openingtime])
 /*
 Spawns in a obj_uiZ_mousemenu object and destroys any that already exist.
 If have argument 3 or higher filled in you will NEED to fill everything up until argument6 (openingtime).

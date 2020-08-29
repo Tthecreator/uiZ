@@ -18,4 +18,4 @@ cntny=floor(max(ry,p.cntny,p.iy));
 cntnlx=floor(min(rlx,p.cntnlx,p.ilx));
 cntnly=floor(min(rly,p.cntnly,p.ily));
 
-return uiz_squareinsquare(rx,ry,rlx,rly,cntnx,cntny,cntnlx,cntnly);
+return uiz_squareInSquare(rx,ry,rlx,rly,cntnx,cntny,cntnlx,cntnly);

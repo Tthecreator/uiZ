@@ -1,4 +1,4 @@
-///uiz_ellipse_circumference(widthradius,heightradius)
+///uiz_ellipse_circumference(widthRadius, heightRadius)
 //takes a the width and height radius of an ellipse (an oval, a stretched circle)
 //the width and height radiusses are just the width of the ellipse divided by 2.
 var a=argument0;

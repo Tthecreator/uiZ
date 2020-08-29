@@ -451,11 +451,11 @@ uiz_fixgeneralpos(frameset)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(tablist)
-uiz_destroydslist(serveritemlist)
-uiz_destroydslist(workshoplist)
-uiz_destroydslist(tagslist)
-uiz_destroydslist(gamelist)
+            <string>uiz_destroyDsList(tablist)
+uiz_destroyDsList(serveritemlist)
+uiz_destroyDsList(workshoplist)
+uiz_destroyDsList(tagslist)
+uiz_destroyDsList(gamelist)
 </string>
           </argument>
         </arguments>
@@ -478,11 +478,11 @@ uiz_destroydslist(gamelist)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(tablist)
-uiz_destroydslist(serveritemlist)
-uiz_destroydslist(workshoplist)
-uiz_destroydslist(tagslist)
-uiz_destroydslist(gamelist)
+            <string>uiz_destroyDsList(tablist)
+uiz_destroyDsList(serveritemlist)
+uiz_destroyDsList(workshoplist)
+uiz_destroyDsList(tagslist)
+uiz_destroyDsList(gamelist)
 </string>
           </argument>
         </arguments>
@@ -505,11 +505,11 @@ uiz_destroydslist(gamelist)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(tablist)
-uiz_destroydslist(serveritemlist)
-uiz_destroydslist(workshoplist)
-uiz_destroydslist(tagslist)
-uiz_destroydslist(gamelist)
+            <string>uiz_destroyDsList(tablist)
+uiz_destroyDsList(serveritemlist)
+uiz_destroyDsList(workshoplist)
+uiz_destroyDsList(tagslist)
+uiz_destroyDsList(gamelist)
 </string>
           </argument>
         </arguments>

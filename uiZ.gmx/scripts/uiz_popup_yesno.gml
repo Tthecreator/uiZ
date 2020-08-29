@@ -72,8 +72,8 @@ uiz_fixgeneralpos(p)
 //uiz_animation_setOpeningAnimation(p,uiz_one,uiz_one,uiz_sin_inout,0.01)
 uiz_animation_setOpeningAnimation(p,uiz_one,uiz_one,uiz_straight,0.05,false)
 }
-var dx=uiz_todpix(string_width(argument[0]))
-var dy=uiz_todpiy(string_height(argument[0]))
+var dx=uiz_toDpi(string_width(argument[0]))
+var dy=uiz_toDpi(string_height(argument[0]))
 var w=uiz_window_create_animation(dx+0.5,dp,dy+1,dp,uiz_cubic_in,uiz_cubic_out,uiz_one,0.1);
 w.addwindowmydepth=100000
 /*

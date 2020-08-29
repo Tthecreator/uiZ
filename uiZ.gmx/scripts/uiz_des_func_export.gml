@@ -117,9 +117,9 @@ ini_close()
 clipboard_set_text(exporttext)
 //dbm("just saved!",orderlist)
 uiz_popup_ok("A gml script has been exported to your clipboard#You can now paste it inside a script inside of your game maker project.","export complete",1)
-uiz_destroydslist(orderlist)
-uiz_destroydslist(preorderlist)
-uiz_destroydslist(orderlisted)
+uiz_destroyDsList(orderlist)
+uiz_destroyDsList(preorderlist)
+uiz_destroyDsList(orderlisted)
 
 
 

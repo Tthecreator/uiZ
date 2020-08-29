@@ -102,8 +102,8 @@ goback=false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if destroytablist=true then{uiz_destroydslist(tablist)}
-uiz_destroydslist(spacinglist)
+            <string>if destroytablist=true then{uiz_destroyDsList(tablist)}
+uiz_destroyDsList(spacinglist)
 </string>
           </argument>
         </arguments>
@@ -419,8 +419,8 @@ if uiz_cntn() then {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if destroytablist=true then{uiz_destroydslist(tablist)}
-uiz_destroydslist(spacinglist)
+            <string>if destroytablist=true then{uiz_destroyDsList(tablist)}
+uiz_destroyDsList(spacinglist)
 </string>
           </argument>
         </arguments>
@@ -443,8 +443,8 @@ uiz_destroydslist(spacinglist)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if destroytablist=true then{uiz_destroydslist(tablist)}
-uiz_destroydslist(spacinglist)
+            <string>if destroytablist=true then{uiz_destroyDsList(tablist)}
+uiz_destroyDsList(spacinglist)
 </string>
           </argument>
         </arguments>

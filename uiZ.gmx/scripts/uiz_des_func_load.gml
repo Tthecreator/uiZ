@@ -7,7 +7,7 @@ ldwin.windowtext="load"
 global.windowexists=ldwin;
 global.haswindow=id;
 //find files
-uiz_destroydslist(loadfilelist);
+uiz_destroyDsList(loadfilelist);
 if uiz_direxists(projectfolder+"uiZ")=0 then{
 uiz_executecmd('mkdir "'+projectfolder+"uiZ"+'"')
 sdbm("[uiZ,Designer:INFO] Folder '"+projectfolder+"uiZ' not found, creating it.");

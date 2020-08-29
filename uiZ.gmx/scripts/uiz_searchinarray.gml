@@ -1,4 +1,4 @@
-///uiz_searchinarray(array,arraysize,findwhat)
+///uiz_searchInArray(array, arraySize, findWhat)
 /*
 Find a specified value(of either real or string) in an specified array and returns that position.
 Returns -1 if nothing has been found.

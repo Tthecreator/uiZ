@@ -173,8 +173,8 @@ break;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(menulist)
-uiz_destroydslist(tablist)
+            <string>uiz_destroyDsList(menulist)
+uiz_destroyDsList(tablist)
 
 </string>
           </argument>

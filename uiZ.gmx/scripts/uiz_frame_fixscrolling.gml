@@ -14,7 +14,7 @@ var sgm_x = max(0, min(uiz_getposy_self(scrollbarsize, scrollbarsizetype), heigh
 
 if updatescrolly = true then{//check for changes
     var omscrollbary = mscrollbary;
-    mscrollbary = -uiz_getmaxyscrollinframe(id)
+    mscrollbary = -uiz_getMaxYScrollInObject(id)
     if mscrollbary != omscrollbary then {
         if addy < mscrollbary then {//clamp scrollbar
             c = true;
@@ -29,7 +29,7 @@ if updatescrolly = true then{//check for changes
 
 if updatescrollx = true then {//check for changes
     var omscrollbarx = mscrollbarx;
-    mscrollbarx = -uiz_getmaxxscrollinframe(id)
+    mscrollbarx = -uiz_getMaxXScrollInObject(id)
     if mscrollbarx != omscrollbarx then {
         if addx < mscrollbarx then {//clamp scrollbar
             c = true;

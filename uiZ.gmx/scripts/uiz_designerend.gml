@@ -17,48 +17,48 @@ if ds_exists(afimglist,ds_type_list) then{ds_list_destroy(afimglist)}
 
 if ds_exists(postypelist,ds_type_list) then{ds_list_destroy(postypelist)}
 if ds_exists(postypelistlink,ds_type_list) then{ds_list_destroy(postypelistlink)}
-uiz_destroydslist(uiznewdeslist)
-uiz_destroydslist(spritelist)
-uiz_destroydslist(fontlist)
-uiz_destroydslist(loadfilelist)
-uiz_destroydslist(uiznewversionlist)
-uiz_destroydslist(uizchangedfilelist)
-uiz_destroydslist(global.newparentlist)
-uiz_destroydslist(global.newparentnamelist)
+uiz_destroyDsList(uiznewdeslist)
+uiz_destroyDsList(spritelist)
+uiz_destroyDsList(fontlist)
+uiz_destroyDsList(loadfilelist)
+uiz_destroyDsList(uiznewversionlist)
+uiz_destroyDsList(uizchangedfilelist)
+uiz_destroyDsList(global.newparentlist)
+uiz_destroyDsList(global.newparentnamelist)
 
-uiz_destroydslist(global.texconstantlist)
-uiz_destroydslist(global.texconstantnamelist)
+uiz_destroyDsList(global.texconstantlist)
+uiz_destroyDsList(global.texconstantnamelist)
 
-uiz_destroydslist(global.xconstantlist)
-uiz_destroydslist(global.xconstantnamelist)
+uiz_destroyDsList(global.xconstantlist)
+uiz_destroyDsList(global.xconstantnamelist)
 
-uiz_destroydslist(global.xyconstantlist)
-uiz_destroydslist(global.xyconstantstringlist)
-uiz_destroydslist(global.xyconstantnamelist)
-
-
-uiz_destroydslist(global.yconstantlist)
-uiz_destroydslist(global.yconstantnamelist)
-
-uiz_destroydslist(global.fyconstantlist)
-uiz_destroydslist(global.fyconstantnamelist)
-uiz_destroydslist(global.fxconstantlist)
-uiz_destroydslist(global.fxconstantnamelist)
-
-uiz_destroydslist(global.animconstantlist)
-uiz_destroydslist(global.animconstantnamelist)
-
-uiz_destroydslist(global.xcenterconstantlist)
-uiz_destroydslist(global.xcenterconstantnamelist)
-
-uiz_destroydslist(global.ycenterconstantlist)
-uiz_destroydslist(global.ycenterconstantnamelist)
-
-uiz_destroydslist(global.texscriptconstantlist)
-uiz_destroydslist(global.texscriptconstantnamelist)
+uiz_destroyDsList(global.xyconstantlist)
+uiz_destroyDsList(global.xyconstantstringlist)
+uiz_destroyDsList(global.xyconstantnamelist)
 
 
+uiz_destroyDsList(global.yconstantlist)
+uiz_destroyDsList(global.yconstantnamelist)
 
-uiz_destroydslist(viewtypelist)
+uiz_destroyDsList(global.fyconstantlist)
+uiz_destroyDsList(global.fyconstantnamelist)
+uiz_destroyDsList(global.fxconstantlist)
+uiz_destroyDsList(global.fxconstantnamelist)
+
+uiz_destroyDsList(global.animconstantlist)
+uiz_destroyDsList(global.animconstantnamelist)
+
+uiz_destroyDsList(global.xcenterconstantlist)
+uiz_destroyDsList(global.xcenterconstantnamelist)
+
+uiz_destroyDsList(global.ycenterconstantlist)
+uiz_destroyDsList(global.ycenterconstantnamelist)
+
+uiz_destroyDsList(global.texscriptconstantlist)
+uiz_destroyDsList(global.texscriptconstantnamelist)
+
+
+
+uiz_destroyDsList(viewtypelist)
 
 //uiz_xml_unloadfile(global.xml)
