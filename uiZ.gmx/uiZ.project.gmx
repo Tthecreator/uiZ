@@ -1059,14 +1059,16 @@
           <script>scripts\uiz_countObjects.gml</script>
           <script>scripts\uiz_deleteFromLists.gml</script>
           <script>scripts\uiz_destroyDsList.gml</script>
-          <script>scripts\uiz_dsList_print.gml</script>
+          <script>scripts\uiz_ds_list_print.gml</script>
+          <script>scripts\uiz_ds_list_resize.gml</script>
           <script>scripts\uiz_ellipse_circumference.gml</script>
           <script>scripts\uiz_keyToNumber.gml</script>
           <script>scripts\uiz_objectsOverlap.gml</script>
           <script>scripts\uiz_searchInArray.gml</script>
           <script>scripts\uiz_squareInSquare.gml</script>
           <script>scripts\uiz_squaresOverlap.gml</script>
-          <script>scripts\uiz_toDpi.gml</script>
+          <script>scripts\uiz_pxToDpi.gml</script>
+          <script>scripts\uiz_dpiToPx.gml</script>
           <script>scripts\uiz_useAppSurf.gml</script>
           <scripts name="division middles">
             <script>scripts\uiz_getDivisionMiddles.gml</script>
@@ -1077,6 +1079,55 @@
             <script>scripts\uiz_getPositionValue_range.gml</script>
             <script>scripts\uiz_getPositionValue_margins.gml</script>
             <script>scripts\uiz_getPositionValue_marginRange.gml</script>
+          </scripts>
+          <scripts name="space areas">
+            <script>scripts\uiz_spaceAreas_format_changeList.gml</script>
+            <script>scripts\uiz_spaceAreas_format_changeList_dontMax.gml</script>
+            <script>scripts\uiz_spaceAreas_format_newList.gml</script>
+          </scripts>
+          <scripts name="numbers">
+            <script>scripts\uiz_generateRandomDigits.gml</script>
+            <script>scripts\uiz_getNumbers.gml</script>
+            <script>scripts\uiz_positify.gml</script>
+            <script>scripts\uiz_pyth.gml</script>
+            <script>scripts\uiz_randomColor.gml</script>
+            <script>scripts\uiz_range.gml</script>
+            <script>scripts\uiz_range_duo.gml</script>
+            <script>scripts\uiz_realGetDecimalPoints.gml</script>
+            <script>scripts\uiz_removeDecimals.gml</script>
+            <script>scripts\uiz_sign.gml</script>
+          </scripts>
+          <scripts name="strings">
+            <script>scripts\uiz_removechars.gml</script>
+            <script>scripts\uiz_getlines.gml</script>
+            <script>scripts\uiz_gettextlines_contained.gml</script>
+            <script>scripts\uiz_gettextlines_contained_infy.gml</script>
+            <script>scripts\uiz_gettext_contained.gml</script>
+            <script>scripts\uiz_gettext_contained_nodots.gml</script>
+            <script>scripts\uiz_gettext_contained_BAK.gml</script>
+            <script>scripts\uiz_stringfind_at.gml</script>
+            <script>scripts\uiz_string_replace.gml</script>
+            <script>scripts\uiz_string_copy.gml</script>
+            <script>scripts\uiz_returncharaddon.gml</script>
+            <script>scripts\uiz_charcanhaveaddon.gml</script>
+            <script>scripts\uiz_charisnumberortext.gml</script>
+            <script>scripts\uiz_removechars_nontextornumber.gml</script>
+            <script>scripts\uiz_charisnumber.gml</script>
+            <script>scripts\uiz_getvalidvariablename.gml</script>
+            <script>scripts\uiz_fromlaststringchars.gml</script>
+            <script>scripts\uiz_laststringchars.gml</script>
+            <script>scripts\uiz_string_repeat.gml</script>
+            <script>scripts\uiz_changechar.gml</script>
+            <script>scripts\uiz_removechar.gml</script>
+            <script>scripts\uiz_stringfind.gml</script>
+            <script>scripts\uiz_addchar.gml</script>
+            <script>scripts\uiz_stringUntilNewline.gml</script>
+            <script>scripts\uiz_isSpaceChar.gml</script>
+            <script>scripts\uiz_string_fromReal.gml</script>
+            <script>scripts\uiz_string_format.gml</script>
+            <script>scripts\uiz_string_real_getIntLength.gml</script>
+            <script>scripts\uiz_string_real_getFracLength.gml</script>
+            <script>scripts\uiz_string_digits.gml</script>
           </scripts>
         </scripts>
         <scripts name="grid">
@@ -1147,24 +1198,6 @@
           <script>scripts\uiz_mouse_isOver_window_pressingLeft.gml</script>
           <script>scripts\uiz_isOverUi.gml</script>
           <script>scripts\uiz_set_cursor.gml</script>
-        </scripts>
-        <scripts name="numbers">
-          <script>scripts\uiz_ds_list_resize.gml</script>
-          <script>scripts\uiz_generaterandomdigits.gml</script>
-          <script>scripts\uiz_getnumbers.gml</script>
-          <script>scripts\uiz_positify.gml</script>
-          <script>scripts\uiz_pxtodpx.gml</script>
-          <script>scripts\uiz_pxtodpy.gml</script>
-          <script>scripts\uiz_pyth.gml</script>
-          <script>scripts\uiz_randomcolor.gml</script>
-          <script>scripts\uiz_range.gml</script>
-          <script>scripts\uiz_range_duo.gml</script>
-          <script>scripts\uiz_realgetdecimalpoints.gml</script>
-          <script>scripts\uiz_remdecimal.gml</script>
-          <script>scripts\uiz_sign.gml</script>
-          <script>scripts\uiz_spaceareas_format_changelist.gml</script>
-          <script>scripts\uiz_spaceareas_format_changelist_dontmax.gml</script>
-          <script>scripts\uiz_spaceareas_format_newlist.gml</script>
         </scripts>
         <scripts name="objectfunctions">
           <scripts name="events">
@@ -1879,38 +1912,6 @@
           <script>scripts\uiz_menuholder_create.gml</script>
           <script>scripts\uiz_menuobject_create.gml</script>
         </scripts>
-        <scripts name="strings">
-          <script>scripts\uiz_removechars.gml</script>
-          <script>scripts\uiz_getlines.gml</script>
-          <script>scripts\uiz_gettextlines_contained.gml</script>
-          <script>scripts\uiz_gettextlines_contained_infy.gml</script>
-          <script>scripts\uiz_gettext_contained.gml</script>
-          <script>scripts\uiz_gettext_contained_nodots.gml</script>
-          <script>scripts\uiz_gettext_contained_BAK.gml</script>
-          <script>scripts\uiz_stringfind_at.gml</script>
-          <script>scripts\uiz_string_replace.gml</script>
-          <script>scripts\uiz_string_copy.gml</script>
-          <script>scripts\uiz_returncharaddon.gml</script>
-          <script>scripts\uiz_charcanhaveaddon.gml</script>
-          <script>scripts\uiz_charisnumberortext.gml</script>
-          <script>scripts\uiz_removechars_nontextornumber.gml</script>
-          <script>scripts\uiz_charisnumber.gml</script>
-          <script>scripts\uiz_getvalidvariablename.gml</script>
-          <script>scripts\uiz_fromlaststringchars.gml</script>
-          <script>scripts\uiz_laststringchars.gml</script>
-          <script>scripts\uiz_string_repeat.gml</script>
-          <script>scripts\uiz_changechar.gml</script>
-          <script>scripts\uiz_removechar.gml</script>
-          <script>scripts\uiz_stringfind.gml</script>
-          <script>scripts\uiz_addchar.gml</script>
-          <script>scripts\uiz_stringUntilNewline.gml</script>
-          <script>scripts\uiz_isSpaceChar.gml</script>
-          <script>scripts\uiz_string_fromReal.gml</script>
-          <script>scripts\uiz_string_format.gml</script>
-          <script>scripts\uiz_string_real_getIntLength.gml</script>
-          <script>scripts\uiz_string_real_getFracLength.gml</script>
-          <script>scripts\uiz_string_digits.gml</script>
-        </scripts>
         <scripts name="updater">
           <script>scripts\uiz_updater_setsurface.gml</script>
           <script>scripts\uiz_updater_hasPositionChanged.gml</script>
@@ -2154,7 +2155,6 @@
       <objects name="examples, tutorials and templates">
         <object>objects\obj_sort_example</object>
         <object>objects\obj_uiz_basictutorial</object>
-        <object>objects\obj_uiz_example1_old</object>
         <object>objects\obj_uiz_ownuiz</object>
         <object>objects\obj_uiZ_ownuiz_example1</object>
         <objects name="serverbrowser">

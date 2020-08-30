@@ -1,4 +1,4 @@
-///uiz_realgetdecimalpoints(real, points to check)
+///uiz_realGetDecimalPoints(real, points to check)
 //returns the number of decimal points for a real
 /*
 returns the number of decimal points of a real.

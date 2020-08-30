@@ -1,4 +1,4 @@
-///uiz_getnumbers(real)
+///uiz_getNumbers(real)
 /*
 Gets the amount of numbers of a number. (In base 10)
 Doesn't work with decimal points.

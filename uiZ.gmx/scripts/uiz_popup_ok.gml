@@ -59,8 +59,8 @@ p.image_alpha=0.3;
 //p.adddepth=1000000
 uiz_fixgeneralpos(p)
 }
-var dx=uiz_toDpi(string_width(argument[0]))
-var dy=uiz_toDpi(string_height(argument[0]))
+var dx=uiz_pxToDpi(string_width(argument[0]))
+var dy=uiz_pxToDpi(string_height(argument[0]))
 var w=uiz_window_create(dx+0.5,dp,dy+1,dp);
 if argument[2]=1 then{uiz_setParent(w,p)}
 w.addwindowmydepth=500000

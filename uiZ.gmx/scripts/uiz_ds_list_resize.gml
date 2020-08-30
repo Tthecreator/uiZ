@@ -1,4 +1,4 @@
-///uiz_ds_list_resize(dslist,newsize,addvalue)
+///uiz_ds_list_resize(dslist, newsize, addvalue)
 /*
 Takes a ds list and changes the size of the list by either deleting (if newsizeds_list_size) or doing nothing (if newsize=ds_list_size).
 Whenever newsize>ds_list_size new values will be added to the list, but you will need to specify with what value these spaces should be filled in. This is argument2, addvalue.

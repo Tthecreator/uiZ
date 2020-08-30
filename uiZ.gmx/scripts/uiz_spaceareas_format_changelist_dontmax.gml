@@ -1,4 +1,4 @@
-///uiz_spaceareas_format_changelist(ds list,space)
+///uiz_spaceAreas_format_changeList_dontMax(ds list,space)
 var glist=argument0;
 var msz=argument1;
 //slist=ds_list_create()
