@@ -18,7 +18,7 @@ Returns the id of a windowid or frameid, depending on the value of argument 2(bl
 How to customize even further?
 The window exists out of the following objects:
 -obj_uiZ_window
--obj_uiZ_drawtextlines;
+-obj_uiZ_text;
 -obj_uiZ_square if block background is on.
 -two "obj_uiZ_3waybutton", one for "yes" and one for "no"
 
@@ -92,17 +92,17 @@ w.windowtext=argument[1]
 uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
-var t=instance_create(0,0,obj_uiZ_drawtextlines)
+var t=instance_create(0,0,obj_uiZ_text)
 uiz_setParent(t,wf)
 t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
 t.posvalh=0.5
-t.center=1
-//t.posvalhtype=dp
-//t.posvalh=1
-t.text=argument[0]
+t.halign=fa_center;
+t.valign=fa_center;
+uiz_text_setmultiline(t, true);
+uiz_text_settext(t, argument[0]);
 if argument_count=4 then{t.font=argument[3]}
 uiz_fixgeneralpos(t)
 //no

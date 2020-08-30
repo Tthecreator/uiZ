@@ -1202,8 +1202,6 @@
         <scripts name="objectfunctions">
           <scripts name="events">
             <script>scripts\uiz_objinit.gml</script>
-            <script>scripts\uiz_beginstep_nomouse.gml</script>
-            <script>scripts\uiz_beginstep.gml</script>
             <script>scripts\uiz_endobject.gml</script>
             <script>scripts\uiz_mouse_docheck.gml</script>
             <script>scripts\uiz_mouse_docheck_scrollable.gml</script>
@@ -2155,8 +2153,6 @@
       <objects name="examples, tutorials and templates">
         <object>objects\obj_sort_example</object>
         <object>objects\obj_uiz_basictutorial</object>
-        <object>objects\obj_uiz_ownuiz</object>
-        <object>objects\obj_uiZ_ownuiz_example1</object>
         <objects name="serverbrowser">
           <object>objects\obj_uiZ_serverbrowser</object>
         </objects>
