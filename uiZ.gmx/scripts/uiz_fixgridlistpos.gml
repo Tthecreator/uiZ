@@ -34,7 +34,7 @@ with(t) {
         scrollheight = (1+uiz_gridlist_getheight()) * h - height;//+1 for topbar -height to offset visible area
         if scrollheight < scroll then {
             scroll = scrollheight;
-            uiz_drawscrollbar_setvalue(scroll_intern, scroll);
+            uiz_drawscrollbar_setValue(scroll_intern, scroll);
         }
         if scrollheight > 0 and enablescroll = true then {
             //enable scrollbar
@@ -177,14 +177,14 @@ with(t) {
 
         if doscroll = true then {
             //uiz_drawscrollbar_vertical_step(rlx - scrollbarw + 1, ry, rlx, rly, scroll_intern, scrollheight, true, h, scrollbarAnimation, scrollbarAnimationTime);
-            scroll = uiz_drawscrollbar_getvalue(scroll_intern);
+            scroll = uiz_drawscrollbar_getValue(scroll_intern);
             if scroll>scrollheight then{
                 scroll = scrollheight;
-                uiz_drawscrollbar_setvalue(scroll_intern,scrollheight);
+                uiz_drawscrollbar_setValue(scroll_intern,scrollheight);
             }
             if scroll<0 then{
                 scroll = 0;
-                uiz_drawscrollbar_setvalue(scroll_intern,0);
+                uiz_drawscrollbar_setValue(scroll_intern,0);
             }
             uiz_gridlist_startfinish();
         } else {

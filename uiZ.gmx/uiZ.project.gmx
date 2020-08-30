@@ -1881,7 +1881,6 @@
         <scripts name="scroll">
           <scripts name="internal">
             <script>scripts\uiz_drawscrollbar_update.gml</script>
-            <script>scripts\uiz_drawscrollbar_update_full.gml</script>
             <script>scripts\uiz_drawscrollbar_update_view.gml</script>
             <script>scripts\uiz_drawscrollbar_getScroll.gml</script>
             <script>scripts\uiz_drawscrollbar_getMstate.gml</script>
@@ -1890,25 +1889,25 @@
             <script>scripts\uiz_drawscrollbar_vertical_legacy.gml</script>
             <script>scripts\uiz_drawscrollbar_horizontal_legacy.gml</script>
             <script>scripts\uiz_drawscrollbar_legacy.gml</script>
+            <script>scripts\uiz_menu_scroll_set.gml</script>
+            <script>scripts\uiz_menuholder_create.gml</script>
+            <script>scripts\uiz_menuobject_create.gml</script>
+            <script>scripts\uiz_menu_scroll_add.gml</script>
           </scripts>
           <script>scripts\uiz_drawscrollbar_deselect.gml</script>
-          <script>scripts\uiz_drawscrollbar_getscrollvalue.gml</script>
-          <script>scripts\uiz_drawscrollbar_getselected.gml</script>
-          <script>scripts\uiz_drawscrollbar_getvalue.gml</script>
+          <script>scripts\uiz_drawscrollbar_getSelected.gml</script>
+          <script>scripts\uiz_drawscrollbar_getValue.gml</script>
           <script>scripts\uiz_drawscrollbar_horizontal_draw.gml</script>
           <script>scripts\uiz_drawscrollbar_horizontal_step.gml</script>
           <script>scripts\uiz_drawscrollbar_init.gml</script>
           <script>scripts\uiz_drawscrollbar_isAnimating.gml</script>
-          <script>scripts\uiz_drawscrollbar_setvalue.gml</script>
-          <script>scripts\uiz_drawscrollbar_setvalue_animation.gml</script>
+          <script>scripts\uiz_drawscrollbar_setValue.gml</script>
+          <script>scripts\uiz_drawscrollbar_setValue_animation.gml</script>
           <script>scripts\uiz_drawscrollbar_update_mark.gml</script>
           <script>scripts\uiz_drawscrollbar_update_mark_full.gml</script>
+          <script>scripts\uiz_drawscrollbar_update_full.gml</script>
           <script>scripts\uiz_drawscrollbar_vertical_draw.gml</script>
           <script>scripts\uiz_drawscrollbar_vertical_step.gml</script>
-          <script>scripts\uiz_menu_scroll_add.gml</script>
-          <script>scripts\uiz_menu_scroll_set.gml</script>
-          <script>scripts\uiz_menuholder_create.gml</script>
-          <script>scripts\uiz_menuobject_create.gml</script>
         </scripts>
         <scripts name="updater">
           <script>scripts\uiz_updater_setsurface.gml</script>

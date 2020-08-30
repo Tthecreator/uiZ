@@ -29,7 +29,7 @@ with(t) {
         scrollheight = uiz_gridlist_getheight() * h - height;
         if scrollheight < scroll then {
             scroll = scrollheight;
-            uiz_drawscrollbar_setvalue(scroll_intern, scroll);
+            uiz_drawscrollbar_setValue(scroll_intern, scroll);
         }
 
         if scrollheight > height and enablescroll = true then {
@@ -144,7 +144,7 @@ with(t) {
 
         if doscroll = true then {
             scroll_intern = uiz_drawscrollbar_vertical_step(rlx - scrollbarw + 1, ry, rlx, rly, scroll_intern, scrollheight, true, h);
-            scroll = uiz_drawscrollbar_getvalue(scroll_intern)
+            scroll = uiz_drawscrollbar_getValue(scroll_intern)
             uiz_gridlist_startfinish();
         } else {
             scroll_start = 0;

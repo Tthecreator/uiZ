@@ -91,7 +91,7 @@ uiz_drawscrollbar_vertical_step(rx,ry,rlx,rly,uscroll,scrolllines,middlemousescr
 }else{
 uiz_drawscrollbar_horizontal_step(rx,ry,rlx,rly,uscroll,scrolllines,middlemousescroll,scrollspeed,scrollbarAnimation, scrollbarAnimationTime);
 }
-scroll=uiz_drawscrollbar_getscrollvalue(uscroll);
+scroll=uiz_drawscrollbar_getValue(uscroll);
 </string>
           </argument>
         </arguments>

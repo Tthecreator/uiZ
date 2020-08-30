@@ -10,8 +10,8 @@ if scrolllines > 0 then{
     scroll=uiz_drawscrollbar_init();
 }
 var update = false;
-if doscroll and uiz_drawscrollbar_getvalue(scroll) > scrolllines then{
-    uiz_drawscrollbar_setvalue(scroll,scrolllines);
+if doscroll and uiz_drawscrollbar_getValue(scroll) > scrolllines then{
+    uiz_drawscrollbar_setValue(scroll,scrolllines);
     var oldStartPos = startPos;
     startPos = scrolllines div fontHeight;
     startOffset = -(scrolllines mod fontHeight);

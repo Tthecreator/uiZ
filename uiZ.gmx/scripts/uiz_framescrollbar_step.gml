@@ -4,7 +4,7 @@ uiz_drawscrollbar_vertical_step(rx,ry,rlx,rly,uscroll,scrolllines,true,scrollspe
 }else{
 uiz_drawscrollbar_horizontal_step(rx,ry,rlx,rly,uscroll,scrolllines,true,scrollspeed, scrollbarAnimation, scrollbarAnimationTime);
 }
-scroll=uiz_drawscrollbar_getvalue(uscroll)
+scroll=uiz_drawscrollbar_getValue(uscroll)
 
 
 if oscroll!=scroll and instance_exists(frame) then{

@@ -39,7 +39,7 @@ if selection1Line>=0 then{
         //textList[| selection1Line+1] = secondPart;
             ds_list_add(textList, secondPart);
             //scroll down to the end, if we are currently scrolled to the end.
-            if doscroll and uiz_drawscrollbar_getscrollvalue(scroll)==scrolllines then{
+            if doscroll and uiz_drawscrollbar_getValue(scroll)==scrolllines then{
                 //scroll down to end
                 scrollToBottom = true;
             }
@@ -56,7 +56,7 @@ if selection1Line>=0 then{
     }
     uiz_textarea_moveCursorInView();
     //if scrollToBottom then{
-    //    uiz_drawscrollbar_setvalue(scroll,scrolllines);
+    //    uiz_drawscrollbar_setValue(scroll,scrolllines);
     //}
     
     uiz_textarea_registerTypeCursor()

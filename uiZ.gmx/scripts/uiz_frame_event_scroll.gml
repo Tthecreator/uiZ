@@ -11,7 +11,7 @@ if scrolly = true or scrollx = true or snapm = true then {
     /***************************************************
       middle mouse scroll and drag
      ***************************************************/
-     if uiz_drawscrollbar_getselected(uscrollx)=false and uiz_drawscrollbar_getselected(uscrolly)=false then{
+     if uiz_drawscrollbar_getSelected(uscrollx)=false and uiz_drawscrollbar_getSelected(uscrolly)=false then{
     if global.mouseoverscrollable = id and snapm = false then {
         if (scrolly = true or scrollx = true) and mouse_check_button_pressed(mb_middle) then {
             snapm = true;
@@ -76,13 +76,13 @@ if scrolly = true or scrollx = true or snapm = true then {
     
     if cx = true then {
         addx = clamp(addx, mscrollbarx, 0)
-        uiz_drawscrollbar_setvalue(uscrollx,-addx);
+        uiz_drawscrollbar_setValue(uscrollx,-addx);
         uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
     }
     
     if cy = true then {
         addy = clamp(addy, mscrollbary, 0)
-        uiz_drawscrollbar_setvalue(uscrolly,-addy);
+        uiz_drawscrollbar_setValue(uscrolly,-addy);
         uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
     }
     

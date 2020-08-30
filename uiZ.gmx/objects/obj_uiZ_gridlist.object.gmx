@@ -225,7 +225,7 @@ if live_call() return live_result;
 if doscroll=true then{
     uiz_drawscrollbar_vertical_step(rlx-scrollbarw+1,ry,rlx,rly,scroll_intern,scrollheight,true,h*scrollspeed,scrollbarAnimation, scrollbarAnimationTime);
 
-    scroll=uiz_drawscrollbar_getvalue(scroll_intern);
+    scroll=uiz_drawscrollbar_getValue(scroll_intern);
     uiz_gridlist_startfinish();
     
     //check if scroll has changed
@@ -268,7 +268,7 @@ if doscroll=true then{
             <kind>1</kind>
             <string>///get current selection:
 if live_call() return live_result;
-if uiz_drawscrollbar_getselected(scroll_intern)=false /*and uiz_getmouse_x()&lt;rlx-scrollbarw*/ and ds_exists(mainlist, ds_type_list) and ds_exists(sizelist, ds_type_list) then{
+if uiz_drawscrollbar_getSelected(scroll_intern)=false /*and uiz_getmouse_x()&lt;rlx-scrollbarw*/ and ds_exists(mainlist, ds_type_list) and ds_exists(sizelist, ds_type_list) then{
     var sz = ds_list_size(mainlist);
     if sz&gt;0 and sz=ds_list_size(sizelist) then{
         var mx = uiz_getmouse_x()-rx;

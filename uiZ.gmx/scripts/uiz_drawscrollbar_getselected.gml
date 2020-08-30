@@ -1,4 +1,4 @@
-///uiz_drawscrollbar_getselected(scroll)
+///uiz_drawscrollbar_getSelected(scroll)
 /*
 returns whether the mouse has grabbed the scollbar
 The "scroll" value is the value used and returned by the normal uiz_drawscrollbar_ functions.

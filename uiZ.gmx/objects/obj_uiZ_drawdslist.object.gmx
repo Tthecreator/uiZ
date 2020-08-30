@@ -131,7 +131,7 @@ if doscroll=true then{
 var update = uiz_drawscrollbar_vertical_step(rlx-scrollwidth+1,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
 if update then{
 oldaddy=addy;
-addy=-uiz_drawscrollbar_getvalue(scroll)
+addy=-uiz_drawscrollbar_getValue(scroll)
 if addy!=oldaddy then{
 updater_old=-1;
 updater_new=-1;

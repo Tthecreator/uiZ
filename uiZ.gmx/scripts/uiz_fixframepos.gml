@@ -12,7 +12,7 @@ with(t) {
         mscrollbarx = -uiz_getMaxXScrollInObject(id)
         if addx < mscrollbarx then {
             addx = clamp(addx, mscrollbarx, 0);
-            uiz_drawscrollbar_setvalue(uscrollx,-addx);
+            uiz_drawscrollbar_setValue(uscrollx,-addx);
             uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
         }
 
@@ -24,7 +24,7 @@ with(t) {
         mscrollbary = -uiz_getMaxYScrollInObject(id)
         if addy < mscrollbary then {
             addy = clamp(addy, mscrollbary, 0)
-            uiz_drawscrollbar_setvalue(uscrolly,-addy);
+            uiz_drawscrollbar_setValue(uscrolly,-addy);
             uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
         }
         if mscrollbary < 0 and scrollbary = true then {

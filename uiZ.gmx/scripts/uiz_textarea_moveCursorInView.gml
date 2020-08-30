@@ -9,20 +9,20 @@ if doscroll then{
     if sLine<=ceil(listFrom) then{
         sdbm("movecursorview sLine<=ceil(listFrom)")
         listFromPx = sLine*fontHeight;
-        uiz_drawscrollbar_setvalue(scroll, listFromPx);
+        uiz_drawscrollbar_setValue(scroll, listFromPx);
         uiz_updater_FixViews_inside();
         uiz_textarea_registerTypeCursor();
         return true;
     }else if sLine>=floor(listTo){
-        var curScroll = uiz_drawscrollbar_getvalue(scroll);
+        var curScroll = uiz_drawscrollbar_getValue(scroll);
         listFromPx = (sLine+1)*fontHeight-iheight;
         if listFromPx<0 then{
             listFromPx=0;
         }
-        uiz_drawscrollbar_setvalue(scroll, listFromPx);
+        uiz_drawscrollbar_setValue(scroll, listFromPx);
         uiz_updater_FixViews_inside();
         uiz_textarea_registerTypeCursor();
-        sdbm("movecursorview sLine>=floor(listTo)",curScroll,uiz_drawscrollbar_getvalue(scroll))
+        sdbm("movecursorview sLine>=floor(listTo)",curScroll,uiz_drawscrollbar_getValue(scroll))
         return true;
     }
     

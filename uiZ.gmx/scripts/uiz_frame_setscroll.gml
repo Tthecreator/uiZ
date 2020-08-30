@@ -5,11 +5,11 @@
 with(argument0){
     if argument1 == uiz_horizontal then{
         addx = clamp(-argument2, mscrollbarx, 0);
-        uiz_drawscrollbar_setvalue(uscrollx,-addx);
+        uiz_drawscrollbar_setValue(uscrollx,-addx);
         uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
     }else{
         addy = clamp(-argument2, mscrollbary, 0)
-        uiz_drawscrollbar_setvalue(uscrolly,-addy);
+        uiz_drawscrollbar_setValue(uscrolly,-addy);
         uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
     }
     uiz_fixChildren(id,true);

@@ -30,4 +30,4 @@ uiz_fixChildren(frame,true)
 }
 }else{scrolllines=0;}
 }
-uiz_drawscrollbar_setvalue(uscroll,scroll)
+uiz_drawscrollbar_setValue(uscroll,scroll)

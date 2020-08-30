@@ -16,7 +16,7 @@ if owidth!=iwidth or (oheight!=iheight and iheight<listH/*(oheight>listH or ihei
         if maxScrollSize<listFromPx then{
             //we scrolled to far, so we need to automatically scroll back a little bit
             sdbm("scrolledtofar");
-            uiz_drawscrollbar_setvalue(scroll,maxScrollSize);
+            uiz_drawscrollbar_setValue(scroll,maxScrollSize);
             listFromPx = maxScrollSize;
         }
     }else{

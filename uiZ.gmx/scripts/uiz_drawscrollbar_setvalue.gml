@@ -1,4 +1,4 @@
-///uiz_drawscrollbar_setvalue(scroll,newvalue)
+///uiz_drawscrollbar_setValue(scroll, newValue)
 /*
 Changes how far a scrollbar has scrolled inside a scrollbar's "scroll" value.
 The change is instance, without animation.

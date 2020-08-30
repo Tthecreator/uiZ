@@ -487,7 +487,7 @@ var scrbx = ilx-scblwidth;
 }else{
 var scrbx = ilx;
 }
-var isScrollbarSelected = uiz_drawscrollbar_getselected(scroll);
+var isScrollbarSelected = uiz_drawscrollbar_getSelected(scroll);
 //kmouseover=uiz_mouse_isOver_object_leftCheck(id);
 //sdbm("cheking...",kmouseover,doscroll,uiz_getmouse_x(),scrbx, isScrollbarSelected, last_isScrollbarSelected)
 if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()&lt;scrbx &amp;&amp; !isScrollbarSelected &amp;&amp; !last_isScrollbarSelected)) then{

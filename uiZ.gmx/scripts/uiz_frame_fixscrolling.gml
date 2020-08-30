@@ -19,7 +19,7 @@ if updatescrolly = true then{//check for changes
         if addy < mscrollbary then {//clamp scrollbar
             c = true;
             addy = clamp(addy, mscrollbary, 0)
-            uiz_drawscrollbar_setvalue(uscrolly,-addy)
+            uiz_drawscrollbar_setValue(uscrolly,-addy)
         }
         if sign(mscrollbary) != sign(omscrollbary) then {//check to disable/enable scrollbar
             uy = true
@@ -34,7 +34,7 @@ if updatescrollx = true then {//check for changes
         if addx < mscrollbarx then {//clamp scrollbar
             c = true;
             addx = clamp(addx, mscrollbarx, 0)
-            uiz_drawscrollbar_setvalue(uscrollx,-addx)
+            uiz_drawscrollbar_setValue(uscrollx,-addx)
         }
         if sign(mscrollbarx) != sign(omscrollbarx) then {//check to disable/enable scrollbar
             ux = true

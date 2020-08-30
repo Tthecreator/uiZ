@@ -1,4 +1,4 @@
-///uiz_drawscrollbar_setvalue_animation(scroll,newvalue,animation)
+///uiz_drawscrollbar_setValue_animation(scroll, newValue, animation)
 /*
 Changes how far a scrollbar has scrolled inside a scrollbar's "scroll" value.
 The animation parameter should be the same as the animation parameter in uiz_drawscrollbar_horizontal/vertical_step.

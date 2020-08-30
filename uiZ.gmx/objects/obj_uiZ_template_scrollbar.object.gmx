@@ -146,9 +146,9 @@ if scrollLines&gt;0 then{//we can't enable the scrollbar if there isn't enough s
           <argument>
             <kind>1</kind>
             <string>if doScroll then{
-    var oldScroll = uiz_drawscrollbar_getvalue(scroll);
+    var oldScroll = uiz_drawscrollbar_getValue(scroll);
     uiz_drawscrollbar_vertical_step(scrollbarX, ry, rlx, rly, scroll, scrollLines, true, scrollSpeed, scrollbarAnimation, scrollbarAnimationTime);
-    if oldScroll != uiz_drawscrollbar_getvalue(scroll){//if the scroll value has changed then we need to tell uiZ to redraw this object.
+    if oldScroll != uiz_drawscrollbar_getValue(scroll){//if the scroll value has changed then we need to tell uiZ to redraw this object.
         uiz_updater_FixViews();
     }
 }
@@ -203,7 +203,7 @@ if doScroll then{
     uiz_drawscrollbar_vertical_draw(scrollbarX, ry, rlx, rly, scrollbarSprite, scrollbarColor, scrollbarBackTexMode, scroll, scrollLines);
 }
 
-draw_square_colour(rx, ry - uiz_drawscrollbar_getvalue(scroll), scrollbarX - 1, ry + squareHeight, c_red, c_red, c_green, c_green, false, alpha);
+draw_square_colour(rx, ry - uiz_drawscrollbar_getValue(scroll), scrollbarX - 1, ry + squareHeight, c_red, c_red, c_green, c_green, false, alpha);
 
 uiz_containend()
 }
