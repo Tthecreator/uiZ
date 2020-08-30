@@ -17,14 +17,14 @@ Returns the id of a windowid or frameid, depending on the value of argument 2(bl
 
 How to customize even further?
 The window exists out of the following objects:
--obj_uiZ_windowholder;
+-obj_uiZ_window;
 -obj_uiZ_drawtextlines;
 -obj_uiZ_popupok;
 -obj_uiZ_square if block background is on.
 -obj_uiZ_stringbox.
 
 In the examples below, "r" refers to the returned item by uiz_popup_ok().
-The obj_uiZ_windowholder object can always be accessed trough "r.window".
+The obj_uiZ_window object can always be accessed trough "r.window".
 The obj_uiZ_drawtextlines object can always be accessed trough "r.textlines".
 The obj_uiZ_popupok object can always be accessed trough "r.popup"
 The obj_uiZ_square can be accessed trough "r.square", but only if argument2 is true.

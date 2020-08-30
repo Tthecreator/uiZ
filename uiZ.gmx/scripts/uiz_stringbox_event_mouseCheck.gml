@@ -44,7 +44,7 @@ if global.systemsupportskeyboard = true then {
         //there is no break statement on purpose
         case 4:
         if hasmouse=true then{
-            uiz_mouse_unfreeze();
+            uiz_mouse_unFreeze();
             hasmouse=false;
             }
             if selpmin=selpmax then{//check if selection is non existant

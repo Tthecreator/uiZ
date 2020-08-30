@@ -140,14 +140,14 @@ uiz_frameset_fixThickness();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover = uiz_mouse_isonobject_leftcheck(id);
+            <string>kmouseover = uiz_mouse_isOver_object_leftCheck(id);
 uiz_frameset_colanchor_CalculateOverFrameBar();
 
 if kmouseover==uiz_mousereleased {
     if snaptomouse = 1 then {
         stopsnap = 0
         snaptomouse = 0
-        uiz_mouse_unfreeze();
+        uiz_mouse_unFreeze();
         uiz_updater_unstep();
     }
 }

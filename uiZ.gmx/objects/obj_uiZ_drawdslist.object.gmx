@@ -197,7 +197,7 @@ if ds_exists(uselist,ds_type_list) then{
             <kind>1</kind>
             <string>if live_call() return live_result;
   if ds_exists(uselist,ds_type_list) then{
-//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+//kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 /*
 if global.mouseoverframe=parent then{
 if mouse_wheel_up() then{fromscroll=scroll;count=0;toscroll-=scrollspeed/height}

@@ -314,7 +314,7 @@ if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
         if doscroll then{srlx=scrollBarX-1;}
         drawDraggingItem=draggingItem;
         draggingItem=-1;
-        uiz_mouse_unfreeze();
+        uiz_mouse_unFreeze();
         script_execute(onDragScript,id,drawDraggingItem,currentSelectionList, (uiz_getmouse_y()-(ry+fontHeight*(currentSelectionPos-startPos)+startOffset))/fontHeight,true);
         uiz_updater_FixViews_area_selfmarked(rx,ry+startOffset+draggingItemRelativePos*fontHeight,srlx,ry+startOffset+(draggingItemRelativePos+1)*fontHeight);
         updateDragArea = true;
@@ -324,7 +324,7 @@ if draggingItem!=-1 and mouse_check_button_released(mb_left) then{
     
 if mouse_check_button_released(mb_left) then{
     if draggingItem!=-1 then{
-        uiz_mouse_unfreeze();
+        uiz_mouse_unFreeze();
     }//else{
         
 //    }

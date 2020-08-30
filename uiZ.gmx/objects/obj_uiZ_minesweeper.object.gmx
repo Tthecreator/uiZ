@@ -92,7 +92,7 @@ uiz_minesweeper_reset(id)
             <string>///make the whole game run
 update=false;
 updated=false;
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 if kmouseover&gt;0 and won=-1 then{
 var mx=uiz_getmouse_x()-rx;
 var my=uiz_getmouse_y()-ry;

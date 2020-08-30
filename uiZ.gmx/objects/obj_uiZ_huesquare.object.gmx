@@ -181,7 +181,7 @@ icolor=make_colour_hsv(128+inh,255-ins,255)
           <argument>
             <kind>1</kind>
             <string>if (live_call()) return live_result;
-//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+//kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 if kmouseover=2 then{
 uiz_select(id)
 }else{uiz_unselect(id)}

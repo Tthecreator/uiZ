@@ -238,7 +238,7 @@ uiz_updater_FixViews_area(min(oldMinX,knobX),min(oldMinY,knobY),max(oldMaxX,knob
           <argument>
             <kind>1</kind>
             <string>updated=false;
-//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+//kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
 if kmouseover=3 then{
 //flip value
@@ -307,7 +307,7 @@ uiz_back_at_item(knobX,knobY,knobX+knobSizePx,knobY+knobSizePx);
 //if width&gt;height then{
 /*
 if !sprite_exists(sprite) then{
-uiz_km_setcolor(spritecolor,spriteoncolor,spriteincolor)
+uiz_km_setColor(spritecolor,spriteoncolor,spriteincolor)
 if(width&gt;height){
 draw_circle(knobX+knobSizePx/2,ry+height/2-1,knobSizePx/2,0)
 }else{

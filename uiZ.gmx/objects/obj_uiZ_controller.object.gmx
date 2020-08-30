@@ -1286,7 +1286,7 @@ global.uiz_mouseis=cr_default;
 if global.mouseover!=id then{
     with(global.mouseover){
         with(global.mouseover){
-            var k=uiz_mouse_isonobject_leftcheck(id);
+            var k=uiz_mouse_isOver_object_leftCheck(id);
                 ///sdbm("kmosueoverGet,",k,kmouseover,id,global.uiz_stepNumber);
                 if k!=kmouseover then{
                     kmouseover=k;

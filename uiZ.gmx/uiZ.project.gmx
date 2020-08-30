@@ -724,35 +724,35 @@
             <script>scripts\uiz_animation_capture_newState.gml</script>
             <script>scripts\uiz_animation_wigle.gml</script>
           </scripts>
-        </scripts>
-        <scripts name="background">
-          <scripts name="_item_">
-            <script>scripts\uiz_background_item_texturescript.gml</script>
-            <script>scripts\uiz_background_item_texturescript_ext.gml</script>
-            <script>scripts\uiz_background_item_texturemode.gml</script>
-            <script>scripts\uiz_background_item_normal.gml</script>
-            <script>scripts\uiz_background_item_over.gml</script>
-            <script>scripts\uiz_background_item_in.gml</script>
-            <script>scripts\uiz_background_item_out.gml</script>
+          <scripts name="background">
+            <scripts name="_item_">
+              <script>scripts\uiz_background_item_texturescript.gml</script>
+              <script>scripts\uiz_background_item_texturescript_ext.gml</script>
+              <script>scripts\uiz_background_item_texturemode.gml</script>
+              <script>scripts\uiz_background_item_normal.gml</script>
+              <script>scripts\uiz_background_item_over.gml</script>
+              <script>scripts\uiz_background_item_in.gml</script>
+              <script>scripts\uiz_background_item_out.gml</script>
+            </scripts>
+            <scripts name="_topbar_">
+              <script>scripts\uiz_background_topbar_texturescript.gml</script>
+              <script>scripts\uiz_background_topbar_texturescript_ext.gml</script>
+              <script>scripts\uiz_background_topbar_texturemode.gml</script>
+              <script>scripts\uiz_background_topbar_normal.gml</script>
+              <script>scripts\uiz_background_topbar_over.gml</script>
+              <script>scripts\uiz_background_topbar_in.gml</script>
+              <script>scripts\uiz_background_topbar_out.gml</script>
+            </scripts>
+            <script>scripts\uiz_background_in.gml</script>
+            <script>scripts\uiz_background_normal.gml</script>
+            <script>scripts\uiz_background_out.gml</script>
+            <script>scripts\uiz_background_over.gml</script>
+            <script>scripts\uiz_background_texturemode.gml</script>
+            <script>scripts\uiz_background_texturescript.gml</script>
+            <script>scripts\uiz_background_texturescript_ext.gml</script>
+            <script>scripts\uiz_background_set.gml</script>
+            <script>scripts\uiz_background_setEnabled.gml</script>
           </scripts>
-          <scripts name="_topbar_">
-            <script>scripts\uiz_background_topbar_texturescript.gml</script>
-            <script>scripts\uiz_background_topbar_texturescript_ext.gml</script>
-            <script>scripts\uiz_background_topbar_texturemode.gml</script>
-            <script>scripts\uiz_background_topbar_normal.gml</script>
-            <script>scripts\uiz_background_topbar_over.gml</script>
-            <script>scripts\uiz_background_topbar_in.gml</script>
-            <script>scripts\uiz_background_topbar_out.gml</script>
-          </scripts>
-          <script>scripts\uiz_background_in.gml</script>
-          <script>scripts\uiz_background_normal.gml</script>
-          <script>scripts\uiz_background_out.gml</script>
-          <script>scripts\uiz_background_over.gml</script>
-          <script>scripts\uiz_background_texturemode.gml</script>
-          <script>scripts\uiz_background_texturescript.gml</script>
-          <script>scripts\uiz_background_texturescript_ext.gml</script>
-          <script>scripts\uiz_background_set.gml</script>
-          <script>scripts\uiz_background_setEnabled.gml</script>
         </scripts>
         <scripts name="background_scripts">
           <script>scripts\uiz_back_circlestitch.gml</script>
@@ -965,7 +965,6 @@
             <script>scripts\uiz_getscalervalues.gml</script>
             <script>scripts\uiz_getscalervalues_xy.gml</script>
             <script>scripts\uiz_getscalervalues_counter.gml</script>
-            <script>scripts\uiz_getscalervalues_bak.gml</script>
             <script>scripts\uiz_postypeisvariable.gml</script>
             <script>scripts\uiz_fix_Base_Margins.gml</script>
             <script>scripts\uiz_fix_Background.gml</script>
@@ -1106,57 +1105,48 @@
             <script>scripts\uiz_resizegridrowframes.gml</script>
           </scripts>
         </scripts>
-        <scripts name="main back scripts">
-          <script>scripts\uiz_back.gml</script>
-          <script>scripts\uiz_back_at.gml</script>
-          <script>scripts\uiz_back_margin.gml</script>
-          <script>scripts\uiz_back_topbar.gml</script>
-          <script>scripts\uiz_back_at_topbar.gml</script>
-          <script>scripts\uiz_back_item.gml</script>
-          <script>scripts\uiz_back_at_item.gml</script>
-          <script>scripts\uiz_back_captureSettings.gml</script>
-          <script>scripts\uiz_back_resumeSettings.gml</script>
-        </scripts>
         <scripts name="mouse">
-          <script>scripts\uiz_mouse_docheck.gml</script>
-          <script>scripts\uiz_mouse_docheck_scrollable.gml</script>
-          <script>scripts\uiz_mouse_ison.gml</script>
-          <script>scripts\uiz_mouse_ison_pressingleft.gml</script>
-          <script>scripts\uiz_mouse_ison_pressingright.gml</script>
-          <script>scripts\uiz_mouse_ison_releasedleft.gml</script>
-          <script>scripts\uiz_mouse_ison_releasedright.gml</script>
-          <script>scripts\uiz_mouse_isonframe.gml</script>
-          <script>scripts\uiz_mouse_isonframe_pressingleft.gml</script>
-          <script>scripts\uiz_mouse_isonframe_pressingright.gml</script>
-          <script>scripts\uiz_mouse_isonframe_releasedright.gml</script>
-          <script>scripts\uiz_mouse_isonframe_releasedleft.gml</script>
-          <script>scripts\uiz_mouse_isonobject.gml</script>
-          <script>scripts\uiz_mouse_isonobject_leftcheck.gml</script>
-          <script>scripts\uiz_mouse_isonobject_pressingleft.gml</script>
-          <script>scripts\uiz_mouse_isonobject_pressingright.gml</script>
-          <script>scripts\uiz_mouse_isonobject_releasedleft.gml</script>
-          <script>scripts\uiz_mouse_isonobject_releasedright.gml</script>
-          <script>scripts\uiz_mouse_isonframe_leftcheck.gml</script>
-          <script>scripts\uiz_mouse_isonwindow_leftcheck.gml</script>
-          <script>scripts\uiz_mouse_isonwindow.gml</script>
-          <script>scripts\uiz_mouse_isonwindow_pressingleft.gml</script>
-          <script>scripts\uiz_km_retval.gml</script>
-          <script>scripts\uiz_km_setcolor.gml</script>
-          <script>scripts\uiz_setmousesafety.gml</script>
-          <script>scripts\uiz_set_cursor.gml</script>
-          <script>scripts\uiz_compute_cursor.gml</script>
-          <script>scripts\uiz_overui.gml</script>
+          <scripts name="freezing">
+            <script>scripts\uiz_mouse_setMouseSafety.gml</script>
+            <script>scripts\uiz_mouse_unFreeze.gml</script>
+            <script>scripts\uiz_mouse_freeze.gml</script>
+            <script>scripts\uiz_mouse_isFrozen.gml</script>
+            <script>scripts\uiz_mouse_isFrozen_on.gml</script>
+          </scripts>
+          <scripts name="internal">
+            <script>scripts\uiz_compute_cursor.gml</script>
+          </scripts>
           <script>scripts\uiz_getmouse_x.gml</script>
+          <script>scripts\uiz_getmouse_x_last.gml</script>
           <script>scripts\uiz_getmouse_y.gml</script>
           <script>scripts\uiz_getmouse_y_last.gml</script>
-          <script>scripts\uiz_getmouse_x_last.gml</script>
-          <script>scripts\uiz_mouse_freeze.gml</script>
-          <script>scripts\uiz_mouse_unfreeze.gml</script>
-          <script>scripts\uiz_mouse_isFrozen.gml</script>
-          <script>scripts\uiz_mouse_isFrozen_on.gml</script>
           <script>scripts\uiz_isMouseSwipeClickWhiteListed.gml</script>
+          <script>scripts\uiz_km_retval.gml</script>
+          <script>scripts\uiz_km_setColor.gml</script>
           <script>scripts\uiz_mouse_getStateWithin.gml</script>
           <script>scripts\uiz_mouse_isDoubleClick.gml</script>
+          <script>scripts\uiz_mouse_isOver.gml</script>
+          <script>scripts\uiz_mouse_isOver_pressingLeft.gml</script>
+          <script>scripts\uiz_mouse_isOver_pressingRight.gml</script>
+          <script>scripts\uiz_mouse_isOver_releasedLeft.gml</script>
+          <script>scripts\uiz_mouse_isOver_releasedRight.gml</script>
+          <script>scripts\uiz_mouse_isOver_frame.gml</script>
+          <script>scripts\uiz_mouse_isOver_frame_leftCheck.gml</script>
+          <script>scripts\uiz_mouse_isOver_frame_pressingLeft.gml</script>
+          <script>scripts\uiz_mouse_isOver_frame_pressingRight.gml</script>
+          <script>scripts\uiz_mouse_isOver_frame_releasedLeft.gml</script>
+          <script>scripts\uiz_mouse_isOver_frame_releasedRight.gml</script>
+          <script>scripts\uiz_mouse_isOver_object.gml</script>
+          <script>scripts\uiz_mouse_isOver_object_leftCheck.gml</script>
+          <script>scripts\uiz_mouse_isOver_object_pressingLeft.gml</script>
+          <script>scripts\uiz_mouse_isOver_object_pressingRight.gml</script>
+          <script>scripts\uiz_mouse_isOver_object_releasedLeft.gml</script>
+          <script>scripts\uiz_mouse_isOver_object_releasedRight.gml</script>
+          <script>scripts\uiz_mouse_isOver_window.gml</script>
+          <script>scripts\uiz_mouse_isOver_window_leftCheck.gml</script>
+          <script>scripts\uiz_mouse_isOver_window_pressingLeft.gml</script>
+          <script>scripts\uiz_isOverUi.gml</script>
+          <script>scripts\uiz_set_cursor.gml</script>
         </scripts>
         <scripts name="numbers">
           <script>scripts\uiz_ds_list_resize.gml</script>
@@ -1182,6 +1172,19 @@
             <script>scripts\uiz_beginstep_nomouse.gml</script>
             <script>scripts\uiz_beginstep.gml</script>
             <script>scripts\uiz_endobject.gml</script>
+            <script>scripts\uiz_mouse_docheck.gml</script>
+            <script>scripts\uiz_mouse_docheck_scrollable.gml</script>
+          </scripts>
+          <scripts name="main back scripts">
+            <script>scripts\uiz_back.gml</script>
+            <script>scripts\uiz_back_at.gml</script>
+            <script>scripts\uiz_back_margin.gml</script>
+            <script>scripts\uiz_back_topbar.gml</script>
+            <script>scripts\uiz_back_at_topbar.gml</script>
+            <script>scripts\uiz_back_item.gml</script>
+            <script>scripts\uiz_back_at_item.gml</script>
+            <script>scripts\uiz_back_captureSettings.gml</script>
+            <script>scripts\uiz_back_resumeSettings.gml</script>
           </scripts>
         </scripts>
         <scripts name="objects">
@@ -1957,8 +1960,6 @@
             <script>scripts\uiz_window_fixbackground.gml</script>
             <script>scripts\uiz_window_fixadddepth_maindepth.gml</script>
             <script>scripts\uiz_window_fixadddepth.gml</script>
-            <script>scripts\uiz_window_create_legacy.gml</script>
-            <script>scripts\uiz_window_create_finish.gml</script>
           </scripts>
           <script>scripts\uiz_window_contain.gml</script>
           <script>scripts\uiz_window_create.gml</script>
@@ -2174,7 +2175,6 @@
         <object>objects\obj_uiZ_colorboxes</object>
         <object>objects\obj_uiZ_controller</object>
         <object>objects\obj_uiZ_debugmanager</object>
-        <object>objects\obj_uiz_dummy</object>
         <object>objects\obj_uiZ_framecolanchor</object>
         <object>objects\obj_uiZ_framerowanchor</object>
         <object>objects\obj_uiz_xmlparser</object>
@@ -2183,21 +2183,16 @@
         <object>objects\obj_uiZ_menuitem</object>
         <object>objects\obj_uiZ_mouseband</object>
         <object>objects\obj_uiZ_grid</object>
-        <object>objects\obj_uiZ_object_1</object>
         <object>objects\obj_uiZ_popupok</object>
         <object>objects\obj_uiZ_resizer</object>
-        <object>objects\obj_uiZ_stringbox_bak</object>
-        <object>objects\obj_uiZ_surfaceholder</object>
-        <object>objects\obj_uiZ_textplane</object>
-        <object>objects\obj_uiZ_windowholder</object>
         <objects name="deprecated">
           <object>objects\obj_uiZ_surfacecanvas</object>
           <object>objects\obj_uiZ_text_background</object>
           <object>objects\obj_uiZ_drawtextlines</object>
           <object>objects\obj_uiZ_drawtext</object>
           <object>objects\obj_uiZ_sprbutton</object>
-          <object>objects\obj_uiZ_valuebox_legacy</object>
-          <object>objects\obj_uiZ_treelist_bak</object>
+          <object>objects\obj_uiZ_textplane</object>
+          <object>objects\obj_uiZ_surfaceholder</object>
         </objects>
       </objects>
       <objects name="objects">

@@ -379,7 +379,7 @@ if uiz_drawscrollbar_getselected(scroll_intern)=false /*and uiz_getmouse_x()&lt;
 
             if mouse_check_button(mb_left)==false then{
                 snapmouse=-1;
-                uiz_mouse_unfreeze()
+                uiz_mouse_unFreeze()
                 uiz_set_cursor(cr_default);
                 selectedy=-1;exit;
             }
@@ -509,7 +509,7 @@ break;
 
 if (kmouseover&lt;=uiz_mouseover or kmouseover=uiz_mousereleased) and snapmouse&gt;-1 then{
 snapmouse=-1;
-uiz_mouse_unfreeze()
+uiz_mouse_unFreeze()
 }
 </string>
           </argument>

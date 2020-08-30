@@ -76,7 +76,7 @@ uiz_objinit()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>uiz_mouse_docheck();
 </string>
           </argument>
         </arguments>

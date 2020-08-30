@@ -488,7 +488,7 @@ var scrbx = ilx-scblwidth;
 var scrbx = ilx;
 }
 var isScrollbarSelected = uiz_drawscrollbar_getselected(scroll);
-//kmouseover=uiz_mouse_isonobject_leftcheck(id);
+//kmouseover=uiz_mouse_isOver_object_leftCheck(id);
 //sdbm("cheking...",kmouseover,doscroll,uiz_getmouse_x(),scrbx, isScrollbarSelected, last_isScrollbarSelected)
 if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()&lt;scrbx &amp;&amp; !isScrollbarSelected &amp;&amp; !last_isScrollbarSelected)) then{
 
@@ -572,7 +572,7 @@ if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()
     }
     
     if !mouse_check_button(mb_left) then{
-        uiz_mouse_unfreeze();
+        uiz_mouse_unFreeze();
         //hasMousePressed=false;
     }
     
@@ -581,7 +581,7 @@ if kmouseover&gt;=uiz_mouseclick &amp;&amp; (doscroll=false or (uiz_getmouse_x()
     
 }else{
     if !mouse_check_button(mb_left) then{
-            uiz_mouse_unfreeze();
+            uiz_mouse_unFreeze();
             //hasMousePressed=false;
         }
 }

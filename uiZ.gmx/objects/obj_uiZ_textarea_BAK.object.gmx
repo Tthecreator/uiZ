@@ -1140,7 +1140,7 @@ uiz_typecursor_register(ix+posx,iy+(posline)*lsz,ix+posx,iy+(posline+1)*lsz,type
             <kind>1</kind>
             <string>///handle all selections
 //reset qstr if no selection
-kmouseover = uiz_mouse_isonobject_leftcheck(id)
+kmouseover = uiz_mouse_isOver_object_leftCheck(id)
 //sdbm("now executing ud3 on",id,object_index,object_get_name(object_index),global.mouseover,irandom(10))
 scblwidth = uiz_getposx(scrollbarsize, scrollbarsizetype)
 

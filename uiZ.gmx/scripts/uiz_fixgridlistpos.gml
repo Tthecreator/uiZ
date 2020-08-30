@@ -160,7 +160,7 @@ with(t) {
             */
             
             snapmouse=-1;
-            uiz_mouse_unfreeze()
+            uiz_mouse_unFreeze()
             uiz_set_cursor(cr_default);
             selectedy=-1;
         }

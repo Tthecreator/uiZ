@@ -79,7 +79,7 @@ surface=-1;
           <argument>
             <kind>1</kind>
             <string>
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 </string>
           </argument>
         </arguments>

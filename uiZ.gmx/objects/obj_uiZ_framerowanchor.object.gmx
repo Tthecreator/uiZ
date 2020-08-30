@@ -140,14 +140,14 @@ uiz_frameset_fixThickness();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover = uiz_mouse_isonobject_leftcheck(id); //needed here when mouse is frozen
+            <string>kmouseover = uiz_mouse_isOver_object_leftCheck(id); //needed here when mouse is frozen
 uiz_frameset_rowanchor_CalculateOverFrameBar();
 
 if kmouseover == uiz_mousereleased {
     if snaptomouse = 1 then {
         stopsnap = 0
         snaptomouse = 0
-        uiz_mouse_unfreeze();
+        uiz_mouse_unFreeze();
         uiz_updater_unstep();
     }
 }

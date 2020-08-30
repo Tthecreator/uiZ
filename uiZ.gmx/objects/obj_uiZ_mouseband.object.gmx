@@ -124,7 +124,7 @@ uiz_compatibility_mouseband_beginstep()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover=uiz_mouse_isonobject_leftcheck(id)
+            <string>kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 update=false;
 updated=false;
 movedx=0;

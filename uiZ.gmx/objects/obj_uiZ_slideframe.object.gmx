@@ -238,7 +238,7 @@ inanim = uiz_animation_revertFunction(1-setpoint,snapanimation);
 inanim = uiz_animation_revertFunction(setpoint,snapanimation);
 }
 moves_mouse=false;
-uiz_mouse_unfreeze();
+uiz_mouse_unFreeze();
 }
 }
 //check if mouse over edge is moving

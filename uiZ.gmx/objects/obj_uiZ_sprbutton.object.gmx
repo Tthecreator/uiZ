@@ -195,7 +195,7 @@ uiz_updater_FixViews();
 //draw_set_alpha(image_alpha)}
 if uiz_cntn() then{
 //draw_set_color(color)
-uiz_km_setcolor(color,oncolor,incolor)
+uiz_km_setColor(color,oncolor,incolor)
 //draw_rectangle(rx,ry,rlx,rly,0)
 //draw_sprite_part(sprite,0,0,0,width,height,rx,ry)
 var nwidth=width-leftbordermargin-rightbordermargin;

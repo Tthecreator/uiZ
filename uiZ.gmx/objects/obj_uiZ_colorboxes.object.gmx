@@ -107,7 +107,7 @@ bs=0
           <argument>
             <kind>1</kind>
             <string>globalvar colorlist;
-//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+//kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 
 oldselpos=selpos;
 updated=0;

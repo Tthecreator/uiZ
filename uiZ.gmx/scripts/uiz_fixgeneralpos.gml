@@ -35,9 +35,6 @@ break;
 case obj_uiZ_menuholder:
 uiz_fixmenuholderpos(argument0)
 break;
-case obj_uiZ_windowholder:
-uiz_fixwindowpos_legacy(argument0)
-break;
 case obj_uiZ_window:
 uiz_fixwindowpos(argument0)
 break;

@@ -182,7 +182,7 @@ containtowhosparent=id
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+            <string>//kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
 update=0
 updated=0
@@ -245,7 +245,7 @@ uiz_back()
 
 if value=1 then{
 //draw the circle
-uiz_km_setcolor(checkcolor,checkoncolor,checkincolor)
+uiz_km_setColor(checkcolor,checkoncolor,checkincolor)
 if sprite=-1 then{
 draw_circle(rx+width/2,ry+height/2,min(uiz_getposx_self(circlesize,circlesizetype),uiz_getposy_self(circlesize,circlesizetype))/2-margin,0)
 }else{
@@ -256,7 +256,7 @@ draw_sprite_ext(sprite,spriteimg,rx,ry,width/sprite_get_width(sprite),height/spr
 //draw the outline
 if outline=1 then{
 //outline
-uiz_km_setcolor(outlinecolor,outlineoncolor,outlineincolor)
+uiz_km_setColor(outlinecolor,outlineoncolor,outlineincolor)
 draw_set_alpha(outlinealpha*alpha)
 draw_circle(rx+width/2,ry+height/2,min(uiz_getposx_self(circlesize,circlesizetype),uiz_getposy_self(circlesize,circlesizetype))/2-margin,1)
 draw_set_alpha(1)

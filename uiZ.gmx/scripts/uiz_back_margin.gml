@@ -1,4 +1,4 @@
-///uiz_back_margin(margins,[n backmode])
+///uiz_back_margin(margins, [n backmode])
 var oldrx=rx;
 var oldry=ry;
 var oldrlx=rlx;

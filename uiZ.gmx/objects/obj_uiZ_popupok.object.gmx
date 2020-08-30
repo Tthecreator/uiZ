@@ -68,7 +68,7 @@ str=""
           <argument>
             <kind>1</kind>
             <string>if instance_exists(destroyframe) then{
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 if indestroy&gt;0 then{indestroy--};
 if kmouseover=2 then{
 if destroyframe!=0 then{

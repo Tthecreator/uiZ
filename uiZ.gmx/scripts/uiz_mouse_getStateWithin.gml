@@ -1,4 +1,4 @@
-///uiz_mouse_getStateWithin(x1,y1,x2,y2)
+///uiz_mouse_getStateWithin(x1, y1, x2, y2)
 /*
 returns the state of the mouse, given a set of coordinates
 0: normal state
