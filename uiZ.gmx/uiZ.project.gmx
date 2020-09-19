@@ -1214,6 +1214,7 @@
             <script>scripts\uiz_back_captureSettings.gml</script>
             <script>scripts\uiz_back_resumeSettings.gml</script>
           </scripts>
+          <script>scripts\uiz_update_event.gml</script>
         </scripts>
         <scripts name="objects">
           <scripts name="3waybutton">
@@ -1907,29 +1908,30 @@
           <script>scripts\uiz_drawscrollbar_vertical_step.gml</script>
         </scripts>
         <scripts name="updater">
-          <script>scripts\uiz_updater_setsurface.gml</script>
-          <script>scripts\uiz_updater_hasPositionChanged.gml</script>
           <script>scripts\uiz_updater_FixViews.gml</script>
-          <script>scripts\uiz_updater_FixViews_with.gml</script>
           <script>scripts\uiz_updater_FixView_NoMove.gml</script>
           <script>scripts\uiz_updater_FixViews_area.gml</script>
-          <script>scripts\uiz_updater_FixViews_inside.gml</script>
           <script>scripts\uiz_updater_FixViews_area_selfmarked.gml</script>
-          <script>scripts\uiz_updater_FixViews_addsquare.gml</script>
-          <script>scripts\uiz_updater_FixViews_processing.gml</script>
-          <script>scripts\uiz_updater_FixViews_processing_bak.gml</script>
-          <script>scripts\uiz_updater_useApplicationSurface.gml</script>
-          <script>scripts\uiz_updater_updateSet.gml</script>
-          <script>scripts\uiz_debug_drawsurface.gml</script>
-          <script>scripts\uiz_updater_ClearView.gml</script>
-          <script>scripts\uiz_updater_ClearView_processing.gml</script>
-          <script>scripts\uiz_updater_debug_processing.gml</script>
-          <script>scripts\uiz_updater_mouse_processing.gml</script>
+          <script>scripts\uiz_updater_FixViews_inside.gml</script>
+          <script>scripts\uiz_updater_FixViews_with.gml</script>
+          <script>scripts\uiz_updater_hasPositionChanged.gml</script>
           <script>scripts\uiz_updater_step.gml</script>
-          <script>scripts\uiz_updater_step_endcheck.gml</script>
-          <script>scripts\uiz_updater_step_begincheck.gml</script>
+          <script>scripts\uiz_updater_step_beginCheck.gml</script>
+          <script>scripts\uiz_updater_step_endCheck.gml</script>
           <script>scripts\uiz_updater_unstep.gml</script>
-          <script>scripts\uiz_update_event.gml</script>
+          <script>scripts\uiz_updater_useApplicationSurface.gml</script>
+          <scripts name="internal">
+            <script>scripts\uiz_updater_debug_processing.gml</script>
+            <script>scripts\uiz_debug_drawsurface.gml</script>
+            <script>scripts\uiz_updater_ClearView_processing.gml</script>
+            <script>scripts\uiz_updater_ClearView.gml</script>
+            <script>scripts\uiz_updater_FixViews_addsquare.gml</script>
+            <script>scripts\uiz_updater_FixViews_processing.gml</script>
+            <script>scripts\uiz_updater_FixViews_processing_bak.gml</script>
+            <script>scripts\uiz_updater_mouse_processing.gml</script>
+            <script>scripts\uiz_updater_setsurface.gml</script>
+            <script>scripts\uiz_updater_updateSet.gml</script>
+          </scripts>
         </scripts>
         <scripts name="windows(os)">
           <script>scripts\uiz_window_center.gml</script>

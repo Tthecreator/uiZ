@@ -139,6 +139,7 @@ last_cntny=cntny;
 last_cntnlx=cntnlx;
 last_cntnly=cntnly;
 
+/*
 save_rec_rx=0;
 save_rec_ry=0;
 save_rec_rlx=0;
@@ -147,6 +148,7 @@ save_rec_last_rx=0;
 save_rec_last_ry=0;
 save_rec_last_rlx=0;
 save_rec_last_rly=0;
+*/
 //uiz_objlistpos=ds_list_size(obj_uiZ_controller.uiz_objlist)
 //ds_list_add(obj_uiZ_controller.uiz_objlist,id);
 

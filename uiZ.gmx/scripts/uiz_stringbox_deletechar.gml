@@ -13,7 +13,7 @@ str_real_size=string_length(str_real);
 //updated = true;
 update = true;
 
-uiz_updater_step_endcheck();
+uiz_updater_step_endCheck();
 
 
 uiz_stringbox_resetdis();//reset the view string

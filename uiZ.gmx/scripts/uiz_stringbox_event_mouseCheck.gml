@@ -61,7 +61,7 @@ if global.systemsupportskeyboard = true then {
         updated = true;
         update = true;
         //uiz_update_event(true,false,true);
-        uiz_updater_step_endcheck();
+        uiz_updater_step_endCheck();
     }
 }
 

@@ -8,7 +8,7 @@ str_real=string_copy(str_real,1,selpmin)+string_copy(str_real,selpmax+1,str_real
 str_real_size=string_length(str_real);
 updated = true;
 update = true;
-uiz_updater_step_endcheck();
+uiz_updater_step_endCheck();
 typepos_dis_px=selpos_dis_min_px;
 var updateBeginPoint=selpos_dis_min_px;
 

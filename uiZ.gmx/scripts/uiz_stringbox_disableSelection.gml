@@ -17,6 +17,6 @@ with(argument0){
     }
     update = true;
     updated = true;
-    uiz_updater_step_endcheck();
+    uiz_updater_step_endCheck();
     uiz_updater_unstep();
 }
