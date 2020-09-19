@@ -18,5 +18,5 @@ default:
 centerfix=0;
 break;
 }
-draw_text(xx+w*(halign/2)+centerfix,ry+height*(valign/2),uiz_gettext_contained(tablist[| i],w))
+draw_text(xx+w*(halign/2)+centerfix,ry+height*(valign/2),uiz_getText_contained(tablist[| i],w))
 

@@ -2,5 +2,5 @@
 with(argument0){
 marginw=argument1;
 marginh=argument2;
-drawtext=uiz_gettextlines_contained(text,width-marginw*2,height-marginh*2)
+drawtext=uiz_getTextLines_contained(text,width-marginw*2,height-marginh*2)
 }

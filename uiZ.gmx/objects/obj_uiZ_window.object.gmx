@@ -963,7 +963,7 @@ draw_set_color(windowtextcolor)
 draw_set_alpha(alpha)
 draw_set_valign(valign)
 draw_set_halign(halign)
-draw_text(ix+(ilx-ix)*(halign/2),iy+(ily-iy)*(valign/2),uiz_gettext_contained(windowtext,width-bars*(1+button_cross+button_maximize+button_minimize)))
+draw_text(ix+(ilx-ix)*(halign/2),iy+(ily-iy)*(valign/2),uiz_getText_contained(windowtext,width-bars*(1+button_cross+button_maximize+button_minimize)))
 
 if button_cross then{uiz_draw_spriteButton_state(ilx-bars,iy,ilx,ily-bkmar_bot,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,alpha,button_cross_state)}
 if button_maximize then{uiz_draw_spriteButton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily-bkmar_bot,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,alpha,button_maximize_state)}

@@ -1,4 +1,4 @@
-///uiz_returncharaddon(char,addon)
+///uiz_returnCharAddon(char, addon)
 /*
 Gets a character sign like a,e,b,p,i and checks if that character can be combined with an addon like: ',",~,^. If it can, then it will return the combined character
 A character like a and an addon " could be combined to ä. The function whould then return ä.

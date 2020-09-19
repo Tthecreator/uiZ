@@ -1,10 +1,10 @@
-///uiz_charisnumberortext(char,addon)
+///uiz_charCanHaveAddon(char, addon)
 /*
 Gets a character sign like a,e,b,p,i and checks if that character can be combined with an addon like: ',",~,^ etc...
 A character like a and an addon " could be combined to ä. The function whould then return true.
 It returns either true or false.
 This function has a lot of rules for a lot of diffrent characters, you can check inside the script itself for more info about them.
-If you want the combined character, you can use uiz_returncharaddon(char,addon).
+If you want the combined character, you can use uiz_returnCharAddon(char,addon).
 */
 var c=argument0
 var a=argument1;

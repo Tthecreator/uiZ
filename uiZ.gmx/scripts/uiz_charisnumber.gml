@@ -1,4 +1,4 @@
-///uiz_charisnumber() checks if variable is somewhere from 0 to 9
+///uiz_charIsNumber(char) checks if variable is somewhere from 0 to 9
 /*
 Requires a string with only one char, and check whether that char is a number or not.
 Will return 1 if a number and 0 if not a number. 

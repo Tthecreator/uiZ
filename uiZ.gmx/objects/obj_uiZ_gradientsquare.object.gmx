@@ -187,7 +187,7 @@ draw_rectangle_colour(rx,ry,rlx,rly,color1,color2,color3,color4,false);
 if istext=1 then{
 if font&gt;-1 then{draw_set_font(font)}
 draw_set_color(textcolor)
-draw_text(rx,ry,uiz_gettext_contained(text,width))
+draw_text(rx,ry,uiz_getText_contained(text,width))
 }
 uiz_containend()
 }

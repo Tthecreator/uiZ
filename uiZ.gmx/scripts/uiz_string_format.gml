@@ -1,4 +1,4 @@
-///uiz_string_format(real,total,decimals)
+///uiz_string_format(real, total, decimals)
 //turns a real into a string preserving all decimal positions.
 var sgn = sign(argument0);
 if sgn==0 then{return "0";}

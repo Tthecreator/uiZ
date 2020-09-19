@@ -12,7 +12,7 @@ var str=argument0
 for(var i=1;i<=string_length(str);i++){
 var ch=string_char_at(str,i);
 if ch="<" or ch=">" or ch='"' or ch="'" or ch="/" or ch="|" or ch="?" or ch="*" or ch=":" or ord(ch)<32 then{
-str=uiz_removechar(str,i);
+str=uiz_removeChar(str,i);
 i--;
 }
 }

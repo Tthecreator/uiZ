@@ -29,6 +29,6 @@ if is_real(t) and sprite_exists(t) then {
     draw_set_color(textcolor)
     draw_set_alpha(alpha);
     
-    draw_text(wx + textmargin, wy+h/2, uiz_gettext_contained(string(t),w))
+    draw_text(wx + textmargin, wy+h/2, uiz_getText_contained(string(t),w))
 
 }

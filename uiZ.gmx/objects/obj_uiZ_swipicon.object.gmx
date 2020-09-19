@@ -231,7 +231,7 @@ var aw=0;
 if text!="" then{
 draw_set_valign(fa_middle)
 draw_set_halign(fa_middle)
-var t=uiz_gettext_contained(text,width)
+var t=uiz_getText_contained(text,width)
 //sdbm("text is",t)
 var ah=string_height(t)+bkmar;
 var aw=string_width(t)+bkmar*2;

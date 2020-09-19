@@ -38,7 +38,7 @@ for (var i = 1; i <= string_length(line); i++) {
                 var ktca = string_char_at(tagtext, string_length(tagtext))
                 if ktca = "/"
                 or ktca = "\" then{
-                tagname = uiz_removechar(tagtext, string_length(tagtext));
+                tagname = uiz_removeChar(tagtext, string_length(tagtext));
             } else {
                 tagname = tagtext;
             }

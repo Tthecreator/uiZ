@@ -20,10 +20,10 @@ with(argument0){
     if font>-1 then{draw_set_font(font)}
     if multiline then{
         //slower but multiline support
-        drawtext=uiz_gettextlines_contained(text,iwidth,iheight)
+        drawtext=uiz_getTextLines_contained(text,iwidth,iheight)
     }else{
         //faster but only supports a single line
-        drawtext=uiz_gettext_contained(text,iwidth);
+        drawtext=uiz_getText_contained(text,iwidth);
     }
     uiz_updater_FixViews();
 }

@@ -126,7 +126,7 @@ if text!="" then{
 if font&gt;-1 then{draw_set_font(font)}
 draw_set_alpha(textalpha*alpha)
 draw_set_color(textcolor)
-draw_text(rx,ry,uiz_gettext_contained(text,width))
+draw_text(rx,ry,uiz_getText_contained(text,width))
 draw_set_alpha(alpha)
 }
 uiz_containend()

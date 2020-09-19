@@ -43,7 +43,7 @@ if selection1Char==lineSize && argument0 then{//if we're at the end of the line 
             ++selection1Line;
         }else{
 //            sdbm("else")
-            textList[| selection1Line] = uiz_removechar(textList[| selection1Line],selection1Char+argument0);
+            textList[| selection1Line] = uiz_removeChar(textList[| selection1Line],selection1Char+argument0);
             if argument0 == 0 then{
                 --selection1Char;
                 if selection1Line==0 then{

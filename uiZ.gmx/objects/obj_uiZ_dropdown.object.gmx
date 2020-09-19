@@ -295,7 +295,7 @@ draw_set_alpha(alpha)
 draw_set_valign(fa_center)
 var txt="";
 if containtext=1 then{
-txt=uiz_gettext_contained(string(maskvalue),width-buttonsz)
+txt=uiz_getText_contained(string(maskvalue),width-buttonsz)
 }else{txt=value}
 draw_text(rx+margin_normal,ry+height/2,txt)
 draw_set_valign(fa_top)

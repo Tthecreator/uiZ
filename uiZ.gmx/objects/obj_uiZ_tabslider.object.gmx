@@ -378,7 +378,7 @@ if uiz_cntn() then {
         draw_set_color(textcolor)
         var v = rx;
         for (var i = 0; i &lt; sz; i++) {
-            draw_text(v + spacinglist[| i] * (halign / 2), ry + height * (valign / 2), uiz_gettext_contained(tablist[| i], spacinglist[| i]));
+            draw_text(v + spacinglist[| i] * (halign / 2), ry + height * (valign / 2), uiz_getText_contained(tablist[| i], spacinglist[| i]));
             var ov = v;
             v += spacinglist[| i];
             if uiz_getmouse_x() &gt; ov and uiz_getmouse_x() &lt; v then {

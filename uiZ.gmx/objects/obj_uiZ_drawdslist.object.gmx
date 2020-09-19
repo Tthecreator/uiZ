@@ -332,7 +332,7 @@ if uiz_cntn() then {
             draw_square(rx, ry + addy + h, rlx - (scrollwidth + 1) * doscroll, ry + h + addy + strh, ucolor, 1)
             draw_set_color(c_black)
             if usesprlist != -1 then {
-                //draw_text(rx+strh+margin*2,ry+h+addy,uiz_gettext_contained(uselist[| i],width-strh-margin*2-(scrollwidth+1)*doscroll))
+                //draw_text(rx+strh+margin*2,ry+h+addy,uiz_getText_contained(uselist[| i],width-strh-margin*2-(scrollwidth+1)*doscroll))
                 if useimglist != -1 then {
                     var vusespr = usesprlist[| i];
                     if !(vusespr = undefined) then {
@@ -346,7 +346,7 @@ if uiz_cntn() then {
                 }
             } else {
 
-                //draw_text(rx,ry+h+addy,uiz_gettext_contained(uselist[| i],width-(scrollwidth+1)*doscroll))
+                //draw_text(rx,ry+h+addy,uiz_getText_contained(uselist[| i],width-(scrollwidth+1)*doscroll))
             }
             //}
             if addy + h &gt; parent.height then {
@@ -382,9 +382,9 @@ if uiz_cntn() then {
             strh = string_height(string(uselist[| i]))
 
             if usesprlist != -1 then {
-                draw_text(rx + strh + margin * 2, ry + h + addy, uiz_gettext_contained(uselist[| i], width - strh - margin * 2 - (scrollwidth + 1) * doscroll))
+                draw_text(rx + strh + margin * 2, ry + h + addy, uiz_getText_contained(uselist[| i], width - strh - margin * 2 - (scrollwidth + 1) * doscroll))
             } else {
-                draw_text(rx, ry + h + addy, uiz_gettext_contained(uselist[| i], width - (scrollwidth + 1) * doscroll))
+                draw_text(rx, ry + h + addy, uiz_getText_contained(uselist[| i], width - (scrollwidth + 1) * doscroll))
             }
             h += margin + strh
         }
@@ -444,7 +444,7 @@ if keepselected=i then{ucolor=clickcolor}
 draw_square(rx,ry+addy+h,rlx-scrollbarwidth,ry+h+addy+strh,ucolor,1)
 draw_set_color(c_black)
 if usesprlist!=-1 then{
-draw_text(rx+strh+margin*2,ry+h+addy,uiz_gettext_contained(uselist[| i],width-strh-margin*2))
+draw_text(rx+strh+margin*2,ry+h+addy,uiz_getText_contained(uselist[| i],width-strh-margin*2))
 if useimglist!=-1 then{
 var vusespr=usesprlist[| i];
 if !(vusespr=undefined) then{
@@ -457,7 +457,7 @@ draw_sprite_ext(vusespr,0,rx+margin,ry+h+addy,strh/sprite_get_width(vusespr),str
 }
 }
 }else{
-draw_text(rx,ry+h+addy,uiz_gettext_contained(uselist[| i],width))
+draw_text(rx,ry+h+addy,uiz_getText_contained(uselist[| i],width))
 }
 //}
 if addy+h&gt;parent.height then{break;}

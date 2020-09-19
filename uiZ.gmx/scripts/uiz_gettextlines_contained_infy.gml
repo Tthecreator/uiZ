@@ -1,4 +1,4 @@
-///uiz_gettextlines_contained(string,width)
+///uiz_getTextLines_contained_infY(string,width)
 //returns string contained in the width but supporting an infinite height
 /*
 This scripts handles multi line strings.

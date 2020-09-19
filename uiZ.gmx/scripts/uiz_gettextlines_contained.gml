@@ -1,4 +1,4 @@
-///uiz_gettextlines_contained(string,width,height)
+///uiz_getTextLines_contained(string, width, height)
 //returns string contained in the width and height
 //sdbm("startngtetlinescontn")
 /*

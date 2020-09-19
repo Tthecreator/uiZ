@@ -1098,36 +1098,33 @@
             <script>scripts\uiz_sign.gml</script>
           </scripts>
           <scripts name="strings">
-            <script>scripts\uiz_removechars.gml</script>
-            <script>scripts\uiz_getlines.gml</script>
-            <script>scripts\uiz_gettextlines_contained.gml</script>
-            <script>scripts\uiz_gettextlines_contained_infy.gml</script>
-            <script>scripts\uiz_gettext_contained.gml</script>
-            <script>scripts\uiz_gettext_contained_nodots.gml</script>
-            <script>scripts\uiz_gettext_contained_BAK.gml</script>
-            <script>scripts\uiz_stringfind_at.gml</script>
-            <script>scripts\uiz_string_replace.gml</script>
-            <script>scripts\uiz_string_copy.gml</script>
-            <script>scripts\uiz_returncharaddon.gml</script>
-            <script>scripts\uiz_charcanhaveaddon.gml</script>
-            <script>scripts\uiz_charisnumberortext.gml</script>
-            <script>scripts\uiz_removechars_nontextornumber.gml</script>
-            <script>scripts\uiz_charisnumber.gml</script>
-            <script>scripts\uiz_getvalidvariablename.gml</script>
-            <script>scripts\uiz_fromlaststringchars.gml</script>
-            <script>scripts\uiz_laststringchars.gml</script>
-            <script>scripts\uiz_string_repeat.gml</script>
-            <script>scripts\uiz_changechar.gml</script>
-            <script>scripts\uiz_removechar.gml</script>
-            <script>scripts\uiz_stringfind.gml</script>
-            <script>scripts\uiz_addchar.gml</script>
-            <script>scripts\uiz_stringUntilNewline.gml</script>
+            <script>scripts\uiz_addChar.gml</script>
+            <script>scripts\uiz_changeChar.gml</script>
+            <script>scripts\uiz_charCanHaveAddon.gml</script>
+            <script>scripts\uiz_charIsNumber.gml</script>
+            <script>scripts\uiz_charIsNumberOrText.gml</script>
+            <script>scripts\uiz_getLines.gml</script>
+            <script>scripts\uiz_getText_contained.gml</script>
+            <script>scripts\uiz_getText_contained_noDots.gml</script>
+            <script>scripts\uiz_getTextLines_contained.gml</script>
+            <script>scripts\uiz_getTextLines_contained_infY.gml</script>
+            <script>scripts\uiz_getValidVariableName.gml</script>
             <script>scripts\uiz_isSpaceChar.gml</script>
-            <script>scripts\uiz_string_fromReal.gml</script>
-            <script>scripts\uiz_string_format.gml</script>
-            <script>scripts\uiz_string_real_getIntLength.gml</script>
-            <script>scripts\uiz_string_real_getFracLength.gml</script>
+            <script>scripts\uiz_lastStringChars.gml</script>
+            <script>scripts\uiz_removeChar.gml</script>
+            <script>scripts\uiz_replaceChars.gml</script>
+            <script>scripts\uiz_replaceChars_nonTextOrNumber.gml</script>
+            <script>scripts\uiz_returnCharAddon.gml</script>
+            <script>scripts\uiz_string_copy.gml</script>
             <script>scripts\uiz_string_digits.gml</script>
+            <script>scripts\uiz_string_format.gml</script>
+            <script>scripts\uiz_string_fromReal.gml</script>
+            <script>scripts\uiz_string_real_getFracLength.gml</script>
+            <script>scripts\uiz_string_real_getIntLength.gml</script>
+            <script>scripts\uiz_string_repeat.gml</script>
+            <script>scripts\uiz_string_replace.gml</script>
+            <script>scripts\uiz_string_pos_at.gml</script>
+            <script>scripts\uiz_stringUntilNewline.gml</script>
           </scripts>
         </scripts>
         <scripts name="grid">

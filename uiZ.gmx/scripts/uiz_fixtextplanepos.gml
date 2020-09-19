@@ -9,17 +9,17 @@ uiz_fix_Base();
 if oldvalue!=value then{
 //reset qstr if no selection
 scblwidth=uiz_getposx(scrollbarsize,scrollbarsizetype)
-qstrinfy=uiz_gettextlines_contained_infy(value,width)
+qstrinfy=uiz_getTextLines_contained_infY(value,width)
 qstr=qstrinfy;
 if string_height(qstrinfy)>height then{
-qstrinfy=uiz_gettextlines_contained_infy(value,width-scblwidth)
+qstrinfy=uiz_getTextLines_contained_infY(value,width-scblwidth)
 if doscroll=false then{
 scroll=-1;
 }
 doscroll=true
 
 //get amount of lines
-lins=uiz_getlines(qstrinfy)
+lins=uiz_getLines(qstrinfy)
 //get amount of acces lines
 lsz=string_height("ƒF|⎲}g")
 linefit=floor(height/lsz)

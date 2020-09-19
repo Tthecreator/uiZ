@@ -209,7 +209,7 @@ w=0
 }
 
 posline=liney;
-//startposline=uiz_getlines(string_copy(qstr,1,lastbegscrpos));
+//startposline=uiz_getLines(string_copy(qstr,1,lastbegscrpos));
 startposline=uiz_positify(scroll)
 }
 

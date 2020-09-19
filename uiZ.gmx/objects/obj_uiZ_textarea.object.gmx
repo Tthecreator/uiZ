@@ -436,7 +436,7 @@ if ds_list_size(textList)==0 then{
                     //                if keyboard_check(vk_control) or keyboard_check(vk_alt) or(keyboard_key &gt;= 112 and keyboard_key &lt;= 123) or keyboard_key = 174 or keyboard_key = 175 then {} else {
                     if uiz_textarea_checkKeyboardTypingValidity() then {
                         if changesign then {
-                            uiz_textarea_addchar(uiz_returncharaddon(string_char_at(keyboard_string, string_length(keyboard_string)), whatsign))
+                            uiz_textarea_addchar(uiz_returnCharAddon(string_char_at(keyboard_string, string_length(keyboard_string)), whatsign))
                         } else {
                             uiz_textarea_addchar(string_char_at(keyboard_string, string_length(keyboard_string)))
                         }
