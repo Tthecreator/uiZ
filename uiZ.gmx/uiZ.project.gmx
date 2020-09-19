@@ -1935,8 +1935,10 @@
         </scripts>
         <scripts name="windows(os)">
           <script>scripts\uiz_window_center.gml</script>
-          <script>scripts\uiz_resetwindowsize.gml</script>
-          <script>scripts\uiz_setwindowsize.gml</script>
+          <script>scripts\uiz_setWindowSize.gml</script>
+          <scripts name="internal">
+            <script>scripts\uiz_resetwindowsize.gml</script>
+          </scripts>
         </scripts>
         <scripts name="windows (uiz)">
           <scripts name="custom_buttons">
