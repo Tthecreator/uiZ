@@ -826,10 +826,9 @@
             <script>scripts\uiz_depth_foreground.gml</script>
             <script>scripts\uiz_depth_set.gml</script>
           </scripts>
-          <script>scripts\uiz_getmouseover.gml</script>
+          <script>scripts\uiz_getMouseOver.gml</script>
           <script>scripts\uiz_alpha.gml</script>
-          <script>scripts\uiz_keepupdating.gml</script>
-          <script>scripts\uiz_setenabled.gml</script>
+          <script>scripts\uiz_setEnabled.gml</script>
           <script>scripts\uiz_update_set.gml</script>
           <script>scripts\uiz_c.gml</script>
           <script>scripts\uiz_init.gml</script>
@@ -1163,12 +1162,12 @@
           </scripts>
           <scripts name="internal">
             <script>scripts\uiz_compute_cursor.gml</script>
+            <script>scripts\uiz_isMouseSwipeClickWhiteListed.gml</script>
           </scripts>
           <script>scripts\uiz_getmouse_x.gml</script>
           <script>scripts\uiz_getmouse_x_last.gml</script>
           <script>scripts\uiz_getmouse_y.gml</script>
           <script>scripts\uiz_getmouse_y_last.gml</script>
-          <script>scripts\uiz_isMouseSwipeClickWhiteListed.gml</script>
           <script>scripts\uiz_km_retval.gml</script>
           <script>scripts\uiz_km_setColor.gml</script>
           <script>scripts\uiz_mouse_getStateWithin.gml</script>
@@ -1928,6 +1927,7 @@
             <script>scripts\uiz_updater_FixViews_addsquare.gml</script>
             <script>scripts\uiz_updater_FixViews_processing.gml</script>
             <script>scripts\uiz_updater_FixViews_processing_bak.gml</script>
+            <script>scripts\uiz_keepupdating.gml</script>
             <script>scripts\uiz_updater_mouse_processing.gml</script>
             <script>scripts\uiz_updater_setsurface.gml</script>
             <script>scripts\uiz_updater_updateSet.gml</script>
