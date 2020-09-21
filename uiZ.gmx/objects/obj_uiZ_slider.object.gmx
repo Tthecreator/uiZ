@@ -118,8 +118,7 @@ MouseOffset=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (live_call()) return live_result;
-updated = 0;
+            <string>updated = 0;
 if selected = true then{
     updated = 1;
     fromvalue = invalue;

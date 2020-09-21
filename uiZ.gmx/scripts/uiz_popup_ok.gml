@@ -1,4 +1,4 @@
-///uiz_popup_ok(text,windowtext,blockbackground,[optional]font)
+///uiz_popup_ok(text, windowText, blockBackground,[optional]font)
 //returns a windowid or a framid(if blockbackground)
 //the background is a half opaque black box, that prevents any mouseclicks in the background. blockbackground should equal 1 if you want this.
 //you need uiz to be initialized for this. make sure uiz_init is called somewhere in your project.
@@ -82,7 +82,7 @@ t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
-t.posvalh=0.5
+t.posvalh=0.3
 //t.center=1
 t.halign=fa_center;
 t.valign=fa_center;

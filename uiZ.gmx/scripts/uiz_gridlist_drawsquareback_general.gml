@@ -1,4 +1,3 @@
-if live_call() return live_result;
 switch(selectionmode){
     case 0:
         draw_square(rx,yh,rlx-scrollbarw,rly,normalcolor,normalalpha*alpha);

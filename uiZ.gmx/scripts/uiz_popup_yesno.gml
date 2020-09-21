@@ -98,7 +98,7 @@ t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
-t.posvalh=0.5
+t.posvalh=0.3
 t.halign=fa_center;
 t.valign=fa_center;
 uiz_text_setmultiline(t, true);
@@ -117,14 +117,14 @@ n.posvalh=0.3
 n.posvalwtype=fc
 n.posvalw=0.275
 n.text="no"
-n.bottomframemargin=4
+//n.bottomframemargin=4
 uiz_fixgeneralpos(n)
 //yes
 var yes=instance_create(0,0,obj_uiZ_3waybutton)
 uiz_setParent(yes,wf)
 yes.color=c_green
 yes.posinframey=uiz_snapbottom
-yes.bottomframemargin=4
+//yes.bottomframemargin=4
 yes.posinframex=fc
 yes.posvalx=0.575
 yes.posvalhtype=dp

@@ -49,11 +49,6 @@ mstate codes:
 */
 //var scroll=(uiz_positify(argument4-frac(argument4)));
 //var scroll=floor(uiz_positify(argument4-uiz_sign(argument4)*frac(argument4)));
-var argument_arr = array_create(argument_count);
-for (var i = 0; i < argument_count; i++) {
-    argument_arr[i] = argument[i];
-}
-if (live_call_ext(argument_arr)) return live_result;
 
 var scroll=uiz_drawscrollbar_getScroll(argument4);
 var scroll_old=scroll;

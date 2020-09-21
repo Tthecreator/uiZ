@@ -17,5 +17,5 @@ To get started, look around in the wiki, or watch the video tutorials: https://w
 ## Licensing
 
 This framework is dual-licensed. Once under the GPL for free, non-commercial use, and once under a proprietary license for commercial use.
-This means that you may not sell copies of your game if licensed under GPL for free. Any time you distribute your game without commercial license, you also have to publish your code under the GPL
+This means that you may not sell copies of your game if licensed under GPL for free. Any time you distribute your game without commercial license, you also have to publish your code under the GPL.  
 To use this asset for commercial uses, purchase a copy on the marketplace: https://marketplace.yoyogames.com/assets/4821/uiz-ultimate-gui-framework

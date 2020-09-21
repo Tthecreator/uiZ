@@ -17,11 +17,6 @@ I have nothing against either of these spellings, but I decided to generally use
 Why am I wasting my time writing this? 
 */
 //draw_sprite_ext(spr_square,0,argument0,argument1,argument2-argument0,argument3-argument1,0,argument4,argument5)
-var argument_arr = array_create(argument_count);
-for (var i = 0; i < argument_count; i++) {
-    argument_arr[i] = argument[i];
-}
-if (live_call_ext(argument_arr)) return live_result;
 
 //sdbm(argument0,argument1,argument2,argument3);
 

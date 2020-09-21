@@ -1,5 +1,4 @@
 ///INTERNAL UIZ FUNCTION DO NOT USE
-if live_call() return live_result;
 if selectedx>=0 and (selectedy>=0 or selectionmode==3) and cur_nwat<=width and cur_nhat<=height and cur_wat>=0 and cur_nwat>=0 then{
     switch(updatemode){
     case uiz_gridlist_selection_cell:

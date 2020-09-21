@@ -195,40 +195,6 @@
         </datafile>
       </datafiles>
       <datafile>
-        <name>designtemplate1</name>
-        <exists>-1</exists>
-        <size>3940</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>designtemplate1</filename>
-      </datafile>
-      <datafile>
-        <name>designtemplate4</name>
-        <exists>0</exists>
-        <size>0</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>designtemplate4</filename>
-      </datafile>
-      <datafile>
         <name>GMDPI.dll</name>
         <exists>-1</exists>
         <size>6656</size>
@@ -244,40 +210,6 @@
           </Config>
         </ConfigOptions>
         <filename>GMDPI.dll</filename>
-      </datafile>
-      <datafile>
-        <name>checkrunning.bat</name>
-        <exists>0</exists>
-        <size>0</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>checkrunning.bat</filename>
-      </datafile>
-      <datafile>
-        <name>startfileservice.bat</name>
-        <exists>0</exists>
-        <size>0</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>startfileservice.bat</filename>
       </datafile>
       <datafile>
         <name>uiz_README.txt</name>
@@ -296,298 +228,7 @@
         </ConfigOptions>
         <filename>uiz_README.txt</filename>
       </datafile>
-      <datafile>
-        <name>designtemplate2</name>
-        <exists>0</exists>
-        <size>0</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>designtemplate2</filename>
-      </datafile>
-      <datafile>
-        <name>file_find.dll</name>
-        <exists>-1</exists>
-        <size>1073917</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>file_find.dll</filename>
-      </datafile>
-      <datafile>
-        <name>uiZ_fileservice.exe</name>
-        <exists>-1</exists>
-        <size>34386432</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>uiZ_fileservice.exe</filename>
-      </datafile>
-      <datafile>
-        <name>designtemplate3</name>
-        <exists>-1</exists>
-        <size>2737</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>designtemplate3</filename>
-      </datafile>
-      <datafile>
-        <name>Win32Project2.dll</name>
-        <exists>0</exists>
-        <size>0</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Win32Project2.dll</filename>
-      </datafile>
-      <datafile>
-        <name>createfile.dll</name>
-        <exists>-1</exists>
-        <size>1040983</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>createfile.dll</filename>
-      </datafile>
     </datafiles>
-    <datafiles number="253" name="GMLive">
-      <datafile>
-        <name>gmlive.html</name>
-        <exists>-1</exists>
-        <size>56046</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>gmlive.html</filename>
-      </datafile>
-      <datafile>
-        <name>gmlive-server.exe</name>
-        <exists>-1</exists>
-        <size>195784</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>gmlive-server.exe</filename>
-      </datafile>
-      <datafile>
-        <name>netlog.exe</name>
-        <exists>-1</exists>
-        <size>54272</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>netlog.exe</filename>
-      </datafile>
-      <datafile>
-        <name>gmlive-server.n</name>
-        <exists>-1</exists>
-        <size>179392</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>gmlive-server.n</filename>
-      </datafile>
-      <datafile>
-        <name>GMLiveHelper.gmez</name>
-        <exists>-1</exists>
-        <size>33494</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>GMLiveHelper.gmez</filename>
-      </datafile>
-      <datafile>
-        <name>netlog.gmez</name>
-        <exists>-1</exists>
-        <size>1614</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>netlog.gmez</filename>
-      </datafile>
-      <datafile>
-        <name>gcmt-dll.dll</name>
-        <exists>-1</exists>
-        <size>116224</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>gcmt-dll.dll</filename>
-      </datafile>
-      <datafile>
-        <name>neko.dll</name>
-        <exists>-1</exists>
-        <size>84480</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>neko.dll</filename>
-      </datafile>
-      <datafile>
-        <name>regexp.ndll</name>
-        <exists>-1</exists>
-        <size>207360</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>regexp.ndll</filename>
-      </datafile>
-      <datafile>
-        <name>std.ndll</name>
-        <exists>-1</exists>
-        <size>148480</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>std.ndll</filename>
-      </datafile>
-    </datafiles>
-    <datafile>
-      <name>netlog.gmez</name>
-      <exists>-1</exists>
-      <size>1614</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>netlog.gmez</filename>
-    </datafile>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\fixed asian arial unicode ms</extension>
@@ -724,35 +365,35 @@
             <script>scripts\uiz_animation_capture_newState.gml</script>
             <script>scripts\uiz_animation_wigle.gml</script>
           </scripts>
-          <scripts name="background">
-            <scripts name="_item_">
-              <script>scripts\uiz_background_item_texturescript.gml</script>
-              <script>scripts\uiz_background_item_texturescript_ext.gml</script>
-              <script>scripts\uiz_background_item_texturemode.gml</script>
-              <script>scripts\uiz_background_item_normal.gml</script>
-              <script>scripts\uiz_background_item_over.gml</script>
-              <script>scripts\uiz_background_item_in.gml</script>
-              <script>scripts\uiz_background_item_out.gml</script>
-            </scripts>
-            <scripts name="_topbar_">
-              <script>scripts\uiz_background_topbar_texturescript.gml</script>
-              <script>scripts\uiz_background_topbar_texturescript_ext.gml</script>
-              <script>scripts\uiz_background_topbar_texturemode.gml</script>
-              <script>scripts\uiz_background_topbar_normal.gml</script>
-              <script>scripts\uiz_background_topbar_over.gml</script>
-              <script>scripts\uiz_background_topbar_in.gml</script>
-              <script>scripts\uiz_background_topbar_out.gml</script>
-            </scripts>
-            <script>scripts\uiz_background_in.gml</script>
-            <script>scripts\uiz_background_normal.gml</script>
-            <script>scripts\uiz_background_out.gml</script>
-            <script>scripts\uiz_background_over.gml</script>
-            <script>scripts\uiz_background_texturemode.gml</script>
-            <script>scripts\uiz_background_texturescript.gml</script>
-            <script>scripts\uiz_background_texturescript_ext.gml</script>
-            <script>scripts\uiz_background_set.gml</script>
-            <script>scripts\uiz_background_setEnabled.gml</script>
+        </scripts>
+        <scripts name="background">
+          <scripts name="_item_">
+            <script>scripts\uiz_background_item_texturescript.gml</script>
+            <script>scripts\uiz_background_item_texturescript_ext.gml</script>
+            <script>scripts\uiz_background_item_texturemode.gml</script>
+            <script>scripts\uiz_background_item_normal.gml</script>
+            <script>scripts\uiz_background_item_over.gml</script>
+            <script>scripts\uiz_background_item_in.gml</script>
+            <script>scripts\uiz_background_item_out.gml</script>
           </scripts>
+          <scripts name="_topbar_">
+            <script>scripts\uiz_background_topbar_texturescript.gml</script>
+            <script>scripts\uiz_background_topbar_texturescript_ext.gml</script>
+            <script>scripts\uiz_background_topbar_texturemode.gml</script>
+            <script>scripts\uiz_background_topbar_normal.gml</script>
+            <script>scripts\uiz_background_topbar_over.gml</script>
+            <script>scripts\uiz_background_topbar_in.gml</script>
+            <script>scripts\uiz_background_topbar_out.gml</script>
+          </scripts>
+          <script>scripts\uiz_background_in.gml</script>
+          <script>scripts\uiz_background_normal.gml</script>
+          <script>scripts\uiz_background_out.gml</script>
+          <script>scripts\uiz_background_over.gml</script>
+          <script>scripts\uiz_background_texturemode.gml</script>
+          <script>scripts\uiz_background_texturescript.gml</script>
+          <script>scripts\uiz_background_texturescript_ext.gml</script>
+          <script>scripts\uiz_background_set.gml</script>
+          <script>scripts\uiz_background_setEnabled.gml</script>
         </scripts>
         <scripts name="background_scripts">
           <script>scripts\uiz_back_circlestitch.gml</script>
@@ -2121,10 +1762,9 @@
       <script>scripts\UIZ_versioninformation.gml</script>
       <scripts name="examples, tutorials and templates">
         <script>scripts\scr_slide_reactor_createObjects.gml</script>
+        <script>scripts\scr_basictutorial_example_36a_gridObjectCreator.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\live_call.gml</script>
-    <script>scripts\live_call_ext.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="uiz">
@@ -2237,17 +1877,16 @@
         <object>objects\obj_uiZ_window</object>
       </objects>
     </objects>
-    <object>objects\jkkj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
-    <room>rooms\rm_uiz_serverbrowser</room>
     <rooms name="uiz">
       <rooms name="examples tutorials">
         <room>rooms\uiz_tutorial</room>
         <room>rooms\rm_uiz_basictutorial</room>
         <room>rooms\rm_uiz_ownuiz</room>
         <room>rooms\rm_example1_old</room>
+        <room>rooms\rm_uiz_serverbrowser</room>
       </rooms>
       <rooms name="other, don't touch!">
         <room>rooms\rm_surfacetest</room>

@@ -68,7 +68,7 @@ if argument[2]=1 then{
 }
 var dx=uiz_pxToDpi(string_width(argument[0]))
 var dy=uiz_pxToDpi(string_height(argument[0]))
-var w=uiz_window_create(dx+0.5,dp,dy+1,dp);
+var w=uiz_window_create(dx+0.5,dp,dy+1.2,dp);
 if argument[2]=1 then{uiz_setParent(w,p)}
 w.addwindowmydepth=500000
 //w.adddepth+=100000
@@ -90,8 +90,9 @@ t.posinframey=uiz_snaptop
 uiz_text_setmultiline(t, true);
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
-t.posvalh=0.5
-t.center=1
+t.posvalh=0.4
+t.halign=fa_center;
+t.valign=fa_center;
 //t.posvalhtype=dp
 //t.posvalh=1
 //t.text=argument[0];
@@ -105,9 +106,9 @@ uiz_setParent(c,wf)
 c.posinframey=uiz_snapbottom
 c.posinframex=uiz_snapleft
 c.posvalhtype=dp
-c.posvalh=0.3
-c.posvalwtype=dp
-c.posvalw=dx+0.2
+c.posvalh=0.4
+c.posvalwtype=dpmin
+c.posvalw=0.4
 uiz_stringbox_setvalue(c,argument[3])
 uiz_fixgeneralpos(c)
 
@@ -117,9 +118,9 @@ uiz_setParent(b,wf)
 b.posinframey=uiz_snapbottom
 b.posinframex=uiz_snapright
 b.posvalhtype=dp
-b.posvalh=0.3
+b.posvalh=0.4
 b.posvalwtype=dp
-b.posvalw=0.3
+b.posvalw=0.4
 b.window=w;
 b.box=c;
 

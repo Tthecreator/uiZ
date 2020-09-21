@@ -3,7 +3,6 @@ var cy = false;
 var cx = false;
 var c=false;
 
-
 if scrolly = true or scrollx = true or snapm = true then {
 
     c=uiz_frame_stepScrollbars();

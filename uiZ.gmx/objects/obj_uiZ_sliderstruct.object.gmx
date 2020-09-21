@@ -113,7 +113,6 @@ oldclickframe=0;
           <argument>
             <kind>1</kind>
             <string>//if keyboard_check_pressed(vk_space) then{uiz_sliderstruct_setframe(id,frame-1)}
-if live_call() return live_result;
 if newframe != oldframe and dir != 0 and hasmouse = false then {
     var fa, fb, f;
     linearvalue = clamp(linearvalue + uiz_sc(animationtime) * moveback, 0, 1)

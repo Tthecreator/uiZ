@@ -9,7 +9,7 @@ uiz_fixpositioninframe()
 
 //calculate end margins
 uiz_fix_Base_endmargin();
-end_topframemargin=ceil(end_topframemargin+bars+top_bkmar);//add top window bar as margin
+end_topframemargin=ceil(end_topframemargin+bars+topbar_bkmar);//add top window bar as margin
 
 uiz_fixwindowpos_finalValues();
 

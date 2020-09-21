@@ -124,8 +124,7 @@ scrolladdy = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if ds_exists(uselist,ds_type_list) then{
+            <string>if ds_exists(uselist,ds_type_list) then{
 //handle scrollbar
 if doscroll=true then{
 var update = uiz_drawscrollbar_vertical_step(rlx-scrollwidth+1,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
@@ -169,8 +168,7 @@ updatescroll=true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if ds_exists(uselist,ds_type_list) then{
+            <string>if ds_exists(uselist,ds_type_list) then{
     uiz_drawdslist_checkmousepos();
 }
 </string>
@@ -195,8 +193,7 @@ if ds_exists(uselist,ds_type_list) then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-  if ds_exists(uselist,ds_type_list) then{
+            <string>  if ds_exists(uselist,ds_type_list) then{
 //kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 /*
 if global.mouseoverframe=parent then{
@@ -276,8 +273,7 @@ uiz_mouse_docheck()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if uiz_cntn() then {
+            <string>if uiz_cntn() then {
     if ds_exists(uselist, ds_type_list) then {
         draw_set_valign(fa_top)
         draw_set_halign(fa_left)

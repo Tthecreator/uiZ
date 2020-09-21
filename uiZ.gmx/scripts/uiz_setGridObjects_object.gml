@@ -13,6 +13,7 @@ for(var i=0;i<g.gridh;i++){
 for(var e=0;e<g.gridw;e++){
 if g.generated=0 then{
 var f=uiz_c(argument1);
+f.iscover=0;
 g.gridobject[e,i]=f
 if e=0 then{
 uiz_gridSize_row(g,i,1,xtra)
@@ -21,7 +22,8 @@ if i=0 then{
 uiz_gridSize_col(g,e,1,xtra)
 }
 }else{
-f=g.gridobject[e,i]
+f=g.gridobject[e,i];
+f.iscover=0;
 }
 //f.parent=g
 uiz_setParent(f,g)

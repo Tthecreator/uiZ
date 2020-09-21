@@ -8,7 +8,9 @@ with(t) {
 
 
 
-    if (scrollx or scrolly) then {      
+    if (scrollx or scrolly) then {
+        var omscrollbarx = mscrollbarx;
+        var omscrollbary = mscrollbary;
         mscrollbarx = -uiz_getMaxXScrollInObject(id)
         if addx < mscrollbarx then {
             addx = clamp(addx, mscrollbarx, 0);
@@ -21,7 +23,8 @@ with(t) {
             var sgm_y = max(0, min(uiz_getposy_self(scrollbarsize, scrollbarsizetype), height - 2));
             end_bottomframemargin += sgm_y;
         }
-        mscrollbary = -uiz_getMaxYScrollInObject(id)
+        mscrollbary = -uiz_getMaxYScrollInObject(id);
+        
         if addy < mscrollbary then {
             addy = clamp(addy, mscrollbary, 0)
             uiz_drawscrollbar_setValue(uscrolly,-addy);
@@ -39,6 +42,14 @@ with(t) {
         }
 
         uiz_frame_tellListeners();
+        if (omscrollbarx != mscrollbarx or omscrollbary != mscrollbary) then{
+            uiz_updater_FixViews();
+            uiz_fix_Base_iValues()
+            uiz_fixChildren(id, true);
+        }else{
+            uiz_fix_Base_iValues()
+        }
+    }else{
+        uiz_fix_Base_iValues()
     }
-    uiz_fix_Base_iValues()
 }

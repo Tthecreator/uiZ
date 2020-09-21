@@ -196,14 +196,20 @@ uiz_updater_FixViews()
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-
+//draw_square(rx,ry,rlx,rly,c_blue,1);
 if height&gt;=width/2 then{
 //if the button is really narrow, and the sprite doesn't accually fit
 var hsc=floor(height)/sprite_get_height(sprite);
 var sprpx=round(width/hsc/2);
 var wsc = floor(width/2) / sprpx;
-draw_sprite_part_ext(sprite,kmouseover*3+spraddto,0,0,sprpx,height,rx,ry,wsc,hsc,color,alpha)
-draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,height,rx+width/2,ry,wsc,hsc,color,alpha)
+draw_sprite_part_ext(sprite,kmouseover*3+spraddto,0,0,sprpx,sprite_get_height(sprite),rx,ry,wsc,hsc,color,alpha)
+if sprpx*2*hsc == width then{
+    draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,sprite_get_height(sprite),rx+width/2,ry,wsc,hsc,color,alpha)
+}else{
+    var wsc = (1+ floor(width/2)) / (sprpx);
+    draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx,sprite_get_height(sprite),rx+width/2,ry,wsc,hsc,color,alpha)
+    //draw_sprite_part_ext(sprite,kmouseover*3+spraddto+2,sprite_get_width(sprite)-sprpx,0,sprpx+12,sprite_get_height(sprite),rx+width/2,ry,wsc,hsc,color,alpha)
+}
 }else{
 //draw normally
 var nsw=sprite_get_width(sprite)

@@ -13,13 +13,13 @@ case px:
 return argument0;
 break;
 case pxmin:
-return parent.height-argument0;
+return parent.iheight-argument0;
 break;
 case dp:
 return round(argument0*uiz_dp);
 break;
 case dpmin:
-return round(parent.height-argument0*uiz_dp);
+return round(parent.iheight-argument0*uiz_dp);
 break;
 case fc: case fcy:
 return round(argument0*(parent.iheight));

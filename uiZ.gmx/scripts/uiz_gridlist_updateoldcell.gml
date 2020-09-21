@@ -1,5 +1,4 @@
 ///INTERNAL UIZ FUNCTION DO NOT USE
-if live_call() return live_result;
 //sdbm("testing",selectedx_old,"x_o>=0",selectedy_old,"y_o>=0",cur_nwat_old,"nw_o<=w",width,cur_nhat_old,"nh_o<=h",height,cur_wat_old,"w_o>=0",cur_hat_old,"h_o>=0",updatemode)
 if selectedx_old>=0 and (selectedy_old>=0 or selectionmode==3) and cur_nwat_old<=width and cur_nhat_old<=height and cur_wat_old>=0 and cur_nwat_old>=0 then{
 //sdbm("almost updating",updatemode)

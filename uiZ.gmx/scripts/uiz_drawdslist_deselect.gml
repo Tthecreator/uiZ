@@ -1,4 +1,3 @@
-if live_call() return live_result;
 sel=-1;
 selection=-1;
 selected=-1;

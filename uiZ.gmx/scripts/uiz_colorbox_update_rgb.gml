@@ -1,5 +1,4 @@
 ///uiz_colorbox_update_rgb()
-if live_call() return live_result;
 r=colour_get_red(c.color);
 g=colour_get_green(c.color);
 b=colour_get_blue(c.color);

@@ -115,33 +115,33 @@ margin_out=-1//v//margin out//
 
 usebackgroundmargins=true;
 
-top_texturescript=uiz_back_circlestitch//i//top texturescript//
-top_texturescript_over=-1//i//top texturescript over//
-top_texturescript_in=-1//i//top texturescript in//
-top_texturescript_out=-1//i//top texturescript out//
+topbar_texturescript=uiz_back_circlestitch//i//top texturescript//
+topbar_texturescript_over=-1//i//top texturescript over//
+topbar_texturescript_in=-1//i//top texturescript in//
+topbar_texturescript_out=-1//i//top texturescript out//
 
-top_sprite_normal=spr_uiZ_border1//p//top sprite normal//
-top_color_normal=c_white//c//top color normal//
-top_margin_normal=10//v//top margin normal//
-top_sprite_texturemode=uiz_texturemode_fill//t//top texturemode normal
-top_border_texturemode=-1//t//top texturemode border//
+topbar_sprite_normal=spr_uiZ_border1//p//top sprite normal//
+topbar_color_normal=c_white//c//top color normal//
+topbar_margin_normal=10//v//top margin normal//
+topbar_sprite_texturemode=uiz_texturemode_fill//t//top texturemode normal
+topbar_border_texturemode=-1//t//top texturemode border//
 
-top_sprite_over=spr_uiZ_border1_over//p//top sprite over//
-top_color_over=-1//c//top color over//
-top_margin_over=-1//v//top margin over//
+topbar_sprite_over=spr_uiZ_border1_over//p//top sprite over//
+topbar_color_over=-1//c//top color over//
+topbar_margin_over=-1//v//top margin over//
 
-top_sprite_in=spr_uiZ_border1_in//p//top sprite in//
-top_color_in=-1//c//top color in//
-top_margin_in=-1//v//top margin in//
+topbar_sprite_in=spr_uiZ_border1_in//p//top sprite in//
+topbar_color_in=-1//c//top color in//
+topbar_margin_in=-1//v//top margin in//
 
-top_sprite_out=spr_uiZ_border1_in//p//top sprite out//
-top_color_out=-1//c//top color out//
-top_margin_out=-1//v//top margin out//
+topbar_sprite_out=spr_uiZ_border1_in//p//top sprite out//
+topbar_color_out=-1//c//top color out//
+topbar_margin_out=-1//v//top margin out//
 
-top_bkspr=top_sprite_normal;
-top_bkcol=top_color_normal;
-top_bkmar=top_margin_normal;
-top_texas=top_texturescript
+topbar_bkspr=topbar_sprite_normal;
+topbar_bkcol=topbar_color_normal;
+topbar_bkmar=topbar_margin_normal;
+topbar_texas=topbar_texturescript
 
 </string>
           </argument>
@@ -301,7 +301,6 @@ uiz_window_select(id)
           <argument>
             <kind>1</kind>
             <string>///handle buttons on left side
-if live_call() return live_result;
 var butId = uiz_getmouse_x()-ix;
 var buts = ds_list_size(custom_buttons_left_sprite);
 var butSize = bars * buts;
@@ -895,16 +894,16 @@ var old_bkcol=bkcol;
 var old_bkmar=bkmar;
 var old_texas=texas;
 
-bkspr=top_bkspr;
-bkcol=top_bkcol;
+bkspr=topbar_bkspr;
+bkcol=topbar_bkcol;
 if sizestatus=2 then{
 bkmar=0;
-var bkmar_bot=top_bkmar;
+var bkmar_bot=topbar_bkmar;
 }else{
-bkmar=top_bkmar;
+bkmar=topbar_bkmar;
 var bkmar_bot=0;    
 }
-texas=top_texas;
+texas=topbar_texas;
 
 var old_ix=ix;
 var old_iy=iy;

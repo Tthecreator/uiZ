@@ -18,7 +18,9 @@ draw_square(rx,ry,rlx,rly,markcolor,alpha)
 if scrollx=true and scrollbarx=true and mscrollbarx<0 then{
 uiz_drawscrollbar_horizontal_draw(rx,ily,rlx-scrollbarcorner_x,rly,scrollbarsprite,scrollbarcolor,scrollbarbacktexturemode,uscrollx,-mscrollbarx)
 }
+//sdbm("draw scorllbar",scrolly,scrollbary,mscrollbary);
 if scrolly=true and scrollbary=true and mscrollbary<0 then{
+//sdbm("draw scorllbar 2",ilx,rlx);
 uiz_drawscrollbar_vertical_draw(ilx,ry,rlx,rly-scrollbarcorner_y,scrollbarsprite,scrollbarcolor,scrollbarbacktexturemode,uscrolly,-mscrollbary)
 }
 uiz_containend()

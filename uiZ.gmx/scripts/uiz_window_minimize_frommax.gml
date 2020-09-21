@@ -4,7 +4,7 @@ posinframex=uiz_static;
 posinframey=uiz_static;
 uiz_window_fixbackground();
 uiz_fix_Base_endmargin();
-end_topframemargin=ceil(end_topframemargin+bars+top_bkmar);//add top window bar as margin
+end_topframemargin=ceil(end_topframemargin+bars+topbar_bkmar);//add top window bar as margin
 width=bars*(5+ds_list_size(custom_buttons_left_sprite)+ds_list_size(custom_buttons_right_sprite))+end_leftframemargin+end_rightframemargin;
 height=minh+end_topframemargin+end_bottomframemargin
 x=an_old_x;

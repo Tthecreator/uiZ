@@ -14,11 +14,6 @@ rotate can be set to:
 NO OTHER VALUES ARE ALLOWED
 */
 //globalvar deb;
-var argument_arr = array_create(argument_count);
-for (var i = 0; i < argument_count; i++) {
-    argument_arr[i] = argument[i];
-}
-if (live_call_ext(argument_arr)) return live_result;
 
 var repx=floor(argument6)
 var repy=floor(argument7)

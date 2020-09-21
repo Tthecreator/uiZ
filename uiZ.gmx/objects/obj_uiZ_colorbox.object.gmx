@@ -111,8 +111,7 @@ uiz_destroyObject_animation_default(w)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if global.colorscreen=id and !instance_exists(w) then{global.colorscreen=0}
+            <string>if global.colorscreen=id and !instance_exists(w) then{global.colorscreen=0}
 //if global.colorscreen=id and instance_exists(w) then{
 //if w.finaldestroy=1 then{global.colorscreen=0}
 //}
@@ -589,9 +588,7 @@ if boxblue.updated then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (live_call()) return live_result;
-
-if global.colorscreen != id or!instance_exists(w) then {
+            <string>if global.colorscreen != id or!instance_exists(w) then {
 
     if mouse_check_button_released(mb_left) and global.mouseover = id then {
         //spawn in a color menu

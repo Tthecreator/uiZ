@@ -1,6 +1,5 @@
 ///uiz_drawdslist_checkmousepos()
 //INTERNAL SCRIPT BY UIZ, PLEASE DON'T USE.
-if live_call() return live_result;
 var h = starth
 var strh;
 if endlistat >= ds_list_size(uselist) then {

@@ -144,8 +144,7 @@ border_texturemode=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if decount_counting&gt;0 or count&lt;1 then{
+            <string>if decount_counting&gt;0 or count&lt;1 then{
 if count&lt;1 then{
 count = min(1, count + uiz_sc(countspeed));
 uiz_functionbar_updateitem(onitem);
@@ -186,9 +185,7 @@ uiz_updater_unstep()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-
-mx=uiz_getmouse_x()-rx
+            <string>mx=uiz_getmouse_x()-rx
 my=uiz_getmouse_y()-ry
 
 var pxs=(isz+marginx);
@@ -302,8 +299,7 @@ if (i&gt;=0 and i&lt;items) then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if kmouseover=uiz_nomouse then{
+            <string>if kmouseover=uiz_nomouse then{
     if onitem&gt;=0 then{
         if onitem&gt;=0 and count&gt;0 then{
             decount_counting++;

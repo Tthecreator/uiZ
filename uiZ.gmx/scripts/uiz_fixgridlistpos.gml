@@ -1,6 +1,5 @@
 var arr;
 arr[0]=argument0;
-if live_call_ext(arr) return live_result;
 var t = argument0;
 var i=0;
 with(t) {

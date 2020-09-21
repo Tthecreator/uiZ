@@ -127,8 +127,7 @@ margin_out=-1//v//margin out//
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if uiz_cntn() then{
+            <string>if uiz_cntn() then{
 
 uiz_contain_custom_min_left(p)
 uiz_back(0);

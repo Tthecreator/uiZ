@@ -2,7 +2,6 @@ var argument_arr = array_create(argument_count);
 for (var i = 0; i < argument_count; i++) {
     argument_arr[i] = argument[i];
 }
-if (live_call_ext(argument_arr)) return live_result;
 var unused = argument1;
 if argument0 or argument2 then{
     with(argument3[0]){

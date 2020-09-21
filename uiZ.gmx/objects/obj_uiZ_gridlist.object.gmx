@@ -221,7 +221,6 @@ uiz_endobject()
             <kind>1</kind>
             <string>///handle scrollbar
 //if doscroll=true and (mx&gt;width-scrollbarw or uiz_mouse_isFrozen_on(id)) then{
-if live_call() return live_result;
 if doscroll=true then{
     uiz_drawscrollbar_vertical_step(rlx-scrollbarw+1,ry,rlx,rly,scroll_intern,scrollheight,true,h*scrollspeed,scrollbarAnimation, scrollbarAnimationTime);
 
@@ -267,7 +266,6 @@ if doscroll=true then{
           <argument>
             <kind>1</kind>
             <string>///get current selection:
-if live_call() return live_result;
 if uiz_drawscrollbar_getSelected(scroll_intern)=false /*and uiz_getmouse_x()&lt;rlx-scrollbarw*/ and ds_exists(mainlist, ds_type_list) and ds_exists(sizelist, ds_type_list) then{
     var sz = ds_list_size(mainlist);
     if sz&gt;0 and sz=ds_list_size(sizelist) then{
@@ -457,8 +455,7 @@ if uiz_drawscrollbar_getSelected(scroll_intern)=false /*and uiz_getmouse_x()&lt;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-switch(kmouseover){
+            <string>switch(kmouseover){
 case 0:
 scrolling=false;
 uiz_gridlist_remember();
@@ -560,8 +557,7 @@ uiz_mouse_unFreeze()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if live_call() return live_result;
-if uiz_cntn() then {
+            <string>if uiz_cntn() then {
     //draw background
     if hasbackground then{
     uiz_back()

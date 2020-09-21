@@ -9,7 +9,7 @@ uiz_fix_Background(u);
 uiz_fix_Background_top(u);
 if sizestatus=2 then{//disable background margins if the window is maximized
     bkmar=0;
-    //top_bkmar=0;
+    //topbar_bkmar=0;
 }
 /*var selected;
 
