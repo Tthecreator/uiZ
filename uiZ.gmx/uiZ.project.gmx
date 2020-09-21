@@ -230,9 +230,7 @@
       </datafile>
     </datafiles>
   </datafiles>
-  <NewExtensions>
-    <extension index="0">extensions\fixed asian arial unicode ms</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="uiz">
@@ -1881,11 +1879,10 @@
   <rooms name="rooms">
     <rooms name="uiz">
       <rooms name="examples tutorials">
+        <room>rooms\rm_uiz_serverbrowser</room>
         <room>rooms\uiz_tutorial</room>
         <room>rooms\rm_uiz_basictutorial</room>
         <room>rooms\rm_uiz_ownuiz</room>
-        <room>rooms\rm_example1_old</room>
-        <room>rooms\rm_uiz_serverbrowser</room>
       </rooms>
       <rooms name="other, don't touch!">
         <room>rooms\rm_surfacetest</room>
