@@ -1879,7 +1879,6 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
     <rooms name="uiz">
       <rooms name="examples tutorials">
         <room>rooms\uiz_tutorial</room>
@@ -1894,7 +1893,7 @@
       </rooms>
     </rooms>
   </rooms>
-  <constants number="104">
+  <constants number="101">
     <constant name="dp">1</constant>
     <constant name="dpmin">1.1</constant>
     <constant name="fc">2</constant>
@@ -1905,8 +1904,6 @@
     <constant name="fcy">2.2</constant>
     <constant name="px">0</constant>
     <constant name="pxmin">0.1</constant>
-    <constant name="SECUREMODE">0</constant>
-    <constant name="TEST">234</constant>
     <constant name="uiz_acceldecel">23</constant>
     <constant name="uiz_animationtype_multi">1</constant>
     <constant name="uiz_animationtype_single">0</constant>
@@ -1994,7 +1991,6 @@
     <constant name="uiz_treelist_boxState_noBox">0</constant>
     <constant name="uiz_treelist_boxState_collapsed">1</constant>
     <constant name="uiz_treelist_boxState_extended">2</constant>
-    <constant name="live_enabled">0</constant>
     <constant name="uiz_gridlist_selection_none">0</constant>
     <constant name="uiz_gridlist_selection_cell">1</constant>
     <constant name="uiz_gridlist_selection_row">2</constant>
