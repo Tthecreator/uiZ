@@ -116,6 +116,7 @@ for(var i=0;i&lt;ds_list_size(cl);i++){
         draw_set_color(c_green);
         draw_rectangle(curid.ix,curid.iy,curid.ilx,curid.ily,true)
         draw_set_color(c_red);
+        draw_rectangle(curid.rx-curid.leftmargin,curid.ry-curid.topmargin,curid.rlx+curid.rightmargin,curid.rly+curid.bottommargin,true)
     }else{
     draw_set_color(c_black);
     }
@@ -155,7 +156,7 @@ deepness=0;
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 draw_set_color(c_black);
-draw_text(window.ix,window.iy,"mo: "+string(global.mouseover)+", mof: "+string(global.mouseoverframe)+", mosf: "+string(global.mouseoverscrollframe))
+draw_text(window.ix,window.iy,"mo: "+string(global.mouseover)+", mof: "+string(global.mouseoverframe)+", mosf: "+string(global.mouseoverscrollable))
 event_user(0);
 </string>
           </argument>

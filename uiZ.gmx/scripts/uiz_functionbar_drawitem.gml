@@ -9,7 +9,7 @@ var i=argument0;
                 if decount[i] >= 0 then{
                 uimg = 1;
                 //sdbm("selectioncolro_old",selectioncolor_old)
-                    var fac = (uiz_animation_getfunction(decount[i], graphtype));
+                    var fac = (uiz_animation_getFunction(decount[i], graphtype));
                     var col=uiz_functionbar_createcolor(color[i],fac);
                 }else{
                 if uiz_selfmarked=true then{exit;}
@@ -24,16 +24,16 @@ var i=argument0;
             draw_set_color(c_black)
             draw_set_valign(fa_top)
             draw_set_halign(fa_center)
-            draw_set_font(uiz_fnt_dp_15)
+            draw_set_font(uiz_fnt_dp_20)
             var marry=marginy+bkmar;
-            draw_text(p + isz / 2, ry + marry + 3, uiz_gettext_contained(text[i], isz))
+            draw_text(p + isz / 2, ry + marry + 3, uiz_getText_contained(text[i], isz))
             var sc = min(isz - 10, 0.5 * (height - marry * 2))
             draw_sprite_ext(sprite[i], uimg, p + isz / 2 - sc / 2, ry + (height - sc) / 2, sc / sprite_get_width(sprite[i]), sc / sprite_get_height(sprite[i]), 0, c_white, 1)
             //draw menuarrow
             if is_string(menu[i]) then {
                 draw_set_valign(fa_bottom)
                 draw_set_halign(fa_center)
-                draw_text(p + isz / 2, rly - marry - 3, uiz_gettext_contained(menu[i], isz))
+                draw_text(p + isz / 2, rly - marry - 3, uiz_getText_contained(menu[i], isz))
             } else {
                 if menu[i] > 0 then {
                     var ya = rly - marry - 5 - isz / 10;

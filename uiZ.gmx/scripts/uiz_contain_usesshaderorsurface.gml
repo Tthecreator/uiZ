@@ -1,4 +1,4 @@
-///uiz_contain_usesshaderorsurface()
+///uiz_contain_usesShaderOrSurface()
 //return 1 for shader
 //return 0 for surface.
 if global.uiz_shader=1 and uiz_shader=1 then{

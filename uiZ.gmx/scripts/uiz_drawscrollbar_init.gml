@@ -14,5 +14,12 @@ var arr;
 for(var i=7;i>=0;--i){
 arr[i]=0;
 }
-arr[uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor]=i;
+arr[uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_mstate_last]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_mstate]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_updated]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_scrollsel]=0;
+arr[uiz_drawscrollbar_struct.uiz_dsb_scroll]=0;
 return arr;

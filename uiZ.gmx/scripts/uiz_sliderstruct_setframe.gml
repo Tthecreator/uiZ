@@ -27,12 +27,12 @@ moveback=1;
 
 
 if oldframe!=newframe and instance_exists(oldframe) then{
-uiz_destroyobject(oldframe)
+uiz_destroyObject(oldframe)
 }
 oldframe=newframe;
 //create newframe
 newframe=uiz_c(obj_uiZ_frame)
-uiz_setparent(newframe,id)
+uiz_setParent(newframe,id)
 //sdbm("create new frame 2")
 newframe.posinframex=uiz_snapleft;
 newframe.posinframey=uiz_snaptop;

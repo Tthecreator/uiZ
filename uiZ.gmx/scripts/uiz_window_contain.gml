@@ -1,4 +1,4 @@
-///uiz_window_contain(instanceid,uiz_window_contain_ constant)
+///uiz_window_contain(instanceid, uiz_window_contain_ constant[uiz_window_contain_corner])
 /*contain: Use this if you don't want the window to be outside of the screen.
 uiz_window_contain_none
 uiz_window_contain_corner

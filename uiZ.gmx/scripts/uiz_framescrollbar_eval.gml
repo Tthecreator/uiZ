@@ -6,7 +6,7 @@
 with(argument0){
 if instance_exists(frame) then{
 if horizontal=false then{
-scrolllines=uiz_getmaxyscrollinframe(frame)
+scrolllines=uiz_getMaxYScrollInObject(frame)
 if lastadd!=frame.addy then{
 scroll=floor(clamp(-(frame.addy),0,scrolllines))
 lastadd=frame.addy;
@@ -14,10 +14,10 @@ lastadd=frame.addy;
 /*
 frame.addy=-clamp(scroll,0,scrolllines);
 if lastadd!=frame.addy then{lastadd=frame.addy}
-uiz_fixchildren(frame,true)
+uiz_fixChildren(frame,true)
 */
 }else{
-scrolllines=uiz_getmaxxscrollinframe(frame)
+scrolllines=uiz_getMaxXScrollInObject(frame)
 if lastadd!=frame.addx then{
 scroll=floor(clamp(-(frame.addx),0,scrolllines))
 lastadd=frame.addx;
@@ -25,9 +25,9 @@ lastadd=frame.addx;
 /*
 frame.addx=-clamp(scroll,0,scrolllines);
 if lastadd!=frame.addx then{lastadd=frame.addx}
-uiz_fixchildren(frame,true)
+uiz_fixChildren(frame,true)
 */
 }
 }else{scrolllines=0;}
 }
-uiz_drawscrollbar_setvalue(uscroll,scroll)
+uiz_drawscrollbar_setValue(uscroll,scroll)

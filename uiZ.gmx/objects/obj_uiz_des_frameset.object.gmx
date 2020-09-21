@@ -88,9 +88,9 @@ firstalarm=global.isbeingcreated
           <argument>
             <kind>1</kind>
             <string>uiz_xml_unloadfile(uxml)
-uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>
@@ -177,7 +177,7 @@ uiz_des_setvalueof(o,wv)
 //sdbm("setting up data:",o.updatetype)
 switch(o.updatetype){
 case "name": o.value=obj_uiz_des_name(object,wv) break;
-case "parent": if wv&gt;-1 then{uiz_setparent(object,obj_uiz_designer.aflist[| wv])} 
+case "parent": if wv&gt;-1 then{uiz_setParent(object,obj_uiz_designer.aflist[| wv])} 
 //case "x": object.x=wv;x=wv; break;
 //case "y": object.y=wv;y=wv; break;
 case "x": object.posvalx=wv;object.x=wv;x=wv;posvalx=wv; break;
@@ -231,7 +231,7 @@ wv=ini_read_real(string(object.uiobject),o.updatetype,o.defval)}
 o.value=wv
 switch(o.updatetype){
 case "name": o.value=obj_uiz_des_name(object,wv) break;
-case "parent": if wv&gt;-1 then{uiz_setparent(object,obj_uiz_designer.aflist[| wv])} 
+case "parent": if wv&gt;-1 then{uiz_setParent(object,obj_uiz_designer.aflist[| wv])} 
 case "x": object.x=wv;x=wv; break;
 case "y": object.y=wv;y=wv; break;
 case "posvalw": object.posvalw=wv;posvalw=wv; break;
@@ -339,7 +339,7 @@ var apply=1
 if u.rlorstr=1 then{wv=ini_read_string(string(o.uiobject),updatetype,"")}else{wv=ini_read_real(string(o.uiobject),updatetype,0)}
 switch(updatetype){
 case "name": if u.updated=1 then{wv=obj_uiz_des_name(o,v)}else{apply=0;} break;
-case "parent": uiz_setparent(object,global.newparentlist[|u.select]) wv=ds_list_find_index(obj_uiz_designer.aflist,global.newparentlist[|u.select]);  break;
+case "parent": uiz_setParent(object,global.newparentlist[|u.select]) wv=ds_list_find_index(obj_uiz_designer.aflist,global.newparentlist[|u.select]);  break;
 //case "parent": sdbm(o,global.newparentlist[|u.select]) break;
 case "x": o.posvalx=v; posvalx=v; wv=v; break;
 case "y": o.posvaly=v; posvaly=v; wv=v; break;
@@ -357,7 +357,7 @@ uiz_des_framewindow();
 }
 uiz_fixgeneralpos(o)
 uiz_fixgeneralpos(id)
-uiz_fixchildren(o,1)
+uiz_fixChildren(o,1)
 if apply=1 then{
 ini_open(ini)
 if u.rlorstr=1 then{ini_write_string(string(o.uiobject),updatetype,wv)}else{ini_write_real(string(o.uiobject),updatetype,wv)}
@@ -432,9 +432,9 @@ uiz_des_framewindow_save()
 var fp=uiz_des_framewindow_findframefromxml(object,uxml,xml.selectxml)
 //sdbm("fpadd:",fp,usetag,istag)
 if istag="horizontal" then{
-uiz_framedivisionhorizontal(fp,1,xtra)
+uiz_frameset_divide_horizontal(fp,1,xtra)
 }else{
-uiz_framedivisionvertical(fp,1,xtra)
+uiz_frameset_divide_vertical(fp,1,xtra)
 }
 
 
@@ -666,9 +666,9 @@ uiz_des_framewindow_save()
 var fp=uiz_des_framewindow_findframefromxml(object,global.xml,xml.selectxml)
 //sdbm("fpadd:",fp,usetag,istag)
 if istag="horizontal" then{
-uiz_framedivisionhorizontal(fp,1,xtra)
+uiz_frameset_divide_horizontal(fp,1,xtra)
 }else{
-uiz_framedivisionvertical(fp,1,xtra)
+uiz_frameset_divide_vertical(fp,1,xtra)
 }
 
 
@@ -855,7 +855,7 @@ var setto=uiz_des_framewindow_findframefromxml(object,uxml,xml.selectxml)
 //sdbm("setto!",setto,object_get_name(setto.object_index))
 if instance_exists(setto) then{
 
-uiz_setparent(global.windowisfrom.object,setto)
+uiz_setParent(global.windowisfrom.object,setto)
 ini_open(global.windowisfrom.ini)
 //sdbm("writing to",global.windowisfrom.object.uiobject,"parentinframe",uiz_xml_gettaginfo_at(uxml,xml.selectxml,"basename","-1"))
 ini_write_string(string(global.windowisfrom.object.uiobject),"parentinframe",uiz_xml_gettaginfo_at(uxml,xml.selectxml,"basename","-1"))
@@ -890,9 +890,9 @@ global.haswindow=0;
           <argument>
             <kind>1</kind>
             <string>uiz_xml_unloadfile(uxml)
-uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>
@@ -916,9 +916,9 @@ uiz_destroydslist(updatedefvallist)
           <argument>
             <kind>1</kind>
             <string>uiz_xml_unloadfile(uxml)
-uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>

@@ -8,7 +8,7 @@ var o=obj_uiZ_controller.id;
 }
 //Handling the object 'UIZ__obj_uiZ_gradientsquare' of index 'obj_uiZ_gradientsquare'
 UIZ__obj_uiZ_gradientsquare=uiz_c(obj_uiZ_gradientsquare)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_gradientsquare,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_gradientsquare,o)}
 UIZ__obj_uiZ_gradientsquare.posinframex=px
 UIZ__obj_uiZ_gradientsquare.posinframey=px
 UIZ__obj_uiZ_gradientsquare.posvalwtype=px
@@ -38,7 +38,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_gradientsquare)
 
 //Handling the object 'UIZ__obj_uiZ_gradientsquare_392' of index 'obj_uiZ_gradientsquare'
 UIZ__obj_uiZ_gradientsquare_392=uiz_c(obj_uiZ_gradientsquare)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_gradientsquare_392,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_gradientsquare_392,o)}
 UIZ__obj_uiZ_gradientsquare_392.posinframex=px
 UIZ__obj_uiZ_gradientsquare_392.posinframey=px
 UIZ__obj_uiZ_gradientsquare_392.posvalwtype=px
@@ -68,7 +68,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_gradientsquare_392)
 
 //Handling the object 'UIZ__obj_uiZ_slider' of index 'obj_uiZ_slider'
 UIZ__obj_uiZ_slider=uiz_c(obj_uiZ_slider)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_slider,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_slider,o)}
 UIZ__obj_uiZ_slider.posinframex=px
 UIZ__obj_uiZ_slider.posinframey=px
 UIZ__obj_uiZ_slider.posvalwtype=px
@@ -100,7 +100,7 @@ uiz_fixgeneralpos(UIZ__obj_uiZ_slider)
 
 //Handling the object 'UIZ_a_obj_uiZ_rotator' of index 'obj_uiZ_rotator'
 UIZ_a_obj_uiZ_rotator=uiz_c(obj_uiZ_rotator)
-if argument_count>0 then{uiz_setparent(UIZ_a_obj_uiZ_rotator,o)}
+if argument_count>0 then{uiz_setParent(UIZ_a_obj_uiZ_rotator,o)}
 UIZ_a_obj_uiZ_rotator.posinframex=px
 UIZ_a_obj_uiZ_rotator.posinframey=px
 UIZ_a_obj_uiZ_rotator.posvalwtype=px
@@ -121,7 +121,7 @@ uiz_fixgeneralpos(UIZ_a_obj_uiZ_rotator)
 
 //Handling the object 'UIZ__obj_uiZ_stringbox' of index 'obj_uiZ_stringbox'
 UIZ__obj_uiZ_stringbox=uiz_c(obj_uiZ_stringbox)
-if argument_count>0 then{uiz_setparent(UIZ__obj_uiZ_stringbox,o)}
+if argument_count>0 then{uiz_setParent(UIZ__obj_uiZ_stringbox,o)}
 UIZ__obj_uiZ_stringbox.posinframex=px
 UIZ__obj_uiZ_stringbox.posinframey=px
 UIZ__obj_uiZ_stringbox.posvalwtype=px

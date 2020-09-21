@@ -32,12 +32,6 @@
 uiz_objinit()
 //depth=-9999999999
 uiz_fixgeneralpos(id)
-//backcolor=c_blue//c//background color
-//backalpha=0.5//v//background alpha
-itemcolor=c_white//c//item color//
-itemoncolor=c_ltgray//c//item mouse over color//
-itemincolor=c_gray//c//item mouse click color//
-itemalpha=1//v//item alpha//
 margin=3//v//item margin//
 textmargin=1//v//text margin in pixels//
 uselist=-1
@@ -121,6 +115,11 @@ item_color_out=15592941//c//item color out//
 item_margin_out=-1//v//item margin out//
 
 
+//custom default destroy functions
+destroyxfunction=uiz_exponential_in
+destroyyfunction=uiz_exponential_in
+destroyafunction=uiz_exponential_in
+destroyspeed=0.1
 </string>
           </argument>
         </arguments>
@@ -144,11 +143,10 @@ item_margin_out=-1//v//item margin out//
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-//sdbm("destroying mousemenu",debug_get_callstack());
 if destroylist=true then{
-uiz_destroydslist(uselist)
-uiz_destroydslist(actionlist)
-uiz_destroydslist(enabledlist)
+uiz_destroyDsList(uselist)
+uiz_destroyDsList(actionlist)
+uiz_destroyDsList(enabledlist)
 }
 </string>
           </argument>
@@ -178,41 +176,13 @@ if problems=1 and mouse_wheel_down() then{scroll=clamp(scroll+scrollspeed,0,sz-1
 if scroll&gt;0 and mouse_wheel_up() then{scroll=clamp(scroll-scrollspeed,0,sz-1)}
 }
 
-if mouse_check_button_released(mb_left) and kmouseover!=uiz_mousereleased then{
+if mouse_check_button(mb_left) and kmouseover=0 then{
     updated=1;
     selection=-1;
+    uiz_destroyObject_animation_default(id);
 }
 
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-if updated=1 then{
-if instance_exists(listener) and listener_script!=-1 and script_exists(listener_script) then{
-//execute update script
-script_execute(listener_script,id,listener);
-}
-uiz_destroyobject(id)}
 </string>
           </argument>
         </arguments>
@@ -328,7 +298,7 @@ if selection&gt;0 then{uiz_set_cursor(cr_handpoint)}
             <string>//sdbm(id,object_get_name(object_index),object_index,obj_uiZ_controller.object_index,obj_uiZ_mousemenu.object_index)
 //sdbm(global.mouseover,obj_uiZ_controller.id,obj_uiZ_mousemenu.id)
 var km=min(kmouseover,2);
-if selection&gt;0 and selectioncol!=km then{
+if selection&gt;=0 and selectioncol!=km then{
     selectioncol=km;
     uiz_mousemenu_update_new();
 }
@@ -341,9 +311,14 @@ if kmouseover=uiz_mousereleased then{
     }
     selected = selection
     updated = 1
+    if listener_script!=-1 and script_exists(listener_script) then{
+    script_execute(listener_script,id,listener);
+    }
+    uiz_destroyObject_animation_default(id);
     }else{
         wait=false;
     }
+    uiz_mousemenu_update_new();
 }
 </string>
           </argument>
@@ -418,8 +393,13 @@ if uiz_cntn() then {
             var h = ubkmar+ry;
              var th, txt;
             for (var i = scroll; i &lt; sz; i++) {
-                var ucolor = c_green;
-                h += margin + uiz_mousemenu_drawitem(i, h, 0)
+                var ucolor;
+                if (i == selection) then{
+                    ucolor = selectioncol;
+                }else{
+                    ucolor = 0;
+                }
+                h += margin + uiz_mousemenu_drawitem(i, h, ucolor)
             }
         }
     }
@@ -427,104 +407,6 @@ if uiz_cntn() then {
     updateselection = false;
     uiz_containend()
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>////BACKUP
-/*
-//draw back
-if uiz_cntn() then{
-//draw_square(rx,ry,rlx,rly,backcolor,backalpha)
-//draw items
-uiz_back();
-var ubkmar=bkmar;
-if uselist!=-1 and ds_exists(uselist,ds_type_list) then{
-var sz=ds_list_size(uselist)
-if ds_exists(enabledlist,ds_type_list) then{
-var esz=ds_list_size(enabledlist)
-}
-var h=ubkmar;
-var th,txt;
-if destroy=0 and !point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),sx,sy,slx,sly) and mouse_check_button(mb_left) then{updated=1}
-problems=0;
-for(var i=scroll;i&lt;=sz;i++){
-if i&lt;sz then{
-txt=string(uselist[| i])
-th=string_height(txt)
-var ucolor;
-if ds_exists(enabledlist,ds_type_list) and esz&gt;i and enabledlist[| i]=false then{
-var isaena=false}else{var isaena=true}
-if destroy=0 and point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),sx,sy+h,slx,sy+th+h) then{
-ucolor=0;
-//if isaena=true then{
-uiz_set_cursor(cr_handpoint)
-if mouse_check_button(mb_left) then{ucolor=2}else{ucolor=1}
-if mouse_check_button_released(mb_left) then{
-//action
-if actionlist!=-1 and ds_exists(actionlist,ds_type_list) then{script_execute(actionlist[| i])}
-selected=i
-updated=1
-}
-//}
-}else{ucolor=0}
-
-//draw_square(rx,ry+h,rlx,ry+th+h,ucolor,itemalpha)
-//if margin&gt;0 then{draw_square(rx,ry+h-margin,rlx,ry+h,backcolor,backalpha)}
-//draw back
-//get enabled
-if isaena=false then{
-uiz_back_at_item(rx+ubkmar*itemhasdoublemargins,ry+h,rlx-ubkmar*itemhasdoublemargins,ry+th+h,3)
-draw_set_color(textcolordisabled)
-}else{
-uiz_back_at_item(rx+ubkmar*itemhasdoublemargins,ry+h,rlx-ubkmar*itemhasdoublemargins,ry+th+h,ucolor)
-draw_set_color(textcolor)
-}
-if font&gt;-1 then{draw_set_font(font)}
-draw_set_valign(fa_center)
-draw_text(rx+ubkmar+textmargin,ry+h+th/2,uiz_gettext_contained(txt,width-ubkmar*2-textmargin))
-draw_set_valign(fa_top)
-h+=th+margin
-if sy+h&gt;global.screenpxheight or h&gt;height then{problems=1; break;}
-}else{
-if scroll&gt;0 and (sy+h)&lt;global.screenpxheight then{
-while((scroll-1)&gt;0){
-txt=string(uselist[| scroll-1])
-th=string_height(txt)
-h+=th+margin
-if (sy+h)&lt;global.screenpxheight then{scroll--}else{break;}
-
-}
-
-
-}
-}
-}
-
-//if margin&gt;0 then{draw_square(rx,ry+h-margin,rlx,ry+h,backcolor,backalpha)}
-
-}
-
-uiz_containend()
-}
-
-
 </string>
           </argument>
         </arguments>
@@ -549,9 +431,9 @@ uiz_containend()
             <kind>1</kind>
             <string>uiz_endobject()
 if destroylist=true then{
-uiz_destroydslist(uselist)
-uiz_destroydslist(actionlist)
-uiz_destroydslist(enabledlist)
+uiz_destroyDsList(uselist)
+uiz_destroyDsList(actionlist)
+uiz_destroyDsList(enabledlist)
 }
 </string>
           </argument>
@@ -577,9 +459,9 @@ uiz_destroydslist(enabledlist)
             <kind>1</kind>
             <string>uiz_endobject()
 if destroylist=true then{
-uiz_destroydslist(uselist)
-uiz_destroydslist(actionlist)
-uiz_destroydslist(enabledlist)
+uiz_destroyDsList(uselist)
+uiz_destroyDsList(actionlist)
+uiz_destroyDsList(enabledlist)
 }
 </string>
           </argument>

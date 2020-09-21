@@ -1,6 +1,18 @@
 ///uiz_xml_gethandle(file,tree)
+//gets a handle to a part in the file given by the tree.
+//example:
+//file:
+//  <test>
+//    <something>data</something>
+//  </test>
+//
+//code:
+//tree = uiz_xml_gettree(file,"test/something")
+//handle = uiz_xml_gethandle(file,tree)
+//data = uiz_xml_readtag(file,handle)
+
 //get a handle
-var m=obj_uiz_xmlparser;
+var m=obj_uiz_xmlparser.id;
 var l=m.filelistl[| argument0];
 var d=m.filelistd[| argument0];
 var v=m.filelistv[| argument0];

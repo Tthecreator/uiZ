@@ -1,5 +1,5 @@
 uiz_objinit()
-uiz_setparent(id,obj_uiz_designer.tf)
+uiz_setParent(id,obj_uiz_designer.tf)
 alarm[0]=1
 itemlist=ds_list_create()
 overdestroy=0

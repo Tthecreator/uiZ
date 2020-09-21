@@ -1,4 +1,4 @@
-///uiz_draw_squarebutton_independent(x1,y1,x2,y2,color,oncolor,incolor,alpha)
+///uiz_draw_squareButton_independent(x1,y1,x2,y2,color,oncolor,incolor,alpha)
 /*
 Draws a quick button without any text, at specified position.
 Color is the normal color

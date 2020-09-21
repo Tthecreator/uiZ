@@ -1,0 +1,2 @@
+///uiz_win31_addmenulist(window)
+uiz_window_custom_button_create_left(argument0,spr_uiZ_win31_options,c_white,c_white,c_white,uiz_win31_window_spawnMouseMenu)

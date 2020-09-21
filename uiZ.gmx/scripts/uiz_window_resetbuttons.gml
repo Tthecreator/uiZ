@@ -5,7 +5,7 @@ if instance_exists(buttons) then{
 if button_cross=1 then{
 if !instance_exists(cross) then{
 cross=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(cross,buttons)
+uiz_setParent(cross,buttons)
 cross.posinframex=fc
 cross.posvalx=2/3;
 cross.posvalwtype=fcy
@@ -13,12 +13,12 @@ cross.posvalw=1
 cross.posinframey=uiz_fill
 cross.containtowhosparent=id
 uiz_fixgeneralpos(cross)
-}}else{if instance_exists(cross) then{uiz_destroyobject(cross)}}
+}}else{if instance_exists(cross) then{uiz_destroyObject(cross)}}
 if button_maximize=1 then{
 if !instance_exists(maxim) then{
 maxim=uiz_easybutton_create(spr_uiZ_windowbuttons)
 //sdbm("id's",maxim,buttons)
-uiz_setparent(maxim,buttons)
+uiz_setParent(maxim,buttons)
 maxim.posinframex=fc
 maxim.posvalx=(2-button_cross)/3;
 maxim.posvalwtype=fcy
@@ -31,12 +31,12 @@ if maxim.posvalx!=(2-button_cross)/3 then{
 maxim.posvalx=(2-button_cross)/3;
 uiz_fixgeneralpos(maxim)
 }
-}}else{if instance_exists(maxim) then{uiz_destroyobject(maxim)}}
+}}else{if instance_exists(maxim) then{uiz_destroyObject(maxim)}}
 
 if button_minimize=1 then{
 if !instance_exists(minim) then{
 minim=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(minim,buttons)
+uiz_setParent(minim,buttons)
 minim.posinframex=fc
 minim.posvalx=(2-button_cross-button_maximize)/3;
 minim.posvalwtype=fcy
@@ -51,6 +51,6 @@ uiz_fixgeneralpos(minim)
 }
 }
 
-}else{if instance_exists(minim) then{uiz_destroyobject(minim)}}
+}else{if instance_exists(minim) then{uiz_destroyObject(minim)}}
 }
 }

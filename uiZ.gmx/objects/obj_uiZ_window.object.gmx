@@ -25,31 +25,6 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.lockwindowresel=global.lockwindowreseltime;
-lastparent=obj_uiZ_controller.id;
-//lastparent=0;
-m=0;
-u=0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///#define uiZ
 //#sprite images
 //#spritenum 17
@@ -57,112 +32,62 @@ u=0;
 //#exclude
 //global.count=2
 uiz_objinit()
-draw=0
-mark=1
-markcolor=irandom(255*255*255)
-//texturemode=uiz_texturemode_tile
-//bordertexturemode=uiz_texturemode_fill
-//bordercolor=c_white
-iscover=0
-fromx=0
-fromy=0
-tox=0
-toy=0
-topbordermargin=3;
-rightbordermargin=3;
-bottombordermargin=3;
-leftbordermargin=3;
-maximizesnapmargin=5//v//snap maximize margin//
-//bordersprite=spr_uiZ_windowborder;
-//bordersprite=spr_uiZ_border1;
 windowtext="window"//s//window text//
-//drawwindowtext=""
 windowtextcolor=c_black//c//window text color//
-barsize=0.25
-barsizevaltype=dp
-//windowtopcolor=c_aqua
-//windowtopalpha=1
-//windowmaincolor=c_white
-//windowmainalpha=1
-button_cross=1
-button_maximize=1
-button_minimize=1
-oldbutton_cross=1
-oldbutton_maximize=1
-oldbutton_minimize=1
+halign=fa_left//v//window text horizontal align//
+valign=fa_center//v//window text vertical align//
+font=-1;//f//window text font//
+wholewidthalign=false;//b//align type//
+barsize=0.25//v//top bar size//
+barsizevaltype=dp//z//top bar size type//
 
-button_cross_color_normal=c_white;
-button_cross_color_over=c_white;
-button_cross_color_in=c_white;
-button_cross_sprite=spr_uiZ_windowbutton_cross;
+button_cross=true//b//enable close button//
+button_maximize=true//b//enable maximize button//
+button_minimize=true//b//enable minimize button//
 
-button_maximize_color_normal=c_white;
-button_maximize_color_over=c_white;
-button_maximize_color_in=c_white;
-button_maximize_sprite=spr_uiZ_windowbutton_maximize;
+button_cross_color_normal=c_white;//c//close button normal color// 
+button_cross_color_over=c_white;//c//close button over color//
+button_cross_color_in=c_white;//c//close button in color//
+button_cross_sprite=spr_uiZ_windowbutton_cross;//p//close button sprite//
 
-button_minimize_color_normal=c_white;
-button_minimize_color_over=c_white;
-button_minimize_color_in=c_white;
-button_minimize_sprite=spr_uiZ_windowbutton_minimize;
+button_maximize_color_normal=c_white;//c//maximize button normal color// 
+button_maximize_color_over=c_white;//c//maximize button over color//
+button_maximize_color_in=c_white;//c//maximize button in color//
+button_maximize_sprite=spr_uiZ_windowbutton_maximize;//p//maximize button sprite//
 
-addwindowdepth=0
-mainframe=0
-snaptomouse=0
-mouseminx=0
-mouseminy=0
-//windowminx=0
-//windowminy=0
-sizestatus=1
-oldx=x
-oldy=y
-olda=1
-oldwidth=width
-oldheight=height
-inanimation=0
-maximizeanimation=uiz_elastic_inout
-maximizeanimationspeed=0.3
-unmaximizeanimation=uiz_elastic_inout
-unmaximizeanimationspeed=0.2
-minimizeanimation=uiz_wigle
-minimizeanimationspeed=0.3
-unminimizeanimation=uiz_wigle
-unminimizeanimationspeed=0.2
-destroyyfunction=uiz_straight
-destroyxfunction=uiz_straight
-destroyafunction=uiz_straight
-destroyspeed=0.5
-destroy=0
-finaldestroy=0
-destroycount=0
-destroycountspeed=0.1
-destroycountanimation=uiz_elastic_inout
+button_minimize_color_normal=c_white;//c//minimize button normal color// 
+button_minimize_color_over=c_white;//c//minimize button over color//
+button_minimize_color_in=c_white;//c//minimize button in color//
+button_minimize_sprite=spr_uiZ_windowbutton_minimize;//p//minimize button sprite//
+
+maximizeanimation=uiz_elastic_inout//a//maximize animation//
+maximizeanimationspeed=0.3//v//maximize animation duration//
+unmaximizeanimation=uiz_elastic_inout//a//unmaximize animation//
+unmaximizeanimationspeed=0.2//v//unmaximize animation duration//
+
+minimizeanimation=uiz_wigle//a//minimize animation//
+minimizeanimationspeed=0.3//v//minimize animation duration//
+unminimizeanimation=uiz_wigle//a//unminimize animation//
+unminimizeanimationspeed=0.2//v//unminimize animation duration//
+
+destroyyfunction=uiz_straight//a//closing height animation//
+destroyxfunction=uiz_straight//a//closing width animation//
+destroyafunction=uiz_zero//a//closing alpha animation//
+destroyspeed=0.5//a//closing animation duration//
+
+
 contain=uiz_window_contain_corner//v//contain constant//
-resizable=true;
-halign=fa_left
-valign=fa_center
-font=-1;
-wholewidthalign=false;
-keepratio=false;
-minwidth=0;
-minwidthtype=px;
-minheight=0;
-minheighttype=px;
-ratio=1;
-minw=0;
-minh=0;
-bars=0;
-//uiz_window_fixminwh()
+resizable=true;//b//resizable//
 
-graboffx=0;
-graboffy=0;
+keepratio=false;//b//keep window ratio//
+minwidth=0;//v//minimum window width//
+minwidthtype=px;//z//minimum window width type//
+minheight=0;//v//minimum window height//
+minheighttype=px;//z//minimum window height type//
 
-//lastparent=0;
-
-
-isresizing=false;
 doublemargins=false//b//double topbar margins//
-topbackuse=-1;
+topbarInside=false//b//topbar in inner margins//
+topbackuse=-1;//v//top bar background type//
 
 hasbackground=true;
 texturescript=uiz_back_circlestitch//i//texturescript//
@@ -190,36 +115,90 @@ margin_out=-1//v//margin out//
 
 usebackgroundmargins=true;
 
+topbar_texturescript=uiz_back_circlestitch//i//top texturescript//
+topbar_texturescript_over=-1//i//top texturescript over//
+topbar_texturescript_in=-1//i//top texturescript in//
+topbar_texturescript_out=-1//i//top texturescript out//
 
-top_texturescript=uiz_back_circlestitch//i//top texturescript//
-top_texturescript_over=-1//i//top texturescript over//
-top_texturescript_in=-1//i//top texturescript in//
-top_texturescript_out=-1//i//top texturescript out//
+topbar_sprite_normal=spr_uiZ_border1//p//top sprite normal//
+topbar_color_normal=c_white//c//top color normal//
+topbar_margin_normal=10//v//top margin normal//
+topbar_sprite_texturemode=uiz_texturemode_fill//t//top texturemode normal
+topbar_border_texturemode=-1//t//top texturemode border//
 
-top_sprite_normal=spr_uiZ_border1//p//top sprite normal//
-top_color_normal=c_white//c//top color normal//
-top_margin_normal=0//v//top margin normal//
-top_sprite_texturemode=uiz_texturemode_fill//t//top texturemode normal
-top_border_texturemode=-1//t//top texturemode border//
+topbar_sprite_over=spr_uiZ_border1_over//p//top sprite over//
+topbar_color_over=-1//c//top color over//
+topbar_margin_over=-1//v//top margin over//
 
-top_sprite_over=spr_uiZ_border1_over//p//top sprite over//
-top_color_over=-1//c//top color over//
-top_margin_over=-1//v//top margin over//
+topbar_sprite_in=spr_uiZ_border1_in//p//top sprite in//
+topbar_color_in=-1//c//top color in//
+topbar_margin_in=-1//v//top margin in//
 
-top_sprite_in=spr_uiZ_border1_in//p//top sprite in//
-top_color_in=-1//c//top color in//
-top_margin_in=-1//v//top margin in//
+topbar_sprite_out=spr_uiZ_border1_in//p//top sprite out//
+topbar_color_out=-1//c//top color out//
+topbar_margin_out=-1//v//top margin out//
 
-top_sprite_out=spr_uiZ_border1_in//p//top sprite out//
-top_color_out=-1//c//top color out//
-top_margin_out=-1//v//top margin out//
+topbar_bkspr=topbar_sprite_normal;
+topbar_bkcol=topbar_color_normal;
+topbar_bkmar=topbar_margin_normal;
+topbar_texas=topbar_texturescript
 
-top_bkspr=top_sprite_normal;
-top_bkcol=top_color_normal;
-top_bkmar=top_margin_normal;
-top_texas=top_texturescript
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.lockwindowresel=global.lockwindowreseltime;
+lastparent=obj_uiZ_controller.id;
+//lastparent=0;
+m=0;
+u=0;
+draw=0
+mark=1
+markcolor=irandom(255*255*255)
+iscover=0
+fromx=0
+fromy=0
+tox=0
+toy=0
+snaptomouse=0
+mouseminx=0
+mouseminy=0
 
+sizestatus=1
+oldx=x
+oldy=y
+olda=1
+oldwidth=width
+oldheight=height
+inanimation=0
+maximizesnapmargin=5//v//snap maximize margin//
+destroy=0;
 
+ratio=1;
+minw=0;
+minh=0;
+bars=0;
+
+graboffx=0;
+graboffy=0;
+
+isresizing=false;
 
 button_cross_state=0;
 button_maximize_state=0;
@@ -230,6 +209,43 @@ loverbut_mouse=0;
 
 lkmouseover=0;
 addwindowmydepth=0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///custom button control
+custom_buttons_left_color_normal=ds_list_create();
+custom_buttons_left_color_over=ds_list_create();
+custom_buttons_left_color_in=ds_list_create();
+custom_buttons_left_sprite=ds_list_create();
+custom_buttons_left_state=ds_list_create();
+custom_buttons_left_script=ds_list_create();
+
+custom_buttons_right_color_normal=ds_list_create();
+custom_buttons_right_color_over=ds_list_create();
+custom_buttons_right_color_in=ds_list_create();
+custom_buttons_right_sprite=ds_list_create();
+custom_buttons_right_state=ds_list_create();
+custom_buttons_right_script=ds_list_create();
+
+overbut_left = -1;
+loverbut_left = -1;
 </string>
           </argument>
         </arguments>
@@ -284,46 +300,103 @@ uiz_window_select(id)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///handle buttons on left side
+var butId = uiz_getmouse_x()-ix;
+var buts = ds_list_size(custom_buttons_left_sprite);
+var butSize = bars * buts;
+var checkbuttons = false;
+
+if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=iy-bars+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; ix and uiz_getmouse_x() &lt; ix+butSize and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
+    checkbuttons = true;
+    overbut_left = floor((uiz_getmouse_x()-ix)/bars);
+}else{
+    overbut_left = -1;
+}
+
+var upd=false;
+if (loverbut_left != overbut_left and((loverbut_left &gt;= 0 and loverbut_left &lt; buts) or(overbut_left &gt;= 0 and overbut_left &lt; buts))) {
+    for(var i=0;i&lt;buts;++i){
+        custom_buttons_left_state[| i]=0;
+    }
+    custom_buttons_left_state[| overbut_left]=1;
+    upd=true;
+    loverbut_left = overbut_left;
+}
+
+if !is_undefined(custom_buttons_left_state[| overbut_left]) and custom_buttons_left_state[| overbut_left] &gt; 0 then{
+    var ns=mouse_check_button(mb_left) + 1;
+    if ns!=custom_buttons_left_state[| overbut_left] then{
+    custom_buttons_left_state[| overbut_left] = ns;
+    upd=true;
+    }
+    if mouse_check_button_released(mb_left) then {
+        script_execute(custom_buttons_left_script[| overbut_left],id,overbut_left);
+    }
+}
+
+if upd=true then{
+    uiz_updater_FixViews_area(ix,ry,ix+butSize,iy);//REENABLE//
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///check mouse and rescale window
 var fix=false;
-kmouseover = uiz_mouse_isonwindow_leftcheck(id);
+//kmouseover = uiz_mouse_isonwindow_leftcheck(id);
 //sdbm("iding",id,object_index,object_get_name(object_index));
 //sdbm(global.mousefrozen,"sn",snaptomouse,"rs",resizable,"km",kmouseover)
-if global.mousefrozen = false and snaptomouse = 0 and resizable = 1 and kmouseover &gt; 0{// and(uiz_range_duo(uiz_getmouse_x(), rx, ix, ilx, rlx) or uiz_range_duo(uiz_getmouse_y(), ry, iy, ily, rly)) then {
+if global.mousefrozen = false and snaptomouse = 0 and resizable and kmouseover &gt; 0{// and(uiz_range_duo(uiz_getmouse_x(), rx, ix, ilx, rlx) or uiz_range_duo(uiz_getmouse_y(), ry, iy, ily, rly)) then {
     isresizing = true;
     isresizing_y = uiz_null;
     isresizing_x = uiz_null;
-    
+    var cornerMargin = 10;
 
-    if (uiz_getmouse_x() &gt; rlx - 20 and uiz_getmouse_y() &gt; rly - 20) then {
+    if (uiz_getmouse_x() &gt; rlx - cornerMargin and uiz_getmouse_y() &gt; rly - cornerMargin) then {
         //right bottom
         isresizing_y = uiz_bottom;
         isresizing_x = uiz_right;
         uiz_set_cursor(cr_size_nwse);
     } else {
         //check left bottom
-        if (uiz_getmouse_x() &lt; rx + 20 and uiz_getmouse_y() &gt; rly - 20) then {
+        if (uiz_getmouse_x() &lt; rx + cornerMargin and uiz_getmouse_y() &gt; rly - cornerMargin) then {
             //left bottom
             isresizing_y = uiz_bottom;
             isresizing_x = uiz_left;
             uiz_set_cursor(cr_size_nesw);
         } else {
             //check left top
-            if (uiz_getmouse_x() &lt; rx + 20 and uiz_getmouse_y() &lt; ry + 20) then {
+            if (uiz_getmouse_x() &lt; rx + cornerMargin and uiz_getmouse_y() &lt; ry + cornerMargin) then {
                 //left top
                 isresizing_y = uiz_top;
                 isresizing_x = uiz_left;
                 uiz_set_cursor(cr_size_nwse);
             } else {
                 //check right top
-                if (uiz_getmouse_x() &gt; rlx - 20 and uiz_getmouse_y() &lt; ry + 20) then {
+                if (uiz_getmouse_x() &gt; rlx - cornerMargin and uiz_getmouse_y() &lt; ry + cornerMargin) then {
                     //right top
                     isresizing_y = uiz_top;
                     isresizing_x = uiz_right;
                     uiz_set_cursor(cr_size_nesw);
                 } else {
                     //check top
-                    if (uiz_getmouse_y() &lt; iy - bars) then {
+                    if (uiz_getmouse_y() &lt; ry + bkmar + doublemargins*topframemargin) then {
                         //top
                         isresizing_y = uiz_top;
                         uiz_set_cursor(cr_size_ns);
@@ -382,9 +455,11 @@ isresizing_x = uiz_null;
 global.mousefrozen = false;
 }
 
-if resizable = 1 and isresizing = true then {
+if resizable and isresizing then{
     posinframex = uiz_static;
     posinframey = uiz_static;
+    posvalhtype = uiz_nonpos;
+    posvalwtype = uiz_nonpos;
     fix=true;
     var pxmovedx,pxmovedy;
     var x_min,y_min,x_max,y_max;
@@ -466,7 +541,6 @@ if resizable = 1 and isresizing = true then {
         break;
         }
         var ratio_abs=abs(ratio)
-    //sdbm("mov",pxmovedy,graboffy,ily,yat,al,ap,ratio)
     //actually resize windows
     switch (isresizing_y) {
         case uiz_top:
@@ -509,7 +583,6 @@ if resizable = 1 and isresizing = true then {
     }
     
     if isresizing_y=uiz_top then{
-    //sdbm("changing y")
         y += oldheight - iheight;
     }
     if isresizing_x=uiz_left then{
@@ -518,7 +591,7 @@ if resizable = 1 and isresizing = true then {
     width=iwidth+end_leftframemargin+end_rightframemargin;
     height=iheight+end_topframemargin+end_bottomframemargin;
     if inanimation=true then{
-    uiz_animation_capture_newstate(id);
+    uiz_animation_capture_newState(id);
     }
     //check for minimization
     if iwidth &lt;= 0 and iheight &lt;= 0 then {
@@ -561,42 +634,32 @@ if resizable = 1 and isresizing = true then {
           <argument>
             <kind>1</kind>
             <string>///Handle buttons and window movement
-//var fix=false;
-
 var fixforp = id;
 
-if global.lockwindowresel = 0 and global.selectedwindow != id and global.mouseoverwindow = id and mouse_check_button(mb_left) and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = true) and isresizing = false then {
+if global.lockwindowresel = 0 and global.selectedwindow != id and global.mouseoverwindow = id and mouse_check_button(mb_left)/* and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = true) and isresizing = false */then {
     uiz_window_select(id);
 }
-//if  then{ then{snaptomouse=1;}}else{snaptomouse=0;}
 var dorececkloverbut = false;
-var buttonssize = (button_cross + button_maximize + button_minimize)
+var customButtonSize = ds_list_size(custom_buttons_right_sprite);
+var buttonssize = (button_cross + button_maximize + button_minimize + customButtonSize)
 var frombuttons = ilx - bars * buttonssize
 var inrange = uiz_range(uiz_getmouse_y(), ry, iy);
 var inrange_last = uiz_range(uiz_getmouse_y_last(), ry, iy);
-var checkbuttons = false;
 
-if kmouseover &gt; 0 and uiz_getmouse_x() &gt; frombuttons and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
+
+if kmouseover &gt; 0 and uiz_getmouse_y()&gt;=ry+doublemargins*topframemargin and uiz_getmouse_y()&lt;=iy-bkmar-doublemargins*bottomframemargin and uiz_getmouse_x() &gt; frombuttons and uiz_getmouse_x() &lt; ilx and inrange = true and global.mousefrozen = false and isresizing = 0 and snaptomouse = 0 then {
     checkbuttons = true;
     //mouse over button area
     overbut = floor((uiz_getmouse_x() - frombuttons) / bars);
-    //sdbm("checking overbut",overbut,buttonssize,frombuttons,uiz_getmouse_x())
+    
     if loverbut_mouse != mouse_check_button(mb_left) then {
         dorececkloverbut = true;
     }
 } else {
     overbut = -1;
 }
-//if keyboard_check(vk_space){sdbm("draggin windows",irandom(99),snaptomouse,inanimation,global.mouseoverwindow,id,inrange,checkbuttons, isresizing, global.selectedwindow,id,sizestatus,global.lastmousemoved,snaptomouse)}
-//sdbm(checkbuttons,"isr",isresizing,"selw",global.selectedwindow,"id",id,"szs",sizestatus,"lmov",global.lastmousemoved,"sn",snaptomouse)
 if checkbuttons = false and isresizing = 0 and global.selectedwindow = id and mouse_check_button(mb_left) and(sizestatus &lt; 2 or global.lastmousemoved &gt; 2 or snaptomouse = 1) then {
-    //var loverbut=overbut;
-    //sdbm("phase 1","stm",snaptomouse,"ina",inanimation,"mo",global.mouseoverwindow,"inr",inrange,"lkmo",lkmouseover,"sizes",sizestatus);
     if snaptomouse = 0 and inanimation = 0 and global.mouseoverwindow = id and inrange_last = true then {
-        //if not on buttons
-
-
-        //sdbm("draggin windows",irandom(99),snaptomouse,inanimation,global.mouseoverwindow,id,inrange,checkbuttons, isresizing, global.selectedwindow,id,sizestatus,global.lastmousemoved,snaptomouse)
         snaptomouse = 1
         global.mousefrozen = true
         mouseminx = uiz_getmouse_x()
@@ -606,42 +669,34 @@ if checkbuttons = false and isresizing = 0 and global.selectedwindow = id and mo
         posinframex = uiz_static
         posinframey = uiz_static
         if sizestatus = 2 then {
-        //sdbm("unmaxiimizng window")
-            //an_old_width=100;
-            //an_old_height=100;
             an_old_posinframex = uiz_static
             an_old_posinframey = uiz_static
             uiz_window_unmaximize();
-            //posinframex=uiz_static
-            //posinframey=uiz_static
-            //y=uiz_getmouse_y()
-            //x=uiz_getmouse_x()//-(uiz_getmouse_x()/obj_uiZ_controller.width)*(an_old_width)
-            windowsminx = uiz_getmouse_x() - (uiz_getmouse_x() / obj_uiZ_controller.width) * (an_old_width)
+            //windowsminx = uiz_getmouse_x() - ((uiz_getmouse_x()-parent.ix) / parent.width) * (an_old_width)
+            var mouseXFactor = (uiz_getmouse_x() - parent.ix) / parent.width;
+            windowsminx += parent.width * mouseXFactor - an_old_width * mouseXFactor
             fix = 2;
         }
 
     }
 } else {
-    //sdbm("deactivation of selection",checkbuttons,isresizing,global.selectedwindow,id,sizestatus,global.lastmousemoved,snaptomouse)
     if snaptomouse = 1 then {
         snaptomouse = 0;
         global.mousefrozen = false;
     }
 }
-//sdbm("lovelba",loverbut,overbut,irandom(10),checkbuttons)
 var upd=false;
-if (loverbut != overbut and((loverbut &gt;= 0 and loverbut &lt; 3) or(overbut &gt;= 0 and overbut &lt; 3))) {
-    //sdbm("passing check");
+if (loverbut != overbut and((loverbut &gt;= 0 and loverbut &lt; buttonssize) or(overbut &gt;= 0 and overbut &lt; buttonssize))) {
     button_cross_state = 0;
     button_maximize_state = 0;
     button_minimize_state = 0;
-    //sdbm("resetting with",iy,obj_uiZ_huesquare.ry)
+    for(var i=0;i&lt;customButtonSize;++i){
+        custom_buttons_right_state[| i]=0;
+    }
     upd=true;
-    //}
-    //if checkbuttons=true and (loverbut!=overbut or dorececkloverbut=true) then{
 
 
-    switch (overbut) {
+    switch (overbut-customButtonSize) {
         case 0:
             if button_minimize = true then {
                 button_minimize_state = 1;
@@ -669,13 +724,34 @@ if (loverbut != overbut and((loverbut &gt;= 0 and loverbut &lt; 3) or(overbut &g
                 button_cross_state = 1;
             }
             break;
+        default:
+            var customButtonPosition = customButtonSize-overbut-1;
+            if customButtonPosition&gt;=0 &amp;&amp; customButtonPosition&lt;customButtonSize then{
+                custom_buttons_right_state[| customButtonPosition] = 1;
+                
+            }//else{
+            //    sdbm("[uiZ|Warning] window custom button ID ",customButtonPosition," not found for window ",id)
+            //}
+            
+            break;
     }
     loverbut_mouse = mouse_check_button(mb_left);
     loverbut = overbut;
-    //sdbm("RESETTING DEZE ZOoi",button_cross_state,button_maximize_state,button_minimize_state)
-
-    //uiz_updater_FixViews();
 }
+
+for(var i=0;i&lt;customButtonSize;++i){
+    if custom_buttons_right_state[| i]&gt;0 then{
+        var ns=mouse_check_button(mb_left) + 1;
+        if ns!=custom_buttons_right_state[| i] then{
+            custom_buttons_right_state[| i] = ns;
+            upd=true;
+        }
+        if mouse_check_button_released(mb_left) and script_exists(custom_buttons_right_script[| i]) then {
+            script_execute(custom_buttons_right_script[| i],id,i);
+        }
+    }
+}
+
 if button_cross_state &gt; 0 then {
     var ns=mouse_check_button(mb_left) + 1;
     if ns!=button_cross_state then{
@@ -683,12 +759,11 @@ if button_cross_state &gt; 0 then {
     upd=true;
     }
     if mouse_check_button_released(mb_left) then {
-        uiz_destroyobject_animation(id, destroyxfunction, destroyyfunction, destroyafunction, destroyspeed)
+        uiz_destroyObject_animation(id, destroyxfunction, destroyyfunction, destroyafunction, destroyspeed)
     }
 }
 if button_maximize_state &gt; 0 then {
     var ns=mouse_check_button(mb_left) + 1;
-    //sdbm("maxssate",ns,button_maximize_state)
     if ns!=button_maximize_state then{
     button_maximize_state = ns;
     upd=true;
@@ -715,23 +790,11 @@ if snaptomouse = 1 then {
     y = windowsminy + (uiz_getmouse_y() - mouseminy)
     uiz_window_checkcontainment();
     fix = true;
-    if inanimation &gt; 0 then {
-        //ro.tox=x
-        //ro.toy=y
-        //ro.fromx=x
-        //ro.fromy=y
-        //uiz_animation_capture_newstate(id)
-    }
 }
+
 if fix &gt;= 1 then {
     uiz_fixwindowpos(fixforp);
-    if fix = 2 then {
-        //uiz_getscalervalues_xy()
-    }
-    uiz_fixchildren(id, true)
-    //if keepratio = true then{
-    //    uiz_window_getgraboff();
-    //}
+    uiz_fixChildren(id, true)
 }
 lkmouseover = kmouseover;
 </string>
@@ -756,8 +819,9 @@ lkmouseover = kmouseover;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.mouseoverwindow!=id then{
-loverbot=-1;
+            <string>//if global.mouseoverwindow!=id then{
+if kmouseover=0 then{
+loverbut=-1;
 if
 button_cross_state!=0 or
 button_maximize_state!=0 or
@@ -766,7 +830,7 @@ button_cross_state=0;
 button_maximize_state=0;
 button_minimize_state=0;
 var buttonssize=(button_cross+button_maximize+button_minimize)
-//uiz_updater_FixViews_area(ilx-bars*buttonssize,ry,ilx,iy-1);//REENABLE//
+uiz_updater_FixViews_area(ilx-bars*buttonssize,ry,ilx,iy-1);//REENABLE//
 }
 }
 
@@ -815,9 +879,11 @@ var buttonssize=(button_cross+button_maximize+button_minimize)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if uiz_cntn(){
+            <string>//if live_call() return live_result;
+if uiz_cntn(){
 
 uiz_back()
+
 
 //sdbm("sprite used:",sprite_get_name(bkspr))
 if iwidth&gt;bars*(1+button_cross+button_maximize) and iheight&gt;=0 then{
@@ -828,10 +894,16 @@ var old_bkcol=bkcol;
 var old_bkmar=bkmar;
 var old_texas=texas;
 
-bkspr=top_bkspr;
-bkcol=top_bkcol;
-bkmar=top_bkmar;
-texas=top_texas;
+bkspr=topbar_bkspr;
+bkcol=topbar_bkcol;
+if sizestatus=2 then{
+bkmar=0;
+var bkmar_bot=topbar_bkmar;
+}else{
+bkmar=topbar_bkmar;
+var bkmar_bot=0;    
+}
+texas=topbar_texas;
 
 var old_ix=ix;
 var old_iy=iy;
@@ -844,13 +916,19 @@ var old_rlx=rlx;
 var old_rly=rly;
 
 //bars=uiz_getposy(barsize,barsizevaltype);
+if topbarInside then{
+    ily=iy-bkmar;
+    rx=ix;
+    iy-=bars+bkmar;
+    ry=iy;
+    rlx=ilx;
+    rly=ry+bars-bkmar_bot;
+}else{
+    rly=iy-bkmar_bot;
+    ily=iy-bkmar;
+    iy=ry+bkmar;
+}
 
-ily=iy-old_bkmar;
-rx=ix;
-iy-=bars+old_bkmar;
-ry=iy;
-rlx=ilx;
-rly=ry+bars;
 
 if doublemargins=true then{
 ix+=leftframemargin
@@ -884,11 +962,24 @@ draw_set_color(windowtextcolor)
 draw_set_alpha(alpha)
 draw_set_valign(valign)
 draw_set_halign(halign)
-draw_text(ix+(ilx-ix)*(halign/2),iy+(ily-iy)*(valign/2),uiz_gettext_contained(windowtext,width-bars*(1+button_cross+button_maximize)))
+draw_text(ix+(ilx-ix)*(halign/2),iy+(ily-iy)*(valign/2),uiz_getText_contained(windowtext,width-bars*(1+button_cross+button_maximize+button_minimize)))
 
-if button_cross then{uiz_draw_spritebutton_state(ilx-bars,iy,ilx,ily,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,1,button_cross_state)}
-if button_maximize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,1,button_maximize_state)}
-if button_minimize then{uiz_draw_spritebutton_state(ilx-bars*(1+button_cross+button_maximize),iy,ilx-bars*(button_cross+button_maximize),ily,button_minimize_color_normal,button_minimize_color_over,button_minimize_color_in,button_minimize_sprite,1,button_minimize_state)}
+if button_cross then{uiz_draw_spriteButton_state(ilx-bars,iy,ilx,ily-bkmar_bot,button_cross_color_normal,button_cross_color_over,button_cross_color_in,button_cross_sprite,alpha,button_cross_state)}
+if button_maximize then{uiz_draw_spriteButton_state(ilx-bars*(1+button_cross),iy,ilx-bars*(button_cross),ily-bkmar_bot,button_maximize_color_normal,button_maximize_color_over,button_maximize_color_in,button_maximize_sprite,alpha,button_maximize_state)}
+if button_minimize then{uiz_draw_spriteButton_state(ilx-bars*(1+button_cross+button_maximize),iy,ilx-bars*(button_cross+button_maximize),ily-bkmar_bot,button_minimize_color_normal,button_minimize_color_over,button_minimize_color_in,button_minimize_sprite,alpha,button_minimize_state)}
+
+//draw custom buttons on the left
+var leftButtons = ds_list_size(custom_buttons_left_sprite);
+for(var i=0;i&lt;leftButtons;++i){
+    uiz_draw_spriteButton_state(ix+bars*i,iy,ix+bars*(i+1),ily,custom_buttons_left_color_normal[|i],custom_buttons_left_color_over[|i],custom_buttons_left_color_in[|i],custom_buttons_left_sprite[|i],1,custom_buttons_left_state[|i])
+}
+
+//draw custom buttons on the right
+var rightButtons = ds_list_size(custom_buttons_right_sprite);
+var baseX = ilx-bars*(button_cross+button_maximize+button_minimize);
+for(var i=0;i&lt;rightButtons;++i){
+    uiz_draw_spriteButton_state(baseX-bars*(i+1),iy,baseX-bars*(i),ily,custom_buttons_right_color_normal[|i],custom_buttons_right_color_over[|i],custom_buttons_right_color_in[|i],custom_buttons_right_sprite[|i],1,custom_buttons_right_state[|i])
+}
 
 ix=old_ix;
 iy=old_iy;

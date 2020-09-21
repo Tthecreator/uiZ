@@ -1,4 +1,4 @@
-///uiz_countobjects(inobject,lookfor,lookinside,lookinsidelookfor)
+///uiz_countObjects(inObject, lookFor, lookInside, lookInsideLookFor)
 /*
 objects for a given type inside another object.
 If you want to do a global search, you can use "obj_uiZ_controller.id" as the first argument (no quote marks).
@@ -19,7 +19,7 @@ for(i=0;i<sz;i++){
 var ch=children[| i]
 if ch.object_index=argument1 then{count++}
 if (argument3=true and ch.object_index=argument1) or (argument2=true and ch.object_index!=argument1) then{
-count+=uiz_countobjects(ch,argument1,argument2,argument3)
+count+=uiz_countObjects(ch,argument1,argument2,argument3)
 }
 
 }

@@ -4,9 +4,8 @@
 //return: 0 if no lines/one single line has changed
 //return: 1 if some lines have changed
 //return: 2 if all lines have changed;
-sdbm("REWORKING",global.uiz_stepNumber);
 if doscroll then{
-var avWidth = iwidth-scblwidth;//available width
+var avWidth = iwidth-scblwidth-1;//available width
 //sdbm("avw -s",avWidth);
 }else{
 var avWidth = iwidth;
@@ -23,8 +22,8 @@ if argument1=0 then{
     var moreLinesChanged=-1;
 }
 for(var i=argument1;i<lsz;i++){
-sdbm("rework line",i);
     //handle all 'to little space' cases:
+    //sdbm("curline = ",addToNextLine,textList[| i],i)
     var curLine = addToNextLine+textList[| i];
     if addToNextLineCheck_sel1=true && selection1Line=i then{
         //sdbm("addToNextLineFor1Char",selection1Char,addToNextLine)
@@ -36,12 +35,19 @@ sdbm("rework line",i);
     }
     addToNextLineCheck_sel1=true;
     addToNextLineCheck_sel2=true;
-    if curLine="" then{
+    //if i!=0 then{
+    //    sdbm("Check remove line",i," with text:",textList[| i],lsz,string_byte_at(textList[| i-1],string_byte_length(textList[| i-1])))
+    //}
+    if curLine="" and (i<lsz-1 or i==0 or string_byte_at(textList[| i-1],string_byte_length(textList[| i-1]))!=$0A) then{//the line is empty, remove it (but except the last entry if the second last entry has a newline character)
+//        sdbm("This line is empty, remvoign line",i,"with text:",textList[| i])
+        //uiz_textarea_showSelCharPos()
         //this line is empty, it also doesn't have any invisible or newline characters.
         ds_list_delete(textList,i);
         i--;//redo this line since the next line might also fit.
         lsz--;
         uiz_textarea_rework_sel_delline(i)
+        moreLinesChanged = max(moreLinesChanged,1);
+        //uiz_textarea_showSelCharPos()
         continue;
     }
     var addToNextLine = "";
@@ -58,8 +64,8 @@ sdbm("rework line",i);
         if curWidth+w>avWidth then {//if there isn't enough space for this line
             e--;
             if e<1 then{e=1;}
-            moreLinesChanged=1;
-            sdbm("moreLinesChanged=1",0)
+            moreLinesChanged = max(moreLinesChanged,1);
+            //sdbm("moreLinesChanged=1",0)
             if lastSpace=0 then{
                 //no last space found
                 textList[| i] = string_copy(curLine,1,e);
@@ -120,9 +126,6 @@ sdbm("rework line",i);
         if uiz_isSpaceChar(c) then{lastSpace=e;}
         curWidth+=w;
     }
-    if !lineHasBeenHandled and moreLinesChanged=0{
-    //            return 0;
-            }
     
     //handle all 'to much space' cases:
     if !lineHasBeenHandled and avWidth>curWidth and i+1<lsz and lastChar!=chr($0A) and avWidth>=lastReworkAvWidth then{//if more space is available and the line has not been already handled.
@@ -140,15 +143,15 @@ sdbm("rework line",i);
             if c=" " or c=chr(11) then{lastSpace=e;}//the size of invisible whitespaces doesn't matter. So this is placed here so spaces can be cut off.
             addWidth+=w;
             if addWidth>availableSpace then{//if we go over the available space
-                moreLinesChanged=1;
-                            sdbm("moreLinesChanged=1",1)
+                moreLinesChanged = max(moreLinesChanged,1);
                 if lastSpace=0 then{//no space found
                     if !uiz_isSpaceChar(lastChar) then{//the word was cutoff at the line anyway, so we can just put extra text on this line
                     //sdbm("EXECUTING UIZ_ISSPACECHAR 1");
                         uiz_textarea_rework_sel_upscale(i,e-1,string_length(curLine),false);
-                        //sdbm("upscl done 1",selection1Line,selection1Char,curLine)
+                        //sdbm("upscl done 1",selection2Line,selection2Char,curLine)
                         textList[| i]=curLine + string_copy(nextLine,1,e-1);
                         textList[| i+1]=string_copy(nextLine,e,nextLen-e+1);
+                        //uiz_textarea_showSelCharPos()
                         //sdbm("setting textList entry to 4",textList[| i]);
                         //sdbm("setting textList+1 entry to 4",textList[| i+1]);
                         lineHasBeenHandled=true; 
@@ -160,13 +163,14 @@ sdbm("rework line",i);
                         }
                         if lastSpace=0 then{//stil no space found, just copy a part of that line then
                            uiz_textarea_rework_sel_upscale(i,e-1,string_length(curLine),false);
-                          //sdbm("upscl done 2",selection1Line,selection1Char,curLine)
+                           //sdbm("upscl done 2",selection2Line,selection2Char,curLine)
+                           //uiz_textarea_showSelCharPos()
                            textList[| i]=curLine + string_copy(nextLine,1,e-1);
                            textList[| i+1]=string_copy(nextLine,e,nextLen-e+1);
+                           //uiz_textarea_showSelCharPos()
                            //sdbm("setting textList entry to 5",textList[| i]);
                            //sdbm("setting textList+1 entry to 5",textList[| i+1]);
                            lineHasBeenHandled=true; 
-                           
                         }
                     }
                 }else{//space character found
@@ -174,10 +178,11 @@ sdbm("rework line",i);
                     textList[| i]=curLine + string_copy(nextLine,1,lastSpace);
                     textList[| i+1]=string_copy(nextLine,lastSpace+1,nextLen-lastSpace);
                     //sdbm("setting textList entry to 6",textList[| i]);
-                   //sdbm("setting textList+1 entry to 6",textList[| i+1]);
+                    //sdbm("setting textList+1 entry to 6",textList[| i+1]);
                     lineHasBeenHandled=true;
                     uiz_textarea_rework_sel_upscale(i,lastSpace,string_length(curLine),false);
-                    //sdbm("upscl done 3",selection1Line,selection1Char,curLine)
+                    //sdbm("upscl done 3",selection2Line,selection2Char,curLine,lastSpace)
+                    //uiz_textarea_showSelCharPos()
                 }
                 if !lineHasBeenHandled then{
                     textList[| i] = curLine;
@@ -192,7 +197,10 @@ sdbm("rework line",i);
             //apparently all content of the next line fits on this line.
             textList[| i]=curLine + nextLine;
             uiz_textarea_rework_sel_upscale(i,string_length(nextLine),string_length(curLine),true);
-            //sdbm("upscl done 4",selection1Line,selection1Char,curLine)
+            //sdbm("upscl done 4",selection2Line,selection2Char,curLine)
+            //uiz_textarea_showSelCharPos()
+//            sdbm("delecting ds lsit 2");
+            moreLinesChanged = max(moreLinesChanged,1);
             ds_list_delete(textList,i+1);
             i--;//redo this line since the next line might also fit.
             lsz--;
@@ -201,10 +209,9 @@ sdbm("rework line",i);
         }
     }
     if !lineHasBeenHandled then{//write all other changes.
-    if moreLinesChanged=0 then{
-    sdbm(" moreLinesChanged=0, ret 0");
-        return 0;
-    }
+    //if moreLinesChanged=0 then{
+        //return 0;
+    //}
          textList[| i] = curLine;
          //sdbm("setting textList entry to 8",textList[| i]);
     }
@@ -216,6 +223,9 @@ sdbm("rework line",i);
 if addToNextLine!="" then{
 uiz_textarea_addLinesFromString(addToNextLine);
 }
+lsz = ds_list_size(textList);
+
+//sdbm("check lsz",lsz,ds_list_size(textList),lsz*fontHeight,iheight);
 
 if lsz*fontHeight>iheight then{
     var shouldScroll=true;
@@ -228,15 +238,26 @@ lastReworkAvWidth=avWidth;
 
 //var shouldScroll=false;
 
+///sdbm("check scroll",shouldScroll,doscroll)
 if shouldScroll!=doscroll && argument0 then{
     doscroll=shouldScroll;
     scroll=uiz_drawscrollbar_init();
     uiz_textarea_rework(false,0);
-    moreLinesChanged=2
+    moreLinesChanged = 2
+}
+
+if doscroll and uiz_drawscrollbar_getValue(scroll)>scrolllines then{
+    sdbm("scroll value to scrolllines")
+    uiz_drawscrollbar_setValue(scroll,scrolllines);
+    uiz_textarea_updateScrollPx();
+}else if !doscroll and listFromPx!=0 then{
+    sdbm("resetting scroll value")
+    uiz_drawscrollbar_setValue(scroll,0);
+    uiz_textarea_updateScrollPx();
 }
 
 if argument1=0 then{
-moreLinesChanged=2;
+moreLinesChanged = 2;
 }
 
 uiz_textarea_rework_selection();
@@ -253,7 +274,6 @@ if argument0+1=selection1Line then{
         selection1Char+=argument2;
         selection1Line--;
     }else{//the selection stays on the next line
-        //sdbm("remove char");
         selection1Char-=argument1;
     }
 }else{
@@ -326,10 +346,18 @@ if isTyping then{
     uiz_textarea_registerTypeCursor();
 }
 #define uiz_textarea_rework_sel_delline
-if selection1Line>=0 and argument0>=selection1Line then{//if a line is being deleted
+if selection1Line>=0 and argument0<=selection1Line then{//if a line is being deleted
+    if selection1Line==0 then{
+        selection1Char=0;
+    }else{
         selection1Line--;
+    }
 }
 
-if selection2Line>=0 and argument0>=selection2Line then{//if a line is being deleted
+if selection2Line>=0 and argument0<=selection2Line then{//if a line is being deleted
+    if selection2Line==0 then{
+        selection2Char=0;
+    }else{
         selection2Line--;
+    }
 }

@@ -1,4 +1,4 @@
-///uiz_set_cursor(constant)
+///uiz_compute_cursor(constant)
 if global.uiz_lastmouseis!=global.uiz_mouseis then{
 cursor_sprite=-1;
 window_set_cursor(cr_none)

@@ -75,7 +75,7 @@ uiz_fix_Base_Margins();
 uiz_fix_Background();
 if instance_exists(id) then{
 //sdbm("called it 2")
-uiz_fixchildren(id,1)
+uiz_fixChildren(id,1)
 //sdbm("called it 3")
 }
 

@@ -41,7 +41,7 @@ marginb=0
 margincellw=0
 margincellh=0
 headframe=uiz_frame_create()
-uiz_setparent(headframe,id)
+uiz_setParent(headframe,id)
 master=id
 headframe.master=master
 divisions=0
@@ -97,7 +97,7 @@ marginb=0
 margincellw=0
 margincellh=0
 headframe=uiz_frame_create()
-uiz_setparent(headframe,id)
+uiz_setParent(headframe,id)
 
 //if headframe=100028 then{var k=100028;
 //dbm(k.listpos,k.parent)}
@@ -130,30 +130,6 @@ addy=0
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-uiz_beginstep_nomouse()
 </string>
           </argument>
         </arguments>

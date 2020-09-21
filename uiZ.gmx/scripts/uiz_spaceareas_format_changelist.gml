@@ -1,10 +1,10 @@
-///uiz_spaceareas_format_changelist(ds list,space)
+///uiz_spaceAreas_format_changeList(ds list,space)
 /*
 This is a easy to use script that takes a ds list that has spacing values and compares those values to the totalspacevalues, and spits out another ds list that has a slightly better spacings.
 This can be usefull if you have something like a menubar of a certain width and have a ds list containing the spaces of the itemtexts of the menu, and want that menu to be nicely spread across the entire bar. (See example).
 THE DS LIST MUST HAVE ONLY REAL NUMBERS IN IT!
 After this script has been ran then all the spacings in the new ds list added together will equal the total space (argument1).
-The difference with uiz_spaceareas_format_newlist and uiz_spaceareas_format_changelist is that _newlist creates a new ds list and returns that list, while _changelist changes your already existing list that you gave at argument0.
+The difference with uiz_spaceAreas_format_newList and uiz_spaceAreas_format_changeList is that _newlist creates a new ds list and returns that list, while _changelist changes your already existing list that you gave at argument0.
 */
 var glist=argument0;
 var msz=argument1;

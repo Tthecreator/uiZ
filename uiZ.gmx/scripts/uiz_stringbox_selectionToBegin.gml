@@ -19,6 +19,9 @@ var selpos_real=uiz_stringbox_pos_real_from_dis(selpos_dis);
 if selpos_dis_min!=selpos_dis_max then{
 hasselection=true;
 }
+if typing = true then{
+uiz_typecursor_deregister();
+}
 uiz_stringbox_getselbounds();
 uiz_updater_FixViews_inside();
 //uiz_stringbox_fixselection();

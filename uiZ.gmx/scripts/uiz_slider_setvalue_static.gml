@@ -1,7 +1,6 @@
 ///uiz_slider_setvalue_static(id,value from 0 to 1)
 /*
-Sets the value of a sliderframe to be extended(true) or collapsed(false).
-An animation will be played when this function is used.
+Set the value of the slider, without playing an animation.
 */
 with(argument0){
 value=argument1

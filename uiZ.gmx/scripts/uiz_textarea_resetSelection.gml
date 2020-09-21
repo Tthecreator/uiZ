@@ -1,4 +1,4 @@
-///uiz_textarea_resetSelection(id)
+///uiz_textarea_resetSelection(instanceid)
 with(argument0){
 
 selection1Line=-1;

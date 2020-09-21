@@ -36,10 +36,10 @@ scrollbarbacktexturemode=uiz_texturemode_fill//t//texturemode//
 scroll=0
 uscroll=uiz_drawscrollbar_init();
 scrolllines=0
-scrollspeed=10//v//scrollspeed//
+scrollspeed=70//v//scrollspeed//
 horizontal=false//b//horizontal(false) or vertical(true)//
-scrollbarAnimation=uiz_exponential_inout//a//scrollbar animation//
-scrollbarAnimationTime=0.5//v//scrollbar animation time//
+scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
+scrollbarAnimationTime=0.3//v//scrollbar animation time//
 frame=noone;
 lastadd=0;
 </string>
@@ -70,7 +70,7 @@ lastadd=0;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="13">
+    <event eventtype="7" enumb="19">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -87,25 +87,42 @@ lastadd=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var ouscroll=uscroll;
-if horizontal=false then{
-uiz_drawscrollbar_vertical_step(rx,ry,rlx,rly,uscroll,scrolllines,true,scrollspeed, scrollbarAnimation, scrollbarAnimationTime);
-}else{
-uiz_drawscrollbar_horizontal_step(rx,ry,rlx,rly,uscroll,scrolllines,true,scrollspeed, scrollbarAnimation, scrollbarAnimationTime);
+            <string>//uiz_fixframescrollbarpos(id);
+//on frame scroll update
+if instance_exists(frame){
+    if horizontal then{
+        scrolllines=abs(frame.mscrollbarx);
+        uiz_drawscrollbar_setValue(uscroll,abs(uiz_drawscrollbar_getValue(frame.uscrollx)));
+        
+    }else{
+        scrolllines=abs(frame.mscrollbary);
+        uiz_drawscrollbar_setValue(uscroll,abs(uiz_drawscrollbar_getValue(frame.uscrolly)));
+    }
+    uiz_updater_FixViews();
 }
-scroll=uiz_drawscrollbar_getvalue(uscroll)
-
-if ouscroll!=uscroll then{
-if horizontal=false then{
-frame.addy=-clamp(scroll,0,scrolllines);
-if lastadd!=frame.addy then{lastadd=frame.addy}
-uiz_fixchildren(frame,true)
-}else{
-frame.addx=-clamp(scroll,0,scrolllines);
-if lastadd!=frame.addx then{lastadd=frame.addx}
-uiz_fixchildren(frame,true)
-}
-}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_framescrollbar_step();
 </string>
           </argument>
         </arguments>
@@ -128,7 +145,7 @@ uiz_fixchildren(frame,true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>uiz_mouse_docheck_scrollable()
 </string>
           </argument>
         </arguments>

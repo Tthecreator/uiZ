@@ -1,4 +1,4 @@
-///uiz_squareinsquare(1x1,1y1,1x2,1y2,2x1,2y1,2x2,2y2)
+///uiz_squareInSquare(1x1, 1y1, 1x2, 1y2, 2x1, 2y1, 2x2, 2y2)
 //first four arguments make the first square, left first, then top, then right, the bottom.
 //returns 0 for out of square, 
 //returns 1 for partly out of square

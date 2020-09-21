@@ -1,4 +1,4 @@
-///uiz_getlines(string)
+///uiz_getLines(string)
 //returns the amount of lines in a string (amount of new lines+1)
 /*
 returns the amount of lines in a string.

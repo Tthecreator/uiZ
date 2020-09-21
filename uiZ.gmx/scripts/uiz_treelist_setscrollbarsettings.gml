@@ -5,3 +5,4 @@ argument0.scrollbarwidthtype=argument2;
 argument0.scrollbarsprite=argument3;
 argument0.scrollbarbacktextmode=argument4;
 argument0.scrollbarcolor=argument5;
+uiz_treelist_updateScrollbar(argument0);

@@ -6,6 +6,6 @@ addx=-argument1
 }else{
 addy=-argument1
 }
-uiz_fixchildren(id,1)
+uiz_fixChildren(id,1)
 }
 

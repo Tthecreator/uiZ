@@ -10,15 +10,15 @@ uiz_drawdslist_checkview();
 uiz_fix_Base();
 updater_old=-1;
 updater_new=-1;
-if addy=0 then{scroll=uiz_drawscrollbar_setvalue(scroll,0)}
+if addy=0 then{scroll=uiz_drawscrollbar_setValue(scroll,0)}
 scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
 updatescroll=true;
 scrollheight=max(0,uiz_drawdslist_checkheight());
 if scrollheight>0 then{doscroll=true}else{doscroll=false;scrollwidth=0;}
-if uiz_drawscrollbar_getvalue(scroll)>scrollheight then{
-scroll=uiz_drawscrollbar_setvalue(scroll,scrollheight)
+if uiz_drawscrollbar_getValue(scroll)>scrollheight then{
+scroll=uiz_drawscrollbar_setValue(scroll,scrollheight)
 }
 //addy=min(0,-scroll*(height-parent.height))
-addy=-uiz_drawscrollbar_getvalue(scroll)
+addy=-uiz_drawscrollbar_getValue(scroll)
 }
 

@@ -12,5 +12,8 @@ global.selectedwindow = argument0;
 with(argument0){
     uiz_window_fixadddepth();   
     uiz_window_fixbackground();
+    if sizestatus=2 then{
+        bkmar=0;
+    }
     uiz_updater_FixViews();
 }

@@ -1,4 +1,4 @@
-///uiz_animation_getfunction(factor from 0 to 1,graphtype)
+///uiz_animation_getFunction(factor from 0 to 1,graphtype)
 var bf=argument0
 if bf=0 then{return 0;}
 if bf=1 then{return 1;}
@@ -111,7 +111,6 @@ case uiz_bounce_outin:
 var bounces=3
 if frac(argument1)>0 then{bounces=(1/frac(argument1))-1}
 var sizes=bounces*bounces
-//sdbm("bounce_+inout",bounces)
 if (bf<0.5) then{
 bf=1-bf*2
 var currentbounce=round(sqrt(abs(sizes-bf*sizes)))

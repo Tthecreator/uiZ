@@ -10,7 +10,7 @@ height=parent.iheight
 */
 uiz_fix_Base_View();
 uiz_fix_Base_Margins();
-uiz_fixchildren(id,true)
+uiz_fixChildren(id,true)
 }
 
 with(g.headframe){
@@ -24,11 +24,10 @@ height=parent.iheight
 ;
 uiz_compatibility_fixframesetpos_depth()
 
-if object_index=obj_uiZ_framerowanchor then{
-uiz_framesetfixhorizontal(id)
-}
-if object_index=obj_uiZ_framecolanchor then{
-uiz_framesetfixvertical(id)
+if object_index == obj_uiZ_framerowanchor then{
+uiz_framesetfixhorizontal(id);
+}else if object_index == obj_uiZ_framecolanchor then{
+uiz_framesetfixvertical(id);
 }
 
 }

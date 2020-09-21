@@ -36,7 +36,6 @@ szx=1
 szy=1
 break;
 }
-//sdbm(szy)
 //middle
 if (nwidth>0 or nheight>0) and sprite_get_number(bkspr)>=9 then{
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,8))

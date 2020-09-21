@@ -1,4 +1,4 @@
-///uiz_gradientsquare_setoutline(instanceid,enable,top-left[c_white],top-right[c_black],bottom-left[c_aqua],bottom-right[c_purple])
+///uiz_gradientsquare_setoutline(instanceid,enable,top-left[c_maroon],top-right[c_red],bottom-left[c_yellow],bottom-right[c_orange])
 gml_pragma("forceinline");
 argument0.outline=argument1;
 argument0.color5=argument2;

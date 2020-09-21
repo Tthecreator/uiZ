@@ -215,15 +215,15 @@ addwindowmydepth=0;
             <string>/*
 if lastparent!=parent then{
 uiz_window_fixadddepth()
-uiz_fixchildren(id,true)
+uiz_fixChildren(id,true)
 lastparent=parent;
 }
 */
 var fix=false;
 var fixforp=id;
 //
-//if global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseoverobject=0 or (instance_exists(global.mouseoverobject) and uiz_hasparentinchain(global.mouseoverobject,id))) then{
-if global.lockwindowresel=0 and selected=false and global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseover=obj_uiZ_controller.id or (instance_exists(global.mouseover) and uiz_hasparentinchain(global.mouseover,id))) then{
+//if global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseoverobject=0 or (instance_exists(global.mouseoverobject) and uiz_hasParent_inChain(global.mouseoverobject,id))) then{
+if global.lockwindowresel=0 and selected=false and global.mouseoverwindow=id and mouse_check_button(mb_left) and (sizestatus&lt;2 or global.lastmousemoved&gt;2 or snaptomouse=1) and isresizing=0 and (global.mouseover=obj_uiZ_controller.id or (instance_exists(global.mouseover) and uiz_hasParent_inChain(global.mouseover,id))) then{
 //global.uiz_windows++
 //fix=true;
 
@@ -314,8 +314,8 @@ if button_maximize=1 and maxim.kmouseover=4 then{
 uiz_window_switchmaximize()
 }
 if button_cross=1 and cross.kmouseover=4 then{
-//uiz_destroyobject(id)
-uiz_destroyobject_animation(id,destroyxfunction,destroyyfunction,destroyafunction,destroyspeed)
+//uiz_destroyObject(id)
+uiz_destroyObject_animation(id,destroyxfunction,destroyyfunction,destroyafunction,destroyspeed)
 /*
 //destroy=1
 oldx=x
@@ -333,8 +333,8 @@ break;
 }
 /*
 if destroy=1 then{
-if destroycount&gt;=1 then{uiz_destroyobject(id)}
-var st=(1-uiz_animation_getfunction(destroycount,destroycountanimation));
+if destroycount&gt;=1 then{uiz_destroyObject(id)}
+var st=(1-uiz_animation_getFunction(destroycount,destroycountanimation));
 width=st*oldwidth
 height=st*oldheight
 x=oldx+(oldwidth-width)/2

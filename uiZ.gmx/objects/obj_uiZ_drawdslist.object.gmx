@@ -43,18 +43,16 @@ textcolor=c_black//c//text color//
 margin=2//v//marin//
 scrollbarwidth=.16//v//scrollbar width//
 scrollbarwidthtype=dp//z//scrollbar width type//
-scrollbarsprite=spr_uiZ_scrollbar//p//scrollbar sprite//
+scrollbarsprite=spr_uiZ_scrollbar_16//p//scrollbar sprite//
 scrollbarcolor=c_white//c//scrollbar color//
 scrollbarbacktexmode=uiz_texturemode_fill//t//scrollbar background texture mode//
 scroll=uiz_drawscrollbar_init();
 scrollspeed=100//v//scrollspeed//
-scrollbarAnimation=uiz_exponential_inout//a//scrollbar animation//
-scrollbarAnimationTime=0.5//v//scrollbar animation time//
+scrollbarAnimation=uiz_smoothstep//a//scrollbar animation//
+scrollbarAnimationTime=0.2//v//scrollbar animation time//
 fromscroll=0
 toscroll=0
 count=0
-graph=uiz_sin_inout//a//scroll animation//
-countspeed=0.1//v//animation time//
 scrollsel=0
 selected=-1
 sel=-1
@@ -80,6 +78,7 @@ oldvalid=false;
 updatescroll=false;
 doscroll=false;
 scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
+scrolladdy = 0;
 </string>
           </argument>
         </arguments>
@@ -108,6 +107,50 @@ scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ds_exists(uselist,ds_type_list) then{
+//handle scrollbar
+if doscroll=true then{
+var update = uiz_drawscrollbar_vertical_step(rlx-scrollwidth+1,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
+if update then{
+oldaddy=addy;
+addy=-uiz_drawscrollbar_getValue(scroll)
+if addy!=oldaddy then{
+updater_old=-1;
+updater_new=-1;
+sel=-1;
+selected=-1;
+oldvalid=false;
+uiz_updater_FixView_NoMove();
+uiz_drawdslist_checkview();
+}else{
+//uiz_updater_FixViews_area_selfmarked(rlx-scrollwidth,ry,rlx,rly);
+}
+updatescroll=true
+}
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
@@ -126,32 +169,7 @@ scrollwidth=uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
           <argument>
             <kind>1</kind>
             <string>if ds_exists(uselist,ds_type_list) then{
-//if h=-1 then{
-
-//}
-//handle scrollbar
-if doscroll=true then{
-var oscroll=scroll;
-uiz_drawscrollbar_vertical_step(rlx-scrollwidth,ry,rlx,rly,scroll,scrollheight,true,scrollspeed,scrollbarAnimation, scrollbarAnimationTime)
-if oscroll!=scroll then{
-oldaddy=addy;
-addy=-uiz_drawscrollbar_getvalue(scroll)
-if addy!=oldaddy then{
-updater_old=-1;
-updater_new=-1;
-sel=-1;
-selected=-1;
-oldvalid=false;
-uiz_updater_FixView_NoMove();
-}else{
-uiz_updater_FixViews_area_selfmarked(rlx-scrollwidth,ry,rlx,rly);
-}
-updatescroll=true
-}
-}
-//else{
-uiz_drawdslist_checkmousepos();
-//}
+    uiz_drawdslist_checkmousepos();
 }
 </string>
           </argument>
@@ -175,8 +193,9 @@ uiz_drawdslist_checkmousepos();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> if ds_exists(uselist,ds_type_list) then{
-//kmouseover=uiz_mouse_isonobject_leftcheck(id)
+            <string>  if ds_exists(uselist,ds_type_list) then{
+//kmouseover=uiz_mouse_isOver_object_leftCheck(id)
+/*
 if global.mouseoverframe=parent then{
 if mouse_wheel_up() then{fromscroll=scroll;count=0;toscroll-=scrollspeed/height}
 if mouse_wheel_down() then{fromscroll=scroll;count=0;toscroll+=scrollspeed/height}
@@ -184,21 +203,25 @@ toscroll=max(0,min(1,toscroll))
 }
 if fromscroll!=toscroll then{
 var scrolldelta=toscroll-fromscroll
-scroll=fromscroll+scrolldelta*uiz_animation_getfunction(count,graph);
+scroll=fromscroll+scrolldelta*uiz_animation_getFunction(count,graph);
 count+=1/(countspeed*room_speed);
 if count&gt;=1 then{fromscroll=toscroll scroll=toscroll}
 addy=min(0,-scroll*(height-parent.height))
 
 uiz_drawdslist_checkview();
 }
+*/
 
 if kmouseover=0 then{
+uiz_drawdslist_deselect();
 //uiz_drawdslist_updateviews(true,sx,sy+addy+h,slx-scrollbarwidth,sy+h+addy+strh)
+/*
 uiz_updater_FixViews();
 sel=-1;
 selection=-1;
-keepselected=-1;
+//keepselected=-1;
 updatescroll=true;
+*/
 }
 }
 </string>
@@ -223,7 +246,11 @@ updatescroll=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_mouse_docheck()
+            <string>if doscroll then{
+uiz_mouse_docheck_scrollable()
+}else{
+uiz_mouse_docheck()
+}
 </string>
           </argument>
         </arguments>
@@ -264,7 +291,6 @@ updatescroll=true;
         if uiz_selfmarked = false then {
             pcu = false;
         }
-        //sdbm("pcu",pcu,updater_new,updater_old,uiz_selfmarked,ar_sel_ny,ar_sel_ny-addy-ry,ar_sel_oy,ar_sel_oy-addy-ry)
         var uo = updater_old;
         var un = updater_new;
         for (var i = startlistat; i &lt;= endlistat; i++) {
@@ -296,14 +322,13 @@ updatescroll=true;
             if sel = i then {
                 ucolor = oncolor
             }
-            if keepselected = i or(selected = i and kmouseover = 2) then {
+            if keepselected = i or (selected = i) then {
                 ucolor = clickcolor
             }
             draw_square(rx, ry + addy + h, rlx - (scrollwidth + 1) * doscroll, ry + h + addy + strh, ucolor, 1)
-            //sdbm("now drawing this crap",ucolor,uiz_gettext_contained(uselist[| i],width),uselist[| i],usesprlist,updater_new,updater_old)
             draw_set_color(c_black)
             if usesprlist != -1 then {
-                //draw_text(rx+strh+margin*2,ry+h+addy,uiz_gettext_contained(uselist[| i],width-strh-margin*2-(scrollwidth+1)*doscroll))
+                //draw_text(rx+strh+margin*2,ry+h+addy,uiz_getText_contained(uselist[| i],width-strh-margin*2-(scrollwidth+1)*doscroll))
                 if useimglist != -1 then {
                     var vusespr = usesprlist[| i];
                     if !(vusespr = undefined) then {
@@ -317,7 +342,7 @@ updatescroll=true;
                 }
             } else {
 
-                //draw_text(rx,ry+h+addy,uiz_gettext_contained(uselist[| i],width-(scrollwidth+1)*doscroll))
+                //draw_text(rx,ry+h+addy,uiz_getText_contained(uselist[| i],width-(scrollwidth+1)*doscroll))
             }
             //}
             if addy + h &gt; parent.height then {
@@ -353,17 +378,16 @@ updatescroll=true;
             strh = string_height(string(uselist[| i]))
 
             if usesprlist != -1 then {
-                draw_text(rx + strh + margin * 2, ry + h + addy, uiz_gettext_contained(uselist[| i], width - strh - margin * 2 - (scrollwidth + 1) * doscroll))
+                draw_text(rx + strh + margin * 2, ry + h + addy, uiz_getText_contained(uselist[| i], width - strh - margin * 2 - (scrollwidth + 1) * doscroll))
             } else {
-                draw_text(rx, ry + h + addy, uiz_gettext_contained(uselist[| i], width - (scrollwidth + 1) * doscroll))
+                draw_text(rx, ry + h + addy, uiz_getText_contained(uselist[| i], width - (scrollwidth + 1) * doscroll))
             }
             h += margin + strh
         }
 
     }
-    //sdbm("checking for scroll",updatescroll,uiz_selfmarked)
     if doscroll = true and(updatescroll = true or uiz_selfmarked = false) then {
-        uiz_drawscrollbar_vertical_draw(rlx - scrollwidth, ry, rlx, rly, scrollbarsprite, scrollbarcolor, scrollbarbacktexmode, scroll, scrollheight)
+        uiz_drawscrollbar_vertical_draw(rlx - scrollwidth + 1, ry, rlx, rly, scrollbarsprite, scrollbarcolor, scrollbarbacktexmode, scroll, scrollheight)
         updatescroll = false;
     }
 
@@ -416,7 +440,7 @@ if keepselected=i then{ucolor=clickcolor}
 draw_square(rx,ry+addy+h,rlx-scrollbarwidth,ry+h+addy+strh,ucolor,1)
 draw_set_color(c_black)
 if usesprlist!=-1 then{
-draw_text(rx+strh+margin*2,ry+h+addy,uiz_gettext_contained(uselist[| i],width-strh-margin*2))
+draw_text(rx+strh+margin*2,ry+h+addy,uiz_getText_contained(uselist[| i],width-strh-margin*2))
 if useimglist!=-1 then{
 var vusespr=usesprlist[| i];
 if !(vusespr=undefined) then{
@@ -429,7 +453,7 @@ draw_sprite_ext(vusespr,0,rx+margin,ry+h+addy,strh/sprite_get_width(vusespr),str
 }
 }
 }else{
-draw_text(rx,ry+h+addy,uiz_gettext_contained(uselist[| i],width))
+draw_text(rx,ry+h+addy,uiz_getText_contained(uselist[| i],width))
 }
 //}
 if addy+h&gt;parent.height then{break;}

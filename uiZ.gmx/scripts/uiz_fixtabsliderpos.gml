@@ -12,7 +12,7 @@ if ds_exists(tablist,ds_type_list) then{
         for(var i=0;i<sz;i++){
         spacinglist[| i]=string_width(string(tablist[| i]));
         }
-        uiz_spaceareas_format_changelist(spacinglist,width)
+        uiz_spaceAreas_format_changeList(spacinglist,width)
     }
     if oldwidth!=width || oldx!=rx then{
         //set mouseSelection

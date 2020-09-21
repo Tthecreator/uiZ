@@ -60,6 +60,45 @@ uiz_objinit()
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch(kmouseover){//kmouseover is the variable that holds the current state of the mouse.
+    case uiz_nomouse:
+        sdbm("uiz_nomouse");//sdbm is the function used to "Show a DeBug Message". It outputs to the CompileForm.
+    break;
+    case uiz_mouseover:
+        sdbm("uiz_mouseover");
+    break;
+    case uiz_mouseclick://when the user presses your object, first uiz_mousepressed will be activated, in the next step uiz_mouseclick will be activated and in the final step when the mouse releases uiz_mousereleased will be activated..
+        sdbm("uiz_mouseclick");
+    break;
+    case uiz_mousepressed:
+        sdbm("uiz_mousepressed");
+    break;
+    case uiz_mousereleased:
+        sdbm("uiz_mousereleased");
+    break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
@@ -100,8 +139,9 @@ uiz_objinit()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if uiz_cntn() then{
+            <string>if uiz_cntn() then{//this code is used to make sure everything drawn here stays within a certain boundry.
 //put draw code here
+
 uiz_containend()
 }
 </string>

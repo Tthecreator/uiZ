@@ -1,43 +1,60 @@
-sdbm("doBackS1",selection1Char);
-var lineSize = string_length(textList[| selection1Line]);
+#define uiz_textarea_doBackspace
 var lsz = ds_list_size(textList);
+if lsz==0 then exit;
+var lineSize = string_length(textList[| selection1Line]);
+
 var selLineAdd=0;
 if selection1Char==lineSize && argument0 then{//if we're at the end of the line and we want to do a delete
+//    sdbm("if we're at the end of the line and we want to do a delete");
     if selection1Line+1<lsz then{
-    sdbm("DLEGROMT");
         textList[| selection1Line+1] = string_copy(textList[| selection1Line+1], 2, string_length(textList[| selection1Line+1]))
         selLineAdd=+1;
     }
 }else{
     if selection1Char==0 && !argument0 then{//if we're at the beginning of the line and we want to do a backspace
-        if selection1Line>1 then{
-        sdbm("BEGBACK");
-            textList[| selection1Line-1] = string_copy(textList[| selection1Line-1],1,string_length(textList[| selection1Line-1])-1);
-            selLineAdd=-1;
+//        sdbm("if we're at the beginning of the line and we want to do a backspace");
+        if selection1Line>=1 then{
+            if string_char_at(textList[| selection1Line],1)==chr($0A) then{
+                textList[| selection1Line]=""
+            }else{
+                if string_byte_at(textList[| selection1Line-1],string_byte_length(textList[| selection1Line-1])) == $0A then{
+                    uiz_textare_doBackspace_removeLastLineLastChar();//remove \n newline char
+                    if string_byte_at(textList[| selection1Line-1],string_byte_length(textList[| selection1Line-1])) == $0D then{
+                        uiz_textare_doBackspace_removeLastLineLastChar();//remove possible \r newline
+                    }
+                    //combine two lines
+                    selection1Char = string_length(textList[| selection1Line-1]);
+                    textList[| selection1Line-1] += textList[| selection1Line]
+                    textList[| selection1Line]=""
+                    selection1Line--;
+                    
+                }else{
+                    uiz_textare_doBackspace_removeLastLineLastChar();
+                }
+                //selLineAdd=-1;
+            }
+            
         }
     }else{
-        textList[| selection1Line] = uiz_removechar(textList[| selection1Line],selection1Char+argument0);
-        if argument0 == 0 then{
-            --selection1Char;
+        if selection1Char==0 && argument0 && string_char_at(textList[| selection1Line],1)==chr($0A) then{//we are pressing delete right before a newline on an otherwise empty line
+//            sdbm("we are pressing delete right before a newline on an otherwise empty line");
+            textList[| selection1Line]=""
+            selection1Char = 0;
+            ++selection1Line;
+        }else{
+//            sdbm("else")
+            textList[| selection1Line] = uiz_removeChar(textList[| selection1Line],selection1Char+argument0);
+            if argument0 == 0 then{
+                --selection1Char;
+                if selection1Line==0 then{
+                    selection1X = ix;
+                }
+            }
         }
     }
 }
 
-sdbm("doBackS2",selection1Char);
+uiz_textarea_reworkAndFix(selLineAdd)
 
-var selLine = selection1Line + selLineAdd ;
-var linesChanged = uiz_textarea_rework(true,selection1Line-1);
-sdbm("doBackS3",selection1Char, linesChanged);
-switch(linesChanged){
-    case 0://no line/only one line has changed
-        uiz_textarea_rework_selection();
-        uiz_updater_FixViews_area(ix,uiz_textarea_getlineY(selLine-1),ilx,uiz_textarea_getlineY(selLine+1));
-    break;
-    case 1:
-        uiz_updater_FixViews_area(ix,uiz_textarea_getlineY(selLine-1),ilx,ily);
-    break;
-    case 2:
-        uiz_updater_FixViews_area(ix,iy,ilx,ily);
-    break;
-}
-
+#define uiz_textare_doBackspace_removeLastLineLastChar
+textList[| selection1Line-1] = string_copy(textList[| selection1Line-1],1,string_length(textList[| selection1Line-1])-1);

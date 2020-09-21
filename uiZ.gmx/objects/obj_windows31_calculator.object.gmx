@@ -61,142 +61,171 @@ mem=""
           <argument>
             <kind>1</kind>
             <string>//check for pressed buttons:
-if instance_exists(grid_buttons) and instance_exists(display) then{
-//control top buttons.
-if instance_exists(button_C) and button_C.updated=true then{
-display.text=""
-numberone="";
-}
-if instance_exists(button_CE) and button_CE.updated=true then{
-display.text=""
-}
-if instance_exists(button_back) and button_back.updated=true then{
-display.text=string_copy(display.text,1,string_length(display.text)-1)
-}
+if instance_exists(grid_buttons) and instance_exists(display) then {
+    //control top buttons.
+    if instance_exists(button_C) and button_C.updated = true then {
+        uiz_text_settext(display, "")
+        uiz_text_recalculate(display)
+        numberone = "";
+    }
+    if instance_exists(button_CE) and button_CE.updated = true then {
+        uiz_text_settext(display, "")
+        uiz_text_recalculate(display)
+    }
+    if instance_exists(button_back) and button_back.updated = true then {
+        uiz_text_settext(display, string_copy(display.text, 1, string_length(display.text) - 1))
+        uiz_text_recalculate(display)
+    }
 
-var mi=uiz_grid_cellsw(grid_buttons);
-var me=uiz_grid_cellsh(grid_buttons);
-for(var i=0;i&lt;mi;i++){
-for(var e=0;e&lt;me;e++){
-var o=uiz_gridobject(grid_buttons,i,e)
-if instance_exists(o) and o.updated=true then{
-switch(i){
-case 0:
-//M functions
-switch(e){
-case 0:
-//MC
-hasmem=false
-mem=""
-display_M.text=""
-break;
-case 1:
-//MR
-if hasmem=true then{
-display.text=mem;}
-break;
-case 2:
-//MS
-hasmem=true
-mem=display.text
-display_M.text="M"
-break;
-case 3:
-//M+
-if hasmem=true then{
-var n=real(mem)+real(display.text);
-mem=string_format(n,floor(log10(floor(n))),uiz_realgetdecimalpoints(n,10));
-}
-break;
-}
-break;
-case 1:
-//Left row of numbers
-if setaction=true then{display.text=""; setaction=false;}
-display.text=display.text+string(max(7-e*3,0))
-break;
-case 2:
-//Middle row of numbers
-if setaction=true then{display.text=""; setaction=false;}
-if e=me then{
-//flip bit
-var r=real(display.text)
-if r=0 then{display.text="-"}else{
-display.text=string(-r)}
-}else{
-display.text+=string(8-e*3)
-}
-break;
-case 3:
-//Right row of numbers
-if setaction=true then{display.text=""; setaction=false;}
-if e=me-1 then{
-//add decimal point
-if uiz_stringfind(display.text,".")=0 then{display.text+="."}
-}else{
-display.text+=string(9-e*3)
-}
-break;
-case 4:
-setaction=true;
-action=o.text;
-numberone=display.text
-break;
-case 5:
-if e=me-2 then{
-var n=1/real(display.text);
-display.text=string_format(n,floor(log10(floor(n))),uiz_realgetdecimalpoints(n,10))
-}else{
-if e=me-1 then{
-//calculate answer
-var n1=real(numberone)
-var n2=real(display.text)
-switch(action){
-case "/":
-if n2!=0 then{
-display.text=string(n1/n2)
-}else{
-display.text="ERROR division by 0"
-}
-break;
-case "*":
-display.text=string(n1*n2)
-break;
-case "-":
-display.text=string(n1-n2)
-break;
-case "+":
-display.text=string(n1+n2)
-break;
-case "sqrt":
-display.text=string(sqrt(n2))
-break;
-case "%":
-display.text=string(n1 mod n2)
-break;
-case "1/x":
-display.text=string(1/n2)
-break;
-}
-numberone="";
-action="";
-setaction=false;
-}else{
-setaction=true;
-action=o.text;
-numberone=display.text
-}
-}
-break;
-}
+    var mx = uiz_grid_cellsw(grid_buttons);
+    var my = uiz_grid_cellsh(grid_buttons);
+    for (var _x = 0; _x &lt; mx; _x++) {
+        for (var _y = 0; _y &lt; my; _y++) {
+            var o = uiz_gridObject(grid_buttons, _x, _y)
+            if instance_exists(o) and o.updated = true then {
+                switch (_x) {
+                    case 0:
+                        //M functions
+                        switch (_y) {
+                            case 0:
+                                //MC
+                                hasmem = false
+                                mem = ""
+                                uiz_text_settext(display_M, "")
+                                uiz_text_recalculate(display_M)
+                                break;
+                            case 1:
+                                //MR
+                                if hasmem = true then {
+                                    uiz_text_settext(display, mem)
+                                    uiz_text_recalculate(display)
+                                }
+                                break;
+                            case 2:
+                                //MS
+                                hasmem = true
+                                mem = display.text
+                                uiz_text_settext(display_M, "M")
+                                uiz_text_recalculate(display_M)
+                                break;
+                            case 3:
+                                //M+
+                                if hasmem = true then {
+                                    var n = real(mem) + real(display.text);
+                                    mem = string_format(n, floor(log10(floor(n))), uiz_realgetdecimalpoints(n, 10));
+                                }
+                                break;
+                        }
+                        break;
+                    case 1:
+                        //Left row of numbers
+                        if setaction = true then {
+                            display.text = "";
+                            setaction = false;
+                        }
+                        uiz_text_settext(display, display.text + string(max(7 - _y * 3, 0)))
+                        uiz_text_recalculate(display)
+                        break;
+                    case 2:
+                        //Middle row of numbers
+                        if setaction = true then {
+                            uiz_text_settext(display, "")
+                            setaction = false;
+                        }
+                        if _y = my then {
+                            //flip bit
+                            var r = real(display.text)
+                            if r = 0 then {
+                                uiz_text_settext(display, "-")
+                            } else {
+                                uiz_text_settext(display, string(-r))
+                            }
+                        } else {
+                            uiz_text_settext(display, display.text + string(8 - _y * 3))
+                        }
+                        uiz_text_recalculate(display)
+                        break;
+                    case 3:
+                        //Right row of numbers
+                        if setaction = true then {
+                            uiz_text_settext(display, "");
+                            setaction = false;
+                        }
+                        if _y = my - 1 then {
+                            //add decimal point
+                            if uiz_stringfind(display.text, ".") = 0 then {
+                                uiz_text_settext(display, display.text + ".")
+                            }
+                        } else {
+                            uiz_text_settext(display, display.text + string(9 - _y * 3));
+                        }
+                        uiz_text_recalculate(display)
+                        break;
+                    case 4:
+                        setaction = true;
+                        action = o.text;
+                        numberone = display.text
+                        break;
+                    case 5:
+                        if _y = my - 2 then {
+                            var n = 1 / real(display.text);
+                            uiz_text_settext(display, string_format(n, floor(log10(floor(n))), uiz_realgetdecimalpoints(n, 10)));
+                            uiz_text_recalculate(display)
+                        } else {
+                            if _y = my - 1 then {
+                                //calculate answer
+                                var n1 = real(numberone)
+                                var n2 = real(display.text)
+
+                                switch (action) {
+                                    case "/":
+                                        if n2 != 0 then {
+                                            uiz_text_settext(display, string(n1 / n2));
+                                        } else {
+                                            display.text = "ERROR division by 0"
+                                        }
+                                        break;
+                                    case "*":
+                                        uiz_text_settext(display, string(n1 * n2));
+                                        break;
+                                    case "-":
+                                        uiz_text_settext(display, string(n1 - n2));
+                                        break;
+                                    case "+":
+                                        uiz_text_settext(display, string(n1 + n2));
+                                        break;
+                                    case "sqrt":
+                                        uiz_text_settext(display, string(sqrt(n2)));
+                                        break;
+                                    case "%":
+                                        uiz_text_settext(display, string(n1 mod n2));
+                                        break;
+                                    case "1/x":
+                                        uiz_text_settext(display, string(1 / n2));
+                                        break;
+                                }
+                                uiz_text_recalculate(display)
+                                numberone = "";
+                                action = "";
+                                setaction = false;
+                            } else {
+                                setaction = true;
+                                action = o.text;
+                                numberone = display.text
+                            }
+                        }
+                        break;
+                }
 
 
-}
-}
-}
+            }
+        }
+    }
 
 }
-if !instance_exists(window) then{instance_destroy()}
+if !instance_exists(window) then {
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>

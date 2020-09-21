@@ -71,42 +71,6 @@ uiz_endobject()
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-uiz_beginstep_nomouse()
-
-if disablemousecontain=false then{
-uiz_mouse_docheck()
-}else{
-if global.mousefrozen=true then{global.wasmousefrozen=true}
-if global.mousefrozen=0 and global.wasmousefrozen=false then{
-
-uiz_compatibility_mouseband_beginstep()
-}
-
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -124,7 +88,7 @@ uiz_compatibility_mouseband_beginstep()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover=uiz_mouse_isonobject_leftcheck(id)
+            <string>kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 update=false;
 updated=false;
 movedx=0;

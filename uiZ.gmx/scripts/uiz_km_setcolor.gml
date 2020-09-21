@@ -1,4 +1,4 @@
-///uiz_km_setcolor(color,incolor,oncolor)
+///uiz_km_setColor(color, onColor, inColor)
 /*
 Requires you to have kmouseover setup in that object, see "Mouse in general" and/or check your objects step event.
 Sets the color to a different value for when your mouse is over an object, and when it clicks an object, and it has a default value for when the mouse isn't over the object

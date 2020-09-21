@@ -30,12 +30,12 @@
 uiz_init()
 //setup frameset
 frameset=uiz_frameset_create()
-//uiz_setparent(frameset,frame_test)
-anchor_1=uiz_framedivisionhorizontal(frameset,1,dp,1,xtra)
+//uiz_setParent(frameset,frame_test)
+anchor_1=uiz_frameset_divide_horizontal(frameset,1,dp,1,xtra)
 //get the top bar (the first frame, so array index 0)
 frame_topbar=anchor_1.frameat[0]
 //make the topbar draw a color
-frame_topbar.markcolor=uiz_htmltocolor($ffc107)//indigo color
+frame_topbar.markcolor=uiz_html2color($ffc107)//indigo color
 frame_topbar.mark=true//make it markable
 //add shadow
 frame_topbar.shadow=true
@@ -50,7 +50,7 @@ frame_main=anchor_1.frameat[1]
 uiz_fixgeneralpos(frameset)
 //add text
 apptext=uiz_c(obj_uiZ_text)
-uiz_setparent(apptext,frame_topbar)
+uiz_setParent(apptext,frame_topbar)
 apptext.posinframex=px
 apptext.posvalx=20
 apptext.posvalw=0.5
@@ -65,7 +65,7 @@ uiz_fixgeneralpos(apptext)
 
 //add a menubutton
 menubutton=uiz_c(obj_uiZ_menubutton)
-uiz_setparent(menubutton,frame_topbar)
+uiz_setParent(menubutton,frame_topbar)
 menubutton.posinframex=uiz_snapright
 menubutton.posinframey=uiz_snaptop
 menubutton.posvalw=0.5
@@ -79,7 +79,7 @@ menubutton.color_over=c_red;
 uiz_fixgeneralpos(menubutton)
 
 tabslider=uiz_c(obj_uiZ_tabslider)
-uiz_setparent(tabslider,frame_topbar)
+uiz_setParent(tabslider,frame_topbar)
 tabslider.posinframex=uiz_fill
 tabslider.posinframey=uiz_snapbottom
 tabslider.posvalh=0.5
@@ -90,7 +90,7 @@ tabslider.tablist=tablist;
 uiz_fixgeneralpos(tabslider)
 
 sliderstruct=uiz_c(obj_uiZ_sliderstruct)
-uiz_setparent(sliderstruct,frame_main)
+uiz_setParent(sliderstruct,frame_main)
 sliderstruct.posinframex=uiz_fill
 sliderstruct.posinframey=uiz_fill
 sliderstruct.frames=2;
@@ -126,7 +126,7 @@ case 0:
 //left frame
 var fr=uiz_sliderstruct_getnewframe(sliderstruct)
 frameobject=uiz_c(obj_uiZ_rotator)
-uiz_setparent(frameobject,fr)
+uiz_setParent(frameobject,fr)
 frameobject.posinframex=uiz_fill;
 frameobject.posinframey=uiz_fill;
 uiz_fixgeneralpos(frameobject)
@@ -134,8 +134,8 @@ break;
 case 1:
 //middle frame
 var fr=uiz_sliderstruct_getnewframe(sliderstruct)
-frameobject=uiz_c(obj_uiZ_drawloadingcirc)
-uiz_setparent(frameobject,fr)
+frameobject=uiz_c(obj_uiZ_loadingcircle)
+uiz_setParent(frameobject,fr)
 frameobject.posinframex=uiz_fill;
 frameobject.posinframey=uiz_fill;
 uiz_fixgeneralpos(frameobject)
@@ -144,7 +144,7 @@ case 2:
 //right frame
 var fr=uiz_sliderstruct_getnewframe(sliderstruct)
 frameobject=uiz_c(obj_uiZ_sprbutton)
-uiz_setparent(frameobject,fr)
+uiz_setParent(frameobject,fr)
 frameobject.posinframex=uiz_fill;
 frameobject.posinframey=uiz_fill;
 uiz_fixgeneralpos(frameobject)
@@ -173,8 +173,8 @@ break;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(menulist)
-uiz_destroydslist(tablist)
+            <string>uiz_destroyDsList(menulist)
+uiz_destroyDsList(tablist)
 
 </string>
           </argument>

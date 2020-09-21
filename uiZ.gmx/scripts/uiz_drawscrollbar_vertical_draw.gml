@@ -50,6 +50,15 @@ mstate codes:
 //argument7=50
 //argument8=100
 
+/*
+var argument_arr = array_create(argument_count);
+for (var i = 0; i < argument_count; i++) {
+    argument_arr[i] = argument[i];
+}
+if (live_call_ext(argument_arr)) return live_result;
+*/
+
+//argument0+=1;
 var arg7=argument7;
 
 var updated_o = uiz_drawscrollbar_getUpdated(argument7);
@@ -65,9 +74,10 @@ if updated_o > 0 or uiz_selfmarked = false then {
         updated = uiz_selfmarked;
     }
 
-    var width = argument2 - argument0
-    var height = argument3 - argument1
+    var width = round(argument2 - argument0);
+    var height = round(argument3 - argument1);
     var x0 = floor(argument0);
+    var x1 = x0 + width;
     var y0 = floor(argument1);
     var y1 = round(argument1 + width);
     var y2 = round(argument3 - width);
@@ -96,6 +106,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
     } else {
         var sca = sc / argument8;
     }
+    
     var compw = min(barh / 2, width)
     var y4 = floor(y1 + sca * sch);
     var y5 = floor(y4 + compw);
@@ -158,7 +169,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     szy = 1
             }
 
-            uiz_draw_sprite_tiles(argument4, 16, x0, y1, argument2, y2, szx, szy, argument5, 1,0,0); //background
+            uiz_draw_sprite_tiles(argument4, 16, x0, y1, x1, y2, szx, szy, argument5, 1,0,0); //background
 
 
             //draw scrollbar
@@ -174,19 +185,21 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     sel = 0;
                     break;
             }
+            var topPieceXScale=((x1-x0)/szx)/sw;
+            if argument8>0 then{
             if width * 2 > barh then {
                 if (y4 + (barh / sh) / 2 * sh <= y6) {
                     y6--;
                 }
-                draw_sprite_ext(argument4, 6 + sel, x0, y4, width / sw, (barh / sh) / 2, 0, argument5, 1) //left
-                draw_sprite_ext(argument4, 9 + sel, x0, y6, width / sw, (barh / sh) / 2, 0, argument5, 1) //right
+                draw_sprite_ext(argument4, 6 + sel, x0, y4, topPieceXScale, (barh / sh) / 2, 0, argument5, 1) //left
+                draw_sprite_ext(argument4, 9 + sel, x0, y6, topPieceXScale, (barh / sh) / 2, 0, argument5, 1) //right
 
             } else {
                 if (y4 + width / sh * sh <= y6) {
                     y6--;
                 }
-                draw_sprite_ext(argument4, 6 + sel, x0, y4, width / sw, width / sh, 0, argument5, 1) //left
-                draw_sprite_ext(argument4, 9 + sel, x0, y6, width / sw, width / sh, 0, argument5, 1) //right
+                draw_sprite_ext(argument4, 6 + sel, x0, y4, topPieceXScale, width / sh, 0, argument5, 1) //left
+                draw_sprite_ext(argument4, 9 + sel, x0, y6, topPieceXScale, width / sh, 0, argument5, 1) //right
             }
 
             if y5 < y6 then {
@@ -194,8 +207,9 @@ if updated_o > 0 or uiz_selfmarked = false then {
                     y5--;
                 }
 
-                uiz_draw_sprite_tiles(argument4, 12 + sel, x0, y5-3, argument2, y6+3, szx, szy, argument5, 1,0,addEdge);
+                uiz_draw_sprite_tiles(argument4, 12 + sel, x0, y5-3, x1, y6+3, szx, szy, argument5, 1,0,addEdge);
 
+            }
             }
 
             var conw = width - compw;
@@ -203,6 +217,7 @@ if updated_o > 0 or uiz_selfmarked = false then {
         }
     } else {
         //if barh<0 and only the buttons fit
+        
         if updated = false or(state_change = true and((mstate >= 1 and mstate <= 2) or(mstate_last >= 1 and mstate_last <= 2))) {
             switch (mstate) {
                 case 1:

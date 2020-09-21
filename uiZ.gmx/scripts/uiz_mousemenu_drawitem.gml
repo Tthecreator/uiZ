@@ -14,7 +14,7 @@ uiz_back_at_item(rx+ubkmar*itemhasdoublemargins,h,rlx-ubkmar*itemhasdoublemargin
 draw_set_color(textcolor)
 }
 draw_set_alpha(1);
-//sdbm(rx+ubkmar+textmargin,h+th/2,uiz_gettext_contained(txt,width-ubkmar*2-textmargin),draw_get_color())
-draw_text(rx+ubkmar+textmargin,h+th/2,uiz_gettextlines_contained(txt,width-ubkmar*2-textmargin,th))
+//sdbm(rx+ubkmar+textmargin,h+th/2,uiz_getText_contained(txt,width-ubkmar*2-textmargin),draw_get_color())
+draw_text(rx+ubkmar+textmargin,h+th/2,uiz_getTextLines_contained(txt,width-ubkmar*2-textmargin,th))
 
 return th;

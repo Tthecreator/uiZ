@@ -7,7 +7,7 @@ ldwin.windowtext="load"
 global.windowexists=ldwin;
 global.haswindow=id;
 //find files
-uiz_destroydslist(loadfilelist);
+uiz_destroyDsList(loadfilelist);
 if uiz_direxists(projectfolder+"uiZ")=0 then{
 uiz_executecmd('mkdir "'+projectfolder+"uiZ"+'"')
 sdbm("[uiZ,Designer:INFO] Folder '"+projectfolder+"uiZ' not found, creating it.");
@@ -19,13 +19,13 @@ loadfilelist=uiz_findfile_dslist(projectfolder+"uiZ\*.ini")
 sdbm("[uiZ,Designer:ERROR] Folder '"+projectfolder+"uiZ' not found, even after attempting to create it.");
 }
 dbm("THIS STUFF SHOULD GIVE AN ERROR, FRAMEDIVISION NOT COMPATIBLE WITH FRAMESET ANYMORE")
-var di=uiz_framedivisionhorizontal(ldwin,1,xtra,0.3,dp)
+var di=uiz_frameset_divide_horizontal(ldwin,1,xtra,0.3,dp)
 var p1=di.frameat[0];
 var p2=di.frameat[1];
 uiz_fixgeneralpos(ldwin);
 
 ldlist=uiz_c(obj_uiZ_drawdslist);
-uiz_setparent(ldlist,p1);
+uiz_setParent(ldlist,p1);
 ldlist.posinframex=uiz_fill;
 ldlist.posinframey=uiz_fill;
 ldlist.uselist=loadfilelist;
@@ -38,7 +38,7 @@ ldbut_load.posvalx=0
 ldbut_load.posvalwtype=fcy
 ldbut_load.posvalw=1
 ldbut_load.posinframey=uiz_fill
-uiz_setparent(ldbut_load,p2)
+uiz_setParent(ldbut_load,p2)
 uiz_fixgeneralpos(ldbut_load)
 
 ldbut_add=uiz_easybutton_create(spr_uiZ_buttons_add)
@@ -47,7 +47,7 @@ ldbut_add.posvalx=1
 ldbut_add.posvalwtype=fcy
 ldbut_add.posvalw=1
 ldbut_add.posinframey=uiz_fill
-uiz_setparent(ldbut_add,p2)
+uiz_setParent(ldbut_add,p2)
 uiz_fixgeneralpos(ldbut_add)
 
 }

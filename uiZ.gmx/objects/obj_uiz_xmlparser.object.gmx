@@ -55,12 +55,12 @@ filelistv=ds_list_create()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(filelistl)
-uiz_destroydslist(filelistd)
-uiz_destroydslist(filelistv)
-//uiz_destroydslist(writefiles)
-//uiz_destroydslist(l)
-//uiz_destroydslist(d)
+            <string>uiz_destroyDsList(filelistl)
+uiz_destroyDsList(filelistd)
+uiz_destroyDsList(filelistv)
+//uiz_destroyDsList(writefiles)
+//uiz_destroyDsList(l)
+//uiz_destroyDsList(d)
 //sdbm("destroy")
 </string>
           </argument>
@@ -84,9 +84,9 @@ uiz_destroydslist(filelistv)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(filelistl)
-uiz_destroydslist(filelistd)
-uiz_destroydslist(filelistv)
+            <string>uiz_destroyDsList(filelistl)
+uiz_destroyDsList(filelistd)
+uiz_destroyDsList(filelistv)
 </string>
           </argument>
         </arguments>

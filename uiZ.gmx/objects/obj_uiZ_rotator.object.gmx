@@ -59,6 +59,9 @@ count=0;
           <argument>
             <kind>1</kind>
             <string>uiz_updater_FixViews();
+count+=uiz_sc(rotationtime)
+if count&gt;=1 then{count=frac(count)}
+rotation=uiz_animation_getFunction(count,animation)*360
 </string>
           </argument>
         </arguments>
@@ -112,10 +115,6 @@ var mx=rx+width/2
 var my=ry+height/2
 //draw_sprite_pos(sprite,img,mx+dsin(rotation)*sz,ry,rlx,ry,rlx,rly,rx,rly,alpha)
 draw_sprite_pos(sprite,img,mx+dsin(rotation+225)*sz,my+dcos(rotation+225)*sz,mx+dsin(rotation+135)*sz,my+dcos(rotation+135)*sz,mx+dsin(rotation+45)*sz,my+dcos(rotation+45)*sz,mx+dsin(rotation-45)*sz,my+dcos(rotation-45)*sz,alpha)
-
-count+=uiz_sc(rotationtime)
-if count&gt;=1 then{count=frac(count)}
-rotation=uiz_animation_getfunction(count,animation)*360
 
 uiz_containend()
 }

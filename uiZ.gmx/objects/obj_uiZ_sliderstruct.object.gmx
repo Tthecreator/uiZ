@@ -40,8 +40,10 @@ moveback=1;
 dir=0;
 linearvalue=0;
 animationtime=0.5//v//animation time//
-animation=uiz_exponential_inout//a//animation//
+animation=uiz_smoothstep//a//animation//
 update=true;
+updatescript=-1;
+updatescriptargument=0;
 horizontal=true//b//horizontal(true) or vertical(false)//
 mouseslide=true//b//allow mouse sliding//
 slideonwholeframe=false//b//slide on whole frame//
@@ -50,7 +52,7 @@ slidesizetype=dp//z//slidesize type//
 slidedist=1//v//minimum slide distance//
 slidedisttype=dp//z//minimum slide distance type//
 newframe=uiz_c(obj_uiZ_frame)
-uiz_setparent(newframe,id)
+uiz_setParent(newframe,id)
 newframe.posinframex=uiz_snapleft;
 newframe.posinframey=uiz_snaptop;
 newframe.posvalwtype=fc;
@@ -117,18 +119,15 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
     if dir = -1 then {
         fa = oldframe
         fb = newframe
-        f = uiz_animation_getfunction(linearvalue, animation);
+        f = uiz_animation_getFunction(linearvalue, animation);
     } else {
         fb = oldframe
         fa = newframe
-        //fa = oldframe
-        //fb = newframe
-        //f = 1 - uiz_animation_getfunction(linearvalue, animation);
-        //f = uiz_animation_getfunction(1-linearvalue, animation);
-        f = 1 - uiz_animation_getfunction(linearvalue, animation);
-        
+        f = 1 - uiz_animation_getFunction(linearvalue, animation);   
     }
-    //sdbm(linearvalue,f)
+    
+    
+    
     if horizontal = true then {
         fa.posinframex = uiz_snapleft;
         fa.posinframey = uiz_snaptop;
@@ -146,26 +145,24 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
     }
     uiz_fixgeneralpos(fa)
     uiz_fixgeneralpos(fb)
-    uiz_fixchildren(fa, true)
-    uiz_fixchildren(fb, true)
+    uiz_fixChildren(fa, true)
+    uiz_fixChildren(fb, true)
     if linearvalue = 1 then {
-        uiz_destroyobject(oldframe);
+        uiz_destroyObject(oldframe);
         oldframe = newframe;
         dir = 0;
         moveback = 1;
         if queuedframe!=-1 then{
-        //sdbm("setting from queuedframe");
           uiz_sliderstruct_setframe(id,queuedframe);  
         queuedframe=-1;
         }
     }
     if linearvalue = 0 and moveback = -1 then {
-        uiz_destroyobject(newframe);
+        uiz_destroyObject(newframe);
         newframe = oldframe;
         dir = 0;
         moveback = 1;
         if queuedframe!=-1 then{
-        //sdbm("setting from queuedframe 2",queuedframe);
           uiz_sliderstruct_setframe(id,queuedframe); 
                    
         queuedframe=-1;
@@ -188,16 +185,16 @@ if newframe != oldframe and dir != 0 and hasmouse = false then {
         global.mouseoverobject = id;
         global.mouseoverframe = id;
         //make sure oldframe doesn't exists anymore
+        
         if instance_exists(oldframe) &amp;&amp; oldframe!=newframe then{
-            uiz_destroyobject(oldframe);
+            uiz_destroyObject(oldframe);
         }
         
         oldframe = newframe;
         oldhasmouseframe = frame;
         //create newframe
-        //sdbm("create new frame 1")
         newframe = uiz_c(obj_uiZ_frame)
-        uiz_setparent(newframe, id)
+        uiz_setParent(newframe, id)
         newframe.posinframex = uiz_snapleft;
         newframe.posinframey = uiz_snaptop;
         newframe.posvalwtype = fc;
@@ -236,7 +233,7 @@ if hasmouse = true then {
         setdir = 0;
         dir = 0;
     }
-    f = abs(f)
+    f = abs(f);
     if horizontal = true then {
         moveback = -uiz_sign(global.lastmousemovedxsign) * dir
     } else {
@@ -247,16 +244,22 @@ if hasmouse = true then {
         moveback = -1
     }
     */
-
+    
+    if moveback = -1 then{
+        frame = oldhasmouseframe;
+    }else{
+        frame = oldhasmouseframe - setdir;
+    }
+    
     if dir != setdir and setdir != 0 then {
-        uiz_destroyobject_notself(newframe)
-        update = true
-        frame = oldhasmouseframe - setdir
-        dir = setdir
+        uiz_destroyObject_notself(newframe)
+        update = true;
+        dir = setdir;
+        frame = oldhasmouseframe - setdir;
+        if (updatescript!=-1 and script_exists(updatescript)){script_execute(updatescript,id,updatescriptargument);}
     }
 
     if dir != 0 then {
-
         linearvalue = f;
         if dir = -1 then {
             fa = oldframe
@@ -285,17 +288,14 @@ if hasmouse = true then {
 
         uiz_fixgeneralpos(fa)
         uiz_fixgeneralpos(fb)
-        uiz_fixchildren(fa, true)
-        uiz_fixchildren(fb, true)
+        uiz_fixChildren(fa, true)
+        uiz_fixChildren(fb, true)
         if instance_exists(tabslider) then {
             if hasmouse then {
-                //sdbm("placey",tabslider,frame,of)
                 //uiz_tabslider_setvalue(tabslider,frame,abs(of),true)
                 if moveback = -1 then {
-                    //sdbm("set frame to old", oldclickframe, of)
                     uiz_tabslider_setvalue(tabslider, oldclickframe, abs( of ), true);
                 } else {
-                    //sdbm("set frame to", frame, of )
                     uiz_tabslider_setvalue(tabslider, frame, abs( of ));
                 }
             } else {

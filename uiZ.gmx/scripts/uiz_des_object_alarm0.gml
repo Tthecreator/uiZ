@@ -17,11 +17,11 @@ g=uiz_grid_create(2,1)
 g.depth=-20
 g.posinframex=uiz_fill;
 g.posinframey=uiz_fill;
-uiz_setparent(g,obj_uiz_designer.rightbarframe)
-//uiz_setparent(g,frame)
+uiz_setParent(g,obj_uiz_designer.rightbarframe)
+//uiz_setParent(g,frame)
 uiz_fixgridpos(g)
-uiz_setgridframes(g)
-uiz_gridsize_row(g,0,1,px)
+uiz_setGridObjects_frame(g)
+uiz_gridSize_row(g,0,1,px)
 gridh=0
 objecttextbox=uiz_des_addtolist_text("object:",string(object)+":"+string(id))
 //create a box for the name

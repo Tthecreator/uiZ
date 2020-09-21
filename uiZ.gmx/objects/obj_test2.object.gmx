@@ -40,7 +40,7 @@ bsq.outlinecolor=c_green;
 uiz_fixgeneralpos(bsq)
 
 ssq=uiz_c(obj_uiZ_square)
-uiz_setparent(ssq,bsq)
+uiz_setParent(ssq,bsq)
 ssq.posinframex=fc;
 ssq.posinframey=fc;
 ssq.posvalx=0.3

@@ -13,7 +13,7 @@ if owidth!=iwidth or (oheight!=iheight and (oheight>listH or iheight>listH)) the
         var maxScrollSize = (ds_list_size(textList)*fontHeight-iheight)
         if maxScrollSize<listFromPx then{
             //we scrolled to far, so we need to automatically scroll back a little bit
-            scroll = uiz_drawscrollbar_setvalue(scroll,maxScrollSize);
+            scroll = uiz_drawscrollbar_setValue(scroll,maxScrollSize);
             listFromPx = maxScrollSize;
         }
     }else{

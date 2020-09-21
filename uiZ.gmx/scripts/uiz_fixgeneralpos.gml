@@ -1,5 +1,4 @@
 ///uiz_fixgeneralpos(object)
-
 switch(argument0.id.object_index){
 case obj_uiZ_textarea:
 uiz_fixtextareapos(argument0);
@@ -36,9 +35,6 @@ break;
 case obj_uiZ_menuholder:
 uiz_fixmenuholderpos(argument0)
 break;
-case obj_uiZ_windowholder:
-uiz_fixwindowpos_legacy(argument0)
-break;
 case obj_uiZ_window:
 uiz_fixwindowpos(argument0)
 break;
@@ -54,8 +50,11 @@ break;
 case obj_uiZ_surfaceholder:
 uiz_fixsurfaceholderpos(argument0);
 break;
-case obj_uiZ_slider:case obj_uiZ_slider_2col:
+case obj_uiZ_slider:
 uiz_fixsliderpos(argument0);
+break;
+case obj_uiZ_slider_2col:
+uiz_fixsliderpos_2col(argument0);
 break;
 case obj_uiZ_slickslider:
 uiz_fixslicksliderpos(argument0);
@@ -80,6 +79,15 @@ uiz_fixframescrollbarpos(argument0);
 break;
 case obj_uiZ_switch:
 uiz_fixswitchpos(argument0);
+break;
+case obj_uiZ_treelist:
+uiz_fixtreelistpos(argument0);
+break;
+case obj_uiZ_colorboxes:
+uiz_fixcolorboxes(argument0);
+break;
+case obj_uiZ_loadingbar:
+uiz_fixloadingbarpos(argument0);
 break;
 default:
 uiz_fixobjectpos(argument0);

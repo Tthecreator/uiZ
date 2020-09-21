@@ -1,4 +1,4 @@
-///uiz_back_at(rx,ry,rlx,rly,[n backmode])
+///uiz_back_at(rx,ry,rlx,rly,[backmode])
 /*
 
 uiz_back_at(rx,ry,rlx,rly,[optional backmode]) 

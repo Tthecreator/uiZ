@@ -86,7 +86,7 @@ uiz_des_setvalueof(o,wv)
 //sdbm("setting up data:",o.updatetype)
 switch(o.updatetype){
 case "name": o.value=obj_uiz_des_name(object,wv) break;
-case "parent": if wv&gt;-1 and wv&lt;ds_list_size(obj_uiz_designer.aflist) then{uiz_setparent(object,obj_uiz_designer.aflist[| wv])} 
+case "parent": if wv&gt;-1 and wv&lt;ds_list_size(obj_uiz_designer.aflist) then{uiz_setParent(object,obj_uiz_designer.aflist[| wv])} 
 //case "x": object.x=wv;x=wv; break;
 //case "y": object.y=wv;y=wv; break;
 case "x": object.posvalx=wv;object.x=wv;x=wv;posvalx=wv; break;
@@ -187,7 +187,7 @@ var apply=1
 if u.rlorstr=1 then{wv=ini_read_string(string(o.uiobject),updatetype,"")}else{wv=ini_read_real(string(o.uiobject),updatetype,0)}
 switch(updatetype){
 case "name": if u.updated=1 then{wv=obj_uiz_des_name(o,v)}else{apply=0;} break;
-case "parent": uiz_setparent(object,global.newparentlist[|u.select]) wv=ds_list_find_index(obj_uiz_designer.aflist,global.newparentlist[|u.select]);  break;
+case "parent": uiz_setParent(object,global.newparentlist[|u.select]) wv=ds_list_find_index(obj_uiz_designer.aflist,global.newparentlist[|u.select]);  break;
 //case "parent": sdbm(o,global.newparentlist[|u.select]) break;
 case "x": o.posvalx=v; posvalx=v; wv=v; break;
 case "y": o.posvaly=v; posvaly=v; wv=v; break;
@@ -202,7 +202,7 @@ case "posvalytype": o.posinframey=real(u.value); posinframey=real(u.value); wv=u
 }
 uiz_fixgeneralpos(o)
 uiz_fixgeneralpos(id)
-uiz_fixchildren(o,1)
+uiz_fixChildren(o,1)
 if apply=1 then{
 if u.rlorstr=1 then{ini_write_string(string(o.uiobject),updatetype,wv)}else{ini_write_real(string(o.uiobject),updatetype,wv)}
 }
@@ -231,9 +231,9 @@ ini_close()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+            <string>uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>
@@ -256,9 +256,9 @@ uiz_destroydslist(updatedefvallist)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uiz_destroydslist(updatelist)
-uiz_destroydslist(updaterlorstrlist)
-uiz_destroydslist(updatedefvallist)
+            <string>uiz_destroyDsList(updatelist)
+uiz_destroyDsList(updaterlorstrlist)
+uiz_destroyDsList(updatedefvallist)
 </string>
           </argument>
         </arguments>

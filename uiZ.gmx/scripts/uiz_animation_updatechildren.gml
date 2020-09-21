@@ -1,2 +1,2 @@
-///uiz_animation_updatechildren(id,bool updatechildren)
-argument0.animation_updatechildren=argument1;
+///uiz_animation_updateChildren(id,bool updatechildren)
+argument0.animation_updateChildren=argument1;

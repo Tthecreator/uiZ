@@ -32,7 +32,7 @@
 uiz_objinit()
 sprite=spr_uiz_menuanimationbutton//p//sprite//
 color=c_white//c//color blend//
-endframe=75//v//frame in which animation ends//
+endframe=25//v//frame in which animation ends//
 value=false//b//initial value//
 animationin=uiz_acceldecel//a//enable animation//
 animationintime=0.6//v//enable animation time//
@@ -90,11 +90,11 @@ img=0;
             <string>if (oldvalue!=value) then{
 if value=true then{
 linearvalue+=uiz_sc(animationintime)
-intervalue=uiz_animation_getfunction(linearvalue,animationin)
+intervalue=uiz_animation_getFunction(linearvalue,animationin)
 img=round(endframe*intervalue)
 }else{
 linearvalue+=uiz_sc(animationouttime)
-intervalue=uiz_animation_getfunction(linearvalue,animationout)
+intervalue=uiz_animation_getFunction(linearvalue,animationout)
 img=endframe+round((sprite_get_number(sprite)-endframe)*intervalue)
 }
 if linearvalue&gt;=1 then{
@@ -117,12 +117,12 @@ update=true;
 if value=false then{
 //move back
 linearvalue-=uiz_sc(animationintime)
-intervalue=uiz_animation_getfunction(linearvalue,animationin)
+intervalue=uiz_animation_getFunction(linearvalue,animationin)
 img=round(endframe*intervalue)
 }else{
 //move forward
 linearvalue-=uiz_sc(animationouttime)
-intervalue=uiz_animation_getfunction(linearvalue,animationout)
+intervalue=uiz_animation_getFunction(linearvalue,animationout)
 img=endframe+round((sprite_get_number(sprite)-endframe)*intervalue)
 }
 if linearvalue&lt;0 then{linearvalue=0;
@@ -211,7 +211,7 @@ update=true;
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-draw_spritewh(sprite,img,rx,ry,width,height,0,color,alpha)
+draw_sprite_wh(sprite,img,rx,ry,width,height,0,color,alpha)
 uiz_containend()
 }
 

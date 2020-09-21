@@ -34,15 +34,17 @@ szx=1
 szy=1
 break;
 }
-//sdbm(szy)
 //middle
 if (nwidth>0 or nheight>0) and sprite_get_number(bkspr)>=9 then{
+/*
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,8))
 draw_vertex_texture(nrx,nry,0,0)
 draw_vertex_texture(nrx,nrly,0,szy)
 draw_vertex_texture(nrlx,nry,szx,0)
 draw_vertex_texture(nrlx,nrly,szx,szy)
 draw_primitive_end()
+*/
+uiz_draw_sprite_tiles(bkspr,8,nrx,nry,nrlx,nrly,szx,szy,bkcol,alpha,0,0);
 }
 var bbr=sprite_get_bbox_right(bkspr)+1
 var bbb=sprite_get_bbox_bottom(bkspr)+1
@@ -85,7 +87,6 @@ draw_sprite_stretched(bkspr,1,nrlx,nry2,sprite_get_width(bkspr),nheight)//right
 //top
 
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,0))
-//sdbm(nry,nsh,nry-nsh,szx)
 draw_vertex_texture((nrx2),(nry-nsh),0,0)
 draw_vertex_texture((nrx2),(nry),0,1)
 draw_vertex_texture((nrlx2),(nry-nsh),szx,0)
@@ -128,13 +129,13 @@ uiz_draw_sprite_tiles(bkspr,3,nrx-nsw,nry,nrx,nrly,szx,1,bkcol,alpha,0,0)//left
 }
 
 //top-left
-draw_sprite_ext(bkspr,4,(nrx2-nsw),(nry2-nsh),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,4,(nrx2-nsw),(nry2-nsh),1,1,0,bkcol,alpha)
 //top right
-draw_sprite_ext(bkspr,5,(nrlx2),(nry2-nsh),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,5,(nrlx2),(nry2-nsh),1,1,0,bkcol,alpha)
 //bottom right
-draw_sprite_ext(bkspr,6,(nrlx2),(nrly2),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,6,(nrlx2),(nrly2),1,1,0,bkcol,alpha)
 //bottom left
-draw_sprite_ext(bkspr,7,(nrx2-nsw),(nrly2),1,1,0,bkcol,1)
+draw_sprite_ext(bkspr,7,(nrx2-nsw),(nrly2),1,1,0,bkcol,alpha)
 
 }
 //draw_set_alpha(1)

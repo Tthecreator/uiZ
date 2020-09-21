@@ -13,9 +13,11 @@ var f=file_text_open_write("uiz_colordump")
 file_text_write_string(f,ds_list_write(colorlist))
 file_text_close(f)
 }
-uiz_destroydslist(uiz_arealist);
-uiz_destroydslist(uiz_steplist);
-uiz_destroydslist(uiz_endsteplist);
-uiz_destroydslist(uiz_arealist_extra);
-//uiz_destroydslist(uiz_objlist);
+uiz_destroyDsList(uiz_arealist);
+uiz_destroyDsList(uiz_steplist);
+uiz_destroyDsList(uiz_endsteplist);
+uiz_destroyDsList(uiz_beginsteplist);
+uiz_destroyDsList(uiz_arealist_extra);
+uiz_destroyDsList(scrollbarStepList);
+//uiz_destroyDsList(uiz_objlist);
 ///uiz by Thomas Saedt, Tthecreator on the game maker forums.

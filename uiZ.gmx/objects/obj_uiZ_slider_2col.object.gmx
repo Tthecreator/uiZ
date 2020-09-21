@@ -35,7 +35,7 @@ color2=c_red//c//right-top color//
 color3=c_blue//c//left-bottom color//
 color4=c_orange//c//right-bottom color//
 outline=1//b//outline//
-outlinewidth=3//v//outline width//
+outlinewidth=1//v//outline width//
 //coloroutline=c_aqua
 coloroutline1=c_aqua//c//left outline color//
 coloroutline2=c_orange//c//right outline color//
@@ -61,68 +61,6 @@ animationtype=uiz_quadratic_out//a//knob animation//
 snappoint=0;
 update=0;
 updated=0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-///#define uiZ
-//#sprite images
-//#spritenum 6
-width=10
-height=10
-lx=x+width
-ly=y+height
-color1=c_white
-color2=c_black
-color3=c_purple
-color4=c_aqua
-outline=1
-color5=c_maroon
-color6=c_red
-color7=c_orange
-color8=c_yellow
-children=-1
-listpos=-1
-uiz_initparent()
-rx=parent.rx+x
-ry=parent.ry+y
-rlx=parent.rx+lx
-rly=parent.ry+ly
-adddepth=0;
-spraddto=0;
-posinframex=uiz_auto
-posinframey=uiz_auto
-posvalx=0
-posvaly=0
-addx=0
-addy=0
-containin=0
-setpointx=uiz_auto
-setpointy=uiz_auto
-topframemargin=0;
-rightframemargin=0;
-bottomframemargin=0;
-leftframemargin=0;
-uiz_shader=1
-containtowhosparent=id
-
 </string>
           </argument>
         </arguments>
@@ -187,7 +125,7 @@ if selected = true then{
 }
 
 if !(fromvalue = value) and animation = 1 then {
-    invalue = fromvalue + (uiz_animation_getfunction(anicount, animationtype) * (value - fromvalue))
+    invalue = fromvalue + (uiz_animation_getFunction(anicount, animationtype) * (value - fromvalue))
     anicount += 1 / (anicountspeed * room_speed)
     update = 1;
     if anicount &gt;= 1 then {
@@ -235,8 +173,8 @@ uiz_updater_FixViews()}
           <argument>
             <kind>1</kind>
             <string>var ucolor_old=ucolor;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 if kmouseover=1 and point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),pf+sx,sy+height/2-sliderh/2,pl+sx,sy+height/2+sliderh/2+1) then{
 ucolor=slidercoloron
 }else{
@@ -269,8 +207,8 @@ uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height
           <argument>
             <kind>1</kind>
             <string>updated=0;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 var ucolor_old=ucolor;
 if kmouseover&gt;0 then{
 uiz_set_cursor(cr_handpoint)
@@ -345,13 +283,13 @@ var mid=floor(ry+height/2);
 draw_rectangle_colour(rx,ry,rlx,mid,color1,color2,color2,color1,false)
 draw_rectangle_colour(rx,mid,rlx,rly,color3,color4,color4,color3,false)
 if outline=1 then{
-uiz_drawrectangleedgecolor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
+uiz_draw_rectangle_edgeColor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
 }
 }
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 
-draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
+draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx+1,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
 uiz_containend()
 }
 

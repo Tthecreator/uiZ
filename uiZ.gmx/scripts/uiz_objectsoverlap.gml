@@ -1,4 +1,4 @@
-///uiz_squareinsquare(instanceid,instanceid)
+///uiz_objectsOverlap(instanceid, instanceid)
 //checks for 2 objects if they overlap in any way
 //returns false for no overlap, 
 //returns true for partly or fully overlap

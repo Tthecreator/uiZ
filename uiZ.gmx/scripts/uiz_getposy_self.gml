@@ -1,4 +1,4 @@
-///uiz_getposy_self(value,valuetype[px dp fc or sa_])
+///uiz_getposy_self(value,valuetype[px dp fc])
 /*
 Gets a value using getposx/y but uses it's own object as a reference instead of it's parent.
 uiz_getposx_self(1,fc) will the objects width and uiz_getposx_self(0.5,fc) half of the objects width.

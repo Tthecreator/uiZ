@@ -1,4 +1,4 @@
-///uiz_destroydslist(ds_list)
+///uiz_destroyDsList(ds_list)
 /*
 First checks whether a ds_list exists, and if it does destroys it.
 Returns nothing.

@@ -149,7 +149,7 @@ update=false;
 if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
 if kmouseover=3 and ds_exists(dslist,ds_type_list) then{
 //sdbm("spawning that moad menu");
-menu=uiz_spawnmousemenu(dslist,false,actionlist)
+menu=uiz_spawnMouseMenu(dslist,false,actionlist)
 menu.enabledlist=enabledlist
 if script_exists(menutemplate) then{script_execute(menutemplate,menu)}
 update=true;
@@ -209,7 +209,7 @@ uiz_back()
 uiz_textmiddle()
 draw_set_color(textcolor)
 if font&gt;-1 then{draw_set_font(font)}
-draw_text(rx+width/2,ry+height/2,uiz_gettext_contained(text,width))
+draw_text(rx+width/2,ry+height/2,uiz_getText_contained(text,width))
 uiz_textmiddle_topleft()
 uiz_containend()
 }

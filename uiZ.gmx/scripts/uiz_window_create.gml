@@ -1,4 +1,4 @@
-///uiz_window_create(width,valuetype[px dp or fc],height,valuetype[px dp or fc]) -returns windowid
+///uiz_window_create(width, widthtype, height, heighttype) -returns windowid
 /*
 Creates a window holder object and returns the id of that object.
 See "windows in general" for more information on how to handle windows.
@@ -22,6 +22,7 @@ global.uiz_windows+=2
 
 with(w){
 uiz_window_fixadddepth();
+uiz_depth_foreground(id);
 //sdbm("set new window depth to ",depth);
 global.selectedwindow=id
 }

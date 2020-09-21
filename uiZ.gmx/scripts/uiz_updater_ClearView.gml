@@ -1,4 +1,4 @@
-
+//DO NOT USE
 with(obj_uiZ_controller){
 if !surface_exists(uiz_surf) {uiz_surf=surface_create(width,height);}
 surface_set_target(uiz_surf);

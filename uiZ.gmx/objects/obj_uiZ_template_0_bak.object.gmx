@@ -31,7 +31,7 @@ uiz_init()
 
 //setup frameset
 frameset=uiz_frameset_create()
-anchor_1=uiz_framedivisionhorizontal(frameset,0.5,dp,1,xtra)
+anchor_1=uiz_frameset_divide_horizontal(frameset,0.5,dp,1,xtra)
 //get the top bar (the first frame, so array index 0)
 frame_topbar=anchor_1.frameat[0]
 //make the topbar draw a color
@@ -52,7 +52,7 @@ uiz_fixgeneralpos(frameset)
 //create the slidable frame
 frame_sidebar=uiz_c(obj_uiZ_frame)
 //put it side the main frame
-uiz_setparent(frame_sidebar,frame_main)
+uiz_setParent(frame_sidebar,frame_main)
 //put in front
 frame_sidebar.adddepth=900
 //fill in height
@@ -71,7 +71,7 @@ uiz_fixgeneralpos(frame_sidebar)
 
 //add button
 menubutton=uiz_c(obj_uiZ_spriteanimationbutton)
-uiz_setparent(menubutton,frame_topbar)
+uiz_setParent(menubutton,frame_topbar)
 menubutton.posinframex=px;
 menubutton.posvalx=0;
 //make the width the same as the height
@@ -82,7 +82,7 @@ uiz_fixgeneralpos(menubutton)
 
 //add a cover to gray out the mainframe when the menu is open
 menucover=uiz_c(obj_uiZ_cover)
-uiz_setparent(menucover,frame_main)
+uiz_setParent(menucover,frame_main)
 menucover.posinframex=uiz_fill
 menucover.posinframey=uiz_fill
 menucover.destroyonclick=false;
@@ -91,7 +91,7 @@ uiz_fixgeneralpos(menucover)
 
 //create an object to allow the mouse to drag the menu.
 menumousecover=uiz_c(obj_uiZ_mouseband)
-uiz_setparent(menumousecover,frame_sidebar)
+uiz_setParent(menumousecover,frame_sidebar)
 menumousecover.posinframex=uiz_snapright;
 menumousecover.posinframey=uiz_fill;
 menumousecover.posvalwtype=dp;
@@ -149,7 +149,7 @@ mainframeblackalpha=0.4;
 //also make the cover above the main frame activate/deactivate
 
 if menubutton.update=true then{
-var f=uiz_animation_getfunction(1-uiz_spriteanimationbutton_getintervalue(menubutton),menubaranimation);
+var f=uiz_animation_getFunction(1-uiz_spriteanimationbutton_getintervalue(menubutton),menubaranimation);
 frame_sidebar.setpointx=f;
 uiz_fixgeneralpos(frame_sidebar)
 if f=1 then{menucover.enabled=false}else{menucover.enabled=true}

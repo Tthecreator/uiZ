@@ -74,7 +74,7 @@ for(var e=0;e<g.gridw;e++){
 //sdbm(e,i,g.gridw)
 var o=g.gridobject[e,i];
 if o!=last then{
-if o.iscover=0 or o.fromy=i then{o.y=at1+domarright-domarleft o.height=-domar}
+if o.iscover=0 or o.fromy=i then{o.y=round(at1+domarright-domarleft) o.height=-domar}
 if o.iscover=1 then{
 //show_message(o.height)
 o.height+=at2+domar*2
@@ -82,8 +82,9 @@ if o.toy=i then{o.height-=domar}
 //show_message(o.height)
 }
 if o.iscover=0 then{o.height=at2}
+o.height = round(o.height);
 uiz_fixgeneralpos(g.gridobject[e,i])
-uiz_fixchildren(g.gridobject[e,i],0)
+uiz_fixChildren(g.gridobject[e,i],0)
 last=o
 }
 }

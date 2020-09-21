@@ -1,4 +1,4 @@
-///uiz_gettext_contained(string,width)
+///uiz_getText_contained(string, width)
 /*
 This scripts handles SINGLE LINE strings.
 It makes breaks the string up so that it doesn't exceed the width given.

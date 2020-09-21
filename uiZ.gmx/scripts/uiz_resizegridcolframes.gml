@@ -73,15 +73,13 @@ var last=-10;
 for(var e=0;e<g.gridh;e++){
 var o=g.gridobject[i,e];
 if o!=last then{
-if o.iscover=0 or o.fromx=i then{o.x=at1+domarright-domarleft o.width=-domar}
+if o.iscover=0 or o.fromx=i then{o.x=round(at1+domarright-domarleft) o.width=-domar}
 if o.iscover=1 then{o.width+=at2+domar*2
 if o.tox=i then{o.width-=domar}}
 if o.iscover=0 then{o.width=at2}
-//if !(g.marginsonsideslr=false and (i=0 or i=g.gridw-1)) then{
-//o.width*=ssf;
-//}
+o.width = round(o.width);
 uiz_fixgeneralpos(g.gridobject[i,e])
-uiz_fixchildren(g.gridobject[i,e],0)
+uiz_fixChildren(g.gridobject[i,e],0)
 last=o
 }
 }

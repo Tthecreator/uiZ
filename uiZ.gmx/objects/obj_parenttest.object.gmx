@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>if keyboard_check_released(vk_end) then{
 dbm("hi")
-uiz_setparent(id,100007)}
+uiz_setParent(id,100007)}
 </string>
           </argument>
         </arguments>

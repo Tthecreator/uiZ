@@ -34,10 +34,12 @@ value=0
 buttoncolor=c_white//c//button color//
 buttononcolor=c_gray//c//button mouse over color//
 buttonincolor=c_black//c//button mouse click color//
+buttonbackalpha=1//c//button back alpha//
+buttontrianglealpha=1//c//button triangle alpha//
 buttontrianglecolor=c_black//c//button triangle color//
 buttontriangleoncolor=c_dkgray//c//button triangle mouse over color//
 buttontriangleincolor=c_white//c//button triangle mouse click color//
-buttonmargin=3//v//button margin//
+buttonmargin=5//v//button margin//
 trianglemargin=4//v//triangle margin//
 uselist=-1
 masklist=-1
@@ -151,7 +153,7 @@ if menuis=1 and instance_exists(menu) then{
 menuis=0
 uiz_updater_unstep();
 if instance_exists(menu){
-uiz_destroyobject(menu)}
+uiz_destroyObject(menu)}
 }else{
 menuis=1
 menu=instance_create(0,0,obj_uiZ_mousemenu)
@@ -162,6 +164,10 @@ menu.uselist=uselist
 }
 menu.y=rly
 menu.x=rx
+menu.posinframex=px;
+menu.posvalx=rx;
+menu.posvalw=width;
+menu.posvalwtype=px;
 menu.backcolor=mousebackcolor
 menu.backalpha=mousebackalpha
 menu.itemcolor=mouseitemcolor
@@ -171,8 +177,9 @@ menu.itemalpha=mouseitemalpha
 menu.margin=mousemargin
 menu.textcolor=mousetextcolor
 menu.font=mousefont
+menu.destroyyfunction=uiz_zero;
 //set returnscript
-uiz_mousemenu_setListenerScript(id,uiz_dropdown_returnscript);
+uiz_mousemenu_setListenerScript(menu,id,uiz_dropdown_returnscript);
 uiz_fixmousemenupos(menu)
 }
 
@@ -182,6 +189,34 @@ if mouse_check_button_released(mb_left) then{cancreate=1}
 if lucolor!=ucolor then{
 updatebutton=true;
 uiz_updater_FixViews_area_selfmarked(rlx+buttonmargin-buttonsz,ry+height/2-buttonsz/2+buttonmargin,rlx-buttonmargin,ry+height/2+buttonsz/2-buttonmargin);}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if kmouseover=uiz_nomouse and (ucolor!=buttoncolor or icolor!=buttontrianglecolor) then{
+    ucolor=buttoncolor;
+    icolor=buttontrianglecolor;
+    updatebutton=true;
+    uiz_updater_FixViews_area_selfmarked(rlx+buttonmargin-buttonsz,ry+height/2-buttonsz/2+buttonmargin,rlx-buttonmargin,ry+height/2+buttonsz/2-buttonmargin);
+}
 </string>
           </argument>
         </arguments>
@@ -245,23 +280,22 @@ var mk=uselist
 if uselist!=-1 and ds_exists(uselist,ds_type_list) and ds_list_size(uselist)&gt;selected then{value=string(uselist[| selected]);maskvalue=value}else{value=""}
 if masklist!=-1 and ds_exists(masklist,ds_type_list) and ds_list_size(masklist)&gt;=ds_list_size(uselist) then{mk=masklist;maskvalue=string(masklist[| selected])}else{maskvalue=value}
 //if doupdatebutton=true then{
-draw_square(rlx+buttonmargin-buttonsz,ry+height/2-buttonsz/2+buttonmargin,rlx-buttonmargin,ry+height/2+buttonsz/2-buttonmargin,ucolor,1)
+draw_square(rlx+buttonmargin-buttonsz,ry+height/2-buttonsz/2+buttonmargin,rlx-buttonmargin+1,ry+height/2+buttonsz/2-buttonmargin+1,ucolor,buttonbackalpha*alpha);
 //draw the dropdown triangle
-draw_set_color(icolor)
-draw_set_alpha(1)
-draw_primitive_begin(pr_trianglestrip)
-draw_vertex(rlx+buttonmargin-buttonsz+trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin)
-draw_vertex(rlx-buttonmargin-trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin)
-draw_vertex(rlx-buttonsz/2,ry+height/2+buttonsz/2-buttonmargin-trianglemargin)
+draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(spr_square,0));
+draw_vertex_texture_colour(rlx+buttonmargin-buttonsz+trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin,0.5,0.5,icolor,buttontrianglealpha*alpha)
+draw_vertex_texture_colour(rlx-buttonmargin-trianglemargin,ry+height/2-buttonsz/2+buttonmargin+trianglemargin,0.5,0.5,icolor,buttontrianglealpha*alpha)
+draw_vertex_texture_colour(rlx-buttonsz/2,ry+height/2+buttonsz/2-buttonmargin-trianglemargin,0.5,0.5,icolor,buttontrianglealpha*alpha)
 draw_primitive_end()
 //}
 if doupdatebutton=false then{
 //draw text
 draw_set_color(textcolor)
+draw_set_alpha(alpha)
 draw_set_valign(fa_center)
 var txt="";
 if containtext=1 then{
-txt=uiz_gettext_contained(string(maskvalue),width-buttonsz)
+txt=uiz_getText_contained(string(maskvalue),width-buttonsz)
 }else{txt=value}
 draw_text(rx+margin_normal,ry+height/2,txt)
 draw_set_valign(fa_top)

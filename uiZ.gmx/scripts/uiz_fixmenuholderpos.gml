@@ -10,7 +10,7 @@ c+=itemsz[i]
 }
 menupxsize=c
 menulastpx=c-height
-uiz_fixchildren(id,1)
+uiz_fixChildren(id,1)
 
 }
 

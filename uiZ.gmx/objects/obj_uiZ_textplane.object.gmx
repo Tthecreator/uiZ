@@ -141,7 +141,7 @@ qstrsz=0;
           <argument>
             <kind>1</kind>
             <string>///control mouse pos and selection.
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 
 
 
@@ -209,7 +209,7 @@ w=0
 }
 
 posline=liney;
-//startposline=uiz_getlines(string_copy(qstr,1,lastbegscrpos));
+//startposline=uiz_getLines(string_copy(qstr,1,lastbegscrpos));
 startposline=uiz_positify(scroll)
 }
 
@@ -513,9 +513,9 @@ if pos&gt;0 and hasselection=false and posline&gt;0 and posline*lsz&lt;height th
 count+=1/(countspeed*room_speed);
 if count&gt;=1 then{count=0}
 if count&lt;0.5 then{
-var anim=uiz_animation_getfunction(count*2,typeanimationin)
+var anim=uiz_animation_getFunction(count*2,typeanimationin)
 }else{
-var anim=1-uiz_animation_getfunction((count-0.5)*2,typeanimationout)}
+var anim=1-uiz_animation_getFunction((count-0.5)*2,typeanimationout)}
 draw_set_alpha(anim*alpha)
 draw_set_color(typecolor)
 draw_line(rx+posx,ry+(posline)*lsz,rx+posx,ry+(posline+1)*lsz)

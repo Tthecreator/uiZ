@@ -107,7 +107,7 @@ margin_out=-1//v//margin out//
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-uiz_destroydslist(spacinglist);
+uiz_destroyDsList(spacinglist);
 </string>
           </argument>
         </arguments>
@@ -338,7 +338,7 @@ uiz_containend()
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-uiz_destroydslist(spacinglist);
+uiz_destroyDsList(spacinglist);
 </string>
           </argument>
         </arguments>
@@ -362,7 +362,7 @@ uiz_destroydslist(spacinglist);
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-uiz_destroydslist(spacinglist);
+uiz_destroyDsList(spacinglist);
 </string>
           </argument>
         </arguments>

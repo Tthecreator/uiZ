@@ -27,9 +27,166 @@
             <kind>1</kind>
             <string>///fps counter
 fps_avg=-1;
-room_speed=30
+room_speed=60
 fps_counts=0;
+sdbm("booting UP",id);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*
+global.deb=false;
+show_debug_overlay(true)
 
+uiz_init()
+draw_set_font(uiz_fnt_dp_15);
+//global.uiz_shader=false;
+//obj_uiZ_controller.uiz_useappsurf=false;
+//uiz_useAppSurf(false);
+win=uiz_window_create(250,px,500,px)
+win.posinframex=uiz_snapleft;
+win.setpointx=uiz_left;
+win.posinframey=uiz_center;
+win.color_normal=$EEEEEE;
+
+uiz_fixgeneralpos(win);
+
+uiz_xml_init()
+//create xml
+folders=uiz_xml_loadstring('
+&lt;C: sprite="'+string(spr_ball)+'" boxState="2"&gt;
+    &lt;some folder&gt;
+        &lt;some file/&gt;
+        &lt;workfolder/&gt;
+    &lt;/some folder&gt;
+    &lt;video&gt;
+        &lt;fun sprite="'+string(spr_uiZ_gear)+'"/&gt;
+        &lt;random/&gt;
+    &lt;/video&gt;
+    &lt;system_files name="system files" sprite="'+string(spr_uiZ_windowbutton_cross)+'"&gt;
+        &lt;important something="abc"/&gt;
+        &lt;viruses/&gt;
+    &lt;/system_files&gt;
+    &lt;what you looking at&gt;
+        &lt;nothing/&gt;
+        &lt;you/&gt;
+    &lt;/what you looking at&gt;
+    &lt;real_shieat name="real shieat" hello="world"&gt;
+        &lt;tentacle important="very"/&gt;
+        &lt;problems/&gt;
+    &lt;/real_shieat&gt;
+&lt;/C:&gt;
+')
+sdbm("outputFile");
+outputFile = uiz_xml_createfile();
+
+o=uiz_c(obj_uiZ_treelist);
+uiz_setParent(o,win);
+//o.tablist=ds_list_create();
+//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
+o.posinframex=uiz_fill;
+o.posinframey=uiz_fill;
+o.usexml=folders;
+uiz_treelist_parsexml(o);
+uiz_treelist_expand(o);
+
+var handle = uiz_treelist_handle_getByName(o,"problems");
+uiz_treelist_addEntryAt(o,handle,"TEST", -1, 0, 2)
+for(var i=0;i&lt;6;++i){
+    var handle = uiz_treelist_handle_getByName(o,"tentacle");
+    uiz_treelist_addEntryIn(o,handle,"WOWIE"+string(i), -1, 0)
+}
+var handle = uiz_treelist_handle_getByName(o,"problems");
+uiz_treelist_addEntryAt(o,handle,"TEST2", -1, 0, 2)
+var handle = uiz_treelist_handle_getByName(o,"TEST");
+uiz_treelist_addEntryAt(o,handle,"TEST3", -1, 0, 2)
+
+var handle = uiz_treelist_handle_getByName(o,"WOWIE3");
+uiz_treelist_removeEntry(o,handle,false);
+
+var handle = uiz_treelist_handle_getByName(o,"tentacle");
+uiz_treelist_removeEntry(o,handle,true);
+
+//uiz_treelist_addEntryAt(o,handle,"TEST")
+
+uiz_fixgeneralpos(o);
+
+
+win2=uiz_window_create(250,px,500,px)
+win2.posinframex=uiz_snapright;
+win2.setpointx=uiz_right;
+win2.posinframey=uiz_center;
+win2.color_normal=c_red;
+uiz_fixgeneralpos(win2);
+
+//sdbm(uiz_xml_toString(folders))
+//sdbm(uiz_xml_getdebugstringtotal(folders))
+
+o2=uiz_c(obj_uiZ_treelist);
+uiz_setParent(o2,win2);
+//o.tablist=ds_list_create();
+//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
+o2.posinframex=uiz_fill;
+o2.posinframey=uiz_fill;
+//o2.usexml=outputFile;
+o2.usexml=o.usexml;
+uiz_treelist_parsexml(o2);
+uiz_treelist_expand(o2);
+//var handle = uiz_treelist_handle_getByName(o,"problems");
+//uiz_treelist_addEntryAt(o,handle,"TEST", -1, 0, 1)
+uiz_fixgeneralpos(o2);
+
+/*
+b=uiz_c(obj_uiZ_button);
+uiz_setParent(b,win);
+//o.tablist=ds_list_create();
+//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
+b.posinframex=uiz_snapleft;
+b.posinframey=uiz_snaptop;
+b.posvalwtype=fc;
+b.posvalhtype=fc;
+b.posvalh=0.3;
+b.posvalw=0.3;
+uiz_fixgeneralpos(b);
+*/
+/*
+o=uiz_c(obj_uiZ_textarea);
+uiz_setParent(o,win);
+//o.tablist=ds_list_create();
+//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
+o.posinframex=uiz_fill;
+o.posinframey=uiz_fill;
+uiz_textarea_setvalue(o,"Hello there. general kenobi. It's finally time for me to put some sensible text in here. This makes debugging so much easier"+chr($0A)+""+chr($0A)+"Also I'd like"+chr($0A)+"to see"+chr($0A)+"some newlines. Is that possible? I'd say it should be."+chr($0A)+""+chr($0A)+""+chr($0A)+""+chr($0A)+"Also should I add even more text and newlines just to make the scrollbar work or is it still too early for that? OMg I'm writing soooo much shit while listening to some weird livestreams on youtube. I just don't know anything else to write. I could just hit my keyoard randomly but that does make debugging way less easy. "+chr($0A)+"Just add a few "+chr($0A)+"newlines and let's just hope that this sh*t works.! It better does or else I'm going to have a bad time fixing many bugs over a long period of time.")
+uiz_fixgeneralpos(o);
+*/
+
+/*
+tabslider=uiz_c(obj_uiZ_tabslider)
+uiz_setParent(tabslider,frame_topbar)
+tabslider.posinframex=uiz_fill
+tabslider.posinframey=uiz_snapbottom
+tabslider.posvalh=0.5
+tabslider.posvalhtype=fc
+tablist=ds_list_create()
+ds_list_add(tablist,"exampletab1","exampletab2","exampletab3")
+tabslider.tablist=tablist;
+uiz_fixgeneralpos(tabslider)
 </string>
           </argument>
         </arguments>
@@ -51,90 +208,165 @@ fps_counts=0;
           <argument>
             <kind>1</kind>
             <string>global.deb=false;
-show_debug_overlay(true)
+
+//show_debug_overlay(true)
 uiz_init()
-global.uiz_shader=false;
-//obj_uiZ_controller.uiz_useappsurf=false;
+//draw_set_font(uiz_fnt_dp_15);
+//application_surface_draw_enable(false); 
 //uiz_useAppSurf(false);
-win=uiz_window_create(100,px,500,px)
-win.posinframex=uiz_center;
+/*
+frameset = uiz_frameset_create()//creating the frameset
+//make our cuts in the frameset
+anchor_1 = uiz_frameset_divide_horizontal(frameset, 0.4,fc, 1,xtra);//we don't use _objects here, because we are going to replace the top panel with a vertical division anyways and because we need a canvas (or other object) to make our clock always square.
+anchor_2 = uiz_frameset_divide_objects_vertical(uiz_frameset_getObject(anchor_1,0), 1,xtra,obj_uiZ_button, 1,xtra,obj_uiZ_button, 3,xtra,obj_uiZ_gradientsquare, 1,dp,obj_uiZ_sprite);
+//get references to our frames, because we didn't specify any object types to use, we can only get obj_uiZ_canvas. 
+button_1 = uiz_frameset_getObject(anchor_2, 0)//the id of the first button.
+button_2 = uiz_frameset_getObject(anchor_2, 1)//the id of the second button.
+grad = uiz_frameset_getObject(anchor_2, 2)//the id of the second to last gradientrect.
+spr = uiz_frameset_getObject(anchor_2, 3)//the id of a last sprite.
+rightCanvas = uiz_frameset_getObject(anchor_1, 1)//the id of a right sprite.
+
+//create clock inside or right canvas
+clock = uiz_c(obj_uiZ_clock);
+uiz_setParent(clock, rightCanvas);
+uiz_size(clock, 1, fcmin, 1, fcmin);
+uiz_position(clock, 0, uiz_center, 0, uiz_center);//it doesn't matter what we fill in for argument 1 or 3 (starting from 0), because we use uiz_center.
+
+//enable frame bars
+uiz_frameset_setBarSlider(anchor_1, 0, true);//position 0 means between first and second frame
+uiz_frameset_setBarSlider(anchor_2, 2, true);//position 1 means between second and second third
+uiz_frameset_setMinimumSize(anchor_2, 2, 3, dp);//set second to last frame to minimum size of 3 dp
+uiz_frameset_setMinimumSize(anchor_2, 3, .05, fc);//set last frame to minimum size of 0.05 fc
+uiz_frameset_setMaximumSize(anchor_2, 2, 10, dp);//set second to last frame to maximum size of 3 dp
+uiz_frameset_setMaximumSize(anchor_2, 3, .3, fc);//set last frame to maximum size of 0.05 fc
+
+//don't forget to fix;
+uiz_fixgeneralpos(frameset);
+*/
+/*
+frameset=uiz_frameset_create()//creating the frameset
+//"chop" the frame in pieces and make sure that the left frame is always 1 dp wide, the right frame always 0.1 fc wide and the middle frame whatever is left
+anchor_1=uiz_frameset_divide_objects_horizontal(frameset,1,dp,obj_uiZ_button,1,xtra,obj_uiZ_gradientsquare,0.1,fc,obj_uiZ_sprite);
+//get references to our frames, because we didn't specify any object types to use, we can only get obj_uiZ_canvas. 
+button=uiz_frameset_getObject(anchor_1,0)//the id of the top button.
+grad=uiz_frameset_getObject(anchor_1,1)//the id of the middle gradientrect.
+spr=uiz_frameset_getObject(anchor_1,2)//the id of a bottom sprite.
+//now DON'T manually change the size or position of our objects again, this is now handled by our frame anchor.
+//don't forget to fix;
+uiz_fixgeneralpos(frameset);
+uiz_fixgeneralpos(button);
+uiz_fixgeneralpos(grad);
+uiz_fixgeneralpos(spr);
+*/
+/*
+uiz_fixgeneralpos(button);
+uiz_fixgeneralpos(grad);
+uiz_fixgeneralpos(spr);
+uiz_fixgeneralpos(clock);
+*/
+/*
+win=uiz_window_create(300,px,300,px)
+win.posinframex=uiz_snapleft;
+win.setpointx=uiz_left;
 win.posinframey=uiz_center;
-win.color_normal=c_red;
+win.color_normal=$EEEEEE;
+//uiz_window_setbuttons(win,false,true,true);
 uiz_fixgeneralpos(win);
+
+
+
+o=uiz_c(obj_uiZ_button);
+uiz_setParent(o,win);
+o.posinframex=uiz_center
+o.posinframey=uiz_center
+o.posvalw = 0.5;
+o.posvalwtype = fc;
+o.posvalh = 0.5;
+o.posvalhtype = fc;
+
+uiz_fixgeneralpos(o);
+*/
+
 /*
 uiz_xml_init()
 //create xml
-folders=uiz_xml_loadstring("
-&lt;C:&gt;
-&lt;some folder&gt;
-&lt;some file&gt;
-&lt;workfolder/&gt;
-&lt;/some folder&gt;
-&lt;video's&gt;
-&lt;fun/&gt;
-&lt;random/&gt;
-&lt;/video's&gt;
-&lt;system files&gt;
-&lt;important/&gt;
-&lt;viruses/&gt;
-&lt;/system files&gt;
-&lt;what you looking at&gt;
-&lt;nothing/&gt;
-&lt;you/&gt;
-&lt;/what you looking at&gt;
-&lt;real shieat&gt;
-&lt;tentacle/&gt;
-&lt;problems/&gt;
-&lt;/real shieat&gt;
-&lt;/C:&gt;
-")
+folders=uiz_xml_loadstring('
+&lt;C name="C:\"&gt;
+&lt;some_folder&gt;
+ &lt;workfolder/&gt;
+&lt;/some_folder&gt;
+&lt;video'+"'"+'s&gt;
+ &lt;fun/&gt;
+ &lt;random/&gt;
+&lt;/video'+"'"+'s&gt;
+&lt;system_files&gt;
+ &lt;important/&gt;
+ &lt;viruses/&gt;
+&lt;/system_files&gt;
+&lt;what_you_looking_at&gt;
+ &lt;nothing/&gt;
+ &lt;you/&gt;
+&lt;/what_you_looking_at&gt;
+&lt;homework&gt;
+ &lt;tentacle/&gt;
+&lt;/homework&gt;
+&lt;/C&gt;
+')
+folderview=uiz_c(obj_uiZ_treelist);
+uiz_setParent(folderview,win);
+folderview.posinframey=uiz_fill;
+folderview.posinframex=uiz_fill;
+//folderview.usexml=folders;
+uiz_treelist_setxml(folderview,folders);
+//uiz_treelist_setboxsettings
+uiz_fixgeneralpos(folderview)
+//*/
 
-
-o=uiz_c(obj_uiZ_treelist);
-uiz_setparent(o,win);
-//o.tablist=ds_list_create();
-//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
-o.posinframex=uiz_fill;
-o.posinframey=uiz_fill;
-o.usexml=folders;
-uiz_fixgeneralpos(o);
-*/
-
+//*/
 /*
-b=uiz_c(obj_uiZ_button);
-uiz_setparent(b,win);
-//o.tablist=ds_list_create();
-//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
-b.posinframex=uiz_snapleft;
-b.posinframey=uiz_snaptop;
-b.posvalwtype=fc;
-b.posvalhtype=fc;
-b.posvalh=0.3;
-b.posvalw=0.3;
-uiz_fixgeneralpos(b);
+sf=uiz_c(obj_uiZ_slideframe);
+//uiz_setParent(o,win);
+sf.posinframex=uiz_snapleft
+sf.posinframey=uiz_fill
+sf.posvalwtype=fc
+sf.posvalw=0.4
+sf.mark = true;
+sf.markcolor = c_white;
+sf.alpha=1;
+uiz_fixgeneralpos(sf);
+
+o2=uiz_c(obj_uiZ_rotator);
+uiz_setParent(o2,sf);
+o2.posinframex=uiz_fill;
+o2.posinframey=uiz_fill;
+uiz_fixgeneralpos(o2);
 */
-
-o=uiz_c(obj_uiZ_textarea);
-uiz_setparent(o,win);
-//o.tablist=ds_list_create();
-//ds_list_add(o.tablist,"item1","ichigo","zero two","556")
-o.posinframex=uiz_fill;
-o.posinframey=uiz_fill;
-uiz_textarea_setvalue(o,"Hello-there.-general-kenobi.-It's-finally-time-for-me-to-put-some-sensible-text-in-here.-This-makes-debugging-so-much-easier"+chr($0A)+""+chr($0A)+"Also-I'd-like"+chr($0A)+"to-see"+chr($0A)+"some-newlines.-Is-that-possible?-I'd-say-it-should-be."+chr($0A)+""+chr($0A)+""+chr($0A)+""+chr($0A)+"Also-should-I-add-even-more-text-and-newlines-just-to-make-the-scrollbar-work-or-is-it-still-too-early-for-that?-OMg-I'm-writing-soooo-much-shit-while-listening-to-some-weird-livestreams-on-youtube.-I-just-don't-know-anything-else-to-write.-I-could-just-hit-my-keyoard-randomly-but-that-does-make-debugging-way-less-easy.-"+chr($0A)+"Just-add-a-few-"+chr($0A)+"newlines-and-let's-just-hope-that-this-sh*t-works.!-It-better-does-or-else-I'm-going-to-have-a-bad-time-fixing-many-bugs-over-a-long-period-of-time.")
-uiz_fixgeneralpos(o);
-
-
-/*
-tabslider=uiz_c(obj_uiZ_tabslider)
-uiz_setparent(tabslider,frame_topbar)
-tabslider.posinframex=uiz_fill
-tabslider.posinframey=uiz_snapbottom
-tabslider.posvalh=0.5
-tabslider.posvalhtype=fc
-tablist=ds_list_create()
-ds_list_add(tablist,"exampletab1","exampletab2","exampletab3")
-tabslider.tablist=tablist;
-uiz_fixgeneralpos(tabslider)
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///animation test
+testSquare = uiz_c(obj_uiZ_square);//make the object
+//set the test square to the desired end position
+uiz_position(testSquare, 0, uiz_center, 0, uiz_center);
+uiz_size(testSquare, 0.5, fc, 0.5, fc);//fill half of the display
+uiz_fixgeneralpos(testSquare);
 </string>
           </argument>
         </arguments>
@@ -160,24 +392,33 @@ uiz_fixgeneralpos(tabslider)
             <string>if keyboard_check_released(vk_f4) then{
 win.width=100;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 
 if keyboard_check_released(vk_f5) then{
 win.width=400;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 
 if keyboard_check_released(vk_f6) then{
 win.width=800;
 uiz_fixgeneralpos(win);
-uiz_fixchildren(win,true);
+uiz_fixChildren(win,true);
 }
 
-if surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height() then{
+/*
+if keyboard_check(vk_space) then{
+uiz_fixgeneralpos(win);
+uiz_fixChildren(win,true);
+}
+*/
+
+/*
+if (surface_get_width(application_surface)!=window_get_width() || surface_get_height(application_surface)!=window_get_height()) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
 surface_resize(application_surface,window_get_width(),window_get_height());
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -200,7 +441,8 @@ surface_resize(application_surface,window_get_width(),window_get_height());
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if mouse_check_button_pressed(mb_left){
+            <string>/*
+if mouse_check_button_pressed(mb_left){
 fps_avg=fps;
 fps_counts=1;
 }
@@ -217,7 +459,7 @@ draw_text(100,100,fps_avg);
         </arguments>
       </action>
     </event>
-    <event eventtype="10" enumb="121">
+    <event eventtype="10" enumb="32">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -234,10 +476,17 @@ draw_text(100,100,fps_avg);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sdbm("RESETTING-TEXT");
-uiz_textarea_setvalue(o,"Hello-there.-general-kenobi.-It's-finally-time-for-me-to-put-some-sensible-text-in-here.-This-makes-debugging-so-much-easier"+chr($0A)+""+chr($0A)+"Also-I'd-like"+chr($0A)+"to-see"+chr($0A)+"some-newlines.-Is-that-possible?-I'd-say-it-should-be."+chr($0A)+""+chr($0A)+""+chr($0A)+""+chr($0A)+"Also-should-I-add-even-more-text-and-newlines-just-to-make-the-scrollbar-work-or-is-it-still-too-early-for-that?-OMg-I'm-writing-soooo-much-shit-while-listening-to-some-weird-livestreams-on-youtube.-I-just-don't-know-anything-else-to-write.-I-could-just-hit-my-keyoard-randomly-but-that-does-make-debugging-way-less-easy.-"+chr($0A)+"Just-add-a-few-"+chr($0A)+"newlines-and-let's-just-hope-that-this-sh*t-works.!-It-better-does-or-else-I'm-going-to-have-a-bad-time-fixing-many-bugs-over-a-long-period-of-time.")
-uiz_fixgeneralpos(o);
-
+            <string>///space released event
+//remember old position
+uiz_animation_capture_oldState(testSquare);
+//set new position
+uiz_position(testSquare, 0, uiz_snapright, 0, uiz_center);//move the object tot he right edge
+uiz_size(testSquare, 0.3, fc, 0.7, fc);
+//setup animation
+uiz_animation_setFunction(testSquare, uiz_smoothstep, uiz_straight, uiz_acceldecel, uiz_smoothstep, uiz_one, 3);
+uiz_animation_start(testSquare);
+//fix
+uiz_fixgeneralpos(testSquare);
 </string>
           </argument>
         </arguments>

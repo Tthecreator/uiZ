@@ -17,19 +17,19 @@ Returns the id of a windowid or frameid, depending on the value of argument 2(bl
 
 How to customize even further?
 The window exists out of the following objects:
--obj_uiZ_windowholder;
+-obj_uiZ_window;
 -obj_uiZ_drawtextlines;
 -obj_uiZ_popupok;
 -obj_uiZ_square if block background is on.
 -obj_uiZ_stringbox.
 
 In the examples below, "r" refers to the returned item by uiz_popup_ok().
-The obj_uiZ_windowholder object can always be accessed trough "r.window".
+The obj_uiZ_window object can always be accessed trough "r.window".
 The obj_uiZ_drawtextlines object can always be accessed trough "r.textlines".
 The obj_uiZ_popupok object can always be accessed trough "r.popup"
 The obj_uiZ_square can be accessed trough "r.square", but only if argument2 is true.
 The obj_uiZ_stringbox can be accessed trough "r.stringbox" and when ok has been pressed the value r.str will be set to the contents of the stringbox.
-The mainframe of the window can always be accessed trough "r.window.mainframe"
+The window can always be accessed trough "r.window"
 Look at the other articles on how these objects work, and how they can be customized.
 obj_uiZ_popupok acts as the ok button has the following customizabilities:
 -color: the image blend of the sprite used for the button;
@@ -48,73 +48,79 @@ One thing to note is that the window needs to have an animation that takes at le
 */
 if argument_count=5 then{draw_set_font(argument[4])}
 if argument[2]=1 then{
-var f=uiz_c(obj_uiZ_frame);
-f.posinframex=uiz_fill
-f.posinframey=uiz_fill
-f.depth=-1000000
-uiz_compatibility_popupfix(f)
-uiz_fixgeneralpos(f)
-var p=uiz_c(obj_uiZ_square);
-uiz_setparent(p,f)
-p.posinframex=uiz_fill
-p.posinframey=uiz_fill
-p.color=c_black
-p.image_alpha=0.3;
-//p.adddepth=1000000
-uiz_fixgeneralpos(p)
+    var f=uiz_c(obj_uiZ_frame);
+    f.posinframex=uiz_fill
+    f.posinframey=uiz_fill
+    //f.depth=-1000000
+//    uiz_depth_set(f,-1000000);
+    uiz_depth_foreground(f);
+    
+    uiz_compatibility_popupfix(f)
+    uiz_fixgeneralpos(f)
+    var p=uiz_c(obj_uiZ_square);
+    uiz_setParent(p,f)
+    p.posinframex=uiz_fill
+    p.posinframey=uiz_fill
+    p.color=c_black
+    p.image_alpha=0.3;
+    //p.adddepth=1000000
+    uiz_fixgeneralpos(p)
 }
-var dx=uiz_todpix(string_width(argument[0]))
-var dy=uiz_todpiy(string_height(argument[0]))
-var w=uiz_window_create(dx+0.5,dp,dy+1,dp);
-if argument[2]=1 then{uiz_setparent(w,p)}
-w.addwindowdepth=500000
+var dx=uiz_pxToDpi(string_width(argument[0]))
+var dy=uiz_pxToDpi(string_height(argument[0]))
+var w=uiz_window_create(dx+0.5,dp,dy+1.2,dp);
+if argument[2]=1 then{uiz_setParent(w,p)}
 w.addwindowmydepth=500000
 //w.adddepth+=100000
 //if argument[2]=1 then{
-//uiz_setparent(w,f)
+//uiz_setParent(w,f)
 //}
 w.button_maximize=0;
 w.button_minimize=0;
 w.button_cross=1;
 w.contain=3
 w.windowtext=argument[1]
+uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
-var t=instance_create(0,0,obj_uiZ_drawtextlines)
-uiz_setparent(t,wf)
+var t=instance_create(0,0,obj_uiZ_text)
+uiz_setParent(t,wf)
 t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
+uiz_text_setmultiline(t, true);
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
-t.posvalh=0.5
-t.center=1
+t.posvalh=0.4
+t.halign=fa_center;
+t.valign=fa_center;
 //t.posvalhtype=dp
 //t.posvalh=1
-t.text=argument[0]
+//t.text=argument[0];
+uiz_text_settext(t,argument[0]);
 if argument_count=5 then{t.font=argument[4]}
-uiz_fixgeneralpos(t)
+uiz_fixgeneralpos(t);
 
 
 var c=instance_create(0,0,obj_uiZ_stringbox)
-uiz_setparent(c,wf)
+uiz_setParent(c,wf)
 c.posinframey=uiz_snapbottom
 c.posinframex=uiz_snapleft
 c.posvalhtype=dp
-c.posvalh=0.3
-c.posvalwtype=dp
-c.posvalw=dx+0.2
+c.posvalh=0.4
+c.posvalwtype=dpmin
+c.posvalw=0.4
 uiz_stringbox_setvalue(c,argument[3])
 uiz_fixgeneralpos(c)
 
 
 var b=instance_create(0,0,obj_uiZ_popupok)
-uiz_setparent(b,wf)
+uiz_setParent(b,wf)
 b.posinframey=uiz_snapbottom
 b.posinframex=uiz_snapright
 b.posvalhtype=dp
-b.posvalh=0.3
+b.posvalh=0.4
 b.posvalwtype=dp
-b.posvalw=0.3
+b.posvalw=0.4
 b.window=w;
 b.box=c;
 

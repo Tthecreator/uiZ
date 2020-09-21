@@ -1,14 +1,26 @@
 var t=argument0;
 with(t){
-
 if uselist!=-1 and ds_exists(uselist,ds_type_list) then{
-var sz=ds_list_size(uselist)
-width=1;
-height=margin_normal*2-margin;
-for(var i=0;i<sz;i++){width=max(string_width(string(uselist[| i])),width)
-height+=margin+string_height(string(uselist[| i]))}
+if posinframex=uiz_static then{
+    var sz=ds_list_size(uselist);
+    width=1;
+    for(var i=0;i<sz;i++){
+        width=max(string_width(string(uselist[| i])),width);
+    }
+    
+    width+=10+end_leftframemargin+end_rightframemargin;
 }
-width+=10
+
+if posinframey=uiz_static then{
+    var sz=ds_list_size(uselist);
+    height=margin_normal*2-margin;
+    for(var i=0;i<sz;i++){
+        height+=margin+string_height(string(uselist[| i]));
+    }
+    
+    height+=end_bottomframemargin+end_topframemargin;
+}
+}
 
 uiz_fix_Base();
 

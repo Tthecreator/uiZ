@@ -1,4 +1,4 @@
-///uiz_string_repeat(string,times)
+///uiz_string_repeat(string, times)
 var str="";
 if argument1>0 then{
 repeat(argument1){

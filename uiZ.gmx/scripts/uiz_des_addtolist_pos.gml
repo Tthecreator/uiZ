@@ -3,8 +3,8 @@ if global.loadingobjects=0 then{
 uiz_grid_addrow(g)
 var o,t,k;
 o=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(o,uiz_gridobject(g,1,g.gridh-1))
-uiz_gridsize_row(g,g.gridh-1,0.26,dp)
+uiz_setParent(o,uiz_gridObject(g,1,g.gridh-1))
+uiz_gridSize_row(g,g.gridh-1,0.26,dp)
 o.posinframex=uiz_snapleft
 o.posvalw=0.75
 o.posvalwtype=fc
@@ -20,7 +20,7 @@ k.uselist=obj_uiz_designer.postypelist
 k.buttonmargin=0
 k.trianglemargin=0
 k.containtext=0
-uiz_setparent(k,uiz_gridobject(g,1,g.gridh-1))
+uiz_setParent(k,uiz_gridObject(g,1,g.gridh-1))
 uiz_fixgeneralpos(k)
 ds_list_add(itemlist,o)
 ds_list_add(itemlist,k)
@@ -33,7 +33,7 @@ k.defval=argument4
 t=instance_create(0,0,obj_uiZ_drawtext)
 t.text=argument0
 t.x=5
-uiz_setparent(t,uiz_gridobject(g,0,g.gridh-1))
+uiz_setParent(t,uiz_gridObject(g,0,g.gridh-1))
 uiz_fixgeneralpos(t)
 
 return o;

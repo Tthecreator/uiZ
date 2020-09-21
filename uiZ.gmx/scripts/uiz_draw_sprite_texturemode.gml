@@ -1,4 +1,4 @@
-///uiz_draw_sprite_texturemode(sprite,image,x1,y1,x2,y2,color,alpha,texturemode)
+///uiz_draw_sprite_texturemode(sprite, image, x1, y1, x2, y2, color, alpha, texturemode)
 
 switch(argument8){
 case uiz_texturemode_fill:

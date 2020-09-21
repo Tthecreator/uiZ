@@ -16,7 +16,6 @@ var nsh=sprite_get_height(bkspr)
 var tex=sprite_get_texture(bkspr,0)
 switch(sprite_texturemode){
 case uiz_texturemode_fill:
-//sdbm("drawing with color",bkcol);
 //draw_set_color(bkcol)
 //draw_set_alpha(alpha)
 //draw_sprite_points(bkspr,0,nrx,nry,nrlx,nrly,0,bkcol,alpha)

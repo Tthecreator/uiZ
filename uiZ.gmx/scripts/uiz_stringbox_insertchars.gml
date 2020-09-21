@@ -16,9 +16,8 @@ str_dis_width+=charWidth;
 uiz_stringbox_typepos_set(typepos_real+strlen,typepos_dis_px+charWidth);
 
 
-while(str_dis_width>iwidth && str_dis_size>0){
+while(str_dis_width>floor(i_ilx-ix) && str_dis_size>0){
 
-//sdbm("removing char",str_dis,string_char_at(str_dis,str_dis_size))
 //remove characters from the end
 str_dis_width-=string_width(string_char_at(str_dis,str_dis_size));
 str_dis_size--;

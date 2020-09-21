@@ -1,5 +1,5 @@
-#define uiz_fixchildren
-///uiz_fixchildren(object,tograndchildren)
+#define uiz_fixChildren
+///uiz_fixChildren(object, toGrandChildren)
 if global.isfixinggrandchildren=false then{
 //sdbm("Fixchildren called from",id,object_get_name(object_index))
 if argument1=true then{global.isfixinggrandchildren=true}

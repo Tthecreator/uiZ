@@ -1,4 +1,4 @@
-///uiz_string_replace(string,substr,newstr)
+///uiz_string_replace(string, subStr, newStr)
 //like the string_replace funciton, but replaces every substring it finds, instead of the first one
 //var cnt=string_count(argument1,argument0);
 //if cnt=0 then{return argument0;}

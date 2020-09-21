@@ -34,7 +34,7 @@ uiz_size_h(loadingtext,0.2,fc)
 uiz_text_settext(loadingtext,"Gathering information, Please wait.")
 uiz_fixgeneralpos(loadingtext)
 
-loadingcircle = uiz_c(obj_uiZ_drawloadingcirc)
+loadingcircle = uiz_c(obj_uiZ_loadingcircle)
 uiz_text_setalign(loadingcircle,fa_center,fa_center)
 uiz_position(loadingcircle,0,uiz_center,0.6,fc)
 uiz_size(loadingcircle,.2,fc,.2,fcx)

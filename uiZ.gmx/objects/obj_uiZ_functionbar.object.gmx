@@ -50,8 +50,8 @@ laststepselected=-1
 count=0
 decount[0]=0
 decount_counting=0;
-graphtype=uiz_exponential_out//a//animation//
-countspeed=0.3//v//animation time//
+graphtype=uiz_smoothstep//a//animation//
+countspeed=0.15//v//animation time//
 coloringfactor_value=62//v//coloring value factor//
 coloringfactor_saturation=13//v//coloring saturation factor//
 trianglesprite=spr_uiZ_functionbar_triangle//p//triangle sprite//
@@ -146,16 +146,18 @@ border_texturemode=0;
             <kind>1</kind>
             <string>if decount_counting&gt;0 or count&lt;1 then{
 if count&lt;1 then{
-count = min(1, count + (1 / (countspeed * room_speed)))
+count = min(1, count + uiz_sc(countspeed));
 uiz_functionbar_updateitem(onitem);
 }
 if decount_counting&gt;0 then{
+decount_counting = 0;
 for(var i=0;i&lt;items;i++){
-if decount[i]&gt;=0 then{
-decount[i] = max(0, decount[i] - (1 / (countspeed * room_speed)))
-uiz_functionbar_updateitem(i);
-if decount[i]&lt;0 then{decount_counting--;}
-}
+    ++decount_counting;
+    if decount[i]&gt;0 then{
+        decount[i] = max(0, decount[i] - uiz_sc(countspeed));
+        uiz_functionbar_updateitem(i);
+        if decount[i]&lt;=0 then{decount_counting--;}
+    }
 }
 }
 }else{
@@ -183,38 +185,35 @@ uiz_updater_unstep()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//kmouseover=uiz_mouse_isonobject_leftcheck(id)
-//do a rough check where the mouse is on.
-
-if global.mouseoverobject=id then{
-//mx=uiz_getmouse_x()-addx-rx
-//my=uiz_getmouse_y()-addy-ry
-mx=uiz_getmouse_x()-rx
+            <string>mx=uiz_getmouse_x()-rx
 my=uiz_getmouse_y()-ry
 
 var pxs=(isz+marginx);
 if (mx % pxs)&lt;marginx then{
-onitem=-1;
+    onitem=-1;
 }else{
-onitem=floor(mx/pxs);
+    onitem=floor(mx/pxs);
 if onitem&gt;=items then{
-onitem=-1;
+    onitem=-1;
 }
 }
-}else{onitem=-1}
+
+
 if onitem_old!=onitem then{
-//reset animation
-var upd=false;
-if onitem_old&gt;=0 and count&gt;0 then{
-if decount_counting=0 then{upd=true}//if this is the first item in the list
-decount_counting++;
-decount[onitem_old] = count;
-}
-count = 0
-if onitem!=-1 or upd=true then{uiz_updater_step();}
-uiz_functionbar_updateitem(onitem_old);
-uiz_functionbar_updateitem(onitem);
-onitem_old=onitem;
+    //reset animation
+    var upd=false;
+    if onitem_old&gt;=0 and count&gt;0 then{
+        upd=true;
+        //if decount_counting&gt;0 then{upd=true}//if this is the first item in the list
+        decount_counting++;
+        decount[onitem_old] = count;
+    }
+    if onitem!=-1 or upd=true then{
+    uiz_updater_step();}
+    count = 0
+    uiz_functionbar_updateitem(onitem_old);
+    uiz_functionbar_updateitem(onitem);
+    onitem_old=onitem;
 }
 
 </string>
@@ -266,7 +265,7 @@ if (i&gt;=0 and i&lt;items) then{
     }
     uimg = 1
     var fac;
-        fac = (uiz_animation_getfunction(count, graphtype));
+        fac = (uiz_animation_getFunction(count, graphtype));
         selectioncolor = uiz_functionbar_createcolor(color[i],fac);
         
 
@@ -300,11 +299,23 @@ if (i&gt;=0 and i&lt;items) then{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if onitem_old=onitem then{
-//change mouse
-uiz_functionbar_updateitem(onitem);
+            <string>if kmouseover=uiz_nomouse then{
+    if onitem&gt;=0 then{
+        if onitem&gt;=0 and count&gt;0 then{
+            decount_counting++;
+            decount[onitem] = count;
+            uiz_updater_step();
+        }
+        onitem=-1;
+        
+    }
 }else{
-onitem_old=onitem
+    if onitem_old=onitem then{
+    //change mouse
+    uiz_functionbar_updateitem(onitem);
+    }else{
+    onitem_old=onitem
+    }
 }
 </string>
           </argument>

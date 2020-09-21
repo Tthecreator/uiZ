@@ -77,7 +77,7 @@ uiz_objinit()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kmouseover=uiz_mouse_isonobject_leftcheck(id)
+            <string>kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 </string>
           </argument>
         </arguments>

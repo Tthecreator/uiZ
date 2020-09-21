@@ -1,4 +1,4 @@
-///uiz_addchar(string,position,newstr)
+///uiz_addChar(string, position, newStr)
 /*
 adds a character or string at the specified position in a string and returns the new string.
 Consider the string: str="hello world" 

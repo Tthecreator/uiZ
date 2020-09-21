@@ -1,4 +1,4 @@
-///uiz_typecursor_register(x1,y1,x2,y2,color,cursorwidth);
+///uiz_typecursor_register(x1, y1, x2, y2, color, cursorwidth);
 with(obj_uiZ_controller){
 typecursor_enabled=true;
 typecursor_x1=argument0;

@@ -1,4 +1,4 @@
-///uiz_add(addx,addy)
+///uiz_add(instanceid, addx, addy)
 gml_pragma("forceinline");
 argument0.addx=argument1;
 argument0.addy=argument2;

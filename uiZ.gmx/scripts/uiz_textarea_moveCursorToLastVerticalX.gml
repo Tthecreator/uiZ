@@ -2,11 +2,11 @@
 //This is used for moving the cursor up and down using the corresponding arrow keys.
 var sX = ix;
 if argument0==1 then{
-var sC = selection1Char;
+var sC = 0;//selection1Char;
 var line = textList[| selection1Line];
 var linesz = string_length(line);
 }else{
-var sC = selection2Char;
+var sC = 0;//selection2Char;
 var line = textList[| selection2Line];
 var linesz = string_length(line);
 }
@@ -31,6 +31,7 @@ for(var i=1;i<=linesz;++i){
 }
 if !found then{//if line is shorter than the old x position
     sX = ix + string_width(line);
+    sC = linesz;
 }
 
 if argument0==1 then{

@@ -1,6 +1,6 @@
-///uiz_km_retval(defaultvalue,mouseonvalue,mouseovervalue)
+///uiz_km_retval(defaultValue, mouseOnValue, mouseInValue)
 /*
-Requires you to have kmouseover setup in that object, see "Mouse in general" and/or check your objects step event.
+Requires you to call this from a uiZ object.
 Returns a different value for when your mouse is over an object, and when it clicks an object, and it has a default value for when the mouse isn't over the object
 Can save some space in your scripts/objects.
 */

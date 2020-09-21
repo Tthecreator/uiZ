@@ -66,7 +66,7 @@ HueMoves=false;
           <argument>
             <kind>1</kind>
             <string>if global.colorscreen=id and instance_exists(w) then{
-uiz_destroyobject_animation_default(w)
+uiz_destroyObject_animation_default(w)
 }
 </string>
           </argument>
@@ -94,7 +94,7 @@ uiz_destroyobject_animation_default(w)
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="14">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -112,8 +112,12 @@ uiz_destroyobject_animation_default(w)
           <argument>
             <kind>1</kind>
             <string>if global.colorscreen=id and !instance_exists(w) then{global.colorscreen=0}
-if global.colorscreen=id and instance_exists(w) then{
-if w.finaldestroy=1 then{global.colorscreen=0}
+//if global.colorscreen=id and instance_exists(w) then{
+//if w.finaldestroy=1 then{global.colorscreen=0}
+//}
+if global.colorscreen!=id or !instance_exists(w) then{
+    uiz_updater_unstep();
+    exit;
 }
 </string>
           </argument>
@@ -137,12 +141,12 @@ if w.finaldestroy=1 then{global.colorscreen=0}
             <kind>1</kind>
             <string>///add to list if color is pressed and check if new value is pressed
 
-if global.colorscreen=id then{
 globalvar colorlist;
 if c.kmouseover=3 then{
 //show_message("omg")
 uiz_colorbox_checkcolordump()
 ds_list_add(colorlist,c.color)
+uiz_updater_FixViews_with(colorboxes);
 }
 
 //check if something is pressed
@@ -150,8 +154,18 @@ if colorboxes.updated=1 then{
 if colorboxes.sz&gt;colorboxes.selpos then{
 
 c.color=colorlist[| colorboxes.selected]
+uiz_updater_FixViews_with(c);
+value = c.color;
+uiz_updater_FixViews();
+uiz_colorbox_update_rgb();
+uiz_colorbox_update_hsv();
+uiz_huesquare_setcolor_hsv(uh,h,s,v);
+uiz_colorbox_updateSliderColors(true,true,true,true);
+uiz_colorbox_updateValues(true,true,true,true);
 //uiz_colorbox_updatergb(1,1,1)
 //boxval.value=color_get_value(c.color)
+
+/*
 h=color_get_hue(c.color)
 s=color_get_saturation(c.color)
 v=color_get_value(c.color)
@@ -159,14 +173,21 @@ r=color_get_red(c.color)
 g=color_get_green(c.color)
 b=color_get_blue(c.color)
 uiz_colorbox_updatergb(1,1,1,1,0)
+*/
+
 //uiz_hue_setvalues(uh,h,s,v)
-uh.h=h
-uh.s=s
-boxval.value=v/255
+/*
+uh.h=color_get_hue(c.color)
+uh.s=color_get_saturation(c.color)
+boxval.value=color_get_value(c.color)/255
 //h.s=color_get_saturation(c.color)
+boxval.color1 = make_color_hsv(h, s, 0);
+boxval.color2 = make_color_hsv(h, s, 255);
+uiz_updater_FixViews_with(boxval);
+*/
 
 }}
-}
+
 </string>
           </argument>
         </arguments>
@@ -188,152 +209,363 @@ boxval.value=v/255
           <argument>
             <kind>1</kind>
             <string>///set new color if window is opened
+/*
+    if (boxred.updated = 1 or boxblue.updated = 1 or boxgreen.updated = 1) then {
+        HueMoves = -1;
+    }
+    
+    //sdbm("uh value: ",uh.update);
+    //var hueUpdated = false;
+    //*
+    if (uh.update = 1 and HueMoves &gt;= 0) or uh.selected = 1 then {
+    //*
+        //hueUpdated = true;
+        sdbm("uh update",uh.inh,uh.ins);
+        c.color = uh.incolor;
+        uiz_updater_FixViews_with(c);
+        h = uh.inh;
+        s = uh.ins;
+        boxval.color1 = make_color_hsv(h, s, 0);
+        boxval.color2 = make_color_hsv(h, s, 255);
+        uiz_updater_FixViews_with(boxval);
+        //if HueMoves=false then{
+        c.color = uh.tocolor;
+        
+        c.color = uh.incolor;
+        //uiz_slider_setvalue(boxval, v / 255)
+        //}
+        HueMoves = true;
+        if updated then{
+            uiz_stringbox_setvalue(valh,h)
+            uiz_stringbox_setvalue(vals,s)
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+        }
+        
+    } else {
+        HueMoves = false;
+    }
+    //*/
+    //HueMoves = false;
+    
+    //get updates, prevent from one update to trigger another (unnecessary update)
+    /*
+    var boxred_updated = boxred.updated;
+    var boxgreen_updated = boxgreen.updated;
+    var boxblue_updated = boxblue.updated;
+    var valred_update = valred.update;
+    var valgreen_update = valgreen.update;
+    var valblue_update = valblue.update;
+    var valh_update = valh.update;
+    var vals_update = vals.update;
+    var valv_update = valv.update;
+    if HueMoves = false then {
+    
+        if !boxred_updated and !boxgreen_updated and !boxblue_updated then{
+            if boxval.updated = true then {
+                c.color = make_color_hsv(uh.h, uh.s, boxval.value * 255)
+                uiz_updater_FixViews_with(c);
+                uh.v = boxval.value * 255;
+                v = uh.v;
+                uiz_updater_FixViews_with(uh);
+                //sdbm("val",boxval.invalue,v)
+                uiz_colorbox_updatergb(1, 1, 1, 1, 0)
+                c.color = make_color_hsv(uh.h, uh.s, boxval.invalue * 255)
+                uiz_stringbox_setvalue(valv,v);
+            }
+            if boxval.update = true then {
+                c.color = make_color_hsv(uh.h, uh.s, boxval.invalue * 255)
+            }
+        }
+        if boxval.updated = false then {
+        ///*
+            if boxred_updated = true then {
+                r = boxred.value * 255;
+                c.color = make_color_rgb(r, g, b);
+                uiz_updater_FixViews_with(c);
+                h = colour_get_hue(c.color);
+                s = colour_get_saturation(c.color);
+                v = colour_get_value(c.color);
+                if uh.kmouseover&lt;uiz_mouseclick then{
+                    uiz_hue_setvalues(uh, h, s, v);
+                    uiz_updater_FixViews_with(uh);
+                }
+                uiz_slider_setvalue(boxval, v / 255)
+                boxval.color1 = make_color_hsv(colour_get_hue(uh.color), colour_get_saturation(uh.color), 0);
+                boxval.color2 = make_color_hsv(colour_get_hue(uh.color), colour_get_saturation(uh.color), 255);
+                uiz_updater_FixViews_with(boxval);
+                uiz_colorbox_updatergb(0, 1, 1, 0, 0)
+                uiz_stringbox_setvalue(valred,r)
+                uiz_stringbox_setvalue(valh,h)
+                uiz_stringbox_setvalue(vals,s)
+                uiz_stringbox_setvalue(valv,v)
+            }
+            if boxgreen_updated = true then {
+                g = boxgreen.value * 255;
+                c.color = make_color_rgb(r, g, b);
+                uiz_updater_FixViews_with(c);
+                h = colour_get_hue(c.color);
+                s = colour_get_saturation(c.color);
+                v = colour_get_value(c.color);
+                if uh.kmouseover&lt;uiz_mouseclick then{
+                    uiz_hue_setvalues(uh, h, s, v);
+                    uiz_updater_FixViews_with(uh);
+                }
+                uiz_slider_setvalue(boxval, v / 255)
+                boxval.color1 = make_color_hsv(colour_get_hue(uh.color), colour_get_saturation(uh.color), 0);
+                boxval.color2 = make_color_hsv(colour_get_hue(uh.color), colour_get_saturation(uh.color), 255);
+                uiz_updater_FixViews_with(boxval);
+                uiz_colorbox_updatergb(1, 0, 1, 0, 0)
+                uiz_stringbox_setvalue(valgreen,g)
+                uiz_stringbox_setvalue(valh,h)
+                uiz_stringbox_setvalue(vals,s)
+                uiz_stringbox_setvalue(valv,v)
+                
+            }
+            if boxblue_updated = true then {
+                b = boxblue.value * 255;
+                c.color = make_color_rgb(r, g, b);
+                uiz_updater_FixViews_with(c);
+                h = colour_get_hue(c.color);
+                s = colour_get_saturation(c.color);
+                v = colour_get_value(c.color);
+                if uh.kmouseover&lt;uiz_mouseclick then{
+                    uiz_hue_setvalues(uh, h, s, v);
+                    uiz_updater_FixViews_with(uh);
+                }
+                uiz_slider_setvalue(boxval, v / 255)
+                boxval.color1 = make_color_hsv(colour_get_hue(uh.color), colour_get_saturation(uh.color), 0);
+                boxval.color2 = make_color_hsv(colour_get_hue(uh.color), colour_get_saturation(uh.color), 255);
+                uiz_updater_FixViews_with(boxval);
+                uiz_colorbox_updatergb(1, 1, 0, 0, 0)
+                uiz_stringbox_setvalue(valblue,b)
+                uiz_stringbox_setvalue(valh,h)
+                uiz_stringbox_setvalue(vals,s)
+                uiz_stringbox_setvalue(valv,v)
+            }
+        }
+        
+    }
+    
+    //valueboxes
+    if boxval.updated = false then {
+        if valred_update = 1 then {
+            r = real(uiz_stringbox_getvalue(valred));
+            c.color = make_color_rgb(r, g, b);
+            uiz_updater_FixViews_with(c);
+            h = colour_get_hue(c.color);
+            s = colour_get_saturation(c.color);
+            v = colour_get_value(c.color);
+            //uiz_hue_setvalues(uh, h, s, v)
+            uiz_slider_setvalue(boxval, v / 255)
+            boxval.color1 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 0);
+            boxval.color2 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 255);
+            uiz_updater_FixViews_with(boxval);
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+            uiz_stringbox_setvalue(valh,h)
+            uiz_stringbox_setvalue(vals,s)
+            uiz_stringbox_setvalue(valv,v)
+            //uiz_updater_FixViews_with(uh);
+        }
+    
+        //sdbm("doing update check");
+        if valgreen_update = 1 then {
+            g = real(uiz_stringbox_getvalue(valgreen));
+            c.color = make_color_rgb(r, g, b);
+            uiz_updater_FixViews_with(c);
+            h = colour_get_hue(c.color);
+            s = colour_get_saturation(c.color);
+            v = colour_get_value(c.color);
+            //uiz_hue_setvalues(uh, h, s, v)
+            uiz_slider_setvalue(boxval, v / 255)
+            boxval.color1 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 0);
+            boxval.color2 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 255);
+            uiz_updater_FixViews_with(boxval);
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+            uiz_stringbox_setvalue(valh,h)
+            uiz_stringbox_setvalue(vals,s)
+            uiz_stringbox_setvalue(valv,v)
+            //uiz_updater_FixViews_with(uh);
+        }
+    
+        if valblue_update = 1 then {
+            b = real(uiz_stringbox_getvalue(valblue));
+            c.color = make_color_rgb(r, g, b);
+            uiz_updater_FixViews_with(c);
+            h = colour_get_hue(c.color);
+            s = colour_get_saturation(c.color);
+            v = colour_get_value(c.color);
+            //uiz_hue_setvalues(uh, h, s, v)
+            uiz_slider_setvalue(boxval, v / 255)
+            boxval.color1 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 0);
+            boxval.color2 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 255);
+            uiz_updater_FixViews_with(boxval);
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+            uiz_stringbox_setvalue(valh,h)
+            uiz_stringbox_setvalue(vals,s)
+            uiz_stringbox_setvalue(valv,v)
+            //uiz_updater_FixViews_with(uh);
+        }
+        if valh_update = 1 then {
+            h = real(uiz_stringbox_getvalue(valh));
+            c.color = make_color_hsv(h, s, v);
+            uiz_updater_FixViews_with(c);
+            r = colour_get_red(c.color);
+            g = colour_get_green(c.color);
+            b = colour_get_blue(c.color);
+            //uiz_hue_setvalues(uh, h, s, v)
+            boxval.color1 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 0);
+            boxval.color2 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 255);
+            uiz_updater_FixViews_with(boxval);
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+            uiz_stringbox_setvalue(valred,r)
+            uiz_stringbox_setvalue(valgreen,g)
+            uiz_stringbox_setvalue(valblue,b)
+            //uiz_updater_FixViews_with(uh);
+        }
+        if vals_update = 1 then {
+            s = real(uiz_stringbox_getvalue(vals));
+            c.color = make_color_hsv(h, s, v);
+            uiz_updater_FixViews_with(c);
+            r = colour_get_red(c.color);
+            g = colour_get_green(c.color);
+            b = colour_get_blue(c.color);
+            //uiz_hue_setvalues(uh, h, s, v)
+            boxval.color1 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 0);
+            boxval.color2 = make_color_hsv(colour_get_hue(uh.incolor), colour_get_saturation(uh.incolor), 255);
+            uiz_updater_FixViews_with(boxval);
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+            uiz_stringbox_setvalue(valred,r)
+            uiz_stringbox_setvalue(valgreen,g)
+            uiz_stringbox_setvalue(valblue,b)
+            //uiz_updater_FixViews_with(uh);
+        }
+        
+        if valv_update = 1 then {
+            v = real(uiz_stringbox_getvalue(valv));
+            c.color = make_color_hsv(h, s, v);
+            uiz_updater_FixViews_with(c);
+            r = colour_get_red(c.color);
+            g = colour_get_green(c.color);
+            b = colour_get_blue(c.color);
+            uiz_hue_setvalues(uh, h, s, v)
+            uiz_colorbox_updatergb(1, 1, 1, 1, 0);
+            uiz_stringbox_setvalue(valred,r)
+            uiz_stringbox_setvalue(valgreen,g)
+            uiz_stringbox_setvalue(valblue,b)
+            uiz_slider_setvalue(boxval,v/255)
+            uiz_updater_FixViews_with(uh);
+        }
+    }
+    
+    //check for changes, and apply them
+    if (lastvalue != c.color) then{
+        uiz_updater_FixViews_with(c);
+    }
+    lastvalue = value
+    value = c.color
+    if (lastvalue = value) then {
+        //updated=0;
+        //}else{updated=1}
+        update = 0;
+    } else {
+        update = 1
+    }
+    
+    boxred.updated = false
+    boxblue.updated = false
+    boxgreen.updated = false
 
-if global.colorscreen=id then{
-if boxred.update=1 or boxblue.update=1 or boxgreen.update=1 then{HueMoves=-1;}
-if (uh.update=1 and HueMoves&gt;=0) or uh.selected=1 then{
-c.color=uh.incolor;
-boxval.color1=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),255);
-h=uh.inh;
-s=uh.ins;
-//if HueMoves=false then{
-c.color=uh.tocolor;
-uiz_colorbox_updatergb(1,1,1,1,0)
-c.color=uh.incolor;
-uiz_slider_setvalue(boxval,v/255)
-//}
-HueMoves=true;
-}else{HueMoves=false;}
-if  boxval.updated=true then{
-c.color=make_color_hsv(uh.h,uh.s,boxval.value*255)
-uh.v=boxval.value*255;
-v=uh.v;
-//sdbm("val",boxval.invalue,v)
-uiz_colorbox_updatergb(1,1,1,1,0)
-c.color=make_color_hsv(uh.h,uh.s,boxval.invalue*255)
+if update = 1 or updated = 1 then {
+    uiz_updater_FixViews();
 }
-if boxval.update=true then{
-c.color=make_color_hsv(uh.h,uh.s,boxval.invalue*255)
-}
-if HueMoves=false then{
-if boxred.updated=true then{
-r=boxred.value*255;
-c.color=make_color_rgb(r,g,b);
-h=colour_get_hue(c.color);
-s=colour_get_saturation(c.color);
-v=colour_get_value(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_slider_setvalue(boxval,v/255)
-boxval.color1=make_color_hsv(colour_get_hue(uh.color),colour_get_saturation(uh.color),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.color),colour_get_saturation(uh.color),255);
-uiz_colorbox_updatergb(0,1,1,0,0)
-}
-if boxgreen.updated=true then{
-g=boxgreen.value*255;
-c.color=make_color_rgb(r,g,b);
-h=colour_get_hue(c.color);
-s=colour_get_saturation(c.color);
-v=colour_get_value(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_slider_setvalue(boxval,v/255)
-boxval.color1=make_color_hsv(colour_get_hue(uh.color),colour_get_saturation(uh.color),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.color),colour_get_saturation(uh.color),255);
-uiz_colorbox_updatergb(1,0,1,0,0)
-}
-if boxblue.updated=true then{
-b=boxblue.value*255;
-c.color=make_color_rgb(r,g,b);
-h=colour_get_hue(c.color);
-s=colour_get_saturation(c.color);
-v=colour_get_value(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_slider_setvalue(boxval,v/255)
-boxval.color1=make_color_hsv(colour_get_hue(uh.color),colour_get_saturation(uh.color),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.color),colour_get_saturation(uh.color),255);
-uiz_colorbox_updatergb(1,1,0,0,0)
-}
-}
-//valueboxes
-if valred.update=1 then{
-r=valred.value;
-c.color=make_color_rgb(r,g,b);
-h=colour_get_hue(c.color);
-s=colour_get_saturation(c.color);
-v=colour_get_value(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_slider_setvalue(boxval,v/255)
-boxval.color1=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),255);
-uiz_colorbox_updatergb(1,1,1,1,0)
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///handle buttons and such
+if uh.updated then {
+    h = uh.h;
+    s = uh.s;
+    c.color = make_color_hsv(h,s,v);
+    uiz_updater_FixViews_with(c);
+    value = c.color;
+    uiz_updater_FixViews();
+    uiz_colorbox_update_rgb();
+    uiz_colorbox_updateSliderColors(true,true,true,true);
+    uiz_stringbox_setvalue_noupdate(valh,h);
+    uiz_stringbox_setvalue_noupdate(vals,s);
+    uiz_colorbox_updateValues(false,true,true,true);
 }
 
-if valgreen.update=1 then{
-g=valgreen.value;
-c.color=make_color_rgb(r,g,b);
-h=colour_get_hue(c.color);
-s=colour_get_saturation(c.color);
-v=colour_get_value(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_slider_setvalue(boxval,v/255)
-boxval.color1=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),255);
-uiz_colorbox_updatergb(1,1,1,1,0)
+if boxval.updated then{
+    v = boxval.value * 255;
+    c.color = make_color_hsv(h,s,v);
+    uiz_updater_FixViews_with(c);
+    value = c.color;
+    uiz_updater_FixViews();
+    uiz_huesquare_setcolor_hsv(uh,h,s,v);
+    uiz_updater_FixViews_with(uh);
+    uiz_colorbox_update_rgb();
+    uiz_colorbox_updateSliderColors(false,true,true,true);
+    uiz_stringbox_setvalue_noupdate(valv,v);
+    uiz_colorbox_updateValues(false,true,true,true);
 }
 
-if valblue.update=1 then{
-b=valblue.value;
-c.color=make_color_rgb(r,g,b);
-h=colour_get_hue(c.color);
-s=colour_get_saturation(c.color);
-v=colour_get_value(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_slider_setvalue(boxval,v/255)
-boxval.color1=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),255);
-uiz_colorbox_updatergb(1,1,1,1,0)
+if boxred.updated then{
+    r = boxred.value * 255;
+    c.color = make_color_rgb(r,g,b);
+    uiz_updater_FixViews_with(c);
+    value = c.color;
+    uiz_updater_FixViews();
+    uiz_colorbox_update_hsv();
+    uiz_huesquare_setcolor_hsv(uh,h,s,v);
+    uiz_colorbox_updateSliderColors(true,false,true,true);
+    uiz_stringbox_setvalue_noupdate(valred,r);
+    uiz_colorbox_updateValues(true,false,true,true);
 }
-if valh.update=1 then{
-h=valh.value;
-c.color=make_color_hsv(h,s,v);
-r=colour_get_red(c.color);
-g=colour_get_green(c.color);
-b=colour_get_blue(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-boxval.color1=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),255);
-uiz_colorbox_updatergb(1,1,1,1,0)
+
+if boxgreen.updated then{
+    g = boxgreen.value * 255;
+    c.color = make_color_rgb(r,g,b);
+    uiz_updater_FixViews_with(c);
+    value = c.color;
+    uiz_updater_FixViews();
+    uiz_colorbox_update_hsv();
+    uiz_huesquare_setcolor_hsv(uh,h,s,v);
+    uiz_colorbox_updateSliderColors(true,true,false,true);
+    uiz_stringbox_setvalue_noupdate(valgreen,g);
+    uiz_colorbox_updateValues(true,true,false,true);
 }
-if vals.update=1 then{
-s=vals.value;
-c.color=make_color_hsv(h,s,v);
-r=colour_get_red(c.color);
-g=colour_get_green(c.color);
-b=colour_get_blue(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-boxval.color1=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),0);
-boxval.color2=make_color_hsv(colour_get_hue(uh.incolor),colour_get_saturation(uh.incolor),255);
-uiz_colorbox_updatergb(1,1,1,1,0)
+
+if boxblue.updated then{
+    b = boxblue.value * 255;
+    c.color = make_color_rgb(r,g,b);
+    uiz_updater_FixViews_with(c);
+    value = c.color;
+    uiz_updater_FixViews();
+    uiz_colorbox_update_hsv();
+    uiz_huesquare_setcolor_hsv(uh,h,s,v);
+    uiz_colorbox_updateSliderColors(true,true,true,false);
+    uiz_stringbox_setvalue_noupdate(valblue,b);
+    uiz_colorbox_updateValues(true,true,true,false);
 }
-if valv.update=1 then{
-v=valv.value;
-c.color=make_color_hsv(h,s,v);
-r=colour_get_red(c.color);
-g=colour_get_green(c.color);
-b=colour_get_blue(c.color);
-uiz_hue_setvalues(uh,h,s,v)
-uiz_colorbox_updatergb(1,1,1,1,0)
-}
-//check for changes, and apply them
-lastvalue=value
-value=c.color
-if (lastvalue=value) then{
-//updated=0;
-//}else{updated=1}
-update=0;
-}else{update=1}
-}
-if update=1 or updated=1 then{uiz_updater_FixViews();}
 </string>
           </argument>
         </arguments>
@@ -356,312 +588,350 @@ if update=1 or updated=1 then{uiz_updater_FixViews();}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.colorscreen!=id or !instance_exists(w) then{
+            <string>if global.colorscreen != id or!instance_exists(w) then {
 
-if mouse_check_button_released(mb_left) and global.mouseover=id then{
-//spawn in a color menu
-if global.colorscreen!=0 and instance_exists(global.colorscreen) and instance_exists(global.colorscreen.w) then{
-//remove old window
-uiz_destroyobject(global.colorscreenobject)
+    if mouse_check_button_released(mb_left) and global.mouseover = id then {
+        //spawn in a color menu
+        if global.colorscreen != 0 and instance_exists(global.colorscreen) and instance_exists(global.colorscreen.w) then {
+            //remove old window
+            uiz_destroyObject(global.colorscreenobject)
+        }
+
+        uiz_colorbox_checkcolordump()
+        sdbm("[uiZ|INFO]Spawning color menu")
+        uiz_updater_step();
+        global.colorscreen = id
+        global.colorscreenobject = id
+        w = uiz_window_create(4, dp, 5, dp)
+        w.x = uiz_getmouse_x()
+        w.y = uiz_getmouse_y()
+        w.button_maximize = 0;
+        w.button_minimize = 0;
+        w.button_cross = 1;
+        w.contain = 3
+        w.windowtext = "colorpicker"
+        //w.resizable = false;
+        uiz_window_setminimumsize(w, 2, dp, 3, dp)
+        uiz_fixgeneralpos(w)
+        f = w;
+        fs = uiz_frameset_create();
+        uiz_setParent(fs, f)
+        div1 = uiz_frameset_divide_vertical(fs, 0.7, fc, 1, xtra)
+        picker = div1.frameat[0]
+        sep = div1.frameat[1]
+
+        div2 = uiz_frameset_divide_horizontal(picker, 0.4, fc, 0.2, fc, 1, xtra)
+        hue = div2.frameat[0]
+        valsz = div2.frameat[1]
+        valsels = div2.frameat[2]
+
+        hue = picker
+        uiz_fixframesetpos(fs)
+        uh = uiz_c(obj_uiZ_huesquare)
+        uiz_setParent(uh, hue)
+        uh.posinframex = uiz_fill
+        uh.posinframey = uiz_fill
+        uh.posvalx = 0
+        uh.posvaly = 0
+        uiz_fixgeneralpos(uh)
+
+        div3 = uiz_frameset_divide_horizontal(sep, 0.1, fc, 1, xtra)
+        colbox = div3.frameat[0]
+        selector = div3.frameat[1]
+
+
+        colorboxes = instance_create(0, 0, obj_uiZ_colorboxes)
+        uiz_setParent(colorboxes, selector)
+        colorboxes.posinframex = uiz_fill
+        colorboxes.posinframey = uiz_fill
+        uiz_fixgeneralpos(colorboxes)
+
+        //color
+        c = instance_create(0, 0, obj_uiZ_square)
+        uiz_setParent(c, colbox)
+        c.posinframex = uiz_fill
+        c.posinframey = uiz_fill
+        c.color = value
+        uiz_fixgeneralpos(c)
+
+        //make sure values are alright
+        h = colour_get_hue(value);
+        s = colour_get_saturation(value);
+        v = colour_get_value(value);
+        r = colour_get_red(value);
+        g = colour_get_green(value);
+        b = colour_get_blue(value);
+
+        //value slider
+        boxval = instance_create(0, 0, obj_uiZ_slider)
+        uiz_setParent(boxval, valsz)
+        boxval.coloroutline1 = c_black
+        boxval.coloroutline2 = c_white
+        boxval.value = v / 255
+        boxval.posinframex = uiz_fill
+        boxval.posinframey = fc
+        boxval.posvaly = 0.05
+        boxval.posvalhtype = fc
+        boxval.posvalh = 0.2
+        boxval.color1 = c_black
+        boxval.color2 = c_white
+        boxval.coloroutline1 = c_black
+        boxval.coloroutline2 = c_white
+        boxval.outline = 1
+        boxval.roundedcorners = true;
+        boxval.slidersize = 0.05;
+        boxval.slidersizetype = dp;
+        boxval.slidercolor=make_colour_rgb(125,165,255);
+        boxval.slidercoloron=make_colour_rgb(37,80,202);
+        boxval.slidercolorin=make_colour_rgb(65,238,195);
+        uiz_slider_setvalue(boxval, v / 255)
+        uiz_fixgeneralpos(boxval)
+
+        //red slider
+        boxred = instance_create(0, 0, obj_uiZ_slider)
+        uiz_setParent(boxred, valsz)
+        boxred.coloroutline1 = c_black
+        boxred.coloroutline2 = c_red
+        boxred.value = r / 255
+        boxred.posinframex = uiz_fill
+        boxred.posinframey = fc
+        boxred.posvaly = 0.3
+        boxred.posvalhtype = fc
+        boxred.posvalh = 0.2
+        boxred.color1 = c_black
+        boxred.color2 = c_red
+        boxred.outline = 1
+        boxred.coloroutline1 = c_black
+        boxred.coloroutline2 = c_red
+        boxred.roundedcorners = true;
+        boxred.slidersize = 0.05;
+        boxred.slidersizetype = dp;
+        boxred.slidercolor=make_colour_rgb(125,165,255);
+        boxred.slidercoloron=make_colour_rgb(37,80,202);
+        boxred.slidercolorin=make_colour_rgb(65,238,195);
+        
+        uiz_fixgeneralpos(boxred)
+        
+        //green slider
+        boxgreen = instance_create(0, 0, obj_uiZ_slider)
+        uiz_setParent(boxgreen, valsz)
+        boxgreen.value = g / 255
+        boxgreen.posinframex = uiz_fill
+        boxgreen.posinframey = fc
+        boxgreen.posvaly = 0.55
+        boxgreen.posvalhtype = fc
+        boxgreen.posvalh = 0.2
+        boxgreen.color1 = c_black
+        boxgreen.color2 = c_green
+        boxgreen.coloroutline1 = c_black
+        boxgreen.coloroutline2 = c_lime
+        boxgreen.outline = 1
+        boxgreen.posvalhpxdif = -1
+        boxgreen.roundedcorners = true;
+        boxgreen.slidersize = 0.05;
+        boxgreen.slidersizetype = dp;
+        boxgreen.slidercolor=make_colour_rgb(125,165,255);
+        boxgreen.slidercoloron=make_colour_rgb(37,80,202);
+        boxgreen.slidercolorin=make_colour_rgb(65,238,195);
+        uiz_fixgeneralpos(boxgreen)
+        
+        //red slider
+        boxblue = instance_create(0, 0, obj_uiZ_slider)
+        uiz_setParent(boxblue, valsz)
+        boxblue.coloroutline1 = c_black
+        boxblue.coloroutline2 = c_blue
+        boxblue.value = b / 255
+        boxblue.posinframex = uiz_fill
+        boxblue.posinframey = fc
+        boxblue.posvaly = 0.80
+        boxblue.posvalhtype = fc
+        boxblue.posvalh = 0.2
+        boxblue.color1 = c_black
+        boxblue.color2 = c_blue
+        boxblue.coloroutline1 = c_black
+        boxblue.coloroutline2 = c_blue
+        boxblue.outline = 1
+        boxblue.roundedcorners = true;
+        boxblue.slidersize = 0.05;
+        boxblue.slidersizetype = dp;
+        boxblue.slidercolor=make_colour_rgb(125,165,255);
+        boxblue.slidercoloron=make_colour_rgb(37,80,202);
+        boxblue.slidercolorin=make_colour_rgb(65,238,195);
+        uiz_fixgeneralpos(boxblue)
+        
+        //the valueboxes
+        valsgrid = uiz_grid_create(4, 3)
+        uiz_setParent(valsgrid, valsels)
+        uiz_fixgridpos(valsgrid)
+        uiz_setGridObjects_canvas(valsgrid)
+        uiz_gridSize_col(valsgrid, 0, 0.1, fc)
+        uiz_gridSize_col(valsgrid, 1, 0.4, fc)
+        uiz_gridSize_col(valsgrid, 2, 0.1, fc)
+        uiz_gridSize_col(valsgrid, 3, 0.4, fc)
+        //uiz_setGridObjects_frame(valsgrid)
+        uiz_fixgridpos(valsgrid)
+
+        valredtext = instance_create(0, 0, obj_uiZ_drawtext)
+        uiz_setParent(valredtext, uiz_gridObject(valsgrid, 0, 0))
+        valredtext.posinframex = uiz_fill
+        valredtext.posinframey = uiz_fill
+        valredtext.text = "r"
+        uiz_fixgeneralpos(valredtext)
+
+        valgreentext = instance_create(0, 0, obj_uiZ_drawtext)
+        uiz_setParent(valgreentext, uiz_gridObject(valsgrid, 0, 1))
+        valgreentext.posinframex = uiz_fill
+        valgreentext.posinframey = uiz_fill
+        valgreentext.text = "g"
+        uiz_fixgeneralpos(valgreentext)
+
+        valbluetext = instance_create(0, 0, obj_uiZ_drawtext)
+        uiz_setParent(valbluetext, uiz_gridObject(valsgrid, 0, 2))
+        valbluetext.posinframex = uiz_fill
+        valbluetext.posinframey = uiz_fill
+        valbluetext.text = "b"
+        uiz_fixgeneralpos(valbluetext)
+
+        valred = instance_create(0, 0, obj_uiZ_stringbox)
+        uiz_setParent(valred, uiz_gridObject(valsgrid, 1, 0))
+        valred.acceptOnlyNumbers = true;
+        valred.acceptOnlyIntegers = true;
+        valred.acceptOnlyPositive = true;
+        valred.numberCounter_enable = true;
+        valred.posinframex = uiz_fill
+        valred.posinframey = uiz_center
+        valred.posvalh = 0.3
+        valred.posvalhtype = dp
+        uiz_stringbox_setNumericalValueBounds(valred,0,true,255,true);
+        valred.allowdec = 0
+        var argsr;
+        argsr[1] = 0;//for red
+        argsr[0] = id;
+        uiz_update_set(valred,uiz_colorbox_onUpdateStringboxRGB,argsr);
+        uiz_stringbox_setvalue(valred, string(r))
+        uiz_fixgeneralpos(valred)
+
+        valgreen = instance_create(0, 0, obj_uiZ_stringbox)
+        uiz_setParent(valgreen, uiz_gridObject(valsgrid, 1, 1))
+        valgreen.acceptOnlyNumbers = true;
+        valgreen.acceptOnlyIntegers = true;
+        valgreen.acceptOnlyPositive = true;
+        valgreen.numberCounter_enable = true;
+        valgreen.posinframex = uiz_fill
+        valgreen.posinframey = uiz_center
+        valgreen.posvalh = 0.3
+        valgreen.posvalhtype = dp
+        uiz_stringbox_setNumericalValueBounds(valgreen,0,true,255,true);
+        valgreen.allowdec = 0
+        var argsg;
+        argsg[1] = 1;//for green
+        argsg[0] = id;
+        uiz_update_set(valgreen,uiz_colorbox_onUpdateStringboxRGB,argsg);
+        uiz_stringbox_setvalue(valgreen, string(g))
+        uiz_fixgeneralpos(valgreen)
+
+        valblue = instance_create(0, 0, obj_uiZ_stringbox)
+        uiz_setParent(valblue, uiz_gridObject(valsgrid, 1, 2))
+        valblue.acceptOnlyNumbers = true;
+        valblue.acceptOnlyIntegers = true;
+        valblue.acceptOnlyPositive = true;
+        valblue.numberCounter_enable = true;
+        valblue.posinframex = uiz_fill
+        valblue.posinframey = uiz_center
+        valblue.posvalh = 0.3
+        valblue.posvalhtype = dp
+        uiz_stringbox_setNumericalValueBounds(valblue,0,true,255,true);
+        valblue.allowdec = 0
+        var argsb;
+        argsb[1] = 2;//for blue
+        argsb[0] = id;
+        uiz_update_set(valblue,uiz_colorbox_onUpdateStringboxRGB,argsb);
+        uiz_stringbox_setvalue(valblue, string(b))
+        uiz_fixgeneralpos(valblue)
+
+
+
+
+        //hsv valueboxes
+        valhtext = instance_create(0, 0, obj_uiZ_drawtext)
+        uiz_setParent(valhtext, uiz_gridObject(valsgrid, 2, 0))
+        valhtext.posinframex = uiz_fill
+        valhtext.posinframey = uiz_fill
+        valhtext.text = "h"
+        uiz_fixgeneralpos(valhtext)
+
+        valstext = instance_create(0, 0, obj_uiZ_drawtext)
+        uiz_setParent(valstext, uiz_gridObject(valsgrid, 2, 1))
+        valstext.posinframex = uiz_fill
+        valstext.posinframey = uiz_fill
+        valstext.text = "s"
+        uiz_fixgeneralpos(valstext)
+
+        valvtext = instance_create(0, 0, obj_uiZ_drawtext)
+        uiz_setParent(valvtext, uiz_gridObject(valsgrid, 2, 2))
+        valvtext.posinframex = uiz_fill
+        valvtext.posinframey = uiz_fill
+        valvtext.text = "v"
+        uiz_fixgeneralpos(valvtext)
+
+        valh = instance_create(0, 0, obj_uiZ_stringbox)
+        uiz_setParent(valh, uiz_gridObject(valsgrid, 3, 0))
+        valh.acceptOnlyNumbers = true;
+        valh.acceptOnlyIntegers = true;
+        valh.acceptOnlyPositive = true;
+        valh.numberCounter_enable = true;
+        valh.posinframex = uiz_fill
+        valh.posinframey = uiz_center
+        valh.posvalh = 0.3
+        valh.posvalhtype = dp
+        uiz_stringbox_setNumericalValueBounds(valh,0,true,255,true);
+        valh.allowdec = 0
+        uiz_update_set(valh,uiz_colorbox_onUpdateStringboxHSV,argsr);
+        uiz_stringbox_setvalue(valh, string(h))
+        uiz_fixgeneralpos(valh)
+
+        vals = instance_create(0, 0, obj_uiZ_stringbox)
+        uiz_setParent(vals, uiz_gridObject(valsgrid, 3, 1))
+        vals.acceptOnlyNumbers = true;
+        vals.acceptOnlyIntegers = true;
+        vals.acceptOnlyPositive = true;
+        vals.numberCounter_enable = true;
+        vals.posinframex = uiz_fill
+        vals.posinframey = uiz_center
+        vals.posvalh = 0.3
+        vals.posvalhtype = dp
+        uiz_stringbox_setNumericalValueBounds(vals,0,true,255,true);
+        vals.allowdec = 0
+        uiz_update_set(vals,uiz_colorbox_onUpdateStringboxHSV,argsg);
+        uiz_stringbox_setvalue(vals, string(s))
+        uiz_fixgeneralpos(vals)
+
+        valv = instance_create(0, 0, obj_uiZ_stringbox)
+        uiz_setParent(valv, uiz_gridObject(valsgrid, 3, 2))
+        valv.acceptOnlyNumbers = true;
+        valv.acceptOnlyIntegers = true;
+        valv.acceptOnlyPositive = true;
+        valv.numberCounter_enable = true;
+        valv.posinframex = uiz_fill
+        valv.posinframey = uiz_center
+        valv.posvalh = 0.3
+        valv.posvalhtype = dp
+        uiz_stringbox_setNumericalValueBounds(valv,0,true,255,true);
+        valv.allowdec = 0
+        uiz_update_set(valv,uiz_colorbox_onUpdateStringboxHSV,argsb);
+        uiz_stringbox_setvalue(valv, string(v))
+        uiz_fixgeneralpos(valv)
+        uiz_colorbox_updatergb(1, 1, 1, 0, 0)
+        //*/
+        //last fix
+        uiz_fixChildren(w, 1)
+        //c.color=value
+        //uiz_colorbox_updatergb(1,1,1)
+    }
 }
-
-uiz_colorbox_checkcolordump()
-sdbm("[uiZ|INFO]Spawning color menu")
-global.colorscreen=id
-global.colorscreenobject=id
-w=uiz_window_create(4,dp,5,dp)
-w.x=uiz_getmouse_x()
-w.y=uiz_getmouse_y()
-w.button_maximize=0;
-w.button_minimize=0;
-w.button_cross=1;
-w.contain=3
-w.windowtext="colorpicker"
-uiz_window_setminimumsize(w,2,dp,3,dp)
-uiz_fixgeneralpos(w)
-
-//with(w){uiz_window_create_finish()}
-/*
-f=instance_create(0,0,obj_uiZ_frame)
-uiz_setparent(f,w)
-
-f.posvalx=0.05
-f.posinframex=fcm
-f.posvaly=0.05
-f.posinframey=fcm
-f.posvalwtype=saam
-f.posvalhtype=saam
-uiz_fixgeneralpos(f)
-//*/
-f=w;
-fs=uiz_frameset_create();
-uiz_setparent(fs,f)
-div1=uiz_framedivisionvertical(fs,0.7,fc,1,xtra)
-//div1=uiz_framedivisionvertical(fs,1,fc,1,xtra)
-picker=div1.frameat[0]
-sep=div1.frameat[1]
-
-//div2=uiz_framedivisionhorizontal(picker,1,saa,0.2,fc,1,xtra)
-div2=uiz_framedivisionhorizontal(picker,0.4,fc,0.2,fc,1,xtra)
-hue=div2.frameat[0]
-valsz=div2.frameat[1]
-valsels=div2.frameat[2]
-
-hue=picker
-uiz_fixframesetpos(fs)
-uh=instance_create(0,0,obj_uiZ_huesquare)
-uiz_setparent(uh,hue)
-uh.posinframex=uiz_fill
-uh.posinframey=uiz_fill
-uh.posvalx=0
-uh.posvaly=0
-uiz_fixgeneralpos(uh)
-
-div3=uiz_framedivisionhorizontal(sep,0.1,fc,1,xtra)
-colbox=div3.frameat[0]
-selector=div3.frameat[1]
-
-
-colorboxes=instance_create(0,0,obj_uiZ_colorboxes)
-uiz_setparent(colorboxes,selector)
-colorboxes.posinframex=uiz_fill
-colorboxes.posinframey=uiz_fill
-colorboxes.posvalhpxdif=1
-uiz_fixgeneralpos(colorboxes)
-
-//color
-c=instance_create(0,0,obj_uiZ_square) 
-uiz_setparent(c,colbox)
-c.posinframex=uiz_fill
-c.posinframey=uiz_fill
-c.color=value
-uiz_fixgeneralpos(c)
-
-//make sure values are alright
-h=colour_get_hue(value);
-s=colour_get_saturation(value);
-v=colour_get_value(value);
-r=colour_get_red(value);
-g=colour_get_green(value);
-b=colour_get_blue(value);
-
-//value slider
-boxval=instance_create(0,0,obj_uiZ_slider)
-uiz_setparent(boxval,valsz)
-boxval.coloroutline1=c_black
-boxval.coloroutline2=c_white
-boxval.value=v/255
-boxval.posinframex=uiz_fill
-boxval.posinframey=fc
-boxval.posvaly=0
-boxval.posvalhtype=fc
-boxval.posvalh=0.25
-boxval.color1=c_black
-boxval.color2=c_white
-boxval.coloroutline1=c_black
-boxval.coloroutline2=c_white
-boxval.outline=1
-boxval.posvalhpxdif=-1
-uiz_slider_setvalue(boxval,v/255)
-uiz_fixgeneralpos(boxval)
-
-//red slider
-boxred=instance_create(0,0,obj_uiZ_slider)
-uiz_setparent(boxred,valsz)
-boxred.coloroutline1=c_black
-boxred.coloroutline2=c_red
-boxred.value=r/255
-boxred.posinframex=uiz_fill
-boxred.posinframey=fc
-boxred.posvaly=0.25
-boxred.posvalhtype=fc
-boxred.posvalh=0.25
-boxred.color1=c_black
-boxred.color2=c_red
-boxred.outline=1
-boxred.coloroutline1=c_black
-boxred.coloroutline2=c_red
-boxred.posvalhpxdif=-1
-uiz_fixgeneralpos(boxred)
-//green slider
-boxgreen=instance_create(0,0,obj_uiZ_slider)
-uiz_setparent(boxgreen,valsz)
-boxgreen.value=g/255
-boxgreen.posinframex=uiz_fill
-boxgreen.posinframey=fc
-boxgreen.posvaly=0.50
-boxgreen.posvalhtype=fc
-boxgreen.posvalh=0.25
-boxgreen.color1=c_black
-boxgreen.color2=c_green
-boxgreen.coloroutline1=c_black
-boxgreen.coloroutline2=c_lime
-boxgreen.outline=1
-boxgreen.posvalhpxdif=-1
-uiz_fixgeneralpos(boxgreen)
-//red slider
-boxblue=instance_create(0,0,obj_uiZ_slider)
-uiz_setparent(boxblue,valsz)
-boxblue.coloroutline1=c_black
-boxblue.coloroutline2=c_blue
-boxblue.value=b/255
-boxblue.posinframex=uiz_fill
-boxblue.posinframey=fc
-boxblue.posvaly=0.75
-boxblue.posvalhtype=fc
-boxblue.posvalh=0.25
-boxblue.color1=c_black
-boxblue.color2=c_blue
-boxblue.coloroutline1=c_black
-boxblue.coloroutline2=c_blue
-boxblue.outline=1
-boxblue.posvalhpxdif=-1
-uiz_fixgeneralpos(boxblue)
-//*/
-//the valueboxes
-
-//div4=uiz_framedivisionvertical(valsels,1,xtra,1,xtra)
-//rgbvals=div4.frameat[0]
-//hsvvals=div4.frameat[1]
-valsgrid=uiz_grid_create(4,3)
-uiz_setparent(valsgrid,valsels)
-uiz_fixgridpos(valsgrid)
-uiz_setgridframes(valsgrid)
-uiz_gridsize_col(valsgrid,0,0.1,fc)
-uiz_gridsize_col(valsgrid,1,0.4,fc)
-uiz_gridsize_col(valsgrid,2,0.1,fc)
-uiz_gridsize_col(valsgrid,3,0.4,fc)
-uiz_setgridframes(valsgrid)
-uiz_fixgridpos(valsgrid)
-
-valredtext=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(valredtext,uiz_gridobject(valsgrid,0,0))
-valredtext.posinframex=uiz_fill
-valredtext.posinframey=uiz_fill
-valredtext.text="r"
-uiz_fixgeneralpos(valredtext)
-
-valgreentext=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(valgreentext,uiz_gridobject(valsgrid,0,1))
-valgreentext.posinframex=uiz_fill
-valgreentext.posinframey=uiz_fill
-valgreentext.text="g"
-uiz_fixgeneralpos(valgreentext)
-
-valbluetext=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(valbluetext,uiz_gridobject(valsgrid,0,2))
-valbluetext.posinframex=uiz_fill
-valbluetext.posinframey=uiz_fill
-valbluetext.text="b"
-uiz_fixgeneralpos(valbluetext)
-
-valred=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(valred,uiz_gridobject(valsgrid,1,0))
-valred.posinframex=uiz_fill
-valred.posinframey=uiz_center
-valred.posvalh=0.3
-valred.posvalhtype=dp
-valred.minvalue=0
-valred.maxvalue=255
-valred.allowdec=0
-uiz_valuebox_setvalue(valred,string(r))
-uiz_fixgeneralpos(valred)
-
-valgreen=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(valgreen,uiz_gridobject(valsgrid,1,1))
-valgreen.posinframex=uiz_fill
-valgreen.posinframey=uiz_center
-valgreen.posvalh=0.3
-valgreen.posvalhtype=dp
-valgreen.minvalue=0
-valgreen.maxvalue=255
-valgreen.allowdec=0
-uiz_valuebox_setvalue(valgreen,string(g))
-uiz_fixgeneralpos(valgreen)
-
-valblue=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(valblue,uiz_gridobject(valsgrid,1,2))
-valblue.posinframex=uiz_fill
-valblue.posinframey=uiz_center
-valblue.posvalh=0.3
-valblue.posvalhtype=dp
-valblue.minvalue=0
-valblue.maxvalue=255
-valblue.allowdec=0
-uiz_valuebox_setvalue(valblue,string(b))
-uiz_fixgeneralpos(valblue)
-
-
-
-
-
-
-//hsv valueboxes
-valhtext=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(valhtext,uiz_gridobject(valsgrid,2,0))
-valhtext.posinframex=uiz_fill
-valhtext.posinframey=uiz_fill
-valhtext.text="h"
-uiz_fixgeneralpos(valhtext)
-
-valstext=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(valstext,uiz_gridobject(valsgrid,2,1))
-valstext.posinframex=uiz_fill
-valstext.posinframey=uiz_fill
-valstext.text="s"
-uiz_fixgeneralpos(valstext)
-
-valvtext=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(valvtext,uiz_gridobject(valsgrid,2,2))
-valvtext.posinframex=uiz_fill
-valvtext.posinframey=uiz_fill
-valvtext.text="v"
-uiz_fixgeneralpos(valvtext)
-
-valh=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(valh,uiz_gridobject(valsgrid,3,0))
-valh.posinframex=uiz_fill
-valh.posinframey=uiz_center
-valh.posvalh=0.3
-valh.posvalhtype=dp
-valh.minvalue=0
-valh.maxvalue=255
-valh.allowdec=0
-uiz_valuebox_setvalue(valh,string(h))
-uiz_fixgeneralpos(valh)
-
-vals=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(vals,uiz_gridobject(valsgrid,3,1))
-vals.posinframex=uiz_fill
-vals.posinframey=uiz_center
-vals.posvalh=0.3
-vals.posvalhtype=dp
-vals.minvalue=0
-vals.maxvalue=255
-vals.allowdec=0
-uiz_valuebox_setvalue(vals,string(s))
-uiz_fixgeneralpos(vals)
-
-valv=instance_create(0,0,obj_uiZ_valuebox)
-uiz_setparent(valv,uiz_gridobject(valsgrid,3,2))
-valv.posinframex=uiz_fill
-valv.posinframey=uiz_center
-valv.posvalh=0.3
-valv.posvalhtype=dp
-valv.minvalue=0
-valv.maxvalue=255
-valv.allowdec=0
-uiz_valuebox_setvalue(valv,string(v))
-uiz_fixgeneralpos(valv)
-uiz_colorbox_updatergb(1,1,1,0,0)
-//*/
-//last fix
-uiz_fixchildren(w,1)
-//c.color=value
-//uiz_colorbox_updatergb(1,1,1)
+if kmouseover &gt; 0 then {
+    uiz_set_cursor(cr_handpoint)
 }
-}
-if kmouseover&gt;0 then{uiz_set_cursor(cr_handpoint)}
 </string>
           </argument>
         </arguments>

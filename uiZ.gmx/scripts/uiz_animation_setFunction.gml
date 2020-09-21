@@ -1,4 +1,4 @@
-///uiz_animation_setFunction(id,x,y,width,height,alpha,time)
+///uiz_animation_setFunction(instanceid, x, y, width, height, alpha, time)
 with(argument0){
 function_x=argument1
 function_y=argument2

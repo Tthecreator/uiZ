@@ -77,7 +77,7 @@ draw_line(x,y+h,x+w,y+h);
 draw_set_color(c_blue)
 draw_primitive_begin(pr_linestrip)
 for(var i=0;i&lt;=w;i++){
-var animres=uiz_animation_getfunction(i/w,anim)
+var animres=uiz_animation_getFunction(i/w,anim)
 draw_vertex(x+i,y+h-animres*h);
 }
 draw_primitive_end();
@@ -85,17 +85,17 @@ draw_primitive_end();
 draw_set_color(c_green);
 draw_primitive_begin(pr_linestrip)
 for(var i=0;i&lt;=w;i++){
-var animres=uiz_animation_getfunction(i/w,anim)
-animres=uiz_animation_revertfunction(animres,anim)
+var animres=uiz_animation_getFunction(i/w,anim)
+animres=uiz_animation_revertFunction(animres,anim)
 draw_vertex(x+i,y+h-animres*h);
 }
 draw_primitive_end();
 draw_set_color(c_purple);
 draw_primitive_begin(pr_linestrip)
 for(var i=0;i&lt;=w;i++){
-var animres=uiz_animation_getfunction(i/w,anim)
-animres=uiz_animation_revertfunction(animres,anim)
-var animres=uiz_animation_getfunction(animres,anim)
+var animres=uiz_animation_getFunction(i/w,anim)
+animres=uiz_animation_revertFunction(animres,anim)
+var animres=uiz_animation_getFunction(animres,anim)
 draw_vertex(x+i,y+h-animres*h);
 }
 draw_primitive_end();

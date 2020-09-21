@@ -8,13 +8,15 @@ scblwidth=uiz_getposx(scrollbarsize,scrollbarsizetype);
 if font>-1 then{draw_set_font(font)};
 fontHeight = string_height("{|}");
 var listH = ds_list_size(textList)*fontHeight;
-if owidth!=iwidth or (oheight!=iheight and (oheight>listH or iheight>listH)) then{
+//sdbm("test fix",oheight,iheight,listH)
+if owidth!=iwidth or (oheight!=iheight and iheight<listH/*(oheight>listH or iheight>listH)*/) then{
     uiz_textarea_rework(true,0);
     if doscroll=true then{
         var maxScrollSize = (ds_list_size(textList)*fontHeight-iheight)
         if maxScrollSize<listFromPx then{
             //we scrolled to far, so we need to automatically scroll back a little bit
-            uiz_drawscrollbar_setvalue(scroll,maxScrollSize);
+            sdbm("scrolledtofar");
+            uiz_drawscrollbar_setValue(scroll,maxScrollSize);
             listFromPx = maxScrollSize;
         }
     }else{

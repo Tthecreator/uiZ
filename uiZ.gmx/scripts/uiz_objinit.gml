@@ -35,8 +35,6 @@ posvalw=0
 posvalh=0
 containposvx=uiz_nocontain
 containposvy=uiz_nocontain
-posvalhpxdif=0
-posvalwpxdif=0
 //posvalxtype=uiz_nonpos
 posvalwtype=uiz_nonpos
 //posvalytype=uiz_nonpos
@@ -47,6 +45,8 @@ containframe=-1
 incontainframe=0
 setpointx=uiz_auto
 setpointy=uiz_auto
+spx=0;
+spy=0;
 topframemargin=0;
 rightframemargin=0;
 bottomframemargin=0;
@@ -90,6 +90,11 @@ function_a=uiz_straight
 function_time=0.5
 uiz_enabled=true;
 
+destroyxfunction=uiz_straight;
+destroyyfunction=uiz_straight;
+destroyafunction=uiz_straight;
+destroyspeed=0.5;
+
 oldx=0;
 oldy=0;
 olda=0;
@@ -103,9 +108,7 @@ neww=0;
 newh=0;
 
 function_count=-1;
-keepupdating=0
-updatenextstep=0
-fixedthisstep=0
+//keepupdating=0
 shadow=false;
 shadowL=0.1;
 shadowR=0.25;
@@ -121,18 +124,11 @@ leftmargin=0;
 rightmargin=0;
 uiz_nused=0;
 
-//uiz_surf=0;
 uiz_dodraw=true;
 uiz_doredraw=false;
 uiz_diddepth=false;
 uiz_forceFixView=false;
 
-/*
-uiz_dodraw_rx=0;
-uiz_dodraw_ry=0;
-uiz_dodraw_rlx=0;
-uiz_dodraw_rly=0;
-*/
 uiz_doclear=false;
 last_rx=rx;
 last_ry=ry;
@@ -143,6 +139,7 @@ last_cntny=cntny;
 last_cntnlx=cntnlx;
 last_cntnly=cntnly;
 
+/*
 save_rec_rx=0;
 save_rec_ry=0;
 save_rec_rlx=0;
@@ -151,6 +148,7 @@ save_rec_last_rx=0;
 save_rec_last_ry=0;
 save_rec_last_rlx=0;
 save_rec_last_rly=0;
+*/
 //uiz_objlistpos=ds_list_size(obj_uiZ_controller.uiz_objlist)
 //ds_list_add(obj_uiZ_controller.uiz_objlist,id);
 
@@ -176,6 +174,11 @@ uiz_selfmarked=false;
 enablemousecheck=true;
 
 uiz_steps=false;
+uiz_steps_begin=false;
+uiz_steps_scrollable=false;
+
+uiz_update_script = noone
+uiz_update_script_argument = 0;
 
 bkspr_old=bkspr;
 bkcol_old=bkcol;

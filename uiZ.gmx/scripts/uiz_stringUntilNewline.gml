@@ -9,13 +9,13 @@ for(var i=1;i<=strlen;i++){
     //sdbm("checking against",sta,ord(sta))
     if sta = "#"
     or sta = chr($0A) then {
-    //there is an enter here
-    var retArray;
-    retArray[1]=string_copy(argument0,i+1,strlen);
-    retArray[0]=ret;
-    return retArray;
+        //there is an enter here
+        var retArray;
+        retArray[1]=string_copy(argument0,i+1,strlen);
+        retArray[0]=ret;
+        return retArray;
     }else{
-    ret+=sta;
+        ret+=sta;
     }
 }
 //falltrough

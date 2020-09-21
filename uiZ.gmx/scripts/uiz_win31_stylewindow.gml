@@ -4,6 +4,8 @@
 var win;
 var win=argument0;
 //setup background
+win.margin_normal=4;
+win.topbarInside=true;
 win.texturescript=uiz_back_circlestitch_specialmargins;
 win.sprite_texturemode=uiz_texturemode_fill
 win.sprite_normal=spr_uiZ_borderwin31;
@@ -20,15 +22,15 @@ win.top_color_out=topcolor;
 win.doublemargins=false;
 uiz_window_setbuttons(win,false,true,true);
 win.button_cross=false;
-uiz_window_topbarsettings(win,18,px);
-win.barsize=18;
-win.barsizevaltype=px;
+uiz_window_setTopBarSize(win,.2,dp);
 //change buttons
 //if instance_exists(win.maxim) then{win.maxim.sprite=spr_uiZ_win31_maximize;}
 //if instance_exists(win.minim) then{win.minim.sprite=spr_uiZ_win31_minimize;}
-win.maxim_sprite=spr_uiZ_win31_maximize;
-win.minim_sprite=spr_uiZ_win31_minimize;
+win.button_maximize_sprite=spr_uiZ_win31_maximize;
+win.button_minimize_sprite=spr_uiZ_win31_minimize;
 //change text
 win.windowtextcolor=c_white
 win.halign=fa_center
 win.wholewidthalign=true;
+uiz_fixgeneralpos(win);
+uiz_fixChildren(win, true);

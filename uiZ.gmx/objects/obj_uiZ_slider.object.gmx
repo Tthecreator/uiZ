@@ -32,16 +32,22 @@
 uiz_objinit()
 color1=c_green//c//left color//
 color2=c_red//c//right color//
+coloranicountspeed=.4//v//color animation speed//
+coloranimation=1//b//enable color animation//
+coloranimationtype=uiz_quadratic_out//a//color animation//
 outline=1//b//outline//
-outlinewidth=3//v//outline width//
+outlinewidth=2//v//outline width//
 coloroutline1=c_aqua//c//left outline color//
 coloroutline2=c_orange//c//right outline color//
+roundedcorners=false;//b//enable rounded corners//
+rounddistance_x=0.07//v//round corner width//
+rounddistancetype_x=dp//z//round corner width type//
+rounddistance_y=0.07//v//round corner height//
+rounddistancetype_y=dp//z//round corner height type//
 slidersize=0.1//v//slider knob width//
 slidersizetype=fc//z//slider knob Wtype//
-slidersz=uiz_getposx_self(slidersize,slidersizetype)
 sliderheight=1//v//slider knob height//
 sliderheighttype=fc//v//slider knob heighttype//
-sliderh=uiz_getposy_self(sliderheight,sliderheighttype)
 slidercolor=c_green//c//knob color//
 slidercoloron=c_olive//c//knob mouse over color//
 slidercolorin=c_lime//c//knob mouse pressing color//
@@ -52,12 +58,19 @@ fromvalue=0
 selected=0
 anicount=0;
 ucolor=slidercolor;
-anicountspeed=.4//v//animation count speed//
+anicountspeed=.4//v//knob animation speed//
 animation=1//b//enable animation//
 animationtype=uiz_quadratic_out//a//knob animation//
 snappoint=0;
 update=0;
 updated=0;
+rounddx=0;
+rounddy=0;
+color1to=color1;
+color2to=color2; 
+color1from=color1;
+color2from=color2; 
+animateColors=1;
 
 MouseOffset=0;
 </string>
@@ -108,6 +121,8 @@ MouseOffset=0;
             <string>updated = 0;
 if selected = true then{
     updated = 1;
+    fromvalue = invalue;
+    //anicount = 0;
     value = clamp((uiz_getmouse_x() - sx - snappoint) / (width - slidersz), 0, 1);
     if obj_uiZ_controller.lastmousex &lt; sx then {
         value = 0
@@ -124,8 +139,8 @@ if selected = true then{
 }
 
 if !(fromvalue = value) and animation = 1 then {
-    invalue = fromvalue + (uiz_animation_getfunction(anicount, animationtype) * (value - fromvalue))
-    anicount += 1 / (anicountspeed * room_speed)
+    invalue = fromvalue + (uiz_animation_getFunction(anicount, animationtype) * (value - fromvalue))
+    anicount += uiz_sc(anicountspeed)
     update = 1;
     if anicount &gt;= 1 then {
         invalue = value;
@@ -144,9 +159,22 @@ if !(fromvalue = value) and animation = 1 then {
     fromvalue = value
     invalue = value
     anicount = 0
-    if selected=false then{
-    uiz_updater_unstep();}
+//    if selected=false then{
+//    uiz_updater_unstep();}
 }
+
+if animateColors&lt;1 then{
+    animateColors += uiz_sc(coloranicountspeed);
+    var f = uiz_animation_getFunction(animateColors, coloranimationtype);
+    color1 = merge_colour(color1from,color1to,f);
+    color2 = merge_colour(color2from,color2to,f);
+    uiz_updater_FixViews();
+}
+
+if (animateColors&gt;=1 and selected==false and anicount==0){
+    uiz_updater_unstep();
+}
+
 if update or updated then{
 uiz_updater_FixViews()}
 </string>
@@ -172,8 +200,8 @@ uiz_updater_FixViews()}
           <argument>
             <kind>1</kind>
             <string>var ucolor_old=ucolor;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 if kmouseover=1 and point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),pf+sx,sy+height/2-sliderh/2,pl+sx,sy+height/2+sliderh/2+1) then{
 ucolor=slidercoloron
 }else{
@@ -206,13 +234,14 @@ uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height
           <argument>
             <kind>1</kind>
             <string>updated=0;
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
 var ucolor_old=ucolor;
 if kmouseover&gt;0 then{
 uiz_set_cursor(cr_handpoint)
 if point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),pf+sx,sy+height/2-sliderh/2,pl+sx,sy+height/2+sliderh/2+1) then{
 ucolor=slidercoloron
+uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1);
 }
 
 if kmouseover&gt;1 then{
@@ -227,6 +256,7 @@ uiz_slider_select(id)}
 }
 }else{
 ucolor=slidercolor;
+uiz_updater_FixViews_area_selfmarked(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1);
 }
 
 
@@ -277,14 +307,22 @@ ucolor=slidercolor;
             <kind>1</kind>
             <string>if uiz_cntn() then{
 if uiz_selfmarked=false then{
-uiz_drawsquare_colour(rx,ry,rlx,rly,color1,color2,color2,color1,alpha)
-if outline=1 then{
-uiz_drawrectangleedgecolor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,1,outlinewidth)
+    if (roundedcorners){
+        draw_square_rounded_colour(rx,ry,rlx,rly,color1,color2,color2,color1,alpha,rounddx,rounddy,true);
+    }else{
+        uiz_drawsquare_colour(rx,ry,rlx,rly,color1,color2,color2,color1,alpha) 
+    }
+    if outline=1 then{
+        if (roundedcorners){
+            draw_square_rounded_colour_outlined(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,rounddx,rounddy,outlinewidth)
+        }else{
+            uiz_draw_rectangle_edgeColor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutline2,coloroutline1,alpha,outlinewidth)
+        }
+    }
 }
-}
-var pf=(width-slidersz)*invalue
-var pl=pf+slidersz
-draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
+var pf=round((width-slidersz)*invalue);
+var pl=pf+round(slidersz)
+draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx+1,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
 uiz_containend()
 }
 </string>
@@ -333,31 +371,6 @@ uiz_containend()
           <argument>
             <kind>1</kind>
             <string>uiz_endobject()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_color(c_black)
-draw_text(50,50,update)
-draw_text(50,60,updated)
 </string>
           </argument>
         </arguments>

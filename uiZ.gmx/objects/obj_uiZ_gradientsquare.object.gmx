@@ -40,7 +40,7 @@ color6=c_red//c//right top//
 color8=c_yellow//c//left bottom//
 color7=c_orange//c//right bottom//
 spraddto=0//v//add to sprite//
-text="i'm a unicorn"//s//text//
+text="I'm a unicorn"//s//text//
 textcolor=c_black//c//text color//
 istext=0//b//enable text//
 font=-1//f//font//
@@ -187,7 +187,7 @@ draw_rectangle_colour(rx,ry,rlx,rly,color1,color2,color3,color4,false);
 if istext=1 then{
 if font&gt;-1 then{draw_set_font(font)}
 draw_set_color(textcolor)
-draw_text(rx,ry,uiz_gettext_contained(text,width))
+draw_text(rx,ry,uiz_getText_contained(text,width))
 }
 uiz_containend()
 }

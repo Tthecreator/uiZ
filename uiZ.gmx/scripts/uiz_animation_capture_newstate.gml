@@ -1,4 +1,4 @@
-///uiz_animation_capture_newstate(id)
+///uiz_animation_capture_newState(id)
 with(argument0){
 newx=x-oldx;
 newy=y-oldy;

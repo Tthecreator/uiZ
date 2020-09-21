@@ -10,4 +10,5 @@ if uiz_textarea_selectionAreTheSame(){//check type/selection state
             isTyping=false;
             hasSelection=true;
             uiz_updater_step();
+            uiz_textarea_registerTypeCursor();
         }

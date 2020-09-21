@@ -1,5 +1,5 @@
 ///uiz_drawscrollbar_vertical_step(rx,ry,rlx,rly,scroll,scrolllines,middlemousescroll,scrollspeed,animation,animationtime)
-//return new value of scroll;
+//return if the scrollbar needs to redraw;
 //object from which this is called from does need to be a uiz object, due to mouse checks.
 /*
 Will draw a scrollbar.
@@ -49,6 +49,7 @@ mstate codes:
 */
 //var scroll=(uiz_positify(argument4-frac(argument4)));
 //var scroll=floor(uiz_positify(argument4-uiz_sign(argument4)*frac(argument4)));
+
 var scroll=uiz_drawscrollbar_getScroll(argument4);
 var scroll_old=scroll;
 var scrollsel=argument4[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel];
@@ -65,7 +66,9 @@ var mstate_last_old = mstate_last;
 var scrollsel_old = scrollsel;
 
 //handle scrolling
-if global.mouseoverobject=id and argument6=true then{
+
+if global.mouseoverscrollable=id and argument6=true then{
+
 if mouse_wheel_down() then{
 //scroll=clamp(scroll+argument7,0,argument5)
     if twn_fac=1 then{//not busy doing an animation
@@ -75,7 +78,7 @@ if mouse_wheel_down() then{
     }else{//busy doing an animation
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]+argument7,0,argument5);
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 }
 if mouse_wheel_up() then{
@@ -87,26 +90,25 @@ if mouse_wheel_up() then{
     }else{//busy doing an animation
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]-argument7,0,argument5);
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 }
 }
 //handle mouse movement on the bar
-if (global.mouseoverobject=id or global.mouseoverscrollframe=id) and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3 and (scrollsel=1 or (uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2)) then{
+if (global.mouseoverobject=id or global.mouseoverscrollable=id) and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3 and (scrollsel=1 or (uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2)) then{
 //left button
 if scrollsel=0 and uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument1+cwidth then{
 if mouse_check_button(mb_left) then{
-scroll=clamp(scroll-argument7,0,argument5);
+scroll=clamp(scroll-argument7/5,0,argument5);
 mstate=2;
 }else{
 mstate=1;
 }
 }else{
 //right button
-//sdbm("scroll right almost",uiz_getmouse_x(),argument2-height,argument2,height)
 if scrollsel=0 and uiz_getmouse_y()>argument3-cwidth and uiz_getmouse_y()<argument3 then{
 if mouse_check_button(mb_left) then{
-scroll=clamp(scroll+argument7,0,argument5);
+scroll=clamp(scroll+argument7/5,0,argument5);
 mstate=4;
 }else{
 mstate=3;
@@ -122,13 +124,14 @@ if mouse_check_button(mb_left){
 global.mousefrozen=true
 scrollsel=1
 //mouse safety
-global.mousefrozensafety=1;
-global.mousefrozensafetynumber=global.uiz_instep;
+//global.mousefrozensafety=1;
+//global.mousefrozensafetynumber=global.uiz_instep;
 
 if uiz_getmouse_y()<argument1+width then{scroll=0;}else{//begin
 if uiz_getmouse_y()>argument3-width then{scroll=argument5;}else{//end
-scroll=clamp(round(scroll-(((global.lastmousemovedy)/(nheight-barh))*argument5)),0,argument5)
 
+var oldscrollabc=scroll
+scroll=clamp((scroll-(((global.lastmousemovedy)/(nheight-barh))*argument5)),0,argument5)
 }}
 mstate=6;
 }else{
@@ -145,7 +148,7 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(round(((uiz_g
         twn_fac=0;
     }else{//busy doing an animation
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 
 //sdbm((uiz_getmouse_y()-argument1-width),nheight,(uiz_getmouse_x()-argument1-width)/nheight)
@@ -157,13 +160,22 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(round(((uiz_g
 
 //check tweening (the animation of the scrolling)
 if(twn_fac!=1){
+    if twn_fac==0 and !uiz_steps_scrollable then{
+        uiz_steps_scrollable = true;
+        ds_list_add(obj_uiZ_controller.scrollbarStepList,id);
+    }
     twn_fac = clamp(twn_fac+uiz_sc(argument9),0,1);
-    scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getfunction(twn_fac,argument8));
+    scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getFunction(twn_fac,argument8));
     argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = twn_fac;
+    if twn_fac>=1 and uiz_steps_scrollable then{
+        uiz_steps_scrollable = false;
+    }
 }
 
+var updated = false;
 
 if(scroll_old!=scroll || mstate!=mstate_last || scrollsel_old!=scrollsel){
+    updated = true;
     if scroll!=scroll_old then{
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated] = 5;
     }else{
@@ -171,15 +183,16 @@ if(scroll_old!=scroll || mstate!=mstate_last || scrollsel_old!=scrollsel){
     }
     uiz_drawscrollbar_update_view(argument0,argument1,argument2,argument3,uiz_vertical,mstate,mstate_last,argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated]);
 }
-
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_scroll] = scroll;//save scroll
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel] = scrollsel;//save scrollsel
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate] = mstate;//save scrollsel
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate_last] = mstate_last;//save scrollsel
 
-if scrollsel=1 then{
-uiz_set_cursor(cr_handpoint)
-}
+//if scrollsel=1 then{
+//uiz_set_cursor(cr_handpoint)
+//}
+
+return updated;
 
 /*
 if scrollsel=1 then{

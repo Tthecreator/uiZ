@@ -31,7 +31,6 @@ if width>=height/2 then{
 //if the button is really narrow, and the bkspr doesn't accually fit
 var wsc=width/sprite_get_width(bkspr);
 var sprpx=(height*wsc)/sprite_get_height(bkspr);
-//sdbm("doestn fit")
 //draw_sprite_part_ext(bkspr,img,0,0,sprpx,height,rx,ry,hsc,hsc,bkcol,alpha)
 //draw_sprite_part_ext(bkspr,img+2,sprite_get_height(bkspr)-sprpx,0,sprpx,height,rlx-width/2,ry,hsc,hsc,bkcol,alpha)
 //draw_sprite_pos(bkspr,img,)
@@ -45,7 +44,6 @@ draw_vertex_texture(rx,ry,0,sprpx)
 draw_vertex_texture(rlx,ry,0,0)
 draw_primitive_end()
 */
-//sdbm(sprpx,height,wsc)
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,img))
 draw_vertex_texture(rx,ry+height/2,sprpx,1)
 draw_vertex_texture(rlx,ry+height/2,sprpx,0)

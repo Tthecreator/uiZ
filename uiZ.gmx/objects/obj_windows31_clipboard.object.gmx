@@ -51,13 +51,14 @@ text=0;
           <argument>
             <kind>1</kind>
             <string>if instance_exists(text) then{
-if clipboard_has_text() then{
-
-if text.value!=clipboard_get_text() then{
-text.value=clipboard_get_text()
-uiz_fixgeneralpos(text)
-}
-}else{text.value=""}
+    if clipboard_has_text() then{
+    
+        if uiz_text_gettext(text)!=clipboard_get_text() then{
+            uiz_text_settext(text,clipboard_get_text());
+            uiz_text_recalculate(text);
+            uiz_fixgeneralpos(text);
+        }
+    }else{text.value=""}
 }
 if !instance_exists(window) then{instance_destroy()}
 </string>

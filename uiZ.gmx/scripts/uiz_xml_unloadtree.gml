@@ -1,2 +1,2 @@
 ///uiz_xml_unloadtree(tree)
-uiz_destroydslist(argument0)
+uiz_destroyDsList(argument0)

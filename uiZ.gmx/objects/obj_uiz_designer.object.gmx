@@ -35,7 +35,7 @@ game_end()}
 uiz_init()
 uiz_c(obj_uiz_des_dummy)
 ///set the loading screen
-draw_set_font(uiz_fnt_dp_15)
+draw_set_font(uiz_fnt_dp_20)
 //create frame
 var c=obj_uiZ_controller.id;
 loadingf=uiz_frame_create()
@@ -46,7 +46,7 @@ loadingf.posinframex=uiz_center
 loadingf.posinframey=uiz_center
 uiz_fixframepos(loadingf)
 startgradient=instance_create(0,0,obj_uiZ_gradientroundrect)
-uiz_setparent(startgradient,loadingf)
+uiz_setParent(startgradient,loadingf)
 startgradient.posinframex=uiz_fill
 startgradient.posinframey=uiz_fill
 startgradient.color1=c_white
@@ -54,10 +54,10 @@ startgradient.color2=c_ltgray
 startgradient.outline=0
 startgradient.depth=5
 uiz_fixgeneralpos(startgradient)
-logosprite=instance_create(0,0,obj_uiZ_drawsprite)
-logosprite.sprite=spr_uiz_designerlogo;
+logosprite=instance_create(0,0,obj_uiZ_sprite)
+logosprite.sprite_index=spr_uiz_designerlogo;
 lsv=sprite_get_width(spr_uiz_designerlogo)/sprite_get_height(spr_uiz_designerlogo)
-uiz_setparent(logosprite,loadingf)
+uiz_setParent(logosprite,loadingf)
 logosprite.width=loadingf.width/2
 logosprite.height=loadingf.width/2/lsv
 logosprite.posinframex=uiz_center
@@ -67,8 +67,8 @@ logosprite.posvaly=0.25
 logosprite.depth=-5
 uiz_fixgeneralpos(logosprite)
 
-loadcirc=instance_create(0,0,obj_uiZ_drawloadingcirc)
-uiz_setparent(loadcirc,loadingf)
+loadcirc=instance_create(0,0,obj_uiZ_loadingcircle)
+uiz_setParent(loadcirc,loadingf)
 loadcirc.width=50
 loadcirc.height=50
 loadcirc.posinframex=uiz_center
@@ -125,7 +125,7 @@ saveonexit=0;
             <string>///create the error textobject
 error="0"
 errtxt=instance_create(0,0,obj_uiZ_drawtext)
-uiz_setparent(errtxt,loadingf)
+uiz_setParent(errtxt,loadingf)
 errtxt.posinframex=fc
 errtxt.setpointx=uiz_middle
 errtxt.posvalx=0.5;
@@ -194,10 +194,10 @@ ds_list_add(global.xconstantnamelist,"pixels","dpi","factor","Y-factor","XY-fact
 ds_list_add(global.xconstantlist,     px,      dp,   fc,      fcy,       fcm,        uiz_snapright,uiz_snapleft,uiz_center,uiz_fill)
 ds_list_add(global.yconstantnamelist,"pixels","dpi","factor","X-factor","XY-factor","snap top",  "snap bottom", "center",  "fill")
 ds_list_add(global.yconstantlist,     px,      dp,   fc,      fcx,       fcm,        uiz_snaptop,uiz_snapbottom,uiz_center,uiz_fill)
-ds_list_add(global.fyconstantnamelist,"pixels","dpi","factor","X-factor","extra","same as","same as X")
-ds_list_add(global.fyconstantlist,     px,      dp,   fc,      fcx,       xtra,  saa,       saax)
-ds_list_add(global.fxconstantnamelist,"pixels","dpi","factor","Y-factor","extra","same as","same as Y")
-ds_list_add(global.fxconstantlist,     px,      dp,   fc,      fcy,       xtra,  saa,       saay)
+ds_list_add(global.fyconstantnamelist,"pixels","dpi","factor","X-factor","extra")
+ds_list_add(global.fyconstantlist,     px,      dp,   fc,      fcx,       xtra)
+ds_list_add(global.fxconstantnamelist,"pixels","dpi","factor","Y-factor","extra")
+ds_list_add(global.fxconstantlist,     px,      dp,   fc,      fcy,       xtra)
 ds_list_add(global.xyconstantnamelist,"pixels","dpi","factor")
 ds_list_add(global.xyconstantlist,     px,      dp,   fc)
 ds_list_add(global.xyconstantstringlist,     "px",      "dp",   "fc")
@@ -611,7 +611,7 @@ w.windowtext="backup"
 uiz_fixgeneralpos(w)
 wf=w
 t=instance_create(0,0,obj_uiZ_drawtextlines)
-uiz_setparent(t,wf)
+uiz_setParent(t,wf)
 t.posinframex=fc
 t.posinframey=uiz_top
 t.posvalx=0.05
@@ -631,7 +631,7 @@ this program might freeze during the copying. be patient and don't force close u
 uiz_fixgeneralpos(t)
 
 psel=instance_create(0,0,obj_uiZ_stringbox)
-uiz_setparent(psel,wf)
+uiz_setParent(psel,wf)
 psel.posinframex=fc
 psel.posinframey=fc
 psel.posvalw=0.75
@@ -642,7 +642,7 @@ psel.posvalwtype=fc
 psel.posvalhtype=fc
 uiz_fixgeneralpos(psel)
 getp=instance_create(0,0,obj_uiZ_squarebutton)
-uiz_setparent(getp,wf)
+uiz_setParent(getp,wf)
 getp.posinframex=fc
 getp.posinframey=fc
 getp.posvalw=0.14
@@ -659,7 +659,7 @@ getp.incolor=16728880
 uiz_fixgeneralpos(getp)
 
 door=instance_create(0,0,obj_uiZ_checkbox)
-uiz_setparent(door,wf)
+uiz_setParent(door,wf)
 door.posinframex=fc
 door.posinframey=fc
 door.posvalw=0.1
@@ -671,7 +671,7 @@ door.posvalhtype=fc
 door.value=1
 uiz_fixgeneralpos(door)
 doortext=instance_create(0,0,obj_uiZ_drawtextlines)
-uiz_setparent(doortext,wf)
+uiz_setParent(doortext,wf)
 doortext.posinframex=fcy
 doortext.posinframey=fc
 doortext.posvalw=0.75
@@ -686,7 +686,7 @@ uiz_fixgeneralpos(doortext)
 //bcn=instance_create(0,0,obj_uiZ_sprbutton)
 bcn=uiz_easybutton_create(spr_uiz_bigbutton1_2)
 //bcn.sprite=spr_uiz_bigbutton1_2
-uiz_setparent(bcn,wf)
+uiz_setParent(bcn,wf)
 bcn.posinframey=fc
 bcn.posvaly=0.95
 bcn.setpointy=uiz_bottom
@@ -1231,8 +1231,8 @@ errtxt.text="an error occured while checking and copying files: "+error
 uiz_fixgeneralpos(errtxt)
 alarm[2]=3
 //alarm[0]=3
-uiz_destroydslist(uiznewdeslist)
-uiz_destroydslist(uiznewversionlist)
+uiz_destroyDsList(uiznewdeslist)
+uiz_destroyDsList(uiznewversionlist)
 }else{
 //dbm(ds_list_size(uiznewdeslist))
 if ds_list_size(uiznewdeslist)&gt;0 then{
@@ -1402,8 +1402,8 @@ errtxt.text="an error occured while checking and copying files: "+error
 uiz_fixgeneralpos(errtxt)
 alarm[2]=3
 //alarm[0]=3
-uiz_destroydslist(uiznewdeslist)
-uiz_destroydslist(uiznewversionlist)
+uiz_destroyDsList(uiznewdeslist)
+uiz_destroyDsList(uiznewversionlist)
 }else{
 if ds_list_size(uiznewdeslist)&gt;0 then{
 alarm[0]=1
@@ -1529,19 +1529,19 @@ ini_close()
             <kind>1</kind>
             <string>///setup frames
 //destroy the ui
-uiz_destroyobject(loadingf)
+uiz_destroyObject(loadingf)
 uiz_setwindowsize(display_get_width()*0.9,display_get_height()*0.9)
 //uiz_window_center()
 //window_set_position(0,0)
 
 //create new ui
 fset=uiz_frameset_create()
-a=uiz_framedivisionhorizontal(fset,1,dp,1,xtra)
+a=uiz_frameset_divide_horizontal(fset,1,dp,1,xtra)
 functionbar=a.frameat[0]
 mainframe1=a.frameat[1]
 
 
-b=uiz_framedivisionvertical(mainframe1,2.5,dp,1,xtra,2.5,dp,0.2,dp)
+b=uiz_frameset_divide_vertical(mainframe1,2.5,dp,1,xtra,2.5,dp,0.2,dp)
 //b.minsizeinframeset=0.8
 b.minsizeinframeset=0.1
 b.minsizeinframesetvaltype=fc
@@ -1556,7 +1556,7 @@ rightscrollbar.framesetbar=false;
 
 //create right frame
 rightbarframe=uiz_c(obj_uiZ_frame);
-uiz_setparent(rightbarframe,rightbar);
+uiz_setParent(rightbarframe,rightbar);
 rightbarframe.posinframex=uiz_fill;
 rightbarframe.posinframey=px;
 rightbarframe.posvaly=0;
@@ -1564,13 +1564,13 @@ rightbarframe.posvalhtype=px;
 rightbarframe.posvalh=50;
 
 gridscrollbar=uiz_c(obj_uiZ_framescrollbar)
-uiz_setparent(gridscrollbar,rightscrollbar)
+uiz_setParent(gridscrollbar,rightscrollbar)
 gridscrollbar.posinframex=uiz_fill;
 gridscrollbar.posinframey=uiz_fill;
 gridscrollbar.frame=rightbar;
 uiz_fixgeneralpos(gridscrollbar)
 
-c=uiz_framedivisionhorizontal(leftbar,1,xtra,1,xtra)
+c=uiz_frameset_divide_horizontal(leftbar,1,xtra,1,xtra)
 c.framesetbar=1
 c.minsizeinframeset=0.05
 c.minsizeinframesetvaltype=fc
@@ -1583,7 +1583,7 @@ c.maxsizeinframeset=3.2
 c.maxsizeinframesetvaltype=dp
 
 /*
-d=uiz_framedivisionhorizontal(mainframe2,0.3,dp,1,xtra,2.5,dp)
+d=uiz_frameset_divide_horizontal(mainframe2,0.3,dp,1,xtra,2.5,dp)
 d.minsizeinframeset=0.6
 d.minsizeinframesetvaltype=fc
 d.framesetbar=1
@@ -1591,11 +1591,11 @@ tabbar=d.frameat[0]
 tabbar.framesetbar=0
 mainframe4=d.frameat[1]
 //mainframe4.framesetbar=1
-f=uiz_framedivisionhorizontal(mainframe4,1,px,1,xtra)
+f=uiz_frameset_divide_horizontal(mainframe4,1,px,1,xtra)
 tf=f.frameat[0]
 taf=f.frameat[1]
 */
-d=uiz_framedivisionhorizontal(mainframe2,1,xtra,2.5,dp)
+d=uiz_frameset_divide_horizontal(mainframe2,1,xtra,2.5,dp)
 d.minsizeinframeset=0.6
 d.minsizeinframesetvaltype=fc
 d.framesetbar=1
@@ -1604,7 +1604,7 @@ d.framesetbar=1
 mainframe4=d.frameat[0]
 mainframe3=d.frameat[1]
 
-f=uiz_framedivisionhorizontal(mainframe4,1,px,1,xtra)
+f=uiz_frameset_divide_horizontal(mainframe4,1,px,1,xtra)
 tf=f.frameat[0]
 taf=f.frameat[1]
 
@@ -1613,7 +1613,7 @@ f.framesetbar=1
 
 
 
-//e=uiz_framedivisionvertical(mainframe3,1,xtra,1,xtra)
+//e=uiz_frameset_divide_vertical(mainframe3,1,xtra,1,xtra)
 
 //log=e.frameat[0]
 //log.framesetbar=1
@@ -1622,7 +1622,7 @@ f.framesetbar=1
 uiz_fixframesetpos(fset)
 
 af=instance_create(0,0,obj_uiZ_surfaceholder)
-uiz_setparent(af,taf)
+uiz_setParent(af,taf)
 af.posinframex=uiz_fill
 //af.posinframey=uiz_fill
 af.posinframey=px
@@ -1653,7 +1653,7 @@ uiz_fixgeneralpos(af)
             <string>///setup functionbar
 functions=instance_create(0,0,obj_uiZ_functionbar)
 //functionbar.framesetbar=1
-uiz_setparent(functions,functionbar)
+uiz_setParent(functions,functionbar)
 uiz_fixgeneralpos(functions)
 //for(var i=0;i&lt;=100;i++){
 //uiz_functionbar_additem(functions,"heldlasfasdfasdfasdfo",spr_uiZ_gear,0,0,irandom(c_white),"HELLOWafas",0,1)
@@ -1692,7 +1692,7 @@ objecttreelist.usesprlist=uizsprlist
 objecttreelist.useimglist=uizimglist
 objecttreelist.posinframex=uiz_fill
 objecttreelist.posinframey=uiz_static
-uiz_setparent(objecttreelist,objecttree)
+uiz_setParent(objecttreelist,objecttree)
 uiz_fixgeneralpos(objecttreelist)
 </string>
           </argument>
@@ -1766,7 +1766,7 @@ show_debug_message("[uiz:INFO] adding object: "+string(objstr)+" of index: "+str
 uiz_des_updateset(o)
 
 if par=-1 then{
-//uiz_setparent(o,af)
+//uiz_setParent(o,af)
 }else{
 //parent setting code to come
 }
@@ -1804,7 +1804,7 @@ gmtreelist.useimglist=afimglist
 gmtreelist.posinframex=uiz_fill
 gmtreelist.posinframey=uiz_static
 gmtreelist.keepselection=1
-uiz_setparent(gmtreelist,gmtree)
+uiz_setParent(gmtreelist,gmtree)
 uiz_fixgeneralpos(gmtreelist)
 </string>
           </argument>
@@ -1841,7 +1841,7 @@ ds_list_add(postypelistlink,px)
 ds_list_add(postypelistlink,dp)
 ds_list_add(postypelistlink,fc)
 
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 if ds_list_size(afobjlist)&gt;0 then{
 afobjlist[| 0].alarm[0]=1
 global.selobj=-1
@@ -1932,7 +1932,7 @@ ini_write_string("backup","path",backupfolder)
 ini_write_string("backup","latest",time)
 ini_write_string("backup","first",time)
 ini_close()
-uiz_destroyobject(w)
+uiz_destroyObject(w)
 backupscreenopen=0
 errtxt.text="backups have been made."
 uiz_fixgeneralpos(errtxt);
@@ -2041,9 +2041,9 @@ if viewmenu.updated=1 then{
 //sdbm("updating viewmenu")
 view=clamp(viewmenu.selected,0,2)
 switch(view){
-case 0: uiz_framedivisionsetvalue(f,1,1,xtra)uiz_framedivisionsetvalue(f,0,0,px) uiz_setparent(af,taf) af.posvalh=f.height uiz_fixgeneralpos(af) break;
-case 1: uiz_framedivisionsetvalue(f,0,1,xtra)uiz_framedivisionsetvalue(f,1,0,px) uiz_setparent(af,taf) af.posvalh=0 uiz_fixgeneralpos(af) break;
-case 2: uiz_framedivisionsetvalue(f,0,1,xtra)uiz_framedivisionsetvalue(f,1,0,px) uiz_setparent(af,tf) af.posvalh=f.height uiz_fixgeneralpos(af) break;
+case 0: uiz_framedivisionsetvalue(f,1,1,xtra)uiz_framedivisionsetvalue(f,0,0,px) uiz_setParent(af,taf) af.posvalh=f.height uiz_fixgeneralpos(af) break;
+case 1: uiz_framedivisionsetvalue(f,0,1,xtra)uiz_framedivisionsetvalue(f,1,0,px) uiz_setParent(af,taf) af.posvalh=0 uiz_fixgeneralpos(af) break;
+case 2: uiz_framedivisionsetvalue(f,0,1,xtra)uiz_framedivisionsetvalue(f,1,0,px) uiz_setParent(af,tf) af.posvalh=f.height uiz_fixgeneralpos(af) break;
 }
 uiz_fixframesetpos(fset)
 }
@@ -2132,7 +2132,7 @@ uiz_destroyobject_animation(global.windowexists,uiz_exponential_in,uiz_exponenti
 rightbar.addy=0;
 gridscrollbar.scroll=0;
 //uiz_des_updateset(aflist[| gmtreelist.sel])
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 //dbm(afobjlist[| gmtreelist.sel])
 afobjlist[| gmtreelist.sel].alarm[0]=1
 global.selobj=-1
@@ -2227,7 +2227,7 @@ uiobjects++
 ini_write_real("general","uiobjects",uiobjects)
 ini_close();
 uiz_des_updateset(o)
-uiz_setparent(o,af)
+uiz_setParent(o,af)
 uiz_fixgeneralpos(o)
 
 
@@ -2239,7 +2239,7 @@ if global.windowexists&gt;0 and instance_exists(global.windowexists) then{
 uiz_destroyobject_animation(global.windowexists,uiz_exponential_in,uiz_exponential_in,uiz_exponential_in,0.1)
 }
 //uiz_des_updateset(aflist[| gmtreelist.sel])
-uiz_destroyobject_notself(rightbarframe)
+uiz_destroyObject_notself(rightbarframe)
 //dbm(afobjlist[| gmtreelist.sel])
 afobjlist[| gmtreelist.sel].alarm[0]=1
 global.selobj=-1

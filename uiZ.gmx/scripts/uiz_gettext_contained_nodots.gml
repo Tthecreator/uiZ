@@ -1,4 +1,4 @@
-///uiz_gettext_contained_nodots(string,width)
+///uiz_getText_contained_noDots(string, width)
 /*
 This scripts handles SINGLE LINE strings.
 It makes breaks the string up so that it doesn't exceed the width given by cutting it off at the end without dots.

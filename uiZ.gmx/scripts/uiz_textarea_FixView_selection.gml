@@ -1,3 +1,4 @@
+//uiz_textarea_FixView_selection(downward)
 if doscroll=true then{
 var scrbx = ilx-scblwidth;
 }else{
@@ -25,15 +26,25 @@ if fhl>ily then{//if outside bounds on bottom
 
 if selectionMinLine==selectionMaxLine then{//single line selection
 
-    uiz_updater_FixViews_area(selectionMinX,fhf,selectionMaxX,fhl);
+    
+    /*if argument0 then{
+        uiz_updater_FixViews_area(selectionMinX,fhf,scrbx,fhl);
+        uiz_updater_FixViews_area(ix,fhl,scrbx,ily);
+    }else{*/
+        uiz_updater_FixViews_area(selectionMinX,fhf,selectionMaxX,fhl);
+    //}
 }else{//multiline selection
 
     uiz_updater_FixViews_area(selectionMinX,fhf,scrbx,fhl);//first line
     
-    if (selectionMaxLine-selectionMinLine)>1 then{//there are more than 2 lines selection
-        uiz_updater_FixViews_area(ix,fhl,scrbx,lhf);//first line
+    if argument0 then{
+        uiz_updater_FixViews_area(ix,fhl,scrbx,ily);
+    }else{
+        if (selectionMaxLine-selectionMinLine)>1 then{//there are more than 2 lines selection
+            uiz_updater_FixViews_area(ix,fhl,scrbx,lhf);//first line
+        }
+        
+        uiz_updater_FixViews_area(ix,lhf,selectionMaxX,lhl);//last line
     }
-    
-    uiz_updater_FixViews_area(ix,lhf,selectionMaxX,lhl);//last line
 }
 

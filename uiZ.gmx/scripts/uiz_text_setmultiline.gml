@@ -1,4 +1,4 @@
-///uiz_text_setcolor(instanceid,enable multi line support[false])
+///uiz_text_setmultiline(instanceid,enable multi line support[false])
 //enable or disable compatability for multiple lines in your text object.
 //enabling multiple lines will make it a little bit slower.
 //this needs to be turned on whenever you are using one or more newlines in your string.

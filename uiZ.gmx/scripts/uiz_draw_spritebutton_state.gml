@@ -1,4 +1,4 @@
-///uiz_draw_spritebutton_state(x1,y1,x2,y2,color,oncolor,incolor,sprite,alpha,state)
+///uiz_draw_spriteButton_state(x1,y1,x2,y2,color,oncolor,incolor,sprite,alpha,state)
 /*
 Draws a quick button without any text, at specified position.
 Color is the normal color
@@ -12,17 +12,19 @@ State can be a number from 0 to 2 and are equivalent to the following options on
 1: mouse over state
 2: mouse in state
 
+tip: Use this together with uiz_mouse_getStateWithin
+
 */
-switch(argument9){
+switch(uiz_positify(argument9)){
 case 0:
 var color=argument4
 var spr=0;
 break;
-case 1:
+case 1: case uiz_mousereleased:
 var color=argument5
 var spr=1;
 break;
-case 2:
+case 2: case uiz_mousepressed:
 var spr=2;
 var color=argument6
 break;

@@ -1,7 +1,11 @@
+var arr;
+arr[0]=argument0;
 var t = argument0;
 var i=0;
 with(t) {
-    var ow = width - scrollbarw;
+    var ow = (rlx-rx) - scrollbarw;//we don't use width here, to make this object compatible with framesets. (rx and rlx aren't set but width is)
+    var orx = rx;
+    var orlx = rlx;
 
     uiz_fix_Base();
     if ds_exists(maingrid, ds_type_grid) then {
@@ -26,13 +30,12 @@ with(t) {
         usegrid = true;
 
         scrollbarw = uiz_getposx_self(scrollbarwidth, scrollbarwidthtype);
-        scrollheight = uiz_gridlist_getheight() * h - height;
+        scrollheight = (1+uiz_gridlist_getheight()) * h - height;//+1 for topbar -height to offset visible area
         if scrollheight < scroll then {
             scroll = scrollheight;
-            uiz_drawscrollbar_setvalue(scroll_intern, scroll);
+            uiz_drawscrollbar_setValue(scroll_intern, scroll);
         }
-
-        if scrollheight > height and enablescroll = true then {
+        if scrollheight > 0 and enablescroll = true then {
             //enable scrollbar
             scrolllines = max(0, (h + lsz * nsz - height) / lsz)
             doscroll = true;
@@ -140,15 +143,53 @@ with(t) {
             }
         }
 
+        //check snapmouse
+        if snapmouse!=-1 and (orx!=rx or orlx!=rlx) then{
+            /*
+            snapmousepos=uiz_getmouse_x()-rx;
+            snapmousesize=sizelist[|snapmouse];
+            snapmouseothersize=sizelist[|snapmouse+1];
+            cur_wat = rx;
+            for(var i=0;i<snapmouse;++i){
+                cur_wat += sizelist[|i];
+            }
+            cur_nwat = cur_wat + sizelist[|snapmouse];
+            cur_wat_old = cur_nwat;
+            cur_nwat_old = cur_wat_old + sizelist[|snapmouse+1]
+            */
+            
+            snapmouse=-1;
+            uiz_mouse_unFreeze()
+            uiz_set_cursor(cr_default);
+            selectedy=-1;
+        }
+        
+        selectedx=-1;
+        selectedy=-1;
+        cur_wat=-1;
+        cur_hat=-1;
+        cur_nwat=-1;
+        cur_nhat=-1;
+        selectedx_old=-1;
+        selectedy_old=-1;
 
 
         if doscroll = true then {
-            uiz_drawscrollbar_vertical_step(rlx - scrollbarw + 1, ry, rlx, rly, scroll_intern, scrollheight, true, h, scrollbarAnimation, scrollbarAnimationTime);
-            scroll = uiz_drawscrollbar_getvalue(scroll_intern)
+            //uiz_drawscrollbar_vertical_step(rlx - scrollbarw + 1, ry, rlx, rly, scroll_intern, scrollheight, true, h, scrollbarAnimation, scrollbarAnimationTime);
+            scroll = uiz_drawscrollbar_getValue(scroll_intern);
+            if scroll>scrollheight then{
+                scroll = scrollheight;
+                uiz_drawscrollbar_setValue(scroll_intern,scrollheight);
+            }
+            if scroll<0 then{
+                scroll = 0;
+                uiz_drawscrollbar_setValue(scroll_intern,0);
+            }
             uiz_gridlist_startfinish();
         } else {
             scroll_start = 0;
             scroll_finish = nsz;
         }
+        uiz_updater_FixViews();
     }
 }

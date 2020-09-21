@@ -9,11 +9,13 @@ with(t) {
 
 
     if (scrollx or scrolly) then {
-
-        mscrollbarx = -uiz_getmaxxscrollinframe(id)
+        var omscrollbarx = mscrollbarx;
+        var omscrollbary = mscrollbary;
+        mscrollbarx = -uiz_getMaxXScrollInObject(id)
         if addx < mscrollbarx then {
-            cx = true;
-            addx = clamp(addx, mscrollbarx, 0)
+            addx = clamp(addx, mscrollbarx, 0);
+            uiz_drawscrollbar_setValue(uscrollx,-addx);
+            uiz_drawscrollbar_update(uscrollx,rx,ily,rlx-scrollbarcorner_x,rly,uiz_horizontal)
         }
 
         if mscrollbarx < 0 and scrollbarx = true then {
@@ -21,10 +23,12 @@ with(t) {
             var sgm_y = max(0, min(uiz_getposy_self(scrollbarsize, scrollbarsizetype), height - 2));
             end_bottomframemargin += sgm_y;
         }
-        mscrollbary = -uiz_getmaxyscrollinframe(id)
+        mscrollbary = -uiz_getMaxYScrollInObject(id);
+        
         if addy < mscrollbary then {
-            cy = true;
             addy = clamp(addy, mscrollbary, 0)
+            uiz_drawscrollbar_setValue(uscrolly,-addy);
+            uiz_drawscrollbar_update(uscrolly,ilx,ry,rlx,rly-scrollbarcorner_y,uiz_vertical);
         }
         if mscrollbary < 0 and scrollbary = true then {
             var sgm_x = max(0, min(uiz_getposx_self(scrollbarsize, scrollbarsizetype), width - 2));
@@ -37,7 +41,15 @@ with(t) {
             scrollbarcorner_y = sgm_y;
         }
 
-
+        uiz_frame_tellListeners();
+        if (omscrollbarx != mscrollbarx or omscrollbary != mscrollbary) then{
+            uiz_updater_FixViews();
+            uiz_fix_Base_iValues()
+            uiz_fixChildren(id, true);
+        }else{
+            uiz_fix_Base_iValues()
+        }
+    }else{
+        uiz_fix_Base_iValues()
     }
-    uiz_fix_Base_iValues()
 }

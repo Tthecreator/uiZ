@@ -26,7 +26,7 @@ var bf=(t-atleft)/(atright-atleft)
 var diff=0
 //if valleft>=valright then{betweenfactor=1-betweenfactor}
 //get diffrence in values
-diff=uiz_animation_getfunction(bf,a.uiz_apointtype[aid,atleftpoint])
+diff=uiz_animation_getFunction(bf,a.uiz_apointtype[aid,atleftpoint])
 var valdelta=abs(valright-valleft)
 //return right value
 //ret=valdelta*betweenfactor

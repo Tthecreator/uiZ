@@ -68,7 +68,7 @@ str=""
           <argument>
             <kind>1</kind>
             <string>if instance_exists(destroyframe) then{
-kmouseover=uiz_mouse_isonobject_leftcheck(id)
+kmouseover=uiz_mouse_isOver_object_leftCheck(id)
 if indestroy&gt;0 then{indestroy--};
 if kmouseover=2 then{
 if destroyframe!=0 then{
@@ -76,8 +76,10 @@ indestroy=indestroysteps;
 indestroying=1
 if box&gt;0 and instance_exists(box) then{global.uiz_popupreturnstring=box.value;}
 //if 
-//uiz_destroyobject(destroyframe)
-uiz_destroyobject_animation(destroyframe,window.destroyxfunction,window.destroyyfunction,window.destroyafunction,window.destroyspeed)
+//uiz_destroyObject(destroyframe)
+//uiz_destroyobject_animation(destroyframe,window.destroyxfunction,window.destroyyfunction,window.destroyafunction,window.destroyspeed)
+uiz_destroyObject_animation(destroyframe,uiz_zero,uiz_zero,uiz_smoothstep,window.destroyspeed)
+uiz_animation_updateChildren(destroyframe, true);
 
 }
 if box&gt;0 and instance_exists(box) then{str=box.value;}
@@ -87,8 +89,31 @@ destroyframe.indestroy=indestroy;
 destroyframe.indestroying=indestroying;
 destroyframe.str=str;
 }else{
-uiz_destroyobject(id)
+uiz_destroyObject(id)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>uiz_updater_FixViews();
 </string>
           </argument>
         </arguments>
@@ -135,13 +160,13 @@ uiz_destroyobject(id)
           <argument>
             <kind>1</kind>
             <string>if uiz_cntn() then{
-draw_sprite_ext(sprite,kmouseover+spraddto,rx,ry,width/sprite_get_width(sprite),height/sprite_get_height(sprite),0,color,image_alpha)
+draw_sprite_ext(sprite,kmouseover+spraddto,rx,ry,width/sprite_get_width(sprite),height/sprite_get_height(sprite),0,color,alpha);
 if text!="" then{
 draw_set_alpha(1)
 draw_set_color(textcolor)
 draw_set_valign(fa_middle)
 draw_set_halign(fa_center)
-draw_text(rx+width/2,ry+height/2,uiz_gettext_contained(text,width))
+draw_text(rx+width/2,ry+height/2,uiz_getText_contained(text,width))
 //draw_text(rx+width/2,ry+height/2,"penis")
 draw_set_valign(fa_top)
 draw_set_halign(fa_left)

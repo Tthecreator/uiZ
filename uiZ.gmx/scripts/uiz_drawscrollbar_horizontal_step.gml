@@ -1,5 +1,5 @@
 ///uiz_drawscrollbar_horizontal_step(rx,ry,rlx,rly,scroll,scrolllines,middlemousescroll,scrollspeed,animation,animationtime)
-//return new value of scroll;
+//return if the scrollbar needs to redraw;
 //object from which this is called from does need to be a uiz object, due to mouse checks.
 /*
 Will draw a scrollbar.
@@ -65,7 +65,7 @@ var scrollsel_old = scrollsel;
 var twn_fac = argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor];
 
 //handle scrolling
-if global.mouseoverobject=id and argument6=true then{
+if global.mouseoverscrollable=id and argument6=true then{
 if mouse_wheel_down() then{
 //scroll=clamp(scroll+argument7,0,argument5)
 if twn_fac=1 then{//not busy doing an animation
@@ -75,7 +75,7 @@ if twn_fac=1 then{//not busy doing an animation
     }else{//busy doing an animation
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]+argument7,0,argument5);
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 }
 if mouse_wheel_up() then{
@@ -87,12 +87,12 @@ if mouse_wheel_up() then{
     }else{//busy doing an animation
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]-argument7,0,argument5);
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 }
 }
 //handle mouse movement on the bar
-if (global.mouseoverobject=id or global.mouseoverscrollframe=id) and uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2 and (scrollsel=1 or (uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3)) then{
+if (global.mouseoverobject=id or global.mouseoverscrollable=id) and uiz_getmouse_x()>argument0 and uiz_getmouse_x()<argument2 and (scrollsel=1 or (uiz_getmouse_y()>argument1 and uiz_getmouse_y()<argument3)) then{
 //point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),argument0,argument1,argument2,argument3) then{
 //left button
 //sdbm("scroll left almost",uiz_getmouse_x(),argument0,argument0+height,height)
@@ -129,7 +129,7 @@ global.mousefrozensafetynumber=global.uiz_instep;
 
 if uiz_getmouse_x()<argument0+height then{scroll=0;}else{//begin
 if uiz_getmouse_x()>argument2-height then{scroll=argument5;}else{//end
-scroll=clamp(round(scroll-(((global.lastmousemovedx)/(nwidth-barw))*argument5)),0,argument5)
+scroll=clamp((scroll-(((global.lastmousemovedx)/(nwidth-barw))*argument5)),0,argument5)
 
 }}
 mstate=6;
@@ -147,7 +147,7 @@ if scrollsel=1 then{scrollsel=0;global.mousefrozen=0;global.mousefrozensafety=0;
         twn_fac=0;
     }else{//busy doing an animation
         var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-        twn_fac=uiz_animation_revertfunction(animfac,argument8);
+        twn_fac=uiz_animation_revertFunction(animfac,argument8);
     }
 
 
@@ -160,17 +160,20 @@ if scrollsel=1 then{scrollsel=0;global.mousefrozen=0;global.mousefrozensafety=0;
 //check tweening (the animation of the scrolling)
 if(twn_fac!=1){
     twn_fac = clamp(twn_fac+uiz_sc(argument9),0,1);
-    scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getfunction(twn_fac,argument8));
+    scroll = lerp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from],argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],uiz_animation_getFunction(twn_fac,argument8));
     argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_factor] = twn_fac;
 }
 
+var updated = false;
+
 if(scroll_old!=scroll || mstate!=mstate_last || scrollsel_old!=scrollsel){
+    updated = true;
     if scroll!=scroll_old then{
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated] = 5;
     }else{
         argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated] = 3;
     }
-    uiz_drawscrollbar_update_view(argument0,argument1,argument2,argument3,uiz_vertical,mstate,mstate_last,argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated]);
+    uiz_drawscrollbar_update_view(argument0,argument1,argument2,argument3,uiz_horizontal,mstate,mstate_last,argument4[@uiz_drawscrollbar_struct.uiz_dsb_updated]);
 }
 
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_scroll] = scroll;//save scroll
@@ -178,6 +181,8 @@ argument4[@uiz_drawscrollbar_struct.uiz_dsb_scrollsel] = scrollsel;//save scroll
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate] = mstate;//save scrollsel
 argument4[@uiz_drawscrollbar_struct.uiz_dsb_mstate_last] = mstate_last;//save scrollsel
 
-if scrollsel=1 then{
-uiz_set_cursor(cr_handpoint)
-}
+//if scrollsel=1 then{
+//uiz_set_cursor(cr_handpoint)
+//}
+
+return updated;

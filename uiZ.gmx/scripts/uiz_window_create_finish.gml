@@ -1,18 +1,18 @@
 ///uiz_window_create_finish()
 fs=uiz_frameset_create()
-uiz_setparent(fs,id)
+uiz_setParent(fs,id)
 
 
 uiz_framesetfixparent(fs)
-h=uiz_framedivisionhorizontal(fs,barsize,barsizevaltype,1,xtra)
+h=uiz_frameset_divide_horizontal(fs,barsize,barsizevaltype,1,xtra)
 uiz_fixgeneralpos(fs)
 topbar=h.frameat[0]
-h2=uiz_framedivisionvertical(topbar,1,xtra,barsize*(button_cross+button_maximize+button_minimize),barsizevaltype)
+h2=uiz_frameset_divide_vertical(topbar,1,xtra,barsize*(button_cross+button_maximize+button_minimize),barsizevaltype)
 buttons=h2.frameat[1]
 //the cross button
 if button_cross=1 then{
 cross=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(cross,buttons)
+uiz_setParent(cross,buttons)
 cross.posinframex=fc
 cross.posvalx=2/3
 cross.posvalwtype=fcy
@@ -25,7 +25,7 @@ uiz_fixgeneralpos(cross)
 //the maximize button
 if button_maximize=1 then{
 maxim=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(maxim,buttons)
+uiz_setParent(maxim,buttons)
 maxim.posinframex=fc
 maxim.posvalx=2/3-(1/3)*button_cross
 //maxim.width=buttons.height
@@ -40,7 +40,7 @@ uiz_fixgeneralpos(maxim)
 //the minimize button
 if button_minimize=1 then{
 minim=uiz_easybutton_create(spr_uiZ_windowbuttons)
-uiz_setparent(minim,buttons)
+uiz_setParent(minim,buttons)
 minim.posinframex=fc
 minim.posvalx=2/3-(1/3)*button_cross-(1/3)*button_maximize
 //minim.width=buttons.height

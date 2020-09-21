@@ -15,8 +15,6 @@ for(var i=selectionMinLine+1;i<selectionMaxLine;++i){
     ds_list_delete(textList,selectionMinLine+1);
 }
 
-
-
 }
 
 uiz_textarea_selectionToLeftCursor();

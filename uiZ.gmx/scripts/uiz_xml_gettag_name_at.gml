@@ -1,7 +1,8 @@
 ///uiz_xml_gettag_name_at(file,at)
-//deismantel the tagname
+//gets the name of a tag at a specific handle
+//<example test="something"> would have the name "example"
 var f=argument0;
-var m=obj_uiz_xmlparser;
+var m=obj_uiz_xmlparser.id;
 var l=m.filelistl[| f];
 var d=m.filelistd[| f];
 var v=m.filelistv[| f];

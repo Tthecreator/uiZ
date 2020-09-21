@@ -8,5 +8,10 @@ var str=""
 for(var i=0;i<argument_count;i++){
 str=str+string(argument[i])+"#"
 }
-show_debug_message(str)
+//if live_enabled then{
+    //netlog(str);
+//}else{
+    show_debug_message(str)
+//}
+
 //show_message(str)

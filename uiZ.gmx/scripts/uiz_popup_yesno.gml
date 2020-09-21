@@ -17,17 +17,17 @@ Returns the id of a windowid or frameid, depending on the value of argument 2(bl
 
 How to customize even further?
 The window exists out of the following objects:
--obj_uiZ_windowholder;
--obj_uiZ_drawtextlines;
+-obj_uiZ_window
+-obj_uiZ_text;
 -obj_uiZ_square if block background is on.
 -two "obj_uiZ_3waybutton", one for "yes" and one for "no"
 
 In the examples below, "r" refers to the returned item by uiz_popup_ok().
-The obj_uiZ_windowholder object can always be accessed trough "r.window".
+The obj_uiZ_window object can always be accessed trough "r.window".
 The obj_uiZ_drawtextlines object can always be accessed trough "r.textlines".
 The obj_uiZ_square can be accessed trough "r.square", but only if argument2 is true.
 The yes and no obj_uiz_3waybuttons can be accessed trough "r.nobutton" and "r.yesbutton".
-The mainframe of the window can always be accessed trough "r.window.mainframe"
+The window can always be accessed trough "r.window"
 Look at the other articles on how these objects work, and how they can be customized.
 There is no obj_uiZ_popupok object for a yes/no window.
 
@@ -45,10 +45,10 @@ CODE A
 }"
 
 CODE A changes depending on whether you are using a background (if argument2=true). if argument2=true then this code is used:
-uiz_destroyobject_animation(r,uiz_zero,uiz_zero,uiz_acceldecel,1)
-uiz_destroyobject_animation_default(r.window)
+uiz_destroyObject_animation(r,uiz_zero,uiz_zero,uiz_acceldecel,1)
+uiz_destroyObject_animation_default(r.window)
 else this code is used(argument2=false):
-uiz_destroyobject_animation_default(r)
+uiz_destroyObject_animation_default(r)
 
 
 */
@@ -57,56 +57,57 @@ if argument[2]=1 then{
 var f=uiz_c(obj_uiZ_frame);
 f.posinframex=uiz_fill
 f.posinframey=uiz_fill
-f.depth=-1000000
+//f.depth=-1000000
+uiz_depth_foreground(f);
 uiz_compatibility_popupfix(f)
 uiz_fixgeneralpos(f)
 var p=uiz_c(obj_uiZ_square);
-uiz_setparent(p,f)
+uiz_setParent(p,f)
 p.posinframex=uiz_fill
 p.posinframey=uiz_fill
 p.color=c_black
 p.image_alpha=0.3;
 //p.adddepth=1000000
 uiz_fixgeneralpos(p)
-//uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_sin_inout,0.01)
-uiz_setopeninganimation(p,uiz_one,uiz_one,uiz_straight,0.05)
+//uiz_animation_setOpeningAnimation(p,uiz_one,uiz_one,uiz_sin_inout,0.01)
+uiz_animation_setOpeningAnimation(p,uiz_one,uiz_one,uiz_straight,0.05,false)
 }
-var dx=uiz_todpix(string_width(argument[0]))
-var dy=uiz_todpiy(string_height(argument[0]))
+var dx=uiz_pxToDpi(string_width(argument[0]))
+var dy=uiz_pxToDpi(string_height(argument[0]))
 var w=uiz_window_create_animation(dx+0.5,dp,dy+1,dp,uiz_cubic_in,uiz_cubic_out,uiz_one,0.1);
-w.addwindowdepth=100000
 w.addwindowmydepth=100000
 /*
 if argument[2]=1 then{
-//uiz_setparent(w,f)
+//uiz_setParent(w,f)
 }else{
 //w.adddepth+=500000
 }
 */
-if argument[2]=1 then{uiz_setparent(w,p)}
+if argument[2]=1 then{uiz_setParent(w,p)}
 w.button_maximize=0;
 w.button_minimize=0;
 w.button_cross=0;
 w.contain=3
 w.windowtext=argument[1]
+uiz_window_setResizable(w,false);
 uiz_fixgeneralpos(w)
 var wf=w
-var t=instance_create(0,0,obj_uiZ_drawtextlines)
-uiz_setparent(t,wf)
+var t=instance_create(0,0,obj_uiZ_text)
+uiz_setParent(t,wf)
 t.posinframex=uiz_fill
 t.posinframey=uiz_snaptop
 //t.posinframey=uiz_fill
 t.posvalhtype=dpmin
-t.posvalh=0.5
-t.center=1
-//t.posvalhtype=dp
-//t.posvalh=1
-t.text=argument[0]
+t.posvalh=0.3
+t.halign=fa_center;
+t.valign=fa_center;
+uiz_text_setmultiline(t, true);
+uiz_text_settext(t, argument[0]);
 if argument_count=4 then{t.font=argument[3]}
 uiz_fixgeneralpos(t)
 //no
 var n=instance_create(0,0,obj_uiZ_3waybutton)
-uiz_setparent(n,wf)
+uiz_setParent(n,wf)
 n.color=c_red
 n.posinframey=uiz_snapbottom
 n.posinframex=fc
@@ -116,14 +117,14 @@ n.posvalh=0.3
 n.posvalwtype=fc
 n.posvalw=0.275
 n.text="no"
-n.bottomframemargin=4
+//n.bottomframemargin=4
 uiz_fixgeneralpos(n)
 //yes
 var yes=instance_create(0,0,obj_uiZ_3waybutton)
-uiz_setparent(yes,wf)
+uiz_setParent(yes,wf)
 yes.color=c_green
 yes.posinframey=uiz_snapbottom
-yes.bottomframemargin=4
+//yes.bottomframemargin=4
 yes.posinframex=fc
 yes.posvalx=0.575
 yes.posvalhtype=dp

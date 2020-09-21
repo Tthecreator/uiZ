@@ -1,4 +1,4 @@
-///uiz_gridsize_row(grid,row,size,sizetype{px.dp.xtra.fc})
+///uiz_gridSize_row(grid,row,size,sizetype{px.dp.xtra.fc})
 /*
 Allows you to set the size of a certain row or colom within a grid structure.
 For this, you need to know the id of the already existing grid, which row/col you want to edit and the new size.

@@ -41,7 +41,7 @@ ix=0;
 iy=0;
 ilx=0;
 ily=0;
-doubleclicktime=0.75//in seconds
+doubleclicktime=0.5//in seconds
 doubleclickcount=0;
 global.colorscreen=noone
 addx=0
@@ -71,36 +71,35 @@ global.lockwindowresel=0;
 global.lockwindowreseltime=3;
 global.uiz_stepNumber = 0;
 
+global.uiz_shader_contain = -1;
+global.uiz_shader_contain_hue = -1;
+global.uiz_shader_contain_blur = -1;
+
 uiz_dpi_init();
 UIZ_FONT();
 
 children=ds_list_create()
+if (os_browser==browser_opera || os_browser==browser_chrome) then{
+    global.uiz_useFallbackShader = true;
+}else{
+    global.uiz_useFallbackShader = false;
+}
+
 if shader_is_compiled(sh_uiz_contain) and shaders_are_supported() then{
 global.uiz_shader=1
-
-global.uniformid_toy=shader_get_uniform(sh_uiz_contain,"toy")
-global.uniformid_toy_hue=shader_get_uniform(sh_uiz_contain_hue,"toy")
-global.uniformid_sz=shader_get_uniform(sh_uiz_contain,"sz")
-global.uniformid_sz_hue=shader_get_uniform(sh_uiz_contain_hue,"sz")
-global.uniformid_alpha_hue=shader_get_uniform(sh_uiz_contain_hue,"alpha")
-global.uniformid_doy=shader_get_uniform(sh_uiz_contain_hue,"doy")
-//global.uniformid_texture_hue=shader_get_sampler_index(sh_uiz_contain_hue,"s_Background")
-global.uniformid_texture=shader_get_sampler_index(sh_uiz_contain,"s_Background")
-global.uniformid_texture_hue=shader_get_sampler_index(sh_uiz_contain_hue,"s_Background")
-global.uniformid_texture_blur=shader_get_sampler_index(sh_uiz_contain_blur,"s_Background")
-global.uniformid_huevalue=shader_get_uniform(sh_uiz_contain_hue,"val")
-//global.uniformid_texture_toy=shader_get_uniform(sh_uiz_contain,"toy")
-global.uniformid_texture_toy_blur=shader_get_uniform(sh_uiz_contain_blur,"toy")
-//global.uniformid_scs=shader_get_uniform(sh_uiz_contain,"scs")
 }else{
 global.uiz_shader=0
 }
+
+uiz_shader_update();
+
 //global.uiz_shader=1
-draw_set_font(uiz_fnt_dp_15)
+draw_set_font(uiz_fnt_dp_20)
 lastsecondat=-1
 oldselectedmouseoverobject=0
 oldselectedmouseover=id
 oldselectedmouseoverframe=0
+oldselectedmouseoverscrollable=0;
 topframemargin=0;
 bottomframemargin=0;
 leftframemargin=0;
@@ -172,8 +171,8 @@ global.mouseoverframe=id
 global.mouseoverframedepth=0
 global.mouseoverwindow=id
 global.mouseoverwindowdepth=0
-global.mouseoverscrollframe=id
-global.mouseoverscrollframedepth=0
+global.mouseoverscrollable=id
+global.mouseoverscrollabledepth=0
 global.mouseover=id
 global.mouseoverdepth=0
 global.mouseoverdone=0
@@ -226,7 +225,7 @@ global.uiz_mouseswiped=0;
 global.mousedirectoverobject=false;
 global.enablemousedirectoverobjectcheck=false;
 dirlastmouseoverobject=id;
-mouseswipeclick_distance=3;
+mouseswipeclick_distance=1;
 mouseswipeclick_distancetype=dp;
 mouseswipeclick_time=1;//in seconds
 oldmouseswipedx=0
@@ -330,6 +329,7 @@ uiz_updateall=true;
 uiz_selfmarked=false;
 uiz_steplist=ds_list_create();
 uiz_endsteplist=ds_list_create();
+uiz_beginsteplist=ds_list_create();
 uiz_arealist_oldsz=0;
 //global.uiz_inredrawmode=false;
 global.surfacedebugcount=0;
@@ -488,6 +488,7 @@ typecursor_width=0;
             <string>///typing char control setup
 keyboard_currentchar = '';//what char is currently being pressed
 keyboard_oldlastchar = '';
+keyboard_currentkey = -1;
 keyboard_lastKeyForChar = -999;
 keyboard_lastKeyTime = 0;
 keyboard_lastcurrentchar = '';//what char was last pressed
@@ -516,6 +517,50 @@ keyboard_charPressed=false;//if the given char is still being pressed
 window_w = window_get_width();
 window_h = window_get_height();
 resetSurfaces = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scrollbar animation init
+animateScrollbarList = ds_list_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scrollbar animation handling setup
+scrollbarStepList = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -696,11 +741,15 @@ uiz_compatibility_rebuilddepths()
 var sz=ds_list_size(uiz_endsteplist)
 for(var i=0;i&lt;sz;i++){
 var o=uiz_endsteplist[|i];
-if instance_exists(o) then{
+if instance_exists(o) and o.uiz_enabled=true then{
 with(o){event_user(5);}
+if(sz!=ds_list_size(uiz_endsteplist)){//if our current item got removed from the list, the size should have changed
+    i--;//re-iterate over last step;
+    sz = ds_list_size(uiz_endsteplist);
 }
 }
-ds_list_empty(uiz_endsteplist);
+}
+ds_list_clear(uiz_endsteplist);
 </string>
           </argument>
         </arguments>
@@ -746,21 +795,73 @@ var l2=uiz_arealist;
 var sz=ds_list_size(l);
 uiz_arealist_oldsz=ds_list_size(l2);
 if (sz mod 5) = 0 then{
-for(var i=sz-5;i&gt;=0;i-=5){
-var aide=l[|i];
-if instance_exists(aide){
-if uiz_updater_FixViews_addsquare(l[|i+1],l[|i+2],l[|i+3],l[|i+4])=false then{
-aide.uiz_selfmarked=false;}else{
-ds_list_add(l2,aide)
-}
-
-}
-}
+    for(var i=sz-5;i&gt;=0;i-=5){
+        var aide=l[|i];
+        if instance_exists(aide){
+            if uiz_updater_FixViews_addsquare(l[|i+1],l[|i+2],l[|i+3],l[|i+4])=false then{
+                aide.uiz_selfmarked=false;
+            }else{
+                ds_list_add(l2,aide)
+            }
+        
+        }
+    }
 }
 ds_list_clear(l);
 
 
 uiz_updater_FixViews_processing(obj_uiZ_controller);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///alt for updating everything
+/*
+if keyboard_check(vk_alt){
+    uiz_updater_FixViews_area(0,0,width,height);
+}
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reset double click
+if mouse_check_button_released(mb_left) or !mouse_check_button(mb_left){
+    global.doubleclick=0;
+}
 </string>
           </argument>
         </arguments>
@@ -865,8 +966,8 @@ if (os_type=os_windows){
           <argument>
             <kind>1</kind>
             <string>///detect changes in windowsize
-if window_get_width()!=global.screenpxwidth or window_get_height()!=global.screenpxheight then{
-uiz_resetwindowsize();
+if (window_get_width()!=global.screenpxwidth or window_get_height()!=global.screenpxheight) &amp;&amp; (window_get_width()!=0 &amp;&amp; window_get_height()!=0) then{
+//uiz_resetwindowsize();
 }
 </string>
           </argument>
@@ -920,7 +1021,6 @@ if global.lastmousemovedy!=0 then{global.lastmousemovedysign=uiz_sign(global.las
           <argument>
             <kind>1</kind>
             <string>///control double click
-global.doubleclick=0;
 if doubleclickcount&gt;0 then{
 doubleclickcount++;
 if mouse_check_button_pressed(mb_left) then{global.doubleclick=1;doubleclickcount=0;}
@@ -957,6 +1057,39 @@ isresizing=0;
 /*
 
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///begin step check
+var sz=ds_list_size(uiz_beginsteplist)
+for(var i=0;i&lt;sz;i++){
+var o=uiz_beginsteplist[|i];
+if instance_exists(o) and o.uiz_enabled=true then{
+    with(o){uiz_steps_begin = false;event_user(6);}
+    if(sz!=ds_list_size(uiz_beginsteplist)){//if our current item got removed from the list, the size should have changed
+        i--;//re-iterate over last step;
+        sz = ds_list_size(uiz_beginsteplist);
+    }
+}
+}
+ds_list_clear(uiz_beginsteplist);
 </string>
           </argument>
         </arguments>
@@ -1080,10 +1213,11 @@ global.uiz_mouseswiped=uiz_pyth(global.uiz_mouseswipedx,global.uiz_mouseswipedy)
             <kind>1</kind>
             <string>///control uiz_mouseswipeclick
 //if either holding mouse for a longer time or moving mouse fast.
-
+//sdbm("check swipe",oldselectedmouseover,global.lastmousemoved,uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype))
 if mouse_check_button(mb_left) &amp;&amp; uiz_isMouseSwipeClickWhiteListed(oldselectedmouseover) then{//mswc_count+=uiz_sc(mouseswipeclick_time);
-//sdbm(global.lastmousemoved,uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype))
-if global.lastmousemoved&gt;=uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype)/fps_real then{
+
+
+if global.lastmousemoved&gt;=uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype)/fps then{
 global.uiz_mouseswipeclick=true;
 //reset mouse to old object
 
@@ -1092,10 +1226,10 @@ global.uiz_mouseswipeclick=true;
 global.uiz_mouseswipeclick=false;
 }
 if global.uiz_mouseswipeclick=true then{
-//sdbm("setting it",oldselectedmouseoverobject)
 global.mouseoverobject=oldselectedmouseoverobject;
 global.mouseover=oldselectedmouseover;
 global.mouseoverframe=oldselectedmouseoverframe;
+global.mouseoverscollable=oldselectedmouseoverscrollable;
 }
 </string>
           </argument>
@@ -1122,6 +1256,7 @@ global.mouseoverframe=oldselectedmouseoverframe;
 //global.uiz_debug_count=0;
 //uiz_updater_debug_processing(id)
 //
+var oldmouseoverscrollable = global.mouseoverscrollable;
 if global.mousefrozen=false and global.wasmousefrozen=false and global.uiz_mouseswipeclick=false then{
 //reset
 global.mouseoverobject=id
@@ -1130,8 +1265,8 @@ global.mouseoverwindow=id
 global.mouseoverwindowmydepth=0
 global.mouseoverframe=id
 global.mouseoverframemydepth=0
-global.mouseoverscrollframe=id
-global.mouseoverscrollframemydepth=0
+global.mouseoverscrollable=id
+global.mouseoverscrollablemydepth=0
 global.mouseover=id
 global.mouseovermydepth=0
 global.mouseoverdone=1
@@ -1151,7 +1286,7 @@ global.uiz_mouseis=cr_default;
 if global.mouseover!=id then{
     with(global.mouseover){
         with(global.mouseover){
-            var k=uiz_mouse_isonobject_leftcheck(id);
+            var k=uiz_mouse_isOver_object_leftCheck(id);
                 ///sdbm("kmosueoverGet,",k,kmouseover,id,global.uiz_stepNumber);
                 if k!=kmouseover then{
                     kmouseover=k;
@@ -1168,11 +1303,14 @@ event_user(3);
 }
 };
 }
+
 if instance_exists(global.mouseoverframe) and global.mouseoverframe!=global.mouseover and global.mouseoverframe!=id then{
-with(global.mouseoverframe){
-event_user(3);
-};
+    with(global.mouseoverframe){
+        event_user(3);
+    };
 }
+
+
 /*
 if ds_exists(children,ds_type_list) then{
 var sz=ds_list_size(children);
@@ -1181,6 +1319,55 @@ uiz_updater_mouse_processing(children[|i])
 }
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///update scrollbars
+
+if instance_exists(global.mouseoverscrollable) and global.mouseoverscrollable!=id then{
+    with(global.mouseoverscrollable){
+        event_user(7);
+    };
+}
+
+if oldmouseoverscrollable!=global.mouseoverscrollable and instance_exists(oldmouseoverscrollable) and oldmouseoverscrollable!=id then{
+    with(oldmouseoverscrollable){
+        event_user(7);
+    };
+}
+
+var sz=ds_list_size(scrollbarStepList);
+for(var i=0;i&lt;sz;++i){
+    var o = scrollbarStepList[|i];
+    if instance_exists(o) and o.uiz_steps_scrollable{
+        if o!=global.mouseoverscrollable and o!=oldmouseoverscrollable then{
+            with(o){
+                event_user(7);
+            };
+        }
+    }else{//remove current instance since it doesn't exist anyways
+        ds_list_delete(scrollbarStepList,i);
+        --i;
+        --sz;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -1226,6 +1413,7 @@ global.uiz_fix_updates=0;
             <kind>1</kind>
             <string>///check the typeing char
 var doNoKeyCheck=true;
+keyboard_currentkey = keyboard_lastkey;
 if keyboard_check(vk_lalt) then{
         keyboard_lastKeyForChar=vk_lalt;
         }
@@ -1282,18 +1470,6 @@ keyboard_oldlastchar=keyboard_lastchar;
             <string>///check for window
 if global.mouseoverwindow=id and mouse_check_button(mb_any) then{
     uiz_window_select(noone)
-}
-/*
-if lastwindowover!=global.selectedwindow then{
-    with(lastwindowover){
-        uiz_window_fixbackground();
-    }
-    with(lastwindowover){
-        uiz_window_fixbackground();
-    }
-    lastwindowover=global.selectedwindow;
-
-    
 }
 </string>
           </argument>
@@ -1388,6 +1564,10 @@ for(var i=0;i&lt;sz;i++){
 var o=uiz_steplist[|i];
 if instance_exists(o) and o.uiz_enabled=true then{
 with(o){event_user(4);}
+if(sz!=ds_list_size(uiz_steplist)){//if our current item got removed from the list, the size should have changed
+    i--;//re-iterate over last step;
+    sz = ds_list_size(uiz_steplist);
+}
 }else{
 ds_list_delete(uiz_steplist,i);
 i--;
@@ -1461,7 +1641,7 @@ window_set_size(uiz_dp_window_w*uiz_dp,uiz_dp_window_h*uiz_dp);
 }
 //redo font
 UIZ_FONT();
-uiz_fixchildren(obj_uiZ_controller,true)
+uiz_fixChildren(obj_uiZ_controller,true)
 }
 
 }
@@ -1545,6 +1725,35 @@ if keyboard_check(vk_control) &amp;&amp; keyboard_check(vk_f5) then{
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*
+draw_set_color(c_black);
+draw_set_alpha(1);
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
+draw_text(10, 30, "doubleclickcount = "+string(doubleclickcount)+", doubleclick = "+string(global.doubleclick));
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="72">
       <action>
         <libid>1</libid>
@@ -1565,18 +1774,22 @@ if keyboard_check(vk_control) &amp;&amp; keyboard_check(vk_f5) then{
             <string>uiz_checkScreenResize();
 
 if resetSurfaces then{
-sdbm("Resetting all surfaces")
     resetSurfaces = false;
     uiz_updateall=true;
-    //if surface_exists(uiz_surf){
+    if surface_exists(uiz_surf){
         surface_resize(uiz_surf,window_w,window_h);
         //uiz_updater_FixViews_addsquare(0,0,window_w,window_h);
-    //}
+    }else{
+        uiz_surf = surface_create(window_w,window_h);
+    }
     
-    //if !uiz_useappsurf{
-        surface_resize(uiz_appsurf,window_w,window_h)
-        sdbm("textureID aft r:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
-    //}
+    if !uiz_useappsurf{
+    if surface_exists(uiz_appsurf){
+        surface_resize(uiz_appsurf,window_w,window_h)        
+    }else{
+        uiz_appsurf = surface_create(window_w,window_h);
+    }
+    }
 }else{
 //sdbm("only checking surface existance");
     if !surface_exists(uiz_surf){
@@ -1584,6 +1797,24 @@ sdbm("Resetting all surfaces")
     uiz_updateall=true;
     //uiz_updater_FixViews_addsquare(0,0,window_w,window_h);
     }
+}
+
+if uiz_useappsurf=true then{
+uiz_appsurf=application_surface
+if surface_get_width(application_surface)!=width || surface_get_height(application_surface)!=height then{
+sdbm("[uiZ|INFO] resizing app surf")
+surface_resize(application_surface,width,height);
+/*
+view_xport[0] = 0;
+view_yport[0] = 0;
+view_wport[0] = width;
+view_hport[0] = height;
+view_xview[0] = 0;
+view_yview[0] = 0;
+view_wview[0] = width;
+view_hview[0] = height;
+*/
+}
 }
 </string>
           </argument>
@@ -1607,117 +1838,105 @@ sdbm("Resetting all surfaces")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///loop debug
-/*
-//draw_text(10,100,uiz_debug_getposes(id,1))
-var o=global.mouseover;
-draw_square(o.rx,o.ry,o.rlx,o.rly,c_red,0.5)
-draw_text(o.rx,o.ry,object_get_name(o.object_index))
-draw_text(o.rx,o.ry+20,o)
-//if keyboard_check_released(vk_space){sdbm(uiz_debug_getposes(id,1))}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///utilize updater
+//if (live_call()) return live_result;
 global.uiz_fix_updates_draw=0;
 var l=uiz_arealist
 if (ds_exists(l,ds_type_list) and ds_list_size(l)&gt;=4) or uiz_updateall=true then{
 
 if uiz_useappsurf=true then{
-uiz_appsurf=application_surface
-if surface_get_width(application_surface)!=width || surface_get_height(application_surface)!=height then{
-surface_resize(application_surface,width,height);
-}
+    uiz_appsurf=application_surface
 }else{
-if !surface_exists(uiz_appsurf) then{uiz_appsurf=surface_create(width,height);}
+    if !surface_exists(uiz_appsurf) then{uiz_appsurf=surface_create(width,height);}
 }
 
 
 if !surface_exists(uiz_surf) {uiz_surf=surface_create(width,height);}
 
-sdbm("textureID:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
+//sdbm("textureID:",uiz_appsurf,uiz_surf,surface_get_texture(uiz_appsurf),surface_get_texture(uiz_surf))
 
-global.surfacedebugcount=0
-global.surfacedebugcounty=0;
-//uiz_debug_drawsurface(uiz_appsurf,"app")
-//uiz_debug_drawsurface(uiz_surf,"uiz")
-surface_set_target(uiz_appsurf)
-//sdbm("executing draw_clear at place",0,random(99),obj_uiZ_window.uiz_doredraw,obj_uiZ_window.uiz_dodraw)
+if uiz_updateall=true or ds_list_size(l)&gt;0 then{
 
-if uiz_updateall=true then{
-    draw_clear_alpha(c_white,1);
-    draw_set_color(c_white)
-    draw_set_alpha(1)
-}else{
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_left);
-    draw_clear_alpha(c_black,0);
-    draw_set_color(c_white)
-    draw_set_alpha(1)
-    //draw list
-    var sz=ds_list_size(l);
-    var m=uiz_arealist_oldsz;
-    var drawstate=true;
-    for(var i=0;i&lt;m;i+=4){
-        var lw=l[|i+2]-l[|i];
-        var law=0;
-        var lh=l[|i+3]-l[|i+1];
-        var lah=0;
-        draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+    global.surfacedebugcount=0
+    global.surfacedebugcounty=0;
+    //uiz_debug_drawsurface(uiz_appsurf,"app")
+    //uiz_debug_drawsurface(uiz_surf,"uiz")
+    surface_set_target(uiz_appsurf)
+    //sdbm("executing draw_clear at place",0,random(99),uiz_updateall,ds_list_size(l))
+    
+    if uiz_updateall=true then{
+        draw_clear_alpha(c_white,1);
+        draw_set_color(c_white)
+        draw_set_alpha(1)
+    }else{
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        draw_clear_alpha(c_black,0);
+        draw_set_color(c_white)
+        draw_set_alpha(1)
+        //draw list
+        var sz=ds_list_size(l);
+        var m=uiz_arealist_oldsz;
+        var drawstate=true;
+        for(var i=0;i&lt;m;i+=4){
+            var lw=l[|i+2]-l[|i];
+            var law=0;
+            var lh=l[|i+3]-l[|i+1];
+            var lah=0;
+            //sdbm("drawing rectangle",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
+            //draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false);
+            draw_square(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,c_white,1);
+        }
+        for(var i=m;i&lt;sz;i+=5){
+            var lw=l[|i+2]-l[|i];
+            var law=0;
+            var lh=l[|i+3]-l[|i+1];
+            var lah=0;
+            //sdbm("drawing rectangle 2",l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah);
+            //draw_rectangle(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,false)
+            draw_square(l[|i]+law,l[|i+1]+lah,l[|i+2]+law,l[|i+3]+lah,c_white,1);
+        }
+    
     }
-    for(var i=m;i&lt;sz;i+=5){
-        var lw=l[|i+2]-l[|i];
-        var law=0;
-        var lh=l[|i+3]-l[|i+1];
-        var lah=0;
-        draw_rectangle(l[|i]-law,l[|i+1]-lah,l[|i+2]+law,l[|i+3]+lah,false)
+    ds_list_clear(l)
+    
+    
+    surface_reset_target();//reset appsurf
+    //sdbm("test");
+    //sdbm("uiz surf info: ",surface_get_width(uiz_surf),surface_get_height(application_surface),surface_get_width(application_surface),surface_get_height(uiz_surf),window_get_width(),window_get_height())
+    surface_set_target(uiz_surf)
+    draw_set_blend_mode_ext(bm_zero,bm_inv_src_alpha)
+    draw_surface(uiz_appsurf,0,0);
+    //draw_clear_alpha(c_white,0);
+    //draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+    uiz_changeSurface=false;
+    //sdbm("shader set to:",global.uiz_shader)
+    //draw_set_blend_mode(bm_normal)
+    //draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
+    
+    //set shader
+    if global.uiz_shader=true then{
+    //sdbm("test");
+    shader_set(global.uiz_shader_contain);
+    uiz_contain_shader_uniforms_set();
+    draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+    //draw_set_blend_mode(bm_normal);
+    }else{
+    draw_set_blend_mode(bm_normal);
+    }
+    
+    draw_set_color(c_white)
+    
+    uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall);
+    surface_reset_target();
+    if global.uiz_shader=true then{
+    shader_reset();
+    draw_set_blend_mode(bm_normal);
     }
 
 }
-ds_list_clear(l)
 
 
-surface_reset_target()//reset appsurf
-surface_set_target(uiz_surf)
-draw_set_blend_mode_ext(bm_zero,bm_inv_src_alpha)
-draw_surface(uiz_appsurf,0,0);
-//draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
-uiz_changeSurface=false;
-sdbm("shader set to:",global.uiz_shader)
-//set shader
-if global.uiz_shader=true then{
-shader_set(sh_uiz_contain);
-uiz_contain_shader_uniforms_set();
-draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
-}else{
-draw_set_blend_mode(bm_normal);
-}
-
-uiz_updater_updateSet(obj_uiZ_controller,uiz_updateall)
-surface_reset_target();
-if global.uiz_shader=true then{
-shader_reset();
-draw_set_blend_mode(bm_normal)
-}
-
-draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
 
 uiz_updateall=false
 }
@@ -1741,7 +1960,8 @@ uiz_updateall=false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !surface_exists(uiz_surf){
+            <string>
+if !surface_exists(uiz_surf){
 uiz_surf=surface_create(width,height);
 show_error("No uiz surface to draw",false);
 }
@@ -1751,12 +1971,17 @@ uiz_surf_secondary=surface_create(width,height);
 }
 */
 
-draw_set_blend_mode(bm_normal);
+//draw_set_blend_mode(bm_normal);
+draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
 draw_set_color(c_white)
 draw_set_alpha(1)
 draw_surface(uiz_surf,0,0)
+//draw_surface_ext(uiz_surf,0,0,1,1,0,c_white,1);
 
-draw_text(10,50,string(uiz_surf)+"; "+string(uiz_appsurf)+"; "+string(application_surface))
+//draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7)
+//draw_surface_ext(uiz_appsurf,0,0,1,1,0,c_white,0.7)
+
+//draw_text(10,50,string(uiz_surf)+"; "+string(uiz_appsurf)+"; "+string(application_surface))
 
 
 /*
@@ -1821,6 +2046,28 @@ draw_set_alpha(typecursor_alpha);
 draw_line_width(typecursor_x1,typecursor_y1,typecursor_x2,typecursor_y2,typecursor_width);
 draw_set_alpha(1)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reset uiz_arealist_oldsz
+uiz_arealist_oldsz = 99999999999;
 </string>
           </argument>
         </arguments>

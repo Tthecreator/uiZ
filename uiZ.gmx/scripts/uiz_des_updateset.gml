@@ -29,6 +29,6 @@ var pos=ds_list_find_index(uizlist,objstr)
 ds_list_add(afsprlist,uizsprlist[| pos])
 ds_list_add(afimglist,uizimglist[| pos])
 ds_list_add(afobjlist,selobj)
-uiz_setparent(o,af)
+uiz_setParent(o,af)
 objecttreelist.checkuplist=1
 if instance_exists(gmtreelist) then{uiz_fixgeneralpos(gmtreelist)}

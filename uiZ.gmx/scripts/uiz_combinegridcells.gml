@@ -1,4 +1,4 @@
-///uiz_combinegridcells(grid,col1,row1,col2,row2)
+///uiz_combineGridCells(grid, col1, row1, col2, row2)
 /*
 A VERY HOT SCRIPT. Call only after you're sure that the grid doesn't need to be ajusted (normal position fixing scripts are ok).
 Gets 2 cells in a grid and makes them and everything between them into one cell.
@@ -22,7 +22,7 @@ if i=argument1 then{settoheight+=f2.height+g.margincellh*2}
 
 var sz=ds_list_size(f2.children);
 for(var p=0;p<sz;p++){
-uiz_setparent(f2.children[| 0],f1)
+uiz_setParent(f2.children[| 0],f1)
 }
 //remove frame
 //ds_list_delete(g.children,f2.)
@@ -35,7 +35,7 @@ g.gridobject[i,e]=f1
 f1.width=settowith-g.margincellw
 f1.height=settoheight-g.margincellh
 uiz_fixframepos(f1)
-uiz_fixchildren(f1,1)
+uiz_fixChildren(f1,1)
 f1.fromx=argument1
 f1.fromy=argument2
 f1.tox=argument3

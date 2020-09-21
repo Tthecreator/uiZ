@@ -15,14 +15,14 @@ frwin.windowtext="frameset"
 global.windowexists=frwin;
 global.haswindow=id+0.1;
 frset=uiz_frameset_create()
-uiz_setparent(frset,frwin)
+uiz_setParent(frset,frwin)
 
-frmix=uiz_framedivisionhorizontal(frset,1,xtra,0.3,dp)
+frmix=uiz_frameset_divide_horizontal(frset,1,xtra,0.3,dp)
 frmain=frmix.frameat[0];
 frbottom=frmix.frameat[1];
 
 /*
-frbottommix=uiz_framedivisionvertical(frbottom,3,fcy,1,xtra)
+frbottommix=uiz_frameset_divide_vertical(frbottom,3,fcy,1,xtra)
 frbuttons=frbottommix.frameat[0];
 frsettings=frbottommix.frameat[1];
 */
@@ -48,7 +48,7 @@ uiz_xml_loadfile_addto(t.uxml,f)
 ini_close()
 //global.xmlbelongsto=id
 xml.usexml=t.uxml
-uiz_setparent(xml,frmain)
+uiz_setParent(xml,frmain)
 uiz_fixgeneralpos(xml)
 frbut_check=uiz_easybutton_create(spr_uiZ_buttons_check)
 frbut_check.posinframex=uiz_snapright
@@ -56,7 +56,7 @@ frbut_check.posinframex=uiz_snapright
 frbut_check.posvalwtype=fcy
 frbut_check.posvalw=1
 frbut_check.posinframey=uiz_fill
-uiz_setparent(frbut_check,frbottom)
+uiz_setParent(frbut_check,frbottom)
 uiz_fixgeneralpos(frbut_check)
 
 

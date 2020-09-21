@@ -1,4 +1,4 @@
-///uiz_draw_sprite_tiles(sprite,img,x1,y1,x2,y2,repeatx,repeaty,color,alpha,outerEdgeX,outerEdgeY)
+///uiz_draw_sprite_tiles(sprite, img, x1, y1, x2, y2, repeatx, repeaty, color, alpha, outerEdgeX, outerEdgeY)
 /*
 A function drawing a sprite an x number of times on a square/rectangle from point (x1,y1) to (x2,y2). 
 Repeatx and repeaty must be numbers above 0, but can be a decimal number.
