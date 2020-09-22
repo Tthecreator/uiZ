@@ -15,7 +15,7 @@ if uiz_selfmarked=false then{
 }
 var pf=round((width-slidersz)*invalue);
 var pl=pf+round(slidersz)
-draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx+1,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
+draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2,ucolor,slideralpha*alpha)
 uiz_containend()
 }
 

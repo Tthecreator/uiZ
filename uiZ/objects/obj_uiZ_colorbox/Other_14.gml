@@ -368,6 +368,7 @@ if boxred.updated then{
     uiz_updater_FixViews();
     uiz_colorbox_update_hsv();
     uiz_huesquare_setcolor_hsv(uh,h,s,v);
+	uiz_updater_FixViews_with(uh);
     uiz_colorbox_updateSliderColors(true,false,true,true);
     uiz_stringbox_setvalue_noupdate(valred,r);
     uiz_colorbox_updateValues(true,false,true,true);

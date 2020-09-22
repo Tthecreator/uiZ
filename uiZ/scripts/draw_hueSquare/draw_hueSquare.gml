@@ -11,7 +11,7 @@ function draw_hueSquare(argument0, argument1, argument2, argument3, argument4) {
 	If shaders arn't compatible then it uses a sprite, which might look a bit pixelated.
 	*/
 
-	if global.uiz_shader=1 then{
+	if global.uiz_shader then{
 
 	shader_set(global.uiz_shader_contain_hue)
 

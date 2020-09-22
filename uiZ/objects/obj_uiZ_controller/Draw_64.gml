@@ -37,7 +37,7 @@ if uiz_updateall=true or ds_list_size(l)>0 then{
         //draw list
         var sz=ds_list_size(l);
         var m=uiz_arealist_oldsz;
-        var drawstate=true;
+        //var drawstate=true;
         for(var i=0;i<m;i+=4){
             var lw=l[|i+2]-l[|i];
             var law=0;

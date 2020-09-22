@@ -19,6 +19,8 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"jkkj","path":"objects/jkkj/jkkj.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":75,"eventType":8,"collisionObjectId":null,"parent":{"name":"jkkj","path":"objects/jkkj/jkkj.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":18,"eventType":5,"collisionObjectId":null,"parent":{"name":"jkkj","path":"objects/jkkj/jkkj.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

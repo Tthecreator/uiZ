@@ -31,11 +31,11 @@ if global.colorscreen != id or!instance_exists(w) then {
         sep = div1.frameat[1]
 
         div2 = uiz_frameset_divide_horizontal(picker, 0.4, fc, 0.2, fc, 1, xtra)
-        hue = div2.frameat[0]
-        valsz = div2.frameat[1]
-        valsels = div2.frameat[2]
+        hue = uiz_frameset_getObject(div2, 0);
+        valsz = uiz_frameset_getObject(div2, 1);
+        valsels = uiz_frameset_getObject(div2, 2);
 
-        hue = picker
+        //hue = picker
         uiz_fixframesetpos(fs)
         uh = uiz_c(obj_uiZ_huesquare)
         uiz_setParent(uh, hue)

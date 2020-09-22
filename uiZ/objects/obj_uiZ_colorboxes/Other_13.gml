@@ -30,36 +30,36 @@ if kmouseover=3 then{updated=u;}
 //sdbm("oldsel: ",oldselpos, "selpos: ",selpos);
 
 if (oldselpos!=selpos or last_kmouseover != kmouseover) and selpos>=0 and selpos<sz then{
-    bh1=ry+(bh+bb)*((selpos) div 3)+bb
-    bh2=bh1+bh
+    bh1=round(ry+(bh+bb)*((selpos) div 3)+bb)
+    bh2=round(bh1+bh)
     if bh1<=rly then{        
         switch(selpos mod 3){
         case 0:
-        uiz_updater_FixViews_area_selfmarked(rx+width*(1/10)-1,bh1-1,rx+width*(3/10)+1,bh2+1)
+        uiz_updater_FixViews_area_selfmarked(round(rx+width*(1/10)),bh1,round(rx+width*(3/10))+1,bh2+1)
         break;
         case 1:
-        uiz_updater_FixViews_area_selfmarked(rx+width*(4/10)-1,bh1-1,rx+width*(6/10)+1,bh2+1)
+        uiz_updater_FixViews_area_selfmarked(round(rx+width*(4/10)),bh1,round(rx+width*(6/10))+1,bh2+1)
         break;
         case 2:
-        uiz_updater_FixViews_area_selfmarked(rx+width*(7/10)-1,bh1-1,rx+width*(9/10)+1,bh2+1)
+        uiz_updater_FixViews_area_selfmarked(round(rx+width*(7/10)),bh1,round(rx+width*(9/10))+1,bh2+1)
         break;
         }
     }
 }
 
 if oldselpos!=selpos and oldselpos>=0 and oldselpos<sz then{
-    bh1=ry+(bh+bb)*((oldselpos) div 3)+bb
-    bh2=bh1+bh
+    bh1=round(ry+(bh+bb)*((oldselpos) div 3)+bb)
+    bh2=round(bh1+bh)
     if bh1<=rly then{        
         switch(oldselpos mod 3){
         case 0:
-        uiz_updater_FixViews_area_selfmarked(rx+width*(1/10)-1,bh1-1,rx+width*(3/10)+1,bh2+1)
+        uiz_updater_FixViews_area_selfmarked(round(rx+width*(1/10))-1,bh1-1,round(rx+width*(3/10))+1,bh2+1)
         break;
         case 1:
-        uiz_updater_FixViews_area_selfmarked(rx+width*(4/10)-1,bh1-1,rx+width*(6/10)+1,bh2+1)
+        uiz_updater_FixViews_area_selfmarked(round(rx+width*(4/10))-1,bh1-1,round(rx+width*(6/10))+1,bh2+1)
         break;
         case 2:
-        uiz_updater_FixViews_area_selfmarked(rx+width*(7/10)-1,bh1-1,rx+width*(9/10)+1,bh2+1)
+        uiz_updater_FixViews_area_selfmarked(round(rx+width*(7/10))-1,bh1-1,round(rx+width*(9/10))+1,bh2+1)
         break;
         }
     }
