@@ -25,7 +25,8 @@ function uiz_spawnMouseMenu() {
 	}
 	var v=uiz_c(obj_uiZ_mousemenu);
 
-	uiz_depth_set(v,-999999999999);
+	//uiz_depth_set(v,-999999999999);
+	uiz_depth_foreground(v);
 
 	//v.depth=-999999999
 	v.uselist=argument[0];
@@ -52,6 +53,7 @@ function uiz_spawnMouseMenu() {
 	//uiz_animation_setOpeningAnimation(v,uiz_sin_inout,uiz_sin_inout,uiz_exponential_out,0.4)
 	uiz_animation_setOpeningAnimation(v,uiz_straight,uiz_straight,uiz_straight,0.2,false)
 	}
+	uiz_animation_capture_newState(v);
 	return v;
 
 

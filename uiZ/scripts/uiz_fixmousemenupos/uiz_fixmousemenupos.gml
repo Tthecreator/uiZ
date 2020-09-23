@@ -22,7 +22,7 @@ function uiz_fixmousemenupos(argument0) {
 	    height+=end_bottomframemargin+end_topframemargin;
 	}
 	}
-
+	
 	uiz_fix_Base();
 
 	if width>parent.width then{x=0;width=parent.width;uiz_fixobjectpos(id)}

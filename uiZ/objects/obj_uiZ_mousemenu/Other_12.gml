@@ -18,7 +18,7 @@ if kmouseover=uiz_mousereleased then{
     if listener_script!=-1 and script_exists(listener_script) then{
     script_execute(listener_script,id,listener);
     }
-    uiz_destroyObject_animation_default(id);
+    //uiz_destroyObject_animation_default(id);
     }else{
         wait=false;
     }

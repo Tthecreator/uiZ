@@ -20,7 +20,7 @@ function uiz_frame_event_scroll() {
 	            uiz_snapper_enable(snapx,snapy);
 	            global.mousefrozen = true
 	        }
-	        if global.mousefrozen = false and snapm = false and uscrolly < 0 and uscrollx < 0 and(scrolly = true or scrollx = true) and mouse_check_button(mb_left) and global.lastsecondmousemoved > global.mousemovetoscroll then {
+	        if global.mousefrozen == false and snapm == false /*and uscrolly < 0 and uscrollx < 0*/ and(scrolly == true or scrollx == true) and mouse_check_button(mb_left) and global.lastsecondmousemoved > global.mousemovetoscroll then {
 	            snapk = true;
 	            snapx = uiz_getmouse_x()
 	            snapy = uiz_getmouse_y()

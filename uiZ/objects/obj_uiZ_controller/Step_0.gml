@@ -45,17 +45,17 @@ sz--;
 ///update animations
 var sz=ds_list_size(uiz_animationlist)
 for(var i=0;i<sz;i++){
-var o=uiz_animationlist[|i];
-if o=undefined then{continue;}
-if instance_exists(o) then{
-with(o){if uiz_getscalervalues_counter() then{inanimation=false;ds_list_delete(other.uiz_animationlist,i)}
+	var o=uiz_animationlist[|i];
+	if o=undefined then{continue;}
+	if instance_exists(o) then{
+		with(o){if uiz_getscalervalues_counter() then{inanimation=false;ds_list_delete(other.uiz_animationlist,i)}
 
-}
-}else{
-sdbm("[uiZ:ERROR]Found invalid object inside the animationlist")
-ds_list_delete(uiz_animationlist,i)
-if sz>1 then{i--;}
-}
+		}
+	}else{
+	sdbm("[uiZ:ERROR]Found invalid object inside the animationlist")
+	ds_list_delete(uiz_animationlist,i)
+	if sz>1 then{i--;}
+	}
 }
 
 ///handle changes in dpi
