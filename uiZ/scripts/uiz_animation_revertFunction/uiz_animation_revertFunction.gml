@@ -89,7 +89,12 @@ function uiz_animation_revertFunction(argument0, argument1) {
 	if (bfc<0.5) then{
 	diff=power(bfc*2,1/1.65)/2
 	}else{
-	diff = arcsin((bfc-.5)*2)/pi+.5
+		var bfcc = (bfc-.5)*2;
+		if bfcc>0 and bfcc<1 then{
+			diff = arcsin(bfcc)/pi+.5
+		}else{
+			diff = 1;
+		}
 	}
 	break;
 	case uiz_spring:

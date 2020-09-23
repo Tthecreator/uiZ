@@ -6,7 +6,7 @@ function uiz_drawdslist_checkview() {
 	var sz=ds_list_size(uselist);
 	startlistat=0
 	endlistat=sz;
-	//sdbm("endlistat",sz,endlistat)
+	
 	starth=h;
 	for(var i=0;i<sz;i++){
 	strh=string_height(string_hash_to_newline(string(uselist[| i])))

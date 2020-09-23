@@ -9,7 +9,7 @@ function uiz_fixdslistpos(argument0) {
 	height=margin}
 	*/
 	//width=string_width(text)
-	uiz_drawdslist_checkview();
+	
 	uiz_fix_Base();
 	updater_old=-1;
 	updater_new=-1;
@@ -22,7 +22,9 @@ function uiz_fixdslistpos(argument0) {
 	uiz_drawscrollbar_setValue(scroll,scrollheight)
 	}
 	addy=-uiz_drawscrollbar_getValue(scroll)
+	uiz_drawdslist_checkview();
 	}
+	
 
 
 

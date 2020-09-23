@@ -19,6 +19,7 @@ if uiz_cntn() then {
         var uo = updater_old;
         var un = updater_new;
         for (var i = startlistat; i <= endlistat; i++) {
+			
             if pcu = true then {
                 if updater_old != -1 then {
                     i = updater_old;
