@@ -289,6 +289,7 @@
     {"id":{"name":"uiz_checkPath","path":"scripts/uiz_checkPath/uiz_checkPath.yy",},"order":1,},
     {"id":{"name":"uiz_fixFileName","path":"scripts/uiz_fixFileName/uiz_fixFileName.yy",},"order":2,},
     {"id":{"name":"uiz_insideframe","path":"scripts/uiz_insideframe/uiz_insideframe.yy",},"order":0,},
+    {"id":{"name":"uiz_draw_circle","path":"scripts/uiz_draw_circle/uiz_draw_circle.yy",},"order":29,},
     {"id":{"name":"uiz_insideframe_ext","path":"scripts/uiz_insideframe_ext/uiz_insideframe_ext.yy",},"order":1,},
     {"id":{"name":"uiz_fix_Base","path":"scripts/uiz_fix_Base/uiz_fix_Base.yy",},"order":2,},
     {"id":{"name":"uiz_fix_Depth","path":"scripts/uiz_fix_Depth/uiz_fix_Depth.yy",},"order":3,},

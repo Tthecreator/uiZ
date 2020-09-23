@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 //show_debug_overlay(true);
-game_set_speed(120, gamespeed_fps);
+game_set_speed(1200, gamespeed_fps);
 uiz_init();
 var w = uiz_window_create(0.5, fc, 0.5, fc);
 uiz_fix(w);
@@ -14,7 +14,7 @@ uiz_frame_setscrollable(f, true, true);
 uiz_fix(f);
 */
 
-var o = uiz_c(obj_uiZ_menubutton);
+var o = uiz_c(obj_uiZ_radiobox);
 uiz_setParent(o, w);
 uiz_position_t(o, uiz_fill, uiz_fill);
 //uiz_position_t(o, uiz_snapleft, uiz_snaptop);
