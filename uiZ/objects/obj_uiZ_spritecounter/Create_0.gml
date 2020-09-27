@@ -5,7 +5,7 @@
 uiz_objinit()
 digits=3//v//digitis//
 base=10//v//base
-sprite=spr_uiZ_win31_counter//p//sprite//
+sprite=spr_uiZ_counter//p//sprite//
 value=000//v//value//
 color=c_white//c//color//
 

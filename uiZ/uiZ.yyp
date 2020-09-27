@@ -243,6 +243,7 @@
     {"id":{"name":"draw_debugpoint","path":"scripts/draw_debugpoint/draw_debugpoint.yy",},"order":1,},
     {"id":{"name":"uiz_drawdebugtree","path":"scripts/uiz_drawdebugtree/uiz_drawdebugtree.yy",},"order":2,},
     {"id":{"name":"uiz_destroyObject_animation","path":"scripts/uiz_destroyObject_animation/uiz_destroyObject_animation.yy",},"order":0,},
+    {"id":{"name":"spr_uiZ_counter","path":"sprites/spr_uiZ_counter/spr_uiZ_counter.yy",},"order":48,},
     {"id":{"name":"uiz_destroyObject_setDestroyAnimation","path":"scripts/uiz_destroyObject_setDestroyAnimation/uiz_destroyObject_setDestroyAnimation.yy",},"order":1,},
     {"id":{"name":"uiz_destroyObject_animation_default","path":"scripts/uiz_destroyObject_animation_default/uiz_destroyObject_animation_default.yy",},"order":2,},
     {"id":{"name":"uiz_destroyObject","path":"scripts/uiz_destroyObject/uiz_destroyObject.yy",},"order":3,},

@@ -14,7 +14,7 @@ uiz_frame_setscrollable(f, true, true);
 uiz_fix(f);
 */
 
-var o = uiz_c(obj_uiZ_spriteanimationbutton);
+var o = uiz_c(obj_uiZ_spritecounter);
 uiz_setParent(o, w);
 uiz_position_t(o, uiz_fill, uiz_fill);
 uiz_fix(o);
