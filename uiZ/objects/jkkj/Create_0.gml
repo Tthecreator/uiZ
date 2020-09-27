@@ -14,9 +14,10 @@ uiz_frame_setscrollable(f, true, true);
 uiz_fix(f);
 */
 
-var o = uiz_c(obj_uiZ_slickslider);
+var o = uiz_c(obj_uiZ_spriteanimationbutton);
 uiz_setParent(o, w);
 uiz_position_t(o, uiz_fill, uiz_fill);
+uiz_fix(o);
 //uiz_position_t(o, uiz_snapleft, uiz_snaptop);
 //uiz_size(o, 10, dp, 10, dp);
 
@@ -31,7 +32,7 @@ ds_list_add(usesprlist,spr_uiZ_button,spr_uiZ_buttons_load,spr_uiZ_folder,-1,spr
 uiz_dropdown_setlist(o, uselist, -1);
 */
 
-uiz_fix(o);
+
 //uiz_fix(f);
 
-uiz_fix(w);
+
