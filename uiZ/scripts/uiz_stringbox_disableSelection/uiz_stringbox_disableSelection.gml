@@ -10,10 +10,14 @@ function uiz_stringbox_disableSelection(argument0) {
 	    uiz_updater_FixViews();
 	    uiz_stringbox_selection_disable();
 	    if acceptOnlyNumbers then{
-	        var rl = real(str_real);
+			if str_real=="" then{
+				var rl = 0;
+			}else{
+				var rl = real(str_real);
+			}
 	        if rl>maxvalue and maxvalue_enabled then{
 	            uiz_stringbox_setvalue_noupdate(id,maxvalue);
-	        }else if str_real<rl and minvalue_enabled then{
+	        }else if rl<minvalue and minvalue_enabled then{
 	            uiz_stringbox_setvalue_noupdate(id,minvalue);
 	        }
 	    }
