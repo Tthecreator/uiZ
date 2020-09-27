@@ -14,11 +14,9 @@ uiz_frame_setscrollable(f, true, true);
 uiz_fix(f);
 */
 
-var o = uiz_c(obj_uiZ_stringbox);
+var o = uiz_c(obj_uiZ_squarebutton);
 uiz_setParent(o, w);
 uiz_position_t(o, uiz_fill, uiz_fill);
-uiz_stringbox_numberCounter_numberCounter_enable(o, true);
-uiz_stringbox_setAcceptNumbersOnly(o, true, false, false)
 uiz_fix(o);
 //uiz_position_t(o, uiz_snapleft, uiz_snaptop);
 //uiz_size(o, 10, dp, 10, dp);
