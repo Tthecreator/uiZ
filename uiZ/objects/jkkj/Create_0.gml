@@ -14,16 +14,17 @@ uiz_frame_setscrollable(f, true, true);
 uiz_fix(f);
 */
 
-var o = uiz_c(obj_uiZ_radiobox);
+var o = uiz_c(obj_uiZ_scrollbar);
 uiz_setParent(o, w);
 uiz_position_t(o, uiz_fill, uiz_fill);
 //uiz_position_t(o, uiz_snapleft, uiz_snaptop);
 //uiz_size(o, 10, dp, 10, dp);
 
-
+/*
 uselist=ds_list_create()
 ds_list_add(uselist,"hello","this","is","an","item")
 uiz_mousebutton_setlist(o, uselist,-1, -1);
+*/
 /*
 usesprlist=ds_list_create()
 ds_list_add(usesprlist,spr_uiZ_button,spr_uiZ_buttons_load,spr_uiZ_folder,-1,spr_uiZ_buttons_switch)

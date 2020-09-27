@@ -121,6 +121,9 @@ function uiz_drawscrollbar_horizontal_draw(argument0, argument1, argument2, argu
 	        rotate = 0;
 	        rotHeight = 0;
 	    }
+		
+		//rotate = 0;
+		//rotHeight = 0;
 
 	    var nwidth = width - height * 2
 
@@ -214,20 +217,31 @@ function uiz_drawscrollbar_horizontal_draw(argument0, argument1, argument2, argu
 	                    sel = 0;
 	                    break;
 	            }
+				var topPieceXScale=((y1-y0)/szy)/sh;
 	            if argument8>0 then{
 	                if height * 2 > barw then {
 	                    if ((x4 + (barw / sh) / 2 * sh) <= x6) {
 	                        x6--;
 	                    }
-	                    draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, (barw / sw) / 2, height / sh, rotate, argument5, 1) //left
-	                    draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, (barw / sw) / 2, height / sh, rotate, argument5, 1) //right
+						if rotate==0 then{
+							draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, (barw / sw) / 2, height /sh, rotate, argument5, 1) //left
+							draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, (barw / sw) / 2, height /sh, rotate, argument5, 1) //right
+						}else{
+							draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, (height / sw), barw / sh /2, rotate, argument5, 1) //left
+							draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, (height / sw), barw / sh /2, rotate, argument5, 1) //right
+						}
     
 	                } else {
 	                    if ((x4 + (height / sh) * sh) <= x6) {
 	                        x6--;
 	                    }
-	                    draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //left
-	                    draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, height / sw, height / sh, rotate, argument5, 1) //right
+						if rotate==0 then{
+							draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, height / sw, height /sh, rotate, argument5, 1) //left
+							draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, height / sw, height /sh, rotate, argument5, 1) //right
+						}else{
+							draw_sprite_ext(argument4, 6 + sel + addImg, x4, argument1 + rotHeight, topPieceXScale, height / sh, rotate, argument5, 1) //left
+							draw_sprite_ext(argument4, 9 + sel + addImg, x6, argument1 + rotHeight, topPieceXScale, height / sh, rotate, argument5, 1) //right
+						}
 	                }
     
 	                if x5 < x6 then {
@@ -237,8 +251,14 @@ function uiz_drawscrollbar_horizontal_draw(argument0, argument1, argument2, argu
 	                    uiz_draw_sprite_tiles_rotation(argument4, 12 + sel + addImg, x5, argument1, x6, y1, szx, szy, argument5, 1,0,addEdge,rotate)
 	                }
                 
+					//draw middle
 	                var conh = height - comph;
-	                draw_sprite_ext(argument4, 15 + addImg, x4 + barw / 2 - comph / 2, argument1 + conh / 2 + rotHeight, comph / sw, comph / sh, rotate, argument5, 1) //middle
+					if rotate==0 then{
+						draw_sprite_ext(argument4, 15 + addImg, x4 + barw / 2 - comph / 2, argument1 + conh / 2 + rotHeight, comph / sw, comph / sh, rotate, argument5, 1) //middle
+					}else{
+						draw_sprite_ext(argument4, 15 + addImg, x4 + barw / 2 - comph / 2, argument1 - conh / 2 + rotHeight, comph / sw, comph / sh, rotate, argument5, 1) //middle
+					}
+					
 	                }
 	            }
 	    } else {
@@ -255,9 +275,11 @@ function uiz_drawscrollbar_horizontal_draw(argument0, argument1, argument2, argu
 	                    sel = 3;
 	                    break;
 	            }
-
-	            //if id=100054 then{sdbm("I think, ",argument7,mstate,sel,argument8,id)}
-	            draw_sprite_ext(argument4, sel + addImg, rx, argument1 + rotHeight, height / sh, (width / sw) / 2, rotate, argument5, 1) //left
+				if rotate==0 then{
+					draw_sprite_ext(argument4, sel + addImg, rx, argument1 + rotHeight, (width / sw) / 2, height / sh, rotate, argument5, 1) //left
+				}else{
+					draw_sprite_ext(argument4, sel + addImg, rx, argument1 + rotHeight, height / sh, (width / sw) / 2, rotate, argument5, 1) //left
+				}
 	        }
 	        if updated = false or(state_change = true and((mstate >= 3 and mstate <= 4) or(mstate_last >= 3 and mstate_last <= 4))) {
 	            switch (mstate) {
@@ -271,8 +293,11 @@ function uiz_drawscrollbar_horizontal_draw(argument0, argument1, argument2, argu
 	                    sel = 0;
 	                    break;
 	            }
-
-	            draw_sprite_ext(argument4, sel + addImg, rlx - width / 2, argument1 + rotHeight, height / sh, (width / sw) / 2, rotate, argument5, 1) //right
+				if rotate==0 then{
+					draw_sprite_ext(argument4, sel + addImg, rlx - width / 2, argument1 + rotHeight, (width / sw) / 2, height / sh, rotate, argument5, 1) //right
+				}else{
+					draw_sprite_ext(argument4, sel + addImg, rlx - width / 2, argument1 + rotHeight, height / sh, (width / sw) / 2, rotate, argument5, 1) //right
+				}
 	        }
 	    }
 	}

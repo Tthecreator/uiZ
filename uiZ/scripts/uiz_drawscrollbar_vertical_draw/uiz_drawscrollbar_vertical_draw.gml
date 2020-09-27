@@ -69,7 +69,6 @@ function uiz_drawscrollbar_vertical_draw(argument0, argument1, argument2, argume
 	*/
 
 	//argument0+=1;
-	var arg7=argument7;
 
 	var updated_o = uiz_drawscrollbar_getUpdated(argument7);
 	var updated;
@@ -91,7 +90,6 @@ function uiz_drawscrollbar_vertical_draw(argument0, argument1, argument2, argume
 	    var y0 = floor(argument1);
 	    var y1 = round(argument1 + width);
 	    var y2 = round(argument3 - width);
-	    var y3 = ceil(argument3);
 	    var sel = 0;
 	    var addEdge = 0;
 	    var sw = sprite_get_width(argument4)
