@@ -11,7 +11,7 @@ uiz_draw_rectangle_edgeColor(rx,ry,rlx,rly,coloroutline1,coloroutline2,coloroutl
 var pf=round((width-slidersz)*invalue);
 var pl=pf+round(slidersz)
 
-draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx+1,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
+draw_square(pf+rx,ry+height/2-sliderh/2,pl+rx,ry+height/2+sliderh/2+1,ucolor,slideralpha*alpha)
 uiz_containend()
 }
 
