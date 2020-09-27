@@ -6,7 +6,7 @@ sliderthickness=0.2//v//slider thickness//
 sliderthicknesstype=dp//z//slider thickness type//
 slidermargin=4//v//slider height margin//
 slidermargintype=px//z//slider height margin type//
-linecolor=c_blue//c//line color//
+linecolor=$d1bc71//c//line color//
 linemargin=3//v//line margin//
 
 animation=uiz_acceldecel//a//click animation//
