@@ -41,12 +41,13 @@ function uiz_textarea_rework(argument0, argument1) {
 	    //    sdbm("Check remove line",i," with text:",textList[| i],lsz,string_byte_at(textList[| i-1],string_byte_length(textList[| i-1])))
 	    //}
 	    if curLine="" and (i<lsz-1 or i==0 or string_byte_at(textList[| i-1],string_byte_length(textList[| i-1]))!=$0A) then{//the line is empty, remove it (but except the last entry if the second last entry has a newline character)
-	//        sdbm("This line is empty, remvoign line",i,"with text:",textList[| i])
+	        //sdbm("This line is empty, remvoign line",i,selection1Line,"with text:",textList[| i])
 	        //uiz_textarea_showSelCharPos()
 	        //this line is empty, it also doesn't have any invisible or newline characters.
 	        ds_list_delete(textList,i);
 	        i--;//redo this line since the next line might also fit.
 	        lsz--;
+
 	        uiz_textarea_rework_sel_delline(i)
 	        moreLinesChanged = max(moreLinesChanged,1);
 	        //uiz_textarea_showSelCharPos()
@@ -249,11 +250,11 @@ function uiz_textarea_rework(argument0, argument1) {
 	}
 
 	if doscroll and uiz_drawscrollbar_getValue(scroll)>scrolllines then{
-	    sdbm("scroll value to scrolllines")
+	    //sdbm("scroll value to scrolllines")
 	    uiz_drawscrollbar_setValue(scroll,scrolllines);
 	    uiz_textarea_updateScrollPx();
 	}else if !doscroll and listFromPx!=0 then{
-	    sdbm("resetting scroll value")
+	    //sdbm("resetting scroll value")
 	    uiz_drawscrollbar_setValue(scroll,0);
 	    uiz_textarea_updateScrollPx();
 	}

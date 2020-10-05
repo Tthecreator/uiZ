@@ -17,22 +17,24 @@ function uiz_textarea_doBackspace(argument0) {
 	            if string_char_at(textList[| selection1Line],1)==chr($0A) then{
 	                textList[| selection1Line]=""
 	            }else{
+					uiz_textare_doBackspace_removeLastLineLastChar();
 	                if string_byte_at(textList[| selection1Line-1],string_byte_length(textList[| selection1Line-1])) == $0A then{
-	                    uiz_textare_doBackspace_removeLastLineLastChar();//remove \n newline char
+	                    //\n newline char removed by last uiz_textare_doBackspace_removeLastLineLastChar.
 	                    if string_byte_at(textList[| selection1Line-1],string_byte_length(textList[| selection1Line-1])) == $0D then{
-	                        uiz_textare_doBackspace_removeLastLineLastChar();//remove possible \r newline
+	                        uiz_textare_doBackspace_removeLastLineLastChar();//remove \r newline
 	                    }
 	                    //combine two lines
-	                    selection1Char = string_length(textList[| selection1Line-1]);
-	                    textList[| selection1Line-1] += textList[| selection1Line]
-	                    textList[| selection1Line]=""
-	                    selection1Line--;
+						
                     
-	                }else{
-	                    uiz_textare_doBackspace_removeLastLineLastChar();
 	                }
 	                //selLineAdd=-1;
+					//sdbm("combining lines!",selection1Line,textList[| selection1Line-1], textList[| selection1Line])
+	                selection1Char = string_length(textList[| selection1Line-1]);
+	                textList[| selection1Line-1] += textList[| selection1Line]
+	                textList[| selection1Line]=""
+	                selection1Line--;
 	            }
+				
             
 	        }
 	    }else{
