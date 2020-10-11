@@ -8,9 +8,10 @@ function uiz_textarea_moveCursorInView() {
 	    var listFrom = uiz_textarea_getListFrom();
 	    var listTo = uiz_textarea_getListTo(listFrom);
 	    if sLine<=ceil(listFrom) then{
-	        sdbm("movecursorview sLine<=ceil(listFrom)")
+	        //sdbm("movecursorview sLine<=ceil(listFrom)")
 	        listFromPx = sLine*fontHeight;
 	        uiz_drawscrollbar_setValue(scroll, listFromPx);
+			//uiz_drawscrollbar_update_full()
 	        uiz_updater_FixViews_inside();
 	        uiz_textarea_registerTypeCursor();
 	        return true;
@@ -23,7 +24,7 @@ function uiz_textarea_moveCursorInView() {
 	        uiz_drawscrollbar_setValue(scroll, listFromPx);
 	        uiz_updater_FixViews_inside();
 	        uiz_textarea_registerTypeCursor();
-	        sdbm("movecursorview sLine>=floor(listTo)",curScroll,uiz_drawscrollbar_getValue(scroll))
+	        //sdbm("movecursorview sLine>=floor(listTo)",curScroll,uiz_drawscrollbar_getValue(scroll))
 	        return true;
 	    }
     

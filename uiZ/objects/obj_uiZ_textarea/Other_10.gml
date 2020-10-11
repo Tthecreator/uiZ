@@ -16,8 +16,6 @@ draw_set_color(textcolor);
 
 
 //get what lines should be drawn
-var listLen = ds_list_size(textList);
-
 var listFrom = uiz_textarea_getListFrom();
 var listTo = uiz_textarea_getListTo(listFrom);
 
@@ -27,8 +25,6 @@ if redoSelection=true and hasSelection=true then{
 }
 
 var listFromFloor = floor(listFrom);
-var listFromCeil = ceil(listFrom);
-var listToFloor = floor(listTo);
 var listToCeil = ceil(listTo);
 
 redoSelection=false;

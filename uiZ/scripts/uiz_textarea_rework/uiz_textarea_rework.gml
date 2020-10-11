@@ -13,6 +13,7 @@ function uiz_textarea_rework(argument0, argument1) {
 	var avWidth = iwidth;
 	//sdbm("avw n",avWidth);
 	}
+	var oldScrolllines = scrolllines;
 	var lsz = ds_list_size(textList);//number of lines
 	var addToNextLine = "";
 	var addToNextLineCheck_sel1=true;
@@ -252,11 +253,13 @@ function uiz_textarea_rework(argument0, argument1) {
 	if doscroll and uiz_drawscrollbar_getValue(scroll)>scrolllines then{
 	    //sdbm("scroll value to scrolllines")
 	    uiz_drawscrollbar_setValue(scroll,scrolllines);
-	    uiz_textarea_updateScrollPx();
+	    uiz_textarea_updateScrollPx(oldScrolllines != scrolllines);
 	}else if !doscroll and listFromPx!=0 then{
 	    //sdbm("resetting scroll value")
 	    uiz_drawscrollbar_setValue(scroll,0);
-	    uiz_textarea_updateScrollPx();
+	    uiz_textarea_updateScrollPx(oldScrolllines != scrolllines);
+	}else if (oldScrolllines != scrolllines) then{
+		uiz_textarea_updateScrollPx(true);
 	}
 
 	if argument1=0 then{
