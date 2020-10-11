@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Hi, thanks for '
+        pr-message: 'Hey there! I think it is great that you want to contribute! However, please view contributing.md first. You cannot commit code without agreeing to the CONTRIBUTORS LICENSE AGREEMENT. Sorry for the inconvience, even though the agreement is only a few sentences long.'
