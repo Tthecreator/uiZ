@@ -8,7 +8,7 @@ function uiz_grid_create(argument0, argument1) {
 	0-gridw: how many coloms the grid should have.
 	1-gridh: how many rows the grid should have. 
 	*/
-	var g=instance_create(0,0,obj_uiZ_grid);
+	var g=uiz_c(obj_uiZ_grid);
 	if argument0<=0 or argument1<=0 then{
 	sdbm("[uiZ|ERROR] A grid cannot have size 0, check your uiz_grid_create().")
 	}

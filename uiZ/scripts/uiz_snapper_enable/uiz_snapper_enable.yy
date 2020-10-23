@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "snapper",
-    "path": "folders/Scripts/uiz/uiz/snapper.yy",
+    "path": "folders/Scripts/uiz/Scripts/snapper.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_snapper_enable",

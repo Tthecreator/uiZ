@@ -101,7 +101,7 @@
   ],
   "parent": {
     "name": "back",
-    "path": "folders/Sprites/uiz/back.yy",
+    "path": "folders/Sprites/Sprites/back.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_bordergray",

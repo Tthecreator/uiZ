@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "uiz_add",
-    "path": "folders/Scripts/uiz/uiz/common/uiz_add.yy",
+    "path": "folders/Scripts/uiz/Scripts/common/uiz_add.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_add",

@@ -5,7 +5,7 @@
 /// @param sizetype
 function uiz_menuobject_create(argument0, argument1, argument2) {
 	var m = argument0
-	var mo = instance_create(0,0,argument1)
+	var mo = uiz_c(argument1)
 	uiz_setParent(mo,m)
 	var c = m.totobjects;
 	m.itemsz[c]=argument2

@@ -84,8 +84,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"6bd080c4-26f3-475d-a463-1b4ac57ca006","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "uiz",
-    "path": "folders/Sprites/uiz.yy",
+    "name": "Sprites",
+    "path": "folders/uiZ/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_framepulllineconnectionleft",

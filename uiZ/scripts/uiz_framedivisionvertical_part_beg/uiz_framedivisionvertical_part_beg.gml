@@ -13,7 +13,7 @@ function uiz_framedivisionvertical_part_beg(argument0) {
 	Whenever you are done, depending on the type of division, call either "uiz_framedivisionhorizontal_part_end" or "uiz_framedivisionvertical_part_end" and supply it with
 	the variable returned by the "_beg" script and the object(same as argument0 of your "_beg" script). 
 	*/
-	var p=instance_create(0,0,obj_uiZ_framecolanchor);
+	var p=uiz_c(obj_uiZ_framecolanchor);
 	var g=argument0;
 	var h=g;
 

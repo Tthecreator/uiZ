@@ -69,7 +69,7 @@
   ],
   "parent": {
     "name": "serverbrowser",
-    "path": "folders/Sprites/uiz/serverbrowser.yy",
+    "path": "folders/Sprites/Sprites/serverbrowser.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_movie",

@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "switch",
+    "path": "folders/uiZ/objects/switch.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_switch",

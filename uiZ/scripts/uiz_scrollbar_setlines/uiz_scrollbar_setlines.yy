@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "scrollbar",
-    "path": "folders/Scripts/uiz/uiz/objects/scrollbar.yy",
+    "path": "folders/uiZ/objects/scrollbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_scrollbar_setlines",

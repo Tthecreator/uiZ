@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "uiz_position",
-    "path": "folders/Scripts/uiz/uiz/common/uiz_position.yy",
+    "path": "folders/Scripts/uiz/Scripts/common/uiz_position.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_position",

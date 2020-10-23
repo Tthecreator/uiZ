@@ -100,8 +100,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"0fda861c-48a2-495f-96a5-635d0a755dbd","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "uiz",
-    "path": "folders/Sprites/uiz.yy",
+    "name": "Sprites",
+    "path": "folders/uiZ/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_button",

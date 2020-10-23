@@ -34,7 +34,7 @@ function uiz_back_spritestitch_4way_plus() {
 	}
 	*/
 	if sprite_exists(bkspr) then{
-	//texture_set_repeat(0)
+	//gpu_set_texrepeat(0)
 	draw_set_color(bkcol)
 
 	if width=height then{
@@ -91,7 +91,7 @@ function uiz_back_spritestitch_4way_plus() {
 
 	}else{
 
-	//texture_set_repeat(0)
+	//gpu_set_texrepeat(0)
 
 
 	var over=(height-width)
@@ -127,7 +127,7 @@ function uiz_back_spritestitch_4way_plus() {
 	break;
 	}
 
-	//texture_set_repeat(0)
+	//gpu_set_texrepeat(0)
 
 	uiz_draw_sprite_tiles(bkspr,2,rx,yBeg,rx+width/2,yEnd,1,szx,bkcol,alpha,0,0)
 	uiz_draw_sprite_tiles_flippedx(bkspr,2,rx+width/2,yBeg,rlx,yEnd,1,szx,bkcol,alpha)

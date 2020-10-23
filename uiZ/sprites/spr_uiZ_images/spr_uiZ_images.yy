@@ -173,7 +173,7 @@
   ],
   "parent": {
     "name": "designersprite",
-    "path": "folders/Sprites/uiz/designersprite.yy",
+    "path": "folders/Sprites/Sprites/designersprite.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_images",

@@ -32,8 +32,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "stringbox",
+    "path": "folders/uiZ/objects/stringbox.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_stringbox",

@@ -76,8 +76,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"a79d14c2-7d38-4332-94ca-65e7ca271159","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "uiz",
-    "path": "folders/Sprites/uiz.yy",
+    "name": "Sprites",
+    "path": "folders/uiZ/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_buttons_white",

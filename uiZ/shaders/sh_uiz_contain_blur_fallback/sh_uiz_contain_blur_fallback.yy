@@ -1,8 +1,8 @@
 {
   "type": 1,
   "parent": {
-    "name": "uiz",
-    "path": "folders/Shaders/uiz.yy",
+    "name": "Shaders",
+    "path": "folders/uiZ/internal/Shaders.yy",
   },
   "resourceVersion": "1.0",
   "name": "sh_uiz_contain_blur_fallback",

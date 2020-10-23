@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "drawtextlines",
-    "path": "folders/Scripts/uiz/uiz/objects/drawtextlines.yy",
+    "path": "folders/uiZ/internal/objects/drawtextlines.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_drawtextlines_setcolor",

@@ -25,7 +25,7 @@ function uiz_back_circlestitch() {
 	bkcol=clamp(bkcol,0,16777215)
 	bkmar=max(bkmar,0)
 	if sprite_exists(bkspr) then{
-	//texture_set_repeat(0)
+	//gpu_set_texrepeat(0)
 	draw_set_color(bkcol)
 
 	var nwidth=floor(width-bkmar*2);

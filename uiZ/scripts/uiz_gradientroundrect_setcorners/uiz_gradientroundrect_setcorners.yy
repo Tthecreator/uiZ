@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "gradientroundrect",
-    "path": "folders/Scripts/uiz/uiz/objects/gradientroundrect.yy",
+    "path": "folders/uiZ/objects/gradientroundrect.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_gradientroundrect_setcorners",

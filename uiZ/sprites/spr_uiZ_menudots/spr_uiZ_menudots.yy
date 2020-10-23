@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"96744f71-a525-4e5d-9529-5f3090dff87c","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "uiz",
-    "path": "folders/Sprites/uiz.yy",
+    "name": "Sprites",
+    "path": "folders/uiZ/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_menudots",

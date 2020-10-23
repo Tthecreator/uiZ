@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "internal",
-    "path": "folders/Scripts/uiz/uiz/objects/stringbox/internal.yy",
+    "path": "folders/uiZ/objects/stringbox/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_stringbox_selectAll",

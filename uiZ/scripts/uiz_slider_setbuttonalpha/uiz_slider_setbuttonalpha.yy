@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "slider",
-    "path": "folders/Scripts/uiz/uiz/objects/slider.yy",
+    "path": "folders/uiZ/objects/slider.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_slider_setbuttonalpha",

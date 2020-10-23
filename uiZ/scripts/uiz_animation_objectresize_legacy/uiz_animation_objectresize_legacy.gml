@@ -36,7 +36,7 @@ function uiz_animation_objectresize_legacy(argument0, argument1, argument2, argu
 	return : the resize instance id. Needed to call if (resizeinstanceid.isdone) then{}
 	*/
 	var o=argument0
-	var r=instance_create(0,0,obj_uiZ_resizer)
+	var r=uiz_c(obj_uiZ_resizer)
 	with(r){
 	toobject=o
 	animationtype=argument9

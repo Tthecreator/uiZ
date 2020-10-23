@@ -12,13 +12,13 @@ function uiz_updater_setsurface() {
 	/*
 	if uiz_doclear=true then{
 
-	//draw_set_blend_mode_ext(bm_zero,bm_zero)
+	//gpu_set_blendmode_ext(bm_zero,bm_zero)
 	draw_set_alpha(0)
 	draw_rectangle(last_rx-1-leftmargin,last_ry-1-topmargin,last_rlx+1+rightmargin,last_rly+1+topmargin,0)
 	draw_rectangle(rx-1-leftmargin,ry-1-topmargin,rlx+1+rightmargin,rly+1+topmargin,0)
 	uiz_doclear=false;
 	//if uiz_doredraw=false then{
-	//draw_set_blend_mode(bm_normal)
+	//gpu_set_blendmode(bm_normal)
 	//}
 	}
 	*/

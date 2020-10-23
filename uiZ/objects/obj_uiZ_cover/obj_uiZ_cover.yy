@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "cover",
+    "path": "folders/uiZ/objects/cover.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_cover",

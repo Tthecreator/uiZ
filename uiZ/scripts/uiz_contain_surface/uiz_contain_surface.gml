@@ -11,12 +11,12 @@ function uiz_contain_surface() {
 	surface_set_target(global.uiz_containframe)
 	//clear surface
 	/*
-	draw_set_blend_mode_ext(bm_zero,bm_zero)
+	gpu_set_blendmode_ext(bm_zero,bm_zero)
 	draw_rectangle(0,0,window_get_width(),window_get_height(),0)
-	draw_set_blend_mode(bm_normal)
+	gpu_set_blendmode(bm_normal)
 	*/
 	draw_clear_alpha(c_white,0);
-	//draw_set_blend_mode(bm_normal);
+	//gpu_set_blendmode(bm_normal);
 	sdbm("[uiZ:Warning]using a slower surface drawing method for ",id, object_index)
 
 

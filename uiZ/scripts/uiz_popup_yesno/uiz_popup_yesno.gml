@@ -97,7 +97,7 @@ function uiz_popup_yesno() {
 	uiz_window_setResizable(w,false);
 	uiz_fixgeneralpos(w)
 	var wf=w
-	var t=instance_create(0,0,obj_uiZ_text)
+	var t=uiz_c(obj_uiZ_text)
 	uiz_setParent(t,wf)
 	t.posinframex=uiz_fill
 	t.posinframey=uiz_snaptop
@@ -111,7 +111,7 @@ function uiz_popup_yesno() {
 	if argument_count=4 then{t.font=argument[3]}
 	uiz_fixgeneralpos(t)
 	//no
-	var n=instance_create(0,0,obj_uiZ_3waybutton)
+	var n=uiz_c(obj_uiZ_3waybutton)
 	uiz_setParent(n,wf)
 	n.color=c_red
 	n.posinframey=uiz_snapbottom
@@ -125,7 +125,7 @@ function uiz_popup_yesno() {
 	//n.bottomframemargin=4
 	uiz_fixgeneralpos(n)
 	//yes
-	var yes=instance_create(0,0,obj_uiZ_3waybutton)
+	var yes=uiz_c(obj_uiZ_3waybutton)
 	uiz_setParent(yes,wf)
 	yes.color=c_green
 	yes.posinframey=uiz_snapbottom

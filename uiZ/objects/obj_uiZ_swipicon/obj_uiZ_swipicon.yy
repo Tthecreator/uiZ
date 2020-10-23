@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "swipicon",
+    "path": "folders/uiZ/objects/swipicon.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_swipicon",

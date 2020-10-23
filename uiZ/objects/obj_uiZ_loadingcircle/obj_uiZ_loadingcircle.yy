@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "loadingcircle",
+    "path": "folders/uiZ/objects/loadingcircle.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_loadingcircle",

@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "creation",
-    "path": "folders/Scripts/uiz/uiz/grid/creation.yy",
+    "path": "folders/Scripts/uiz/Scripts/grid/creation.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_setGridObjects_canvas",

@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "keepoff",
-    "path": "folders/Scripts/uiz/uiz/objects/textarea/keepoff.yy",
+    "name": "internal",
+    "path": "folders/uiZ/objects/textarea/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_textarea_moveSelectionLeft",

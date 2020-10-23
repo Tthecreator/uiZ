@@ -1,1 +1,0 @@
-uiz_forceFixView=true;

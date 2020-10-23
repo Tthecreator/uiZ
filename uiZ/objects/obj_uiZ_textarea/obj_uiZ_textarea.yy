@@ -33,8 +33,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "textarea",
+    "path": "folders/uiZ/objects/textarea.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_textarea",

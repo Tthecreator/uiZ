@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "spritecounter",
-    "path": "folders/Scripts/uiz/uiz/objects/spritecounter.yy",
+    "path": "folders/uiZ/objects/spritecounter.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_spritecounter_setvalue",

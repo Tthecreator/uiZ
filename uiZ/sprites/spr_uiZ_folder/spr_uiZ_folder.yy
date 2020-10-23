@@ -76,8 +76,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ec5242e1-a381-465d-9996-defd8d848715","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "uiz",
-    "path": "folders/Sprites/uiz.yy",
+    "name": "Sprites",
+    "path": "folders/uiZ/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_folder",

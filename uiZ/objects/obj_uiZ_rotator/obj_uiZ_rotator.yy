@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "rotator",
+    "path": "folders/uiZ/objects/rotator.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_rotator",

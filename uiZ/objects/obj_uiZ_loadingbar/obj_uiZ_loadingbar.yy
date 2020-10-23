@@ -28,8 +28,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "loadingbar",
+    "path": "folders/uiZ/objects/loadingbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_loadingbar",

@@ -28,8 +28,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "slickslider",
+    "path": "folders/uiZ/objects/slickslider.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_slickslider",

@@ -30,7 +30,7 @@ default:
 szx=1
 szy=1
 }
-texture_set_repeat(1)
+gpu_set_texrepeat(1)
 
 //middle
 draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(sprite,0))

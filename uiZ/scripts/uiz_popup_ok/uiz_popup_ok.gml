@@ -81,7 +81,7 @@ function uiz_popup_ok() {
 	uiz_window_setResizable(w,false);
 	uiz_fixgeneralpos(w)
 	var wf=w
-	var t=instance_create(0,0,obj_uiZ_text)
+	var t=uiz_c(obj_uiZ_text)
 	uiz_setParent(t,wf)
 	t.posinframex=uiz_fill
 	t.posinframey=uiz_snaptop
@@ -96,7 +96,7 @@ function uiz_popup_ok() {
 	//t.text=argument[0]
 	if argument_count=4 then{t.font=argument[3]}
 	uiz_fixgeneralpos(t)
-	var b=instance_create(0,0,obj_uiZ_popupok)
+	var b=uiz_c(obj_uiZ_popupok)
 	uiz_setParent(b,wf)
 	b.posinframey=uiz_snapbottom
 	b.posinframex=uiz_center

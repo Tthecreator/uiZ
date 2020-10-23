@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "internal",
-    "path": "folders/Scripts/uiz/uiz/windows(os)/internal.yy",
+    "path": "folders/Scripts/uiz/Scripts/windows(os)/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_resetwindowsize",

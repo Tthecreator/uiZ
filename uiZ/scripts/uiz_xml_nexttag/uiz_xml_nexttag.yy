@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "iterating",
-    "path": "folders/Scripts/uiz/uiz/xml parser/handle/iterating.yy",
+    "path": "folders/Scripts/uiz/Scripts/xml parser/handle/iterating.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_xml_nexttag",

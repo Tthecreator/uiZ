@@ -78,7 +78,7 @@ uiz_fixChildren(obj_uiZ_controller,true)
 ///check for debug
 if !instance_exists(obj_uiZ_debugmanager) and keyboard_check(vk_control) and keyboard_check(vk_shift) and keyboard_check(ord("I")) then{
 
-    instance_create(0,0,obj_uiZ_debugmanager);
+    uiz_c(obj_uiZ_debugmanager);
 }
 
 if keyboard_check(vk_control) && keyboard_check(vk_f5) then{

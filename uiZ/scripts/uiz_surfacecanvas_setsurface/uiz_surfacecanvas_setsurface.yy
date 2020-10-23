@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "surfacecanvas",
-    "path": "folders/Scripts/uiz/uiz/objects/surfacecanvas.yy",
+    "path": "folders/uiZ/internal/objects/surfacecanvas.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_surfacecanvas_setsurface",

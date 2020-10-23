@@ -28,8 +28,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "square",
+    "path": "folders/uiZ/objects/square.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_square",

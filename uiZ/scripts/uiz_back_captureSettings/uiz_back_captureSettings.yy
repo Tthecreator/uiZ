@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "main back scripts",
-    "path": "folders/Scripts/uiz/uiz/objectfunctions/main back scripts.yy",
+    "path": "folders/Scripts/uiz/Scripts/objectfunctions/main back scripts.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_back_captureSettings",

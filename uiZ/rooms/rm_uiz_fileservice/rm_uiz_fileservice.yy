@@ -41,8 +41,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "other, don't touch!",
-    "path": "folders/Rooms/uiz/other, don't touch!.yy",
+    "name": "rooms",
+    "path": "folders/uiZ/internal/rooms.yy",
   },
   "resourceVersion": "1.0",
   "name": "rm_uiz_fileservice",

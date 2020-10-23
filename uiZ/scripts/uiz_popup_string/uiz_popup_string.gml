@@ -89,7 +89,7 @@ function uiz_popup_string() {
 	uiz_window_setResizable(w,false);
 	uiz_fixgeneralpos(w)
 	var wf=w
-	var t=instance_create(0,0,obj_uiZ_text)
+	var t=uiz_c(obj_uiZ_text)
 	uiz_setParent(t,wf)
 	t.posinframex=uiz_fill
 	t.posinframey=uiz_snaptop
@@ -107,7 +107,7 @@ function uiz_popup_string() {
 	uiz_fixgeneralpos(t);
 
 
-	var c=instance_create(0,0,obj_uiZ_stringbox)
+	var c=uiz_c(obj_uiZ_stringbox)
 	uiz_setParent(c,wf)
 	c.posinframey=uiz_snapbottom
 	c.posinframex=uiz_snapleft
@@ -119,7 +119,7 @@ function uiz_popup_string() {
 	uiz_fixgeneralpos(c)
 
 
-	var b=instance_create(0,0,obj_uiZ_popupok)
+	var b=uiz_c(obj_uiZ_popupok)
 	uiz_setParent(b,wf)
 	b.posinframey=uiz_snapbottom
 	b.posinframex=uiz_snapright

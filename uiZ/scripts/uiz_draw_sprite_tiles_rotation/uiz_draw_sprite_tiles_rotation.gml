@@ -17,7 +17,7 @@ function uiz_draw_sprite_tiles_rotation(argument0, argument1, argument2, argumen
 	A function drawing a sprite an x number of times on a square/rectangle from point (x1,y1) to (x2,y2). 
 	Repeatx and repeaty must be numbers above 0, but can be a decimal number.
 	This means you can for example give repeatx a value of 2.5 and it will draw the sprite 2 times, and than another halve of that sprite will be added.
-	It is recommended that you set texture_set_repeat to false, else artifacts may occur. 
+	It is recommended that you set gpu_set_texrepeat to false, else artifacts may occur. 
 	The outerEdge can be set to any other value then 0 when you manually add a pixel border around your sprite. This is to prevent your sprite from blending in empty alpha
 
 	rotate can be set to:

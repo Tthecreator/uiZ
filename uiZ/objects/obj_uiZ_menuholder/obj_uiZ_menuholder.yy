@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "keepoff",
-    "path": "folders/Objects/uiZ/keepoff.yy",
+    "name": "internal",
+    "path": "folders/uiZ/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_menuholder",

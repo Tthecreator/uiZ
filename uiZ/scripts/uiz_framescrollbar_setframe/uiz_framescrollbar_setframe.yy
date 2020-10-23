@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "framescrollbar",
-    "path": "folders/Scripts/uiz/uiz/objects/framescrollbar.yy",
+    "path": "folders/uiZ/objects/framescrollbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_framescrollbar_setframe",

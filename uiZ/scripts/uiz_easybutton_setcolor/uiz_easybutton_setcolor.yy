@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "easybutton",
-    "path": "folders/Scripts/uiz/uiz/objects/easybutton.yy",
+    "path": "folders/uiZ/objects/easybutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_easybutton_setcolor",

@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "uiz_size",
-    "path": "folders/Scripts/uiz/uiz/common/uiz_size.yy",
+    "path": "folders/Scripts/uiz/Scripts/common/uiz_size.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_size_w",

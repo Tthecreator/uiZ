@@ -114,7 +114,7 @@ if draw and uiz_cntn() then{
                     default:
                         szy = 1
                 }
-                //texture_set_repeat(0)
+                //gpu_set_texrepeat(0)
                 //top
                 
                 if mouseover = id and overframebar = i then {

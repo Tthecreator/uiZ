@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "updater",
-    "path": "folders/Scripts/uiz/uiz/updater.yy",
+    "path": "folders/Scripts/uiz/Scripts/updater.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_updater_FixView_NoMove",

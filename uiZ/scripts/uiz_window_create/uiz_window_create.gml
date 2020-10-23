@@ -10,7 +10,7 @@ function uiz_window_create(argument0, argument1, argument2, argument3) {
 	Takes arguments for width and height, and the types of those width and heights.
 	What valuetype does is equivalent to how the variable "posval w/h type" works, but this one only supports px, dp and fc.
 	*/
-	var w=instance_create(0,0,obj_uiZ_window);
+	var w=uiz_c(obj_uiZ_window);
 	//w.width=uiz_getposx(argument0,argument1)
 	//w.height=uiz_getposy(argument2,argument3)
 	w.posinframex=uiz_center

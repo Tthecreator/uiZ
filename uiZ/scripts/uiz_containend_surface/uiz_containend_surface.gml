@@ -1,6 +1,6 @@
 function uiz_containend_surface() {
 
-	//draw_set_blend_mode(bm_normal)
+	//gpu_set_blendmode(bm_normal)
 
 	surface_reset_target();
 	uiz_updater_setsurface();

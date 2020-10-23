@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "keepoff",
-    "path": "folders/Scripts/uiz/uiz/objects/slider/keepoff.yy",
+    "name": "internal",
+    "path": "folders/uiZ/objects/slider/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_slider_unselect",

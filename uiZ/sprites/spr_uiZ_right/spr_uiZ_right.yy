@@ -69,7 +69,7 @@
   ],
   "parent": {
     "name": "other",
-    "path": "folders/Sprites/uiz/back/other.yy",
+    "path": "folders/Sprites/Sprites/back/other.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_right",

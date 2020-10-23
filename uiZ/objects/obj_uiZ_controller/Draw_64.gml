@@ -65,13 +65,13 @@ if uiz_updateall=true or ds_list_size(l)>0 then{
     //sdbm("test");
     //sdbm("uiz surf info: ",surface_get_width(uiz_surf),surface_get_height(application_surface),surface_get_width(application_surface),surface_get_height(uiz_surf),window_get_width(),window_get_height())
     surface_set_target(uiz_surf)
-    draw_set_blend_mode_ext(bm_zero,bm_inv_src_alpha)
+    gpu_set_blendmode_ext(bm_zero,bm_inv_src_alpha)
     draw_surface(uiz_appsurf,0,0);
     //draw_clear_alpha(c_white,0);
-    //draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+    //gpu_set_blendmode_ext(bm_one,bm_inv_src_alpha);
     uiz_changeSurface=false;
     //sdbm("shader set to:",global.uiz_shader)
-    //draw_set_blend_mode(bm_normal)
+    //gpu_set_blendmode(bm_normal)
     //draw_surface_ext(uiz_appsurf,room_width/2,room_height/2,0.5,0.5,0,c_white,0.7);
     
     //set shader
@@ -79,10 +79,10 @@ if uiz_updateall=true or ds_list_size(l)>0 then{
     //sdbm("test");
     shader_set(global.uiz_shader_contain);
     uiz_contain_shader_uniforms_set();
-    draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
-    //draw_set_blend_mode(bm_normal);
+    gpu_set_blendmode_ext(bm_one,bm_inv_src_alpha);
+    //gpu_set_blendmode(bm_normal);
     }else{
-    draw_set_blend_mode(bm_normal);
+    gpu_set_blendmode(bm_normal);
     }
     
     draw_set_color(c_white)
@@ -91,7 +91,7 @@ if uiz_updateall=true or ds_list_size(l)>0 then{
     surface_reset_target();
     if global.uiz_shader=true then{
     shader_reset();
-    draw_set_blend_mode(bm_normal);
+    gpu_set_blendmode(bm_normal);
     }
 
 }
@@ -112,8 +112,8 @@ uiz_surf_secondary=surface_create(width,height);
 }
 */
 
-//draw_set_blend_mode(bm_normal);
-draw_set_blend_mode_ext(bm_one,bm_inv_src_alpha);
+//gpu_set_blendmode(bm_normal);
+gpu_set_blendmode_ext(bm_one,bm_inv_src_alpha);
 draw_set_color(c_white)
 draw_set_alpha(1)
 draw_surface(uiz_surf,0,0)

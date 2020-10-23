@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "dropdown",
-    "path": "folders/Scripts/uiz/uiz/objects/dropdown.yy",
+    "path": "folders/uiZ/objects/dropdown.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_dropdown_getmasklistvalue",

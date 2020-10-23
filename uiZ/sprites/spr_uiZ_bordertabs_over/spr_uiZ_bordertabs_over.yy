@@ -101,7 +101,7 @@
   ],
   "parent": {
     "name": "tabs",
-    "path": "folders/Sprites/uiz/back/tabs.yy",
+    "path": "folders/Sprites/Sprites/back/tabs.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_bordertabs_over",

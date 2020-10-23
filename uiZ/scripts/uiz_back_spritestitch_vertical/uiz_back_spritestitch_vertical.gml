@@ -35,7 +35,7 @@ function uiz_back_spritestitch_vertical() {
 	//draw_sprite_part_ext(bkspr,img,0,0,sprpx,height,rx,ry,hsc,hsc,bkcol,alpha)
 	//draw_sprite_part_ext(bkspr,img+2,sprite_get_height(bkspr)-sprpx,0,sprpx,height,rlx-width/2,ry,hsc,hsc,bkcol,alpha)
 	//draw_sprite_pos(bkspr,img,)
-	//texture_set_repeat(1)
+	//gpu_set_texrepeat(1)
 	draw_set_color(bkcol);
 	/*
 	draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(bkspr,img))

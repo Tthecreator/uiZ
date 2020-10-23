@@ -10,7 +10,7 @@ if instance_exists(menu){
 uiz_destroyObject(menu)}
 }else{
 menuis=1
-menu=instance_create(0,0,obj_uiZ_mousemenu)
+menu=uiz_c(obj_uiZ_mousemenu);
 if masklist!=-1 and ds_exists(masklist,ds_type_list) and ds_list_size(masklist)>=ds_list_size(uselist) then{
 menu.uselist=masklist
 }else{

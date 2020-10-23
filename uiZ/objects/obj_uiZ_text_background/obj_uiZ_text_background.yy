@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "deprecated",
-    "path": "folders/Objects/uiZ/keepoff/deprecated.yy",
+    "path": "folders/uiZ/internal/deprecated.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_text_background",

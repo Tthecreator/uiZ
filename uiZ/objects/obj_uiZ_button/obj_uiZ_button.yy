@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "objects",
-    "path": "folders/Objects/uiZ/objects.yy",
+    "name": "button",
+    "path": "folders/uiZ/objects/button.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_button",

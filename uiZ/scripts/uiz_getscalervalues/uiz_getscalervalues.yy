@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "basescripts",
-    "path": "folders/Scripts/uiz/uiz/fix/basescripts.yy",
+    "path": "folders/Scripts/uiz/Scripts/fix/basescripts.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_getscalervalues",

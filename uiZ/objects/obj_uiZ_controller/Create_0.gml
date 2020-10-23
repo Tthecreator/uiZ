@@ -249,4 +249,3 @@ animateScrollbarList = ds_list_create();
 
 ///scrollbar animation handling setup
 scrollbarStepList = ds_list_create();
-
