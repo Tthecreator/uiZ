@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "spriteanimationbutton",
-    "path": "folders/uiZ/objects/spriteanimationbutton.yy",
+    "path": "folders/uiZ/Objects/spriteanimationbutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_spriteanimationbutton_setvalue",

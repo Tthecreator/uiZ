@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "destroy",
-    "path": "folders/Scripts/uiz/Scripts/destroy.yy",
+    "path": "folders/uiZ/Core Functionality/destroy.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_destroyObject_notself",

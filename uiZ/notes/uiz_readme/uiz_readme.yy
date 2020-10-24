@@ -1,7 +1,7 @@
 {
   "parent": {
     "name": "uiZ",
-    "path": "uiZ.yyp",
+    "path": "folders/uiZ.yy",
   },
   "resourceVersion": "1.1",
   "name": "uiz_readme",

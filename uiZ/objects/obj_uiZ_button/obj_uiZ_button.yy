@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "button",
-    "path": "folders/uiZ/objects/button.yy",
+    "path": "folders/uiZ/Objects/button.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_button",

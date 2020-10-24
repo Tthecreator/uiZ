@@ -46,8 +46,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "rooms",
-    "path": "folders/uiZ/examples, tutorials and templates/rooms.yy",
+    "name": "serverbrowser",
+    "path": "folders/uiZ/Examples, Tutorials and Templates/serverbrowser.yy",
   },
   "resourceVersion": "1.0",
   "name": "rm_uiz_serverbrowser",

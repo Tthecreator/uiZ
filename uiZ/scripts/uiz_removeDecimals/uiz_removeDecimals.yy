@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "numbers",
-    "path": "folders/Scripts/uiz/Scripts/general/numbers.yy",
+    "path": "folders/uiZ/Core Functionality/general/numbers.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_removeDecimals",

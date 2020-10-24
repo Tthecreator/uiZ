@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "gridlist",
-    "path": "folders/uiZ/objects/gridlist.yy",
+    "path": "folders/uiZ/Objects/gridlist.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_gridlist",

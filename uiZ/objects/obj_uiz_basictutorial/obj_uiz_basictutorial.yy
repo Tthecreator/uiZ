@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "examples, tutorials and templates",
-    "path": "folders/uiZ/examples, tutorials and templates.yy",
+    "name": "Tutorial",
+    "path": "folders/uiZ/Examples, Tutorials and Templates/Tutorial.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiz_basictutorial",

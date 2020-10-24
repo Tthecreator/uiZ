@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "text",
-    "path": "folders/uiZ/objects/text.yy",
+    "path": "folders/uiZ/Objects/text.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_text",

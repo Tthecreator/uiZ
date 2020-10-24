@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "internal",
-    "path": "folders/Scripts/uiz/Scripts/contain/internal.yy",
+    "path": "folders/uiZ/Core Functionality/contain/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_contain",

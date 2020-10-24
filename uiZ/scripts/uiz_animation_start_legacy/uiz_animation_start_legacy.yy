@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "legacy",
-    "path": "folders/Scripts/uiz/Scripts/animation/legacy.yy",
+    "path": "folders/uiZ/Core Functionality/animation/legacy.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_animation_start_legacy",

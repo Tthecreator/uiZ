@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "tabs",
-    "path": "folders/uiZ/objects/tabs.yy",
+    "path": "folders/uiZ/Objects/tabs.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_tabs",

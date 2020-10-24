@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "tabslider",
-    "path": "folders/uiZ/objects/tabslider.yy",
+    "path": "folders/uiZ/Objects/tabslider.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_tabslider",

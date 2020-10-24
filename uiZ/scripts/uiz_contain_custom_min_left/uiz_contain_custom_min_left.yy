@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "custom ui objects",
-    "path": "folders/Scripts/uiz/Scripts/contain/custom ui objects.yy",
+    "path": "folders/uiZ/Core Functionality/contain/custom ui objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_contain_custom_min_left",

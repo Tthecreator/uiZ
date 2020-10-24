@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "spritecounter",
-    "path": "folders/uiZ/objects/spritecounter.yy",
+    "path": "folders/uiZ/Objects/spritecounter.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_spritecounter",

@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "menubutton",
-    "path": "folders/uiZ/objects/menubutton.yy",
+    "path": "folders/uiZ/Objects/menubutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_menubutton",

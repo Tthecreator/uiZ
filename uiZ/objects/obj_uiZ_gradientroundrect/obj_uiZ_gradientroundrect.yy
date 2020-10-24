@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "gradientroundrect",
-    "path": "folders/uiZ/objects/gradientroundrect.yy",
+    "path": "folders/uiZ/Objects/gradientroundrect.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_gradientroundrect",

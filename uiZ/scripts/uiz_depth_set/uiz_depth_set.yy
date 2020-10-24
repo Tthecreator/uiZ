@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "uiz_depth",
-    "path": "folders/Scripts/uiz/Scripts/common/uiz_depth.yy",
+    "path": "folders/uiZ/Core Functionality/common/uiz_depth.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_depth_set",

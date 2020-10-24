@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "internal",
-    "path": "folders/uiZ/internal.yy",
+    "name": "Internal",
+    "path": "folders/uiZ/Internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_framerowanchor",

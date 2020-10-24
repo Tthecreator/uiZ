@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "templateobjects",
-    "path": "folders/Objects/uiZ/examples, tutorials and templates/templateobjects.yy",
+    "path": "folders/uiZ/Examples, Tutorials and Templates/templateobjects.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_template",

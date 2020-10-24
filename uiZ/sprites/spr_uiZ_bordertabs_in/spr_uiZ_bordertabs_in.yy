@@ -101,7 +101,7 @@
   ],
   "parent": {
     "name": "tabs",
-    "path": "folders/Sprites/Sprites/back/tabs.yy",
+    "path": "folders/uiZ/Core Functionality/backgorund_sprites/tabs.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_bordertabs_in",

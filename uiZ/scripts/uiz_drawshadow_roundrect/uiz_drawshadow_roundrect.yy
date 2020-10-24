@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "internal",
-    "path": "folders/Scripts/uiz/Scripts/draw/internal.yy",
+    "path": "folders/uiZ/Core Functionality/draw/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_drawshadow_roundrect",

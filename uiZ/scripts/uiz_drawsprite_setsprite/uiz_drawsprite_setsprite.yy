@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "sprite",
-    "path": "folders/uiZ/objects/sprite.yy",
+    "path": "folders/uiZ/Objects/sprite.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_drawsprite_setsprite",

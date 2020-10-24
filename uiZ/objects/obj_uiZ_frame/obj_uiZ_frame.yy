@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "frame",
-    "path": "folders/uiZ/objects/frame.yy",
+    "path": "folders/uiZ/Objects/frame.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_frame",

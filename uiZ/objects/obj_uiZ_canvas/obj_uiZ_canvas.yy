@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "canvas",
-    "path": "folders/uiZ/objects/canvas.yy",
+    "path": "folders/uiZ/Objects/canvas.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_canvas",

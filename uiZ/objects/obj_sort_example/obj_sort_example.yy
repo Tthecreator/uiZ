@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "examples, tutorials and templates",
-    "path": "folders/uiZ/examples, tutorials and templates.yy",
+    "name": "Examples, Tutorials and Templates",
+    "path": "folders/uiZ/Examples, Tutorials and Templates.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_sort_example",

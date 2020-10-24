@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "radiobox",
-    "path": "folders/uiZ/objects/radiobox.yy",
+    "path": "folders/uiZ/Objects/radiobox.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_radiobox",

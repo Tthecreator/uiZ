@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "objects",
-    "path": "folders/Scripts/uiz/Scripts/fix/objects.yy",
+    "path": "folders/uiZ/Core Functionality/fix/objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_fixsliderstructpos",

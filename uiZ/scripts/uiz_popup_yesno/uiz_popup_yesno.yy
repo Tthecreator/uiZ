@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "popup",
-    "path": "folders/Scripts/uiz/Scripts/popup.yy",
+    "path": "folders/uiZ/Core Functionality/popup.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_popup_yesno",

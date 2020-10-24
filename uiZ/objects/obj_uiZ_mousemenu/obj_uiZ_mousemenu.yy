@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "mousemenu",
-    "path": "folders/uiZ/objects/mousemenu.yy",
+    "path": "folders/uiZ/Objects/mousemenu.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_mousemenu",

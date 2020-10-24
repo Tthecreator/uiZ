@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "slider",
-    "path": "folders/uiZ/objects/slider.yy",
+    "path": "folders/uiZ/Objects/slider.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_slider",

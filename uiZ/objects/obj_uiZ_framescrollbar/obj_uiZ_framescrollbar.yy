@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "framescrollbar",
-    "path": "folders/uiZ/objects/framescrollbar.yy",
+    "path": "folders/uiZ/Objects/framescrollbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_framescrollbar",

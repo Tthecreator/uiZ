@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "drawdslist",
-    "path": "folders/uiZ/objects/drawdslist.yy",
+    "path": "folders/uiZ/Objects/drawdslist.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_drawdslist",

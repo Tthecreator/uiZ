@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "strings",
-    "path": "folders/Scripts/uiz/Scripts/general/strings.yy",
+    "path": "folders/uiZ/Core Functionality/general/strings.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_charIsNumber",

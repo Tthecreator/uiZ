@@ -42,7 +42,7 @@
   },
   "parent": {
     "name": "rooms",
-    "path": "folders/uiZ/internal/rooms.yy",
+    "path": "folders/uiZ/Internal/rooms.yy",
   },
   "resourceVersion": "1.0",
   "name": "rm_uiz_fileservice",

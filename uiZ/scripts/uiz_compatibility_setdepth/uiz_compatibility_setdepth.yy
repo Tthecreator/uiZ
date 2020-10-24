@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "compatibility",
-    "path": "folders/Scripts/uiz/Scripts/compatibility.yy",
+    "path": "folders/uiZ/Core Functionality/compatibility.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_compatibility_setdepth",

@@ -69,7 +69,7 @@
   ],
   "parent": {
     "name": "other",
-    "path": "folders/Sprites/Sprites/back/other.yy",
+    "path": "folders/uiZ/Core Functionality/backgorund_sprites/other.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_right",

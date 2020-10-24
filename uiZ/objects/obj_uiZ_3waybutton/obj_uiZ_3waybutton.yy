@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "3waybutton",
-    "path": "folders/uiZ/objects/3waybutton.yy",
+    "path": "folders/uiZ/Objects/3waybutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_3waybutton",

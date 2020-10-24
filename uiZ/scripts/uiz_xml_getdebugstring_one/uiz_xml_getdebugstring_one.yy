@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "debug",
-    "path": "folders/Scripts/uiz/Scripts/xml parser/internal/debug.yy",
+    "path": "folders/uiZ/Core Functionality/xml parser/internal/debug.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_xml_getdebugstring_one",

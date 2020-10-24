@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "squarebutton",
-    "path": "folders/uiZ/objects/squarebutton.yy",
+    "path": "folders/uiZ/Objects/squarebutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_squarebutton",

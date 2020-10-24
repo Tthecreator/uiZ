@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "text",
-    "path": "folders/uiZ/objects/text.yy",
+    "path": "folders/uiZ/Objects/text.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_text_recalculate",

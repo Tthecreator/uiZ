@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "scrollbar",
-    "path": "folders/uiZ/objects/scrollbar.yy",
+    "path": "folders/uiZ/Objects/scrollbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_scrollbar",

@@ -33,7 +33,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "treelist",
-    "path": "folders/uiZ/objects/treelist.yy",
+    "path": "folders/uiZ/Objects/treelist.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_treelist",

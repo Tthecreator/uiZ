@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "clock",
-    "path": "folders/uiZ/objects/clock.yy",
+    "path": "folders/uiZ/Objects/clock.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_clock",

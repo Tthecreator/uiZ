@@ -76,8 +76,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8db5562f-9bf8-4ed4-98ef-12802db02dcc","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "back",
-    "path": "folders/Sprites/Sprites/back.yy",
+    "name": "backgorund_sprites",
+    "path": "folders/uiZ/Core Functionality/backgorund_sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_4way_inner",

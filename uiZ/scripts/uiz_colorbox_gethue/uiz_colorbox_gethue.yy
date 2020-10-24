@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "colorbox",
-    "path": "folders/uiZ/objects/colorbox.yy",
+    "path": "folders/uiZ/Objects/colorbox.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_colorbox_gethue",

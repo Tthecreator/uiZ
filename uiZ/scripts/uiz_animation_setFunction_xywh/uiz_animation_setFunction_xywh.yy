@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "animation",
-    "path": "folders/Scripts/uiz/Scripts/animation.yy",
+    "path": "folders/uiZ/Core Functionality/animation.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_animation_setFunction_xywh",

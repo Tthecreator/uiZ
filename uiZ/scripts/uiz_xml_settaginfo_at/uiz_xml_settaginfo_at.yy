@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "writing",
-    "path": "folders/Scripts/uiz/Scripts/xml parser/manipulation/writing.yy",
+    "path": "folders/uiZ/Core Functionality/xml parser/manipulation/writing.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_xml_settaginfo_at",

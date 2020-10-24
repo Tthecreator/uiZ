@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "sliderstruct",
-    "path": "folders/uiZ/objects/sliderstruct.yy",
+    "path": "folders/uiZ/Objects/sliderstruct.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_sliderstruct",

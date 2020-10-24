@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "spriteanimationbutton",
-    "path": "folders/uiZ/objects/spriteanimationbutton.yy",
+    "path": "folders/uiZ/Objects/spriteanimationbutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_spriteanimationbutton",

@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "frameset",
-    "path": "folders/Scripts/uiz/Scripts/frameset.yy",
+    "path": "folders/uiZ/Core Functionality/frameset.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_frameset_divide_objects_vertical",

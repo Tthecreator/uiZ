@@ -27,7 +27,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "serverbrowser",
-    "path": "folders/Objects/uiZ/examples, tutorials and templates/serverbrowser.yy",
+    "path": "folders/uiZ/Examples, Tutorials and Templates/serverbrowser.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_serverbrowser",

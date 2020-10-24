@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "events",
-    "path": "folders/Scripts/uiz/uiz/objects/frame/internal/events.yy",
+    "path": "folders/uiZ/Objects/frame/internal/events.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_frame_event_draw",

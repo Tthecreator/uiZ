@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "functionbar",
-    "path": "folders/uiZ/objects/functionbar.yy",
+    "path": "folders/uiZ/Objects/functionbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_functionbar",

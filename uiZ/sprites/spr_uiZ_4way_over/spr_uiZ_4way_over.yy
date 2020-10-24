@@ -76,8 +76,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fdadb01c-792d-46d1-997d-22a60b23b8ad","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "back",
-    "path": "folders/Sprites/Sprites/back.yy",
+    "name": "backgorund_sprites",
+    "path": "folders/uiZ/Core Functionality/backgorund_sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_4way_over",

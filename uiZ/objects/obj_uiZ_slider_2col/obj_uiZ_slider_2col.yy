@@ -32,7 +32,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "slider_2col",
-    "path": "folders/uiZ/objects/slider_2col.yy",
+    "path": "folders/uiZ/Objects/slider_2col.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_slider_2col",

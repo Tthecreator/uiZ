@@ -100,8 +100,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"599ac878-966b-4c06-b867-e95c8c2b4351","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "back",
-    "path": "folders/Sprites/Sprites/back.yy",
+    "name": "backgorund_sprites",
+    "path": "folders/uiZ/Core Functionality/backgorund_sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_uiZ_border1_over",

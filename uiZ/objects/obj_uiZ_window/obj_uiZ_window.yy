@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "window",
-    "path": "folders/uiZ/objects/window.yy",
+    "path": "folders/uiZ/Objects/window.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_window",

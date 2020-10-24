@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "deprecated",
-    "path": "folders/uiZ/internal/deprecated.yy",
+    "path": "folders/uiZ/Internal/deprecated.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_sprbutton",

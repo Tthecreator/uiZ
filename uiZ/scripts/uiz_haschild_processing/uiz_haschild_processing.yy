@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "parent",
-    "path": "folders/Scripts/uiz/Scripts/parent.yy",
+    "path": "folders/uiZ/Core Functionality/parent.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_haschild_processing",

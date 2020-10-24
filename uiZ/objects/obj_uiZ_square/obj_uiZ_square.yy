@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "square",
-    "path": "folders/uiZ/objects/square.yy",
+    "path": "folders/uiZ/Objects/square.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_square",

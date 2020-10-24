@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "window",
-    "path": "folders/uiZ/objects/window.yy",
+    "path": "folders/uiZ/Objects/window.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_window_minimize",

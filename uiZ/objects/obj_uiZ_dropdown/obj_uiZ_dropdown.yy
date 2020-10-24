@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "dropdown",
-    "path": "folders/uiZ/objects/dropdown.yy",
+    "path": "folders/uiZ/Objects/dropdown.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_dropdown",

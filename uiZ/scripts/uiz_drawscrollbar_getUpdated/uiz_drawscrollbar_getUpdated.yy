@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "internal",
-    "path": "folders/Scripts/uiz/Scripts/scroll/internal.yy",
+    "path": "folders/uiZ/Core Functionality/scroll/internal.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_drawscrollbar_getUpdated",

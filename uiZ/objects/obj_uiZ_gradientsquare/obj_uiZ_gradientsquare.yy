@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "gradientsquare",
-    "path": "folders/uiZ/objects/gradientsquare.yy",
+    "path": "folders/uiZ/Objects/gradientsquare.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_gradientsquare",

@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "easybutton",
-    "path": "folders/uiZ/objects/easybutton.yy",
+    "path": "folders/uiZ/Objects/easybutton.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_easybutton",

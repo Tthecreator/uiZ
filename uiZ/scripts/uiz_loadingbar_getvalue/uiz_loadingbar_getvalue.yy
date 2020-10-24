@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "loadingbar",
-    "path": "folders/uiZ/objects/loadingbar.yy",
+    "path": "folders/uiZ/Objects/loadingbar.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_loadingbar_getvalue",

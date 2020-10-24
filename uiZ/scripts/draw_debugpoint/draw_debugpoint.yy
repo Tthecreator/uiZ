@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "debug",
-    "path": "folders/Scripts/uiz/Scripts/debug.yy",
+    "path": "folders/uiZ/Core Functionality/debug.yy",
   },
   "resourceVersion": "1.0",
   "name": "draw_debugpoint",

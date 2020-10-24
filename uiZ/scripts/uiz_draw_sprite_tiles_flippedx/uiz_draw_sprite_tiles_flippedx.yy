@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "draw",
-    "path": "folders/Scripts/uiz/Scripts/draw.yy",
+    "path": "folders/uiZ/Core Functionality/draw.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_draw_sprite_tiles_flippedx",

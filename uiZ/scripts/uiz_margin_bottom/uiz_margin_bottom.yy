@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "uiz_margin",
-    "path": "folders/Scripts/uiz/Scripts/common/uiz_margin.yy",
+    "path": "folders/uiZ/Core Functionality/common/uiz_margin.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_margin_bottom",

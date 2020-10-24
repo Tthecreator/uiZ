@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "cover",
-    "path": "folders/uiZ/objects/cover.yy",
+    "path": "folders/uiZ/Objects/cover.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_cover_setanimation",

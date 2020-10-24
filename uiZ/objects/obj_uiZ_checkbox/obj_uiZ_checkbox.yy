@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "checkbox",
-    "path": "folders/uiZ/objects/checkbox.yy",
+    "path": "folders/uiZ/Objects/checkbox.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_uiZ_checkbox",

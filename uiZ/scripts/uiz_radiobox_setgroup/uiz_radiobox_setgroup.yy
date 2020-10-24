@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "radiobox",
-    "path": "folders/uiZ/objects/radiobox.yy",
+    "path": "folders/uiZ/Objects/radiobox.yy",
   },
   "resourceVersion": "1.0",
   "name": "uiz_radiobox_setgroup",
