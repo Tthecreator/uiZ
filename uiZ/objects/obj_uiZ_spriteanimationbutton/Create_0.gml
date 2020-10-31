@@ -1,4 +1,4 @@
-/// @description #define uiZ
+//#define uiZ
 //#sprite images
 //#spritenum 4
 //#objectversion 1.0

@@ -1,4 +1,4 @@
-/// @description #define uiZ
+//#define uiZ
 //#sprite images
 //#spritenum 7
 uiz_objinit()

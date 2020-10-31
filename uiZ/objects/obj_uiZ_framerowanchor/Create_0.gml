@@ -1,4 +1,4 @@
-/// @description #define uiZ
+//#define uiZ
 //#exclude
 uiz_objinit()
 draw=false;

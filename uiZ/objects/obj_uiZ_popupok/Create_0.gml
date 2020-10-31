@@ -1,4 +1,4 @@
-/// @description #define uiZ
+//#define uiZ
 //#exclude
 //#sprite images
 //#spritenum 5
