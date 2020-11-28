@@ -7,7 +7,7 @@ function uiz_mouse_freeze() {
 	//(like the player selects a horizontal slider and then moves the mouse up. The slider should still be selected in that case)
 	//use uiz_mouse_unFreeze to resume operation.
 	global.mousefrozen=true;
-
+	sdbm("Freezing mouse on instance",global.mouseover," for instance",id);
 
 
 }

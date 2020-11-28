@@ -47,3 +47,12 @@ if obj_uiZ_designer_checkSystemSandbox()==false then{
 	
 	main_area_objectList = ds_list_create();
 #endregion
+
+#region //Setup Moving objects around in frontUI
+	snapToResize = 0;
+	snapToObject = -1;
+	snapToObjectRx = 0;
+	snapToObjectRy = 0;
+	snapToObjectRlx = 0;
+	snapToObjectRly = 0;
+#endregion

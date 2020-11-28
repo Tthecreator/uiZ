@@ -6,7 +6,7 @@
     "path": "folders/uiZ_designer.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_uiZ_designer_mainFrameObjectFunctions",
+  "name": "scrs_uiZ_designer_mainFrameObject_updateSize",
   "tags": [],
   "resourceType": "GMScript",
 }
