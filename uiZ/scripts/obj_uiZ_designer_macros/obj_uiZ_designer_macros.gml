@@ -1,4 +1,4 @@
-#macro project_location "C:\\uiz_github\\uiZ\\uiZ\\"
+#macro project_location "C:\\git\\uiZ\\uiZ\\"
 
 function obj_uiZ_designer_macros(){
 	

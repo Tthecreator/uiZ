@@ -1,2 +1,1 @@
-uiz_mouse_docheck();
-
+uiz_compatibility_mouse_docheck_canvas()

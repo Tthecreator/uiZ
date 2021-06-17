@@ -22,7 +22,12 @@
 	}else{//check if we need to select a new item or if we need to continue selection.
 		if snapToObject!=-1 and instance_exists(snapToObject) then{//use currently selected item
 			obj_uiZ_designer_handleHaloMouse(snapToObject);
-		}else if mouse_check_button(mb_left) and !uiz_mouse_isFrozen(){//find new thing to press
+			if !mouse_check_button(mb_left) then{
+				snapToResize = 0;
+				snapToObject = -1;
+				uiz_mouse_unFreeze();
+			}
+		}else if uiz_mouse_isOver_canvas(obj_uiZ_designer.main_area_frontUI) and mouse_check_button(mb_left) and !uiz_mouse_isFrozen(){//find new thing to press
 			for(var i=0; i<ds_list_size(main_area_objectList); ++i){
 				if obj_uiZ_designer_checkHaloMouse(main_area_objectList[|i]) then{
 					snapToObject = main_area_objectList[|i];

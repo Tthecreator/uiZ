@@ -99,6 +99,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c7c1170d-e596-49ad-8bc1-a69cf32198fa","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "tabs",
     "path": "folders/uiZ/Core Functionality/backgorund_sprites/tabs.yy",

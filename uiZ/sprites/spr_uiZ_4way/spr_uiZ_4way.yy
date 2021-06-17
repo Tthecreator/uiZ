@@ -75,6 +75,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"cb58690b-b73e-4284-a64e-f98917468341","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "backgorund_sprites",
     "path": "folders/uiZ/Core Functionality/backgorund_sprites.yy",

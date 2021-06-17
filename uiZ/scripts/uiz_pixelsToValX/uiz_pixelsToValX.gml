@@ -13,9 +13,9 @@ function uiz_pixelsToValX(argument0, argument1, argument2) {
 	switch(argument0){
 	case px: return argument1; break;
 	case dp: return (argument1/uiz_dp); break;
-	case fcx: case fc: return (argument1/argument2.parent.width); break;
-	case fcy: return (argument1/argument2.parent.height); break;
-	case fcm: return (2*(argument1/argument2.parent.width)); break;
+	case fcx: case fc: if (argument2.parent.width == 0) then{return 0;}else{return (argument1/argument2.parent.width);} break;
+	case fcy: if (argument2.parent.height == 0) then{return 0;}else{return (argument1/argument2.parent.height);} break;
+	case fcm: if (argument2.parent.width == 0) then{return 0;}else{return (2*(argument1/argument2.parent.width));} break;
 	default: return 0; break;
 	}
 
