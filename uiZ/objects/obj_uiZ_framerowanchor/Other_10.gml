@@ -8,6 +8,7 @@ if draw and uiz_cntn() then{
         if hasBar[i] = 1 then {
             ux = 0
             uwidth = width
+			h += uwidth;
             //get the y of the frames
             
             uy = h

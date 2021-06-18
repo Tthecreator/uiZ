@@ -93,5 +93,6 @@ scroll=uiz_drawscrollbar_init();
 scrollat=0;
 //startscrollat=0;
 //maxscrolllines=0
-usexml=0
+usexml=-1
 
+uiz_xml_init();

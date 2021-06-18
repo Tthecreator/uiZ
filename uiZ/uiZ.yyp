@@ -552,6 +552,7 @@
     {"id":{"name":"uiz_colorbox_getred","path":"scripts/uiz_colorbox_getred/uiz_colorbox_getred.yy",},"order":5,},
     {"id":{"name":"uiz_colorbox_getgreen","path":"scripts/uiz_colorbox_getgreen/uiz_colorbox_getgreen.yy",},"order":6,},
     {"id":{"name":"uiz_colorbox_getblue","path":"scripts/uiz_colorbox_getblue/uiz_colorbox_getblue.yy",},"order":7,},
+    {"id":{"name":"uiz_treelist_emptyXml","path":"scripts/uiz_treelist_emptyXml/uiz_treelist_emptyXml.yy",},"order":3,},
     {"id":{"name":"uiz_colorbox_updatergb","path":"scripts/uiz_colorbox_updatergb/uiz_colorbox_updatergb.yy",},"order":0,},
     {"id":{"name":"uiz_colorbox_setsliderval","path":"scripts/uiz_colorbox_setsliderval/uiz_colorbox_setsliderval.yy",},"order":1,},
     {"id":{"name":"uiz_colorbox_update_rgb","path":"scripts/uiz_colorbox_update_rgb/uiz_colorbox_update_rgb.yy",},"order":2,},

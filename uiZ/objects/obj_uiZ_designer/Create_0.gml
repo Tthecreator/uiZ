@@ -15,10 +15,12 @@ if obj_uiZ_designer_checkSystemSandbox()==false then{
 	object_list_sidebar = uiz_frameset_getObject(anchor_1,0);
 	main_area = uiz_frameset_getObject(anchor_1,1);
 	object_settings_sidebar = uiz_frameset_getObject(anchor_1,2);
+	uiz_frameset_setBarSlider(anchor_1, 0, true);
+	uiz_frameset_setBarSlider(anchor_1, 1, true);
 	uiz_fix(frameset_main);
 #endregion
 
-#region //Setup Object List
+#region //Setup Available Object List
 	object_list_objects = obj_uiZ_designer_getObjectList();
 	object_list_names = obj_uiZ_designer_getObjectNameList(object_list_objects);
 	object_list_sprites = obj_uiZ_designer_getObjectSpriteList(object_list_objects);
@@ -31,6 +33,15 @@ if obj_uiZ_designer_checkSystemSandbox()==false then{
 	uiz_position_t(object_list_uiList, uiz_fill, uiz_fill);
 	uiz_drawdslist_setlist(object_list_uiList, object_list_names, object_list_sprites, object_list_spriteNums);
 	uiz_fix(object_list_uiList);
+#endregion
+
+#region //Setup Live Object List
+	//setup ui element
+	object_list_liveList = uiz_c(obj_uiZ_treelist);
+	uiz_setParent(object_list_liveList, object_settings_sidebar);
+	uiz_position_t(object_list_liveList, uiz_fill, uiz_fill);
+	uiz_treelist_emptyXml(object_list_liveList);
+	uiz_fix(object_list_liveList);
 #endregion
 
 #region //Setup Main Region

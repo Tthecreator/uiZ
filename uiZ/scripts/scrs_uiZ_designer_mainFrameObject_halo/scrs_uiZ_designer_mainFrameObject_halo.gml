@@ -1,11 +1,12 @@
 function obj_uiZ_designer_drawHalo(object){
+	var defaultHaloColor = $FFEAEA;
 	var rx = object.rx;
 	var ry = object.ry;
 	var rlx = object.rlx;
 	var rly = object.rly;
 	var width = object.width;
 	var height = object.height;
-	draw_set_color(c_white);
+	draw_set_color(defaultHaloColor);
 
 	thickness=5
 	stripes=10
@@ -36,27 +37,31 @@ function obj_uiZ_designer_drawHalo(object){
 	}else{
 		//draw lines in width
 		if sw*stripesw+sw>width then{stripesw-=1}
-		for(var i=0;i<stripesw;i+=2){
-			if (rx+sw*i+sw >= obj_uiZ_designer.main_area_frontUI.rlx){
-				if (rx+sw*i >= obj_uiZ_designer.main_area_frontUI.rlx){break;}
-				if (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry){draw_line_width(rx+sw*i,ry,obj_uiZ_designer.main_area_frontUI.rlx,ry,thickness);}
-				if (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly){draw_line_width(rx+sw*i,rly,obj_uiZ_designer.main_area_frontUI.rlx,rly,thickness);}
-				break;
+		if (ry <= obj_uiZ_designer.main_area_frontUI.rly) and (rly >= obj_uiZ_designer.main_area_frontUI.ry){
+			for(var i=0;i<stripesw;i+=2){
+				if (rx+sw*i+sw >= obj_uiZ_designer.main_area_frontUI.rlx){
+					if (rx+sw*i >= obj_uiZ_designer.main_area_frontUI.rlx){break;}
+					if (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry){draw_line_width(rx+sw*i,ry,obj_uiZ_designer.main_area_frontUI.rlx,ry,thickness);}
+					if (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly){draw_line_width(rx+sw*i,rly,obj_uiZ_designer.main_area_frontUI.rlx,rly,thickness);}
+					break;
+				}
+				if (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry){draw_line_width(rx+sw*i,ry,rx+sw*i+sw,ry,thickness);}
+				if (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly){draw_line_width(rx+sw*i,rly,rx+sw*i+sw,rly,thickness);}
 			}
-			if (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry){draw_line_width(rx+sw*i,ry,rx+sw*i+sw,ry,thickness);}
-			if (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly){draw_line_width(rx+sw*i,rly,rx+sw*i+sw,rly,thickness);}
 		}
 		//draw lines in height
 		if sh*stripesh+sh>height then{stripesh-=1}
-		for(var i=0;i<stripesh;i+=2){
-			if (ry+sh*i+sh >= obj_uiZ_designer.main_area_frontUI.rly){
-				if (ry+sh*i >= obj_uiZ_designer.main_area_frontUI.rly){break;}
-				if (rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx){draw_line_width(rx,ry+sh*i,rx,obj_uiZ_designer.main_area_frontUI.rly,thickness);}
-				if (rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx){draw_line_width(rlx,ry+sh*i,rlx,obj_uiZ_designer.main_area_frontUI.rly,thickness);}
-				break;
+		if (rx <= obj_uiZ_designer.main_area_frontUI.rlx) and (rlx >= obj_uiZ_designer.main_area_frontUI.rx){
+			for(var i=0;i<stripesh;i+=2){
+				if (ry+sh*i+sh >= obj_uiZ_designer.main_area_frontUI.rly){
+					if (ry+sh*i >= obj_uiZ_designer.main_area_frontUI.rly){break;}
+					if (rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx){draw_line_width(rx,ry+sh*i,rx,obj_uiZ_designer.main_area_frontUI.rly,thickness);}
+					if (rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx){draw_line_width(rlx,ry+sh*i,rlx,obj_uiZ_designer.main_area_frontUI.rly,thickness);}
+					break;
+				}
+				if (rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx){draw_line_width(rx,ry+sh*i,rx,ry+sh*i+sh,thickness);}
+				if (rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx){draw_line_width(rlx,ry+sh*i,rlx,ry+sh*i+sh,thickness);}
 			}
-			if (rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx){draw_line_width(rx,ry+sh*i,rx,ry+sh*i+sh,thickness);}
-			if (rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx){draw_line_width(rlx,ry+sh*i,rlx,ry+sh*i+sh,thickness);}
 		}
 	}
 	//draw text
@@ -64,14 +69,20 @@ function obj_uiZ_designer_drawHalo(object){
 	//draw_text(rx+width/2,ry+height/2,name)
 	uiz_textmiddle_topleft()
 
-	//top left corner
-	if isOverFrontUI or ((rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx) and (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry)) {draw_circle(rx,ry,thickness/2,0);}
-	//top right corner
-	if isOverFrontUI or ((rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx) and (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry)) {draw_circle(rlx,ry,thickness/2,0);}
-	//bottom left corner
-	if isOverFrontUI or ((rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx) and (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly)) {draw_circle(rx,rly,thickness/2,0);}
-	//bottom right corner
-	if isOverFrontUI or ((rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx) and (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly)) {draw_circle(rlx,rly,thickness/2,0);}
+
+	//draw corner circles
+	if (rx <= obj_uiZ_designer.main_area_frontUI.rlx) and (rlx >= obj_uiZ_designer.main_area_frontUI.rx) and (ry <= obj_uiZ_designer.main_area_frontUI.rly) and (rly >= obj_uiZ_designer.main_area_frontUI.ry){
+		//top left corner
+		if isOverFrontUI or ((rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx) and (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry)) {draw_circle(rx,ry,thickness/2,0);}
+		//top right corner
+		if isOverFrontUI or ((rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx) and (ry+thickness/2 > obj_uiZ_designer.main_area_frontUI.ry)) {draw_circle(rlx,ry,thickness/2,0);}
+		//bottom left corner
+		if isOverFrontUI or ((rx+thickness/2 > obj_uiZ_designer.main_area_frontUI.rx) and (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly)) {draw_circle(rx,rly,thickness/2,0);}
+		//bottom right corner
+		if isOverFrontUI or ((rlx-thickness/2 < obj_uiZ_designer.main_area_frontUI.rlx) and (rly-thickness/2 < obj_uiZ_designer.main_area_frontUI.rly)) {draw_circle(rlx,rly,thickness/2,0);}
+	}
+	
+	
 	var bsz=max(min((width+height)/2*uiz_dp/2000,uiz_dp*0.3),10)
 	var outsx=0;
 	var outsy=0;
@@ -80,23 +91,40 @@ function obj_uiZ_designer_drawHalo(object){
 	//now draw the risize buttons
 	//var snapToResize = 0;
 	if isOverFrontUI{
-		uiz_draw_squareButton_independent(rlx-bsz+outsx,rly-bsz+outsy,rlx+outsx,rly+outsy,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rx-outsx,ry-outsy,rx+bsz-outsx,ry+bsz-outsy,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rlx-bsz+outsx,ry-outsy,rlx+outsx,ry+bsz-outsy,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rx-outsx,rly-bsz+outsy,rx+bsz-outsx,rly+outsy,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rlx-bsz+outsx,ry+height/2-bsz/2,rlx+outsx,ry+height/2+bsz/2,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rx-outsx,ry+height/2-bsz/2,rx+bsz-outsx,ry+height/2+bsz/2,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rx+width/2-bsz/2,ry-outsy,rx+width/2+bsz/2,ry+bsz-outsy,c_white,c_gray,c_black,1)
-		uiz_draw_squareButton_independent(rx+width/2-bsz/2,rly-bsz+outsy,rx+width/2+bsz/2,rly+outsy,c_white,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rlx-bsz+outsx,rly-bsz+outsy,rlx+outsx,rly+outsy,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rx-outsx,ry-outsy,rx+bsz-outsx,ry+bsz-outsy,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rlx-bsz+outsx,ry-outsy,rlx+outsx,ry+bsz-outsy,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rx-outsx,rly-bsz+outsy,rx+bsz-outsx,rly+outsy,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rlx-bsz+outsx,ry+height/2-bsz/2,rlx+outsx,ry+height/2+bsz/2,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rx-outsx,ry+height/2-bsz/2,rx+bsz-outsx,ry+height/2+bsz/2,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rx+width/2-bsz/2,ry-outsy,rx+width/2+bsz/2,ry+bsz-outsy,defaultHaloColor,c_gray,c_black,1)
+		uiz_draw_squareButton_independent(rx+width/2-bsz/2,rly-bsz+outsy,rx+width/2+bsz/2,rly+outsy,defaultHaloColor,c_gray,c_black,1)
 	}else{//leave the button white whenever we are outside the main canvas. Also hide buttons
-		if (rlx-bsz+outsx < obj_uiZ_designer.main_area_frontUI.rlx) and (rly-bsz+outsy < obj_uiZ_designer.main_area_frontUI.rly) {draw_square(rlx-bsz+outsx,rly-bsz+outsy,min(rlx+outsx,obj_uiZ_designer.main_area_frontUI.rlx),min(rly+outsy,obj_uiZ_designer.main_area_frontUI.rly),c_white,1)}//bottom-right
-		if (rx+bsz-outsx > obj_uiZ_designer.main_area_frontUI.rx) and (ry+bsz-outsy > obj_uiZ_designer.main_area_frontUI.ry){draw_square(max(rx-outsx,obj_uiZ_designer.main_area_frontUI.rx),max(ry-outsy,obj_uiZ_designer.main_area_frontUI.ry),rx+bsz-outsx,ry+bsz-outsy,c_white,1)}//top-left
-		if (rlx-bsz+outsx < obj_uiZ_designer.main_area_frontUI.rlx) and (ry+bsz-outsy > obj_uiZ_designer.main_area_frontUI.ry){draw_square(rlx-bsz+outsx,max(ry-outsy,obj_uiZ_designer.main_area_frontUI.ry),min(rlx+outsx,obj_uiZ_designer.main_area_frontUI.rlx),ry+bsz-outsy,c_white,1)}//top-right
-		if (rx+bsz-outsx > obj_uiZ_designer.main_area_frontUI.rx) and (rly-bsz+outsy < obj_uiZ_designer.main_area_frontUI.rly){draw_square(max(rx-outsx,obj_uiZ_designer.main_area_frontUI.rx),rly-bsz+outsy,rx+bsz-outsx,min(rly+outsy,obj_uiZ_designer.main_area_frontUI.rly),c_white,1)}//bottom-left
-		if (rlx-bsz+outsx < obj_uiZ_designer.main_area_frontUI.rlx){draw_square(rlx-bsz+outsx,ry+height/2-bsz/2,min(rlx+outsx,obj_uiZ_designer.main_area_frontUI.rlx),ry+height/2+bsz/2,c_white,1);}//right
-		if (rx+bsz-outsx > obj_uiZ_designer.main_area_frontUI.rx){draw_square(max(rx-outsx,obj_uiZ_designer.main_area_frontUI.rx),ry+height/2-bsz/2,rx+bsz-outsx,ry+height/2+bsz/2,c_white,1)}//left
-		if (ry+bsz-outsy > obj_uiZ_designer.main_area_frontUI.ry){draw_square(rx+width/2-bsz/2,max(ry-outsy,obj_uiZ_designer.main_area_frontUI.ry),rx+width/2+bsz/2,ry+bsz-outsy,c_white,1)}//top
-		if (rly-bsz+outsy < obj_uiZ_designer.main_area_frontUI.rly){draw_square(rx+width/2-bsz/2,rly-bsz+outsy,rx+width/2+bsz/2,min(rly+outsy,obj_uiZ_designer.main_area_frontUI.rly),c_white,1)}//bottom
+		var fuX = obj_uiZ_designer.main_area_frontUI.rx;
+		var fuY = obj_uiZ_designer.main_area_frontUI.ry;
+		var fuLX = obj_uiZ_designer.main_area_frontUI.rlx;
+		var fuLY = obj_uiZ_designer.main_area_frontUI.rly;
+		var middleYVisible = false;
+		if (rx+width/2 > fuX) and (rx+width/2 < fuLX) then{middleYVisible = true;}
+		var middleXVisible = false;
+		if (ry+height/2 > fuY) and (ry+height/2 < fuLY) then{middleXVisible = true;}
+		var leftVisible = false;
+		if (rx+bsz-outsx > fuX) and (rx-outsx < fuLX) then{leftVisible = true;}
+		var rightVisible = false;
+		if (rlx-bsz+outsx < fuLX) and (rlx+outsx > fuX) then{rightVisible = true;}
+		var topVisible = false;
+		if (ry+bsz-outsy > fuY) and (ry-outsy < fuLY) then{topVisible = true;}
+		var bottomVisible = false;
+		if (rly-bsz+outsy < fuLY) and (rly+outsy > fuY) then{bottomVisible = true;}
+		
+		if bottomVisible	and rightVisible	then{		draw_square(clamp(rlx-bsz+outsx,fuX,fuLX),		clamp(rly-bsz+outsy,fuY,fuLY),		clamp(rlx+outsx,fuX,fuLX),			clamp(rly+outsy,fuY,fuLY),			defaultHaloColor,1);}//bottom-right
+		if topVisible		and leftVisible		then{		draw_square(clamp(rx-outsx,fuX,fuLX),			clamp(ry-outsy,fuY,fuLY),			clamp(rx+bsz-outsx,fuX,fuLX),		clamp(ry+bsz-outsy,fuY,fuLY),		defaultHaloColor,1);}//top-left
+		if topVisible		and rightVisible	then{		draw_square(clamp(rlx-bsz+outsx,fuX,fuLX),		clamp(ry-outsy,fuY,fuLY),			clamp(rlx+outsx,fuX,fuLX),			clamp(ry+bsz-outsy,fuY,fuLY),		defaultHaloColor,1);}//top-right
+		if bottomVisible	and leftVisible		then{		draw_square(clamp(rx-outsx,fuX,fuLX),			clamp(rly-bsz+outsy,fuY,fuLY),		clamp(rx+bsz-outsx,fuX,fuLX),		clamp(rly+outsy,fuY,fuLY),			defaultHaloColor,1);}//bottom-left
+		if rightVisible		and middleXVisible	then{		draw_square(clamp(rlx-bsz+outsx,fuX,fuLX),		clamp(ry+height/2-bsz/2,fuY,fuLY),	clamp(rlx+outsx,fuX,fuLX),			clamp(ry+height/2+bsz/2,fuY,fuLY),	defaultHaloColor,1);}//right
+		if leftVisible		and middleXVisible	then{		draw_square(clamp(rx-outsx,fuX,fuLX),			clamp(ry+height/2-bsz/2,fuY,fuLY),	clamp(rx+bsz-outsx,fuX,fuLX),		clamp(ry+height/2+bsz/2,fuY,fuLY),	defaultHaloColor,1);}//left
+		if topVisible		and middleYVisible	then{		draw_square(clamp(rx+width/2-bsz/2,fuX,fuLX),	clamp(ry-outsy,fuY,fuLY),			clamp(rx+width/2+bsz/2,fuX,fuLX),	clamp(ry+bsz-outsy,fuY,fuLY),		defaultHaloColor,1);}//top
+		if bottomVisible	and middleYVisible	then{		draw_square(clamp(rx+width/2-bsz/2,fuX,fuLX),	clamp(rly-bsz+outsy,fuY,fuLY),		clamp(rx+width/2+bsz/2,fuX,fuLX),	clamp(rly+outsy,fuY,fuLY),			defaultHaloColor,1);}//bottom
 	}
 	//if mouse_check_button(mb_left) and point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),rx,ry,rlx,rly) and !point_in_rectangle(uiz_getmouse_x(),uiz_getmouse_y(),rx+thickness,ry+thickness,rlx-thickness,rly-thickness) and global.mousefrozen=0 then{snapToResize=9; global.mousefrozen=1}else{if snapToResize=9 and !mouse_check_button(mb_left) then{snapToResize=0; global.mousefrozen=0}}
 	//if !uiz_postypeisvariable(object.posinframex) and (snapToResize>=1 and snaptopresize<=7) then{snapToResize=0;}

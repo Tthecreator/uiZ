@@ -6,12 +6,14 @@ if draw and uiz_cntn() then{
     for (var i = 0; i < divisions - 1; i++) {
         h += isz[i]
         if hasBar[i] then {
-            uy = 0
-            uheight = height
+            uy = 0;
+            uheight = height;
             //get the y of the frames
 
-            ux = h
-            uwidth = thickness
+            ux = h;
+            uwidth = thickness;
+			h += uwidth;
+			
             if parent.object_index = obj_uiZ_framerowanchor then {
                 var nwidth = uwidth
                 var nheight = uheight
