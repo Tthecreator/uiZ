@@ -3,7 +3,8 @@
 
 #region //Check new object
 	if (uiz_drawdslist_getselection(object_list_uiList)!=-1 and uiz_mouse_isOver_object_releasedLeft(object_list_uiList)){
-		var object = object_list_objects[|uiz_drawdslist_getselection(object_list_uiList)];
+		var selection = uiz_drawdslist_getselection(object_list_uiList);
+		var object = object_list_objects[|selection];
 		var objToCreate = asset_get_index(object.name);
 		var newObj = uiz_c(objToCreate);
 		uiz_setParent(newObj, main_area_canvas);
@@ -11,6 +12,19 @@
 		uiz_size(newObj, 1, dp, 1, dp);
 		uiz_fix(newObj);
 		ds_list_add(main_area_objectList, newObj);
+		
+		//add to livelist
+		var treelistHandle = uiz_treelist_handle_getRootEnd(object_list_liveList);//get reference to (just beyond) the end of the treelist.
+		uiz_treelist_addEntryAt(object_list_liveList, treelistHandle, object.name, object_list_sprites[|selection], object_list_spriteNums[|selection])//add an entry at the end of the treelist
+		
+		//update xml
+		var xml = object_list_liveList.usexml;
+		var xmlHandle = uiz_treelist_getXmlHandle(object_list_liveList, treelistHandle);//get an xml handle to the treelist data to add stuff.
+		uiz_xml_settaginfo_at(xml, xmlHandle, "instance_id", newObj);
+		
+		//update view of livelist
+		uiz_updater_FixViews_with(object_list_liveList);
+		sdbm(uiz_xml_toString(object_list_liveList.usexml));//print xml for debug
 	}
 #endregion
 
@@ -28,7 +42,7 @@
 				uiz_mouse_unFreeze();
 			}
 		}else if uiz_mouse_isOver_canvas(obj_uiZ_designer.main_area_frontUI) and mouse_check_button(mb_left) and !uiz_mouse_isFrozen(){//find new thing to press
-			for(var i=0; i<ds_list_size(main_area_objectList); ++i){
+			for(var i=ds_list_size(main_area_objectList)-1; i>=0; --i){
 				if obj_uiZ_designer_checkHaloMouse(main_area_objectList[|i]) then{
 					snapToObject = main_area_objectList[|i];
 					break;

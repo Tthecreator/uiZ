@@ -41,6 +41,7 @@ if obj_uiZ_designer_checkSystemSandbox()==false then{
 	uiz_setParent(object_list_liveList, object_settings_sidebar);
 	uiz_position_t(object_list_liveList, uiz_fill, uiz_fill);
 	uiz_treelist_emptyXml(object_list_liveList);
+	uiz_treelist_onDrag(object_list_liveList, uiz_liveView_dragScript_depthSort);
 	uiz_fix(object_list_liveList);
 #endregion
 

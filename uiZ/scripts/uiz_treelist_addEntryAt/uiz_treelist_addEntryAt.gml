@@ -33,7 +33,11 @@ function uiz_treelist_addEntryAt() {
 	    if handle<ds_list_size(indentEnabledAndBoxList) then{
 	        level = indentEnabledAndBoxList[|handle]>>3;//uiz_treelist_item_get_indentLevel(argument0,argument1);
 	    }else{
-	        level = indentEnabledAndBoxList[|ds_list_size(indentEnabledAndBoxList)-1]>>3;
+			if ds_list_size(indentEnabledAndBoxList) == 0 then{
+				level = 0;
+			}else{
+				level = indentEnabledAndBoxList[|ds_list_size(indentEnabledAndBoxList)-1]>>3;
+			}
 	    }
 	    var originalLevel = level;
 	    var lsz = ds_list_size(indentEnabledAndBoxList);
@@ -79,10 +83,15 @@ function uiz_treelist_addEntryAt() {
 	        xmlHandle = handleList[|handle];
 	        curHierarchy = hierarchyItemList[|handle];//uiz_treelist_item_get_indentLevel(argument0,argument1);
 	    }else{
-	        nextItemList[|lsz-1] = handle;
-	        xmlHandle = handleList[|lsz-1];
-	        xmlHandle = uiz_xml_gethandleend(usexml,xmlHandle)+1;
-	        curHierarchy = hierarchyItemList[|lsz-1];
+			if lsz == 0 then{
+				xmlHandle = uiz_xml_gethandle_begin(usexml);
+				curHierarchy = 0;
+			}else{
+		        nextItemList[|lsz-1] = handle;
+		        xmlHandle = handleList[|lsz-1];
+		        xmlHandle = uiz_xml_gethandleend(usexml,xmlHandle)+1;
+		        curHierarchy = hierarchyItemList[|lsz-1];
+			}
 	    }
 	    ds_list_insert(handleList,handle,xmlHandle);
 	    ds_list_insert(nextItemList,handle,-1);
