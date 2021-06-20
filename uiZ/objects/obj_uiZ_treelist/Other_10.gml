@@ -28,12 +28,46 @@ if uiz_cntn() then {
             uiz_treelist_drawEntry(drawDraggingItem,startOffset+(draggingItemRelativePos)*fontHeight,rx,srlx);
             updateDragArea = false;
         }
+		
+		var ils = ds_list_size(updateIndividualItemList);
+		if ils then{
+			ds_list_sort(updateIndividualItemList, true);
+			
+			var lsz = ds_list_size(textList);
+            var ih=startOffset;
+			var findiPos = 0;
+			var findi = updateIndividualItemList[|findiPos];
+            
+            for(var i=startList;i<lsz;i+=0){    
+                var oldi = i;
+                i = nextItemList[|i];
+				if (i = findi){
+					uiz_treelist_drawEntry(i,ih,rx,srlx);
+					
+					do{//loop to prevent duplicates
+						++findiPos;
+						if (findipos >= ils){
+							break;
+						}
+						findi = updateIndividualItemList[|findiPos];
+					}until(i == findi);
+					
+					if (findipos >= ils){
+						break;
+					}
+					
+				}
+				
+                if i<=0 or i<oldi or is_undefined(i) then{break;}
+                ih+=fontHeight;
+            }
+		}
         
     }else{//default draw
         updateDragArea = false;
         updateMouseAreas = false;
         
-        if uiz_xml_isempty(usexml) = 0 then {
+        if !uiz_xml_isempty(usexml) then {
             //sdbm("xml not empty!");
             var lsz = ds_list_size(textList);
             var ih=startOffset;
@@ -53,6 +87,7 @@ if uiz_cntn() then {
     if doscroll=true then{
         uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
     }
+	ds_list_empty(updateIndividualItemList);
     uiz_containend()
 }
 

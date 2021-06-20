@@ -1,5 +1,5 @@
 
-function uiz_liveView_dragScript_depthSort(){
+function uiz_liveView_dragScript_hierarchySort(){
 	var draggingItem = argument1;//the #id of the item being dragged
 	var itemDestination = argument2;//the #id of the item being dragged to
 	var itemDestinationYPosition = argument3;//if the draggingItem was dragged to the bottom half of the itemDestination (=1) or if the draggingItem was dragged to the top half of the itemDestination (=0), and everthing between those two values.
@@ -13,6 +13,7 @@ function uiz_liveView_dragScript_depthSort(){
 			var itemDestinationInstance = uiz_xml_gettaginfo_at(xml, itemDestinationXmlHandle, "instance_id" ,noone);
 			var draggingItemObjListPos = ds_list_find_index(obj_uiZ_designer.main_area_objectList, draggingItemInstance);
 			var itemDestinationObjListPos = ds_list_find_index(obj_uiZ_designer.main_area_objectList, itemDestinationInstance);
+			
 	        if itemDestinationYPosition<0.5 then{//if we are hovering over the top of the item
 				//move depth
 				uiz_depth_moveBehind(draggingItemInstance, itemDestinationInstance);
@@ -20,17 +21,15 @@ function uiz_liveView_dragScript_depthSort(){
 				//move treelist
 	            uiz_treelist_moveEntry_recursive(argument0,draggingItem,itemDestination);
 	        }else{//if we are hovering over the bottom of the item
-	            //var addIndent = 0;
-	            //if uiz_treelist_item_get_boxState(argument0,itemDestination)!=uiz_treelist_boxState_noBox then{
-	            //    addIndent = 1;//add indent if we are putting this inside another item (instead of under it). We put the item inside when the destination has children.
-	            //}
+	            if uiz_treelist_item_get_boxState(argument0,itemDestination)==uiz_treelist_boxState_noBox then{
+					//uiz_treelist_(argument0,itemDestination)
+	            }
 				
 				//move depth
 				uiz_depth_moveInFront(draggingItemInstance, itemDestinationInstance);
 				
 				//move treelist
-	            uiz_treelist_moveEntry_recursive(argument0,draggingItem,itemDestination+1,uiz_treelist_item_get_indentLevel(argument0,itemDestination)/*+addIndent*/);//add item below the destination, with the same indent as the destination
-				
+	            uiz_treelist_moveEntry_recursive(argument0,draggingItem,itemDestination+1,uiz_treelist_item_get_indentLevel(argument0,itemDestination)+1);//add item below the destination, with the same indent as the destination
 	        }
 			
 			//move designer objectList
@@ -40,11 +39,6 @@ function uiz_liveView_dragScript_depthSort(){
 				obj_uiZ_designer.main_area_objectList[|itemDestinationObjListPos] = temp;
 			}
 			
-	        /*
-	        for(var i=0;i<ds_list_size(indentEnabledAndBoxList);++i){
-	            sdbm(textList[|i],"indent: ",indentEnabledAndBoxList[|i]>>3,id)
-	        }
-	        */
 	    }
 	    uiz_selfmarked = false;
 	    uiz_updater_FixViews();

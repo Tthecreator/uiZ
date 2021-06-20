@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "liveView",
-    "path": "folders/uiZ_designer/liveView.yy",
+    "name": "set",
+    "path": "folders/uiZ/Objects/treelist/set.yy",
   },
   "resourceVersion": "1.0",
-  "name": "uiz_liveView_dragScripts",
+  "name": "uiz_treelist_item_set_sprite",
   "tags": [],
   "resourceType": "GMScript",
 }

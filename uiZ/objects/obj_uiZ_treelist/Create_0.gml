@@ -86,6 +86,7 @@ draggingStartY = 0;
 updateScroll = false;
 updateMouseAreas = false;
 updateDragArea = false;
+updateIndividualItemList = ds_list_create();
 
 
 selectxml=-1;
