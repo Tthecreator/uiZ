@@ -30,9 +30,9 @@ hierarchyLineMinWidth=1//v//hierarchy line minimum width in px//
 hierarchyLineDecreaseWidth=1//v//hierarchy line width decrease per hierarchy level in px//
 hierarchyLineColor=c_black//v//hierarchy line color//
 
-scrollbarwidth=16//v//scrollbar width//
-scrollbarwidthtype=px//z//scrollbar width type//
-scrollbarsprite=spr_uiZ_scrollbar//p//scrollbar sprite//
+scrollbarwidth=.16//v//scrollbar width//
+scrollbarwidthtype=dp//z//scrollbar width type//
+scrollbarsprite=spr_uiZ_scrollbar_16//p//scrollbar sprite//
 scrollbarcolor=c_white//c//scrollbar color//
 scrollbarbacktexmode=uiz_texturemode_fill_edgeless//t//scrollbar texturemode//
 scrollspeed=0.5//v//scrollspeed in dp//
@@ -62,7 +62,7 @@ maxHierarchyLevel = 0;
 
 doscroll = false;
 scrolllines = 0;
-scrollBarW = uiz_getposx_simple(scrollbarwidth,scrollbarwidthtype);
+scrollBarW = uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
 scrollBarX = 0;
 startList = 0;//at what item id the list should start. 
 startPos = 0;//at what item position the list should start

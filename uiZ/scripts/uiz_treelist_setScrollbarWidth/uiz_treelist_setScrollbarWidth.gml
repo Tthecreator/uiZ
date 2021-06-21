@@ -5,6 +5,8 @@
 function uiz_treelist_setScrollbarWidth(argument0, argument1, argument2) {
 	argument0.scrollbarwidth=argument1;
 	argument0.scrollbarwidthtype=argument2;
+	argument0.scrollBarW = uiz_getposx_self(scrollbarwidth,scrollbarwidthtype);
+	argument0.scrollBarX = rlx - scrollBarW;
 	uiz_treelist_updateScrollbar(argument0);
 
 

@@ -1,7 +1,7 @@
 //#define uiZ
+//#exclude
 //#sprite images
 //#spritenum 1
-//#exclude
 //define uiZ allows the ui designer to recorginse this as a uiz object
 //the #sprite images line makes the sprite of the object spr_uiZ_images instead of spr_uiZ_images_user. for userdefined objects, don't use this line.
 //#spritenum 1 tells the designer what image_index of the sprite to use.
@@ -104,7 +104,7 @@ global.mouseoverobject=id
 global.mouseoverobjectdepth=0
 global.mouseoverframe=id
 global.mouseoverframedepth=0
-global.mouseovercavas=id
+global.mouseovercanvas=id
 global.mouseovercanvasmydepth=0
 global.mouseoverwindow=id
 global.mouseoverwindowdepth=0

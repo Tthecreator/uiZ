@@ -1,4 +1,5 @@
 //#define uiZ
+//#exclude
 //#sprite images
 //#spritenum 3
 //#objectversion 1.0

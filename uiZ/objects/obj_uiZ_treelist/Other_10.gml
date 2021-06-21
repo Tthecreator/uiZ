@@ -85,7 +85,7 @@ if uiz_cntn() then {
     }
     //draw scrollbar
     if doscroll=true then{
-        uiz_drawscrollbar_vertical_draw(scrollBarX,iy,ilx,ily,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
+        uiz_drawscrollbar_vertical_draw(scrollBarX,ry,rlx,rly,scrollbarsprite,scrollbarcolor,scrollbarbacktexmode,scroll,scrolllines)
     }
 	ds_list_empty(updateIndividualItemList);
     uiz_containend()

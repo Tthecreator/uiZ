@@ -16,6 +16,7 @@
 		//add to livelist
 		var treelistHandle = uiz_treelist_handle_getRootEnd(object_list_liveList);//get reference to (just beyond) the end of the treelist.
 		uiz_treelist_addEntryAt(object_list_liveList, treelistHandle, object.name, object_list_sprites[|selection], object_list_spriteNums[|selection])//add an entry at the end of the treelist
+		uiz_fix(object_list_liveList);
 		
 		//update xml
 		var xml = object_list_liveList.usexml;
@@ -42,12 +43,38 @@
 				uiz_mouse_unFreeze();
 			}
 		}else if uiz_mouse_isOver_canvas(obj_uiZ_designer.main_area_frontUI) and mouse_check_button(mb_left) and !uiz_mouse_isFrozen(){//find new thing to press
+			//method using xml (preserves depth)
+			
+			
+			var xml = uiz_treelist_getxml(obj_uiZ_designer.object_list_liveList);
+			//sdbm("XML DEBUG:", uiz_xml_getdebugstringtotal(xml));
+			
+			
+			var startIt = uiz_xml_gethandle_begin(xml);
+			var endIt = uiz_xml_gethandle_end(xml);
+			//for(var i = uiz_xml_gethandle_begin(xml); i<endIt && i!=-1; i = uiz_xml_nexttag(xml, i)){
+			endIt = uiz_xml_previoustag(xml, endIt);
+			for(var i = endIt; i>=startIt && i!=-1; i = uiz_xml_previoustag(xml, i)){
+				//if (i=-1) then{break;}
+				var inst = uiz_xml_gettaginfo_at(xml, i, "instance_id", noone);
+				if inst!=noone and instance_exists(inst){
+					if obj_uiZ_designer_checkHaloMouse(inst) then{
+						snapToObject = inst;
+						break;
+					}
+				}
+			}
+			
+			//method not using xml;
+			/*
 			for(var i=ds_list_size(main_area_objectList)-1; i>=0; --i){
 				if obj_uiZ_designer_checkHaloMouse(main_area_objectList[|i]) then{
 					snapToObject = main_area_objectList[|i];
 					break;
 				}
 			}
+			*/
+			
 		}
 	}
 #endregion

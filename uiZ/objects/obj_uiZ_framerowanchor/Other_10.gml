@@ -8,11 +8,13 @@ if draw and uiz_cntn() then{
         if hasBar[i] = 1 then {
             ux = 0
             uwidth = width
-			h += uwidth;
             //get the y of the frames
             
             uy = h
             uheight = thickness
+			h += uheight;
+			
+			
             if parent.object_index = obj_uiZ_framecolanchor then {
                 var nwidth = uwidth
                 var nheight = uheight

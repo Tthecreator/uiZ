@@ -1226,6 +1226,7 @@
     {"id":{"name":"uiz_xml_writeHeadTag_before","path":"scripts/uiz_xml_writeHeadTag_before/uiz_xml_writeHeadTag_before.yy",},"order":4,},
     {"id":{"name":"uiz_xml_writetag_at_end","path":"scripts/uiz_xml_writetag_at_end/uiz_xml_writetag_at_end.yy",},"order":5,},
     {"id":{"name":"uiz_xml_remove_at_all","path":"scripts/uiz_xml_remove_at_all/uiz_xml_remove_at_all.yy",},"order":0,},
+    {"id":{"name":"uiz_xml_previoustag","path":"scripts/uiz_xml_previoustag/uiz_xml_previoustag.yy",},"order":4,},
     {"id":{"name":"uiz_xml_remove_at","path":"scripts/uiz_xml_remove_at/uiz_xml_remove_at.yy",},"order":1,},
     {"id":{"name":"uiz_xml_removedown_at","path":"scripts/uiz_xml_removedown_at/uiz_xml_removedown_at.yy",},"order":2,},
     {"id":{"name":"uiz_xml_writetag","path":"scripts/uiz_xml_writetag/uiz_xml_writetag.yy",},"order":2,},
@@ -1295,6 +1296,7 @@
     {"id":{"name":"obj_uiZ_framerowanchor","path":"objects/obj_uiZ_framerowanchor/obj_uiZ_framerowanchor.yy",},"order":5,},
     {"id":{"name":"obj_uiz_xmlparser","path":"objects/obj_uiz_xmlparser/obj_uiz_xmlparser.yy",},"order":6,},
     {"id":{"name":"uiz_mouse_isOver_canvas_pressingRight","path":"scripts/uiz_mouse_isOver_canvas_pressingRight/uiz_mouse_isOver_canvas_pressingRight.yy",},"order":34,},
+    {"id":{"name":"obj_uiZ_background","path":"objects/obj_uiZ_background/obj_uiZ_background.yy",},"order":0,},
     {"id":{"name":"obj_uiZ_frameset","path":"objects/obj_uiZ_frameset/obj_uiZ_frameset.yy",},"order":7,},
     {"id":{"name":"obj_uiZ_menuholder","path":"objects/obj_uiZ_menuholder/obj_uiZ_menuholder.yy",},"order":8,},
     {"id":{"name":"obj_uiZ_menuitem","path":"objects/obj_uiZ_menuitem/obj_uiZ_menuitem.yy",},"order":9,},
@@ -1559,6 +1561,7 @@
     {"folderPath":"folders/uiZ_designer.yy","order":15,"resourceVersion":"1.0","name":"uiZ_designer","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/uiZ_designer/liveView.yy","order":7,"resourceVersion":"1.0","name":"liveView","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/uiZ/Objects/treelist/set.yy","order":20,"resourceVersion":"1.0","name":"set","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/uiZ/Objects/background.yy","order":43,"resourceVersion":"1.0","name":"background","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

@@ -10,8 +10,22 @@ function obj_uiZ_designer_getObjectList(){
 			var file = file_text_open_read(createFileName);
 			var firstLine = file_text_readln(file);
 			if firstLine == "//#define uiZ\r\n" or firstLine == "//#define uiZ\n" then{
-				//found a uiZ object
-				ds_list_add(objects,obj_uiZ_designer_getObjectFromFile(file, objectFolder));
+				//check if this is not excluded
+				var isExcluded = false;
+				while(true){
+					var nextLine = file_text_readln(file);
+					if string_copy(nextLine, 1, 2)!="//" then{break;}
+					if	nextLine == "//#exclude\r\n" or nextLine == "//#exclude\n" or
+						nextLine == "//#excluded\r\n" or nextLine == "//#excluded\n"
+					then{
+						isExcluded = true;
+						break;
+					}
+				}
+				if isExcluded == false then{
+					//found a uiZ object
+					ds_list_add(objects,obj_uiZ_designer_getObjectFromFile(file, objectFolder));
+				}
 			}
 			file_text_close(file);
 		}

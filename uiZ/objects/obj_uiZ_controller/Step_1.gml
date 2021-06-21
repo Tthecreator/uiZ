@@ -127,7 +127,7 @@ global.uiz_mouseswiped=uiz_pyth(global.uiz_mouseswipedx,global.uiz_mouseswipedy)
 if mouse_check_button(mb_left) && uiz_isMouseSwipeClickWhiteListed(oldselectedmouseover) then{//mswc_count+=uiz_sc(mouseswipeclick_time);
 
 
-if global.lastmousemoved>=uiz_getposx_simple(mouseswipeclick_distance,mouseswipeclick_distancetype)/fps then{
+if global.lastmousemoved>=uiz_getposx_self(mouseswipeclick_distance,mouseswipeclick_distancetype)/fps then{
 global.uiz_mouseswipeclick=true;
 //reset mouse to old object
 
@@ -155,7 +155,7 @@ global.mouseoverobject=id
 global.mouseoverobjectmydepth=0
 global.mouseoverwindow=id
 global.mouseoverwindowmydepth=0
-global.mouseovercavas=id
+global.mouseovercanvas=id
 global.mouseovercanvasmydepth=0
 global.mouseoverframe=id
 global.mouseoverframemydepth=0

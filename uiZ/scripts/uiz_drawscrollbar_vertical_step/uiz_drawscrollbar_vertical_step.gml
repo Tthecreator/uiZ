@@ -89,7 +89,13 @@ function uiz_drawscrollbar_vertical_step(argument0, argument1, argument2, argume
 	    }else{//busy doing an animation
 	        argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]+argument7,0,argument5);
 	        var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-	        twn_fac=uiz_animation_revertFunction(animfac,argument8);
+			//sdbm("twn_test",argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to],argument7,argument5,scroll,argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])
+			if is_nan(animfac) then{
+				//we are not really in an animation
+				twn_fac = 1;
+			}else{
+				twn_fac=uiz_animation_revertFunction(animfac,argument8);
+			}
 	    }
 	}
 	if mouse_wheel_up() then{
@@ -101,7 +107,12 @@ function uiz_drawscrollbar_vertical_step(argument0, argument1, argument2, argume
 	    }else{//busy doing an animation
 	        argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]=clamp(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to]-argument7,0,argument5);
 	        var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-	        twn_fac=uiz_animation_revertFunction(animfac,argument8);
+	        if is_nan(animfac) then{
+				//we are not really in an animation
+				twn_fac = 1;
+			}else{
+				twn_fac=uiz_animation_revertFunction(animfac,argument8);
+			}
 	    }
 	}
 	}
@@ -159,7 +170,12 @@ function uiz_drawscrollbar_vertical_step(argument0, argument1, argument2, argume
 	        twn_fac=0;
 	    }else{//busy doing an animation
 	        var animfac = (scroll - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from])/(argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_to] - argument4[@uiz_drawscrollbar_struct.uiz_dsb_tween_scroll_from]);
-	        twn_fac=uiz_animation_revertFunction(animfac,argument8);
+	        if is_nan(animfac) then{
+				//we are not really in an animation
+				twn_fac = 1;
+			}else{
+				twn_fac=uiz_animation_revertFunction(animfac,argument8);
+			}
 	    }
 
 	//sdbm((uiz_getmouse_y()-argument1-width),nheight,(uiz_getmouse_x()-argument1-width)/nheight)

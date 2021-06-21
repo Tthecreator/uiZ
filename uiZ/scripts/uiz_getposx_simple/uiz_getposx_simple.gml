@@ -12,7 +12,7 @@ function uiz_getposx_simple(argument0, argument1) {
 	return argument0;
 	break;
 	case dp:
-	return argument0*uiz_dp
+	return round(argument0*uiz_dp);
 	break;
 	case fc: case fcx:
 	return round(argument0*(parent.iwidth)-leftmargin-rightmargin)

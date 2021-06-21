@@ -7,8 +7,14 @@ function uiz_animation_revertFunction(argument0, argument1) {
 	//other functions have problems with float rounding errors. (I think)
 	//the more simple formulas for which every y value only occurs one work mostly just fine.
 	var bf=argument0
-	var bfc = clamp(bf,0,1)
-	var diff=0
+	var bfc = clamp(bf,0,1);
+	if is_nan(bfc) or is_undefined(bfc) or is_infinity(bfc) then{
+		bfc = 0;//bold assumption
+		sdbm("[uiZ|ERROR] uiz_animation_revertFunction has gotten a value that is either \"NaN\", \"Infinity\" or \"Undefined\"")
+	}
+	//if (bfc<=0){bfc = 0.00000001;}//fix rounding issue, some numbers can be randomly ever so slightly negative yet still count as zero.
+	//if (bfc>=1){bfc = 1;}//fix rounding issue
+	var diff=0;
 	switch(argument1){
 	case uiz_straight:
 	diff=bf
